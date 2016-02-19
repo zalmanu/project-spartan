@@ -6,5 +6,5 @@ from django.db import models
 class Account(models.Model):
     user = models.OneToOneField(User, primary_key=True)
     city = models.CharField(max_length=40)
-    country = models.CharField(max_length=30)
-    telefon = models.IntegerField(max_length=11)
+    country = models.CharField(max_length=30, null=True)
+#    telefon = models.IntegerField(null=True)
