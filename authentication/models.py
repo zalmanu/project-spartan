@@ -6,6 +6,5 @@ from django.db import models
 class Account(models.Model):
     user = models.OneToOneField(User, primary_key=True)
     city = models.CharField(max_length=40)
-    gender = models.CharField(max_length=10)
-    photo = models.ImageField(null=True)
-    descriere = models.TextField(max_length=300, null=True)
+    country = models.CharField(max_length=30)
+    telefon = models.IntegerField(max_length=11)
