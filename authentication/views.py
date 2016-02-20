@@ -16,7 +16,7 @@ def register_page(request):
         new_user.save()
         account = Account.objects.create(user=new_user, city=city, country=country, telefon=phone)
         account.save()
-        return render(request, "authentication/random.html")
+        return render(request, "authentication/welcome.html")
     else:
         return render(request, "authentication/register.html")
 
