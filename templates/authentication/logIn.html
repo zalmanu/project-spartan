@@ -64,15 +64,14 @@
               <div class="card" id="login-box">
 
                   <h1 class="title">Please insert your:</h1>
-                <form method="POST">
-                    {% csrf_token %}
+                <form>
                     <div class="input-container">
-                        <input name="username" type="text" id="Username" required="required"/>
+                        <input type="text" id="Username" required="required"/>
                         <label for="Username">Username</label>
                         <div class="bar"></div>
                     </div>
                     <div class="input-container">
-                        <input name="password" type="password" id="Password" required="required"/>
+                        <input type="password" id="Password" required="required"/>
                         <label for="Password">Password</label>
                         <div class="bar"></div>
                     </div>
