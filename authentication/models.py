@@ -7,4 +7,4 @@ class Account(models.Model):
     user = models.OneToOneField(User, primary_key=True)
     city = models.CharField(max_length=40)
     country = models.CharField(max_length=30, null=True)
-#    telefon = models.IntegerField(null=True)
+    telefon = models.IntegerField(null=True)

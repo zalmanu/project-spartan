@@ -11,10 +11,10 @@ def register_page(request):
         email = request.POST.get('email')
         city = request.POST.get('city')
         country = request.POST.get('country')
-#        phone = request.POST.get('phone')
+        phone = request.POST.get('phone')
         new_user = User.objects.create_user(username, email, password)
         new_user.save()
-        account = Account.objects.create(user=new_user, city=city, country=country)
+        account = Account.objects.create(user=new_user, city=city, country=country, telefon=phone)
         account.save()
         return render(request, "authentication/random.html")
     else:
