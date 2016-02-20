@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  
+
     {% load staticfiles %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -32,7 +32,7 @@
     <!-- Navigation -->
     <div class="cbp-af-header">
 				<div class="cbp-af-inner">
-                    <h1><a href="index.html" id="return-home">Spartan</a></h1>
+                    <h1><a href="{% url 'home' %}" id="return-home">Spartan</a></h1>
                     <nav id="register-button">
                         <a href="{% url 'login' %}" id="button-flow">Log In</a>
                         <a href="#" id="line-flow">|</a>

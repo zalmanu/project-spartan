@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Spartan Project</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{% static "css/half-slider.css" %}" rel="stylesheet">
+    <link href="{% static "css/one-page-wonder.css" %}" rel="stylesheet">
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="{% static "css/default.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/component.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+    <link rel="stylesheet" href="{% static "css/reset.css" %}">
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,600,300,200&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <div class="cbp-af-header">
+				<div class="cbp-af-inner">
+                    <h1><a href="{% url 'home' %}" id="return-home">Spartan</a></h1>
+                    <nav id="register-button">
+                        <a href="{% url 'login' %}" id="button-flow">Log In</a>
+                        <a href="#" id="line-flow">|</a>
+						<a href="{% url 'register' %}" id="button-flow">Sign Up</a>
+                    </nav>
+                    <nav id="menu-button">
+						<a href="#first-section" id="menu1-flow">About Us</a>
+						<a href="#secound-section" id="menu2-flow">Categories</a>
+						<a href="#third-section" id="menu3-flow">Join</a>
+                        <a href="#third-section" id="menu3-flow">Join</a>
+					</nav>
+    <!-- ~~~~~~~~~~~~~~~~~~~~Page scroll down~~~~~~~~~~~~~~~~~~~~ -->
+                    <script>
+                    $(function() {
+                      $('a[href*=#]:not([href=#])').click(function() {
+                        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+                          var target = $(this.hash);
+                          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                          if (target.length) {
+                            $('html,body').animate({
+                              scrollTop: target.offset().top
+                            }, 1000);
+                            return false;
+                          }
+                        }
+                      });
+                    });
+                    </script>
+
+				</div>
+    </div>
+
+    <!-- Half Page Image Background Carousel Header -->
+    <header id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for Slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <!-- Set the first background image using inline CSS below. -->
+                <div class="fill" style="background-image:url({% static "images/home-bg.jpg" %});"></div>
+                <div class="carousel-caption">
+                    <h2>Text 1</h2>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the second background image using inline CSS below. -->
+                <div class="fill" style="background-image:url({% static "images/contact-bg.jpg" %});"></div>
+                <div class="carousel-caption">
+                    <h2>Text 2</h2>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the third background image using inline CSS below. -->
+                <div class="fill" style="background-image:url({% static "images/post-bg.jpg" %});"></div>
+                <div class="carousel-caption">
+                    <h2>Text 3</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+
+    </header>
+
+    <!-- Page Content -->
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <section class="first-section" id="first-section">
+        <div class="slide story" id="slide-6" data-slide="6">
+		<div class="container">
+            <div class="row title-row">
+				<div class="col-12 font-thin">How does <span class="font-semibold">It work</span> ?</div>
+            </div>
+			<div class="row line-row">
+				<div class="hr">&nbsp;</div>
+			</div><!-- /row -->
+			<div class="row subtitle-row">
+				<div class="col-sm-1 hidden-sm">&nbsp;</div>
+				<div class="col-sm-1 hidden-sm">&nbsp;</div>
+			</div><!-- /row -->
+			<div id="contact-row-4" class="row">
+				<div class="col-sm-1 hidden-sm">&nbsp;</div>
+<!-- ^^^^^^^^^^^ Primul Pas ^^^^^^^^^^^ -->
+                <div class="col-12 col-sm-2 with-hover-text">
+					<p><a target="_blank" href="#"><img src="{% static "images/tasks2.png" %}"></a></p>
+					<span class="hover-text font-light " style="display: inline-block; opacity: 1; padding-top: 12px;">+44 4839-4343</span>
+                    <p id="vector-title">Fineas</p>
+                    </a>
+				</div><!-- /col12 -->
+
+<!-- ^^^^^^^^^^^ Al  Pas ^^^^^^^^^^^ -->
+                <div class="col-12 col-sm-2 with-hover-text">
+					<p><a target="_blank" href="#"><img src="{% static "images/tasks2.png" %}"></a></p>
+					<span class="hover-text font-light " style="display: inline-block; opacity: 1; padding-top: 12px;">munter@blacktie.co</span>
+                    <p id="vector-title">Fineas</p>
+                    </a>
+				</div><!-- /col12 -->
+
+<!-- ^^^^^^^^^^^ Primul Pas ^^^^^^^^^^^ -->
+                <div class="col-12 col-sm-2 with-hover-text">
+					<p><a target="_blank" href="#"><img src="{% static "images/tasks2.png" %}"></a></p>
+					<span class="hover-text font-light " style="display: inline-block; opacity: 1; padding-top: 12px;">London, England<br>zip code 98443</span>
+                    <p id="vector-title">Fineas</p>
+                    </a>
+                </div><!-- /col12 -->
+
+<!-- ^^^^^^^^^^^ Primul Pas ^^^^^^^^^^^ -->
+                <div class="col-12 col-sm-2 with-hover-text">
+					<p><a target="_blank" href="#"><img src="{% static "images/tasks2.png" %}"></a></p>
+					<span class="hover-text font-light " style="display: inline-block; opacity: 1; padding-top: 12px;">facebook/blacktie_consultatul</span>
+                    <p id="vector-title">Fineas</p>
+                    </a>
+				</div><!-- /col12 -->
+
+<!-- ^^^^^^^^^^^ Primul Pas ^^^^^^^^^^^ -->
+                <div class="col-12 col-sm-2 with-hover-text">
+					<p><a target="_blank" href="#"><img src="{% static "images/tasks2.png" %}"></i></a></p>
+					<span class="hover-text font-light " style="display: inline-block; opacity: 1; padding-top: 12px;">@BlackTie_co</span>
+                    <p id="vector-title">Fineas</p>
+                    </a>
+				</div><!-- /col12 -->
+
+				<div class="col-sm-1 hidden-sm">&nbsp;</div>
+			</div><!-- /row -->
+		</div><!-- /container -->
+	</div>
+    </section>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Secound Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <section class="secound-section" id="secound-section">
+    <section id="cd-timeline" class="cd-container ">
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-picture">
+				<img src="{% static "img/cd-icon-picture.svg" alt="Picture" %}">
+			</div> <!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content">
+				<h2>Title of section 1</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
+				<span class="cd-date">First Step</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-movie">
+				<img src="{% static "img/cd-icon-movie.svg" %}" alt="Movie">
+			</div> <!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content">
+				<h2>Title of section 2</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde?</p>
+				<span class="cd-date">Secound Step</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-picture">
+				<img src="{% static "img/cd-icon-picture.svg" %}" alt="Picture">
+			</div> <!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content">
+				<h2>Title of section 3</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, obcaecati, quisquam id molestias eaque asperiores voluptatibus cupiditate error assumenda delectus odit similique earum voluptatem doloremque dolorem ipsam quae rerum quis. Odit, itaque, deserunt corporis vero ipsum nisi eius odio natus ullam provident pariatur temporibus quia eos repellat consequuntur perferendis enim amet quae quasi repudiandae sed quod veniam dolore possimus rem voluptatum eveniet eligendi quis fugiat aliquam sunt similique aut adipisci.</p>
+				<span class="cd-date">Third Step</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-movie">
+				<img src="{% static "img/cd-icon-location.svg" %}" alt="Location">
+			</div> <!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content">
+				<h2>Title of section 4</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
+				<span class="cd-date">Fourth Step</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-picture">
+				<img src="{% static "img/cd-icon-location.svg" %}" alt="Location">
+			</div> <!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content">
+				<h2>Title of section 5</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum.</p>
+				<span class="cd-date">Fifth Step</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-movie">
+				<img src="{% static "img/cd-icon-movie.svg" %}" alt="Movie">
+			</div> <!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content">
+				<h2>Final Section</h2>
+				<p>This is the content of the last section</p>
+				<span class="cd-date">Sixth Step</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+	</section> <!-- cd-timeline -->
+    </section>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Third Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <section class="third-section" id="third-section">
+    <div class="row title-row">
+				<div class="col-12 font-thin categories-gallery">Categories</div>
+    </div>
+    <div class="row line-row">
+				<div class="hr">&nbsp;</div>
+    </div>
+    <div class="main">
+				<ul class="cbp-ig-grid">
+					<li>
+						<a href="#">
+							<span class="cbp-ig-icon"><img src="{% static "images/man379.png" %}"></span>
+							<h3 class="cbp-ig-title">Squid voluptate</h3>
+							<span class="cbp-ig-category">Click Here For More</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="cbp-ig-icon"><img src="{% static "images/man379.png" %}"></span>
+							<h3 class="cbp-ig-title">Mixtape lo-fi</h3>
+							<span class="cbp-ig-category">Click Here For More</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="cbp-ig-icon"><img src="{% static "images/man379.png" %}"></span>
+							<h3 class="cbp-ig-title">Cosby sweater</h3>
+							<span class="cbp-ig-category">Click Here For More</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="cbp-ig-icon"><img src="{% static "images/man379.png" %}"></span>
+							<h3 class="cbp-ig-title">Commodo</h3>
+							<span class="cbp-ig-category">Click Here For More</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="cbp-ig-icon"><img src="{% static "images/man379.png" %}"></span>
+							<h3 class="cbp-ig-title">Bitters kitsch</h3>
+							<span class="cbp-ig-category">Click Here For More</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="cbp-ig-icon"><img src="{% static "images/man379.png" %}"></span>
+							<h3 class="cbp-ig-title">Austin proident</h3>
+							<span class="cbp-ig-category">Click Here For More</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+    </section>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Fourth Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <section class="fourth-section" id="fourth-section">
+        <center><div class="slide story" id="slide-6" data-slide="6">
+		<div class="container">
+            <div class="row title-row">
+				<div class="col-12 font-thin" id="fourth-section-title">Dare to join?</div>
+            </div>
+			<div class="row line-row">
+				<div class="hr">&nbsp;</div>
+			</div><!-- /row -->
+			<div class="row subtitle-row">
+				<div class="col-sm-1 hidden-sm">&nbsp;</div>
+				<div class="col-sm-1 hidden-sm">&nbsp;</div>
+			</div><!-- /row -->
+			<div id="contact-row-4" class="row">
+				<div class="col-sm-1 hidden-sm">&nbsp;</div>
+				<div class="col-12 col-sm-2 with-hover-text">
+					<p><a target="_blank" href="#"><img src="{% static "images/male226.png" %}"></a></p>
+					<span class="hover-text font-light " style="display: inline-block; opacity: 1; padding-top: 12px;">+44 4839-4343</span></a>
+				</div><!-- /col12 -->
+				<div class="col-12 col-sm-2 with-hover-text">
+					<p><a target="_blank" href="#"><img src="{% static "images/male226.png" %}"></a></p>
+					<span class="hover-text font-light " style="display: inline-block; opacity: 1; padding-top: 12px;">munter@blacktie.co</span></a>
+				</div><!-- /col12 -->
+				<div class="col-12 col-sm-2 with-hover-text">
+					<p><a target="_blank" href="#"><img src="{% static "images/male226.png" %}"></a></p>
+					<span class="hover-text font-light " style="display: inline-block; opacity: 1; padding-top: 12px;">London, England<br>zip code 98443</span></a>
+				</div><!-- /col12 -->
+				<div class="col-12 col-sm-2 with-hover-text">
+					<p><a target="_blank" href="#"><img src="{% static "images/male226.png" %}"></a></p>
+                    <span class="hover-text font-light " style="display: inline-block; opacity: 1; padding-top: 12px;">facebook/blacktie_co</span></a>
+				</div><!-- /col12 -->
+				<div class="col-12 col-sm-2 with-hover-text">
+					<p><a target="_blank" href="#"><img src="{% static "images/male226.png" %}"></i></a></p>
+					<span class="hover-text font-light " style="display: inline-block; opacity: 1; padding-top: 12px;">@BlackTie_co</span></a>
+				</div><!-- /col12 -->
+				<div class="col-sm-1 hidden-sm">&nbsp;</div>
+			</div><!-- /row -->
+		</div><!-- /container -->
+	</div>
+    <a class="cbp-vm-icon cbp-vm-add" href="#">Join the fray!</a></center>
+    </section>
+    <div class="container">
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="{% static "js/jquery.js" %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+
+    <!-- animations -->
+    <script src="{% static "js/modernizr.custom.js" %}"></script>
+    <script src="{% static "js/classie.js" %}"></script>
+    <script src="{% static "js/main.js" %}"></script>
+    <script src="{% static "js/modernizr.js" %}"></script>
+    <script src="{% static "js/cbpScroller.js" %}"></script>
+    <script>
+			new cbpScroller( document.getElementById( 'cbp-so-scroller' ) );
+    </script>
+    <script src="js/cbpAnimatedHeader.min.js"></script>
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 7000 //changes the speed
+    })
+    </script>
+    <!-- fancybox init -->
+    <script>
+	$(document).ready(function(e) {
+		var lis = $('.nav > li');
+		menu_focus( lis[0], 1 );
+
+		$(".fancybox").fancybox({
+			padding: 10,
+			helpers: {
+				overlay: {
+					locked: false
+				}
+			}
+		});
+
+	});
+	</script>
+
+<!-- scripturi -->
+<script src="{% static "js/html5shiv.js" %}"></script>
+	<script src="{% static "js/jquery-1.10.2.min.js" %}"></script>
+	<script src="{% static "js/jquery-migrate-1.2.1.min.js" %}"></script>
+	<script src="{% static "js/bootstrap.min.js" %}"></script>
+	<script src="{% static "js/jquery.easing.1.3.js" %}"></script>
+	<script type="text/javascript" src="{% static "fancybox/jquery.fancybox.pack-v=2.1.5.js" %}"></script>
+	<script src="{% static "js/script.js" %}"></script>
+
+	<!-- fancybox init -->
+	<script>
+	$(document).ready(function(e) {
+		var lis = $('.nav > li');
+		menu_focus( lis[0], 1 );
+
+		$(".fancybox").fancybox({
+			padding: 10,
+			helpers: {
+				overlay: {
+					locked: false
+				}
+			}
+		});
+
+	});
+	</script>
+
+</body>
+
+</html>
+
+<!-- colors: #47a3da  -main blue;
+             #1f80af  -dark blue;
+             #e5f5fa  -light blue;
+                                   -->
