@@ -2,6 +2,8 @@ from django.shortcuts import render
 from authentication.models import Account
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
+from django.shortcuts import redirect
+from django.contrib import messages
 
 
 def register_page(request):
@@ -16,7 +18,9 @@ def register_page(request):
         new_user.save()
         account = Account.objects.create(user=new_user, city=city, country=country, telefon=phone)
         account.save()
-        return render(request, "authentication/welcome.html")
+        user = authenticate(username=username, password=password)
+        login(request, user)
+        return redirect('/profile')
     else:
         return render(request, "authentication/register.html")
 
@@ -29,5 +33,8 @@ def login_page(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return render(request, "authentication/random.html")
+                return redirect('/profile')
+        else:
+            messages.error(request, 'Incorrect username or password')
+            return render(request, "authentication/logIn.html")
     return render(request, "authentication/logIn.html")
