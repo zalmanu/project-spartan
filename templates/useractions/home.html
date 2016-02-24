@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head> 
+<head>
     {% load staticfiles %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,19 +12,19 @@
     <title>Spartan Project</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="{% static "/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet"/>
 
     <!-- Custom CSS -->
-    <link href="../css/half-slider.css" rel="stylesheet">
-    <link href="../css/one-page-wonder.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../css/default.css" />
-    <link rel="stylesheet" type="text/css" href="../css/component.css" />
-    <link rel="stylesheet" type="text/css" href="../css/main.css" />
-    <link rel="stylesheet" type="text/css" href="../css/font-awesome.css" />
-    <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css" />
-    <link rel="stylesheet" type="text/css" href="../css/line-icons.css" />
-    <link rel="stylesheet" type="text/css" href="../css/elegant-icons-style.css">
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link href="{% static "css/half-slider.css" %}" rel="stylesheet"/>
+    <link href="{% static "css/one-page-wonder.css" %}" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/default.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/component.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/font-awesome.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/font-awesome.min.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/line-icons.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/elegant-icons-style.css" %}">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,600,300,200&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
@@ -35,27 +35,27 @@
     <!-- Navigation -->
     <div class="cbp-af-header" id="user-menu">
 				<div class="cbp-af-inner">
-                    <a href="../index.html" id="return-home"><h1>Spartan</h1></a>           
-                    
-                <!-- Search bar -->    
+                    <a href="{% url 'home' %}" id="return-home"><h1>Spartan</h1></a>
+
+                <!-- Search bar -->
                    <div class="nav search-row" id="top_menu">
-                        <ul class="nav top-menu">                    
+                        <ul class="nav top-menu">
                             <li>
                                 <form class="navbar-form">
                                     <input class="form-control" id="nav-search" placeholder="Search" type="text">
                                 </form>
-                            </li>                    
-                        </ul>               
+                            </li>
+                        </ul>
                     </div>
-                    
-        
+
+
                 </div>
-           
+
         <!-- Notification dropdown -->
-            <div class="top-nav notification-row" id="user-menu-buttons">                
+            <div class="top-nav notification-row" id="user-menu-buttons">
                 <!-- notificatoin dropdown start-->
                 <ul class="nav pull-right top-menu">
-                    
+
                     <!-- task notificatoin start -->
                     <a href="event.html"><li id="task_notificatoin_bar">
                 <span class="glyphicon glyphicon-plus" id="create_post_icon" toggle="tooltip" data-placement="bottom" title="Hooray!">
@@ -76,7 +76,7 @@
                             </li>
                             <li>
                                 <a href="#">
-                                    <span class="photo"><img alt="avatar" src="../img/avatar-mini.jpg"></span>
+                                    <span class="photo"><img alt="avatar" src="{% static "img/avatar-mini.jpg" %}"></span>
                                     <span class="subject">
                                     <span class="from">Greg  Martin</span>
                                     <span class="time">1 min</span>
@@ -88,7 +88,7 @@
                             </li>
                             <li>
                                 <a href="#">
-                                    <span class="photo"><img alt="avatar" src="../img/avatar-mini2.jpg"></span>
+                                    <span class="photo"><img alt="avatar" src="{% static "img/avatar-mini2.jpg" %}"></span>
                                     <span class="subject">
                                     <span class="from">Bob   Mckenzie</span>
                                     <span class="time">5 mins</span>
@@ -100,7 +100,7 @@
                             </li>
                             <li>
                                 <a href="#">
-                                    <span class="photo"><img alt="avatar" src="../img/avatar-mini3.jpg"></span>
+                                    <span class="photo"><img alt="avatar" src="{% static "img/avatar-mini3.jpg" %}"></span>
                                     <span class="subject">
                                     <span class="from">Phillip   Park</span>
                                     <span class="time">2 hrs</span>
@@ -112,7 +112,7 @@
                             </li>
                             <li>
                                 <a href="#">
-                                    <span class="photo"><img alt="avatar" src="../img/avatar-mini4.jpg"></span>
+                                    <span class="photo"><img alt="avatar" src="{% static "img/avatar-mini4.jpg" %}"></span>
                                     <span class="subject">
                                     <span class="from">Ray   Munoz</span>
                                     <span class="time">1 day</span>
@@ -142,32 +142,32 @@
                             </li>
                             <li>
                                 <a href="#">
-                                    <span class="label label-primary"><i class="icon_profile"></i></span> 
+                                    <span class="label label-primary"><i class="icon_profile"></i></span>
                                     Friend Request
                                     <span class="small italic pull-right">5 mins</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <span class="label label-warning"><i class="icon_pin"></i></span>  
+                                    <span class="label label-warning"><i class="icon_pin"></i></span>
                                     John location.
                                     <span class="small italic pull-right">50 mins</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <span class="label label-danger"><i class="icon_book_alt"></i></span> 
+                                    <span class="label label-danger"><i class="icon_book_alt"></i></span>
                                     Project 3 Completed.
                                     <span class="small italic pull-right">1 hr</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <span class="label label-success"><i class="icon_like"></i></span> 
+                                    <span class="label label-success"><i class="icon_like"></i></span>
                                     Mick appreciated your work.
                                     <span class="small italic pull-right"> Today</span>
                                 </a>
-                            </li>                            
+                            </li>
                             <li>
                                 <a href="#">See all notifications</a>
                             </li>
@@ -178,7 +178,7 @@
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
-                                <img alt="" src="../img/avatar1_small.jpg">
+                                <img alt="" src="{% static "img/avatar1_small.jpg" %}">
                             </span>
                             <span class="username">Jenifer Smith</span>
                             <b class="caret"></b>
@@ -207,7 +207,7 @@
                                 <a href="#"><i>Poti Angaja</i><div class="checkbox"> <label> <input type="checkbox"> Angajator</label> </div></a>
                             </li>
                             <li>
-                                <a href="documentation.html"><i class="icon_key_alt"></i>LOG OUT</a>
+                                <a href="{% url 'logout' %}"><i class="icon_key_alt"></i>LOG OUT</a>
                             </li>
                         </ul>
                     </li>
@@ -217,10 +217,10 @@
             </div>
     </div>
 
-    <!-- Page Content --> 
-    
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->  
-    
+    <!-- Page Content -->
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
     <section class="third-section" id="wrap">
       <div class="row title-row">
 				<div class="col-12 font-thin user-first-title">Pick up <span class="font-semibold">a Category</span> </div>
@@ -230,47 +230,47 @@
 			</div><!-- /row -->
             <div class="row subtitle-row">
 				<div class="col-sm-1 hidden-sm">&nbsp;</div>
-			</div><!-- /row -->  
+			</div><!-- /row -->
     <div class="main" id="home">
 				<ul class="cbp-ig-grid">
 					<li id="cat1">
 						<a href="#">
-							<span class="cbp-ig-icon"><img src="../images/plant53.png"></span>
+							<span class="cbp-ig-icon"><img src="{% static "images/plant53.png" %}"></span>
 							<h3 class="cbp-ig-title">GARDEN</h3>
 							<span class="cbp-ig-category">Click Here For More</span>
 						</a>
 					</li>
 					<li id="cat2">
                         <a href="#">
-							<span class="cbp-ig-icon"><img src="../images/moving10.png"></span>
+							<span class="cbp-ig-icon"><img src="{% static "images/moving10.png" %}"></span>
 							<h3 class="cbp-ig-title">MOVING</h3>
 							<span class="cbp-ig-category">Click Here For More</span>
 						</a>
 					</li>
 					<li id="cat3">
 						<a href="#">
-							<span class="cbp-ig-icon"><img src="../images/cleaning2.png"></span>
+							<span class="cbp-ig-icon"><img src="{% static "images/cleaning2.png" %}"></span>
 							<h3 class="cbp-ig-title">CLEANING</h3>
 							<span class="cbp-ig-category">Click Here For More</span>
 						</a>
 					</li>
 					<li id="cat4">
 						<a href="#">
-							<span class="cbp-ig-icon"><img src="../images/mother19.png"></span>
+							<span class="cbp-ig-icon"><img src="{% static "images/mother19.png" %}"></span>
 							<h3 class="cbp-ig-title">BABY SITTING</h3>
 							<span class="cbp-ig-category">Click Here For More</span>
 						</a>
 					</li>
 					<li id="cat5">
 						<a href="#">
-							<span class="cbp-ig-icon"><img src="../images/food60.png"></span>
+							<span class="cbp-ig-icon"><img src="{% static "images/food60.png" %}"></span>
 							<h3 class="cbp-ig-title">FOOD</h3>
 							<span class="cbp-ig-category">Click Here For More</span>
 						</a>
 					</li>
 					<li id="cat6">
 						<a href="#">
-							<span class="cbp-ig-icon"><img src="../images/add139.png"></span>
+							<span class="cbp-ig-icon"><img src="{% static "images/add139.png" %}"></span>
 							<h3 class="cbp-ig-title">OTHER</h3>
 							<span class="cbp-ig-category">Click Here For More</span>
 						</a>
@@ -289,16 +289,16 @@
 				<div class="col-sm-1 hidden-sm">&nbsp;</div>
 			</div><!-- /row -->
             <div class="row container_allign container">
-    <!------------------------ PRIMUL ANUNT ------------------------> 
+    <!------------------------ PRIMUL ANUNT ------------------------>
                 <div class="col-md-3" id="fixed-left-menu">
                     <p class="lead">Category</p>
                     <div class="list-group">
-                        <a href="#" class="list-group-item" id="left-menu-button"><img src="../images/cutting8.png" class="left-menu-category-icon"> |  GARDEN</a>
-                        <a href="#" class="list-group-item" id="left-menu-button"><img src="../images/moving12.png" class="left-menu-category-icon">  |  MOVING</a>
-                        <a href="#" class="list-group-item" id="left-menu-button"><img src="../images/buckets3.png" class="left-menu-category-icon"> |  CLEANING</a>
-                        <a href="#" class="list-group-item" id="left-menu-button"><img src="../images/baby146.png" class="left-menu-category-icon">  |  BABY SITTING</a>
-                        <a href="#" class="list-group-item" id="left-menu-button"><img src="../images/cutlery23.png" class="left-menu-category-icon">  |  FOOD</a>
-                        <a href="#" class="list-group-item" id="left-menu-button"><img src="../images/zoom61.png" class="left-menu-category-icon">  |  OTHER</a>
+                        <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/cutting8.png" %}"class="left-menu-category-icon"> |  GARDEN</a>
+                        <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/moving12.png" %}" class="left-menu-category-icon">  |  MOVING</a>
+                        <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/buckets3.png" %}" class="left-menu-category-icon"> |  CLEANING</a>
+                        <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/baby146.png" %}" class="left-menu-category-icon">  |  BABY SITTING</a>
+                        <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/cutlery23.png" %}" class="left-menu-category-icon">  |  FOOD</a>
+                        <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/zoom61.png" %}" class="left-menu-category-icon">  |  OTHER</a>
                     </div>
                     <select class="form-control input-lg m-bot15" id="sort-by">
                                 <option>Sort By Name</option>
@@ -311,9 +311,9 @@
                     <div class="profile-widget profile-widget-info" id="post">
                           <div class="panel-body" id="post_content">
                             <div class="col-lg-2 col-sm-2">
-                              <h4>Jenifer Smith</h4>               
+                              <h4>Jenifer Smith</h4>
                               <div class="follow-ava">
-                                  <img src="../img/profile-avatar.jpg" alt="">
+                                  <img src="{% static "img/profile-avatar.jpg" %}" alt="">
                               </div>
                             </div>
                             <div class="col-lg-4 col-sm-4 follow-info description_info">
@@ -323,49 +323,49 @@
                             <div class="col-lg-2 col-sm-6 follow-info weather-category">
                                       <ul>
                                           <li class="active">
-                                              
+
                                               <i class="icon_clock_alt resize-icon"></i><br>
-											  
+
                                               <h4><span><b id="post-info-time">Time:</b></span><br id="post-time-value">19:00</h4>
                                           </li>
-										   
+
                                       </ul>
                             </div>
 							<div class="col-lg-2 col-sm-6 follow-info weather-category">
                                       <ul>
                                           <li class="active">
-                                              
+
                                               <i class="icon_calendar resize-icon"></i><br>
-											  
-                                              <h4><span><b id="post-info-date">Date:</b></span><br id="post-date-value">05.07.2015</h4> 
+
+                                              <h4><span><b id="post-info-date">Date:</b></span><br id="post-date-value">05.07.2015</h4>
                                           </li>
-										   
+
                                       </ul>
                             </div>
 							<div class="col-lg-2 col-sm-6 follow-info weather-category">
                                       <ul>
                                           <li class="active">
-                                              
+
                                               <span><i class="icon_pin_alt resize-icon"></i><br>
-											  
+
                                                   <h4><span><b id="post-info-adress">Adress:</b></span><br id="post-adress-value">Str. Norma</h4>
                                           </li>
-										   
+
                                       </ul>
                             </div>
                           </div>
                     </div>
                 </div>
-                    
-                    <!------------------------ AL DOILEA ANUNT ------------------------> 
-                
+
+                    <!------------------------ AL DOILEA ANUNT ------------------------>
+
                 <div class="col-lg-12" id="distance">
                     <div class="profile-widget profile-widget-info" id="post">
                           <div class="panel-body" id="post_content">
                             <div class="col-lg-2 col-sm-2">
-                              <h4>Jenifer Smith</h4>               
+                              <h4>Jenifer Smith</h4>
                               <div class="follow-ava">
-                                  <img src="../img/profile-avatar.jpg" alt="">
+                                  <img src="{% static "/img/profile-avatar.jpg" %}" alt="">
                               </div>
                             </div>
                             <div class="col-lg-4 col-sm-4 follow-info description_info">
@@ -375,49 +375,49 @@
                             <div class="col-lg-2 col-sm-6 follow-info weather-category">
                                       <ul>
                                           <li class="active">
-                                              
+
                                               <i class="icon_clock_alt resize-icon"></i><br>
-											  
+
                                               <h4><span><b id="post-info-time">Time:</b></span><br id="post-time-value">19:00</h4>
                                           </li>
-										   
+
                                       </ul>
                             </div>
 							<div class="col-lg-2 col-sm-6 follow-info weather-category">
                                       <ul>
                                           <li class="active">
-                                              
+
                                               <i class="icon_calendar resize-icon"></i><br>
-											  
-                                              <h4><span><b id="post-info-date">Date:</b></span><br id="post-date-value">05.07.2015</h4> 
+
+                                              <h4><span><b id="post-info-date">Date:</b></span><br id="post-date-value">05.07.2015</h4>
                                           </li>
-										   
+
                                       </ul>
                             </div>
 							<div class="col-lg-2 col-sm-6 follow-info weather-category">
                                       <ul>
                                           <li class="active">
-                                              
+
                                               <span><i class="icon_pin_alt resize-icon"></i><br>
-											  
+
                                                   <h4><span><b id="post-info-adress">Adress:</b></span><br id="post-adress-value">Str. Norma</h4>
                                           </li>
-										   
+
                                       </ul>
                             </div>
                           </div>
                     </div>
                 </div>
-                    
-                    <!------------------------ AL TRELEA ANUNT ------------------------> 
-                
+
+                    <!------------------------ AL TRELEA ANUNT ------------------------>
+
                 <div class="col-lg-12" id="distance">
                     <div class="profile-widget profile-widget-info" id="post">
                           <div class="panel-body" id="post_content">
                             <div class="col-lg-2 col-sm-2">
-                              <h4>Jenifer Smith</h4>               
+                              <h4>Jenifer Smith</h4>
                               <div class="follow-ava">
-                                  <img src="../img/profile-avatar.jpg" alt="">
+                                  <img src="{% static "img/profile-avatar.jpg" %}"alt="">
                               </div>
                             </div>
                             <div class="col-lg-4 col-sm-4 follow-info description_info">
@@ -427,49 +427,49 @@
                             <div class="col-lg-2 col-sm-6 follow-info weather-category">
                                       <ul>
                                           <li class="active">
-                                              
+
                                               <i class="icon_clock_alt resize-icon"></i><br>
-											  
+
                                               <h4><span><b id="post-info-time">Time:</b></span><br id="post-time-value">19:00</h4>
                                           </li>
-										   
+
                                       </ul>
                             </div>
 							<div class="col-lg-2 col-sm-6 follow-info weather-category">
                                       <ul>
                                           <li class="active">
-                                              
+
                                               <i class="icon_calendar resize-icon"></i><br>
-											  
-                                              <h4><span><b id="post-info-date">Date:</b></span><br id="post-date-value">05.07.2015</h4> 
+
+                                              <h4><span><b id="post-info-date">Date:</b></span><br id="post-date-value">05.07.2015</h4>
                                           </li>
-										   
+
                                       </ul>
                             </div>
 							<div class="col-lg-2 col-sm-6 follow-info weather-category">
                                       <ul>
                                           <li class="active">
-                                              
+
                                               <span><i class="icon_pin_alt resize-icon"></i><br>
-											  
+
                                                   <h4><span><b id="post-info-adress">Adress:</b></span><br id="post-adress-value">Str. Norma</h4>
                                           </li>
-										   
+
                                       </ul>
                             </div>
                           </div>
                     </div>
                 </div>
-                    
-                    <!------------------------ AL PATRULEA ANUNT ------------------------> 
-                
+
+                    <!------------------------ AL PATRULEA ANUNT ------------------------>
+
                 <div class="col-lg-12" id="distance">
                     <div class="profile-widget profile-widget-info" id="post">
                           <div class="panel-body" id="post_content">
                             <div class="col-lg-2 col-sm-2">
-                              <h4>Jenifer Smith</h4>               
+                              <h4>Jenifer Smith</h4>
                               <div class="follow-ava">
-                                  <img src="../img/profile-avatar.jpg" alt="">
+                                  <img src="{% static "img/profile-avatar.jpg" %}" alt="">
                               </div>
                             </div>
                             <div class="col-lg-4 col-sm-4 follow-info description_info">
@@ -479,34 +479,34 @@
                             <div class="col-lg-2 col-sm-6 follow-info weather-category">
                                       <ul>
                                           <li class="active">
-                                              
+
                                               <i class="icon_clock_alt resize-icon"></i><br>
-											  
+
                                               <h4><span><b id="post-info-time">Time:</b></span><br id="post-time-value">19:00</h4>
                                           </li>
-										   
+
                                       </ul>
                             </div>
 							<div class="col-lg-2 col-sm-6 follow-info weather-category">
                                       <ul>
                                           <li class="active">
-                                              
+
                                               <i class="icon_calendar resize-icon"></i><br>
-											  
-                                              <h4><span><b id="post-info-date">Date:</b></span><br id="post-date-value">05.07.2015</h4> 
+
+                                              <h4><span><b id="post-info-date">Date:</b></span><br id="post-date-value">05.07.2015</h4>
                                           </li>
-										   
+
                                       </ul>
                             </div>
 							<div class="col-lg-2 col-sm-6 follow-info weather-category">
                                       <ul>
                                           <li class="active">
-                                              
+
                                               <span><i class="icon_pin_alt resize-icon"></i><br>
-											  
+
                                                   <h4><span><b id="post-info-adress">Adress:</b></span><br id="post-adress-value">Str. Norma</h4>
                                           </li>
-										   
+
                                       </ul>
                             </div>
                           </div>
@@ -516,19 +516,19 @@
         </div>
     </section>
 
-        
+
     <!-- /.container -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    
-    
+
+
     <script>
     $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip(); 
+        $('[data-toggle="tooltip"]').tooltip();
     });
     </script>
-	
-	
+
+
 
 </body>
 
