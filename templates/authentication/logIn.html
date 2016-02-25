@@ -66,6 +66,15 @@
                   <h1 class="title">Please insert your:</h1>
                 <form method="POST">
                     {% csrf_token %}
+                    {% if messages %}
+                    <div class="error">
+                        <ul>
+                          {% for message in messages %}
+                            <li>{{ message }}</li>
+                          {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
                     <div class="input-container">
                         <input name="username" type="text" id="Username" required="required"/>
                         <label for="Username">Username</label>
