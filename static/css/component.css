@@ -50,11 +50,48 @@
 .cbp-ig-grid li > a {
 	display: block;
 	height: 100%;
-	color: #47a3da;
+	color: #e5f5fa;
 	-webkit-transition: background 0.2s;
 	-moz-transition: background 0.2s;
 	transition: background 0.2s;
 }
+
+#cat1{
+    background-image: url("../images/curte.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#cat2{    
+    background-image: url("../images/mutare.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#cat3{
+    background-image: url("../images/curatenie.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#cat4{
+    background-image: url("../images/bona.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#cat5{
+    background-image: url("../images/bucatar.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#cat6{
+    background-image: url("../images/altceva.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 
 /* the icon with pseudo class for icon font */
 .cbp-ig-icon {
@@ -115,7 +152,7 @@
 .cbp-ig-grid .cbp-ig-title:before {
 	content: '';
 	position: absolute;
-	background: #47a3da;
+	background-color: rgb(71, 163, 218);
 	width: 160px;
 	height: 6px;
 	top: 0px;
@@ -154,7 +191,8 @@
 /* Hover styles */
 
 .cbp-ig-grid li > a:hover {
-	background: #47a3da;
+	text-decoration: none;
+    background-color: rgba(71, 163, 218, 0.7);
 }
 
 .cbp-ig-grid li > a:hover .cbp-ig-icon {

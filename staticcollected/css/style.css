@@ -1,3 +1,4 @@
+{% load staticfiles %}
 .font-thin {
 	font-family: "Titillium Web", sans-serif;
 	font-weight: 200;
@@ -203,7 +204,6 @@
 }
 
 .zoom {
-	background-image: url('../images/zoom.png');
 	background-position: center center;
 	background-repeat: no-repeat;
 	height: 100%;
@@ -312,7 +312,6 @@
     width: 100% !important;
     font-size: 100% !important;
     scroll-behavior: smooth;
-    background-image: url("../images/try2.jpg");
     background-attachment: fixed;
     background-position: center;
 }
@@ -329,7 +328,6 @@
     width: 100%;
     height: auto;
     padding-bottom: 50px;
-    background-image: url("../images/slide-cover.jpg");
     background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
@@ -1568,7 +1566,7 @@ header h1 {
 #nav-search{
     border-radius: 0px;
     height: 50px;
-    width: 400px;
+    width: 22em;
 }
 
 @media (max-width: 1366px){
@@ -1785,6 +1783,18 @@ header h1 {
     color: #fff;
 }
 
+#create-post-header{
+    background-color: #fff !important;
+}
+
+.card.alt.plus-create{
+    position: static !important;
+}
+
+#create-post-title{
+    color: rgba(0, 153, 204, 1);
+}
+
 .create-post-category-button{
     color: #47a3da !important;
     background: rgba(255, 255, 255, 0.8) !important;
@@ -1803,7 +1813,7 @@ header h1 {
 
 #search-bar-left-menu{
     margin: 0 auto;
-    width: 100% !important;
+    width: 30% !important;
 }
 
 #laptop-icon{
@@ -1833,6 +1843,14 @@ header h1 {
 
 .error{
     font-size: 17px;
-    border: 1px solid red;
+    border: 2px solid red;
     text-align: center;
+    width: 90% !important;
+    margin: 0 auto;
+    margin-bottom: 4%;
+    display: none;
+}
+
+#notification-bid{
+    font-size: 15px;
 }
