@@ -8,3 +8,4 @@ class Account(models.Model):
     city = models.CharField(max_length=40)
     country = models.CharField(max_length=30, null=True)
     telefon = models.IntegerField(null=True)
+    photo = models.FileField(null=True)
