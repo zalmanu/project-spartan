@@ -66,6 +66,9 @@ DATABASES = {
 MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, "staticcollected")
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 AUTH_PASSWORD_VALIDATORS = [
     {

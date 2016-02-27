@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load staticfiles %}
+
 
 <head>
-    {% load staticfiles %}
+	{% block head %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,22 +14,22 @@
     <title>Spartan Project</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet"/>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"/>
 
     <!-- Custom CSS -->
-    <link href="{% static "css/half-slider.css" %}" rel="stylesheet"/>
-    <link href="{% static "css/one-page-wonder.css" %}" rel="stylesheet"/>
+    <link href="{% static 'css/half-slider.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/one-page-wonder.css' %}" rel="stylesheet"/>
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="{% static "css/default.css" %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static "css/component.css" %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
-    <link rel="stylesheet" href="{% static "css/reset.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/default.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/component.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,600,300,200&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-
+	{% endblock head %}
 </head>
 
 <body>
-
+	{% block body %}
     <!-- Navigation -->
     <div class="cbp-af-header">
 				<div class="cbp-af-inner">
@@ -431,7 +433,7 @@
 
 	});
 	</script>
-
+	{% endblock body %}
 </body>
 
 </html>
