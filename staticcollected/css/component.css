@@ -1,6 +1,6 @@
 @font-face {
 	font-family: 'anyoldicon';
-	src:url('../fonts/anyoldicon/anyoldicon.eot');
+	src:url('/fonts/anyoldicon/anyoldicon.eot');
 	src:url('../fonts/anyoldicon/anyoldicon.eot?#iefix') format('embedded-opentype'),
 		url('../fonts/anyoldicon/anyoldicon.woff') format('woff'),
 		url('../fonts/anyoldicon/anyoldicon.ttf') format('truetype'),
@@ -17,14 +17,14 @@
 }
 
 /* Clear floats */
-.cbp-ig-grid:before, 
-.cbp-ig-grid:after { 
-	content: " "; 
-	display: table; 
+.cbp-ig-grid:before,
+.cbp-ig-grid:after {
+	content: " ";
+	display: table;
 }
 
-.cbp-ig-grid:after { 
-	clear: both; 
+.cbp-ig-grid:after {
+	clear: both;
 }
 
 /* grid item */
@@ -50,11 +50,42 @@
 .cbp-ig-grid li > a {
 	display: block;
 	height: 100%;
-	color: #47a3da;
+	color: #e5f5fa;
 	-webkit-transition: background 0.2s;
 	-moz-transition: background 0.2s;
 	transition: background 0.2s;
 }
+
+#cat1{
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#cat2{
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#cat3{
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#cat4{
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#cat5{
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#cat6{
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 
 /* the icon with pseudo class for icon font */
 .cbp-ig-icon {
@@ -115,7 +146,7 @@
 .cbp-ig-grid .cbp-ig-title:before {
 	content: '';
 	position: absolute;
-	background: #47a3da;
+	background-color: rgb(71, 163, 218);
 	width: 160px;
 	height: 6px;
 	top: 0px;
@@ -154,7 +185,8 @@
 /* Hover styles */
 
 .cbp-ig-grid li > a:hover {
-	background: #47a3da;
+	text-decoration: none;
+    background-color: rgba(71, 163, 218, 0.7);
 }
 
 .cbp-ig-grid li > a:hover .cbp-ig-icon {
@@ -206,7 +238,7 @@
 	}
 }
 
-@media screen and (max-width: 41.6em) { 
+@media screen and (max-width: 41.6em) {
 	.cbp-ig-grid li {
 		width: 100%;
 	}
@@ -224,7 +256,7 @@
 	}
 }
 
-@media screen and (max-width: 25em) { 
+@media screen and (max-width: 25em) {
 	.cbp-ig-grid {
 		font-size: 80%;
 	}

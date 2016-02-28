@@ -19,11 +19,9 @@
     <!-- Custom CSS -->
     <link href="{% static 'css/half-slider.css' %}" rel="stylesheet"/>
     <link href="{% static 'css/one-page-wonder.css' %}" rel="stylesheet"/>
-    <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" type="text/css" href="{% static 'css/default.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/component.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,600,300,200&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 	{% endblock head %}
 </head>
@@ -264,42 +262,42 @@
     </div>
     <div class="main">
 				<ul class="cbp-ig-grid">
-					<li id="cat1">
+					<li id="cat1" style="background-image: url({% static "images/curte.jpg" %});">
 						<a href="#">
 							<span class="cbp-ig-icon"><img src="{% static "images/plant53.png" %}"></span>
 							<h3 class="cbp-ig-title">GARDEN</h3>
 							<span class="cbp-ig-category">Click Here For More</span>
 						</a>
 					</li>
-					<li id="cat2">
+					<li id="cat2" style="background-image: url({% static "images/mutare.jpg" %});">
                         <a href="#">
 							<span class="cbp-ig-icon"><img src="{% static "images/moving10.png" %}"></span>
 							<h3 class="cbp-ig-title">MOVING</h3>
 							<span class="cbp-ig-category">Click Here For More</span>
 						</a>
 					</li>
-					<li id="cat3">
+					<li id="cat3" style="background-image: url({% static "images/curatenie.jpg" %});">
 						<a href="#">
 							<span class="cbp-ig-icon"><img src="{% static "images/cleaning2.png" %}"></span>
 							<h3 class="cbp-ig-title">CLEANING</h3>
 							<span class="cbp-ig-category">Click Here For More</span>
 						</a>
 					</li>
-					<li id="cat4">
+					<li id="cat4" style="background-image: url({% static "images/bona.jpg" %});">
 						<a href="#">
 							<span class="cbp-ig-icon"><img src="{% static "images/mother19.png" %}"></span>
 							<h3 class="cbp-ig-title">BABY SITTING</h3>
 							<span class="cbp-ig-category">Click Here For More</span>
 						</a>
 					</li>
-					<li id="cat5">
+					<li id="cat5" style="background-image: url({% static "images/bucatar.jpg" %});">
 						<a href="#">
 							<span class="cbp-ig-icon"><img src="{% static "images/food60.png" %}"></span>
 							<h3 class="cbp-ig-title">FOOD</h3>
 							<span class="cbp-ig-category">Click Here For More</span>
 						</a>
 					</li>
-					<li id="cat6">
+					<li id="cat6" style="background-image: url({% static "images/altceva.jpg" %});">
 						<a href="#">
 							<span class="cbp-ig-icon"><img src="{% static "images/add139.png" %}"></span>
 							<h3 class="cbp-ig-title">OTHER</h3>
@@ -376,7 +374,7 @@
     <script src="{% static "js/classie.js" %}"></script>
     <script src="{% static "js/main.js" %}"></script>
     <script src="{% static "js/modernizr.js" %}"></script>
-    <script src="{% static "js/cbpScroller.js" %}"></script>
+
     <script>
 			new cbpScroller( document.getElementById( 'cbp-so-scroller' ) );
     </script>
@@ -413,7 +411,6 @@
 	<script src="{% static "js/bootstrap.min.js" %}"></script>
 	<script src="{% static "js/jquery.easing.1.3.js" %}"></script>
 	<script type="text/javascript" src="{% static "fancybox/jquery.fancybox.pack-v=2.1.5.js" %}"></script>
-	<script src="{% static "js/script.js" %}"></script>
 
 	<!-- fancybox init -->
 	<script>
