@@ -34,7 +34,7 @@ input:focus, textarea:focus { outline: none; }
 table tr th { color: #688a7e;}
 *:focus {outline: none;}
 ::selection {
-    background: #688a7e;
+    background: #47a3da;
     color: #fff;
 }
 ::-moz-selection {
@@ -784,7 +784,7 @@ div[data-role="editor-toolbar"] {
     float: left;
     text-align: left;
     width: 100%;
-    background: #688a7e;    
+    background: #e5f5fa;    
 }
 
 .dropdown-menu.extended.logout > li:last-child > a, .dropdown-menu.extended.logout > li:last-child > a:hover {
@@ -2563,8 +2563,8 @@ ul.ft-link li a i {
 .profile-widget img {
    border-radius: 50%;
    -webkit-border-radius: 50%;
-    width: 62px;
-    height: 62px;
+    width: 140px;
+    height: 140px;
     /*display: inline-block;*/
 }
 
@@ -2667,10 +2667,10 @@ ul.ft-link li a i {
     width: 100%;
 	padding-bottom: 10px;
     text-align: center;
-	border-top:1px solid #e6e6e6 ;
-	border-left:1px solid #e6e6e6 ;
-    border-right:1px solid #e6e6e6 ;
-	border-bottom:1px solid #e6e6e6 ;
+	border-top:1px solid #ccc ;
+	border-left:1px solid #ccc ;
+    border-right:1px solid #ccc ;
+	border-bottom:1px solid #ccc ;
     display: inline-block;
 }
 .weather-category ul  li {
@@ -2686,12 +2686,13 @@ ul.ft-link li a i {
 }
 .weather-category ul li i  {
     margin-bottom:10px;
+    color: #47a3da;
 }
 .weather-category ul li h4 {
     margin: 10px 0 0 0 ;
     text-transform: uppercase;
     font-weight: 300;
-    color: #FE7676;
+    color: #333;
 }
 
 .weather-days{    
