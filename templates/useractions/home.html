@@ -231,52 +231,52 @@
             <div class="row subtitle-row">
 				<div class="col-sm-1 hidden-sm">&nbsp;</div>
 			</div><!-- /row -->
-    <div class="main" id="home">
-				<ul class="cbp-ig-grid">
-					<li id="cat1">
-						<a href="#">
-							<span class="cbp-ig-icon"><img src="{% static "images/plant53.png" %}"></span>
-							<h3 class="cbp-ig-title">GARDEN</h3>
-							<span class="cbp-ig-category">Click Here For More</span>
-						</a>
-					</li>
-					<li id="cat2">
-                        <a href="#">
-							<span class="cbp-ig-icon"><img src="{% static "images/moving10.png" %}"></span>
-							<h3 class="cbp-ig-title">MOVING</h3>
-							<span class="cbp-ig-category">Click Here For More</span>
-						</a>
-					</li>
-					<li id="cat3">
-						<a href="#">
-							<span class="cbp-ig-icon"><img src="{% static "images/cleaning2.png" %}"></span>
-							<h3 class="cbp-ig-title">CLEANING</h3>
-							<span class="cbp-ig-category">Click Here For More</span>
-						</a>
-					</li>
-					<li id="cat4">
-						<a href="#">
-							<span class="cbp-ig-icon"><img src="{% static "images/mother19.png" %}"></span>
-							<h3 class="cbp-ig-title">BABY SITTING</h3>
-							<span class="cbp-ig-category">Click Here For More</span>
-						</a>
-					</li>
-					<li id="cat5">
-						<a href="#">
-							<span class="cbp-ig-icon"><img src="{% static "images/food60.png" %}"></span>
-							<h3 class="cbp-ig-title">FOOD</h3>
-							<span class="cbp-ig-category">Click Here For More</span>
-						</a>
-					</li>
-					<li id="cat6">
-						<a href="#">
-							<span class="cbp-ig-icon"><img src="{% static "images/add139.png" %}"></span>
-							<h3 class="cbp-ig-title">OTHER</h3>
-							<span class="cbp-ig-category">Click Here For More</span>
-						</a>
-					</li>
-				</ul>
-			</div>
+      <div class="main">
+  				<ul class="cbp-ig-grid">
+  					<li id="cat1" style="background-image: url({% static "images/curte.jpg" %});">
+  						<a href="#">
+  							<span class="cbp-ig-icon"><img src="{% static "images/plant53.png" %}"></span>
+  							<h3 class="cbp-ig-title">GARDEN</h3>
+  							<span class="cbp-ig-category">Click Here For More</span>
+  						</a>
+  					</li>
+  					<li id="cat2" style="background-image: url({% static "images/mutare.jpg" %});">
+                          <a href="#">
+  							<span class="cbp-ig-icon"><img src="{% static "images/moving10.png" %}"></span>
+  							<h3 class="cbp-ig-title">MOVING</h3>
+  							<span class="cbp-ig-category">Click Here For More</span>
+  						</a>
+  					</li>
+  					<li id="cat3" style="background-image: url({% static "images/curatenie.jpg" %});">
+  						<a href="#">
+  							<span class="cbp-ig-icon"><img src="{% static "images/cleaning2.png" %}"></span>
+  							<h3 class="cbp-ig-title">CLEANING</h3>
+  							<span class="cbp-ig-category">Click Here For More</span>
+  						</a>
+  					</li>
+  					<li id="cat4" style="background-image: url({% static "images/bona.jpg" %});">
+  						<a href="#">
+  							<span class="cbp-ig-icon"><img src="{% static "images/mother19.png" %}"></span>
+  							<h3 class="cbp-ig-title">BABY SITTING</h3>
+  							<span class="cbp-ig-category">Click Here For More</span>
+  						</a>
+  					</li>
+  					<li id="cat5" style="background-image: url({% static "images/bucatar.jpg" %});">
+  						<a href="#">
+  							<span class="cbp-ig-icon"><img src="{% static "images/food60.png" %}"></span>
+  							<h3 class="cbp-ig-title">FOOD</h3>
+  							<span class="cbp-ig-category">Click Here For More</span>
+  						</a>
+  					</li>
+  					<li id="cat6" style="background-image: url({% static "images/altceva.jpg" %});">
+  						<a href="#">
+  							<span class="cbp-ig-icon"><img src="{% static "images/add139.png" %}"></span>
+  							<h3 class="cbp-ig-title">OTHER</h3>
+  							<span class="cbp-ig-category">Click Here For More</span>
+  						</a>
+  					</li>
+  				</ul>
+  			</div>
     </section>
     <section class="third-section">
             <div class="row title-row">
@@ -311,14 +311,14 @@
                     <div class="profile-widget profile-widget-info" id="post">
                           <div class="panel-body" id="post_content">
                             <div class="col-lg-2 col-sm-2">
-                              <h4>Jenifer Smith</h4>
+                              <h4><!-- Numele persoane de la care este post-ul --></h4>
                               <div class="follow-ava">
-                                  <img src="{% static "img/profile-avatar.jpg" %}" alt="">
+                                  <img src="" alt=""> <!-- Poza persoanei de la care este post-ul -->
                               </div>
                             </div>
                             <div class="col-lg-4 col-sm-4 follow-info description_info">
-                                <h2><b id="post-title">Need Help</b></h2>
-                                <h3 id="description">I need a good bike repairer which can repara ma bike</h3>
+                                <h2><b id="post-title"><!-- Numele anuntului --></b></h2>
+                                <h3 id="description"><!-- Textul anuntului --></h3>
                             </div>
                             <div class="col-lg-2 col-sm-6 follow-info weather-category">
                                       <ul>
@@ -326,7 +326,7 @@
 
                                               <i class="icon_clock_alt resize-icon"></i><br>
 
-                                              <h4><span><b id="post-info-time">Time:</b></span><br id="post-time-value">19:00</h4>
+                                              <h4><span><b id="post-info-time">Time:</b></span><br id="post-time-value"><!--Time? --></h4>
                                           </li>
 
                                       </ul>
@@ -337,7 +337,7 @@
 
                                               <i class="icon_calendar resize-icon"></i><br>
 
-                                              <h4><span><b id="post-info-date">Date:</b></span><br id="post-date-value">05.07.2015</h4>
+                                              <h4><span><b id="post-info-date">Date:</b></span><br id="post-date-value"><!-- Data? --></h4>
                                           </li>
 
                                       </ul>
@@ -348,7 +348,7 @@
 
                                               <span><i class="icon_pin_alt resize-icon"></i><br>
 
-                                                  <h4><span><b id="post-info-adress">Adress:</b></span><br id="post-adress-value">Str. Norma</h4>
+                                                  <h4><span><b id="post-info-adress">Adress:</b></span><br id="post-adress-value"><!-- Strada? --></h4>
                                           </li>
 
                                       </ul>
@@ -357,161 +357,6 @@
                     </div>
                 </div>
 
-                    <!------------------------ AL DOILEA ANUNT ------------------------>
-
-                <div class="col-lg-12" id="distance">
-                    <div class="profile-widget profile-widget-info" id="post">
-                          <div class="panel-body" id="post_content">
-                            <div class="col-lg-2 col-sm-2">
-                              <h4>Jenifer Smith</h4>
-                              <div class="follow-ava">
-                                  <img src="{% static "/img/profile-avatar.jpg" %}" alt="">
-                              </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-4 follow-info description_info">
-                                <h2><b id="post-title">Need Help</b></h2>
-                                <h3 id="description">I need a good bike repairer which can repara ma bike</h3>
-                            </div>
-                            <div class="col-lg-2 col-sm-6 follow-info weather-category">
-                                      <ul>
-                                          <li class="active">
-
-                                              <i class="icon_clock_alt resize-icon"></i><br>
-
-                                              <h4><span><b id="post-info-time">Time:</b></span><br id="post-time-value">19:00</h4>
-                                          </li>
-
-                                      </ul>
-                            </div>
-							<div class="col-lg-2 col-sm-6 follow-info weather-category">
-                                      <ul>
-                                          <li class="active">
-
-                                              <i class="icon_calendar resize-icon"></i><br>
-
-                                              <h4><span><b id="post-info-date">Date:</b></span><br id="post-date-value">05.07.2015</h4>
-                                          </li>
-
-                                      </ul>
-                            </div>
-							<div class="col-lg-2 col-sm-6 follow-info weather-category">
-                                      <ul>
-                                          <li class="active">
-
-                                              <span><i class="icon_pin_alt resize-icon"></i><br>
-
-                                                  <h4><span><b id="post-info-adress">Adress:</b></span><br id="post-adress-value">Str. Norma</h4>
-                                          </li>
-
-                                      </ul>
-                            </div>
-                          </div>
-                    </div>
-                </div>
-
-                    <!------------------------ AL TRELEA ANUNT ------------------------>
-
-                <div class="col-lg-12" id="distance">
-                    <div class="profile-widget profile-widget-info" id="post">
-                          <div class="panel-body" id="post_content">
-                            <div class="col-lg-2 col-sm-2">
-                              <h4>Jenifer Smith</h4>
-                              <div class="follow-ava">
-                                  <img src="{% static "img/profile-avatar.jpg" %}"alt="">
-                              </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-4 follow-info description_info">
-                                <h2><b id="post-title">Need Help</b></h2>
-                                <h3 id="description">I need a good bike repairer which can repara ma bike</h3>
-                            </div>
-                            <div class="col-lg-2 col-sm-6 follow-info weather-category">
-                                      <ul>
-                                          <li class="active">
-
-                                              <i class="icon_clock_alt resize-icon"></i><br>
-
-                                              <h4><span><b id="post-info-time">Time:</b></span><br id="post-time-value">19:00</h4>
-                                          </li>
-
-                                      </ul>
-                            </div>
-							<div class="col-lg-2 col-sm-6 follow-info weather-category">
-                                      <ul>
-                                          <li class="active">
-
-                                              <i class="icon_calendar resize-icon"></i><br>
-
-                                              <h4><span><b id="post-info-date">Date:</b></span><br id="post-date-value">05.07.2015</h4>
-                                          </li>
-
-                                      </ul>
-                            </div>
-							<div class="col-lg-2 col-sm-6 follow-info weather-category">
-                                      <ul>
-                                          <li class="active">
-
-                                              <span><i class="icon_pin_alt resize-icon"></i><br>
-
-                                                  <h4><span><b id="post-info-adress">Adress:</b></span><br id="post-adress-value">Str. Norma</h4>
-                                          </li>
-
-                                      </ul>
-                            </div>
-                          </div>
-                    </div>
-                </div>
-
-                    <!------------------------ AL PATRULEA ANUNT ------------------------>
-
-                <div class="col-lg-12" id="distance">
-                    <div class="profile-widget profile-widget-info" id="post">
-                          <div class="panel-body" id="post_content">
-                            <div class="col-lg-2 col-sm-2">
-                              <h4>Jenifer Smith</h4>
-                              <div class="follow-ava">
-                                  <img src="{% static "img/profile-avatar.jpg" %}" alt="">
-                              </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-4 follow-info description_info">
-                                <h2><b id="post-title">Need Help</b></h2>
-                                <h3 id="description">I need a good bike repairer which can repara ma bike</h3>
-                            </div>
-                            <div class="col-lg-2 col-sm-6 follow-info weather-category">
-                                      <ul>
-                                          <li class="active">
-
-                                              <i class="icon_clock_alt resize-icon"></i><br>
-
-                                              <h4><span><b id="post-info-time">Time:</b></span><br id="post-time-value">19:00</h4>
-                                          </li>
-
-                                      </ul>
-                            </div>
-							<div class="col-lg-2 col-sm-6 follow-info weather-category">
-                                      <ul>
-                                          <li class="active">
-
-                                              <i class="icon_calendar resize-icon"></i><br>
-
-                                              <h4><span><b id="post-info-date">Date:</b></span><br id="post-date-value">05.07.2015</h4>
-                                          </li>
-
-                                      </ul>
-                            </div>
-							<div class="col-lg-2 col-sm-6 follow-info weather-category">
-                                      <ul>
-                                          <li class="active">
-
-                                              <span><i class="icon_pin_alt resize-icon"></i><br>
-
-                                                  <h4><span><b id="post-info-adress">Adress:</b></span><br id="post-adress-value">Str. Norma</h4>
-                                          </li>
-
-                                      </ul>
-                            </div>
-                          </div>
-                    </div>
-                </div>
                 </div>
         </div>
     </section>
