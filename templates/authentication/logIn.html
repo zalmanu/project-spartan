@@ -33,9 +33,10 @@
 				<div class="cbp-af-inner">
                     <h1><a href="{% url 'home' %}" id="return-home">Spartan</a></h1>
                     <nav id="register-button">
-                        <a href="{% url 'login' %}" id="button-flow">Log In</a>
+                        <a href="{% url 'login' %}" id="button-flow">Contul meu</a>
                         <a href="#" id="line-flow">|</a>
-                        <a href="{% url 'register' %}" id="button-flow">Sign Up</a>
+                        <a href="{% url 'register' %}"
+                            id="button-flow">Înregistrare</a>
                     </nav>
                 </div>
     </div>
@@ -46,7 +47,8 @@
 
     <section class="wrap" id="first-section">
         <div class="row title-row">
-				<div class="col-12 font-thin categories-gallery">Log<span class="font-semibold"> In</span></div>
+				<div class="col-12 font-thin
+                                    categories-gallery">Autentificare</div>
         </div>
         <div class="row line-row">
 				<div class="hr">&nbsp;</div>
@@ -62,7 +64,7 @@
               <div class="card"></div>
               <div class="card" id="login-box">
 
-                  <h1 class="title">Please insert your:</h1>
+                  <h1 class="title">Te rog introdu:</h1>
                 <form method="POST">
                     {% csrf_token %}
                     {% if messages %}
@@ -76,18 +78,18 @@
                     {% endif %}
                     <div class="input-container">
                         <input name="username" type="text" id="Username" required="required"/>
-                        <label for="Username">Username</label>
+                        <label for="Username">Numele de utilizator</label>
                         <div class="bar"></div>
                     </div>
                     <div class="input-container">
                         <input name="password" type="password" id="Password" required="required"/>
-                        <label for="Password">Password</label>
+                        <label for="Password">Parola</label>
                         <div class="bar"></div>
                     </div>
                     <div class="button-container">
-                        <button><span>Go</span></button>
+                        <button><span>Log in</span></button>
                     </div>
-                    <div class="footer"><a href="#">Forgot your password?</a></div>
+                    <div class="footer"><a href="#">Ți-ai uitat parola?</a></div>
                 </form>
               </div>
 
