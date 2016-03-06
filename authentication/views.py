@@ -21,7 +21,7 @@ def register_page(request):
         account.save()
         user = authenticate(username=username, password=password)
         login(request, user)
-        return redirect('/profile')
+        return redirect('/')
     else:
         return render(request, "authentication/register.html")
 
@@ -34,7 +34,7 @@ def login_page(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return redirect('/profile')
+                return redirect('/')
         else:
             messages.error(request, 'Incorrect username or password')
             return render(request, "authentication/logIn.html")
