@@ -33,9 +33,10 @@
 				<div class="cbp-af-inner">
                     <h1><a href="{% url 'home' %}" id="return-home">Spartan</a></h1>
                     <nav id="register-button">
-                        <a href="{% url 'login' %}" id="button-flow">Log In</a>
+                        <a href="{% url 'login' %}" id="button-flow">Contul meu</a>
                         <a href="#" id="line-flow">|</a>
-                        <a href="{% url 'register' %}" id="button-flow">Sign Up</a>
+                        <a href="{% url 'register' %}"
+                        id="button-flow">Înregistrare</a>
                     </nav>
                 </div>
     </div>
@@ -46,7 +47,8 @@
 
     <section class="wrap" id="first-section">
         <div class="row title-row">
-				<div class="col-12 font-thin categories-gallery">Sign <span class="font-semibold"> Up</span></div>
+				<div class="col-12 font-thin
+                                    categories-gallery">Înregistrare</div>
         </div>
         <div class="row line-row">
 				<div class="hr">&nbsp;</div>
@@ -62,12 +64,12 @@
               <div class="card"></div>
               <div class="card" id="login-box">
 
-                <h1 class="title">Please insert your:</h1>
+                <h1 class="title">Te rog introdu: </h1>
                 <form method="POST">
                     {% csrf_token %}
                     <div class="input-container">
                         <input type="text" id="Username" name="username" required="required"/>
-                        <label for="Username">Username</label>
+                        <label for="Username">Numele de utilizator</label>
                         <div class="bar"></div>
                     </div>
                     <div class="input-container">
@@ -77,39 +79,39 @@
                     </div>
                     <div class="input-container">
                         <input type="text" id="Username" name="country" required="required"/>
-                        <label for="Username">Tara</label>
+                        <label for="Username">Țara</label>
                         <div class="bar"></div>
                     </div>
                     <div class="input-container">
                         <input type="text" id="Username" name="city" required="required"/>
-                        <label for="Username">Oras</label>
+                        <label for="Username">Oraș</label>
                         <div class="bar"></div>
                     </div>
                     <div class="input-container">
                         <input type="text" id="Username" name="phone" required="required"/>
-                        <label for="Username">Telefon</label>
+                        <label for="Username">Nr. de telefon</label>
                         <div class="bar"></div>
                     </div>
                     <div class="input-container">
                         <input type="password" id="Password" name="password" required="required"/>
-                        <label for="Password">Password</label>
+                        <label for="Password">Parola</label>
                         <div class="bar"></div>
                     </div>
                     <div class="input-container">
                         <input type="password" id="Password" name="password2" required="required"/>
-                        <label for="Password">Re-enter Password</label>
+                        <label for="Password">Reintrodu parola</label>
                         <div class="bar"></div>
                     </div>
                     <div class="button-container">
-                        <button type="submit"><span>Go</span></button>
+                        <button type="submit"><span>Înregistrează-te</span></button>
                     </div>
-                    <div class="footer"><a href="#">Forgot your password?</a></div>
+                    <div class="footer"><a href="#">Ți-ai uitat parola?</a></div>
                 </form>
               </div>
 
             <div class="card alt">
                 <div class="toggle"><i><img src="{% static "images/user73.png" %}" id="vector-login"></i></div>
-                <div class="upload-picture">Upload Picture</div>
+                <div class="upload-picture">Încarcă o poză</div>
                 <h1 class="title">Register
                   <div class="close"></div>
                 </h1>

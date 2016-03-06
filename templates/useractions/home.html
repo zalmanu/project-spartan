@@ -42,7 +42,7 @@
                         <ul class="nav top-menu">
                             <li>
                                 <form class="navbar-form">
-                                    <input class="form-control" id="nav-search" placeholder="Search" type="text">
+                                    <input class="form-control" id="nav-search" placeholder="Caută un anunț" type="text">
                                 </form>
                             </li>
                         </ul>
@@ -72,7 +72,7 @@
                         <ul class="dropdown-menu extended inbox">
                             <div class="notify-arrow notify-arrow-blue"></div>
                             <li>
-                                <p class="blue">You have 5 new messages</p>
+                                <p class="blue">Ai x mesaje noi</p>
                             </li>
                             <li>
                                 <a href="#">
@@ -86,44 +86,8 @@
                                     </span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#">
-                                    <span class="photo"><img alt="avatar" src="{% static "img/avatar-mini2.jpg" %}"></span>
-                                    <span class="subject">
-                                    <span class="from">Bob   Mckenzie</span>
-                                    <span class="time">5 mins</span>
-                                    </span>
-                                    <span class="message">
-                                     Hi, What is next project plan?
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="photo"><img alt="avatar" src="{% static "img/avatar-mini3.jpg" %}"></span>
-                                    <span class="subject">
-                                    <span class="from">Phillip   Park</span>
-                                    <span class="time">2 hrs</span>
-                                    </span>
-                                    <span class="message">
-                                        I am like to buy this Admin Template.
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="photo"><img alt="avatar" src="{% static "img/avatar-mini4.jpg" %}"></span>
-                                    <span class="subject">
-                                    <span class="from">Ray   Munoz</span>
-                                    <span class="time">1 day</span>
-                                    </span>
-                                    <span class="message">
-                                        Icon fonts are great.
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">See all messages</a>
+                           <li>
+                                <a href="#">Vezi toate mesajele</a>
                             </li>
                         </ul>
                     </li>
@@ -138,7 +102,7 @@
                         <ul class="dropdown-menu extended notification">
                             <div class="notify-arrow notify-arrow-blue"></div>
                             <li>
-                                <p class="blue">You have 4 new notifications</p>
+                                <p class="blue">Ai x notficări noi</p>
                             </li>
                             <li>
                                 <a href="#">
@@ -147,29 +111,8 @@
                                     <span class="small italic pull-right">5 mins</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#">
-                                    <span class="label label-warning"><i class="icon_pin"></i></span>
-                                    John location.
-                                    <span class="small italic pull-right">50 mins</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="label label-danger"><i class="icon_book_alt"></i></span>
-                                    Project 3 Completed.
-                                    <span class="small italic pull-right">1 hr</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="label label-success"><i class="icon_like"></i></span>
-                                    Mick appreciated your work.
-                                    <span class="small italic pull-right"> Today</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">See all notifications</a>
+                           <li>
+                                <a href="#">Vezi toate notifcările</a>
                             </li>
                         </ul>
                     </li>
@@ -186,10 +129,12 @@
                         <ul class="dropdown-menu extended logout">
                             <div class="log-arrow-up"></div>
                             <li class="eborder-top">
-                                <a href="#"><i class="icon_profile"></i> My Profile</a>
+                                <a href="#"><i
+                                        class="icon_profile"></i>Profilul meu</a>
                             </li>
                             <li>
-                                <a href="#"><i class="icon_mail_alt"></i> My Inbox</a>
+                                <a href="#"><i class="icon_mail_alt"></i>Căsuța
+                                poștală</a>
                             </li>
                             <li>
                                 <a href="#"><i class="icon_clock_alt"></i> Oferte</a>
@@ -207,7 +152,8 @@
                                 <a href="#"><i>Poti Angaja</i><div class="checkbox"> <label> <input type="checkbox"> Angajator</label> </div></a>
                             </li>
                             <li>
-                                <a href="{% url 'logout' %}"><i class="icon_key_alt"></i>LOG OUT</a>
+                                <a href="{% url 'logout' %}"><i
+                                        class="icon_key_alt"></i>Deautentificare</a>
                             </li>
                         </ul>
                     </li>
@@ -221,66 +167,88 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-    <section class="third-section" id="wrap">
-      <div class="row title-row">
-				<div class="col-12 font-thin user-first-title">Pick up <span class="font-semibold">a Category</span> </div>
-            </div>
-			<div class="row line-row">
+		<section class="third-section" id="third-section">
+    <div class="row title-row">
+				<div class="col-12 font-thin
+                                    categories-gallery">Alege o categorie</div>
+    </div>
+    <div class="row line-row">
 				<div class="hr">&nbsp;</div>
-			</div><!-- /row -->
-            <div class="row subtitle-row">
-				<div class="col-sm-1 hidden-sm">&nbsp;</div>
-			</div><!-- /row -->
-      <div class="main">
-  				<ul class="cbp-ig-grid">
-  					<li id="cat1" style="background-image: url({% static "images/curte.jpg" %});">
-  						<a href="#">
-  							<span class="cbp-ig-icon"><img src="{% static "images/plant53.png" %}"></span>
-  							<h3 class="cbp-ig-title">GARDEN</h3>
-  							<span class="cbp-ig-category">Click Here For More</span>
-  						</a>
-  					</li>
-  					<li id="cat2" style="background-image: url({% static "images/mutare.jpg" %});">
-                          <a href="#">
-  							<span class="cbp-ig-icon"><img src="{% static "images/moving10.png" %}"></span>
-  							<h3 class="cbp-ig-title">MOVING</h3>
-  							<span class="cbp-ig-category">Click Here For More</span>
-  						</a>
-  					</li>
-  					<li id="cat3" style="background-image: url({% static "images/curatenie.jpg" %});">
-  						<a href="#">
-  							<span class="cbp-ig-icon"><img src="{% static "images/cleaning2.png" %}"></span>
-  							<h3 class="cbp-ig-title">CLEANING</h3>
-  							<span class="cbp-ig-category">Click Here For More</span>
-  						</a>
-  					</li>
-  					<li id="cat4" style="background-image: url({% static "images/bona.jpg" %});">
-  						<a href="#">
-  							<span class="cbp-ig-icon"><img src="{% static "images/mother19.png" %}"></span>
-  							<h3 class="cbp-ig-title">BABY SITTING</h3>
-  							<span class="cbp-ig-category">Click Here For More</span>
-  						</a>
-  					</li>
-  					<li id="cat5" style="background-image: url({% static "images/bucatar.jpg" %});">
-  						<a href="#">
-  							<span class="cbp-ig-icon"><img src="{% static "images/food60.png" %}"></span>
-  							<h3 class="cbp-ig-title">FOOD</h3>
-  							<span class="cbp-ig-category">Click Here For More</span>
-  						</a>
-  					</li>
-  					<li id="cat6" style="background-image: url({% static "images/altceva.jpg" %});">
-  						<a href="#">
-  							<span class="cbp-ig-icon"><img src="{% static "images/add139.png" %}"></span>
-  							<h3 class="cbp-ig-title">OTHER</h3>
-  							<span class="cbp-ig-category">Click Here For More</span>
-  						</a>
-  					</li>
-  				</ul>
-  			</div>
+    </div>
+    <div class="main">
+				<ul class="cbp-ig-grid">
+					<li id="cat1" style="background-image: url({% static "images/curte.jpg" %});">
+						<a href="#">
+							<span class="cbp-ig-icon"><img src="{% static "images/plant53.png" %}"></span>
+							<h3
+                                                            class="cbp-ig-title">Grădinărit </h3>
+							<span
+                                                            class="cbp-ig-category">
+                                                    Dă click aici pentru mai multe</span>
+						</a>
+					</li>
+					<li id="cat2" style="background-image: url({% static "images/mutare.jpg" %});">
+                        <a href="#">
+							<span class="cbp-ig-icon"><img src="{% static "images/moving10.png" %}"></span>
+							<h3
+                                                            class="cbp-ig-title">Mutare</h3>
+							<span
+                                                            class="cbp-ig-category">Dă
+                                                        click aici pentru mai
+                                                    multe</span>
+						</a>
+					</li>
+					<li id="cat3" style="background-image: url({% static "images/curatenie.jpg" %});">
+						<a href="#">
+							<span class="cbp-ig-icon"><img src="{% static "images/cleaning2.png" %}"></span>
+							<h3
+                                                            class="cbp-ig-title">Curățenie</h3>
+							<span
+                                                            class="cbp-ig-category">Dă click aici pentru mai multe</span>
+						</a>
+					</li>
+					<li id="cat4" style="background-image: url({% static "images/bona.jpg" %});">
+						<a href="#">
+							<span class="cbp-ig-icon"><img src="{% static "images/mother19.png" %}"></span>
+							<h3
+                                                            class="cbp-ig-title">Baby sitting</h3>
+							<span
+                                                            class="cbp-ig-category">Dă
+                                                        click aici pentru mai
+                                                    multe </span>
+						</a>
+					</li>
+					<li id="cat5" style="background-image: url({% static "images/bucatar.jpg" %});">
+						<a href="#">
+							<span class="cbp-ig-icon"><img src="{% static "images/food60.png" %}"></span>
+							<h3
+                                                            class="cbp-ig-title">Gătit</h3>
+							<span
+                                                            class="cbp-ig-category">Dă
+                                                        click aici pentru mai
+                                                    multe</span>
+						</a>
+					</li>
+					<li id="cat6" style="background-image: url({% static "images/altceva.jpg" %});">
+						<a href="#">
+							<span class="cbp-ig-icon"><img src="{% static "images/add139.png" %}"></span>
+							<h3
+                                                            class="cbp-ig-title">Și
+                                                        altele</h3>
+							<span
+                                                            class="cbp-ig-category">Dă
+                                                        click aici pentru mai
+                                                    mutle</span>
+						</a>
+					</li>
+				</ul>
+			</div>
     </section>
-    <section class="third-section">
+ 
+   <section class="third-section">
             <div class="row title-row">
-				<div class="col-12 font-thin">Recent <span class="font-semibold">Posts</span> </div>
+				<div class="col-12 font-thin"><span
+                                        class="font-semibold">Anuțuri</span> recente</div>
             </div>
 			<div class="row line-row">
 				<div class="hr">&nbsp;</div>
@@ -293,17 +261,17 @@
                 <div class="col-md-3" id="fixed-left-menu">
                     <p class="lead">Category</p>
                     <div class="list-group">
-                        <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/cutting8.png" %}"class="left-menu-category-icon"> |  GARDEN</a>
-                        <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/moving12.png" %}" class="left-menu-category-icon">  |  MOVING</a>
-                        <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/buckets3.png" %}" class="left-menu-category-icon"> |  CLEANING</a>
+                        <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/cutting8.png" %}"class="left-menu-category-icon"> |  GRĂDINARIT</a>
+                        <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/moving12.png" %}" class="left-menu-category-icon">  |  MUTARE</a>
+                        <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/buckets3.png" %}" class="left-menu-category-icon"> |  CURĂȚENIE</a>
                         <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/baby146.png" %}" class="left-menu-category-icon">  |  BABY SITTING</a>
-                        <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/cutlery23.png" %}" class="left-menu-category-icon">  |  FOOD</a>
-                        <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/zoom61.png" %}" class="left-menu-category-icon">  |  OTHER</a>
+                        <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/cutlery23.png" %}" class="left-menu-category-icon">  |  GĂTIT</a>
+                        <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/zoom61.png" %}" class="left-menu-category-icon">  |  ȘI ALTELE</a>
                     </div>
                     <select class="form-control input-lg m-bot15" id="sort-by">
-                                <option>Sort By Name</option>
-                                <option>Sort By Date</option>
-                                <option>Sort By Category</option>
+                                <option>Sortare după nume</option>
+                                <option>Sortare după dată</option>
+                                <option>Sortare după categorie</option>
                     </select>
                 </div>
                 <div id="recent-posts">
@@ -326,7 +294,8 @@
 
                                               <i class="icon_clock_alt resize-icon"></i><br>
 
-                                              <h4><span><b id="post-info-time">Time:</b></span><br id="post-time-value"><!--Time? --></h4>
+                                              <h4><span><b
+                                                          id="post-info-time">Ora:</b></span><br id="post-time-value"><!--Time? --></h4>
                                           </li>
 
                                       </ul>
@@ -337,7 +306,8 @@
 
                                               <i class="icon_calendar resize-icon"></i><br>
 
-                                              <h4><span><b id="post-info-date">Date:</b></span><br id="post-date-value"><!-- Data? --></h4>
+                                              <h4><span><b
+                                                          id="post-info-date">Data:</b></span><br id="post-date-value"><!-- Data? --></h4>
                                           </li>
 
                                       </ul>
@@ -348,7 +318,8 @@
 
                                               <span><i class="icon_pin_alt resize-icon"></i><br>
 
-                                                  <h4><span><b id="post-info-adress">Adress:</b></span><br id="post-adress-value"><!-- Strada? --></h4>
+                                                  <h4><span><b
+                                                              id="post-info-adress">Adresa:</b></span><br id="post-adress-value"><!-- Strada? --></h4>
                                           </li>
 
                                       </ul>
