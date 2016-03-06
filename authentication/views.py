@@ -36,6 +36,6 @@ def login_page(request):
                 login(request, user)
                 return redirect('/')
         else:
-            messages.error(request, 'Incorrect username or password')
+            messages.error(request, 'Numele de utilizator sau parola nu corespund')
             return render(request, "authentication/logIn.html")
     return render(request, "authentication/logIn.html")
