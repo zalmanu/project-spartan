@@ -312,7 +312,7 @@
                     <div class="profile-widget profile-widget-info" id="post">
                           <div class="panel-body" id="post_content">
                             <div class="col-lg-2 col-sm-2">
-                              <h4><!-- Numele persoane de la care este post-ul --></h4>
+                            <h4>{{  anunt.author.username }}</h4>
                               <div class="follow-ava">
                                   <img src="" alt=""> <!-- Poza persoanei de la care este post-ul -->
                               </div>
@@ -351,7 +351,9 @@
 
                                               <span><i class="icon_pin_alt resize-icon"></i><br>
 
-                                                  <h4><span><b id="post-info-adress">Adress:</b></span><br id="post-adress-value"><!-- Strada? --></h4>
+                                                  <h4><span><b
+                                                              id="post-info-adress">Adress:</b></span><br
+                                                      id="post-adress-value">{{ anunt.adress }}</h4>
                                           </li>
 
                                       </ul>
