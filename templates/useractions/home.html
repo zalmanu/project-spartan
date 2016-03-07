@@ -307,6 +307,7 @@
                     </select>
                 </div>
                 <div id="recent-posts">
+                {% for anunt in ann %}
                 <div class="col-lg-12" id="distance">
                     <div class="profile-widget profile-widget-info" id="post">
                           <div class="panel-body" id="post_content">
@@ -317,8 +318,8 @@
                               </div>
                             </div>
                             <div class="col-lg-4 col-sm-4 follow-info description_info">
-                                <h2><b id="post-title"><!-- Numele anuntului --></b></h2>
-                                <h3 id="description"><!-- Textul anuntului --></h3>
+                                <h2><b id="post-title"> {{ anunt.title }}</b></h2>
+                                <h3 id="description">{{ anunt.text }}</h3>
                             </div>
                             <div class="col-lg-2 col-sm-6 follow-info weather-category">
                                       <ul>
@@ -326,7 +327,9 @@
 
                                               <i class="icon_clock_alt resize-icon"></i><br>
 
-                                              <h4><span><b id="post-info-time">Time:</b></span><br id="post-time-value"><!--Time? --></h4>
+                                              <h4><span><b
+                                                          id="post-info-time">Time:</b></span><br
+                                                  id="post-time-value">{{ anunt.creation_date }}</h4>
                                           </li>
 
                                       </ul>
@@ -356,7 +359,7 @@
                           </div>
                     </div>
                 </div>
-
+                {% endfor %}
                 </div>
         </div>
     </section>
