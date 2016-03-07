@@ -4,8 +4,9 @@ from useractions.models import Announcement
 
 def home(request):
     if request.user.is_authenticated():
-        return render(request, 'useractions/home.html')
-    else:
-        return render_to_response('basicpages/index.html', {
+        return render_to_response('useractions/home.html', {
             'ann' : Announcement.objects.all().order_by('-creation_date')[:3]
-            })
+           })
+    else:
+        return render(request, 'basicpages/index.html')
+            
