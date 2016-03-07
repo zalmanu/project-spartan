@@ -167,15 +167,18 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-		<section class="third-section" id="third-section">
+		<section class="third-section" id="wrap">
     <div class="row title-row">
 				<div class="col-12 font-thin
-                                    categories-gallery">Alege o categorie</div>
+                                    categories-gallery">Alege <span class="font-semibold">o categorie</span> </div>
     </div>
     <div class="row line-row">
 				<div class="hr">&nbsp;</div>
-    </div>
-    <div class="main">
+    </div></div><!-- /row -->
+   <div class="row subtitle-row">
+		<div class="col-sm-1 hidden-sm">&nbsp;</div>
+		</div><!-- /row -->  
+	<div class="main" id="home">
 				<ul class="cbp-ig-grid">
 					<li id="cat1" style="background-image: url({% static "images/curte.jpg" %});">
 						<a href="#">
@@ -331,7 +334,6 @@
                 </div>
                 {% endfor %}
 
-                </div>
         </div>
     </section>
 
