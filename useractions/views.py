@@ -10,3 +10,6 @@ def logout_view(request):
 
 def create_post(request):
     return render(request, 'useractions/create_post.html')
+
+def category(request):
+    return render(request, 'useractions/garden.html')

@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    {% load staticfiles %}
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <head>
+        {% load staticfiles %}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
 
-    <title>Spartan Project</title>
+        <title>Spartan Project</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet"/>
@@ -19,7 +19,6 @@
     <link href="{% static "css/one-page-wonder.css" %}" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="{% static "css/default.css" %}"/>
     <link rel="stylesheet" type="text/css" href="{% static "css/component.css" %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static "css/heroic-features.css" %}" /> 
     <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
     <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}"/>
     <link rel="stylesheet" type="text/css" href="{% static "css/font-awesome.css" %}"/>
@@ -29,11 +28,12 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,600,300,200&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
-</head>
+    </head>
 
-<body>
+    <body>
 
-    <!-- Navigation -->
+        <!-- Navigation -->
+
     <div class="cbp-af-header" id="user-menu">
 				<div class="cbp-af-inner">
                     <a href="{% url 'home' %}" id="return-home"><h1>Spartan</h1></a>
@@ -154,7 +154,7 @@
                             </li>
                             <li>
                                 <a href="{% url 'logout' %}"><i
-                                        class="icon_key_alt"></i>Deconectare</a>
+                                        class="icon_key_alt"></i>Deautentificare</a>
                             </li>
                         </ul>
                     </li>
@@ -163,122 +163,51 @@
                 <!-- notificatoin dropdown end-->
             </div>
     </div>
+        <!-- Page Content --> 
 
-    <!-- Page Content -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->  
 
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-		<section class="third-section" id="wrap">
-    <div class="row title-row">
-				<div class="col-12 font-thin
-                                    categories-gallery">Alege <span class="font-semibold">o categorie</span> </div>
-    </div>
-    <div class="row line-row">
-				<div class="hr">&nbsp;</div>
-    </div></div><!-- /row -->
-   <div class="row subtitle-row">
-		<div class="col-sm-1 hidden-sm">&nbsp;</div>
-		</div><!-- /row -->  
-	<div class="main" id="home">
-				<ul class="cbp-ig-grid">
-					<li id="cat1" style="background-image: url({% static "images/curte.jpg" %});">
-						<a href="#">
-							<span class="cbp-ig-icon"><img src="{% static "images/plant53.png" %}"></span>
-							<h3
-                                                            class="cbp-ig-title">Grădinărit </h3>
-							<span
-                                                            class="cbp-ig-category">
-                                                    Dă click aici pentru mai multe</span>
-						</a>
-					</li>
-					<li id="cat2" style="background-image: url({% static "images/mutare.jpg" %});">
-                        <a href="#">
-							<span class="cbp-ig-icon"><img src="{% static "images/moving10.png" %}"></span>
-							<h3
-                                                            class="cbp-ig-title">Mutare</h3>
-							<span
-                                                            class="cbp-ig-category">Dă
-                                                        click aici pentru mai
-                                                    multe</span>
-						</a>
-					</li>
-					<li id="cat3" style="background-image: url({% static "images/curatenie.jpg" %});">
-						<a href="#">
-							<span class="cbp-ig-icon"><img src="{% static "images/cleaning2.png" %}"></span>
-							<h3
-                                                            class="cbp-ig-title">Curățenie</h3>
-							<span
-                                                            class="cbp-ig-category">Dă click aici pentru mai multe</span>
-						</a>
-					</li>
-					<li id="cat4" style="background-image: url({% static "images/bona.jpg" %});">
-						<a href="#">
-							<span class="cbp-ig-icon"><img src="{% static "images/mother19.png" %}"></span>
-							<h3
-                                                            class="cbp-ig-title">Baby sitting</h3>
-							<span
-                                                            class="cbp-ig-category">Dă
-                                                        click aici pentru mai
-                                                    multe </span>
-						</a>
-					</li>
-					<li id="cat5" style="background-image: url({% static "images/bucatar.jpg" %});">
-						<a href="#">
-							<span class="cbp-ig-icon"><img src="{% static "images/food60.png" %}"></span>
-							<h3
-                                                            class="cbp-ig-title">Gătit</h3>
-							<span
-                                                            class="cbp-ig-category">Dă
-                                                        click aici pentru mai
-                                                    multe</span>
-						</a>
-					</li>
-					<li id="cat6" style="background-image: url({% static "images/altceva.jpg" %});">
-						<a href="#">
-							<span class="cbp-ig-icon"><img src="{% static "images/add139.png" %}"></span>
-							<h3
-                                                            class="cbp-ig-title">Și
-                                                        altele</h3>
-							<span
-                                                            class="cbp-ig-category">Dă
-                                                        click aici pentru mai
-                                                    mutle</span>
-						</a>
-					</li>
-				</ul>
-			</div>
-    </section>
- 
-   <section class="third-section">
-            <div class="row title-row">
-				<div class="col-12 font-thin"><span
-                                        class="font-semibold">Anuțuri</span> recente</div>
-            </div>
-			<div class="row line-row">
-				<div class="hr">&nbsp;</div>
-			</div><!-- /row -->
-            <div class="row subtitle-row">
-				<div class="col-sm-1 hidden-sm">&nbsp;</div>
-			</div><!-- /row -->
-            <div class="row container_allign container">
-    <!------------------------ PRIMUL ANUNT ------------------------>
-                <div class="col-md-3" id="fixed-left-menu">
-                    <p class="lead">Category</p>
-                    <div class="list-group">
-                        <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/cutting8.png" %}"class="left-menu-category-icon"> |  GRĂDINARIT</a>
-                        <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/moving12.png" %}" class="left-menu-category-icon">  |  MUTARE</a>
-                        <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/buckets3.png" %}" class="left-menu-category-icon"> |  CURĂȚENIE</a>
-                        <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/baby146.png" %}" class="left-menu-category-icon">  |  BABY SITTING</a>
-                        <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/cutlery23.png" %}" class="left-menu-category-icon">  |  GĂTIT</a>
-                        <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/zoom61.png" %}" class="left-menu-category-icon">  |  ȘI ALTELE</a>
+        <section class="third-section" id="wrap"> 
+            <header class="jumbotron hero-spacer" id="category-banner">
+                <h1 id="category-title">Gradinarit</h1>
+                <p><a class="btn btn-primary btn-large create-post-category-button">Creaza un anunț</a>
+                </p>
+            </header>
+        </section>
+        <section class="third-section">
+                <div class="row subtitle-row">
+                    <div class="col-sm-1 hidden-sm">&nbsp;</div>
+                </div><!-- /row -->
+                <div class="row container_allign container">
+                    <div class="col-md-3" id="fixed-left-menu">
+                        <p class="lead">Category</p>
+                        <div class="list-group">
+                            <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/cutting8.png" %}" class="left-menu-category-icon"> |  Gradinarit</a>
+                            <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/moving12.png" %}" class="left-menu-category-icon">  |  MOVING</a>
+                            <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/buckets3.png" %}" class="left-menu-category-icon"> |  CLEANING</a>
+                            <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/baby146.png" %}" class="left-menu-category-icon">  |  BABY SITTING</a>
+                            <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/cutlery23.png" %}" class="left-menu-category-icon">  |  FOOD</a>
+                            <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/zoom61.png" %}" class="left-menu-category-icon">  |  OTHER</a>
+                        </div>
+                        <script>
+                            var header = $("#fixed-left-menu");
+                            $(document).scroll(function(e) {
+                                if($(this).scrollTop() >= 300  {
+                                    header.css({position: "fixed", "top" : "0"});
+                                } else {
+                                    header.css("position", "relative");
+                                }
+                            });
+                        </script>
+                        <select class="form-control input-lg m-bot15" id="sort-by">
+                                    <option>Sort By Name</option>
+                                    <option>Sort By Date</option>
+                                    <option>Sort By Category</option>
+                        </select>
                     </div>
-                    <select class="form-control input-lg m-bot15" id="sort-by">
-                                <option>Sortare după nume</option>
-                                <option>Sortare după dată</option>
-                                <option>Sortare după categorie</option>
-                    </select>
-                </div>
+                    
                 <div id="recent-posts">
+                 
                 {% if ann %}
                 {% for anunt in ann %}
                 <div class="col-lg-12" id="distance">
@@ -339,25 +268,72 @@
         </div>
     </section>
 
+        
+        <footer class="footer-distributed">
 
-    <!-- /.container -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+			<div class="footer-left">
+
+				<h1 id="logo-title">Spartan</h1>
+
+				<p class="footer-links">
+					<a href="#">Acasa</a>
+					·
+					<a href="#">Anunt nou</a>
+					·
+					<a href="#">Profil</a>
+					·
+					<a href="#">Pagina</a>
+					·
+					<a href="#">Categorii</a>
+				</p>
+
+				<p class="footer-company-name">Spartan &copy; 2016</p>
+
+				<div class="footer-icons">
+
+					<a href="#"><i class="fa fa-facebook"></i></a>
+					<a href="#"><i class="fa fa-twitter"></i></a>
+					<a href="#"><i class="fa fa-linkedin"></i></a>
+					<a href="#"><i class="fa fa-github"></i></a>
+
+				</div>
+
+			</div>
+
+			<div class="footer-right">
+
+				<p>Contact Us</p>
+
+				<form action="#" method="post">
+
+					<input type="text" name="email" placeholder="Email" />
+					<textarea name="message" placeholder="Message"></textarea>
+					<button>Send</button>
+
+				</form>
+
+			</div>
+
+		</footer>
+
+        <!-- /.container -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 
-    <script>
-    $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip();
-    });
-    </script>
+        <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip(); 
+        });
+        </script>
 
 
 
-</body>
+    </body>
 
-</html>
+    </html>
 
-<!-- colors: #47a3da  -main blue;
-             #1f80af  -dark blue;
-             #e5f5fa  -light blue;
-                                   -->
+    <!-- colors: #47a3da  -main blue;
+                 #1f80af  -dark blue;
+                 #e5f5fa  -light blue;
+                                       -->
