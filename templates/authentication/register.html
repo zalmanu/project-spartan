@@ -65,7 +65,7 @@
               <div class="card" id="login-box">
 
                 <h1 class="title">Te rog introdu: </h1>
-                <form method="POST">
+                <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="input-container">
                         <input type="text" id="Username" name="username" required="required"/>
@@ -107,7 +107,7 @@
                     </div>
                     <div class="card alt">
                         <div class="toggle"><i><img src="{% static "images/user73.png" %}" id="vector-login"></i></div>
-                        <input type="file" class="upload-picture">Încarcă o poză</input>
+                        <input type="file" class="upload-picture" name="photo">Încarcă o poză</input>
                     </div>
                     <div class="footer"><a href="#">Ți-ai uitat parola?</a></div>
                 </form>
