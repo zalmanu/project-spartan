@@ -12,7 +12,8 @@ class Announcement(models.Model):
     creation_date = models.DateTimeField(editable=False, auto_now_add=True)
     slug = models.SlugField(default=uuid.uuid1, unique=True)
     author = models.ForeignKey(User, null=True, blank=True)
-    adress = models.CharField(null=True, max_length=500) 
+    adress = models.CharField(null=True, max_length=500)
+    pub_date = models.DateTimeField('Task-ul trebuie indeplinit in data de ',null=True)
 
     def get_absolute_url(self):
         return reverse('announcement', args=[self.slug])
