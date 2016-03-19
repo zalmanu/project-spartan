@@ -178,7 +178,7 @@
     </div></div><!-- /row -->
    <div class="row subtitle-row">
 		<div class="col-sm-1 hidden-sm">&nbsp;</div>
-		</div><!-- /row -->  
+		</div><!-- /row -->
 	<div class="main" id="home">
 				<ul class="cbp-ig-grid">
 					<li id="cat1" style="background-image: url({% static "images/curte.jpg" %});">
@@ -248,7 +248,7 @@
 				</ul>
 			</div>
     </section>
- 
+
    <section class="third-section">
             <div class="row title-row">
 				<div class="col-12 font-thin"><span
@@ -302,7 +302,9 @@
 
                                               <h4><span><b
                                                           id="post-info-time">Time:</b></span><br
-                                                  id="post-time-value">{{ anunt.creation_date }}</h4>
+                                                  id="post-time-value">{{ anunt.timePost }}</h4>
+
+
                                           </li>
 
                                       </ul>
@@ -313,7 +315,7 @@
 
                                               <i class="icon_calendar resize-icon"></i><br>
 
-                                              <h4><span><b id="post-info-date">Date:</b></span><br id="post-date-value"><!-- Data? --></h4>
+                                              <h4><span><b id="post-info-date">Date:</b></span><br id="post-date-value">{{ anunt.creation_date }}</h4>
                                           </li>
 
                                       </ul>
