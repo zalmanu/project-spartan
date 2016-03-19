@@ -154,7 +154,7 @@
                             </li>
                             <li>
                                 <a href="{% url 'logout' %}"><i
-                                        class="icon_key_alt"></i>Deautentificare</a>
+                                        class="icon_key_alt"></i>Deconectare</a>
                             </li>
                         </ul>
                     </li>
@@ -169,8 +169,8 @@
 
         <section class="third-section" id="wrap"> 
             <header class="jumbotron hero-spacer" id="category-banner">
-                <h1 id="category-title">Gradinarit</h1>
-                <p><a class="btn btn-primary btn-large create-post-category-button">Creaza un anunț</a>
+                <h1 id="category-title">Grădinărit</h1>
+                <p><a class="btn btn-primary btn-large create-post-category-button">Crează un anunț</a>
                 </p>
             </header>
         </section>
@@ -182,12 +182,12 @@
                     <div class="col-md-3" id="fixed-left-menu">
                         <p class="lead">Category</p>
                         <div class="list-group">
-                            <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/cutting8.png" %}" class="left-menu-category-icon"> |  Gradinarit</a>
-                            <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/moving12.png" %}" class="left-menu-category-icon">  |  MOVING</a>
-                            <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/buckets3.png" %}" class="left-menu-category-icon"> |  CLEANING</a>
+                            <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/cutting8.png" %}"class="left-menu-category-icon"> |  GRĂDINARIT</a>
+                            <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/moving12.png" %}" class="left-menu-category-icon">  |  TRASNPORT</a>
+                            <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/buckets3.png" %}" class="left-menu-category-icon"> |  CURĂȚENIE</a>
                             <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/baby146.png" %}" class="left-menu-category-icon">  |  BABY SITTING</a>
-                            <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/cutlery23.png" %}" class="left-menu-category-icon">  |  FOOD</a>
-                            <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/zoom61.png" %}" class="left-menu-category-icon">  |  OTHER</a>
+                            <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/cutlery23.png" %}" class="left-menu-category-icon">  |  GĂTIT</a>
+                            <a href="#" class="list-group-item" id="left-menu-button"><img src="{% static "images/zoom61.png" %}" class="left-menu-category-icon">  |  ȘI ALTELE</a>
                         </div>
                         <script>
                             var header = $("#fixed-left-menu");
@@ -200,14 +200,13 @@
                             });
                         </script>
                         <select class="form-control input-lg m-bot15" id="sort-by">
-                                    <option>Sort By Name</option>
-                                    <option>Sort By Date</option>
-                                    <option>Sort By Category</option>
+                                    <option>Sortare după nume</option>
+                                    <option>Sortare după dată</option>
+                                    <option>Sortare după categorie</option>
                         </select>
                     </div>
                     
                 <div id="recent-posts">
-                 
                 {% if ann %}
                 {% for anunt in ann %}
                 <div class="col-lg-12" id="distance">
@@ -231,7 +230,9 @@
 
                                               <h4><span><b
                                                           id="post-info-time">Time:</b></span><br
-                                                  id="post-time-value">{{ anunt.creation_date }}</h4>
+                                                  id="post-time-value">{{ anunt.timePost }}</h4>
+
+
                                           </li>
 
                                       </ul>
@@ -242,7 +243,7 @@
 
                                               <i class="icon_calendar resize-icon"></i><br>
 
-                                              <h4><span><b id="post-info-date">Date:</b></span><br id="post-date-value"><!-- Data? --></h4>
+                                              <h4><span><b id="post-info-date">Date:</b></span><br id="post-date-value">{{ anunt.creation_date }}</h4>
                                           </li>
 
                                       </ul>

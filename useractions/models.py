@@ -14,7 +14,8 @@ class Announcement(models.Model):
     adress = models.CharField(null=True, max_length=500)
     creation_date = models.DateField('Task-ul trebuie indeplinit in data de ',null=True)
     timePost = models.TimeField('Ora',null=True)
-
+    categoriy = models.CharField(null=True, max_length=20)
+    
     def get_absolute_url(self):
         return reverse('announcement', args=[self.slug])
     
