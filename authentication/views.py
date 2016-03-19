@@ -17,7 +17,7 @@ def register_page(request):
         photo = request.FILES.get('photo')
         new_user = User.objects.create_user(username, email, password)
         new_user.save()
-        account = Account.objects.create(user=new_user, city=city, country=country, telefon=phone)
+        account = Account.objects.create(user=new_user, city=city, country=country, telefon=phone, photo=photo)
         account.save()
         user = authenticate(username=username, password=password)
         login(request, user)

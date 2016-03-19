@@ -9,6 +9,11 @@ def logout_view(request):
     return redirect(reverse('home'))
 
 def create_post(request):
+    if request.method == 'POST':
+        title = request.POST('title')
+        post_text = request.POST('text')
+        country = request.POST('country')
+        
     return render(request, 'useractions/create_post.html')
 
 def category(request):

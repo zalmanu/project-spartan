@@ -182,24 +182,19 @@
                           <div class="card" id="login-box">
 
                               <h1 class="title">Te rog introdu: </h1>     
-                            <form>
+                            <form method="POST">
                                 <div class="input-container">
-                                    <input type="text" id="Username" required="required"/>
+                                    <input type="text" id="Username" required="required" name="title" />
                                     <label for="Username">Titlul anunțului</label>
                                     <div class="bar"></div>
                                 </div>
                                 <div class="input-container">
-                                    <textarea rows="4" cols="50" placeholder="Descrieti nevoia dumneavoastra aici..." onfocus="this.value=''"; id="description" required="required" setbg="('#e5fff3');" onblur="setbg('white')">
+                                    <textarea rows="4" cols="50" placeholder="Descrieti nevoia dumneavoastra aici..." name="text" onfocus="this.value=''"; id="description" required="required" setbg="('#e5fff3');" onblur="setbg('white')">
                                     </textarea>
                                     <div class="bar"></div>
                                 </div>
                                 <div class="input-container">
-                                    <input type="text" id="Username" required="required"/>
-                                    <label for="Username">E-mail</label>
-                                    <div class="bar"></div>
-                                </div>
-                                <div class="input-container">
-                                    <input type="text" id="Username" required="required"/>
+                                    <input type="text" id="Username" required="required" name="country"/>
                                     <label for="Username">Țara</label>
                                     <div class="bar"></div>
                                 </div>
@@ -209,18 +204,8 @@
                                     <div class="bar"></div>
                                 </div>
                                 <div class="input-container">
-                                    <input type="password" id="Password" required="required"/>
+                                    <input type="text" id="Username" required="required"/>
                                     <label for="Password">Telefon</label>
-                                    <div class="bar"></div>
-                                </div>
-                                <div class="input-container">
-                                    <input type="password" id="Password" required="required"/>
-                                    <label for="Password">Parola</label>
-                                    <div class="bar"></div>
-                                </div>
-                                <div class="input-container">
-                                    <input type="password" id="Password" required="required"/>
-                                    <label for="Password">Reintrodu parola</label>
                                     <div class="bar"></div>
                                 </div>
                                 <div class="button-container">
