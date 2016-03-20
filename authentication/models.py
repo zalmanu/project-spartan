@@ -8,4 +8,4 @@ class Account(models.Model):
     city = models.CharField(max_length=40)
     country = models.CharField(max_length=30, null=True)
     telefon = models.IntegerField(null=True)
-    photo = models.ImageField('profile picture', upload_to="avatars/", null=True, blank=True)
+    photo = models.ImageField('profile picture', upload_to="media/", null=True, blank=True)
