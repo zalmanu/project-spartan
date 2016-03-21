@@ -12,7 +12,11 @@ def create_post(request):
     if request.method == 'POST':
         title = request.POST('title')
         post_text = request.POST('text')
+        adress = request.POST('adress')
         country = request.POST('country')
+        city = request.POST('city')
+        category = request.POST('category')
+        
         
     return render(request, 'useractions/create_post.html')
 
