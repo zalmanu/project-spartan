@@ -1812,7 +1812,7 @@ header h1 {
 }
 
 #category-banner{
-    background-image: url('../images/garden-banner.jpg');
+    background-image: url('images/garden-banner.jpg');
     background-position: center;
 }
 
