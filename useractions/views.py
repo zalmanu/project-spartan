@@ -20,5 +20,5 @@ def create_post(request):
         
     return render(request, 'useractions/create_post.html')
 
-def category(request):
+def category(request, category_id):
     return render(request, 'useractions/garden.html')
