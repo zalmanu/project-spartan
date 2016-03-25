@@ -8,6 +8,7 @@ def logout_view(request):
     logout(request)
     return redirect(reverse('home'))
 
+
 def create_post(request):
     if request.method == 'POST':
         title = request.POST('title')
@@ -16,9 +17,8 @@ def create_post(request):
         country = request.POST('country')
         city = request.POST('city')
         category = request.POST('category')
-        
-        
     return render(request, 'useractions/create_post.html')
+
 
 def category(request, category_id):
     return render(request, 'useractions/garden.html')
