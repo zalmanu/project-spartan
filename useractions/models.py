@@ -14,7 +14,7 @@ class Announcement(models.Model):
     address = models.CharField(null=True, max_length=500)
     country = models.TextField(null=True, max_length=50)
     city = models.TextField(null=True, max_length=100)
-    creation_date = models.DateField('Task-ul trebuie indeplinit in data de ',null=True)
+    creation_date = models.DateField('Task-ul trebuie indeplinit in data de', null=True)
     timePost = models.TimeField('Ora',null=True)
     category = models.CharField(null=True, max_length=20)
     

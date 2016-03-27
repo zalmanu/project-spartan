@@ -9,4 +9,3 @@ def home(request):
            })
     else:
         return render(request, 'basicpages/index.html')
-            
