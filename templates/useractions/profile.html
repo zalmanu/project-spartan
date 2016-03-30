@@ -183,7 +183,7 @@
                     <div class="profile-widget profile-widget-info" id="post">
                           <div class="panel-body" id="profile-header">
                             <div class="col-lg-2 col-sm-2">
-                              <h4 id="user-name">Jenifer Smith</h4>               
+                              <h4 id="user-name">{{ user.username }}</h4>               
                               <div class="follow-ava">
                                   <img src="{% static "img/profile-widget-avatar.jpg" %}" alt="">
                               </div>
@@ -399,28 +399,28 @@
                                           <h1>Bio Graph</h1>
                                           <div class="row">
                                               <div class="bio-row">
-                                                  <p><span>First Name </span>: Jenifer </p>
+                                                  <p><span>First Name: </span> Jenifer </p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>Last Name </span>: Smith</p>
+                                                  <p><span>Last Name: </span> Smith</p>
                                               </div>                                              
                                               <div class="bio-row">
-                                                  <p><span>Birthday</span>: 27 August 1987</p>
+                                                  <p><span>Birthday: </span> 27 August 1987</p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>Country </span>: United</p>
+                                                  <p><span>Country: </span> {{ user.account.country }}</p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>Occupation </span>: UI Designer</p>
+                                                  <p><span>Occupation: </span> UI Designer</p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>Email </span>:jenifer@mailname.com</p>
+                                                  <p><span>Email: </span>{{ user.email }}</p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>Mobile </span>: (+6283) 456 789</p>
+                                                  <p><span>Mobile: </span> (+6283) 456 789</p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>Phone </span>:  (+021) 956 789123</p>
+                                                  <p><span>Phone: </span>  (+021) 956 789123</p>
                                               </div>
                                           </div>
                                       </div>
@@ -467,7 +467,7 @@
                                                       </div>
                                                   </div>
                                                   <div class="form-group">
-                                                      <label class="col-lg-2 control-label">Occupation</label>
+                                                      <label class="col-lg-2 control-label">Occupation:</label>
                                                       <div class="col-lg-6">
                                                           <input type="text" class="form-control" id="occupation" placeholder=" ">
                                                       </div>

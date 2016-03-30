@@ -4,7 +4,7 @@ from django.db import models
 
 
 class Account(models.Model):
-    user = models.OneToOneField(User, primary_key=True)
+    user = models.OneToOneField(User, primary_key=True, related_name='account')
     city = models.CharField(max_length=40)
     country = models.CharField(max_length=30, null=True)
     telefon = models.IntegerField(null=True)
