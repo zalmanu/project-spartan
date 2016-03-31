@@ -27,7 +27,13 @@
         <link rel="stylesheet" type="text/css" href="{% static "css/elegant-icons-style.css" %}">
         <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-        <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,600,300,200&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,600,300,200&subset=latin,latin-ext' rel='stylesheet' type='text/css'/>
+        <link rel="stylesheet" type="text/css" href="{% static "css/scss/wickedpicker.scss" %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static "css/wickedpicker.min.css" %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static "css/wickedpicker.css" %}"/>
+        <link rel="stylesheet" href="{% static "assets/fullcalendar/fullcalendar/fullcalendar.css" %}"/>
+        <link rel="stylesheet" href="{% static "assets/fullcalendar/fullcalendar/fullcalendar.print.css" %}"/>
+        <link rel="stylesheet" href="{% static "assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" %}"/>
 
     </head>
 
@@ -183,40 +189,47 @@
 
                               <h1 class="title">Te rog introdu: </h1>     
                             <form method="POST">
+				{% csrf_token %}
                                 <div class="input-container">
-                                    <input type="text" id="Username" required="required" name="title" />
-                                    <label for="Username">Titlul anunțului</label>
+                                    <input type="text" id="Username" name="title" required="required"/>
+                                    <label for="Username">Titlul anuntului</label>
                                     <div class="bar"></div>
                                 </div>
                                 <div class="input-container">
-                                    <textarea rows="4" cols="50" placeholder="Descrieti nevoia dumneavoastra aici..." name="text" onfocus="this.value=''"; id="description" required="required" setbg="('#e5fff3');" onblur="setbg('white')">
+                                    <input type="text" id="Username" name="post_text" required="required"/>
                                     </textarea>
+                                    <label for="Username">Descrieti nevoia Dumneavoastra aici</label>
                                     <div class="bar"></div>
                                 </div>
                                 <div class="input-container">
-                                    <input type="text" id="Username" required="required" name="country"/>
-                                    <label for="Username">Țara</label>
+                                    <input type="text" id="Username" name="country" required="required"/>
+                                    <label for="Username">Tara</label>
                                     <div class="bar"></div>
                                 </div>
                                 <div class="input-container">
-                                    <input type="text" id="Username" required="required"/>
-                                    <label for="Username">Oraș</label>
+                                    <input type="text" id="Username" name="city" required="required"/>
+                                    <label for="Username">Oras</label>
                                     <div class="bar"></div>
                                 </div>
                                 <div class="input-container">
-                                    <input type="text" id="Username" required="required"/>
-                                    <label for="Password">Adresa</label>
+                                    <input class="form-control event_input" id="datepicker" name="Date" type="text"  />
+                                    <label for="Username">Data evenimentului</label>
                                     <div class="bar"></div>
                                 </div>
                                 <div class="input-container">
-                                    <input type="text" id="Username" required="required"/>
-                                    <label for="Password">Telefon</label>
+                                    <input type="text" id="timepicker-one " name="timepicker-one" class="timepicker" required="required"/>
+                                    <label for="Username">Ora evenimentului</label>
+                                    <div class="bar"></div>
+                                </div>
+                                <div class="input-container">
+                                    <input type="text" id="Username" name="adress" required="required"/>
+                                    <label for="Username">Locatia anuntului</label>
                                     <div class="bar"></div>
                                 </div>
                                 <div class="button-container">
-                                    <button><span>Crează</span></button>
+                                    <button><span>Go</span></button>
                                 </div>
-                                <div class="footer"><a href="#">Ți-ai uitat parola?</a></div>
+                                <div class="footer"><a href="#">Forgot your password?</a></div>
                             </form>
                           </div>
 
@@ -279,7 +292,11 @@
         <!-- /.container -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
+        <script type="text/javascript" src="{% static "js/wickedpicker.js" %}"></script>
+        <script type="text/javascript" src="{% static "js/wickedpicker.min.js" %}"></script>
+        <script src="{% static "assets/fullcalendar/fullcalendar/fullcalendar.min.js" %}"></script> <!-- Full Google Calendar - Calendar -->
+        <script src="{% static "assets/fullcalendar/fullcalendar/fullcalendar.js" %}"></script>
+        <script src="{% static "assets/fullcalendar/fullcalendar/fullcalendar.js" %}"></script>
 
         <script>
         $(document).ready(function(){
@@ -297,3 +314,4 @@
                  #1f80af  -dark blue;
                  #e5f5fa  -light blue;
                                        -->
+
