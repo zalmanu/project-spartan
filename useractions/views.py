@@ -22,7 +22,7 @@ def create_post(request):
             category = request.POST.get('category')
             time = request.POST.get('timepicker-one')
             announcement = Announcement.objects.create(title=title, text=post_text, address=adress, country=country,
-                                                       city=city, timePost=time, author=request.user)
+                                                       category=category, city=city, timePost=time, author=request.user)
             announcement.save()
         return render(request, 'useractions/create_post.html')
     else:
