@@ -19,10 +19,13 @@ def create_post(request):
             adress = request.POST.get('adress')
             country = request.POST.get('country')
             city = request.POST.get('city')
-            category = request.POST.get('category')
+#            category = request.POST.get('category')
             time = request.POST.get('timepicker-one')
             announcement = Announcement.objects.create(title=title, text=post_text, address=adress, country=country,
-                                                       category=category, city=city, timePost=time, author=request.user)
+                                                       city=city, timePost=time, author=request.user)
+            print announcement
+# category=category
+
             announcement.save()
         return render(request, 'useractions/create_post.html')
     else:

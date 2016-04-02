@@ -93,6 +93,8 @@ DATE_FORMAT = 'd/m/Y'
 
 TIME_FORMAT = 'H : i'
 
+TIME_INPUT_FORMAT = 'H : i'
+
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
