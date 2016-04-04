@@ -1527,7 +1527,7 @@ header h1 {
 
 #vector-login{
     margin: 0 auto;
-    vertical-align: inherit;
+    vertical-align: sub;
 }
 
 .upload-picture{
@@ -1600,9 +1600,9 @@ header h1 {
         height: 100px;
     }
     #vector-login{
-        width: 50px;
-        height: 50px;
-        vertical-align: text-top;
+        width: 100px;
+        height: 100px;
+        vertical-align: inherit;
     }
     .card{
         width:80%;
@@ -2662,4 +2662,25 @@ input.textarea {
 	width: 100%;
 	margin: 0 auto;
 	padding: 1em;
+}
+
+#choose_category{
+	width: 100% !important;
+	border: none !important;
+	border-top: none;
+	color: #757575;
+    font-size: 20px !important;
+    font-weight: 150;
+    height: 60px !important;
+    padding-left: 0!important;
+}
+
+#choose_category option{
+	color: #757575;
+    font-size: 20px;
+    font-weight: 150;
+}
+
+#disabeled-option{
+	color: #47a3da !important;
 }

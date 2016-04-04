@@ -202,7 +202,7 @@
                                     <div class="bar"></div>
                                 </div>
                                 <div class="input-container">
-                                    <select class="form-control input-lg m-bot15" id="choose_category" name="category">
+                                    <select class="form-control input-lg m-bot15" id="choose_category">
                                         <option disabled selected id="disabeled-option">Alegeti o categorie in care sa va integrati anuntul</option>
                                         <option>Gradinarit</option>
                                         <option>Transport</option>
