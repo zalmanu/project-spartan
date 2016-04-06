@@ -171,8 +171,8 @@
 
     <!-- Page Content -->
 
-        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->  
-                
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
         <section class="wrap" id="first-section">
                     <section class="wrapper">
                          <div class="row title-row"> </div>
@@ -183,7 +183,7 @@
                     <div class="profile-widget profile-widget-info" id="post">
                           <div class="panel-body" id="profile-header">
                             <div class="col-lg-2 col-sm-2">
-                              <h4 id="user-name">{{ user.username }}</h4>               
+                              <h4 id="user-name">{{ user.username }}</h4>
                               <div class="follow-ava">
                                   <img src="{% static "img/profile-widget-avatar.jpg" %}" alt="">
                               </div>
@@ -201,41 +201,41 @@
                             <div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
                                       <ul>
                                           <li class="active">
-                                              
+
                                               <i class="fa fa-comments fa-2x"> </i><br>
-											  
+
 											  Contrary to popular belief, Lorem Ipsum is not simply
                                           </li>
-										   
+
                                       </ul>
                             </div>
 							<div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
                                       <ul>
                                           <li class="active">
-                                              
+
                                               <i class="fa fa-bell fa-2x"> </i><br>
-											  
-											  Contrary to popular belief, Lorem Ipsum is not simply 
+
+											  Contrary to popular belief, Lorem Ipsum is not simply
                                           </li>
-										   
+
                                       </ul>
                             </div>
 							<div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
                                       <ul>
                                           <li class="active">
-                                              
+
                                               <i class="fa fa-tachometer fa-2x"> </i><br>
-											  
+
 											  Contrary to popular belief, Lorem Ipsum is not simply
                                           </li>
-										   
+
                                       </ul>
                             </div>
                           </div>
                     </div>
-                    
+
                 </div>
-                  
+
               </div>
               <!-- page start-->
           <header class="panel-heading tab-bg-info" id="categoryes_profile">
@@ -268,8 +268,8 @@
                           <div class="panel-body">
                               <div class="tab-content">
                                   <div id="recent-activity" class="tab-pane active">
-                                      <div class="profile-activity">                                          
-                                          <div class="act-time">                                      
+                                      <div class="profile-activity">
+                                          <div class="act-time">
                                               <div class="activity-body act-in">
                                                   <span class="arrow"></span>
                                                   <div class="text">
@@ -282,7 +282,7 @@
                                                   </div>
                                               </div>
                                           </div>
-                                          <div class="act-time">                                      
+                                          <div class="act-time">
                                               <div class="activity-body act-in">
                                                   <span class="arrow"></span>
                                                   <div class="text">
@@ -295,7 +295,7 @@
                                                   </div>
                                               </div>
                                           </div>
-                                          <div class="act-time">                                      
+                                          <div class="act-time">
                                               <div class="activity-body act-in">
                                                   <span class="arrow"></span>
                                                   <div class="text">
@@ -308,7 +308,7 @@
                                                   </div>
                                               </div>
                                           </div>
-                                          <div class="act-time">                                      
+                                          <div class="act-time">
                                               <div class="activity-body act-in">
                                                   <span class="arrow"></span>
                                                   <div class="text">
@@ -321,7 +321,7 @@
                                                   </div>
                                               </div>
                                           </div>
-                                          <div class="act-time">                                      
+                                          <div class="act-time">
                                               <div class="activity-body act-in">
                                                   <span class="arrow"></span>
                                                   <div class="text">
@@ -334,7 +334,7 @@
                                                   </div>
                                               </div>
                                           </div>
-                                          <div class="act-time">                                      
+                                          <div class="act-time">
                                               <div class="activity-body act-in">
                                                   <span class="arrow"></span>
                                                   <div class="text">
@@ -347,7 +347,7 @@
                                                   </div>
                                               </div>
                                           </div>
-                                          <div class="act-time">                                      
+                                          <div class="act-time">
                                               <div class="activity-body act-in">
                                                   <span class="arrow"></span>
                                                   <div class="text">
@@ -360,7 +360,7 @@
                                                   </div>
                                               </div>
                                           </div>
-                                          <div class="act-time">                                      
+                                          <div class="act-time">
                                               <div class="activity-body act-in">
                                                   <span class="arrow"></span>
                                                   <div class="text">
@@ -373,7 +373,7 @@
                                                   </div>
                                               </div>
                                           </div>
-                                          <div class="act-time">                                      
+                                          <div class="act-time">
                                               <div class="activity-body act-in">
                                                   <span class="arrow"></span>
                                                   <div class="text">
@@ -399,89 +399,68 @@
                                           <h1>Bio Graph</h1>
                                           <div class="row">
                                               <div class="bio-row">
-                                                  <p><span>First Name: </span> Jenifer </p>
+                                                  <p><span>Nume de utilizator: </span> {{ user.username }} </p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>Last Name: </span> Smith</p>
-                                              </div>                                              
-                                              <div class="bio-row">
-                                                  <p><span>Birthday: </span> 27 August 1987</p>
+                                                  <p><span>Oraș: </span>{{ user.account.city }}</p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>Country: </span> {{ user.account.country }}</p>
+                                                  <p><span>Țara: </span> {{ user.account.country }}</p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>Occupation: </span> UI Designer</p>
+                                                  <p><span>Email: </span> {{ user.email }} </p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>Email: </span>{{ user.email }}</p>
-                                              </div>
-                                              <div class="bio-row">
-                                                  <p><span>Mobile: </span> (+6283) 456 789</p>
-                                              </div>
-                                              <div class="bio-row">
-                                                  <p><span>Phone: </span>  (+021) 956 789123</p>
+                                                  <p><span>Nr. de telefon: </span>{{ user.account.telefon }}</p>
                                               </div>
                                           </div>
                                       </div>
                                     </section>
                                       <section>
-                                          <div class="row">                                              
+                                          <div class="row">
                                           </div>
                                       </section>
                                   </div>
                                   <!-- edit-profile -->
                                   <div id="edit-profile" class="tab-pane">
-                                    <section class="panel">                                          
+                                    <section class="panel">
                                           <div class="panel-body bio-graph-info">
                                               <h1> Profile Info</h1>
-                                              <form class="form-horizontal" role="form">                                                  
+                                              <form class="form-horizontal" role="form">
                                                   <div class="form-group">
-                                                      <label class="col-lg-2 control-label">First Name</label>
+                                                      <label class="col-lg-2 control-label">Nume de utilizator</label>
                                                       <div class="col-lg-6">
-                                                          <input type="text" class="form-control" id="f-name" placeholder=" ">
-                                                      </div>
-                                                  </div>
-                                                  <div class="form-group">
-                                                      <label class="col-lg-2 control-label">Last Name</label>
-                                                      <div class="col-lg-6">
-                                                          <input type="text" class="form-control" id="l-name" placeholder=" ">
-                                                      </div>
-                                                  </div>
-                                                  <div class="form-group">
-                                                      <label class="col-lg-2 control-label">About Me</label>
-                                                      <div class="col-lg-10">
-                                                          <textarea name="" id="" class="form-control" cols="30" rows="5"></textarea>
-                                                      </div>
-                                                  </div>
-                                                  <div class="form-group">
-                                                      <label class="col-lg-2 control-label">Country</label>
-                                                      <div class="col-lg-6">
-                                                          <input type="text" class="form-control" id="c-name" placeholder=" ">
-                                                      </div>
-                                                  </div>
-                                                  <div class="form-group">
-                                                      <label class="col-lg-2 control-label">Birthday</label>
-                                                      <div class="col-lg-6">
-                                                          <input type="text" class="form-control" id="b-day" placeholder=" ">
-                                                      </div>
-                                                  </div>
-                                                  <div class="form-group">
-                                                      <label class="col-lg-2 control-label">Occupation:</label>
-                                                      <div class="col-lg-6">
-                                                          <input type="text" class="form-control" id="occupation" placeholder=" ">
+                                                          <input type="text" class="form-control" id="f-name" placeholder="{{ user.username }}">
                                                       </div>
                                                   </div>
                                                   <div class="form-group">
                                                       <label class="col-lg-2 control-label">Email</label>
                                                       <div class="col-lg-6">
-                                                          <input type="text" class="form-control" id="email" placeholder=" ">
+                                                          <input type="text" class="form-control" id="email" placeholder="{{ user.email }}">
                                                       </div>
                                                   </div>
                                                   <div class="form-group">
-                                                      <label class="col-lg-2 control-label">Mobile</label>
+                                                      <label class="col-lg-2 control-label">Descriere</label>
+                                                      <div class="col-lg-10">
+                                                          <textarea name="" id="" class="form-control" cols="30" rows="5"></textarea>
+                                                      </div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="col-lg-2 control-label">Țara</label>
                                                       <div class="col-lg-6">
-                                                          <input type="text" class="form-control" id="mobile" placeholder=" ">
+                                                          <input type="text" class="form-control" id="c-name" placeholder="{{ user.account.country }}">
+                                                      </div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="col-lg-2 control-label">Oraș</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="text" class="form-control" id="c-name" placeholder="{{ user.account.city }}">
+                                                      </div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="col-lg-2 control-label">Nr. de telefon</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="text" class="form-control" id="c-name" placeholder="{{ user.account.telefon }}">
                                                       </div>
                                                   </div>
                                                   <div class="form-group">
@@ -493,8 +472,7 @@
 
                                                   <div class="form-group">
                                                       <div class="col-lg-offset-2 col-lg-10">
-                                                          <button type="submit" class="btn btn-primary">Save</button>
-                                                          <button type="button" class="btn btn-danger">Cancel</button>
+                                                          <button type="submit" class="btn btn-primary">Update</button>
                                                       </div>
                                                   </div>
                                               </form>
@@ -567,7 +545,7 @@
                                       </div>
                                     </section>
                                       <section>
-                                          <div class="row">                                              
+                                          <div class="row">
                                           </div>
                                       </section>
                                   </div>
@@ -581,8 +559,8 @@
           </section>
         </section>
 
-         
-        
+
+
         <footer class="footer-distributed">
 
 			<div class="footer-left">
@@ -640,7 +618,7 @@
 
         <script>
         $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip(); 
+            $('[data-toggle="tooltip"]').tooltip();
         });
         </script>
 

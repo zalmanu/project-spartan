@@ -34,6 +34,18 @@
 #icon_login{
     color: #a2e1f3;
 }
+.icon_clock_alt{
+    color: #47a3da;
+    font-size: 40px;
+}
+.icon_calendar{
+    color: #47a3da;
+    font-size: 40px;
+}
+.icon_pin_alt{
+    color: #47a3da;
+    font-size: 40px;
+}
 .arrow_up:before {
 	content: "\21";
 }
