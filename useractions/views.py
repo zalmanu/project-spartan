@@ -3,7 +3,8 @@ from django.contrib.auth import logout
 from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
 from useractions.models import Announcement
-from django import forms
+from authentication.models import Account
+from django.contrib import messages
 
 
 def logout_view(request):
@@ -28,17 +29,43 @@ def create_post(request):
             return redirect('/')
         return render(request, 'useractions/create_post.html')
     else:
-        return redirect('/login')
+        return redirect('/login/')
 
 
 def profile(request):
-    if request.method == 'POST':
-        if request.POST.get('username') is not None:
-            user = request.POST.get
-            request.user.username = request.POST.get('username')
-            print user
-            return redirect('/profile')
-    return render(request, 'useractions/profile.html')
+    if request.user.is_authenticated():
+        if request.method == 'POST':
+            user = request.user
+            acc = user.Account
+            if request.POST.get('username') is not None:
+                username = request.POST.get('username')
+                user.username = username
+                user.save()
+                return redirect('/profile/')
+            if request.POST.get('email') is not None:
+                email = request.POST.get('email')
+                user.email = email
+                user.save()
+                return redirect('/profile/')
+            if request.POST.get('descriere') is not None:
+                descriere = request.POST.get('descriere')
+                user.Account.descriere = descriere
+                acc.save()
+                user.save()
+                print user.Account.descriere
+                return redirect('/profile/')
+            if request.POST.get('country') is not None:
+                print 'dawdaw'
+                country = request.POST.get('country')
+                user.Account.country = country
+                Account.save()
+                acc.save()
+                print user.Account.country
+                return redirect('/profile/')
+        else:
+            return render(request, 'useractions/profile.html')
+    else:
+        return redirect('/login/')
 
 
 def garden(request):
