@@ -102,25 +102,6 @@
                         <label for="Password">Reintrodu parola</label>
                         <div class="bar"></div>
                     </div>
-                    <div class="card alt">
-                        <div class="toggle"><i><img src="{% static "images/user73.png" %}" id="vector-login" height="100" width="100" style="border-radius:100%; "/></i></div>
-                        <input type="file" onchange="onFileSelected(event)" class="upload-picture">
-                        <script>
-                            function onFileSelected(event) {
-                              var selectedFile = event.target.files[0];
-                              var reader = new FileReader();
-
-                              var imgtag = document.getElementById("vector-login");
-                              imgtag.title = selectedFile.name;
-
-                              reader.onload = function(event) {
-                                imgtag.src = event.target.result;
-                              };
-
-                              reader.readAsDataURL(selectedFile);
-                            }
-                        </script>
-                  </div>
                     <div class="button-container">
                         <button type="submit"><span>Înregistrează-te</span></button>
                     </div>
