@@ -6,7 +6,6 @@ from useractions.models import Announcement
 from authentication.models import Account
 from django.contrib import messages
 
-
 def logout_view(request):
     logout(request)
     return redirect(reverse('home'))
@@ -63,8 +62,8 @@ def profile(request):
                 print user.Account.country
                 return redirect('/profile/')
         else:
-             context={ "cod":acc.codeimg()}
-             return render(request, 'useractions/profile.html',context)
+
+             return render(request, 'useractions/profile.html',{"cod":user.Account.codeimg()})
     else:
         return redirect('/login/')
 

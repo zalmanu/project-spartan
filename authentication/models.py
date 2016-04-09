@@ -24,6 +24,13 @@ class Review(models.Model):
     receiver = models.ForeignKey(User, related_name='reviews')
     submitter = models.ForeignKey(User, related_name='reviewed_by')
 
+class codHash(Account):
+
+    def codavatar(self):
+         hash = md5.new()
+         hash.update(user.email)
+         hash.hexdigest()
+         return hash.hexdigest()
 
 
 
