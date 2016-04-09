@@ -2,6 +2,7 @@
     <html lang="en">
 
     <head>
+	{% block head %}
         {% load staticfiles %}
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,11 +28,10 @@
     <link rel="stylesheet" type="text/css" href="{% static "css/elegant-icons-style.css" %}">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,600,300,200&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-
+    {% endblock %}
     </head>
-
     <body>
-
+    {% block body %}
     <!-- Navigation -->
 
     <div class="cbp-af-header" id="user-menu">
@@ -166,11 +166,11 @@
 
     <!-- Page Content -->
 
-        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->  
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-        <section class="third-section" id="wrap"> 
-            <header class="jumbotron hero-spacer" id="category-banner" style="background-image: url({% static "images/cleaning-banner.jpg" %});">
-                <h1 id="category-title">Curăţenie</h1>
+        <section class="third-section" id="wrap">
+            <header class="jumbotron hero-spacer" id="category-banner" style="background-image: url({% static "images/garden-banner.jpg" %});">
+                <h1 id="category-title"></h1>
                 <p><a class="btn btn-primary btn-large create-post-category-button" href="/submit">Crează un anunț</a>
                 </p>
             </header>
@@ -183,12 +183,9 @@
                     <div class="col-md-3" id="fixed-left-menu">
                         <p class="lead">Category</p>
                         <div class="list-group">
-                            <a href="/gradina" class="list-group-item" id="left-menu-button"><img src="{% static "images/cutting8.png" %}"class="left-menu-category-icon"> |  GRĂDINARIT</a>
-                            <a href="/transport" class="list-group-item" id="left-menu-button"><img src="{% static "images/moving12.png" %}" class="left-menu-category-icon">  |  TRASNPORT</a>
-                            <a href="/curatenie" class="list-group-item" id="left-menu-button"><img src="{% static "images/buckets3.png" %}" class="left-menu-category-icon"> |  CURĂȚENIE</a>
-                            <a href="/baby" class="list-group-item" id="left-menu-button"><img src="{% static "images/baby146.png" %}" class="left-menu-category-icon">  |  BABYSITTING</a>
-                            <a href="/gatit" class="list-group-item" id="left-menu-button"><img src="{% static "images/cutlery23.png" %}" class="left-menu-category-icon">  |  GĂTIT</a>
-                            <a href="/altele" class="list-group-item" id="left-menu-button"><img src="{% static "images/zoom61.png" %}" class="left-menu-category-icon">  |  ȘI ALTELE</a>
+                          {% for kind in categories %}
+                                <a href="/gradina" class="list-group-item" id="left-menu-button"><img src="{% static 'images/categories/'%}{{ kind }}-mini.png" class="left-menu-category-icon"> |  {{ kind }}</a>
+                          {% endfor %}
                         </div>
                         <script>
                             var header = $("#fixed-left-menu");
@@ -201,7 +198,7 @@
                             });
                         </script>
                     </div>
-                    
+
                 <div id="recent-posts">
                 {% if ann %}
                 {% for anunt in ann %}
@@ -265,7 +262,7 @@
         </div>
     </section>
 
-        
+
         <footer class="footer-distributed">
 
 			<div class="footer-left">
@@ -320,12 +317,12 @@
 
         <script>
         $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip(); 
+            $('[data-toggle="tooltip"]').tooltip();
         });
         </script>
 
 
-
+    {% endblock %}
     </body>
 
     </html>

@@ -2,7 +2,53 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="92c01cbb-327d-4d01-a1f2-75a1bce804a0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/authentication/models.py" afterPath="$PROJECT_DIR$/authentication/models.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticcollected/images/categories/Others-mini.png" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/images/cleaning-banner.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/images/garden-banner.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/staticcollected/images/cleaning-banner.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/staticcollected/images/garden-banner.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/useractions/altele.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/useractions/baby.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/useractions/curatenie.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/useractions/gatit.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/useractions/transport.html" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/static/images/add139.png" afterPath="$PROJECT_DIR$/staticcollected/images/categories/Others-icon.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/static/images/altceva.jpg" afterPath="$PROJECT_DIR$/staticcollected/images/categories/Others-banner.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/static/images/bona.jpg" afterPath="$PROJECT_DIR$/staticcollected/images/categories/Babysitting-banner.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/static/images/bucatar.jpg" afterPath="$PROJECT_DIR$/staticcollected/images/categories/Cooking-banner.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/static/images/cleaning2.png" afterPath="$PROJECT_DIR$/staticcollected/images/categories/Cleaning-icon.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/static/images/curatenie.jpg" afterPath="$PROJECT_DIR$/staticcollected/images/categories/Cleaning-banner.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/static/images/curte.jpg" afterPath="$PROJECT_DIR$/staticcollected/images/categories/Garden-banner.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/static/images/food60.png" afterPath="$PROJECT_DIR$/staticcollected/images/categories/Cooking-icon.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/static/images/mother19.png" afterPath="$PROJECT_DIR$/staticcollected/images/categories/Babysitting-icon.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/static/images/moving10.png" afterPath="$PROJECT_DIR$/staticcollected/images/categories/Moving-icon.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/static/images/mutare.jpg" afterPath="$PROJECT_DIR$/staticcollected/images/categories/Moving-banner.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/static/images/plant53.png" afterPath="$PROJECT_DIR$/staticcollected/images/categories/Garden-icon.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/staticcollected/images/add139.png" afterPath="$PROJECT_DIR$/static/images/categories/Others-icon.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/staticcollected/images/altceva.jpg" afterPath="$PROJECT_DIR$/static/images/categories/Others-banner.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/staticcollected/images/baby146.png" afterPath="$PROJECT_DIR$/staticcollected/images/categories/Babysitting-mini.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/staticcollected/images/bona.jpg" afterPath="$PROJECT_DIR$/static/images/categories/Babysitting-banner.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/staticcollected/images/bucatar.jpg" afterPath="$PROJECT_DIR$/static/images/categories/Cooking-banner.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/staticcollected/images/buckets3.png" afterPath="$PROJECT_DIR$/staticcollected/images/categories/Cleaning-mini.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/staticcollected/images/cleaning2.png" afterPath="$PROJECT_DIR$/static/images/categories/Cleaning-icon.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/staticcollected/images/curatenie.jpg" afterPath="$PROJECT_DIR$/static/images/categories/Cleaning-banner.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/staticcollected/images/curte.jpg" afterPath="$PROJECT_DIR$/static/images/categories/Garden-banner.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/staticcollected/images/cutlery23.png" afterPath="$PROJECT_DIR$/staticcollected/images/categories/Cooking-mini.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/staticcollected/images/cutting8.png" afterPath="$PROJECT_DIR$/staticcollected/images/categories/Garden-mini.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/staticcollected/images/food60.png" afterPath="$PROJECT_DIR$/static/images/categories/Cooking-icon.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/staticcollected/images/mother19.png" afterPath="$PROJECT_DIR$/static/images/categories/Babysitting-icon.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/staticcollected/images/moving10.png" afterPath="$PROJECT_DIR$/static/images/categories/Moving-icon.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/staticcollected/images/moving12.png" afterPath="$PROJECT_DIR$/staticcollected/images/categories/Moving-mini.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/staticcollected/images/mutare.jpg" afterPath="$PROJECT_DIR$/static/images/categories/Moving-banner.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/staticcollected/images/plant53.png" afterPath="$PROJECT_DIR$/static/images/categories/Garden-icon.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/useractions/garden.html" afterPath="$PROJECT_DIR$/templates/useractions/category.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/basicpages/views.py" afterPath="$PROJECT_DIR$/basicpages/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/basicpages/index.html" afterPath="$PROJECT_DIR$/templates/basicpages/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/useractions/create_post.html" afterPath="$PROJECT_DIR$/templates/useractions/create_post.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/useractions/home.html" afterPath="$PROJECT_DIR$/templates/useractions/home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/useractions/urls.py" afterPath="$PROJECT_DIR$/useractions/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/useractions/views.py" afterPath="$PROJECT_DIR$/useractions/views.py" />
     </list>
     <ignored path="project-spartan.iws" />
@@ -27,7 +73,7 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/authentication/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.0">
+            <state vertical-scroll-proportion="0.0">
               <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="18" selection-end-column="31" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
@@ -39,7 +85,7 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/basicpages/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
+            <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -49,8 +95,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/useractions/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5510204">
-              <caret line="65" column="94" selection-start-line="65" selection-start-column="13" selection-end-line="65" selection-end-column="94" />
+            <state vertical-scroll-proportion="0.53741497">
+              <caret line="50" column="13" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -91,9 +137,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="65" />
-    <option name="y" value="-4" />
+    <option name="y" value="24" />
     <option name="width" value="1301" />
-    <option name="height" value="772" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -121,6 +167,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -289,7 +336,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -460,7 +506,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
+    <frame x="65" y="24" width="1301" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23865415" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -864,7 +910,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/authentication/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="18" selection-end-column="31" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
@@ -874,8 +920,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/useractions/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5510204">
-          <caret line="65" column="94" selection-start-line="65" selection-start-column="13" selection-end-line="65" selection-end-column="94" />
+        <state vertical-scroll-proportion="0.53741497">
+          <caret line="50" column="13" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>

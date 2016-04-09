@@ -19,7 +19,7 @@
     <link href="{% static "css/one-page-wonder.css" %}" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="{% static "css/default.css" %}"/>
     <link rel="stylesheet" type="text/css" href="{% static "css/component.css" %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static "css/heroic-features.css" %}" /> 
+    <link rel="stylesheet" type="text/css" href="{% static "css/heroic-features.css" %}" />
     <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
     <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}"/>
     <link rel="stylesheet" type="text/css" href="{% static "css/font-awesome.css" %}"/>
@@ -184,63 +184,15 @@
         <form method="POST">
             {% csrf_token %}
 				<ul class="cbp-ig-grid">
-					<li id="cat1" style="background-image: url({% static "images/curte.jpg" %});">
-						<a href='/gradina'>
-							<span class="cbp-ig-icon"><img src="{% static "images/plant53.png" %}"></span>
-							<h3 class="cbp-ig-title">Grădinărit </h3>
+	{% for kind in categories %}
+					<li id="cat1" style="background-image: url({% static 'images/categories/'%}{{ kind }}-banner.jpg");>
+						<a href=''>
+							<span class="cbp-ig-icon"><img src="{% static 'images/categories/'%}{{ kind }}-icon.png"></span>
+							<h3 class="cbp-ig-title">{{ kind }}</h3>
 							<span class="cbp-ig-category"> Dă click aici pentru mai multe</span>
-                        </a>
+            </a>
 					</li>
-					<li id="cat2" style="background-image: url({% static "images/mutare.jpg" %});">
-                        <a href="/transport" value="submit">
-							<span class="cbp-ig-icon"><img src="{% static "images/moving10.png" %}"></span>
-							<h3 class="cbp-ig-title">Transport</h3>
-							<span
-                                                            class="cbp-ig-category">Dă
-                                                        click aici pentru mai
-                                                    multe</span>
-						</a>
-					</li>
-					<li id="cat3" style="background-image: url({% static "images/curatenie.jpg" %});">
-						<a href="/curatenie" value="submit">
-							<span class="cbp-ig-icon"><img src="{% static "images/cleaning2.png" %}"></span>
-							<h3 class="cbp-ig-title">Curățenie</h3>
-							<span
-                                                            class="cbp-ig-category">Dă click aici pentru mai multe</span>
-						</a>
-					</li>
-					<li id="cat4" style="background-image: url({% static "images/bona.jpg" %});">
-						<a href="/baby" value="submit">
-							<span class="cbp-ig-icon"><img src="{% static "images/mother19.png" %}"></span>
-							<h3 class="cbp-ig-title">Babysitting</h3>
-							<span
-                                                            class="cbp-ig-category">Dă
-                                                        click aici pentru mai
-                                                    multe </span>
-						</a>
-					</li>
-					<li id="cat5" style="background-image: url({% static "images/bucatar.jpg" %});">
-						<a href="/gatit" value="submit">
-							<span class="cbp-ig-icon"><img src="{% static "images/food60.png" %}"></span>
-							<h3 class="cbp-ig-title">Gătit</h3>
-							<span
-                                                            class="cbp-ig-category">Dă
-                                                        click aici pentru mai
-                                                    multe</span>
-						</a>
-					</li>
-					<li id="cat6" style="background-image: url({% static "images/altceva.jpg" %});">
-						<a href="/altele" value="submit">
-							<span class="cbp-ig-icon"><img src="{% static "images/add139.png" %}"></span>
-							<h3
-                                                            class="cbp-ig-title">Și
-                                                        altele</h3>
-							<span
-                                                            class="cbp-ig-category">Dă
-                                                        click aici pentru mai
-                                                    mutle</span>
-						</a>
-					</li>
+	{% endfor %}
 				</ul>
             </form>
 			</div>
@@ -262,12 +214,9 @@
                 <div class="col-md-3" id="fixed-left-menu">
                     <p class="lead">Category</p>
                     <div class="list-group">
-                            <a href="/gradina" class="list-group-item" id="left-menu-button"><img src="{% static "images/cutting8.png" %}"class="left-menu-category-icon"> |  GRĂDINARIT</a>
-                            <a href="/transport" class="list-group-item" id="left-menu-button"><img src="{% static "images/moving12.png" %}" class="left-menu-category-icon">  |  TRASNPORT</a>
-                            <a href="/curatenie" class="list-group-item" id="left-menu-button"><img src="{% static "images/buckets3.png" %}" class="left-menu-category-icon"> |  CURĂȚENIE</a>
-                            <a href="/baby" class="list-group-item" id="left-menu-button"><img src="{% static "images/baby146.png" %}" class="left-menu-category-icon">  |  BABYSITTING</a>
-                            <a href="/gatit" class="list-group-item" id="left-menu-button"><img src="{% static "images/cutlery23.png" %}" class="left-menu-category-icon">  |  GĂTIT</a>
-                            <a href="/altele" class="list-group-item" id="left-menu-button"><img src="{% static "images/zoom61.png" %}" class="left-menu-category-icon">  |  ȘI ALTELE</a>
+                      {% for kind in categories %}
+                            <a href="/gradina" class="list-group-item" id="left-menu-button"><img src="{% static 'images/categories/'%}{{ kind }}-mini.png" class="left-menu-category-icon"> |  {{ kind }}</a>
+                      {% endfor %}
                     </div>
                 </div>
                 <div id="recent-posts">
