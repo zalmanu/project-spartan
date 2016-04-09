@@ -63,7 +63,8 @@ def profile(request):
                 print user.Account.country
                 return redirect('/profile/')
         else:
-            return render(request, 'useractions/profile.html')
+             context={ "cod":acc.codeimg()}
+             return render(request, 'useractions/profile.html',context)
     else:
         return redirect('/login/')
 
