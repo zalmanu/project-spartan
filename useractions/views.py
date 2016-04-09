@@ -22,7 +22,7 @@ def create_post(request):
             city = request.POST.get('city')
             category = request.POST.get('category')
             time = request.POST.get('timepicker-one')
-	    time = ":".join(map(lambda item: item.strip(), time.split(":"))) 
+	    time = ":".join(map(lambda item: item.strip(), time.split(":")))
             announcement = Announcement.objects.create(title=title, text=post_text, address=adress, country=country,
                                                        category=category, city=city, timePost=time, author=request.user)
 
@@ -48,49 +48,15 @@ def profile(request):
                 user.email = email
                 user.save()
                 return redirect('/profile/')
-            if request.POST.get('descriere') is not None:
-                descriere = request.POST.get('descriere')
-                user.Account.descriere = descriere
-                acc.save()
-                user.save()
-                print user.Account.descriere
-                return redirect('/profile/')
-            if request.POST.get('country') is not None:
-                print 'dawdaw'
-                country = request.POST.get('country')
-                user.Account.country = country
-                Account.save()
-                acc.save()
-                print user.Account.country
-                return redirect('/profile/')
         else:
             return render(request, 'useractions/profile.html')
     else:
         return redirect('/login/')
 
-
-def garden(request):
-    return render(request, 'useractions/garden.html')
-
-
-def transport(request):
-    return render(request, 'useractions/transport.html')
-
-
-def curatenie(request):
-    return render(request, 'useractions/curatenie.html')
-
-
-def baby(request):
-    return render(request, 'useractions/baby.html')
-
-
-def gatit(request):
-    return render(request, 'useractions/gatit.html')
-
-
-def altele(request):
-    return render(request, 'useractions/altele.html')
-
-
-
+def category(request):
+    if request.user.is_authenticated:
+        return render(request, 'useractions/cateogory.html', {
+            'categories' : ['Garden', 'Moving','Cleaning', 'Babysitting', 'Cooking', 'Others'],
+        })
+    else:
+        return redirect('/')
