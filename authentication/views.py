@@ -41,7 +41,7 @@ def login_page(request):
                     login(request, user)
                     return redirect('/')
             else:
-                print username
-                messages.error(request, 'Incorrect username or password')
-                return render(request, "authentication/logIn.html")
-        return render(request, "authentication/logIn.html")
+                return render(request, "authentication/logIn.html", {
+                    'errors': ['Incorrect username or password']})
+        else:
+            return render(request, "authentication/logIn.html")

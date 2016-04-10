@@ -67,15 +67,13 @@
                   <h1 class="title">Te rog introdu:</h1>
                 <form method="POST">
                     {% csrf_token %}
-                    {% if messages %}
                     <div class="error">
+                    {% for message in errors %}
                         <ul>
-                          {% for message in messages %}
                             <li>{{ message }}</li>
-                          {% endfor %}
                         </ul>
+                    {% endfor %}                        
                     </div>
-                    {% endif %}
                     <div class="input-container">
                         <input name="username" type="text" id="Username" required="required"/>
                         <label for="Username">Numele de utilizator</label>

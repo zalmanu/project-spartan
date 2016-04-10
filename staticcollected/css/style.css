@@ -40,31 +40,31 @@ textarea {
 	#home-row-2 {
 		padding-top: 25px;
 	}
-	
+
 	#home-row-1 h1 {
 		font-size: 54px;
 	}
-	
+
 	#home-row-1 h4 {
 		font-size: 32px;
 	}
-	
+
 	#home-row-2 {
 		font-size: 25px;
 	}
-	
+
 	#home-row-2 .col-12 {
 		height: 232px;
 		padding-top: 30px;
 	}
-	
+
 	#home-row-2 .col-12 .home-hover {
 		height: 166px;
 		overflow: hidden;
 		padding-top: 26px;
 		transition: all ease-in .5s;
 	}
-	
+
 	#home-row-2 .col-12 .home-hover:hover {
 		height: 166px;
 		padding-top: 0;
@@ -75,15 +75,15 @@ textarea {
 	#home-row-2 {
 		padding-top: 16px;
 	}
-	
+
 	#home-row-1 h1 {
 		font-size: 35px;
 	}
-	
+
 	#home-row-1 h4 {
 		font-size: 21px;
 	}
-	
+
 	#home-row-2 {
 		font-size: 16px;
 	}
@@ -93,24 +93,24 @@ textarea {
 		font-size: 45px;
 		padding-bottom: 50px;
 	}
-	
+
 	.line-row .hr {
 		background-color: #333;
 		height: 5px;
 		margin: 0 auto;
 		width: 33%;
 	}
-	
+
 	.subtitle-row {
 		font-size: 35px;
 		padding-bottom: 40px;
 		padding-top: 40px;
 	}
-	
+
 	.content-row {
 		padding-top: 45px;
 	}
-	
+
 	.content-row i,
 	#about-row-5 i {
 		display: block;
@@ -118,45 +118,45 @@ textarea {
 		max-height: 100%;
 		max-width: 100%;
 	}
-	
+
 	.content-row h2 {
 		font-size: 28px;
 		padding-bottom: 40px;
 	}
-	
+
 	.content-row h4 {
 		font-family: "Titillium Web", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 		font-size: 20px;
 		font-weight: 300;
 	}
-	
+
 	i {
 		font-size: 80px;
 		color: white;
 	}
-	
+
 
 @media (max-width: 767px) {
 	.title-row {
 		font-size: 34px;
 		padding-bottom: 33px;
 	}
-	
+
 	.subtitle-row {
 		font-size: 26px;
 		padding-bottom: 26px;
 		padding-top: 26px;
 	}
-	
+
 	.content-row {
 		padding-top: 29px;
 	}
-	
+
 	.content-row h2 {
 		font-size: 24px;
 		padding-bottom: 26px;
 	}
-	
+
 	.content-row h4 {
 		font-size: 20px;
 	}
@@ -168,26 +168,26 @@ textarea {
 		margin-top: 1em;
 	}
 }
-	
+
 	#contact-row-4 .col-12 {
 		height: 175px;
 		overflow: hidden;
 		padding-top: 20px;
 		transition: all ease-in .5s;
 	}
-	
+
 	#contact-row-4 img {
 		display: block;
 		margin: 0 auto;
 		max-height: 100%;
 		max-width: 100%;
 	}
-	
+
 	#contact-row-4 .col-12:hover {
 		height: 175px;
 		padding-top: 0;
 	}
-	
+
 	#contact-row-4 .col-12 .hover-text {
 		display: none;
 		font-size: 20px;
@@ -337,11 +337,11 @@ textarea {
     background-position: top;
     background-repeat: no-repeat;
     background-attachment: fixed;
-	
+
 }
 
 .scroll-background{
-    
+
 }
 
 .navbar-inverse{
@@ -499,7 +499,7 @@ textarea {
 
 #user-menu{
         overflow: visible;
-    
+
 }
 
 .cbp-af-header .cbp-af-inner {
@@ -568,7 +568,7 @@ textarea {
 
 /* Example Media Queries */
 @media screen and (max-width: 55em) {
-	
+
 	.cbp-af-header .cbp-af-inner {
 		width: 100%;
 	}
@@ -681,9 +681,9 @@ textarea {
   clear: both;
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
-Main components 
+Main components
 
 -------------------------------- */
 header {
@@ -711,7 +711,7 @@ header h1 {
 #cd-timeline {
   position: relative;
   padding: 2em 0;
-  
+
 }
 #cd-timeline::before {
   /* this is the vertical line */
@@ -724,7 +724,7 @@ header h1 {
   background: #ffffff;
 }
 @media only screen and (min-width: 1170px) {
-  
+
 #cd-timeline::before {
     left: 50%;
     margin-left: -2px;
@@ -1133,12 +1133,12 @@ header h1 {
 }
 
 @keyframes moveDown{
-    0% { 
-        transform: translateY(-40px); 
+    0% {
+        transform: translateY(-40px);
         opacity: 0;
     }
-    100% { 
-        transform: translateY(0px);  
+    100% {
+        transform: translateY(0px);
         opacity: 1;
     }
 }
@@ -1453,7 +1453,7 @@ header h1 {
 
     #login-box{
         width: 890px !imporatnt;
-    } 
+    }
 
 }
 
@@ -1552,12 +1552,12 @@ header h1 {
 #user-buttons li{
     display: inline-block;
     text-decoration: none;
-    
+
 }
 
 #user-buttons{
-        line-height: 90px; 
-    
+        line-height: 90px;
+
 }
 
 .user-profile-picture{
@@ -1629,7 +1629,7 @@ header h1 {
 }
 
 @media (max-width: 1200px){
-    
+
     .card .title{
        font-size: 20px;
     }
@@ -1650,33 +1650,33 @@ header h1 {
     #nav-search{
         width: auto;
     }
-   
+
 }
 
 @media (max-width: 1000px){
-    
+
     .card.alt{
         right: -150px;
     }
     .wickedpicker{
     	left: 100.5px;
     	top: 900px;
-	
+
 }
-    
+
 }
 
 
 @media (max-width: 1366px){
-    
+
     #nav-search{
         width: auto;
     }
-    
+
 }
 
 @media (max-width: 580px){
-    
+
     #nav-search{
         margin: 0 auto !important;
         float: none !important;
@@ -1685,7 +1685,7 @@ header h1 {
         margin: 0 auto !important;
         float: none !important;
     }
-    
+
 }
 
 #wrap{
@@ -1694,26 +1694,26 @@ header h1 {
 }
 
 @media (max-width: 1400px){
-    
+
     #wrap{
         margin-top: 10%;
     }
      #logo-title{
         font-size: 5    0px !important;
     }
-    
+
 }
 
 @media (max-width: 1100px){
-    
+
     #wrap{
         margin-top: 20%;
     }
-    
+
 }
 
 @media (max-width: 900px){
-    
+
     #register-button{
         margin: 0 auto;
         float: none;
@@ -1721,15 +1721,15 @@ header h1 {
     #wrap{
         marign-top: 30%;
     }
-    
+
 }
 
 @media (max-width: 700px){
-    
+
     #wrap{
         margin-top: 50%;
     }
-    
+
 }
 
 #home{
@@ -1780,8 +1780,8 @@ header h1 {
 #sort-by{
     padding: inherit;
     padding-left: 10px;
-}   
-  
+}
+
 
 #fixed-left-menu{
     width: 25%;
@@ -1830,7 +1830,7 @@ header h1 {
     padding: 15px 25px !important;
     border-radius: 2px !important;
     transition: background 0.2s !important;
-    border: solid 1px #47a3da !important;    
+    border: solid 1px #47a3da !important;
     font-size: 20px !important;
 }
 
@@ -1874,10 +1874,9 @@ header h1 {
     font-size: 17px;
     border: 2px solid red;
     text-align: center;
-    width: 90% !important;
+    width: 90%;
     margin: 0 auto;
     margin-bottom: 4%;
-    display: none; 
 }
 
 #notification-bid{
@@ -2129,7 +2128,7 @@ header h1 {
 
 #icon_text{
     color: rgb(50, 76, 87);
-}   
+}
 #user-name{
     color: #47a3da;
 }
@@ -2509,7 +2508,7 @@ input.textarea {
 }
 
 .search input {
-    
+
     border-radius: 0px;
     height: 50px;
     width: 22em;
@@ -2655,7 +2654,7 @@ input.textarea {
 
 .lt-ie9 .search input{
 
-	line-height: 26px 
+	line-height: 26px
 }
 
 .search-bar{
