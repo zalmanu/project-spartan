@@ -122,7 +122,7 @@
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
-                                <img alt="" src="">
+                                <img alt="" src="http://www.gravatar.com/avatar/{{ cod }}">
                             </span>
                             <span class="username">{{ user.username }}</span>
                             <b class="caret"></b>
@@ -163,6 +163,7 @@
                 <!-- notificatoin dropdown end-->
             </div>
     </div>
+    </div>
 
     <!-- Page Content -->
 
@@ -184,7 +185,7 @@
                         <p class="lead">Category</p>
                         <div class="list-group">
                           {% for kind in categories %}
-                                <a href="/gradina" class="list-group-item" id="left-menu-button"><img src="{% static 'images/categories/'%}{{ kind }}-mini.png" class="left-menu-category-icon"> |  {{ kind }}</a>
+                                <a href="/category" class="list-group-item" id="left-menu-button"><img src="{% static 'images/categories/'%}{{ kind }}-mini.png" class="left-menu-category-icon"> |  {{ kind }}</a>
                           {% endfor %}
                         </div>
                         <script>

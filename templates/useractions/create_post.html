@@ -19,7 +19,7 @@
         <link href="{% static "css/one-page-wonder.css" %}" rel="stylesheet"/>
         <link rel="stylesheet" type="text/css" href="{% static "css/default.css" %}"/>
         <link rel="stylesheet" type="text/css" href="{% static "css/component.css" %}"/>
-        <link rel="stylesheet" type="text/css" href="{% static "css/heroic-features.css" %}"/> 
+        <link rel="stylesheet" type="text/css" href="{% static "css/heroic-features.css" %}"/>
         <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}"/>
         <link rel="stylesheet" type="text/css" href="{% static "css/font-awesome.css" %}"/>
         <link rel="stylesheet" type="text/css" href="{% static "css/font-awesome.min.css" %}"/>
@@ -129,7 +129,7 @@
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
-                                <img alt="" src="">
+                                <img alt="" src="http://www.gravatar.com/avatar/{{ cod }}">
                             </span>
                             <span class="username">{{ user.username }}</span>
                             <b class="caret"></b>
@@ -171,23 +171,23 @@
             </div>
     </div>
 
-    <!-- Page Content --> 
+    <!-- Page Content -->
 
-        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->  
-                
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
                  <section class="wrap" id="first-section">
                     <div class="row title-row">
                             <div class="col-12 font-thin categories-gallery">Crează<span class="font-semibold"> anunț</span></div>
                     </div>
                     <div class="slide story" id="slide-6" data-slide="6">
-                    
+
 
                         <div class="container">
-                          <div> 
+                          <div>
                           <div class="card"></div>
                           <div class="card" id="login-box">
 
-                              <h1 class="title">Te rog introdu: </h1>     
+                              <h1 class="title">Te rog introdu: </h1>
                             <form method="POST">
 				{% csrf_token %}
                                 <div class="input-container">
@@ -232,7 +232,7 @@
                                     <input type="text" id="timepicker-one" name="timepicker-one" class="timepicker" required="required"/>
                                     <label for="Username">Ora evenimentului</label>
                                     <div class="bar"></div>
-                                </div> 
+                                </div>
                                 <div class="input-container">
                                     <input type="text" id="Username" name="adress" required="required"/>
                                     <label for="Username">Locatia anuntului</label>
@@ -251,7 +251,7 @@
 
             </header>
         </section>
-        
+
         <footer class="footer-distributed">
 
 			<div class="footer-left">
@@ -311,7 +311,7 @@
 
         <script>
         $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip(); 
+            $('[data-toggle="tooltip"]').tooltip();
         });
         </script>
 
@@ -325,4 +325,3 @@
                  #1f80af  -dark blue;
                  #e5f5fa  -light blue;
                                        -->
-

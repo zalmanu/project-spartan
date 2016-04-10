@@ -123,7 +123,7 @@
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
-                                <img alt="" src="http://www.gravatar.com/avatar/{{ cod }}s=40">
+                                <img alt="" src="http://www.gravatar.com/avatar/{{ cod }}">
                             </span>
                             <span class="username">{{ user.username }}</span>
                             <b class="caret"></b>
@@ -186,7 +186,7 @@
 				<ul class="cbp-ig-grid">
 	{% for kind in categories %}
 					<li id="cat1" style="background-image: url({% static 'images/categories/'%}{{ kind }}-banner.jpg");>
-						<a href=''>
+						<a href="/category" name="{{ kind }}" value="submit">
 							<span class="cbp-ig-icon"><img src="{% static 'images/categories/'%}{{ kind }}-icon.png"></span>
 							<h3 class="cbp-ig-title">{{ kind }}</h3>
 							<span class="cbp-ig-category"> Dă click aici pentru mai multe</span>
@@ -215,7 +215,7 @@
                     <p class="lead">Category</p>
                     <div class="list-group">
                       {% for kind in categories %}
-                            <a href="/gradina" class="list-group-item" id="left-menu-button"><img src="{% static 'images/categories/'%}{{ kind }}-mini.png" class="left-menu-category-icon"> |  {{ kind }}</a>
+                            <a href="/category" class="list-group-item" id="left-menu-button"><img src="{% static 'images/categories/'%}{{ kind }}-mini.png" class="left-menu-category-icon"> |  {{ kind }}</a>
                       {% endfor %}
                     </div>
                 </div>

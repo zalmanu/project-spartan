@@ -2,6 +2,8 @@ from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from django.db import models
 import md5
+from django.core.urlresolvers import reverse
+from . import views
 
 
 class Account(models.Model):
@@ -11,7 +13,6 @@ class Account(models.Model):
     telefon = models.IntegerField(null=True)
     descriere = models.CharField(max_length=244, blank=True)
 
-    @property
     def codeimg(self):
         usshash = md5.new()
         usshash.update(self.user.email)

@@ -15,6 +15,7 @@ def logout_view(request):
 
 def create_post(request):
     if request.user.is_authenticated():
+        curruser = request.user
         if request.method == 'POST':
             title = request.POST.get('title')
             post_text = request.POST.get('text')
@@ -28,7 +29,8 @@ def create_post(request):
                                                        category=category, city=city, timePost=time, author=request.user)
             announcement.save()
             return redirect('/')
-        return render(request, 'useractions/create_post.html')
+        return render(request, 'useractions/create_post.html', {
+            'cod': curruser.account.codeimg()})
     else:
         return redirect('/login/')
 
@@ -42,18 +44,20 @@ def profile(request):
                 curruser.username = username
                 curruser.save()
                 return render(request, 'useractions/profile.html', {
-                    'cod': curruser.account.codeimg(curruser.account)})
+                    'cod': curruser.account.codeimg()})
+
         else:
             return render(request, 'useractions/profile.html', {
-                'cod': curruser.account.codeimg(curruser.account)})
+                'cod': curruser.account.codeimg()})
     else:
         return redirect('/login/')
 
 
 def category(request):
     if request.user.is_authenticated:
-        return render(request, 'useractions/cateogory.html', {
-            'categories' : ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others'],
+        return render(request, 'useractions/category.html', {
+            'categories': ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others'],
+            #'kind': kind
         })
     else:
         return redirect('/')
