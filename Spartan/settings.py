@@ -22,6 +22,7 @@ INSTALLED_APPS = (
     'authentication',
     'basicpages',
     'useractions',
+
 )
 
 MIDDLEWARE_CLASSES = [

@@ -6,4 +6,5 @@ class AnnouncementAdmin(admin.ModelAdmin):
     list_display = ['title', 'text']
     ordering = ['creation_date']
 
+
 admin.site.register(Announcement, AnnouncementAdmin)

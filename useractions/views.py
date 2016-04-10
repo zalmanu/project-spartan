@@ -29,8 +29,11 @@ def create_post(request):
                                                        category=category, city=city, timePost=time, author=request.user)
             announcement.save()
             return redirect('/')
-        return render(request, 'useractions/create_post.html', {
+        if request.user.is_active and not  request.user.is_superuser:
+             return render(request, 'useractions/create_post.html', {
             'cod': curruser.account.codeimg()})
+        else:return render(request, 'useractions/create_post.html', {
+            'cod': 1})
     else:
         return redirect('/login/')
 
@@ -43,12 +46,18 @@ def profile(request):
                 username = request.POST.get('username')
                 curruser.username = username
                 curruser.save()
-                return render(request, 'useractions/profile.html', {
+                if request.user.is_active and not  request.user.is_superuser:
+                    return render(request, 'useractions/profile.html', {
                     'cod': curruser.account.codeimg()})
+                else:return render(request, 'useractions/profile.html', {
+                    'cod': 1})
 
         else:
-            return render(request, 'useractions/profile.html', {
-                'cod': curruser.account.codeimg()})
+              if request.user.is_active and not  request.user.is_superuser:
+                    return render(request, 'useractions/profile.html', {
+                    'cod': curruser.account.codeimg()})
+              else:
+                  return render(request, 'useractions/profile.html', {'cod': 1})
     else:
         return redirect('/login/')
 
