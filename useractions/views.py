@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 # from django.conf import settings
 # from django.contrib import messages
 from django.core.mail import send_mail
+from django.conf import settings
 
 def logout_view(request):
     logout(request)
@@ -34,9 +35,8 @@ def create_post(request):
 
             subject='Anunt Project Spartan'
             message='Multimim pentru anuntul postat,acum asteptati licitatiile.O zi buna!'
-            # from_email=settings.EMAIL_HOST_USER
-            # to_list=['covaci_emanuel@ymail.com',settings.EMAIL_HOST_USER]
-            send_mail(subject, message, 'covaci_emanuel@ymail.com',
+            from_email=settings.EMAIL_HOST_USER
+            send_mail(subject, message, from_email,
             [request.user.email], fail_silently=False)
             return redirect('/')
         if request.user.is_active and not  request.user.is_superuser:

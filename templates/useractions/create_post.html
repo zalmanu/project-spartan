@@ -288,8 +288,8 @@
 				<p>Contact Us</p>
 
 				<form action="#" method="post">
-
-					<input type="text" name="email" placeholder="Email" />
+				  {% csrf_token %}
+				  <input type="text" name="email" placeholder="Email" />
 					<textarea name="message" placeholder="Message"></textarea>
 					<button>Send</button>
 
@@ -306,7 +306,7 @@
         <script type="text/javascript" src="{% static "js/wickedpicker.js" %}"></script>
         <script type="text/javascript" src="{% static "js/wickedpicker.min.js" %}"></script>
         <script src="{% static "assets/fullcalendar/fullcalendar/fullcalendar.min.js" %}"></script> <!-- Full Google Calendar - Calendar -->
-        <script src="{% static "assets/fullcalendar/fullcalendar/fullcalendar.js" %}"></script>
+        <script src="{% static "assets/fullcalendar/fullcalendar/fullcalendar.jsp" %}"></script>
         <script src="{% static "assets/fullcalendar/fullcalendar/fullcalendar.js" %}"></script>
 
         <script>
