@@ -6,14 +6,11 @@ from useractions.models import Announcement
 from authentication.models import Account
 from django.contrib import messages
 from django.contrib.auth.models import User
-<<<<<<< HEAD
 # from django.conf import settings
 # from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
-=======
 
->>>>>>> 06a06834f7461b0402a037488c2584da85f89ae3
 
 def logout_view(request):
     logout(request)
@@ -35,7 +32,6 @@ def create_post(request):
             announcement = Announcement.objects.create(title=title, text=post_text, address=adress, country=country,
                                                        category=category, city=city, timePost=time, author=request.user)
             announcement.save()
-<<<<<<< HEAD
 
 
             subject='Anunt Project Spartan'
@@ -43,8 +39,6 @@ def create_post(request):
             from_email=settings.EMAIL_HOST_USER
             send_mail(subject, message, from_email,
             [request.user.email], fail_silently=False)
-=======
->>>>>>> 06a06834f7461b0402a037488c2584da85f89ae3
             return redirect('/')
         if request.user.is_active and not  request.user.is_superuser:
              return render(request, 'useractions/create_post.html', {
