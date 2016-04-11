@@ -76,10 +76,16 @@ def profile(request):
 def category(request):
     if request.user.is_authenticated:
         curruser = request.user
-        return render(request, 'useractions/category.html', {
+        if request.user.is_active and not  request.user.is_superuser:
+            return render(request, 'useractions/category.html', {
             'categories': ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others'],
             #'kind': kind
             'cod': curruser.account.codeimg()
-        })
+             })
+        else: return render(request, 'useractions/category.html', {
+            'categories': ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others'],
+            #'kind': kind
+            'cod': 1
+             })
     else:
         return redirect('/')
