@@ -64,9 +64,11 @@ def profile(request):
 
 def category(request):
     if request.user.is_authenticated:
+        curruser = request.user
         return render(request, 'useractions/category.html', {
             'categories': ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others'],
             #'kind': kind
+            'cod': curruser.account.codeimg()
         })
     else:
         return redirect('/')
