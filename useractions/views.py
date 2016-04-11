@@ -6,7 +6,9 @@ from useractions.models import Announcement
 from authentication.models import Account
 from django.contrib import messages
 from django.contrib.auth.models import User
-
+# from django.conf import settings
+# from django.contrib import messages
+from django.core.mail import send_mail
 
 def logout_view(request):
     logout(request)
@@ -28,6 +30,14 @@ def create_post(request):
             announcement = Announcement.objects.create(title=title, text=post_text, address=adress, country=country,
                                                        category=category, city=city, timePost=time, author=request.user)
             announcement.save()
+
+
+            subject='Anunt Project Spartan'
+            message='Multimim pentru anuntul postat,acum asteptati licitatiile.O zi buna!'
+            # from_email=settings.EMAIL_HOST_USER
+            # to_list=['covaci_emanuel@ymail.com',settings.EMAIL_HOST_USER]
+            send_mail(subject, message, 'covaci_emanuel@ymail.com',
+            [request.user.email], fail_silently=False)
             return redirect('/')
         if request.user.is_active and not  request.user.is_superuser:
              return render(request, 'useractions/create_post.html', {

@@ -1,3 +1,14 @@
+
+#email settings
+# EMAIL_USE_TLS = True
+# EMAIL_HOST='smt.gmail.com'
+# EMAIL_HOST_USER='covaciemanuel98@gmail.com'
+# EMAIL_HOST_PASSWORD='***********'
+# EMAIL_PORT=587
+
+
+
+
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
