@@ -42,7 +42,7 @@ def create_post(request):
             return redirect('/')
         if request.user.is_active and not  request.user.is_superuser:
              return render(request, 'useractions/create_post.html', {
-            'cod': curruser.account.codeimg()})
+            'cod': curruser.account.cod})
         else:return render(request, 'useractions/create_post.html', {
             'cod': 1})
     else:
@@ -59,14 +59,14 @@ def profile(request):
                 curruser.save()
                 if request.user.is_active and not  request.user.is_superuser:
                     return render(request, 'useractions/profile.html', {
-                    'cod': curruser.account.codeimg()})
+                    'cod': curruser.account.cod})
                 else:return render(request, 'useractions/profile.html', {
                     'cod': 1})
 
         else:
               if request.user.is_active and not  request.user.is_superuser:
                     return render(request, 'useractions/profile.html', {
-                    'cod': curruser.account.codeimg()})
+                        'cod': curruser.account.cod})
               else:
                   return render(request, 'useractions/profile.html', {'cod': 1})
     else:
@@ -80,7 +80,7 @@ def category(request):
             return render(request, 'useractions/category.html', {
             'categories': ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others'],
             #'kind': kind
-            'cod': curruser.account.codeimg()
+            'cod': curruser.account.cod
              })
         else: return render(request, 'useractions/category.html', {
             'categories': ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others'],

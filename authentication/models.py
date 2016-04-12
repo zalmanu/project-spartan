@@ -12,12 +12,8 @@ class Account(models.Model):
     country = models.CharField(max_length=30, null=True)
     telefon = models.IntegerField(null=True)
     descriere = models.CharField(max_length=244, blank=True)
+    cod = models.CharField(max_length=100, null=True, blank=True)
 
-    def codeimg(self):
-        usshash = md5.new()
-        usshash.update(self.user.email)
-        usshash.hexdigest()
-        return usshash.hexdigest()
 
 
 class Review(models.Model):

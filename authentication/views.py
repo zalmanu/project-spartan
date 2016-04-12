@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect
 from django.contrib import messages
+import md5
 
 
 def register_page(request):
@@ -19,7 +20,9 @@ def register_page(request):
             phone = request.POST.get('phone')
             new_user = User.objects.create_user(username, email, password)
             new_user.save()
-            account = authentication.models.Account.objects.create(user=new_user, city=city, country=country, telefon=phone)
+            usshash = md5.new()
+            usshash.update(new_user.email)
+            account = authentication.models.Account.objects.create(user=new_user, city=city, country=country, telefon=phone, cod=usshash.hexdigest())
             account.save()
             user = authenticate(username=username, password=password)
             login(request, user)
