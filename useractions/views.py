@@ -42,7 +42,7 @@ def create_post(request):
             return redirect('/')
         if request.user.is_active and not  request.user.is_superuser:
              return render(request, 'useractions/create_post.html', {
-            'cod': curruser.account.cod})
+             'cod': curruser.account.cod})
         else:return render(request, 'useractions/create_post.html', {
             'cod': 1})
     else:
