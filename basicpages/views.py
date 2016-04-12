@@ -12,6 +12,7 @@ def home(request):
                 'categories': ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others'],
                 'user': curruser,
                 'cod': curruser.account.cod
+                # 'data_task':
                 
            })
         else: return render_to_response('useractions/home.html', {
