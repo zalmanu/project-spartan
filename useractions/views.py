@@ -35,7 +35,9 @@ def create_post(request):
 
 
             subject='Anunt Project Spartan'
-            messagetip="Ati postat un anunt cu Titlul : %s ,\n Text: %s \n Adress: %s \n Country : %s \nCity: %s \n category: %s \n Time : %s \n O zi buna!"  %(title,post_text,adress,country,city,category,time)
+            messagetip=" Buna % s , \n Ati postat un anunt cu succes! \n" \
+                       " Titlul : %s ,\n Text: %s \n Adress: %s \n Country : %s \n City: %s \n category: %s \n" \
+                       " Time : %s \n O zi buna!"  %(request.user.username,title,post_text,adress,country,city,category,time)
             from_email=settings.EMAIL_HOST_USER
             send_mail(subject, messagetip, from_email,
             [request.user.email], fail_silently=True)
