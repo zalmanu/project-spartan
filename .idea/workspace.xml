@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="92c01cbb-327d-4d01-a1f2-75a1bce804a0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/useractions/create_post.html" afterPath="$PROJECT_DIR$/templates/useractions/create_post.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/useractions/models.py" afterPath="$PROJECT_DIR$/useractions/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/useractions/views.py" afterPath="$PROJECT_DIR$/useractions/views.py" />
     </list>
     <ignored path="project-spartan.iws" />
@@ -27,11 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/useractions/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.931034">
-              <caret line="34" column="92" selection-start-line="34" selection-start-column="92" selection-end-line="34" selection-end-column="92" />
+            <state vertical-scroll-proportion="0.7346939">
+              <caret line="42" column="171" selection-start-line="42" selection-start-column="171" selection-end-line="42" selection-end-column="171" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -39,10 +36,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="create_post.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="create_post.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/useractions/create_post.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8389982">
+            <state vertical-scroll-proportion="-8.086206">
               <caret line="215" column="92" selection-start-line="215" selection-start-column="92" selection-end-line="215" selection-end-column="92" />
               <folding />
             </state>
@@ -89,8 +86,8 @@
         <option value="$PROJECT_DIR$/Spartan/settings.py" />
         <option value="$PROJECT_DIR$/basicpages/views.py" />
         <option value="$PROJECT_DIR$/useractions/models.py" />
-        <option value="$PROJECT_DIR$/useractions/views.py" />
         <option value="$PROJECT_DIR$/templates/useractions/create_post.html" />
+        <option value="$PROJECT_DIR$/useractions/views.py" />
       </list>
     </option>
   </component>
@@ -886,6 +883,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/useractions/create_post.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.086206">
+          <caret line="215" column="92" selection-start-line="215" selection-start-column="92" selection-end-line="215" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/useractions/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.310345">
@@ -896,19 +901,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/useractions/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.931034">
-          <caret line="34" column="92" selection-start-line="34" selection-start-column="92" selection-end-line="34" selection-end-column="92" />
+        <state vertical-scroll-proportion="0.7346939">
+          <caret line="42" column="171" selection-start-line="42" selection-start-column="171" selection-end-line="42" selection-end-column="171" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/useractions/create_post.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8389982">
-          <caret line="215" column="92" selection-start-line="215" selection-start-column="92" selection-end-line="215" selection-end-column="92" />
-          <folding />
         </state>
       </provider>
     </entry>
