@@ -35,9 +35,9 @@ def create_post(request):
 
 
             subject='Anunt Project Spartan'
-            message='Multimim pentru anuntul postat,acum asteptati licitatiile.O zi buna!'
+            messagetip="Ati postat un anunt cu Titlul : %s ,\n Text: %s \n Adress: %s \n Country : %s \nCity: %s \n category: %s \n Time : %s \n O zi buna!"  %(title,post_text,adress,country,city,category,time)
             from_email=settings.EMAIL_HOST_USER
-            send_mail(subject, message, from_email,
+            send_mail(subject, messagetip, from_email,
             [request.user.email], fail_silently=True)
             return redirect('/')
         if request.user.is_active and not  request.user.is_superuser:
