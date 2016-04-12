@@ -11,7 +11,6 @@ class Account(models.Model):
     city = models.CharField(max_length=40)
     country = models.CharField(max_length=30, null=True)
     telefon = models.IntegerField(null=True)
-    descriere = models.CharField(max_length=244, blank=True)
     cod = models.CharField(max_length=100, null=True, blank=True)
 
 

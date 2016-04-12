@@ -185,8 +185,7 @@
                               </div>
                             </div>
                             <div class="col-lg-4 col-sm-4 follow-info" >
-                                <p>Hello I’m Jenifer Smith, a leading expert in interactive and creative design.</p>
-                                <p>@jenifersmith</p>
+                                <p>@{{ user.username }}</p>
 								<p><i class="fa fa-twitter follow-info">jenifertweet</i></p>
                                 <h6>
                                     <span id="icon_text"><i class="icon_clock_alt"></i>11:05 AM</span>
@@ -387,10 +386,7 @@
                                   </div>
                                   <!-- profile -->
                                   <div id="profile" class="tab-pane">
-                                    <section class="panel">
-                                      <div class="bio-graph-heading">
-                                                Hello I’m Jenifer Smith, a leading expert in interactive and creative design specializing in the mobile medium. My graduation from Massey University with a Bachelor of Design majoring in visual communication.
-                                      </div>
+                                    <section class="panel"> 
                                       <div class="panel-body bio-graph-info">
                                           <h1>Bio Graph</h1>
                                           <div class="row">
@@ -434,12 +430,6 @@
                                                       <label class="col-lg-2 control-label">Email</label>
                                                       <div class="col-lg-6">
                                                           <input type="text" class="form-control" name="email" id="email" placeholder="{{ user.email }}">
-                                                      </div>
-                                                  </div>
-                                                  <div class="form-group">
-                                                      <label class="col-lg-2 control-label">Descriere</label>
-                                                      <div class="col-lg-10">
-                                                          <textarea name="descriere" id="" class="form-control" cols="30" rows="5"></textarea>
                                                       </div>
                                                   </div>
                                                   <div class="form-group">
