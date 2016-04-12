@@ -30,8 +30,9 @@ def create_post(request):
             time = request.POST.get('timepicker-one')
             time = ":".join(map(lambda item: item.strip(), time.split(":")))
             data_post=request.POST.get('Date')
+            money_user=request.POST.get('money')
             announcement = Announcement.objects.create(title=title, text=post_text, address=adress, country=country,
-                                                       category=category, city=city,data=data_post, timePost=time, author=request.user)
+                                                       category=category,money =money_user, city=city,data=data_post, timePost=time, author=request.user)
             announcement.save()
 
 
