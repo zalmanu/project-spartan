@@ -49,7 +49,7 @@ def create_post(request):
              return render(request, 'useractions/create_post.html', {
              'cod': curruser.account.cod})
         else:return render(request, 'useractions/create_post.html', {
-            'cod': 1})
+            'cod': '61e1380365703a4c73c2480673d8993b'})
     else:
         return redirect('/login/')
 
@@ -73,7 +73,7 @@ def profile(request):
                     return render(request, 'useractions/profile.html', {
                         'cod': curruser.account.cod})
               else:
-                  return render(request, 'useractions/profile.html', {'cod': 1})
+                  return render(request, 'useractions/profile.html', {'cod': '61e1380365703a4c73c2480673d8993b'})
     else:
         return redirect('/login/')
 
@@ -90,7 +90,7 @@ def category(request):
         else: return render(request, 'useractions/category.html', {
             'categories': ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others'],
             #'kind': kind
-            'cod': 1
+            'cod': '61e1380365703a4c73c2480673d8993b'
              })
     else:
         return redirect('/')

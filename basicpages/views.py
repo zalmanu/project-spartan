@@ -12,14 +12,13 @@ def home(request):
                 'categories': ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others'],
                 'user': curruser,
                 'cod': curruser.account.cod
-                # 'data_task':
                 
            })
         else: return render_to_response('useractions/home.html', {
-            'ann': Announcement.objects.all().order_by('-creation_date')[:3],
+            'ann': Announcement.objects.all().order_by('-creation_date')[:5],
             'categories': ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others'],
             'user': curruser,
-            'cod': 1
+            'cod':  '61e1380365703a4c73c2480673d8993b'
            })
     else:
         return render(request, 'basicpages/index.html', {
