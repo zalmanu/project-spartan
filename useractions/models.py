@@ -18,7 +18,7 @@ class Announcement(models.Model):
     creation_date = models.DateTimeField(editable=False, auto_now_add=True, null=True)
     timePost = models.TimeField('Ora', null=True)
     category = models.CharField(null=True, max_length=20)
-    money = models.CharField(null=True, max_length=20)
+    money = models.IntegerField(null=True)
     
     def get_absolute_url(self):
         return reverse('announcement', args=[self.slug])
