@@ -38,7 +38,7 @@ def create_post(request):
             message='Multimim pentru anuntul postat,acum asteptati licitatiile.O zi buna!'
             from_email=settings.EMAIL_HOST_USER
             send_mail(subject, message, from_email,
-            [request.user.email], fail_silently=False)
+            [request.user.email], fail_silently=True)
             return redirect('/')
         if request.user.is_active and not  request.user.is_superuser:
              return render(request, 'useractions/create_post.html', {

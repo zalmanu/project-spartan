@@ -1,17 +1,4 @@
 
-
-EMAIL_USE_TLS = True
-EMAIL_HOST='smtp.gmail.com'
-EMAIL_HOST_USER='covaciemanuel98@gmail.com'#insert email
-EMAIL_HOST_PASSWORD='***********'
-EMAIL_PORT=587
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
-
-
-
-
-
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -53,10 +40,14 @@ MIDDLEWARE_CLASSES = [
 #email settings
 EMAIL_USE_TLS = True
 EMAIL_HOST='smtp.gmail.com'
-EMAIL_HOST_USER=''#insert email
-EMAIL_HOST_PASSWORD=''#insert password 
+EMAIL_HOST_USER='contactprojectspartan@gmail.com'#insert email
+EMAIL_HOST_PASSWORD='spartan123456789'#insert password
 EMAIL_PORT=587
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+
+
+
 
 ROOT_URLCONF = 'Spartan.urls'
 
