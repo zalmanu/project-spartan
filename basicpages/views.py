@@ -12,9 +12,8 @@ def home(request):
             'ann': a,#Announcement.objects.all().order_by('-creation_date')[:5],
                 'categories': ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others'],
                 'user': curruser,
-                'cod': curruser.account.cod
-                
-           })
+                'cod': curruser.account.cod})
+        
         else: return render_to_response('useractions/home.html', {
             'ann': Announcement.objects.all().order_by('-creation_date')[:5],
             'categories': ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others'],
