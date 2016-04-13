@@ -10,6 +10,8 @@ from django.contrib.auth.models import User
 # from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
+from .forms import ProfileEditForm
+import md5
 
 
 def logout_view(request):
@@ -58,22 +60,43 @@ def profile(request):
     if request.user.is_authenticated():
         curruser = request.user
         if request.method == 'POST':
-            if request.POST.get('username') is not None:
+            if request.POST.get('username'):
                 username = request.POST.get('username')
                 curruser.username = username
-                curruser.save()
-                if request.user.is_active and not  request.user.is_superuser:
+            if request.POST.get('email'):
+                email = request.POST.get('email')
+                curruser.email = email
+                usshash = md5.new()
+                usshash.update(email)
+                curruser.account.cod = usshash.hexdigest()
+            if request.POST.get('country'):
+                country = request.POST.get('country')
+                curruser.account.country = country
+            if request.POST.get('city'):
+                city = request.POST.get('city')
+                curruser.account.city = city
+            if request.POST.get('phone'):
+                phone = request.POST.get('phone')
+                curruser.account.phone = phone
+            curruser.account.save()
+            curruser.save()
+            if request.user.is_active and not  request.user.is_superuser:
                     return render(request, 'useractions/profile.html', {
                     'cod': curruser.account.cod})
-                else:return render(request, 'useractions/profile.html', {
+               
+            else:
+                return render(request, 'useractions/profile.html', {
                     'cod': 1})
 
         else:
-              if request.user.is_active and not  request.user.is_superuser:
+            if request.user.is_active and not  request.user.is_superuser:
                     return render(request, 'useractions/profile.html', {
-                        'cod': curruser.account.cod})
-              else:
-                  return render(request, 'useractions/profile.html', {'cod': '61e1380365703a4c73c2480673d8993b'})
+                        'cod': curruser.account.cod,
+                        'form': ProfileEditForm })
+            else:
+                  return render(request, 'useractions/profile.html',{
+                         'cod': '61e1380365703a4c73c2480673d8993b',
+                         'form': ProfileEditForm})
     else:
         return redirect('/login/')
 

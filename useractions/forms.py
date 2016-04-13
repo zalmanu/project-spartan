@@ -5,5 +5,5 @@ class ProfileEditForm(forms.Form):
     email = forms.CharField(max_length=100)
     city = forms.CharField(max_length=100)
     country = forms.CharField(max_length=100)
-    telefon = forms.IntegerField(max_length=100)
+    telefon = forms.IntegerField()
     
