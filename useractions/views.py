@@ -85,6 +85,14 @@ def profile(request):
             curruser.account.save()
             curruser.save()
 
+            # subject='test'
+            # email_post=request.POST.get('email')
+            # messages_post=request.POST.get('message')
+            # from_email=settings.EMAIL_HOST_USER
+            # send_mail(subject, messages_post, from_email,
+            # [request.user.email], fail_silently=True)
+
+
             if request.user.is_active and not  request.user.is_superuser:
                     return render(request, 'useractions/profile.html', {
                     'cod': curruser.account.cod,
