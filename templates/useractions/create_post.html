@@ -34,6 +34,7 @@
         <link rel="stylesheet" href="{% static "assets/fullcalendar/fullcalendar/fullcalendar.css" %}"/>
         <link rel="stylesheet" href="{% static "assets/fullcalendar/fullcalendar/fullcalendar.print.css" %}"/>
         <link rel="stylesheet" href="{% static "assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static "css/tcal.css" %}"/>
 
     </head>
 
@@ -244,11 +245,9 @@
 
                                 <!---->
 
-
-
-                                <div class="input-container">
-                                    <input class="form-control event_input" id="datepicker" name="Date" type="text"  />
-                                    <label for="Username">Data evenimentului AAAA-LL-ZZ !!!SINGURUL FORMAT ACCEPTAT!!!! (A-an,L-luna,Z-zi)</label>
+				<div class="input-container">
+                                    <input class="form-control event_input tcal" id="datepicker" name="Date" type="text" />
+                                    <label for="Username">Data evenimentului</label>
                                     <div class="bar"></div>
                                 </div>
                                <div class="input-container">
@@ -331,7 +330,7 @@
         <script src="{% static "assets/fullcalendar/fullcalendar/fullcalendar.min.js" %}"></script> <!-- Full Google Calendar - Calendar -->
         <script src="{% static "assets/fullcalendar/fullcalendar/fullcalendar.jsp" %}"></script>
         <script src="{% static "assets/fullcalendar/fullcalendar/fullcalendar.js" %}"></script>
-
+	<script type="text/javascript" src="{% static "js/tcal.js" %}"></script>
         <script>
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();

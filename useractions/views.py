@@ -6,13 +6,10 @@ from useractions.models import Announcement
 from authentication.models import Account
 from django.contrib import messages
 from django.contrib.auth.models import User
-# from django.conf import settings
-# from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
 from .forms import ProfileEditForm
 import md5
-
 import datetime
 
 
@@ -35,12 +32,11 @@ def create_post(request):
             time = request.POST.get('timepicker-one')
             time = ":".join(map(lambda item: item.strip(), time.split(":")))
             data_post=request.POST.get('Date')
+            data_post=datetime.datetime.strptime(data_post, '%m/%d/%Y').strftime('%Y-%m-%d')
             money_user=request.POST.get('money')
             announcement = Announcement.objects.create(title=title, text=post_text, address=adress, country=country,
                                                        category=category,money =money_user, city=city,data=data_post, timePost=time, author=request.user)
             announcement.save()
-
-
             subject='Anunt Project Spartan'
             messagetip=" Buna % s , \n Ati postat un anunt cu succes! \n" \
                        " Titlul : %s ,\n Text: %s \n Adress: %s \n Country : %s \n City: %s \n category: %s \n" \
