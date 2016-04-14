@@ -2,7 +2,6 @@
     <html lang="en">
 
     <head>
-	{% block head %}
         {% load staticfiles %}
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,12 +27,10 @@
     <link rel="stylesheet" type="text/css" href="{% static "css/elegant-icons-style.css" %}">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,600,300,200&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-    {% endblock %}
     </head>
     <body>
-    {% block body %}
     <!-- Navigation -->
-
+    {% if request.user.is_authenticated %}
     <div class="cbp-af-header" id="user-menu">
 				<div class="cbp-af-inner">
                     <a href="{% url 'home' %}" id="return-home"><h1>Spartan</h1></a>
@@ -90,10 +87,6 @@
                     </li>
                     <!-- inbox notificatoin end -->
                     <!-- alert notification start-->
-
-
-
-
 
                     <li id="alert_notificatoin_bar" class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -165,9 +158,29 @@
             </div>
     </div>
     </div>
-
-    <!-- Page Content -->
-
+    {% else %}
+    <div class="cbp-af-header">
+        <div class="cbp-af-inner">
+                    <h1><a href="{% url 'home' %}" id="return-home">Spartan</a></h1>
+                    <nav id="register-button">
+                        <a href="{% url 'login' %}"
+                        id="button-flow">Contul meu</a>
+                        <a href="#" id="line-flow">|</a>
+            <a href="{% url 'register' %}"
+                                                    id="button-flow">Înregistrare</a>
+                    </nav>
+                    <nav id="menu-button">
+            <a href="#first-section"
+                                                    id="menu1-flow">Despre noi</a>
+            <a href="#secound-section"
+                                                    id="menu2-flow">Etape</a>
+            <a href="#third-section"
+                                                    id="menu3-flow">Categorii</a>
+                        <a href="/register/" id="menu3-flow">Alătură-te</a>
+          </nav>
+        </div>
+    </div>
+    {% endif %}
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
         <section class="third-section" id="wrap">
@@ -210,7 +223,7 @@
                             <div class="col-lg-2 col-sm-2" style="color:black;">
                             <h4>          {{  anunt.author.username }}</h4>
                               <div class="follow-ava">
-                                  <img src="http://www.gravatar.com/avatar/{{ anunt.author.account.cod }}s=200" alt=""> 
+                                  <img src="http://www.gravatar.com/avatar/{{ anunt.author.account.cod }}s=200" alt="">
                               </div>
                             </div>
                             <div class="col-lg-4 col-sm-4 follow-info description_info">
@@ -324,7 +337,6 @@
         </script>
 
 
-    {% endblock %}
     </body>
 
     </html>
