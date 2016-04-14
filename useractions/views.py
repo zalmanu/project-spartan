@@ -3,7 +3,7 @@ from django.contrib.auth import logout
 from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
 from useractions.models import Announcement
-from authentication.models import Account
+from authentication.models import Account,Spartan
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
@@ -131,3 +131,38 @@ def category(request, kind):
              })
     else:
         return redirect('/')
+
+def sartan(request):
+    if request.user.is_authenticated():
+        curruser = request.user
+        if request.method == 'POST':
+            nume=request.POST.get('nume')
+            prenume=request.POST.get('prenume')
+            data_nasterii=request.POST.get('Data_nasteri')
+            adress=request.POST.get('adress')
+            cnp=request.POST.get('CNP')
+            serie=request.POST.get('serie')
+            cui=request.POST.get('cui')
+            contBancar=request.POST.get('contBancar')
+            abilitate1=request.POST.get('abilitate1')
+            abilitate2=request.POST.get('abilitate2')
+            abilitate3=request.POST.get('abilitate3')
+            spartan =Spartan.objects.create(nume=nume, prenume=prenume, data_nasterii=data_nasterii,
+                                            address=adress, cnp=cnp,serie=serie,cui=cui,
+                                            contBancar=contBancar,
+                                             abilitate1=abilitate1,abilitate2=abilitate2,
+                                             abilitate3=abilitate3,
+                                            author=request.user)
+            spartan.save()
+            return render(request, 'useractions/spartan.html' ,{'errors': ['Ati completat cu succes formularul,asteptati confirmarea administratorului!']})
+            # return redirect('/')
+        # if request.user.is_active and not  request.user.is_superuser:
+        #      return render(request, 'useractions/spartan.html', {
+        #      'cod': curruser.account.cod})
+        #  else:
+        return render(request, 'useractions/spartan.html')
+    else:
+        return redirect('/login/')
+
+
+         # return render(request, "useractions/spartan.html")

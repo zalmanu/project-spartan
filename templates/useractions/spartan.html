@@ -173,9 +173,18 @@
 
                  <section class="wrap" id="first-section">
                     <div class="row title-row">
-                            <div class="col-12 font-thin categories-gallery">Crează<span class="font-semibold"> anunț</span></div>
+                            <div class="col-12 font-thin categories-gallery"><br></br>Activarea puterii <span class="font-semibold"> de Spartan</span></div>
                     </div>
                     <div class="slide story" id="slide-6" data-slide="6">
+                        {% if errors %}
+                    <div class="error">
+		      {% for message in errors %}
+                        <ul>
+                            <li>{{ message }}</li>
+                        </ul>
+                    {% endfor %}
+                    </div>
+		    {% endif %}
 
 
                         <div class="container">
@@ -183,23 +192,83 @@
                           <div class="card"></div>
                           <div class="card" id="login-box">
 
-                              <h1 class="title">Te rog introdu: </h1>
+                              <h1 class="title">Please enter :</h1>
                             <form method="POST">
 				{% csrf_token %}
                                 <div class="input-container">
-                                    <input type="text" id="Username" name="title" required="required"/>
-                                    <label for="Username">Titlul anuntului</label>
+                                    <input type="text" id="Username" name="nume" required="required"/>
+                                    <label for="Username">Nume</label>
+                                    <div class="bar"></div>
+                                </div>
+                                 <div class="input-container">
+                                    <input type="text" id="Username" name="prenume" required="required"/>
+                                    <label for="Username">Prenume</label>
+                                    <div class="bar"></div>
+                                </div>
+                                <!--<div class="input-container">-->
+                                    <!--<input class="form-control event_input tcal" id="datepicker" name="Data_nasteri" type="text" />-->
+                                    <!--<label for="Username">Data nasterii</label>-->
+                                    <!--<div class="bar"></div>-->
+                                <!--</div>-->
+                                <div class="input-container">
+                                    <input type="text" id="Username" name="Data_nasteri" required="required"/>
+                                    <label for="Username">Data nasterii</label>
                                     <div class="bar"></div>
                                 </div>
                                 <div class="input-container">
-                                    <input type="text" id="Username" name="text" required="required"/>
+                                    <input type="text" id="Username" name="adress" required="required"/>
+                                    <label for="Username">Adresa dvs.</label>
+                                    <div class="bar"></div>
+                                </div>
+                                <div class="input-container">
+                                    <input type="text" id="Username" name="CNP" required="required"/>
                                     </textarea>
-                                    <label for="Username">Descrieti nevoia Dumneavoastra aici</label>
+                                    <label for="Username">CNP</label>
                                     <div class="bar"></div>
                                 </div>
+
+
+
                                 <div class="input-container">
-                                    <select class="form-control input-lg m-bot15" id="choose_category" name="category">
-                                        <option disabled selected id="disabeled-option">Alegeti o categorie in care sa va integrati anuntul</option>
+                                    <input type="text" id="Username" name="serie" required="required"/>
+                                    <label for="Username">Serie buletin</label>
+                                    <div class="bar"></div>
+                                </div>
+
+
+
+                                <div class="input-container">
+                                    <input type="text" id="Username" name="cui" required="required"/>
+                                    <label for="Username">CUI PFA</label>
+                                    <div class="bar"></div>
+                                </div>
+
+                                 <div class="input-container">
+                                    <input type="text" id="Username" name="contBancar" required="required"/>
+                                    <label for="Username">Cont Bancar</label>
+                                    <div class="bar"></div>
+                                </div>
+
+
+
+                                <div class="input-container">
+                                    <select class="form-control input-lg m-bot15" id="choose_category" name="abilitate1">
+                                        <option disabled selected id="disabeled-option">Selectati abilitatea 1</option>
+                                        <option>None</option>
+                                        <option>Garden</option>
+                                        <option>Moving</option>
+                                        <option>Cleaning</option>
+                                        <option>Babysitting</option>
+                                        <option>Cooking</option>
+                                        <option>Others</option>
+                                    </select>
+                                    <div class="bar"></div>
+                                </div>
+
+                                 <div class="input-container">
+                                    <select class="form-control input-lg m-bot15" id="choose_category" name="abilitate2">
+                                        <option disabled selected id="disabeled-option">Selectati abilitatea 2</option>
+                                        <option>None</option>
                                         <option>Garden</option>
                                         <option>Moving</option>
                                         <option>Cleaning</option>
@@ -211,56 +280,22 @@
                                 </div>
 
 
-                                <div class="input-container">
-                                    <input type="text" id="Username" name="money" required="required"/>
-                                    <label for="Username">Suma maxima pentru licitatie (lei)</label>
-                                    <div class="bar"></div>
-                                </div>
-
-
-
-
-
-                                <!---->
-                                   <div class="input-container">
-                                    <select class="form-control input-lg m-bot15" id="choose_category" name="country">
-                                        <option disabled selected id="disabeled-option">Tara</option>
-                                        <option>Romania</option>
-
+                                 <div class="input-container">
+                                    <select class="form-control input-lg m-bot15" id="choose_category" name="abilitate1">
+                                        <option disabled selected id="disabeled-option">Selectati abilitatea 3</option>
+                                        <option>None</option>
+                                        <option>Garden</option>
+                                        <option>Moving</option>
+                                        <option>Cleaning</option>
+                                        <option>Babysitting</option>
+                                        <option>Cooking</option>
+                                        <option>Others</option>
                                     </select>
                                     <div class="bar"></div>
                                 </div>
 
-                                <!---->
 
 
-                                 <!---->
-                                   <div class="input-container">
-                                    <select class="form-control input-lg m-bot15" id="choose_category" name="city">
-                                        <option disabled selected id="disabeled-option">Oras</option>
-                                        <option>Timisoara</option>
-
-                                    </select>
-                                    <div class="bar"></div>
-                                </div>
-
-                                <!---->
-
-				<div class="input-container">
-                                    <input class="form-control event_input tcal" id="datepicker" name="Date" type="text" />
-                                    <label for="Username">Data evenimentului</label>
-                                    <div class="bar"></div>
-                                </div>
-                               <div class="input-container">
-                                    <input type="text" id="timepicker-one" name="timepicker-one" class="timepicker" required="required"/>
-                                    <label for="Username">Ora evenimentului</label>
-                                    <div class="bar"></div>
-                                </div>
-                                <div class="input-container">
-                                    <input type="text" id="Username" name="adress" required="required"/>
-                                    <label for="Username">Locatia anuntului</label>
-                                    <div class="bar"></div>
-                                </div>
                                 <div class="button-container">
                                     <button><span>Go</span></button>
                                 </div>
