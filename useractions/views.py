@@ -118,17 +118,20 @@ def profile(request):
 
 def category(request, kind):
     if request.user.is_authenticated:
+        an = Announcement.objects.filter(category=kind)
         curruser = request.user
         if request.user.is_active and not  request.user.is_superuser:
             return render(request, 'useractions/category.html', {
             'categories': ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others'],
             'kind': kind,
-            'cod': curruser.account.cod
+            'cod': curruser.account.cod,
+            'ann': an
              })
         else: return render(request, 'useractions/category.html', {
             'categories': ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others'],
             'kind': kind,
-            'cod': '61e1380365703a4c73c2480673d8993b'
+           'cod': '61e1380365703a4c73c2480673d8993b',
+            'ann': an
              })
     else:
         return redirect('/')

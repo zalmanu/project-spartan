@@ -207,10 +207,10 @@
                 <div class="col-lg-12" id="distance">
                     <div class="profile-widget profile-widget-info" id="post">
                           <div class="panel-body" id="post_content">
-                            <div class="col-lg-2 col-sm-2">
-                            <h4>{{  anunt.author.username }}</h4>
+                            <div class="col-lg-2 col-sm-2" style="color:black;">
+                            <h4>          {{  anunt.author.username }}</h4>
                               <div class="follow-ava">
-                                  <img src="" alt=""> <!-- Poza persoanei de la care este post-ul -->
+                                  <img src="http://www.gravatar.com/avatar/{{ anunt.author.account.cod }}s=200" alt=""> 
                               </div>
                             </div>
                             <div class="col-lg-4 col-sm-4 follow-info description_info">
@@ -238,7 +238,7 @@
 
                                               <i class="icon_calendar resize-icon"></i><br>
 
-                                              <h4><span><b id="post-info-date">Date:</b></span><br id="post-date-value">{{ anunt.creation_date }}</h4>
+                                              <h4><span><b id="post-info-date">Date:</b></span><br id="post-date-value">{{ anunt.data }}</h4>
                                           </li>
 
                                       </ul>
@@ -251,7 +251,7 @@
 
                                                   <h4><span><b
                                                               id="post-info-adress">Adress:</b></span><br
-                                                      id="post-adress-value">{{ anunt.adress }}</h4>
+                                                      id="post-adress-value">{{ anunt.address }}</h4>
                                           </li>
 
                                       </ul>
