@@ -59,7 +59,7 @@ def reset_pass(request):
         if password1 ==password2 :#and inf==true:
              request.user.set_password(password1)
              u.save()
-             return redirect('/')
+             return render(request, "basicpages/index.html",{'errors': ['The password was successfully changed']})
         else:return render(request, "authentication/resetpass.html",{'errors': ['Incorrect  password']})
     else :
          return render(request, "authentication/resetpass.html")

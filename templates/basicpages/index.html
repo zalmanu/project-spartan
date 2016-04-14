@@ -47,6 +47,15 @@
 						<a href="#third-section"
                                                     id="menu3-flow">Categorii</a>
                         <a href="/register/" id="menu3-flow">Alătură-te</a>
+						{% if errors %}
+                    <div class="error">
+		      {% for message in errors %}
+                        <ul>
+                            <li>{{ message }}</li>
+                        </ul>
+                    {% endfor %}
+                    </div>
+		    {% endif %}
 					</nav>
     <!-- ~~~~~~~~~~~~~~~~~~~~Page scroll down~~~~~~~~~~~~~~~~~~~~ -->
                     <script>
