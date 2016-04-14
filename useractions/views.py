@@ -13,6 +13,9 @@ from django.conf import settings
 from .forms import ProfileEditForm
 import md5
 
+import datetime
+
+
 
 def logout_view(request):
     logout(request)
@@ -59,6 +62,7 @@ def create_post(request):
 def profile(request):
     if request.user.is_authenticated():
         curruser = request.user
+        now = datetime.datetime.now()
         if request.method == 'POST':
             if request.POST.get('username'):
                 username = request.POST.get('username')
@@ -80,23 +84,34 @@ def profile(request):
                 curruser.account.phone = phone
             curruser.account.save()
             curruser.save()
+
+            # subject='test'
+            # email_post=request.POST.get('email')
+            # messages_post=request.POST.get('message')
+            # from_email=settings.EMAIL_HOST_USER
+            # send_mail(subject, messages_post, from_email,
+            # [request.user.email], fail_silently=True)
+
+
             if request.user.is_active and not  request.user.is_superuser:
                     return render(request, 'useractions/profile.html', {
-                    'cod': curruser.account.cod})
+                    'cod': curruser.account.cod,
+                    'time':now,
+                    })
                
             else:
-                return render(request, 'useractions/profile.html', {
+                return render(request, 'useractions/profile.html', { 'time':now,
                     'cod': 1})
 
         else:
             if request.user.is_active and not  request.user.is_superuser:
                     return render(request, 'useractions/profile.html', {
                         'cod': curruser.account.cod,
-                        'form': ProfileEditForm })
+                        'form': ProfileEditForm, 'time':now, })
             else:
                   return render(request, 'useractions/profile.html',{
                          'cod': '61e1380365703a4c73c2480673d8993b',
-                         'form': ProfileEditForm})
+                         'form': ProfileEditForm, 'time':now,})
     else:
         return redirect('/login/')
 
