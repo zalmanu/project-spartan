@@ -60,6 +60,7 @@ def reset_pass(request):
              request.user.set_password(password1)
              u.save()
              return redirect('/')
+        else:return render(request, "authentication/resetpass.html",{'errors': ['Incorrect  password']})
     else :
          return render(request, "authentication/resetpass.html")
  else : return redirect('/')

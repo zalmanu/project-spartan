@@ -59,7 +59,7 @@
               <div class="card"></div>
               <div class="card" id="login-box">
 
-                  <h1 class="title">Te rog introdu:</h1>
+                  <h1 class="title">Please enter :</h1>
                 <form method="POST">
                     {% csrf_token %}
 		    {% if errors %}
@@ -71,11 +71,7 @@
                     {% endfor %}                        
                     </div>
 		    {% endif %}
-                    <div class="input-container">
-                        <input name="username" type="text" id="Username" required="required"/>
-                        <label for="Username">Username</label>
-                        <div class="bar"></div>
-                    </div>
+
                     <div class="input-container">
                         <input name="password" type="password" id="Password" required="required"/>
                         <label for="Password">Password old</label>
