@@ -101,9 +101,7 @@ def profile(request):
         return redirect('/login/')
 
 
-def category(request):
-    kind = request.POST.get('kind')
-    print kind
+def category(request, kind):
     if request.user.is_authenticated:
         curruser = request.user
         if request.user.is_active and not  request.user.is_superuser:

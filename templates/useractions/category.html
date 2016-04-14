@@ -90,6 +90,11 @@
                     </li>
                     <!-- inbox notificatoin end -->
                     <!-- alert notification start-->
+
+
+
+
+
                     <li id="alert_notificatoin_bar" class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 
@@ -166,8 +171,8 @@
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
         <section class="third-section" id="wrap">
-            <header class="jumbotron hero-spacer" id="category-banner" style="background-image: url({% static "images/garden-banner.jpg" %});">
-                <h1 id="category-title"></h1>
+            <header class="jumbotron hero-spacer" id="category-banner" style="background-image: url({% static 'images/categories/'%}{{ kind }}-banner.jpg);">
+                <h1 id="category-title">{{ kind }}</h1>
                 <p><a class="btn btn-primary btn-large create-post-category-button" href="/submit">Crează un anunț</a>
                 </p>
             </header>
@@ -181,7 +186,7 @@
                         <p class="lead">Category</p>
                         <div class="list-group">
                           {% for kind in categories %}
-                                <a href="/category" class="list-group-item" id="left-menu-button"><img src="{% static 'images/categories/'%}{{ kind }}-mini.png" class="left-menu-category-icon"> |  {{ kind }}</a>
+                            <a href="/category/{{ kind}}" class="list-group-item" id="left-menu-button"><img src="{% static 'images/categories/'%}{{ kind }}-mini.png" class="left-menu-category-icon"> |  {{ kind }}</a>
                           {% endfor %}
                         </div>
                         <script>
