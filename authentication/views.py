@@ -53,10 +53,10 @@ def reset_pass(request):
     if request.method == 'POST':
         u=request.user
         passwordold=request.POST.get('password')
-        # inf=check_password(passwordold)
+        inf=request.user.check_password(passwordold)
         password1=request.POST.get('passwordnew')
         password2=request.POST.get('passwordnew1')
-        if password1 ==password2 :#and inf==true:
+        if password1 ==password2 and inf==True:
              request.user.set_password(password1)
              u.save()
              return render(request, "basicpages/index.html",{'errors': ['The password was successfully changed']})
