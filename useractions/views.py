@@ -59,6 +59,7 @@ def profile(request):
     if request.user.is_authenticated():
         curruser = request.user
         now = datetime.datetime.now()
+        # request.user.account.sold=request.user.account.sold-50 am incercat sa vad daca pot modifica soldul
         if request.method == 'POST':
             if request.POST.get('username'):
                 username = request.POST.get('username')

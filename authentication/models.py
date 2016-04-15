@@ -12,6 +12,7 @@ class Account(models.Model):
     country = models.CharField(max_length=30, null=True)
     telefon = models.IntegerField(null=True)
     cod = models.CharField(max_length=100, null=True, blank=True)
+    sold=models.IntegerField(default=1000)
 
 
 
