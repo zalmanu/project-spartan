@@ -32,6 +32,7 @@ class Spartan(models.Model):
      abilitate2= models.CharField(null=True, max_length=20)
      abilitate3= models.CharField(null=True, max_length=20)
      author = models.ForeignKey(User, null=True, blank=True)
+     SpartanStatus=models.BooleanField(default=False)
 
 
 
