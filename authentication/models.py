@@ -33,11 +33,7 @@ class Spartan(models.Model):
      abilitate3= models.CharField(null=True, max_length=20)
      author = models.ForeignKey(User, null=True, blank=True)
 
-     def get_absolute_url(self):
-        return reverse('spartan', args=[self.slug])
 
-    # class Meta:
-    #     get_latest_by = 'creation_date'
 
 
 
