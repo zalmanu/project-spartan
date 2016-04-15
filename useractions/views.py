@@ -167,7 +167,10 @@ def spartan(request):
             return render(request, 'useractions/spartan.html' ,{'errors': ['Ati completat cu succes formularul,asteptati confirmarea administratorului!'],
         'cod': request.user.account.cod})
         else:
-            return render(request, 'useractions/spartan.html', {'cod': request.user.account.cod})
+              if request.user.is_active and not  request.user.is_superuser:
+                    return render(request, 'useractions/spartan.html', {'cod': request.user.account.cod})
+              else :
+                    return render(request, 'useractions/spartan.html', {'cod': 1})
     else:
         return redirect('/login/')
 
