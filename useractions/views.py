@@ -133,6 +133,14 @@ def category(request, kind):
     else:
         return redirect('/')
 
+def profileGeneral(request):
+    return render(request, 'useractions/profilegeneral.html')
+
+
+
+
+
+
 def spartan(request):
     if request.user.is_authenticated():
         curruser = request.user
