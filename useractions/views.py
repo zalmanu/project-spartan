@@ -116,6 +116,7 @@ def category(request, kind):
     if request.user.is_authenticated:
         an = Announcement.objects.filter(category=kind)
         curruser = request.user
+        print curruser.account.cod
         if request.user.is_active and not  request.user.is_superuser:
             return render(request, 'useractions/category.html', {
             'categories': ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others'],
@@ -132,7 +133,7 @@ def category(request, kind):
     else:
         return redirect('/')
 
-def sartan(request):
+def spartan(request):
     if request.user.is_authenticated():
         curruser = request.user
         if request.method == 'POST':
@@ -147,22 +148,18 @@ def sartan(request):
             abilitate1=request.POST.get('abilitate1')
             abilitate2=request.POST.get('abilitate2')
             abilitate3=request.POST.get('abilitate3')
-            spartan =Spartan.objects.create(nume=nume, prenume=prenume, data_nasterii=data_nasterii,
+            spartan = Spartan.objects.create(nume=nume, prenume=prenume, data_nasterii=data_nasterii,
                                             address=adress, cnp=cnp,serie=serie,cui=cui,
                                             contBancar=contBancar,
                                              abilitate1=abilitate1,abilitate2=abilitate2,
                                              abilitate3=abilitate3,
                                             author=request.user)
             spartan.save()
-            return render(request, 'useractions/spartan.html' ,{'errors': ['Ati completat cu succes formularul,asteptati confirmarea administratorului!']})
-            # return redirect('/')
-        # if request.user.is_active and not  request.user.is_superuser:
-        #      return render(request, 'useractions/spartan.html', {
-        #      'cod': curruser.account.cod})
-        #  else:
-        return render(request, 'useractions/spartan.html')
+            return render(request, 'useractions/spartan.html' ,{'errors': ['Ati completat cu succes formularul,asteptati confirmarea administratorului!'],
+        'cod': request.user.account.cod})
+        else:
+            return render(request, 'useractions/spartan.html', {'cod': request.user.account.cod})
     else:
         return redirect('/login/')
 
 
-         # return render(request, "useractions/spartan.html")

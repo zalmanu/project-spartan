@@ -41,15 +41,15 @@
     <body>
 
     <!-- Navigation -->
+    <!-- Navigation -->
+
     <div class="cbp-af-header" id="user-menu">
 				<div class="cbp-af-inner">
                     <a href="{% url 'home' %}" id="return-home"><h1>Spartan</h1></a>
 
                 <!-- Search bar -->
                    <div class="nav search-row" id="top_menu">
-                        <ul class="nav top-menu">
 
-                        </ul>
                     </div>
 
 
@@ -147,14 +147,7 @@
                                 <a href="#"><i class="icon_chat_alt"></i> Mai un Buton</a>
                             </li>
                             <li>
-                                <p class="blue">Logged In As:</p>
-                            </li>
-                            <li>
-                                <a href="/spartan/" >Activare Spartan</a>
-                                <!--<a href="#"><i>Te poti angaja</i><div class="checkbox"> <label> <input type="checkbox">Spartan</label> </div></a>-->
-                            </li>
-                            <li>
-                                <a href="#"><i>Poti Angaja</i><div class="checkbox"> <label> <input type="checkbox"> Angajator</label> </div></a>
+                               <a href="/spartan/" >Activare Spartan</a>
                             </li>
                             <li>
                                 <a href="{% url 'logout' %}"><i
@@ -167,7 +160,9 @@
                 <!-- notificatoin dropdown end-->
             </div>
     </div>
+
     <!-- Page Content -->
+
 
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
@@ -205,19 +200,11 @@
                                     <label for="Username">Prenume</label>
                                     <div class="bar"></div>
                                 </div>
-                                <!--<div class="input-container">-->
-                                    <!--<input class="form-control event_input tcal" id="datepicker" name="Data_nasteri" type="text" />-->
-                                    <!--<label for="Username">Data nasterii</label>-->
-                                    <!--<div class="bar"></div>-->
-                                <!--</div>-->
-
                                 <div class="input-container">
-                                    <input type="text" id="Username" name="Data_nasteri" required="required"/>
-                                    <label for="Username">Data nasterii in formatul YYYY-MM-DD</label>
+                                    <input class="form-control event_input tcal" id="datepicker" name="Data_nasteri" type="text" />
+                                    <label for="Username">Data nasterii</label>
                                     <div class="bar"></div>
                                 </div>
-
-
                                 <div class="input-container">
                                     <input type="text" id="Username" name="adress" required="required"/>
                                     <label for="Username">Adresa dvs.</label>

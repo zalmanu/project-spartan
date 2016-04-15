@@ -6,6 +6,6 @@ urlpatterns = [
     url(r'^submit/$', views.create_post, name='submit'),
     url(r'^category/(?P<kind>\w+)$', views.category, name='category'),
     url(r'^profile/$', views.profile, name='profile'),
-    url(r'^spartan/$', views.sartan, name='spartan'),
+    url(r'^spartan/$', views.spartan, name='spartan'),
 
 ]
