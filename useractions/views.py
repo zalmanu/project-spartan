@@ -140,6 +140,7 @@ def spartan(request):
             nume=request.POST.get('nume')
             prenume=request.POST.get('prenume')
             data_nasterii=request.POST.get('Data_nasteri')
+            data_nasterii=datetime.datetime.strptime(data_nasterii, '%m/%d/%Y').strftime('%Y-%m-%d')
             adress=request.POST.get('adress')
             cnp=request.POST.get('CNP')
             serie=request.POST.get('serie')
