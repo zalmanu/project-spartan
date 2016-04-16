@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import LoginForm
+from .forms import LoginForm, RegisterForm
 import authentication.models
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
@@ -13,23 +13,40 @@ def register_page(request):
         return redirect('/')
     else:
         if request.method == 'POST':
-            username = request.POST.get('username')
-            password = request.POST.get('password')
-            email = request.POST.get('email')
-            city = request.POST.get('city')
-            country = request.POST.get('country')
-            phone = request.POST.get('phone')
-            new_user = User.objects.create_user(username, email, password)
-            new_user.save()
-            usshash = md5.new()
-            usshash.update(new_user.email)
-            account = authentication.models.Account.objects.create(user=new_user, city=city, country=country, telefon=phone, cod=usshash.hexdigest())
-            account.save()
-            user = authenticate(username=username, password=password)
-            login(request, user)
-            return redirect('/')
+            form = RegisterForm(request.POST)
+            if form.is_valid():
+                username = form.cleaned_data['username']
+                password = form.cleaned_data['password']
+                password2 = form.cleaned_data['password2']
+                email = form.cleaned_data['email']
+                city = form.cleaned_data['city']
+                country = form.cleaned_data['country']
+                phone = form.cleaned_data['phone']
+                if password == password2:
+                    new_user = User.objects.create_user(username, email, password)
+                    new_user.save()
+                    usshash = md5.new()
+                    usshash.update(new_user.email)
+                    account = authentication.models.Account.objects.create(user=new_user, city=city, country=country, telefon=phone, cod=usshash.hexdigest())
+                    account.save()
+                    user = authenticate(username=username, password=password)
+                    login(request, user)
+                    return redirect('/')
+                else:
+                    form = RegisterForm()
+                    return render(request, "authentication/register.html", {
+                     'form':form,
+                     'errors':["Passwords do not match"]})
+
+            else:
+                form = RegisterForm()
+                return render(request, "authentication/register.html", {
+                     'form':form,
+                     'errors':["Invalid form"]})
         else:
-            return render(request, "authentication/register.html")
+            form = RegisterForm()
+            return render(request, "authentication/register.html", {
+                 'form': form})
 
 
 def login_page(request):

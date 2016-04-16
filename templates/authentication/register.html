@@ -67,41 +67,22 @@
                 <h1 class="title">Te rog introdu: </h1>
                 <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
+		    {% if errors %}
+                    <div class="error">
+		      {% for message in errors %}
+                        <ul>
+                            <li>{{ message }}</li>
+                        </ul>
+                    {% endfor %}                        
+                    </div>
+		    {% endif %}
+		    {% for field in form %}
                     <div class="input-container">
-                        <input type="text" id="Username" name="username" required="required"/>
-                        <label for="Username">Numele de utilizator</label>
+		        {{ field }}
+                        <label for="{{ field.label }}">{{ field.label }}</label>
                         <div class="bar"></div>
                     </div>
-                    <div class="input-container">
-                        <input type="text" id="Username" name="email" required="required"/>
-                        <label for="Username">E-mail</label>
-                        <div class="bar"></div>
-                    </div>
-                    <div class="input-container">
-                        <input type="text" id="Username" name="country" required="required"/>
-                        <label for="Username">Țara</label>
-                        <div class="bar"></div>
-                    </div>
-                    <div class="input-container">
-                        <input type="text" id="Username" name="city" required="required"/>
-                        <label for="Username">Oraș</label>
-                        <div class="bar"></div>
-                    </div>
-                    <div class="input-container">
-                        <input type="text" id="Username" name="phone" required="required"/>
-                        <label for="Username">Nr. de telefon</label>
-                        <div class="bar"></div>
-                    </div>
-                    <div class="input-container">
-                        <input type="password" id="Password" name="password" required="required"/>
-                        <label for="Password">Parola</label>
-                        <div class="bar"></div>
-                    </div>
-                    <div class="input-container">
-                        <input type="password" id="Password" name="password2" required="required"/>
-                        <label for="Password">Reintrodu parola</label>
-                        <div class="bar"></div>
-                    </div>
+		    {% endfor %}
                     <div class="button-container">
                         <button type="submit"><span>Înregistrează-te</span></button>
                     </div>
