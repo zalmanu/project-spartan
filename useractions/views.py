@@ -59,56 +59,29 @@ def profile(request):
     if request.user.is_authenticated():
         curruser = request.user
         now = datetime.datetime.now()
-        # request.user.account.sold=request.user.account.sold-50 am incercat sa vad daca pot modifica soldul
+        form = ProfileEditForm
         if request.method == 'POST':
-            if request.POST.get('username'):
-                username = request.POST.get('username')
-                curruser.username = username
-            if request.POST.get('email'):
-                email = request.POST.get('email')
-                curruser.email = email
-                usshash = md5.new()
-                usshash.update(email)
-                curruser.account.cod = usshash.hexdigest()
-            if request.POST.get('country'):
-                country = request.POST.get('country')
-                curruser.account.country = country
-            if request.POST.get('city'):
-                city = request.POST.get('city')
-                curruser.account.city = city
-            if request.POST.get('phone'):
-                phone = request.POST.get('phone')
-                curruser.account.phone = phone
-            curruser.account.save()
-            curruser.save()
-
-            # subject='test'
-            # email_post=request.POST.get('email')
-            # messages_post=request.POST.get('message')
-            # from_email=settings.EMAIL_HOST_USER
-            # send_mail(subject, messages_post, from_email,
-            # [request.user.email], fail_silently=True)
-
 
             if request.user.is_active and not  request.user.is_superuser:
                     return render(request, 'useractions/profile.html', {
                     'cod': curruser.account.cod,
-                    'time':now,
+                    'form': form
                     })
                
             else:
-                return render(request, 'useractions/profile.html', { 'time':now,
-                    'cod': 1})
+                return render(request, 'useractions/profile.html', { 
+                    'cod': 1,
+                    'form':form})
 
         else:
             if request.user.is_active and not  request.user.is_superuser:
                     return render(request, 'useractions/profile.html', {
                         'cod': curruser.account.cod,
-                        'form': ProfileEditForm, 'time':now, })
+                        'form': form, })
             else:
                   return render(request, 'useractions/profile.html',{
                          'cod': '61e1380365703a4c73c2480673d8993b',
-                         'form': ProfileEditForm, 'time':now,})
+                      'form': form })
     else:
         return redirect('/login/')
 

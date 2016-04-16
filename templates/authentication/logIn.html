@@ -76,16 +76,13 @@
                     {% endfor %}                        
                     </div>
 		    {% endif %}
+		    {% for field in form %}
                     <div class="input-container">
                         <input name="username" type="text" id="Username" required="required"/>
-                        <label for="Username">Numele de utilizator</label>
+                        <label for="Username">{{ field.label }}</label>
                         <div class="bar"></div>
                     </div>
-                    <div class="input-container">
-                        <input name="password" type="password" id="Password" required="required"/>
-                        <label for="Password">Parola</label>
-                        <div class="bar"></div>
-                    </div>
+		    {% endfor %}
                     <div class="button-container">
                         <button><span>Log in</span></button>
                     </div>

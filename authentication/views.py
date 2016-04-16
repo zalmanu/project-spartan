@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .forms import LoginForm
 import authentication.models
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
@@ -35,19 +36,17 @@ def login_page(request):
     if request.user.is_authenticated():
         return redirect('/')
     else:
+        form = LoginForm
         if request.method == 'POST':
-            username = request.POST.get('username')
-            password = request.POST.get('password')
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                if user.is_active:
-                    login(request, user)
-                    return redirect('/')
-            else:
-                return render(request, "authentication/logIn.html", {
-                    'errors': ['Incorrect username or password']})
+            
+            return render(request, "authentication/logIn.html", {
+                'errors': ['Incorrect username or password'],
+                'form': form
+                })
         else:
-            return render(request, "authentication/logIn.html")
+            return render(request, "authentication/logIn.html",{
+                'form': form
+            })
 def reset_pass(request):
     if request.user.is_authenticated():
         if request.method == 'POST':
