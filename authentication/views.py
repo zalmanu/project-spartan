@@ -36,14 +36,26 @@ def login_page(request):
     if request.user.is_authenticated():
         return redirect('/')
     else:
-        form = LoginForm
         if request.method == 'POST':
-            
-            return render(request, "authentication/logIn.html", {
-                'errors': ['Incorrect username or password'],
+            form = LoginForm(request.POST)
+            if form.is_valid():
+                user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
+                if user is not None:
+                    login(request, user)
+                    return redirect('/')
+                
+                else:
+                    return render(request, "authentication/logIn.html", {
+                        'errors': ['Incorrect username or password'],
+                        'form': form
+                    })
+            else:
+                return render(request, "authentication/logIn.html", {
+                'errors': ['Invalid form'],
                 'form': form
                 })
         else:
+            form = LoginForm()
             return render(request, "authentication/logIn.html",{
                 'form': form
             })
@@ -61,6 +73,6 @@ def reset_pass(request):
                 return redirect('/')
             else:return render(request, "authentication/resetpass.html",{'errors': ['Incorrect  password']})
         else :
-            return render(request, "authentication/resetpass.html")
+             return render(request, "authentication/resetpass.html")
     else : 
         return redirect('/login/')

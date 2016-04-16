@@ -78,8 +78,8 @@
 		    {% endif %}
 		    {% for field in form %}
                     <div class="input-container">
-                        <input name="username" type="text" id="Username" required="required"/>
-                        <label for="Username">{{ field.label }}</label>
+		        {{ field }}
+                        <label for="username">{{ field.label }}</label>
                         <div class="bar"></div>
                     </div>
 		    {% endfor %}
