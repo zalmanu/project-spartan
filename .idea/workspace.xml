@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="92c01cbb-327d-4d01-a1f2-75a1bce804a0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/authentication/views.py" afterPath="$PROJECT_DIR$/authentication/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/useractions/views.py" afterPath="$PROJECT_DIR$/useractions/views.py" />
     </list>
     <ignored path="project-spartan.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,8 +39,10 @@
         <entry file="file://$PROJECT_DIR$/authentication/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.63265306">
-              <caret line="62" column="36" selection-start-line="62" selection-start-column="36" selection-end-line="62" selection-end-column="36" />
-              <folding />
+              <caret line="68" column="53" selection-start-line="68" selection-start-column="53" selection-end-line="68" selection-end-column="53" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -889,8 +890,10 @@
     <entry file="file://$PROJECT_DIR$/authentication/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.63265306">
-          <caret line="62" column="36" selection-start-line="62" selection-start-column="36" selection-end-line="62" selection-end-column="36" />
-          <folding />
+          <caret line="68" column="53" selection-start-line="68" selection-start-column="53" selection-end-line="68" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

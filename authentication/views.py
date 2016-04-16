@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect
 from django.contrib import messages
 import md5
+from django.contrib.auth.decorators import login_required
 
 
 def register_page(request):
@@ -48,22 +49,29 @@ def login_page(request):
                     'errors': ['Incorrect username or password']})
         else:
             return render(request, "authentication/logIn.html")
+
+
+@login_required
 def reset_pass(request):
-    if request.user.is_authenticated():
-        if request.method == 'POST':
-            u=request.user
-            passwordold=request.POST.get('password')
-            inf=request.user.check_password(passwordold)
-            password1=request.POST.get('passwordnew')
-            password2=request.POST.get('passwordnew1')
-            if password1 ==password2 and inf==True:
-                request.user.set_password(password1)
-                u.save()
-                user = authenticate(username=request.user.username, password=password1)
-                login(request, user)
-                return redirect('/')
-            else:return render(request, "authentication/resetpass.html",{'errors': ['Incorrect  password']})
-        else :
-            return render(request, "authentication/resetpass.html")
-    else : 
-        return redirect('/login/')
+    if request.method == 'POST':
+        password_old = request.POST.get('password')
+        password_new = request.POST.get('passwordnew')
+
+        check = password_new == request.POST.get('passwordnew1')
+        if not check:
+            return render(request, "authentication/resetpass.html",
+                          {'errors': ['Those two password are not the same']})
+
+        if request.user.check_password(password_old):
+            request.user.set_password(password_new)
+            request.user.save()
+            user = authenticate(username=request.user.username,
+                                password=password_new)
+            login(request, user)
+        else:
+            return render(request, "authentication/resetpass.html",
+                          {'errors': ['Incorrect password']})
+
+    else:
+        return render(request, "authentication/resetpass.html")
+    return redirect('/')
