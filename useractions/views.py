@@ -8,7 +8,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.conf import settings
-from .forms import ProfileEditForm
+from .forms import ProfileEditForm, PostForm
 import md5
 import datetime
 
@@ -23,34 +23,46 @@ def create_post(request):
     if request.user.is_authenticated():
         curruser = request.user
         if request.method == 'POST':
-            title = request.POST.get('title')
-            post_text = request.POST.get('text')
-            adress = request.POST.get('adress')
-            country = request.POST.get('country')
-            city = request.POST.get('city')
-            category = request.POST.get('category')
-            time = request.POST.get('timepicker-one')
-            time = ":".join(map(lambda item: item.strip(), time.split(":")))
-            data_post=request.POST.get('Date')
-            data_post=datetime.datetime.strptime(data_post, '%m/%d/%Y').strftime('%Y-%m-%d')
-            money_user=request.POST.get('money')
-            announcement = Announcement.objects.create(title=title, text=post_text, address=adress, country=country,
-                                                       category=category,money =money_user, city=city,data=data_post, timePost=time, author=request.user)
-            announcement.save()
-            subject='Anunt Project Spartan'
-            messagetip=" Buna % s , \n Ati postat un anunt cu succes! \n" \
-                       " Titlul : %s ,\n Text: %s \n Adress: %s \n Country : %s \n City: %s \n category: %s \n" \
-                       " Time : %s \n Data indepliniri task-ului: %s \n " \
-                       "Suma maxima pentru licitatie: %s lei \n O zi buna!"  %(request.user.username,title,post_text,adress,country,city,category,time,data_post,money_user)
-            from_email=settings.EMAIL_HOST_USER
-            send_mail(subject, messagetip, from_email,
-            [request.user.email], fail_silently=True)
-            return redirect('/')
-        if request.user.is_active and not  request.user.is_superuser:
-             return render(request, 'useractions/create_post.html', {
-             'cod': curruser.account.cod})
-        else:return render(request, 'useractions/create_post.html', {
-            'cod': '61e1380365703a4c73c2480673d8993b'})
+            form = PostForm(request.POST)
+            if form.is_valid():
+                title = form.cleaned_data['title']
+                post_text = form.cleaned_data['text']
+                adress = form.cleaned_data['adress']
+                country = form.cleaned_data['country'] 
+                city = form.cleaned_data['city']
+                category = form.cleaned_data['category']
+                time = form.cleaned_data['timePost']
+                time = ":".join(map(lambda item: item.strip(), time.split(":")))
+                data_post = form.cleaned_data['data']
+                data_post=datetime.datetime.strptime(data_post, '%m/%d/%Y').strftime('%Y-%m-%d')
+                money_user = form.cleaned_data['price']
+                announcement = Announcement.objects.create(title=title, text=post_text, address=adress, country=country,
+                                                           category=category,money =money_user, city=city,data=data_post, timePost=time, author=request.user)
+                announcement.save()
+                subject='Anunt Project Spartan'
+                messagetip=" Buna % s , \n Ati postat un anunt cu succes! \n" \
+                    " Titlul : %s ,\n Text: %s \n Adress: %s \n Country : %s \n City: %s \n category: %s \n" \
+                    " Time : %s \n Data indepliniri task-ului: %s \n " \
+                    "Suma maxima pentru licitatie: %s lei \n O zi buna!"  %(request.user.username,title,post_text,adress,country,city,category,time,data_post,money_user)
+                from_email=settings.EMAIL_HOST_USER
+                send_mail(subject, messagetip, from_email,
+                          [request.user.email], fail_silently=True)
+                return redirect('/')
+            else:
+                return render(request, 'useractions/create_post.html', {
+                    'cod': curruser.account.cod,
+                    'form': form,
+                    'errors': ['Invalid form'] })
+        else:
+            form = PostForm()
+            if request.user.is_active and not  request.user.is_superuser:
+                return render(request, 'useractions/create_post.html', {
+                    'cod': curruser.account.cod,
+                    'form': form})
+            else:
+                return render(request, 'useractions/create_post.html', {
+                    'cod': '61e1380365703a4c73c2480673d8993b',
+                    'form': form})
     else:
         return redirect('/login/')
 

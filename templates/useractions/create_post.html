@@ -180,81 +180,22 @@
                               <h1 class="title">Te rog introdu: </h1>
                             <form method="POST">
 				{% csrf_token %}
-                                <div class="input-container">
-                                    <input type="text" id="Username" name="title" required="required"/>
-                                    <label for="Username">Titlul anuntului</label>
-                                    <div class="bar"></div>
-                                </div>
-                                <div class="input-container">
-                                    <input type="text" id="Username" name="text" required="required"/>
-                                    </textarea>
-                                    <label for="Username">Descrieti nevoia Dumneavoastra aici</label>
-                                    <div class="bar"></div>
-                                </div>
-                                <div class="input-container">
-                                    <select class="form-control input-lg m-bot15" id="choose_category" name="category">
-                                        <option disabled selected id="disabeled-option">Alegeti o categorie in care sa va integrati anuntul</option>
-                                        <option>Garden</option>
-                                        <option>Moving</option>
-                                        <option>Cleaning</option>
-                                        <option>Babysitting</option>
-                                        <option>Cooking</option>
-                                        <option>Others</option>
-                                    </select>
-                                    <div class="bar"></div>
-                                </div>
-
-
-                                <div class="input-container">
-                                    <input type="text" id="Username" name="money" required="required"/>
-                                    <label for="Username">Suma maxima pentru licitatie (lei)</label>
-                                    <div class="bar"></div>
-                                </div>
-
-
-
-
-
-                                <!---->
-                                   <div class="input-container">
-                                    <select class="form-control input-lg m-bot15" id="choose_category" name="country">
-                                        <option disabled selected id="disabeled-option">Tara</option>
-                                        <option>Romania</option>
-
-                                    </select>
-                                    <div class="bar"></div>
-                                </div>
-
-                                <!---->
-
-
-                                 <!---->
-                                   <div class="input-container">
-                                    <select class="form-control input-lg m-bot15" id="choose_category" name="city">
-                                        <option disabled selected id="disabeled-option">Oras</option>
-                                        <option>Timisoara</option>
-
-                                    </select>
-                                    <div class="bar"></div>
-                                </div>
-
-                                <!---->
-
-				<div class="input-container">
-                                    <input class="form-control event_input tcal" id="datepicker" name="Date" type="text" />
-                                    <label for="Username">Data evenimentului</label>
-                                    <div class="bar"></div>
-                                </div>
+				<div class="error">
+				  {% for message in errors %}
+				  <ul>
+				    <li>{{ message }}</li>
+				  </ul>
+				  {% endfor %}                        
+				</div>
+				{% for field in form %}
                                <div class="input-container">
-                                    <input type="text" id="timepicker-one" name="timepicker-one" class="timepicker" required="required"/>
-                                    <label for="Username">Ora evenimentului</label>
+				    {{ field }}
+				    {% if field.label != 'Category' and field.label != 'City' and field.label != 'Country' %}
+                                    <label for="Username">{{ field.label }}</label>
+				    {% endif %}
                                     <div class="bar"></div>
                                 </div>
-                                <div class="input-container">
-                                    <input type="text" id="Username" name="adress" required="required"/>
-                                    <label for="Username">Locatia anuntului</label>
-                                    <div class="bar"></div>
-                                </div>
+			       {% endfor %}
                                 <div class="button-container">
                                     <button><span>Go</span></button>
                                 </div>
