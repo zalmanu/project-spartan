@@ -17,9 +17,12 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    #Usual apps
     'authentication',
     'basicpages',
     'useractions',
+
 )
 
 MIDDLEWARE_CLASSES = [
@@ -32,6 +35,18 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+#email settings
+EMAIL_USE_TLS = True
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_HOST_USER='contactprojectspartan@gmail.com'#insert email
+EMAIL_HOST_PASSWORD='spartan123456789'#insert password
+EMAIL_PORT=587
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+
+
+
 
 ROOT_URLCONF = 'Spartan.urls'
 
@@ -58,8 +73,12 @@ WSGI_APPLICATION = 'Spartan.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'spartan',
+        'USER': 'root',
+        'PASSWORD': 'sqlpasswd',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -67,8 +86,10 @@ MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticcollected")
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -85,6 +106,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+DATE_FORMAT = 'd/m/Y'
+
+TIME_FORMAT = 'H : i'
+
+TIME_INPUT_FORMAT = 'H : i'
 
 LANGUAGE_CODE = 'en-us'
 
@@ -92,7 +118,7 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 

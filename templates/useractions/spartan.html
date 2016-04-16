@@ -1,0 +1,375 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        {% load staticfiles %}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Spartan Project</title>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet"/>
+
+        <!-- Custom CSS -->
+        <link href="{% static "css/half-slider.css" %}" rel="stylesheet"/>
+        <link href="{% static "css/one-page-wonder.css" %}" rel="stylesheet"/>
+        <link rel="stylesheet" type="text/css" href="{% static "css/default.css" %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static "css/component.css" %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static "css/heroic-features.css" %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static "css/font-awesome.css" %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static "css/font-awesome.min.css" %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static "css/line-icons.css" %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static "css/elegant-icons-style.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,600,300,200&subset=latin,latin-ext' rel='stylesheet' type='text/css'/>
+        <link rel="stylesheet" type="text/css" href="{% static "css/scss/wickedpicker.scss" %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static "css/wickedpicker.min.css" %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static "css/wickedpicker.css" %}"/>
+        <link rel="stylesheet" href="{% static "assets/fullcalendar/fullcalendar/fullcalendar.css" %}"/>
+        <link rel="stylesheet" href="{% static "assets/fullcalendar/fullcalendar/fullcalendar.print.css" %}"/>
+        <link rel="stylesheet" href="{% static "assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static "css/tcal.css" %}"/>
+
+    </head>
+
+    <body>
+
+    <!-- Navigation -->
+    <!-- Navigation -->
+
+    <div class="cbp-af-header" id="user-menu">
+				<div class="cbp-af-inner">
+                    <a href="{% url 'home' %}" id="return-home"><h1>Spartan</h1></a>
+
+                <!-- Search bar -->
+                   <div class="nav search-row" id="top_menu">
+
+                    </div>
+
+
+                </div>
+
+        <!-- Notification dropdown -->
+            <div class="top-nav notification-row" id="user-menu-buttons">
+                <!-- notificatoin dropdown start-->
+                <ul class="nav pull-right top-menu">
+
+                    <!-- task notificatoin start -->
+                    <a href="{% url 'submit' %}"><li id="task_notificatoin_bar">
+                <span class="glyphicon glyphicon-plus" id="create_post_icon" toggle="tooltip" data-placement="bottom" title="Hooray!">
+                </span>
+                         </li>
+    </a>
+                    <!-- task notificatoin end -->
+                    <!-- inbox notificatoin start-->
+                    <li id="mail_notificatoin_bar" class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <i class="fa fa-envelope-o" id="notifications-icon"></i>
+                            <span class="badge bg-important">5</span>
+                        </a>
+                        <ul class="dropdown-menu extended inbox">
+                            <div class="notify-arrow notify-arrow-blue"></div>
+                            <li>
+                                <p class="blue">Ai x mesaje noi</p>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="photo"><img alt="avatar" src="{% static "img/avatar-mini.jpg" %}"></span>
+                                    <span class="subject">
+                                    <span class="from">Greg  Martin</span>
+                                    <span class="time">1 min</span>
+                                    </span>
+                                    <span class="message">
+                                        I really like this admin panel.
+                                    </span>
+                                </a>
+                            </li>
+                           <li>
+                                <a href="#">Vezi toate mesajele</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- inbox notificatoin end -->
+                    <!-- alert notification start-->
+                    <li id="alert_notificatoin_bar" class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+
+                            <i class="fa fa-bell-o" id="notifications-icon"></i>
+                            <span class="badge bg-important">7</span>
+                        </a>
+                        <ul class="dropdown-menu extended notification">
+                            <div class="notify-arrow notify-arrow-blue"></div>
+                            <li>
+                                <p class="blue">Ai x notficări noi</p>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="label label-primary"><i class="icon_profile"></i></span>
+                                    Friend Request
+                                    <span class="small italic pull-right">5 mins</span>
+                                </a>
+                            </li>
+                           <li>
+                                <a href="#">Vezi toate notifcările</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- alert notification end-->
+                    <!-- user login dropdown start-->
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="profile-ava">
+                                <img alt="" src="http://www.gravatar.com/avatar/{{ cod }}">
+                            </span>
+                            <span class="username">{{ user.username }}</span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu extended logout">
+                            <div class="log-arrow-up"></div>
+                            <li class="eborder-top">
+                                <a href="{% url 'profile' %}"><i
+                                        class="icon_profile"></i>Profilul meu</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="icon_mail_alt"></i>Căsuța
+                                poștală</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="icon_clock_alt"></i> Oferte</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="icon_chat_alt"></i> Mai un Buton</a>
+                            </li>
+                            <li>
+                               <a href="/spartan/" >Activare Spartan</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'logout' %}"><i
+                                        class="icon_key_alt"></i>Deconectare</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- user login dropdown end -->
+                </ul>
+                <!-- notificatoin dropdown end-->
+            </div>
+    </div>
+
+    <!-- Page Content -->
+
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                 <section class="wrap" id="first-section">
+                    <div class="row title-row">
+                            <div class="col-12 font-thin categories-gallery"><br></br>Activarea puterii <span class="font-semibold"> de Spartan</span></div>
+                    </div>
+                    <div class="slide story" id="slide-6" data-slide="6">
+                        {% if errors %}
+                    <div class="error">
+		      {% for message in errors %}
+                        <ul>
+                            <li>{{ message }}</li>
+                        </ul>
+                    {% endfor %}
+                    </div>
+		    {% endif %}
+
+
+                        <div class="container">
+                          <div>
+                          <div class="card"></div>
+                          <div class="card" id="login-box">
+
+                              <h1 class="title">Please enter :</h1>
+                            <form method="POST">
+				{% csrf_token %}
+                                <div class="input-container">
+                                    <input type="text" id="Username" name="nume" required="required"/>
+                                    <label for="Username">Nume</label>
+                                    <div class="bar"></div>
+                                </div>
+                                 <div class="input-container">
+                                    <input type="text" id="Username" name="prenume" required="required"/>
+                                    <label for="Username">Prenume</label>
+                                    <div class="bar"></div>
+                                </div>
+                                <div class="input-container">
+                                    <input class="form-control event_input tcal" id="datepicker" name="Data_nasteri" type="text" />
+                                    <label for="Username">Data nasterii</label>
+                                    <div class="bar"></div>
+                                </div>
+                                <div class="input-container">
+                                    <input type="text" id="Username" name="adress" required="required"/>
+                                    <label for="Username">Adresa dvs.</label>
+                                    <div class="bar"></div>
+                                </div>
+                                <div class="input-container">
+                                    <input type="text" id="Username" name="CNP" required="required"/>
+                                    </textarea>
+                                    <label for="Username">CNP</label>
+                                    <div class="bar"></div>
+                                </div>
+
+
+
+                                <div class="input-container">
+                                    <input type="text" id="Username" name="serie" required="required"/>
+                                    <label for="Username">Serie buletin</label>
+                                    <div class="bar"></div>
+                                </div>
+
+
+
+                                <div class="input-container">
+                                    <input type="text" id="Username" name="cui" required="required"/>
+                                    <label for="Username">CUI PFA</label>
+                                    <div class="bar"></div>
+                                </div>
+
+                                 <div class="input-container">
+                                    <input type="text" id="Username" name="contBancar" required="required"/>
+                                    <label for="Username">Cont Bancar</label>
+                                    <div class="bar"></div>
+                                </div>
+
+
+
+                                <div class="input-container">
+                                    <select class="form-control input-lg m-bot15" id="choose_category" name="abilitate1">
+                                        <option disabled selected id="disabeled-option">Selectati abilitatea 1</option>
+                                        <option>None</option>
+                                        <option>Garden</option>
+                                        <option>Moving</option>
+                                        <option>Cleaning</option>
+                                        <option>Babysitting</option>
+                                        <option>Cooking</option>
+                                        <option>Others</option>
+                                    </select>
+                                    <div class="bar"></div>
+                                </div>
+
+                                 <div class="input-container">
+                                    <select class="form-control input-lg m-bot15" id="choose_category" name="abilitate2">
+                                        <option disabled selected id="disabeled-option">Selectati abilitatea 2</option>
+                                        <option>None</option>
+                                        <option>Garden</option>
+                                        <option>Moving</option>
+                                        <option>Cleaning</option>
+                                        <option>Babysitting</option>
+                                        <option>Cooking</option>
+                                        <option>Others</option>
+                                    </select>
+                                    <div class="bar"></div>
+                                </div>
+
+
+                                 <div class="input-container">
+                                    <select class="form-control input-lg m-bot15" id="choose_category" name="abilitate1">
+                                        <option disabled selected id="disabeled-option">Selectati abilitatea 3</option>
+                                        <option>None</option>
+                                        <option>Garden</option>
+                                        <option>Moving</option>
+                                        <option>Cleaning</option>
+                                        <option>Babysitting</option>
+                                        <option>Cooking</option>
+                                        <option>Others</option>
+                                    </select>
+                                    <div class="bar"></div>
+                                </div>
+
+
+
+                                <div class="button-container">
+                                    <button><span>Go</span></button>
+                                </div>
+                            </form>
+                          </div>
+
+                        </div>
+                    </div><!-- /container -->
+                </div>
+    </section>
+
+            </header>
+        </section>
+
+        <footer class="footer-distributed">
+
+			<div class="footer-left">
+
+				<h1 id="logo-title">Spartan</h1>
+
+				<p class="footer-links">
+					<a href="#">Acasa</a>
+					·
+					<a href="#">Anunț nou</a>
+					·
+					<a href="#">Profil</a>
+					·
+					<a href="#">Pagina</a>
+					·
+					<a href="#">Categorii</a>
+				</p>
+
+				<p class="footer-company-name">Spartan &copy; 2016</p>
+
+				<div class="footer-icons">
+
+					<a href="#"><i class="fa fa-facebook"></i></a>
+					<a href="#"><i class="fa fa-twitter"></i></a>
+					<a href="#"><i class="fa fa-linkedin"></i></a>
+					<a href="#"><i class="fa fa-github"></i></a>
+
+				</div>
+
+			</div>
+
+			<div class="footer-right">
+
+				<p>Contact Us</p>
+
+				<form action="#" method="post">
+				  {% csrf_token %}
+				  <input type="text" name="email" placeholder="Email" />
+					<textarea name="message" placeholder="Message"></textarea>
+					<button>Send</button>
+
+				</form>
+
+			</div>
+
+		</footer>
+
+
+        <!-- /.container -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="{% static "js/wickedpicker.js" %}"></script>
+        <script type="text/javascript" src="{% static "js/wickedpicker.min.js" %}"></script>
+        <script src="{% static "assets/fullcalendar/fullcalendar/fullcalendar.min.js" %}"></script> <!-- Full Google Calendar - Calendar -->
+        <script src="{% static "assets/fullcalendar/fullcalendar/fullcalendar.jsp" %}"></script>
+        <script src="{% static "assets/fullcalendar/fullcalendar/fullcalendar.js" %}"></script>
+	<script type="text/javascript" src="{% static "js/tcal.js" %}"></script>
+        <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+        </script>
+
+
+
+    </body>
+
+    </html>
+
+    <!-- colors: #47a3da  -main blue;
+                 #1f80af  -dark blue;
+                 #e5f5fa  -light blue;
+                                       -->
