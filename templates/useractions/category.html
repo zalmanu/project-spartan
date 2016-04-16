@@ -66,7 +66,7 @@
                         <ul class="dropdown-menu extended inbox">
                             <div class="notify-arrow notify-arrow-blue"></div>
                             <li>
-                                <p class="blue">Ai x mesaje noi</p>
+                                <p class="blue">New messages</p>
                             </li>
                             <li>
                                 <a href="#">
@@ -81,7 +81,7 @@
                                 </a>
                             </li>
                            <li>
-                                <a href="#">Vezi toate mesajele</a>
+                                <a href="#">See all</a>
                             </li>
                         </ul>
                     </li>
@@ -97,7 +97,7 @@
                         <ul class="dropdown-menu extended notification">
                             <div class="notify-arrow notify-arrow-blue"></div>
                             <li>
-                                <p class="blue">Ai x notficări noi</p>
+                                <p class="blue">New notifications</p>
                             </li>
                             <li>
                                 <a href="#">
@@ -107,7 +107,7 @@
                                 </a>
                             </li>
                            <li>
-                                <a href="#">Vezi toate notifcările</a>
+                                <a href="#">See all</a>
                             </li>
                         </ul>
                     </li>
@@ -125,14 +125,13 @@
                             <div class="log-arrow-up"></div>
                             <li class="eborder-top">
                                 <a href="{% url 'profile' %}"><i
-                                        class="icon_profile"></i>Profilul meu</a>
+                                        class="icon_profile"></i>My profile</a>
                             </li>
                             <li>
-                                <a href="#"><i class="icon_mail_alt"></i>Căsuța
-                                poștală</a>
+                                <a href="#"><i class="icon_mail_alt"></i>Mail</a>
                             </li>
                             <li>
-                                <a href="#"><i class="icon_clock_alt"></i> Oferte</a>
+                                <a href="#"><i class="icon_clock_alt"></i> Offers</a>
                             </li>
                             <li>
                                 <a href="#"><i class="icon_chat_alt"></i> Mai un Buton</a>
@@ -141,15 +140,15 @@
                                 <p class="blue">Logged In As:</p>
                             </li>
                             <li>
-                                <a href="/spartan/" >Activare Spartan</a>
+                                <a href="/spartan/" >Become a Spartan</a>
                                 <!--<a href="#"><i>Te poti angaja</i><div class="checkbox"> <label> <input type="checkbox">Spartan</label> </div></a>-->
                             </li>
                             <li>
-                                <a href="#"><i>Poti Angaja</i><div class="checkbox"> <label> <input type="checkbox"> Angajator</label> </div></a>
+                                <a href="#"><i>You can hire</i><div class="checkbox"> <label> <input type="checkbox"> Employer</label> </div></a>
                             </li>
                             <li>
                                 <a href="{% url 'logout' %}"><i
-                                        class="icon_key_alt"></i>Deconectare</a>
+                                        class="icon_key_alt"></i>Log out</a>
                             </li>
                         </ul>
                     </li>
@@ -165,19 +164,19 @@
                     <h1><a href="{% url 'home' %}" id="return-home">Spartan</a></h1>
                     <nav id="register-button">
                         <a href="{% url 'login' %}"
-                        id="button-flow">Contul meu</a>
+                        id="button-flow">My account</a>
                         <a href="#" id="line-flow">|</a>
             <a href="{% url 'register' %}"
-                                                    id="button-flow">Înregistrare</a>
+                                                    id="button-flow">Sign up</a>
                     </nav>
                     <nav id="menu-button">
             <a href="#first-section"
-                                                    id="menu1-flow">Despre noi</a>
+                                                    id="menu1-flow">About us</a>
             <a href="#secound-section"
-                                                    id="menu2-flow">Etape</a>
+                                                    id="menu2-flow">Steps</a>
             <a href="#third-section"
-                                                    id="menu3-flow">Categorii</a>
-                        <a href="/register/" id="menu3-flow">Alătură-te</a>
+                                                    id="menu3-flow">Categories</a>
+                        <a href="/register/" id="menu3-flow">Join us</a>
           </nav>
         </div>
     </div>
@@ -187,7 +186,7 @@
         <section class="third-section" id="wrap">
             <header class="jumbotron hero-spacer" id="category-banner" style="background-image: url({% static 'images/categories/'%}{{ kind }}-banner.jpg);">
                 <h1 id="category-title">{{ kind }}</h1>
-                <p><a class="btn btn-primary btn-large create-post-category-button" href="/submit">Crează un anunț</a>
+                <p><a class="btn btn-primary btn-large create-post-category-button" href="/submit">Create new post</a>
                 </p>
             </header>
         </section>
@@ -286,15 +285,15 @@
 				<h1 id="logo-title">Spartan</h1>
 
 				<p class="footer-links">
-					<a href="#">Acasa</a>
+					<a href="#">Home</a>
 					·
-					<a href="#">Anunt nou</a>
+					<a href="#">New post</a>
 					·
-					<a href="#">Profil</a>
+					<a href="#">Profile</a>
 					·
-					<a href="#">Pagina</a>
+					<a href="#">Page</a>
 					·
-					<a href="#">Categorii</a>
+					<a href="#">Categories</a>
 				</p>
 
 				<p class="footer-company-name">Spartan &copy; 2016</p>

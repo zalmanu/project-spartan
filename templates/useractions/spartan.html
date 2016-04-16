@@ -76,7 +76,7 @@
                         <ul class="dropdown-menu extended inbox">
                             <div class="notify-arrow notify-arrow-blue"></div>
                             <li>
-                                <p class="blue">Ai x mesaje noi</p>
+                                <p class="blue">New messages</p>
                             </li>
                             <li>
                                 <a href="#">
@@ -91,7 +91,7 @@
                                 </a>
                             </li>
                            <li>
-                                <a href="#">Vezi toate mesajele</a>
+                                <a href="#">See all</a>
                             </li>
                         </ul>
                     </li>
@@ -106,7 +106,7 @@
                         <ul class="dropdown-menu extended notification">
                             <div class="notify-arrow notify-arrow-blue"></div>
                             <li>
-                                <p class="blue">Ai x notficări noi</p>
+                                <p class="blue">New notifications</p>
                             </li>
                             <li>
                                 <a href="#">
@@ -116,7 +116,7 @@
                                 </a>
                             </li>
                            <li>
-                                <a href="#">Vezi toate notifcările</a>
+                                <a href="#">See all</a>
                             </li>
                         </ul>
                     </li>
@@ -134,24 +134,23 @@
                             <div class="log-arrow-up"></div>
                             <li class="eborder-top">
                                 <a href="{% url 'profile' %}"><i
-                                        class="icon_profile"></i>Profilul meu</a>
+                                        class="icon_profile"></i>My profile</a>
                             </li>
                             <li>
-                                <a href="#"><i class="icon_mail_alt"></i>Căsuța
-                                poștală</a>
+                                <a href="#"><i class="icon_mail_alt"></i>Mail</a>
                             </li>
                             <li>
-                                <a href="#"><i class="icon_clock_alt"></i> Oferte</a>
+                                <a href="#"><i class="icon_clock_alt"></i> Offers</a>
                             </li>
                             <li>
                                 <a href="#"><i class="icon_chat_alt"></i> Mai un Buton</a>
                             </li>
                             <li>
-                               <a href="/spartan/" >Activare Spartan</a>
+                               <a href="/spartan/" >Become a Spartan</a>
                             </li>
                             <li>
                                 <a href="{% url 'logout' %}"><i
-                                        class="icon_key_alt"></i>Deconectare</a>
+                                        class="icon_key_alt"></i>Log out</a>
                             </li>
                         </ul>
                     </li>
@@ -168,7 +167,7 @@
 
                  <section class="wrap" id="first-section">
                     <div class="row title-row">
-                            <div class="col-12 font-thin categories-gallery"><br></br>Activarea puterii <span class="font-semibold"> de Spartan</span></div>
+                            <div class="col-12 font-thin categories-gallery"><br></br>Become a <span class="font-semibold">Spartan</span></div>
                     </div>
                     <div class="slide story" id="slide-6" data-slide="6">
                         {% if errors %}
@@ -192,22 +191,22 @@
 				{% csrf_token %}
                                 <div class="input-container">
                                     <input type="text" id="Username" name="nume" required="required"/>
-                                    <label for="Username">Nume</label>
+                                    <label for="Username">Last Name</label>
                                     <div class="bar"></div>
                                 </div>
                                  <div class="input-container">
                                     <input type="text" id="Username" name="prenume" required="required"/>
-                                    <label for="Username">Prenume</label>
+                                    <label for="Username">First Name</label>
                                     <div class="bar"></div>
                                 </div>
                                 <div class="input-container">
                                     <input class="form-control event_input tcal" id="datepicker" name="Data_nasteri" type="text" />
-                                    <label for="Username">Data nasterii</label>
+                                    <label for="Username">Birthday</label>
                                     <div class="bar"></div>
                                 </div>
                                 <div class="input-container">
                                     <input type="text" id="Username" name="adress" required="required"/>
-                                    <label for="Username">Adresa dvs.</label>
+                                    <label for="Username">Address</label>
                                     <div class="bar"></div>
                                 </div>
                                 <div class="input-container">
@@ -235,7 +234,7 @@
 
                                  <div class="input-container">
                                     <input type="text" id="Username" name="contBancar" required="required"/>
-                                    <label for="Username">Cont Bancar</label>
+                                    <label for="Username">Bank account</label>
                                     <div class="bar"></div>
                                 </div>
 
@@ -243,8 +242,7 @@
 
                                 <div class="input-container">
                                     <select class="form-control input-lg m-bot15" id="choose_category" name="abilitate1">
-                                        <option disabled selected id="disabeled-option">Selectati abilitatea 1</option>
-                                        <option>None</option>
+                                        <option disabled selected id="disabeled-option">Select activity domain</option>
                                         <option>Garden</option>
                                         <option>Moving</option>
                                         <option>Cleaning</option>
@@ -258,7 +256,6 @@
                                  <div class="input-container">
                                     <select class="form-control input-lg m-bot15" id="choose_category" name="abilitate2">
                                         <option disabled selected id="disabeled-option">Selectati abilitatea 2</option>
-                                        <option>None</option>
                                         <option>Garden</option>
                                         <option>Moving</option>
                                         <option>Cleaning</option>
@@ -273,7 +270,6 @@
                                  <div class="input-container">
                                     <select class="form-control input-lg m-bot15" id="choose_category" name="abilitate1">
                                         <option disabled selected id="disabeled-option">Selectati abilitatea 3</option>
-                                        <option>None</option>
                                         <option>Garden</option>
                                         <option>Moving</option>
                                         <option>Cleaning</option>
@@ -307,15 +303,15 @@
 				<h1 id="logo-title">Spartan</h1>
 
 				<p class="footer-links">
-					<a href="#">Acasa</a>
+					<a href="#">Home</a>
 					·
-					<a href="#">Anunț nou</a>
+					<a href="#">New post</a>
 					·
-					<a href="#">Profil</a>
+					<a href="#">Profile</a>
 					·
-					<a href="#">Pagina</a>
+					<a href="#">Page</a>
 					·
-					<a href="#">Categorii</a>
+					<a href="#">Categories</a>
 				</p>
 
 				<p class="footer-company-name">Spartan &copy; 2016</p>

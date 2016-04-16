@@ -343,22 +343,22 @@
                                           <h1>Bio Graph</h1>
                                           <div class="row">
                                               <div class="bio-row">
-                                                  <p><span>Nume de utilizator: </span> {{ user.username }} </p>
+                                                  <p><span>Username: </span> {{ user.username }} </p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>Oraș: </span>{{ user.account.city }}</p>
+                                                  <p><span>City: </span>{{ user.account.city }}</p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>Țara: </span> {{ user.account.country }}</p>
+                                                  <p><span>Country: </span> {{ user.account.country }}</p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>Email: </span> {{ user.email }} </p>
+                                                  <p><span>E-mail: </span> {{ user.email }} </p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>Nr. de telefon: </span>{{ user.account.telefon }}</p>
+                                                  <p><span>Phone number: </span>{{ user.account.telefon }}</p>
                                               </div>
                                                <div class="bio-row">
-                                                  <p><span>Sold curent : </span>{{ user.account.sold }} lei</p>
+                                                  <p><span>Current balance : </span>{{ user.account.sold }} lei</p>
                                               </div>
                                           </div>
                                       </div>
@@ -376,31 +376,31 @@
                                               <form class="form-horizontal" role="form" method="POST">
                                                 {% csrf_token %}
                                                   <div class="form-group">
-                                                      <label class="col-lg-2 control-label">Nume de utilizator</label>
+                                                      <label class="col-lg-2 control-label">Username</label>
                                                       <div class="col-lg-6">
                                                         <input type="text" class="form-control" name="username" id="f-name" placeholder="{{ user.username }}">
                                                       </div>
                                                   </div>
                                                   <div class="form-group">
-                                                      <label class="col-lg-2 control-label">Email</label>
+                                                      <label class="col-lg-2 control-label">E-mail</label>
                                                       <div class="col-lg-6">
                                                           <input type="text" class="form-control" name="email" id="email" placeholder="{{ user.email }}">
                                                       </div>
                                                   </div>
                                                   <div class="form-group">
-                                                      <label class="col-lg-2 control-label">Țara</label>
+                                                      <label class="col-lg-2 control-label">Country</label>
                                                       <div class="col-lg-6">
                                                           <input type="text" class="form-control" name="country"  id="c-name" placeholder="{{ user.account.country }}">
                                                       </div>
                                                   </div>
                                                   <div class="form-group">
-                                                      <label class="col-lg-2 control-label">Oraș</label>
+                                                      <label class="col-lg-2 control-label">City</label>
                                                       <div class="col-lg-6">
                                                           <input type="text" class="form-control" name="city" id="c-name" placeholder="{{ user.account.city }}">
                                                       </div>
                                                   </div>
                                                   <div class="form-group">
-                                                      <label class="col-lg-2 control-label">Nr. de telefon</label>
+                                                      <label class="col-lg-2 control-label">Phone number</label>
                                                       <div class="col-lg-6">
                                                           <input type="text" class="form-control" name="phone"  id="c-name" placeholder="{{ user.account.telefon }}">
                                                       </div>
@@ -426,7 +426,7 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <th>Anunturi creeate</th><td>23</td><td>88</td><td>8</td><td>2</td><td>67</td><td>83</td><td>81</td><td>37</td><td>91</td><td>96</td><td>13</td><td>3</td><td>95</td><td>98</td><td>10</td><td>87</td><td>70</td><td>54</td><td>72</td><td>75</td>
+                                                            <th>Anunturi create</th><td>23</td><td>88</td><td>8</td><td>2</td><td>67</td><td>83</td><td>81</td><td>37</td><td>91</td><td>96</td><td>13</td><td>3</td><td>95</td><td>98</td><td>10</td><td>87</td><td>70</td><td>54</td><td>72</td><td>75</td>
                                                         </tr><tr>
                                                             <th>Anunturi finalizate</th><td>14</td><td>21</td><td>20</td><td>21</td><td>9</td><td>68</td><td>60</td><td>73</td><td>22</td><td>29</td><td>9</td><td>49</td><td>49</td><td>66</td><td>58</td><td>10</td><td>8</td><td>24</td><td>19</td><td>65</td>
                                                         </tr><tr>
@@ -504,15 +504,15 @@
 				<h1 id="logo-title">Spartan</h1>
 
 				<p class="footer-links">
-					<a href="#">Acasa</a>
+					<a href="#">Home</a>
 					·
-					<a href="#">Anunt nou</a>
+					<a href="#">New post</a>
 					·
-					<a href="#">Profil</a>
+					<a href="#">Profile</a>
 					·
-					<a href="#">Pagina</a>
+					<a href="#">Page</a>
 					·
-					<a href="#">Categorii</a>
+					<a href="#">Categories</a>
 				</p>
 
 				<p class="footer-company-name">Spartan &copy; 2016</p>

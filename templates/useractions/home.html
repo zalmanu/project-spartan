@@ -68,7 +68,7 @@
                         <ul class="dropdown-menu extended inbox">
                             <div class="notify-arrow notify-arrow-blue"></div>
                             <li>
-                                <p class="blue">Ai x mesaje noi</p>
+                                <p class="blue">New messages</p>
                             </li>
                             <li>
                                 <a href="#">
@@ -83,7 +83,7 @@
                                 </a>
                             </li>
                            <li>
-                                <a href="#">Vezi toate mesajele</a>
+                                <a href="#">See all</a>
                             </li>
                         </ul>
                     </li>
@@ -98,7 +98,7 @@
                         <ul class="dropdown-menu extended notification">
                             <div class="notify-arrow notify-arrow-blue"></div>
                             <li>
-                                <p class="blue">Ai x notficări noi</p>
+                                <p class="blue">New notifications</p>
                             </li>
                             <li>
                                 <a href="#">
@@ -108,7 +108,7 @@
                                 </a>
                             </li>
                            <li>
-                                <a href="#">Vezi toate notifcările</a>
+                                <a href="#">See all</a>
                             </li>
                         </ul>
                     </li>
@@ -126,24 +126,23 @@
                             <div class="log-arrow-up"></div>
                             <li class="eborder-top">
                                 <a href="{% url 'profile' %}"><i
-                                        class="icon_profile"></i>Profilul meu</a>
+                                        class="icon_profile"></i>My profile</a>
                             </li>
                             <li>
-                                <a href="#"><i class="icon_mail_alt"></i>Căsuța
-                                poștală</a>
+                                <a href="#"><i class="icon_mail_alt"></i>Mail</a>
                             </li>
                             <li>
-                                <a href="#"><i class="icon_clock_alt"></i> Oferte</a>
+                                <a href="#"><i class="icon_clock_alt"></i> Offers</a>
                             </li>
                             <li>
                                 <a href="#"><i class="icon_chat_alt"></i> Mai un Buton</a>
                             </li>
                             <li>
-                               <a href="/spartan/" >Activare Spartan</a>
+                               <a href="/spartan/" >Become a Spartan</a>
                             </li>
                             <li>
                                 <a href="{% url 'logout' %}"><i
-                                        class="icon_key_alt"></i>Deconectare</a>
+                                        class="icon_key_alt"></i>Log out</a>
                             </li>
                         </ul>
                     </li>
@@ -160,7 +159,7 @@
 		<section class="third-section" id="wrap">
     <div class="row title-row">
 				<div class="col-12 font-thin
-                                    categories-gallery">Alege <span class="font-semibold">o categorie</span> </div>
+                                    categories-gallery">Choose a <span class="font-semibold">category</span> </div>
     </div>
     <div class="row line-row">
 				<div class="hr">&nbsp;</div>
@@ -175,7 +174,7 @@
 						<a href="/category/{{ kind }}" name="kind" value="{{ kind }}">
 							<span class="cbp-ig-icon"><img src="{% static 'images/categories/'%}{{ kind }}-icon.png"></span>
 							<h3 class="cbp-ig-title">{{ kind }}</h3>
-							<span class="cbp-ig-category"> Dă click aici pentru mai multe</span>
+							<span class="cbp-ig-category"> Click for details</span>
             </a>
 					</li>
 	{% endfor %}
@@ -186,7 +185,7 @@
    <section class="third-section">
             <div class="row title-row">
 				<div class="col-12 font-thin"><span
-                                        class="font-semibold">Anuțuri</span> recente</div>
+                                        class="font-semibold">Recent</span> posts</div>
             </div>
 			<div class="row line-row">
 				<div class="hr">&nbsp;</div>

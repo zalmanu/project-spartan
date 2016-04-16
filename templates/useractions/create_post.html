@@ -167,7 +167,7 @@
 
                  <section class="wrap" id="first-section">
                     <div class="row title-row">
-                            <div class="col-12 font-thin categories-gallery">Crează<span class="font-semibold"> anunț</span></div>
+                            <div class="col-12 font-thin categories-gallery">Create<span class="font-semibold"> post</span></div>
                     </div>
                     <div class="slide story" id="slide-6" data-slide="6">
 
@@ -177,23 +177,22 @@
                           <div class="card"></div>
                           <div class="card" id="login-box">
 
-                              <h1 class="title">Te rog introdu: </h1>
                             <form method="POST">
 				{% csrf_token %}
                                 <div class="input-container">
                                     <input type="text" id="Username" name="title" required="required"/>
-                                    <label for="Username">Titlul anuntului</label>
+                                    <label for="Username">Title</label>
                                     <div class="bar"></div>
                                 </div>
                                 <div class="input-container">
                                     <input type="text" id="Username" name="text" required="required"/>
                                     </textarea>
-                                    <label for="Username">Descrieti nevoia Dumneavoastra aici</label>
+                                    <label for="Username">Description</label>
                                     <div class="bar"></div>
                                 </div>
                                 <div class="input-container">
                                     <select class="form-control input-lg m-bot15" id="choose_category" name="category">
-                                        <option disabled selected id="disabeled-option">Alegeti o categorie in care sa va integrati anuntul</option>
+                                        <option disabled selected id="disabeled-option">Choose a category</option>
                                         <option>Garden</option>
                                         <option>Moving</option>
                                         <option>Cleaning</option>
@@ -218,7 +217,7 @@
                                 <!---->
                                    <div class="input-container">
                                     <select class="form-control input-lg m-bot15" id="choose_category" name="country">
-                                        <option disabled selected id="disabeled-option">Tara</option>
+                                        <option disabled selected id="disabeled-option">Country</option>
                                         <option>Romania</option>
 
                                     </select>
@@ -231,7 +230,7 @@
                                  <!---->
                                    <div class="input-container">
                                     <select class="form-control input-lg m-bot15" id="choose_category" name="city">
-                                        <option disabled selected id="disabeled-option">Oras</option>
+                                        <option disabled selected id="disabeled-option">City</option>
                                         <option>Timisoara</option>
 
                                     </select>
@@ -242,17 +241,17 @@
 
 				<div class="input-container">
                                     <input class="form-control event_input tcal" id="datepicker" name="Date" type="text" />
-                                    <label for="Username">Data evenimentului</label>
+                                    <label for="Username">Event date</label>
                                     <div class="bar"></div>
                                 </div>
                                <div class="input-container">
                                     <input type="text" id="timepicker-one" name="timepicker-one" class="timepicker" required="required"/>
-                                    <label for="Username">Ora evenimentului</label>
+                                    <label for="Username">Event hour</label>
                                     <div class="bar"></div>
                                 </div>
                                 <div class="input-container">
                                     <input type="text" id="Username" name="adress" required="required"/>
-                                    <label for="Username">Locatia anuntului</label>
+                                    <label for="Username">Location</label>
                                     <div class="bar"></div>
                                 </div>
                                 <div class="button-container">
@@ -276,15 +275,15 @@
 				<h1 id="logo-title">Spartan</h1>
 
 				<p class="footer-links">
-					<a href="#">Acasa</a>
+					<a href="#">Home</a>
 					·
-					<a href="#">Anunț nou</a>
+					<a href="#">New post</a>
 					·
-					<a href="#">Profil</a>
+					<a href="#">Profile</a>
 					·
-					<a href="#">Pagina</a>
+					<a href="#">Page</a>
 					·
-					<a href="#">Categorii</a>
+					<a href="#">Categories</a>
 				</p>
 
 				<p class="footer-company-name">Spartan &copy; 2016</p>

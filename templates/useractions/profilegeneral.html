@@ -72,7 +72,7 @@
                         <ul class="dropdown-menu extended inbox">
                             <div class="notify-arrow notify-arrow-blue"></div>
                             <li>
-                                <p class="blue">Ai x mesaje noi</p>
+                                <p class="blue">New messages</p>
                             </li>
                             <li>
                                 <a href="#">
@@ -87,7 +87,7 @@
                                 </a>
                             </li>
                            <li>
-                                <a href="#">Vezi toate mesajele</a>
+                                <a href="#">See messages</a>
                             </li>
                         </ul>
                     </li>
@@ -102,7 +102,7 @@
                         <ul class="dropdown-menu extended notification">
                             <div class="notify-arrow notify-arrow-blue"></div>
                             <li>
-                                <p class="blue">Ai x notficări noi</p>
+                                <p class="blue">New notifications</p>
                             </li>
                             <li>
                                 <a href="#">
@@ -112,7 +112,7 @@
                                 </a>
                             </li>
                            <li>
-                                <a href="#">Vezi toate notifcările</a>
+                                <a href="#">See notifications</a>
                             </li>
                         </ul>
                     </li>
@@ -130,24 +130,23 @@
                             <div class="log-arrow-up"></div>
                             <li class="eborder-top">
                                 <a href="{% url 'profile' %}"><i
-                                        class="icon_profile"></i>Profilul meu</a>
+                                        class="icon_profile"></i>My profile</a>
                             </li>
                             <li>
-                                <a href="#"><i class="icon_mail_alt"></i>Căsuța
-                                poștală</a>
+                                <a href="#"><i class="icon_mail_alt"></i>Mail</a>
                             </li>
                             <li>
-                                <a href="#"><i class="icon_clock_alt"></i> Oferte</a>
+                                <a href="#"><i class="icon_clock_alt"></i> Offers</a>
                             </li>
                             <li>
                                 <a href="#"><i class="icon_chat_alt"></i> Mai un Buton</a>
                             </li>
                             <li>
-                               <a href="/spartan/" >Activare Spartan</a>
+                               <a href="/spartan/" >Sign up as a Spartan</a>
                             </li>
                             <li>
                                 <a href="{% url 'logout' %}"><i
-                                        class="icon_key_alt"></i>Deconectare</a>
+                                        class="icon_key_alt"></i>Log out</a>
                             </li>
                         </ul>
                     </li>
@@ -211,7 +210,7 @@
                                   </li>
                                   <li class="">
                                       <a data-toggle="tab" href="#badges">
-                                         Activitate
+                                         Activity
                                       </a>
                                   </li>
 
@@ -327,19 +326,19 @@
                                           <h1>Bio Graph</h1>
                                           <div class="row">
                                               <div class="bio-row">
-                                                  <p><span>Nume de utilizator: </span> {{ user.username }} </p>
+                                                  <p><span>Username: </span> {{ user.username }} </p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>Oraș: </span>{{ user.account.city }}</p>
+                                                  <p><span>City: </span>{{ user.account.city }}</p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>Țara: </span> {{ user.account.country }}</p>
+                                                  <p><span>Country: </span> {{ user.account.country }}</p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>Email: </span> {{ user.email }} </p>
+                                                  <p><span>E-mail: </span> {{ user.email }} </p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>Nr. de telefon: </span>{{ user.account.telefon }}</p>
+                                                  <p><span>Phone number: </span>{{ user.account.telefon }}</p>
                                               </div>
                                           </div>
                                       </div>
@@ -357,31 +356,31 @@
                                               <form class="form-horizontal" role="form" method="POST">
                                                 {% csrf_token %}
                                                   <div class="form-group">
-                                                      <label class="col-lg-2 control-label">Nume de utilizator</label>
+                                                      <label class="col-lg-2 control-label">Username</label>
                                                       <div class="col-lg-6">
                                                         <input type="text" class="form-control" name="username" id="f-name" placeholder="{{ user.username }}">
                                                       </div>
                                                   </div>
                                                   <div class="form-group">
-                                                      <label class="col-lg-2 control-label">Email</label>
+                                                      <label class="col-lg-2 control-label">E-mail</label>
                                                       <div class="col-lg-6">
                                                           <input type="text" class="form-control" name="email" id="email" placeholder="{{ user.email }}">
                                                       </div>
                                                   </div>
                                                   <div class="form-group">
-                                                      <label class="col-lg-2 control-label">Țara</label>
+                                                      <label class="col-lg-2 control-label">Country</label>
                                                       <div class="col-lg-6">
                                                           <input type="text" class="form-control" name="country"  id="c-name" placeholder="{{ user.account.country }}">
                                                       </div>
                                                   </div>
                                                   <div class="form-group">
-                                                      <label class="col-lg-2 control-label">Oraș</label>
+                                                      <label class="col-lg-2 control-label">City</label>
                                                       <div class="col-lg-6">
                                                           <input type="text" class="form-control" name="city" id="c-name" placeholder="{{ user.account.city }}">
                                                       </div>
                                                   </div>
                                                   <div class="form-group">
-                                                      <label class="col-lg-2 control-label">Nr. de telefon</label>
+                                                      <label class="col-lg-2 control-label">Phone number</label>
                                                       <div class="col-lg-6">
                                                           <input type="text" class="form-control" name="phone"  id="c-name" placeholder="{{ user.account.telefon }}">
                                                       </div>
@@ -402,7 +401,7 @@
                                                 <table class="overflow-y">
                                                     <thead>
                                                         <tr>
-                                                            <th style="width: 164px;">Activitate</th><th>Alpha</th><th>Beta</th><th>Gamma</th><th>Delta</th><th>Epsilon</th><th>Zeta</th><th>Eta</th><th>Theta</th><th>Iota</th><th>Kappa</th><th>Lambda</th><th>Mu</th><th>Nu</th><th>Xi</th><th>Omicron</th><th>Pi</th><th>Rho</th><th>Sigma</th><th>Tau</th><th>Upsilon</th>
+                                                            <th style="width: 164px;">Activity</th><th>Alpha</th><th>Beta</th><th>Gamma</th><th>Delta</th><th>Epsilon</th><th>Zeta</th><th>Eta</th><th>Theta</th><th>Iota</th><th>Kappa</th><th>Lambda</th><th>Mu</th><th>Nu</th><th>Xi</th><th>Omicron</th><th>Pi</th><th>Rho</th><th>Sigma</th><th>Tau</th><th>Upsilon</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -485,15 +484,15 @@
 				<h1 id="logo-title">Spartan</h1>
 
 				<p class="footer-links">
-					<a href="#">Acasa</a>
+					<a href="#">Home</a>
 					·
-					<a href="#">Anunt nou</a>
+					<a href="#">New post</a>
 					·
-					<a href="#">Profil</a>
+					<a href="#">Profile</a>
 					·
-					<a href="#">Pagina</a>
+					<a href="#">Page</a>
 					·
-					<a href="#">Categorii</a>
+					<a href="#">Categories</a>
 				</p>
 
 				<p class="footer-company-name">Spartan &copy; 2016</p>
