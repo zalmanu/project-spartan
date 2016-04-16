@@ -172,8 +172,11 @@ def spartan(request):
             from_email=settings.EMAIL_HOST_USER
             send_mail(subject, messagetip, from_email,
             [request.user.email], fail_silently=True)
-            return render(request, 'useractions/spartan.html' ,{'errors': ['Ati completat cu succes formularul,asteptati confirmarea administratorului!'],
-        'cod': request.user.account.cod})
+            if request.user.is_active and not  request.user.is_superuser:
+                return render(request, 'useractions/spartan.html' ,{'errors': ['Ati completat cu succes formularul,asteptati confirmarea administratorului!'],
+                 'cod': request.user.account.cod})
+            else:return render(request, 'useractions/spartan.html' ,{'errors': ['Ati completat cu succes formularul,asteptati confirmarea administratorului!'],
+                 'cod': '61e1380365703a4c73c2480673d8993b'})
         else:
               if request.user.is_active and not  request.user.is_superuser:
                     return render(request, 'useractions/spartan.html', {'cod': request.user.account.cod})
