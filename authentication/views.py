@@ -59,6 +59,8 @@ def reset_pass(request):
             if password1 ==password2 and inf==True:
                 request.user.set_password(password1)
                 u.save()
+                user = authenticate(username=request.user.username, password=password1)
+                login(request, user)
                 return redirect('/')
             else:return render(request, "authentication/resetpass.html",{'errors': ['Incorrect  password']})
         else :

@@ -117,7 +117,6 @@ def category(request, kind):
     if request.user.is_authenticated:
         an = Announcement.objects.filter(category=kind)
         curruser = request.user
-        print curruser.account.cod
         if request.user.is_active and not  request.user.is_superuser:
             return render(request, 'useractions/category.html', {
             'categories': ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others'],
