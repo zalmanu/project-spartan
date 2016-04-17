@@ -1,11 +1,12 @@
 from django.shortcuts import render
-from .forms import LoginForm, RegisterForm
+from .forms import LoginForm, RegisterForm, PasswordResetForm
 import authentication.models
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect
 from django.contrib import messages
 import md5
+from django.contrib.auth.decorators import login_required
 
 
 def register_page(request):
@@ -76,20 +77,37 @@ def login_page(request):
             return render(request, "authentication/logIn.html",{
                 'form': form
             })
+        
+@login_required
 def reset_pass(request):
-    if request.user.is_authenticated():
-        if request.method == 'POST':
-            u=request.user
-            passwordold=request.POST.get('password')
-            inf=request.user.check_password(passwordold)
-            password1=request.POST.get('passwordnew')
-            password2=request.POST.get('passwordnew1')
-            if password1 ==password2 and inf==True:
-                request.user.set_password(password1)
-                u.save()
-                return redirect('/')
-            else:return render(request, "authentication/resetpass.html",{'errors': ['Incorrect  password']})
-        else :
-             return render(request, "authentication/resetpass.html")
-    else : 
-        return redirect('/login/')
+    if request.method == 'POST':
+        form = PasswordResetForm(request.POST)
+        if form.is_valid():
+            password_old = form.cleaned_data['oldpass']
+            password_new = form.cleaned_data['pass1']
+
+            check = password_new == form.cleaned_data['pass2']
+            if not check:
+                return render(request, "authentication/resetpass.html",
+                              {'errors': ['Those two password are not the same'],
+                               'form': form})
+
+            if request.user.check_password(password_old):
+                request.user.set_password(password_new)
+                request.user.save()
+                user = authenticate(username=request.user.username,
+                                    password=password_new)
+                login(request, user)
+            else:
+                return render(request, "authentication/resetpass.html",
+                              {'errors': ['Incorrect password'],
+                               'form': form})
+
+        else:
+            return render(request, "authentication/resetpass.html",
+                          {'errors': ['Invalid form'],
+                           'form': form})
+    else:
+        form = PasswordResetForm
+        return render(request, "authentication/resetpass.html", {'form': form})
+    return redirect('/')

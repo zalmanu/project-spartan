@@ -13,3 +13,7 @@ class RegisterForm(forms.Form):
     city = forms.CharField(max_length=100, label='City')
     phone = forms.IntegerField(label='Phone number')
 
+class PasswordResetForm(forms.Form):
+    oldpass = forms.CharField(max_length=30, label="Old password", widget=forms.PasswordInput())
+    pass1 = forms.CharField(max_length=30, label="New password",widget=forms.PasswordInput())
+    pass2 = forms.CharField(max_length=30, label="Type again the new password", widget=forms.PasswordInput())

@@ -30,3 +30,5 @@ class SpartanForm(forms.Form):
     abilitate1 = forms.ChoiceField(choices=[(x, x) for x in ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others']], label="Category", widget=forms.Select(attrs={'class': "form-control input-lg m-bot15"}))  
     abilitate2 = forms.ChoiceField(choices=[(x, x) for x in ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others']], label="Category", widget=forms.Select(attrs={'class': "form-control input-lg m-bot15"}))
     abilitate3 = forms.ChoiceField(choices=[(x, x) for x in ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others']], label="Category", widget=forms.Select(attrs={'class': "form-control input-lg m-bot15"}))      
+
+
