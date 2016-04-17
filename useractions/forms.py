@@ -1,10 +1,10 @@
 from django import forms 
 
 class ProfileEditForm(forms.Form):
-    username = forms.CharField(max_length=100, label="Username", required=False)
+    username = forms.CharField(max_length=30, label="Username", required=False)
     email = forms.CharField(max_length=100, label="Email", required=False)
     city = forms.CharField(max_length=100, label="City", required=False)
-    country = forms.CharField(max_length=100, label="Country", required=False)
+    country = forms.CharField(max_length=36, label="Country", required=False)
     telefon = forms.IntegerField(label="Phone", required=False)
 
 class PostForm(forms.Form):
@@ -19,8 +19,8 @@ class PostForm(forms.Form):
     price = forms.IntegerField(label="Highest price you are willing to pay")
     
 class SpartanForm(forms.Form):
-    prenume = forms.CharField(max_length=25, label="First name")
-    nume = forms.CharField(max_length=25, label="Last name")
+    prenume = forms.CharField(max_length=40, label="First name")
+    nume = forms.CharField(max_length=40, label="Last name")
     data = forms.CharField(label="Bitrthday", widget=forms.TextInput(attrs={'class': "form-control event_input tcal"}))
     adress = forms.CharField(max_length=500, label="Adress")
     CNP = forms.IntegerField(label="CNP")

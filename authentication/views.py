@@ -17,9 +17,17 @@ def register_page(request):
             form = RegisterForm(request.POST)
             if form.is_valid():
                 username = form.cleaned_data['username']
+                if User.objects.filter(username=username).exists():
+                    return render(request, "authentication/register.html", {
+                     'form':form,
+                     'errors':["Username is already taken"]})
                 password = form.cleaned_data['password']
                 password2 = form.cleaned_data['password2']
                 email = form.cleaned_data['email']
+                if User.objects.filter(email=email).exists():
+                    return render(request, "authentication/register.html", {
+                     'form':form,
+                     'errors':["Email is already taken"]})
                 city = form.cleaned_data['city']
                 country = form.cleaned_data['country']
                 phone = form.cleaned_data['phone']

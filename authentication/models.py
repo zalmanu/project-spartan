@@ -8,11 +8,11 @@ import uuid
 
 class Account(models.Model):
     user = models.OneToOneField(User, primary_key=True)
-    city = models.CharField(max_length=40)
-    country = models.CharField(max_length=30, null=True)
+    city = models.CharField(max_length=100)
+    country = models.CharField(max_length=36, null=True)
     telefon = models.IntegerField(null=True)
     cod = models.CharField(max_length=100,null=True, blank=True)
-    sold= models.IntegerField(default=1000)
+    sold= models.IntegerField(default=0)
 
 
 
