@@ -8,7 +8,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.conf import settings
-from .forms import ProfileEditForm, PostForm
+from .forms import ProfileEditForm, PostForm, SpartanForm
 import md5
 import datetime
 
@@ -131,40 +131,51 @@ def spartan(request):
     if request.user.is_authenticated():
         curruser = request.user
         if request.method == 'POST':
-            nume=request.POST.get('nume')
-            prenume=request.POST.get('prenume')
-            data_nasterii=request.POST.get('Data_nasteri')
-            data_nasterii=datetime.datetime.strptime(data_nasterii, '%m/%d/%Y').strftime('%Y-%m-%d')
-            adress=request.POST.get('adress')
-            cnp=request.POST.get('CNP')
-            serie=request.POST.get('serie')
-            cui=request.POST.get('cui')
-            contBancar=request.POST.get('contBancar')
-            abilitate1=request.POST.get('abilitate1')
-            abilitate2=request.POST.get('abilitate2')
-            abilitate3=request.POST.get('abilitate3')
-            spartan = Spartan.objects.create(nume=nume, prenume=prenume, data_nasterii=data_nasterii,
-                                            address=adress, cnp=cnp,serie=serie,cui=cui,
-                                            contBancar=contBancar,
-                                             abilitate1=abilitate1,abilitate2=abilitate2,
-                                             abilitate3=abilitate3,
-                                            author=request.user)
-            spartan.save()
-            subject='Activare putere de Spartan'
-            messagetip=" Buna % s , \n Ati completat formularul pentru activare puterii de Spartan \n" \
-                       " Nume : %s ,\n Prenume: %s \n Data nasterii: %s \n Adresa : %s \n CNP: %s \n Serie: %s \n" \
-                       " CUI : %s \n Cont Bancar: %s \n " \
-                       "Abilitate 1: %s  \n Abilitate 2: %s \n Abilitate 3:%s \n Datele dvs. vor fi analizate de Admin in vederea Activarii Puterii de Spartan \nO zi buna!"  %(request.user.username,nume,prenume,data_nasterii,adress,cnp,serie,cui,contBancar,abilitate1,abilitate2,abilitate3)
-            from_email=settings.EMAIL_HOST_USER
-            send_mail(subject, messagetip, from_email,
-            [request.user.email], fail_silently=True)
-            return render(request, 'useractions/spartan.html' ,{'errors': ['Ati completat cu succes formularul,asteptati confirmarea administratorului!'],
-        'cod': request.user.account.cod})
+            form = SpartanForm()
+            if form.is_valid():
+                nume = form.cleaned_data['nume']
+                prenume = form.cleaned_data['prenume']
+                data_nasterii = form.cleaned_data['data']
+                data_nasterii=datetime.datetime.strptime(data_nasterii, '%m/%d/%Y').strftime('%Y-%m-%d')
+                adress = form.cleaned_data['adress']
+                cnp = form.cleaned_data['CNP']
+                serie = form.cleaned_data['serie']
+                cui = form.cleaned_data['cui']
+                contBancar = form.cleaned_data['cont']
+                abilitate1 = form.cleaned_data['abilitate1']
+                abilitate2 = form.cleaned_data['abilitate2']
+                abilitate3 = form.cleaned_data['abilitate3']
+                spartan = Spartan.objects.create(nume=nume, prenume=prenume, data_nasterii=data_nasterii,
+                                                 address=adress, cnp=cnp,serie=serie,cui=cui,
+                                                 contBancar=contBancar,
+                                                 abilitate1=abilitate1,abilitate2=abilitate2,
+                                                 abilitate3=abilitate3,
+                                                 author=request.user)
+                spartan.save()
+                subject='Activare putere de Spartan'
+                messagetip=" Buna % s , \n Ati completat formularul pentru activare puterii de Spartan \n" \
+                    " Nume : %s ,\n Prenume: %s \n Data nasterii: %s \n Adresa : %s \n CNP: %s \n Serie: %s \n" \
+                    " CUI : %s \n Cont Bancar: %s \n " \
+                    "Abilitate 1: %s  \n Abilitate 2: %s \n Abilitate 3:%s \n Datele dvs. vor fi analizate de Admin in vederea Activarii Puterii de Spartan \nO zi buna!"  %(request.user.username,nume,prenume,data_nasterii,adress,cnp,serie,cui,contBancar,abilitate1,abilitate2,abilitate3)
+                from_email=settings.EMAIL_HOST_USER
+                send_mail(subject, messagetip, from_email,
+                          [request.user.email], fail_silently=True)
+                return render(request, 'useractions/spartan.html' ,{'errors': ['Ati completat cu succes formularul,asteptati confirmarea administratorului!'],
+                                                                    'cod': request.user.account.cod,
+                                                                    'form': form})
+            else:
+                return render(request, 'useractions/spartan.html', {'cod': request.user.account.cod,
+                                                                    'form': form,
+                                                                    'errors':['Invalid form']
+                                                                     })
         else:
+              form = SpartanForm()
               if request.user.is_active and not  request.user.is_superuser:
-                    return render(request, 'useractions/spartan.html', {'cod': request.user.account.cod})
+                    return render(request, 'useractions/spartan.html', {'cod': request.user.account.cod,
+                                                                        'form': form})
               else :
-                    return render(request, 'useractions/spartan.html', {'cod': 1})
+                    return render(request, 'useractions/spartan.html', {'cod': 1,
+                                                                        'form': form })
     else:
         return redirect('/login/')
 

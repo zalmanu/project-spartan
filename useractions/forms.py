@@ -17,6 +17,16 @@ class PostForm(forms.Form):
     data = forms.CharField(label="Date", widget=forms.TextInput(attrs={'class': "form-control event_input tcal"}))
     timePost = forms.CharField(label="Time", widget=forms.TextInput(attrs={'class': "timepicker"}))
     price = forms.IntegerField(label="Highest price you are willing to pay")
-
     
-
+class SpartanForm(forms.Form):
+    prenume = forms.CharField(max_length=25, label="First name")
+    nume = forms.CharField(max_length=25, label="Last name")
+    data = forms.CharField(label="Bitrthday", widget=forms.TextInput(attrs={'class': "form-control event_input tcal"}))
+    adress = forms.CharField(max_length=500, label="Adress")
+    CNP = forms.IntegerField(label="CNP")
+    serie = forms.CharField(max_length=30, label="ID card series")
+    cui = forms.CharField(max_length=30, label="CUI")
+    cont = forms.CharField(max_length=30, label="Banck account")
+    ability1 = forms.ChoiceField(choices=[(x, x) for x in ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others']], label="Category", widget=forms.Select(attrs={'class': "form-control input-lg m-bot15"}))  
+    ability2 = forms.ChoiceField(choices=[(x, x) for x in ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others']], label="Category", widget=forms.Select(attrs={'class': "form-control input-lg m-bot15"}))
+    ability3 = forms.ChoiceField(choices=[(x, x) for x in ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others']], label="Category", widget=forms.Select(attrs={'class': "form-control input-lg m-bot15"}))      

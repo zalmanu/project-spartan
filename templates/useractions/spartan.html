@@ -189,103 +189,16 @@
 
                               <h1 class="title">Please enter :</h1>
                             <form method="POST">
-				{% csrf_token %}
+			      {% csrf_token %}
+			      {% for field in form %}
                                 <div class="input-container">
-                                    <input type="text" id="Username" name="nume" required="required"/>
-                                    <label for="Username">Nume</label>
+				    {{ field }}
+				    {% if field.label != 'Category' %}
+                                    <label for="Username">{{ field.label }}</label>
+				    {% endif %}
                                     <div class="bar"></div>
                                 </div>
-                                 <div class="input-container">
-                                    <input type="text" id="Username" name="prenume" required="required"/>
-                                    <label for="Username">Prenume</label>
-                                    <div class="bar"></div>
-                                </div>
-                                <div class="input-container">
-                                    <input class="form-control event_input tcal" id="datepicker" name="Data_nasteri" type="text" />
-                                    <label for="Username">Data nasterii</label>
-                                    <div class="bar"></div>
-                                </div>
-                                <div class="input-container">
-                                    <input type="text" id="Username" name="adress" required="required"/>
-                                    <label for="Username">Adresa dvs.</label>
-                                    <div class="bar"></div>
-                                </div>
-                                <div class="input-container">
-                                    <input type="text" id="Username" name="CNP" required="required"/>
-                                    </textarea>
-                                    <label for="Username">CNP</label>
-                                    <div class="bar"></div>
-                                </div>
-
-
-
-                                <div class="input-container">
-                                    <input type="text" id="Username" name="serie" required="required"/>
-                                    <label for="Username">Serie buletin</label>
-                                    <div class="bar"></div>
-                                </div>
-
-
-
-                                <div class="input-container">
-                                    <input type="text" id="Username" name="cui" required="required"/>
-                                    <label for="Username">CUI PFA</label>
-                                    <div class="bar"></div>
-                                </div>
-
-                                 <div class="input-container">
-                                    <input type="text" id="Username" name="contBancar" required="required"/>
-                                    <label for="Username">Cont Bancar</label>
-                                    <div class="bar"></div>
-                                </div>
-
-
-
-                                <div class="input-container">
-                                    <select class="form-control input-lg m-bot15" id="choose_category" name="abilitate1">
-                                        <option disabled selected id="disabeled-option">Selectati abilitatea 1</option>
-                                        <option>None</option>
-                                        <option>Garden</option>
-                                        <option>Moving</option>
-                                        <option>Cleaning</option>
-                                        <option>Babysitting</option>
-                                        <option>Cooking</option>
-                                        <option>Others</option>
-                                    </select>
-                                    <div class="bar"></div>
-                                </div>
-
-                                 <div class="input-container">
-                                    <select class="form-control input-lg m-bot15" id="choose_category" name="abilitate2">
-                                        <option disabled selected id="disabeled-option">Selectati abilitatea 2</option>
-                                        <option>None</option>
-                                        <option>Garden</option>
-                                        <option>Moving</option>
-                                        <option>Cleaning</option>
-                                        <option>Babysitting</option>
-                                        <option>Cooking</option>
-                                        <option>Others</option>
-                                    </select>
-                                    <div class="bar"></div>
-                                </div>
-
-
-                                 <div class="input-container">
-                                    <select class="form-control input-lg m-bot15" id="choose_category" name="abilitate1">
-                                        <option disabled selected id="disabeled-option">Selectati abilitatea 3</option>
-                                        <option>None</option>
-                                        <option>Garden</option>
-                                        <option>Moving</option>
-                                        <option>Cleaning</option>
-                                        <option>Babysitting</option>
-                                        <option>Cooking</option>
-                                        <option>Others</option>
-                                    </select>
-                                    <div class="bar"></div>
-                                </div>
-
-
-
+				{% endfor %}
                                 <div class="button-container">
                                     <button><span>Go</span></button>
                                 </div>
