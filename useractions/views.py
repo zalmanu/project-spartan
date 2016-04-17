@@ -131,7 +131,7 @@ def spartan(request):
     if request.user.is_authenticated():
         curruser = request.user
         if request.method == 'POST':
-            form = SpartanForm()
+            form = SpartanForm(request.POST)
             if form.is_valid():
                 nume = form.cleaned_data['nume']
                 prenume = form.cleaned_data['prenume']

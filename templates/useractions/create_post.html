@@ -179,7 +179,8 @@
 
                               <h1 class="title">Te rog introdu: </h1>
                             <form method="POST">
-				{% csrf_token %}
+			      {% csrf_token %}
+			      {% if errors %}
 				<div class="error">
 				  {% for message in errors %}
 				  <ul>
@@ -187,6 +188,7 @@
 				  </ul>
 				  {% endfor %}                        
 				</div>
+				{% endif %}
 				{% for field in form %}
                                <div class="input-container">
 				    {{ field }}
