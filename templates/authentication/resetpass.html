@@ -71,22 +71,13 @@
                     {% endfor %}                        
                     </div>
 		    {% endif %}
-
+		    {% for field in form %}
                     <div class="input-container">
-                        <input name="password" type="password" id="Password" required="required"/>
-                        <label for="Password">Password old</label>
+		        {{ field }}
+                        <label for="Password">{{ field.label }}</label>
                         <div class="bar"></div>
                     </div>
-                     <div class="input-container">
-                        <input name="passwordnew" type="password" id="Passwordnew" required="required"/>
-                        <label for="Password">Password new</label>
-                        <div class="bar"></div>
-                    </div>
-                     <div class="input-container">
-                        <input name="passwordnew1" type="password" id="Passwordnew1" required="required"/>
-                        <label for="Password">Retype new password</label>
-                        <div class="bar"></div>
-                    </div>
+		    {% endfor %}
                     <div class="button-container">
                         <button><span>Reset</span></button>
                     </div>
