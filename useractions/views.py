@@ -73,7 +73,7 @@ def profile(request):
     now = datetime.datetime.now()
     form = ProfileEditForm
     if request.method == 'POST':
-        
+    
         if request.user.is_active and not  request.user.is_superuser:
             return render(request, 'useractions/profile.html', {
                 'cod': curruser.account.cod,
