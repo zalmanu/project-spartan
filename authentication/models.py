@@ -30,8 +30,8 @@ class Spartan(models.Model):
      cui = models.CharField(max_length=30, null=True)
      contBancar = models.CharField(max_length=30, null=True)
      abilitate1= models.CharField(null=True, max_length=20)
-     abilitate2= models.CharField(null=True, max_length=20)
-     abilitate3= models.CharField(null=True, max_length=20)
+     abilitate2= models.CharField(null=True, max_length=20, blank=True)
+     abilitate3= models.CharField(null=True, max_length=20, blank=True)
      author = models.ForeignKey(User, null=True, blank=True)
      SpartanStatus=models.BooleanField(default=False)
 

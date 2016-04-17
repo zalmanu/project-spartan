@@ -132,21 +132,18 @@ def spartan(request):
             serie = form.cleaned_data['serie']
             cui = form.cleaned_data['cui']
             contBancar = form.cleaned_data['cont']
-            abilitate1 = form.cleaned_data['abilitate1']
-            abilitate2 = form.cleaned_data['abilitate2']
-            abilitate3 = form.cleaned_data['abilitate3']
+            abilitate = form.cleaned_data['abilitate']
             spartan = Spartan.objects.create(nume=nume, prenume=prenume, data_nasterii=data_nasterii,
                                              address=adress, cnp=cnp,serie=serie,cui=cui,
                                              contBancar=contBancar,
-                                             abilitate1=abilitate1,abilitate2=abilitate2,
-                                             abilitate3=abilitate3,
+                                             abilitate1=abilitate,
                                              author=request.user)
             spartan.save()
             subject='Activare putere de Spartan'
             messagetip=" Buna % s , \n Ati completat formularul pentru activare puterii de Spartan \n" \
                 " Nume : %s ,\n Prenume: %s \n Data nasterii: %s \n Adresa : %s \n CNP: %s \n Serie: %s \n" \
                 " CUI : %s \n Cont Bancar: %s \n " \
-                "Abilitate 1: %s  \n Abilitate 2: %s \n Abilitate 3:%s \n Datele dvs. vor fi analizate de Admin in vederea Activarii Puterii de Spartan \nO zi buna!"  %(request.user.username,nume,prenume,data_nasterii,adress,cnp,serie,cui,contBancar,abilitate1,abilitate2,abilitate3)
+                "Abilitate 1: %s \n  Datele dvs. vor fi analizate de Admin in vederea Activarii Puterii de Spartan \nO zi buna!"  %(request.user.username,nume,prenume,data_nasterii,adress,cnp,serie,cui,contBancar,abilitate)
             from_email=settings.EMAIL_HOST_USER
             send_mail(subject, messagetip, from_email,
                       [request.user.email], fail_silently=True)

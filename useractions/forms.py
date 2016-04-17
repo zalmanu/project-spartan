@@ -28,8 +28,7 @@ class SpartanForm(forms.Form):
     serie = forms.CharField(max_length=30, label="ID card series")
     cui = forms.CharField(max_length=30, label="CUI")
     cont = forms.CharField(max_length=30, label="Banck account")
-    abilitate1 = forms.ChoiceField(choices=[(x, x) for x in ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others']], label="Category", widget=forms.Select(attrs={'class': "form-control input-lg m-bot15", 'id': "choose_category"}))  
-    abilitate2 = forms.ChoiceField(choices=[(x, x) for x in ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others']], label="Category", widget=forms.Select(attrs={'class': "form-control input-lg m-bot15", 'id': "choose_category"}))
-    abilitate3 = forms.ChoiceField(choices=[(x, x) for x in ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others']], label="Category", widget=forms.Select(attrs={'class': "form-control input-lg m-bot15", 'id': "choose_category"}))      
+    abilitate = forms.ChoiceField(choices=[(x, x) for x in ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others']], label="Category", widget=forms.Select(attrs={'class': "form-control input-lg m-bot15", 'id': "choose_category"}))  
+
 
 
