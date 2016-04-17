@@ -36,7 +36,6 @@ def create_post(request):
             time = form.cleaned_data['timePost']
             time = ":".join(map(lambda item: item.strip(), time.split(":")))
             data_post = form.cleaned_data['data']
-            data_post=datetime.datetime.strptime(data_post, '%m/%d/%Y').strftime('%Y-%m-%d')
             money_user = form.cleaned_data['price']
             announcement = Announcement.objects.create(title=title, text=post_text, address=adress, country=country,
                                                        category=category,money =money_user, city=city,data=data_post, timePost=time, author=request.user)
@@ -128,7 +127,6 @@ def spartan(request):
             nume = form.cleaned_data['nume']
             prenume = form.cleaned_data['prenume']
             data_nasterii = form.cleaned_data['data']
-            data_nasterii=datetime.datetime.strptime(data_nasterii, '%m/%d/%Y').strftime('%Y-%m-%d')
             adress = form.cleaned_data['adress']
             cnp = form.cleaned_data['CNP']
             serie = form.cleaned_data['serie']
