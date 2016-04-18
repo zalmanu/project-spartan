@@ -26,67 +26,50 @@
     </head>
 
     <body>
-          <div class="cbp-af-header">
-	    <div class="cbp-af-inner">
+      <div class="cbp-af-header">
+	<div class="cbp-af-inner">
                     <h1><a href="{% url 'home' %}" id="return-home">Spartan</a></h1>
                     <nav id="register-button">
-                        <a href="{% url 'login' %}" id="button-flow">Contul meu</a>
+                        <a href="{% url 'login' %}"
+                        id="button-flow">Contul meu</a>
                         <a href="#" id="line-flow">|</a>
-                        <a href="{% url 'register' %}"
-                            id="button-flow">Înregistrare</a>
+						<a href="{% url 'register' %}"
+                                                    id="button-flow">Înregistrare</a>
                     </nav>
-                </div>
-    </div>
+                    <nav id="menu-button">
+						<a href="#first-section"
+                                                    id="menu1-flow">Despre noi</a>
+						<a href="#secound-section"
+                                                    id="menu2-flow">Etape</a>
+						<a href="#third-section"
+                                                    id="menu3-flow">Categorii</a>
+                        <a href="/register/" id="menu3-flow">Alătură-te</a>
+		    </nav>
+    <!-- ~~~~~~~~~~~~~~~~~~~~Page scroll down~~~~~~~~~~~~~~~~~~~~ -->
+                    <script>
+                    $(function() {
+                      $('a[href*=#]:not([href=#])').click(function() {
+                        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+                          var target = $(this.hash);
+                          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                          if (target.length) {
+                            $('html,body').animate({
+                              scrollTop: target.offset().top
+                            }, 1000);
+                            return false;
+                          }
+                        }
+                      });
+                    });
+                    </script>
+
+	</div>
+      </div>
+
 
     {% block content %}
     
     {% endblock %}
-        <footer class="footer-distributed">
-
-			<div class="footer-left">
-
-				<h1 id="logo-title">Spartan</h1>
-
-				<p class="footer-links">
-					<a href="#">Acasa</a>
-					·
-					<a href="#">Anunț nou</a>
-					·
-					<a href="#">Profil</a>
-					·
-					<a href="#">Pagina</a>
-					·
-					<a href="#">Categorii</a>
-				</p>
-
-				<p class="footer-company-name">Spartan &copy; 2016</p>
-
-				<div class="footer-icons">
-
-					<a href="#"><i class="fa fa-facebook"></i></a>
-					<a href="#"><i class="fa fa-twitter"></i></a>
-					<a href="#"><i class="fa fa-linkedin"></i></a>
-					<a href="#"><i class="fa fa-github"></i></a>
-
-				</div>
-
-			</div>
-
-			<div class="footer-right">
-
-				<p>Contact Us</p>
-
-				<form action="#" method="post">
-				  {% csrf_token %}
-				  <input type="text" name="email" placeholder="Email" />
-					<textarea name="message" placeholder="Message"></textarea>
-					<button>Send</button>
-
-				</form>
-
-			</div>
-
-		</footer>
 
 
         <!-- /.container -->
