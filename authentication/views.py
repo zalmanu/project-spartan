@@ -119,3 +119,5 @@ def reset_pass(request):
         form = PasswordResetForm
         return render(request, "authentication/resetpass.html", {'form': form})
     return redirect('/')
+
+

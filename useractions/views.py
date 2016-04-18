@@ -113,6 +113,7 @@ def category(request, kind):
         'ann': an
     })
 
+
 def profileGeneral(request):
     return render(request, 'useractions/profilegeneral.html')
 
