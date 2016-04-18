@@ -1,0 +1,126 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        {% load staticfiles %}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Spartan Project</title>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet"/>
+
+        <!-- Custom CSS -->
+        <link href="{% static "css/half-slider.css" %}" rel="stylesheet"/>
+        <link href="{% static "css/one-page-wonder.css" %}" rel="stylesheet"/>
+        <link rel="stylesheet" type="text/css" href="{% static "css/default.css" %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static "css/component.css" %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static "css/heroic-features.css" %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static "css/font-awesome.css" %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static "css/font-awesome.min.css" %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static "css/line-icons.css" %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static "css/elegant-icons-style.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,600,300,200&subset=latin,latin-ext' rel='stylesheet' type='text/css'/>
+        <link rel="stylesheet" type="text/css" href="{% static "css/scss/wickedpicker.scss" %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static "css/wickedpicker.min.css" %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static "css/wickedpicker.css" %}"/>
+        <link rel="stylesheet" href="{% static "assets/fullcalendar/fullcalendar/fullcalendar.css" %}"/>
+        <link rel="stylesheet" href="{% static "assets/fullcalendar/fullcalendar/fullcalendar.print.css" %}"/>
+        <link rel="stylesheet" href="{% static "assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static "css/tcal.css" %}"/>
+
+    </head>
+
+    <body>
+
+    <!-- Navigation -->
+
+    <div class="cbp-af-header" id="user-menu">
+      <div class="cbp-af-inner">
+                    <a href="{% url 'home' %}" id="return-home"><h1>Spartan</h1></a>
+      </div>
+    </div>
+
+
+    <!-- Page Content -->
+
+        <footer class="footer-distributed">
+
+			<div class="footer-left">
+
+				<h1 id="logo-title">Spartan</h1>
+
+				<p class="footer-links">
+					<a href="#">Acasa</a>
+					·
+					<a href="#">Anunț nou</a>
+					·
+					<a href="#">Profil</a>
+					·
+					<a href="#">Pagina</a>
+					·
+					<a href="#">Categorii</a>
+				</p>
+
+				<p class="footer-company-name">Spartan &copy; 2016</p>
+
+				<div class="footer-icons">
+
+					<a href="#"><i class="fa fa-facebook"></i></a>
+					<a href="#"><i class="fa fa-twitter"></i></a>
+					<a href="#"><i class="fa fa-linkedin"></i></a>
+					<a href="#"><i class="fa fa-github"></i></a>
+
+				</div>
+
+			</div>
+
+			<div class="footer-right">
+
+				<p>Contact Us</p>
+
+				<form action="#" method="post">
+				  {% csrf_token %}
+				  <input type="text" name="email" placeholder="Email" />
+					<textarea name="message" placeholder="Message"></textarea>
+					<button>Send</button>
+
+				</form>
+
+			</div>
+
+		</footer>
+
+
+        <!-- /.container -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="{% static "js/wickedpicker.js" %}"></script>
+        <script type="text/javascript" src="{% static "js/wickedpicker.min.js" %}"></script>
+        <script src="{% static "assets/fullcalendar/fullcalendar/fullcalendar.min.js" %}"></script> <!-- Full Google Calendar - Calendar -->
+        <script src="{% static "assets/fullcalendar/fullcalendar/fullcalendar.jsp" %}"></script>
+        <script src="{% static "assets/fullcalendar/fullcalendar/fullcalendar.js" %}"></script>
+	<script type="text/javascript" src="{% static "js/tcal.js" %}"></script>
+        <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+        </script>
+
+
+
+    </body>
+
+    </html>
+
+    <!-- colors: #47a3da  -main blue;
+                 #1f80af  -dark blue;
+                 #e5f5fa  -light blue;
+                                       -->
