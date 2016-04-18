@@ -123,13 +123,13 @@ def category(request, kind):
             'categories': ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others'],
             'kind': kind,
             'cod': curruser.account.cod,
-            'ann': an
+            'ann': an,
              })
         else: return render(request, 'useractions/category.html', {
             'categories': ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others'],
             'kind': kind,
-           'cod': '61e1380365703a4c73c2480673d8993b',
-            'ann': an
+            'cod': '61e1380365703a4c73c2480673d8993b',
+            'ann': an,
              })
     else:
         return redirect('/')

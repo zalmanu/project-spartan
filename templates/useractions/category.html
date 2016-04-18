@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends  'base.html' %}
 {% load staticfiles %}
 {% block content %}
         <section class="third-section" id="wrap">
@@ -17,7 +17,7 @@
                         <p class="lead">Category</p>
                         <div class="list-group">
                           {% for kind in categories %}
-                            <a href="/category/{{ kind}}" class="list-group-item" id="left-menu-button"><img src="{% static 'images/categories/'%}{{ kind }}-mini.png" class="left-menu-category-icon"> |  {{ kind }}</a>
+                            <a href="/category/{{ kind }}" class="list-group-item" id="left-menu-button"><img src="{% static 'images/categories/'%}{{ kind }}-mini.png" class="left-menu-category-icon"> |  {{ kind }}</a>
                           {% endfor %}
                         </div>
                         <script>
