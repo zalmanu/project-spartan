@@ -14,7 +14,6 @@ import datetime
 from django.contrib.auth.decorators import login_required
 
 
-
 @login_required
 def logout_view(request):
     logout(request)
@@ -100,17 +99,18 @@ def profile(request):
 
 @login_required
 def category(request, kind):
+    categories = Category.objects.all()
     an = Announcement.objects.filter(category=kind)
     curruser = request.user
     if request.user.is_active and not  request.user.is_superuser:
         return render(request, 'useractions/category.html', {
-        'categories': ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others'],
+        'categories': categories,
         'kind': kind,
         'cod': curruser.account.cod,
         'ann': an
         })
     else: return render(request, 'useractions/category.html', {
-        'categories': ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others'],
+        'categories': categories,
         'kind': kind,
         'cod': '61e1380365703a4c73c2480673d8993b',
         'ann': an
