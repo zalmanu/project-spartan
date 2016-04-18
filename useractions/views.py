@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
-from useractions.models import Announcement
+from useractions.models import Announcement, Category
 from authentication.models import Account,Spartan
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -30,7 +30,7 @@ def create_post(request):
             title = form.cleaned_data['title']
             post_text = form.cleaned_data['text']
             adress = form.cleaned_data['adress']
-            country = form.cleaned_data['country'] 
+            country = form.cleaned_data['country']
             city = form.cleaned_data['city']
             category = form.cleaned_data['category']
             time = form.cleaned_data['timePost']
@@ -38,8 +38,11 @@ def create_post(request):
             data_post = form.cleaned_data['data']
             money_user = form.cleaned_data['price']
             announcement = Announcement.objects.create(title=title, text=post_text, address=adress, country=country,
-                                                       category=category,money =money_user, city=city,data=data_post, timePost=time, author=request.user)
+                                                       money=money_user, city=city, data=data_post, timePost=time,
+                                                       author=request.user)
             announcement.save()
+            category_models = Category.objects.create(name=category, description=None, photo_path=None)
+            category_models.save()
             subject='Anunt Project Spartan'
             messagetip=" Buna % s , \n Ati postat un anunt cu succes! \n" \
                 " Titlul : %s ,\n Text: %s \n Adress: %s \n Country : %s \n City: %s \n category: %s \n" \
