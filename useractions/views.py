@@ -183,4 +183,6 @@ def spartan(request):
     else:
         return redirect('/login/')
 
+def random(request):
+    return render(request, 'base.html')
 

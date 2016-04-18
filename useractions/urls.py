@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^profile/$', views.profile, name='profile'),
     url(r'^spartan/$', views.spartan, name='spartan'),
     url(r'^general/$', views.profileGeneral, name='profilGeneral'),
+    url(r'^random/$', views.random, name='random')
 ]
