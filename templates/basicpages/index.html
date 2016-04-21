@@ -200,15 +200,17 @@ p			<div class="cd-timeline-img cd-picture">
 				<div class="hr">&nbsp;</div>
     </div>
     <div class="main">
-				<ul class="cbp-ig-grid">
+      <ul class="cbp-ig-grid">
 		{% for kind in categories %}
-						<li id="cat1" style="background-image: url({% static 'images/categories/'%}{{ kind }}-banner.jpg);>
-						  						<a href="" name="kind" value="{{ kind }}">
+					<li id="cat1" style="background-image: url({% static 'images/categories/' %}{{ kind }}-banner.jpg");>
+						<a href="/category/{{ kind }}" name="kind" value="{{ kind }}">
 							<span class="cbp-ig-icon"><img src="{% static 'images/categories/'%}{{ kind }}-icon.png"></span>
-								<h3 class="cbp-ig-title">{{ kind }}</h3>
-							</a>
-						</li>
-		{% endfor %}
+							<h3 class="cbp-ig-title">{{ kind }}</h3>
+							<span class="cbp-ig-category"> Dă click aici pentru mai multe</span>
+            </a>
+					</li>
+	{% endfor %}
+
 					</ul>
 			</div>
     </section>
