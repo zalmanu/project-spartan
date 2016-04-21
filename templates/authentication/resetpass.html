@@ -59,7 +59,7 @@
               <div class="card"></div>
               <div class="card" id="login-box">
 
-                  <h1 class="title">Please enter :</h1>
+
                 <form method="POST">
                     {% csrf_token %}
 		    {% if errors %}
@@ -74,17 +74,17 @@
 
                     <div class="input-container">
                         <input name="password" type="password" id="Password" required="required"/>
-                        <label for="Password">Password old</label>
+                        <label for="Password">Old password</label>
                         <div class="bar"></div>
                     </div>
                      <div class="input-container">
                         <input name="passwordnew" type="password" id="Passwordnew" required="required"/>
-                        <label for="Password">Password new</label>
+                        <label for="Password">New password</label>
                         <div class="bar"></div>
                     </div>
                      <div class="input-container">
                         <input name="passwordnew1" type="password" id="Passwordnew1" required="required"/>
-                        <label for="Password">Retype new password</label>
+                        <label for="Password">Confirm password</label>
                         <div class="bar"></div>
                     </div>
                     <div class="button-container">
