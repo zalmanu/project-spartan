@@ -104,21 +104,21 @@ def profile(request):
 @login_required
 def category(request, kind):
     categories = Category.objects.all()
-    an = Announcement.objects.filter(category.name=kind)
+    page_category = Category.objects.filter(name = kind)
     curruser = request.user
     if request.user.is_active and not  request.user.is_superuser:
         return render(request, 'useractions/category.phtml', {
         'categories': categories,
-        'kind': Category.objects.filter(name = kind),
+        'kind': page_category,
         'cod': curruser.account.cod,
-        'ann': an
+        'ann': Announcement.objects.filter(category=category)
         })
     else:
         return render(request, 'useractions/category.html', {
         'categories': categories,
         'kind': kind,
         'cod': '61e1380365703a4c73c2480673d8993b',
-        'ann': an
+        'ann': Announcement.objects.filter(category=category)
     })
 
 
