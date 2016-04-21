@@ -8,10 +8,11 @@ from django.core.urlresolvers import reverse
 
 class Category(models.Model):
     name = models.CharField(null=True, max_length=20)
+    path = models.CharField(null=True, max_length=500)
 
 
 class Announcement(models.Model):
-    category = models.CharField(null=True, max_length=20)
+    category = models.ForeignKey(Category, null=True)
     title = models.CharField(null=True, max_length=20)
     text = models.CharField(null=True, max_length=500)
     slug = models.SlugField(default=uuid.uuid1, unique=True)

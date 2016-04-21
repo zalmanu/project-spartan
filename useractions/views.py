@@ -14,6 +14,11 @@ import datetime
 from django.contrib.auth.decorators import login_required
 
 
+def search_category(name):
+    for kind in Category.objects.all():
+        if kind.name == name:
+            return kind
+
 @login_required
 def logout_view(request):
     logout(request)
@@ -36,12 +41,11 @@ def create_post(request):
             time = ":".join(map(lambda item: item.strip(), time.split(":")))
             data_post = form.cleaned_data['data']
             money_user = form.cleaned_data['price']
+            category = Category.objects.filter(name = category)
             announcement = Announcement.objects.create(title=title, text=post_text, address=adress, country=country,
                                                        money=money_user, city=city, data=data_post, timePost=time,
-                                                       author=request.user)
+                                                       author=request.user, category=category)
             announcement.save()
-            category_models = Category.objects.create(name=category, description=None, photo_path=None)
-            category_models.save()
             subject='Anunt Project Spartan'
             messagetip=" Buna % s , \n Ati postat un anunt cu succes! \n" \
                 " Titlul : %s ,\n Text: %s \n Adress: %s \n Country : %s \n City: %s \n category: %s \n" \
@@ -100,16 +104,17 @@ def profile(request):
 @login_required
 def category(request, kind):
     categories = Category.objects.all()
-    an = Announcement.objects.filter(category=kind)
+    an = Announcement.objects.filter(category.name=kind)
     curruser = request.user
     if request.user.is_active and not  request.user.is_superuser:
-        return render(request, 'useractions/category.html', {
+        return render(request, 'useractions/category.phtml', {
         'categories': categories,
-        'kind': kind,
+        'kind': Category.objects.filter(name = kind),
         'cod': curruser.account.cod,
         'ann': an
         })
-    else: return render(request, 'useractions/category.html', {
+    else:
+        return render(request, 'useractions/category.html', {
         'categories': categories,
         'kind': kind,
         'cod': '61e1380365703a4c73c2480673d8993b',
