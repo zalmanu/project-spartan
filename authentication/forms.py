@@ -9,8 +9,9 @@ class RegisterForm(forms.Form):
     email = forms.CharField(max_length=100, label='Email', widget=forms.EmailInput())
     password = forms.CharField(max_length=160, min_length=8, label='Password', widget=forms.PasswordInput())
     password2 = forms.CharField(max_length=160,min_length=8, label='Retype password', widget=forms.PasswordInput())
-    country = forms.CharField(max_length=36, label='Country')
-    city = forms.CharField(max_length=100, label='City')
+    country = forms.ChoiceField(choices=[(x, x) for x in ['Romania']], label="Country", widget=forms.Select(attrs={'class': "form-control input-lg m-bot15",
+                                                                                                                   'id': "choose_category"}))
+    city = forms.ChoiceField(choices=[(x, x) for x in ['Timisoara']], label="City", widget=forms.Select(attrs={'class': "form-control input-lg m-bot15", 'id': "choose_category"}))
     phone = forms.IntegerField(label='Phone number')
 
     

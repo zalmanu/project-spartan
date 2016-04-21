@@ -1,51 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    {% load staticfiles %}
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Spartan Project</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="{% static "css/half-slider.css" %}" rel="stylesheet">
-    <link href="{% static "css/one-page-wonder.css" %}" rel="stylesheet">
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" type="text/css" href="{% static "css/default.css" %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static "css/component.css" %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
-    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,600,300,200&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-
-</head>
-
-<body>
-
-    <!-- Navigation -->
-    <div class="cbp-af-header">
-				<div class="cbp-af-inner">
-                    <h1><a href="{% url 'home' %}" id="return-home">Spartan</a></h1>
-                    <nav id="register-button">
-                        <a href="{% url 'login' %}" id="button-flow">Contul meu</a>
-                        <a href="#" id="line-flow">|</a>
-                        <a href="{% url 'register' %}"
-                        id="button-flow">Înregistrare</a>
-                    </nav>
-                </div>
-    </div>
-
-    <!-- Page Content -->
-
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-    <section class="wrap" id="first-section">
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block content %}
+<section class="wrap" id="first-section">
         <div class="row title-row">
 				<div class="col-12 font-thin
                                     categories-gallery">Înregistrare</div>
@@ -78,8 +34,10 @@
 		    {% endif %}
 		    {% for field in form %}
                     <div class="input-container">
-		        {{ field }}
-                        <label for="{{ field.label }}">{{ field.label }}</label>
+		      {{ field }}
+		      {% if field.label != "Country" and field.label != "City" %}
+                      <label for="{{ field.label }}">{{ field.label }}</label>
+		      {% endif %}
                         <div class="bar"></div>
                     </div>
 		    {% endfor %}
@@ -101,42 +59,5 @@
 		</div><!-- /container -->
 	</div>
     </section>
+{% endblock %}
 
-
-    <!-- /.container -->
-
-    <!-- jQuery -->
-    <script src="{% static "js/jquery.js" %}"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{% static "js/bootstrap.min.js" %}"></script>
-
-    <!-- animations -->
-    <script src="{% static "js/modernizr.custom.js" %}"></script>
-    <script src="{% static "js/classie.js" %}"></script>
-    <script src="{% static "js/main.js" %}"></script>
-    <script src="{% static "js/modernizr.js" %}"></script>
-
-
-
-
-
-
-    <!-- scripturi -->
-    <script src="{% static "js/html5shiv.js" %}"></script>
-    	<script src="{% static "js/jquery-1.10.2.min.js" %}"></script>
-    	<script src="{% static "js/jquery-migrate-1.2.1.min.js" %}"></script>
-    	<script src="{% static "js/bootstrap.min.js" %}"></script>
-    	<script src="{% static "js/jquery.easing.1.3.js" %}"></script>
-    	<script type="text/javascript" src="{% static "fancybox/jquery.fancybox.pack-v=2.1.5.js" %}"></script>
-
-
-
-</body>
-
-</html>
-
-<!-- colors: #47a3da  -main blue;
-             #1f80af  -dark blue;
-             #e5f5fa  -light blue;
-                                   -->

@@ -7,7 +7,7 @@
 .font-semibold {
 	font-family: "Titillium Web", sans-serif;
 	font-weight: 600;
-    color: #333;
+	color: #333;
 }
 
 .font-light {
@@ -1922,7 +1922,8 @@ header h1 {
 /* Footer left */
 
 .footer-distributed .footer-left{
-	float: left;
+    float: left;
+    color: #333;
 }
 
 /* The company logo */
@@ -1953,7 +1954,7 @@ header h1 {
 }
 
 .footer-distributed .footer-company-name{
-	color:  #8f9296;
+	color:  black;
 	font-size: 14px;
 	font-weight: normal;
 	margin: 0;
@@ -2154,6 +2155,7 @@ header h1 {
 @import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
 
 html, body {
+    color: #333;
     font-family: 'Lato', sans-serif;
     margin: 0px auto;
 }

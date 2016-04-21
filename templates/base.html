@@ -19,7 +19,7 @@
         <link href="{% static "css/one-page-wonder.css" %}" rel="stylesheet"/>
         <link rel="stylesheet" type="text/css" href="{% static "css/default.css" %}"/>
         <link rel="stylesheet" type="text/css" href="{% static "css/component.css" %}"/>
-        <link rel="stylesheet" type="text/css" href="{% static "css/heroic-features.css" %}"/> 
+        <link rel="stylesheet" type="text/css" href="{% static "css/heroic-features.css" %}"/>
         <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}"/>
         <link rel="stylesheet" type="text/css" href="{% static "css/font-awesome.css" %}"/>
         <link rel="stylesheet" type="text/css" href="{% static "css/font-awesome.min.css" %}"/>
@@ -31,35 +31,18 @@
         <link rel="stylesheet" type="text/css" href="{% static "css/scss/wickedpicker.scss" %}"/>
         <link rel="stylesheet" type="text/css" href="{% static "css/wickedpicker.min.css" %}"/>
         <link rel="stylesheet" type="text/css" href="{% static "css/wickedpicker.css" %}"/>
-        <link rel="stylesheet" href="{% static "assets/fullcalendar/fullcalendar/fullcalendar.css" %}"/>
-        <link rel="stylesheet" href="{% static "assets/fullcalendar/fullcalendar/fullcalendar.print.css" %}"/>
-        <link rel="stylesheet" href="{% static "assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" %}"/>
-
+	<link rel="stylesheet" type="text/css" href="{% static "css/tcal.css" %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static "css/table/normalize.css" %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static "css/table/demo.css" %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static "css/table/component.css" %}"/>
+	
     </head>
 
     <body>
-
-    <!-- Navigation -->
-
     <div class="cbp-af-header" id="user-menu">
-				<div class="cbp-af-inner">
+      <div class="cbp-af-inner">
                     <a href="{% url 'home' %}" id="return-home"><h1>Spartan</h1></a>
-
-                <!-- Search bar -->
-                   <div class="nav search-row" id="top_menu">
-                        <ul class="nav top-menu">
-                            <li>
-                                <form class="navbar-form">
-                                    <input class="form-control" id="nav-search" placeholder="Caută un anunț" type="text">
-                                </form>
-                            </li>
-                        </ul>
-                    </div>
-
-
-                </div>
-
-        <!-- Notification dropdown -->
+      </div>      
             <div class="top-nav notification-row" id="user-menu-buttons">
                 <!-- notificatoin dropdown start-->
                 <ul class="nav pull-right top-menu">
@@ -129,7 +112,7 @@
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
-                                <img alt="" src="">
+                                <img alt="" src="http://www.gravatar.com/avatar/{{ cod }}">
                             </span>
                             <span class="username">{{ user.username }}</span>
                             <b class="caret"></b>
@@ -151,13 +134,7 @@
                                 <a href="#"><i class="icon_chat_alt"></i> Mai un Buton</a>
                             </li>
                             <li>
-                                <p class="blue">Logged In As:</p>
-                            </li>
-                            <li>
-                                <a href="#"><i>Te poti angaja</i><div class="checkbox"> <label> <input type="checkbox">Spartan</label> </div></a>
-                            </li>
-                            <li>
-                                <a href="#"><i>Poti Angaja</i><div class="checkbox"> <label> <input type="checkbox"> Angajator</label> </div></a>
+                               <a href="/spartan/" >Activare Spartan</a>
                             </li>
                             <li>
                                 <a href="{% url 'logout' %}"><i
@@ -170,94 +147,9 @@
                 <!-- notificatoin dropdown end-->
             </div>
     </div>
-
-    <!-- Page Content --> 
-
-        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->  
-                
-                 <section class="wrap" id="first-section">
-                    <div class="row title-row">
-                            <div class="col-12 font-thin categories-gallery">Crează<span class="font-semibold"> anunț</span></div>
-                    </div>
-                    <div class="slide story" id="slide-6" data-slide="6">
-                    
-
-                        <div class="container">
-                          <div> 
-                          <div class="card"></div>
-                          <div class="card" id="login-box">
-
-                              <h1 class="title">Te rog introdu: </h1>     
-                            <form method="POST">
-				{% csrf_token %}
-                                <div class="input-container">
-                                    <input type="text" id="Username" name="title" required="required"/>
-                                    <label for="Username">Titlul anuntului</label>
-                                    <div class="bar"></div>
-                                </div>
-                                <div class="input-container">
-                                    <input type="text" id="Username" name="text" required="required"/>
-                                    </textarea>
-                                    <label for="Username">Descrieti nevoia Dumneavoastra aici</label>
-                                    <div class="bar"></div>
-                                </div>
-                                <div class="input-container">
-                                    <select class="form-control input-lg m-bot15" id="choose_category">
-                                        <option disabled selected id="disabeled-option">Alegeti o categorie in care sa va integrati anuntul</option>
-                                        <option>Gradinarit</option>
-                                        <option>Transport</option>
-                                        <option>Curatenie</option>
-                                        <option>Bona</option>
-                                        <option>Bucatarie</option>
-                                        <option>Altele</option>
-                                    </select>
-                                    <div class="bar"></div>
-                                </div>
-                                <div class="input-container">
-                                    <input type="text" id="Username" name="country" required="required"/>
-                                    <label for="Username">Tara</label>
-                                    <div class="bar"></div>
-                                </div>
-                                <div class="input-container">
-                                    <input type="text" id="Username" name="city" required="required"/>
-                                    <label for="Username">Oras</label>
-                                    <div class="bar"></div>
-                                </div>
-                                <div class="input-container">
-                                    <input class="form-control event_input" id="datepicker" name="Date" type="text"  />
-                                    <label for="Username">Data evenimentului</label>
-                                    <div class="bar"></div>
-                                </div>
-                              <!--  <div class="input-container">
-                                    <input type="text" id="timepicker-one" name="timepicker-one" class="timepicker" required="required"/>
-                                    <label for="Username">Ora evenimentului</label>
-                                    <div class="bar"></div>
-                                </div> -->
-				<div class="input-container">
-                                    <input type="text" id="Username" name="timepicker-one" required="required"/>
-                                    <label for="Username">Locatia anuntului</label>
-                                    <div class="bar"></div>
-                                </div>
-                                <div class="input-container">
-                                    <input type="text" id="Username" name="adress" required="required"/>
-                                    <label for="Username">Locatia anuntului</label>
-                                    <div class="bar"></div>
-                                </div>
-                                <div class="button-container">
-                                    <button><span>Go</span></button>
-                                </div>
-                                <div class="footer"><a href="#">Forgot your password?</a></div>
-                            </form>
-                          </div>
-
-                        </div>
-                    </div><!-- /container -->
-                </div>
-    </section>
-
-            </header>
-        </section>
-        
+    {% block content %}
+    
+    {% endblock %}
         <footer class="footer-distributed">
 
 			<div class="footer-left">
@@ -294,8 +186,8 @@
 				<p>Contact Us</p>
 
 				<form action="#" method="post">
-
-					<input type="text" name="email" placeholder="Email" />
+				  {% csrf_token %}
+				  <input type="text" name="email" placeholder="Email" />
 					<textarea name="message" placeholder="Message"></textarea>
 					<button>Send</button>
 
@@ -311,13 +203,10 @@
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="{% static "js/wickedpicker.js" %}"></script>
         <script type="text/javascript" src="{% static "js/wickedpicker.min.js" %}"></script>
-        <script src="{% static "assets/fullcalendar/fullcalendar/fullcalendar.min.js" %}"></script> <!-- Full Google Calendar - Calendar -->
-        <script src="{% static "assets/fullcalendar/fullcalendar/fullcalendar.js" %}"></script>
-        <script src="{% static "assets/fullcalendar/fullcalendar/fullcalendar.js" %}"></script>
-
-        <script>
+	<script type="text/javascript" src="{% static "js/tcal.js" %}"></script>
+	<script>
         $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip(); 
+            $('[data-toggle="tooltip"]').tooltip();
         });
         </script>
 
@@ -331,4 +220,3 @@
                  #1f80af  -dark blue;
                  #e5f5fa  -light blue;
                                        -->
-

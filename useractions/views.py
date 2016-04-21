@@ -166,4 +166,6 @@ def spartan(request):
                                                                     'form': form })
 
 
+def random(request):
+    return render(request, 'base.html')
 
