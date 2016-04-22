@@ -1,0 +1,260 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+                
+        <section class="wrap" id="secound-section">
+                    <section class="wrapper">
+                         <div class="row title-row"> </div>
+            </div>
+              <div class="row">
+                <!-- profile-widget -->
+                <div class="col-lg-12">
+                    <div class="profile-widget profile-widget-info" id="post">
+                          <div class="panel-body" id="profile-header">
+                            <div class="col-lg-2 col-sm-2">
+                              <h4 id="user-name">Jenifer Smith</h4>               
+                              <div class="follow-ava">
+                                  <img src="../img/profile-widget-avatar.jpg" alt="">
+                              </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-4 follow-info" >
+                                <p>Titlul anuntului</p>
+                                <p>descrierea anuntului descrierea anuntului descrierea anuntului descrierea anuntului descrierea anuntului descrierea anuntului descrierea anuntului descrierea anuntului descrierea anuntuluidescrierea anuntuluidescriereadescrierea anuntului </p>
+                            </div>
+                            <div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
+                                      <ul>
+                                          <li class="active">
+                                              
+                                              <i class="icon_clock_alt"> </i><br>
+											  
+											  10:55
+                                          </li>
+										   
+                                      </ul>
+                            </div>
+							<div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
+                                      <ul>
+                                          <li class="active">
+                                              
+                                              <i class="icon_calendar"> </i><br>
+											  
+											  30.4.2000
+                                          </li>
+										   
+                                      </ul>
+                            </div>
+							<div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
+                                      <ul>
+                                          <li class="active">
+                                              
+                                              <i class="icon_pin_alt"> </i><br>
+											  
+											  Str. Mea, nr. 4
+                                          </li>
+										   
+                                      </ul>
+                            </div>
+                          </div>
+                    </div>
+                    
+                </div>
+                  
+              </div>
+              <!-- page start-->
+          <header class="panel-heading tab-bg-info" id="categoryes_profile">
+                              <ul class="nav nav-tabs" id="profile-subpage">
+                                  <li class="active">
+                                      <a data-toggle="tab" href="#recent-activity">
+                                           Licitari
+                                      </a>
+                                  </li>
+                                  <li>
+                                      <a data-toggle="tab" href="#profile">
+                                           Mai multe informatii
+                                      </a>
+                                  </li>
+                              </ul>
+                          </header>
+              <div class="row">
+                 <div class="col-lg-12">
+                    <section class="panel">
+                          <div class="panel-body">
+                              <div class="tab-content">
+                                  <div id="recent-activity" class="tab-pane active">
+                                      <div class="form-group">
+                                          <label class="control-label">Liciteaza:</label>
+                                          <div class="input-group" id="bidding-input-group">
+                                              <input type="number" class="form-control" aria-describedby="start-date" id="bid-input">
+                                              <span class="input-group-addon" id="start-date"><span>RON</span></span>
+                                              <select class="form-control input-lg m-bot15 bid-sort" id="sort-by">
+                                                      <option>Pe anunt</option>
+                                                      <option>Pe ora</option>
+                                              </select>
+                                          </div>
+                                          <button id="bid-button">Liciteaza!</button>
+                                      </div>
+                                      <button id="show_other_bids">Vezi si alte licittii</button>
+                                      <div class="profile-activity each_bid">                                          
+                                          <div class="act-time">                                      
+                                              <div class="activity-body act-in">
+                                                  <span class="arrow"></span>
+                                                  <div class="text">
+                                                      <a href="#" class="activity-img"><img class="avatar" src="../img/chat-avatar.jpg" alt=""></a>
+                                                      <p class="attribution"><a href="#">Jonatanh Doe</a> at 4:25pm, 30th Octmber 2014</p>
+                                                      <h2>50RON</h2>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="act-time">                                      
+                                              <div class="activity-body act-in">
+                                                  <span class="arrow"></span>
+                                                  <div class="text">
+                                                      <a href="#" class="activity-img"><img class="avatar" src="../img/chat-avatar.jpg" alt=""></a>
+                                                      <p class="attribution"><a href="#">Jhon Loves </a> at 5:25am, 30th Octmber 2014</p>
+                                                      <h2>50RON</h2>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="act-time">                                      
+                                              <div class="activity-body act-in">
+                                                  <span class="arrow"></span>
+                                                  <div class="text">
+                                                      <a href="#" class="activity-img"><img class="avatar" src="../img/chat-avatar.jpg" alt=""></a>
+                                                      <p class="attribution"><a href="#">Rose Crack</a> at 5:25am, 30th Octmber 2014</p>
+                                                      <h2>50RON</h2>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="act-time">                                      
+                                              <div class="activity-body act-in">
+                                                  <span class="arrow"></span>
+                                                  <div class="text">
+                                                      <a href="#" class="activity-img"><img class="avatar" src="../img/chat-avatar.jpg" alt=""></a>
+                                                      <p class="attribution"><a href="#">Jimy Smith</a> at 5:25am, 30th Octmber 2014</p>
+                                                      <h2>50RON</h2>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="act-time">                                      
+                                              <div class="activity-body act-in">
+                                                  <span class="arrow"></span>
+                                                  <div class="text">
+                                                      <a href="#" class="activity-img"><img class="avatar" src="../img/chat-avatar.jpg" alt=""></a>
+                                                      <p class="attribution"><a href="#">Maria Willyam</a> at 5:25am, 30th Octmber 2014</p>
+                                                      <<h2>50RON</h2>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="act-time">                                      
+                                              <div class="activity-body act-in">
+                                                  <span class="arrow"></span>
+                                                  <div class="text">
+                                                      <a href="#" class="activity-img"><img class="avatar" src="../img/chat-avatar.jpg" alt=""></a>
+                                                      <p class="attribution"><a href="#">Sarah saw</a> at 5:25am, 30th Octmber 2014</p>
+                                                      <h2>50RON</h2>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="act-time">                                      
+                                              <div class="activity-body act-in">
+                                                  <span class="arrow"></span>
+                                                  <div class="text">
+                                                      <a href="#" class="activity-img"><img class="avatar" src="../img/chat-avatar.jpg" alt=""></a>
+                                                      <p class="attribution"><a href="#">Layla night</a> at 5:25am, 30th Octmber 2014</p>
+                                                      <h2>50RON</h2>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="act-time">                                      
+                                              <div class="activity-body act-in">
+                                                  <span class="arrow"></span>
+                                                  <div class="text">
+                                                      <a href="#" class="activity-img"><img class="avatar" src="../img/chat-avatar.jpg" alt=""></a>
+                                                      <p class="attribution"><a href="#">Andriana lee</a> at 5:25am, 30th Octmber 2014</p>
+                                                      <h2>50RON</h2>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="act-time">                                      
+                                              <div class="activity-body act-in">
+                                                  <span class="arrow"></span>
+                                                  <div class="text">
+                                                      <a href="#" class="activity-img"><img class="avatar" src="../img/chat-avatar.jpg" alt=""></a>
+                                                      <p class="attribution"><a href="#">Maria Willyam</a> at 5:25am, 30th Octmber 2014</p>
+                                                      <h2>50RON</h2>
+                                                  </div>
+                                              </div>
+                                          </div>
+
+                                      </div>
+                                  </div>
+                                  <!-- profile -->
+                                  <div id="profile" class="tab-pane">
+                                    <section class="panel">
+                                       <h1>Informatii despre autorul anuntului:</h1>
+                                      <div class="bio-graph-heading">
+                                                Hello I’m Jenifer Smith, a leading expert in interactive and creative design specializing in the mobile medium. My graduation from Massey University with a Bachelor of Design majoring in visual communication.
+                                      </div>
+                                      <div class="panel-body bio-graph-info">
+                                          <div class="row">
+                                              <div class="bio-row">
+                                                  <p><span>First Name </span>: Jenifer </p>
+                                              </div>
+                                              <div class="bio-row">
+                                                  <p><span>Last Name </span>: Smith</p>
+                                              </div>                                              
+                                              <div class="bio-row">
+                                                  <p><span>Birthday</span>: 27 August 1987</p>
+                                              </div>
+                                              <div class="bio-row">
+                                                  <p><span>Country </span>: United</p>
+                                              </div>
+                                              <div class="bio-row">
+                                                  <p><span>Occupation </span>: UI Designer</p>
+                                              </div>
+                                              <div class="bio-row">
+                                                  <p><span>Email </span>:jenifer@mailname.com</p>
+                                              </div>
+                                              <div class="bio-row">
+                                                  <p><span>Mobile </span>: (+6283) 456 789</p>
+                                              </div>
+                                              <div class="bio-row">
+                                                  <p><span>Phone </span>:  (+021) 956 789123</p>
+                                              </div>
+                                          </div>
+                                      </div>
+                                    </section>
+                                      <section>
+                                          <div class="row">                                              
+                                          </div>
+                                      </section>
+                                  </div>
+                              </div>
+                          </div>
+                      </section>
+                 </div>
+              </div>
+
+              <!-- page end-->
+          </section>
+        </section>
+
+        <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip(); 
+        });
+        </script>
+        <script>
+                $("#show_other_bids").click(function(){
+                    $(".each_bid").toggleClass('show_bids');
+                });
+        </script>
+
+
+
+
+    </body>
+
+    </html>
+
+{% endblock %}

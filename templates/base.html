@@ -31,10 +31,13 @@
         <link rel="stylesheet" type="text/css" href="{% static "css/scss/wickedpicker.scss" %}"/>
         <link rel="stylesheet" type="text/css" href="{% static "css/wickedpicker.min.css" %}"/>
         <link rel="stylesheet" type="text/css" href="{% static "css/wickedpicker.css" %}"/>
-	<link rel="stylesheet" type="text/css" href="{% static "css/tcal.css" %}"/>
-	<link rel="stylesheet" type="text/css" href="{% static "css/table/normalize.css" %}"/>
+	    <link rel="stylesheet" type="text/css" href="{% static "css/tcal.css" %}"/>
+	    <link rel="stylesheet" type="text/css" href="{% static "css/table/normalize.css" %}"/>
         <link rel="stylesheet" type="text/css" href="{% static "css/table/demo.css" %}"/>
         <link rel="stylesheet" type="text/css" href="{% static "css/table/component.css" %}"/>
+
+        <link rel="shortcut icon" href="{% static "favicon.ico"  %}" />
+
 	
     </head>
 
@@ -204,11 +207,48 @@
         <script type="text/javascript" src="{% static "js/wickedpicker.js" %}"></script>
         <script type="text/javascript" src="{% static "js/wickedpicker.min.js" %}"></script>
 	<script type="text/javascript" src="{% static "js/tcal.js" %}"></script>
-	<script>
+
+        <script src="{% static "http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.jss" %}"></script>
+
+
+   <script>
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();
         });
         </script>
+        <script>
+                $("#show_other_bids").click(function(){
+                    $(".each_bid").toggleClass('show_bids');
+                });
+        </script>
+
+
+
+
+        <script>
+            $(document).ready(function(){
+            $("#mytable #checkall").click(function () {
+                    if ($("#mytable #checkall").is(':checked')) {
+                        $("#mytable input[type=checkbox]").each(function () {
+                            $(this).prop("checked", true);
+                        });
+
+                    } else {
+                        $("#mytable input[type=checkbox]").each(function () {
+                            $(this).prop("checked", false);
+                        });
+                    }
+                });
+
+                $("[data-toggle=tooltip]").tooltip();
+            });
+        </script>
+
+
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
+
+    <script src="{% static " js/jquery.stickyheader.js" %}" ></script>
 
 
 
