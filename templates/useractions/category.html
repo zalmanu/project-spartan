@@ -182,8 +182,6 @@
         </div>
     </div>
     {% endif %}
-        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
         <section class="third-section" id="wrap">
             <header class="jumbotron hero-spacer" id="category-banner" style="background-image: url({% static 'images/categories/'%}{{ kind.path_bg }});">
                 <h1 id="category-title">{{ kind.name }}</h1>
@@ -196,11 +194,11 @@
                 <div class="row container_allign container">
                     <div class="col-md-3" id="fixed-left-menu">
                         <p class="lead">Categories</p>
-                        <div class="list-group"
+                    <div class="list-group">
                       {% for kind in categories %}
                             <a href="/category/{{ kind.name }}" class="list-group-item" id="left-menu-button"><img src="{% static 'images/categories/'%}{{ kind.path_mini }}" class="left-menu-category-icon"> |  {{ kind.name }}</a>
                       {% endfor %}
-                        </div>
+                    </div>
                         <script>
                             var header = $("#fixed-left-menu");
                             $(document).scroll(function(e) {
