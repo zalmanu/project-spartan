@@ -8,6 +8,7 @@ from .forms import LicitatieForm
 from bidding.models import Oferta
 
 
+@login_required
 def posts(request):
 
     if request.user and not  request.user.is_superuser:
@@ -63,6 +64,7 @@ def post(request, slug):
                 'form': form
             })
         else:
+            print "what"
             return render(request, 'bidding/myPosts.html',{
                 'cod': '61e1380365703a4c73c2480673d8993b',
                 'post': post,
