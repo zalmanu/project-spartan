@@ -32,7 +32,7 @@ class Spartan(models.Model):
      abilitate2= models.CharField(null=True, max_length=20, blank=True)
      abilitate3= models.CharField(null=True, max_length=20, blank=True)
      user = models.OneToOneField(User, primary_key=True, default='')
-     
+     spartanStatus = models.BooleanField(default=False)
 
 
 
