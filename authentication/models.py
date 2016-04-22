@@ -14,7 +14,12 @@ class Account(models.Model):
     telefon = models.IntegerField(null=True)
     cod = models.CharField(max_length=100,null=True, blank=True)
     sold= models.IntegerField(default=0)
+    slug = models.SlugField(default=uuid.uuid1, unique=True)    
 
+    def get_absolute_url(self):
+        return reverse('user', args=[self.slug])
+
+    
 class Review(models.Model):
     receiver = models.ForeignKey(User, related_name='reviews')
     submitter = models.ForeignKey(User, related_name='reviewed_by')
