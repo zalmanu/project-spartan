@@ -15,10 +15,10 @@
 	<div class="main" id="home">
 	  <ul class="cbp-ig-grid">
 	{% for kind in categories %}
-					<li id="cat1" style="background-image: url({% static 'images/categories/' %}{{ kind }}-banner.jpg");>
-						<a href="/category/{{ kind }}" name="kind" value="{{ kind }}">
-							<span class="cbp-ig-icon"><img src="{% static 'images/categories/'%}{{ kind }}-icon.png"></span>
-							<h3 class="cbp-ig-title">{{ kind }}</h3>
+					<li id="cat1" style="background-image: url({% static 'images/categories/' %}{{ kind.path_banner }}");>
+						<a href="/category/{{ kind.name }}" name="kind" value="{{ kind.name }}">
+							<span class="cbp-ig-icon"><img src="{% static 'images/categories/'%}{{ kind.path_icon }}"></span>
+							<h3 class="cbp-ig-title">{{ kind.name }}</h3>
 							<span class="cbp-ig-category"> Dă click aici pentru mai multe</span>
             </a>
 					</li>
@@ -40,10 +40,10 @@
 			</div><!-- /row -->
             <div class="row container_allign container">
                 <div class="col-md-3" id="fixed-left-menu">
-                    <p class="lead">Category</p>
+                    <p class="lead">Categories</p>
                     <div class="list-group">
                       {% for kind in categories %}
-                            <a href="/category/{{ kind}}" class="list-group-item" id="left-menu-button"><img src="{% static 'images/categories/'%}{{ kind }}-mini.png" class="left-menu-category-icon"> |  {{ kind }}</a>
+                            <a href="/category/{{ kind.name }}" class="list-group-item" id="left-menu-button"><img src="{% static 'images/categories/'%}{{ kind.path_mini }}" class="left-menu-category-icon"> |  {{ kind.name }}</a>
                       {% endfor %}
                     </div>
                 </div>

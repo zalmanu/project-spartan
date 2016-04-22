@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
-from useractions.models import Announcement
+from useractions.models import Announcement, Category
 from authentication.models import Account,Spartan
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -12,7 +12,7 @@ from .forms import ProfileEditForm, PostForm, SpartanForm
 import md5
 import datetime
 from django.contrib.auth.decorators import login_required
-
+from django.shortcuts import get_object_or_404
 
 
 @login_required
@@ -30,15 +30,17 @@ def create_post(request):
             title = form.cleaned_data['title']
             post_text = form.cleaned_data['text']
             adress = form.cleaned_data['adress']
-            country = form.cleaned_data['country'] 
+            country = form.cleaned_data['country']
             city = form.cleaned_data['city']
             category = form.cleaned_data['category']
             time = form.cleaned_data['timePost']
             time = ":".join(map(lambda item: item.strip(), time.split(":")))
             data_post = form.cleaned_data['data']
             money_user = form.cleaned_data['price']
+            category_object = get_object_or_404(Category, name=category)
             announcement = Announcement.objects.create(title=title, text=post_text, address=adress, country=country,
-                                                       category=category,money =money_user, city=city,data=data_post, timePost=time, author=request.user)
+                                                       money=money_user, city=city, data=data_post, timePost=time,
+                                                       author=request.user, category=category_object)
             announcement.save()
             subject='Anunt Project Spartan'
             messagetip=" Buna % s , \n Ati postat un anunt cu succes! \n" \
@@ -55,7 +57,7 @@ def create_post(request):
                 'form': form,
                 'errors': ['Invalid form'] })
     else:
-        form = PostForm()
+        form = PostForm
         if request.user.is_active and not  request.user.is_superuser:
             return render(request, 'useractions/create_post.html', {
                 'cod': curruser.account.cod,
@@ -97,20 +99,22 @@ def profile(request):
 
 @login_required
 def category(request, kind):
-    an = Announcement.objects.filter(category=kind)
+    categories = Category.objects.all()
+    page_category = get_object_or_404(Category, name = kind)
     curruser = request.user
     if request.user.is_active and not  request.user.is_superuser:
         return render(request, 'useractions/category.html', {
-        'categories': ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others'],
-        'kind': kind,
+        'categories': categories,
+        'kind': page_category,
         'cod': curruser.account.cod,
-        'ann': an
+        'ann': Announcement.objects.filter(category = page_category)
         })
-    else: return render(request, 'useractions/category.html', {
-        'categories': ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others'],
-        'kind': kind,
+    else:
+        return render(request, 'useractions/category.html', {
+        'categories': categories,
+        'kind': page_category,
         'cod': '61e1380365703a4c73c2480673d8993b',
-        'ann': an
+        'ann': Announcement.objects.filter(category = page_category)
     })
 
 
@@ -166,6 +170,5 @@ def spartan(request):
                                                                     'form': form })
 
 
-def random(request):
-    return render(request, 'base.html')
+
 

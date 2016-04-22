@@ -201,29 +201,24 @@ p			<div class="cd-timeline-img cd-picture">
     </div>
     <div class="main">
       <ul class="cbp-ig-grid">
-		{% for kind in categories %}
-
-						<li id="cat1" style="background-image: url({% static 'images/categories/'%}{{ kind }}-banner.jpg");>
-						  	<a  name="kind" value="{{ kind }}">
-							<span class="cbp-ig-icon"><img src="{% static 'images/categories/'%}{{ kind }}-icon.png"></span>
-							<h3 class="cbp-ig-title">{{ kind }}</h3>
-							
-            </a>
-					</li>
+	{% for kind in categories %}
+	<li id="cat1" style="background-image: url({% static 'images/categories/' %}{{ kind.path_banner }}");>
+	  <a name="kind">
+	    <span class="cbp-ig-icon"><img src="{% static 'images/categories/'%}{{ kind.path_icon }}"></span>
+	    <h3 class="cbp-ig-title">{{ kind.name }}</h3>
+          </a>
+	</li>
 	{% endfor %}
-
-					</ul>
-			</div>
-    </section>
+      </ul>
+    </div>
+		</section>
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Fourth Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
     <section class="fourth-section" id="fourth-section" style="background-image: url({% static "images/slide-cover.jpg" %});">
         <center><div class="slide story" id="slide-6" data-slide="6">
 		<div class="container">
             <div class="row title-row">
-				<div class="col-12 font-thin"
-                                    id="fourth-section-title">Tentat să te
-                                înscrii?</div>
+	      <div class="col-12 font-thin" id="fourth-section-title">Tentat să te înscrii?</div>
             </div>
 			<div class="row line-row">
 				<div class="hr">&nbsp;</div>
