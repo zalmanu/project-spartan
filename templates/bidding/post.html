@@ -14,7 +14,7 @@
                             <div class="col-lg-2 col-sm-2">
                               <h4 id="user-name">{{ post.author }}</h4>               
                               <div class="follow-ava">
-                                  <img src="http://www.gravatar.com/avatar/{{ cod }}" alt="">
+                                  <img src="http://www.gravatar.com/avatar/{{ post.author.account.cod }}" alt="">
                               </div>
                             </div>
                             <div class="col-lg-4 col-sm-4 follow-info" >
@@ -61,37 +61,57 @@
               </div>
               <!-- page start-->
           <header class="panel-heading tab-bg-info" id="categoryes_profile">
-                              <ul class="nav nav-tabs" id="profile-subpage">
+            <ul class="nav nav-tabs" id="profile-subpage">
+	      {% if request.user.spartan.spartanStatus and request.user != post.author %} 
                                   <li class="active">
                                       <a data-toggle="tab" href="#recent-activity">
                                            Licitari
                                       </a>
                                   </li>
+		{% endif %}
                                   <li>
                                       <a data-toggle="tab" href="#profile">
                                            Mai multe informatii
                                       </a>
                                   </li>
                               </ul>
-                          </header>
+          </header>
+	  {% if request.user.spartan.spartanStatus and request.user != post.author %}
               <div class="row">
                  <div class="col-lg-12">
                     <section class="panel">
                           <div class="panel-body">
                               <div class="tab-content">
-                                  <div id="recent-activity" class="tab-pane active">
-                                      <div class="form-group">
-                                          <label class="control-label">Liciteaza:</label>
+                                <div id="recent-activity" class="tab-pane active">
+				  {% if errors %}
+				  <div class="error">
+				      {% for message in errors %}
+				      <ul>
+					<li>{{ message }}</li>
+				      </ul>
+				      {% endfor %}
+				    </div>
+				    {% elif confirms %}
+				    <div class="confirm">
+				      {% for message in confirms %}
+				      <ul>
+					<li>{{ message }}</li>
+				      </ul>
+				      {% endfor %}
+				    </div>
+				    {% endif %}
+                                  <div class="form-group">
+				    <form method="POST">
+				      {% csrf_token %}
+                                          <label class="control-label">{{ form.pret.label }}</label>
                                           <div class="input-group" id="bidding-input-group">
-                                              <input type="number" class="form-control" aria-describedby="start-date" id="bid-input">
+					    {{ form.pret }}
                                               <span class="input-group-addon" id="start-date"><span>RON</span></span>
-                                              <select class="form-control input-lg m-bot15 bid-sort" id="sort-by">
-                                                      <option>Pe anunt</option>
-                                                      <option>Pe ora</option>
-                                              </select>
+					    {{ form.tip }}
                                           </div>
                                           <button id="bid-button">Liciteaza!</button>
-                                      </div>
+                                  </div>
+				  </form>
                                       <button id="show_other_bids">Vezi si alte licittii</button>
                                       <div class="profile-activity each_bid">                                          
                                           <div class="act-time">                                      
@@ -194,31 +214,17 @@
                                       <div class="bio-graph-heading">
                                                 Hello I’m Jenifer Smith, a leading expert in interactive and creative design specializing in the mobile medium. My graduation from Massey University with a Bachelor of Design majoring in visual communication.
                                       </div>
+				      {% endif %}
                                       <div class="panel-body bio-graph-info">
                                           <div class="row">
                                               <div class="bio-row">
-                                                  <p><span>First Name </span>: Jenifer </p>
+                                                  <p><span>Username </span>: {{ post.author.username }} </p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>Last Name </span>: Smith</p>
-                                              </div>                                              
-                                              <div class="bio-row">
-                                                  <p><span>Birthday</span>: 27 August 1987</p>
+                                                  <p><span>Country </span>: {{ post.author.account.country }}</p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>Country </span>: United</p>
-                                              </div>
-                                              <div class="bio-row">
-                                                  <p><span>Occupation </span>: UI Designer</p>
-                                              </div>
-                                              <div class="bio-row">
-                                                  <p><span>Email </span>:jenifer@mailname.com</p>
-                                              </div>
-                                              <div class="bio-row">
-                                                  <p><span>Mobile </span>: (+6283) 456 789</p>
-                                              </div>
-                                              <div class="bio-row">
-                                                  <p><span>Phone </span>:  (+021) 956 789123</p>
+                                                  <p><span>City </span>: {{ post.author.account.city }}</p>
                                               </div>
                                           </div>
                                       </div>
@@ -233,7 +239,6 @@
                       </section>
                  </div>
               </div>
-
               <!-- page end-->
           </section>
         </section>

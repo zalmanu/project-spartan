@@ -6,22 +6,27 @@
                             <div class="col-12 font-thin categories-gallery"><br></br>Activarea puterii <span class="font-semibold"> de Spartan</span></div>
                     </div>
                     <div class="slide story" id="slide-6" data-slide="6">
-                        {% if errors %}
-                    <div class="error">
-		      {% for message in errors %}
-                        <ul>
-                            <li>{{ message }}</li>
-                        </ul>
-                    {% endfor %}
-                    </div>
-		    {% endif %}
-
-
-                        <div class="container">
-                          <div>
+		      {% if errors %}
+		      <div class="error">
+			{% for message in errors %}
+			<ul>
+			  <li>{{ message }}</li>
+			</ul>
+			{% endfor %}
+		      </div>
+		      {% elif confirms %}
+		      <div class="confirm">
+			{% for message in confirms %}
+			<ul>
+			  <li>{{ message }}</li>
+			</ul>
+			{% endfor %}
+		      </div>
+		      {% endif %}
+                      <div class="container">
+                        <div>
                           <div class="card"></div>
                           <div class="card" id="login-box">
-
                               <h1 class="title">Please enter :</h1>
                             <form method="POST">
 			      {% csrf_token %}
