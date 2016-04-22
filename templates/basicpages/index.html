@@ -279,9 +279,9 @@
     <div class="main">
 				<ul class="cbp-ig-grid">
 	{% for kind in categories %}
-					<li id="cat1" style="background-image: url({% static 'images/categories/'%}{{ kind.name }}-banner.jpg");>
+					<li id="cat1" style="background-image: url({% static 'images/categories/' %}{{ kind.path_banner }}");>
 						<a href="/category/{{ kind.name }}" name="kind" value="{{ kind.name }}">
-							<span class="cbp-ig-icon"><img src="{% static 'images/categories/'%}{{ kind.name }}-icon.png"></span>
+							<span class="cbp-ig-icon"><img src="{% static 'images/categories/'%}{{ kind.path_icon }}"></span>
 							<h3 class="cbp-ig-title">{{ kind.name }}</h3>
 							<span class="cbp-ig-category"> Dă click aici pentru mai multe</span>
             </a>
