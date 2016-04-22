@@ -12,14 +12,14 @@
                     <div class="profile-widget profile-widget-info" id="post">
                           <div class="panel-body" id="profile-header">
                             <div class="col-lg-2 col-sm-2">
-                              <h4 id="user-name">Jenifer Smith</h4>               
+                              <h4 id="user-name">{{ user.username }} </h4>
                               <div class="follow-ava">
-                                  <img src="../img/profile-widget-avatar.jpg" alt="">
+                                  <img src="http://www.gravatar.com/avatar/{{ cod }}" alt="">
                               </div>
                             </div>
                             <div class="col-lg-4 col-sm-4 follow-info" >
                                 <p>Titlul anuntului</p>
-                                <p>descrierea anuntului descrierea anuntului descrierea anuntului descrierea anuntului descrierea anuntului descrierea anuntului descrierea anuntului descrierea anuntului descrierea anuntuluidescrierea anuntuluidescriereadescrierea anuntului </p>
+
                             </div>
                             <div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
                                       <ul>
@@ -77,34 +77,26 @@
                                   <div id="profile" class="tab-pane">
                                     <section class="panel">
                                        <h1>Informatii despre autorul anuntului:</h1>
-                                      <div class="bio-graph-heading">
-                                                Hello I’m Jenifer Smith, a leading expert in interactive and creative design specializing in the mobile medium. My graduation from Massey University with a Bachelor of Design majoring in visual communication.
-                                      </div>
+
                                       <div class="panel-body bio-graph-info">
                                           <div class="row">
                                               <div class="bio-row">
-                                                  <p><span>First Name </span>: Jenifer </p>
+                                                  <p><span>First Name </span>: {{ user.username }}</p>
+                                              </div>
+                                              
+                                              <div class="bio-row">
+                                                  <p><span>Country </span>: {{ user.account.country }}</p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>Last Name </span>: Smith</p>
-                                              </div>                                              
-                                              <div class="bio-row">
-                                                  <p><span>Birthday</span>: 27 August 1987</p>
+                                                  <p><span>Occupation </span>: Angajator</p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>Country </span>: United</p>
+                                                  <p><span>Email </span>: {{ user.email }}</p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>Occupation </span>: UI Designer</p>
+                                                  <p><span>Mobile </span>: {{ user.account.telefon }}</p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>Email </span>:jenifer@mailname.com</p>
-                                              </div>
-                                              <div class="bio-row">
-                                                  <p><span>Mobile </span>: (+6283) 456 789</p>
-                                              </div>
-                                              <div class="bio-row">
-                                                  <p><span>Phone </span>:  (+021) 956 789123</p>
                                               </div>
                                           </div>
                                       </div>
