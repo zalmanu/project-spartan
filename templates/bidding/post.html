@@ -12,22 +12,21 @@
                     <div class="profile-widget profile-widget-info" id="post">
                           <div class="panel-body" id="profile-header">
                             <div class="col-lg-2 col-sm-2">
-                              <h4 id="user-name">Jenifer Smith</h4>               
+                              <h4 id="user-name">{{ post.author }}</h4>               
                               <div class="follow-ava">
-                                  <img src="../img/profile-widget-avatar.jpg" alt="">
+                                  <img src="http://www.gravatar.com/avatar/{{ cod }}" alt="">
                               </div>
                             </div>
                             <div class="col-lg-4 col-sm-4 follow-info" >
-                                <p>Titlul anuntului</p>
-                                <p>descrierea anuntului descrierea anuntului descrierea anuntului descrierea anuntului descrierea anuntului descrierea anuntului descrierea anuntului descrierea anuntului descrierea anuntuluidescrierea anuntuluidescriereadescrierea anuntului </p>
+                              <p>{{ post.title }}</p>
+			      <p>{{ post.text }}</p>
                             </div>
                             <div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
                                       <ul>
                                           <li class="active">
                                               
                                               <i class="icon_clock_alt"> </i><br>
-											  
-											  10:55
+					      {{ post.timePost }}
                                           </li>
 										   
                                       </ul>
@@ -38,7 +37,7 @@
                                               
                                               <i class="icon_calendar"> </i><br>
 											  
-											  30.4.2000
+						{{ post.data }}
                                           </li>
 										   
                                       </ul>
@@ -49,7 +48,7 @@
                                               
                                               <i class="icon_pin_alt"> </i><br>
 											  
-											  Str. Mea, nr. 4
+					      {{ post.address }}
                                           </li>
 										   
                                       </ul>

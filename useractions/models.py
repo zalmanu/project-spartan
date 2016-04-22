@@ -21,7 +21,7 @@ class Announcement(models.Model):
     money = models.IntegerField(null=True)
     
     def get_absolute_url(self):
-        return reverse('announcement', args=[self.slug])
+        return reverse('post', args=[self.slug])
     
     class Meta:
         get_latest_by = 'creation_date'
