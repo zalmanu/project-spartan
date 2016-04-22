@@ -10,7 +10,7 @@ class Announcement(models.Model):
     title = models.CharField(null=True, max_length=20)
     text = models.CharField(null=True, max_length=500)
     slug = models.SlugField(default=uuid.uuid1, unique=True)
-    author = models.ForeignKey(User, null=True, blank=True)
+    author = models.ForeignKey(to=User,related_name='posts', null=True, blank=True)
     address = models.CharField(null=True, max_length=500)
     country = models.TextField(null=True, max_length=50)
     city = models.TextField(null=True, max_length=100)

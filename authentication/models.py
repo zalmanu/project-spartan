@@ -15,7 +15,6 @@ class Account(models.Model):
     sold= models.IntegerField(default=0)
 
 
-
 class Review(models.Model):
     receiver = models.ForeignKey(User, related_name='reviews')
     submitter = models.ForeignKey(User, related_name='reviewed_by')
