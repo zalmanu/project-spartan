@@ -7,6 +7,9 @@ from django.shortcuts import redirect
 from django.contrib import messages
 import md5
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
+from django.contrib.auth.views import password_reset, password_reset_confirm
+from django.core.urlresolvers import reverse
 
 
 def register_page(request):
@@ -125,16 +128,22 @@ def forgotpassword(request):
         form = ForgotPasswordForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data['email']
-            associated_user = User.objects.filter(email = email)
-            if associated_user.exits():
-                email = {
-                    'email': user.email,
-                    'domain': request.META['HTTP_HOST'],
-                    'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-                    'user': user,
-                    'token': default_token_generator.make_token(user),
-                    'protocol': 'http',
-                }
+            associated_user = User.objects.filter(Q(email = email))
+            print associated_user
+            if associated_user.exists():
+                return password_reset(request, template_name='authentication/forgotpassword.html',
+                                      email_template_name='authentication/password_reset_email.html',
+                                      post_reset_redirect=reverse('forgotpassword'))
+            else:
+                return render(request, 'authentication/forgotpassword.html',
+                              {'form':form ,
+                               'errors': ['There is no user associated with this email adress']})
+
     else:
         form = ForgotPasswordForm()
         return render(request, 'authentication/forgotpassword.html', {'form':form })
+
+
+def reset_confirm(request, uidb64=None, token=None):
+    return password_reset_confirm(request, template_name='forgotten.html',
+        uidb36=uidb36, token=token, post_reset_redirect=reverse('success'))
