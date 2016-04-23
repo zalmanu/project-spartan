@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import LoginForm, RegisterForm, PasswordResetForm
+from .forms import LoginForm, RegisterForm, PasswordResetForm, ForgotPasswordForm
 import authentication.models
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
@@ -120,4 +120,21 @@ def reset_pass(request):
         return render(request, "authentication/resetpass.html", {'form': form})
     return redirect('/')
 
-
+def forgotpassword(request):
+    if request.method == 'POST':  
+        form = ForgotPasswordForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            associated_user = User.objects.filter(email = email)
+            if associated_user.exits():
+                email = {
+                    'email': user.email,
+                    'domain': request.META['HTTP_HOST'],
+                    'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                    'user': user,
+                    'token': default_token_generator.make_token(user),
+                    'protocol': 'http',
+                }
+    else:
+        form = ForgotPasswordForm()
+        return render(request, 'authentication/forgotpassword.html', {'form':form })
