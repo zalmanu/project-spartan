@@ -71,11 +71,3 @@ def post(request, slug):
                 'form': form
             })
 
-def yourPost(request):
-     if request.user.is_active and not  request.user.is_superuser:
-            return render(request, 'bidding/yourPost.html', {
-                'cod': request.user.account.cod,
-                })
-     else:
-            return render(request, 'useractions/profile.html',{
-                'cod': '61e1380365703a4c73c2480673d8993b',})
