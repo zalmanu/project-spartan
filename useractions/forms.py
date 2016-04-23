@@ -27,7 +27,7 @@ class SpartanForm(forms.Form):
     CNP = forms.IntegerField(label="CNP")
     serie = forms.CharField(max_length=30, label="ID card series")
     cui = forms.CharField(max_length=30, label="CUI")
-    cont = forms.CharField(max_length=30, label="Banck account")
+    cont = forms.CharField(max_length=30, label="Bank account")
     abilitate = forms.ChoiceField(choices=[(x, x) for x in ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others']], label="Category", widget=forms.Select(attrs={'class': "form-control input-lg m-bot15", 'id': "choose_category"}))  
 
 
