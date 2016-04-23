@@ -63,10 +63,10 @@
 	font-weight: bold;
 	white-space: nowrap;
 }
-#tcalPrevYear { background-image: url('img/prev_year.gif'); }
-#tcalPrevMonth { background-image: url('img/prev_mon.gif'); }
-#tcalNextMonth { background-image: url('img/next_mon.gif'); }
-#tcalNextYear { background-image: url('img/next_year.gif'); }
+#tcalPrevYear { background-image: url('../img/prev_year.gif'); }
+#tcalPrevMonth { background-image: url('../img/prev_mon.gif'); }
+#tcalNextMonth { background-image: url('../img/next_mon.gif'); }
+#tcalNextYear { background-image: url('../img/next_year.gif'); }
 
 /* table containing week days header and calendar grid */
 #tcalGrid {

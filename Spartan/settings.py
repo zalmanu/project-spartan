@@ -17,11 +17,13 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'widget_tweaks',
 
     #Usual apps
     'authentication',
     'basicpages',
     'useractions',
+    'bidding',
 
 )
 
@@ -56,7 +58,7 @@ TEMPLATES = [
         'DIRS': [
            BASE_DIR + '/templates/'
         ],
-        'APP_DIRS': False,
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
