@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+                
+        <section class="wrap" id="secound-section">
+                    <section class="wrapper">
+                         <div class="row title-row"> </div>
+            </div>
+              <div class="row">
+                <!-- profile-widget -->
+                <div class="col-lg-12">
+                    <div class="profile-widget profile-widget-info" id="post">
+                          <div class="panel-body" id="profile-header">
+                            <div class="col-lg-2 col-sm-2">
+                              <h4 id="user-name">{{ post.author }}</h4>               
+                              <div class="follow-ava">
+                                  <img src="http://www.gravatar.com/avatar/{{ post.author.account.cod }}" alt="">
+                              </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-4 follow-info" >
+                              <p>{{ post.title }}</p>
+			      <p>{{ post.text }}</p>
+                            </div>
+                            <div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
+                                      <ul>
+                                          <li class="active">
+                                              
+                                              <i class="icon_clock_alt"> </i><br>
+					      {{ post.timePost }}
+                                          </li>
+										   
+                                      </ul>
+                            </div>
+							<div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
+                                      <ul>
+                                          <li class="active">
+                                              
+                                              <i class="icon_calendar"> </i><br>
+											  
+						{{ post.data }}
+                                          </li>
+										   
+                                      </ul>
+                            </div>
+							<div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
+                                      <ul>
+                                          <li class="active">
+                                              
+                                              <i class="icon_pin_alt"> </i><br>
+											  
+					      {{ post.address }}
+                                          </li>
+										   
+                                      </ul>
+                            </div>
+                          </div>
+                    </div>
+                    
+                </div>
+                  
+              </div>
+              <!-- page start-->
+          <header class="panel-heading tab-bg-info" id="categoryes_profile">
+            <ul class="nav nav-tabs" id="profile-subpage">
+	      {% if request.user.spartan.spartanStatus and request.user != post.author %} 
+                                  <li class="active">
+                                      <a data-toggle="tab" href="#recent-activity">
+                                           Licitari
+                                      </a>
+                                  </li>
+		{% endif %}
+                                  <li>
+                                      <a data-toggle="tab" href="#profile">
+                                           Mai multe informatii
+                                      </a>
+                                  </li>
+                              </ul>
+          </header>
+	  {% if request.user.spartan.spartanStatus and request.user != post.author %}
+              <div class="row">
+                 <div class="col-lg-12">
+                    <section class="panel">
+                          <div class="panel-body">
+                              <div class="tab-content">
+                                <div id="recent-activity" class="tab-pane active">
+				  {% if errors %}
+				  <div class="error">
+				      {% for message in errors %}
+				      <ul>
+					<li>{{ message }}</li>
+				      </ul>
+				      {% endfor %}
+				    </div>
+				    {% elif confirms %}
+				    <div class="confirm">
+				      {% for message in confirms %}
+				      <ul>
+					<li>{{ message }}</li>
+				      </ul>
+				      {% endfor %}
+				    </div>
+				    {% endif %}
+                                  <div class="form-group">
+				    <form method="POST">
+				      {% csrf_token %}
+                                          <label class="control-label">{{ form.pret.label }}</label>
+                                          <div class="input-group" id="bidding-input-group">
+					    {{ form.pret }}
+                                              <span class="input-group-addon" id="start-date"><span>RON</span></span>
+					    {{ form.tip }}
+                                          </div>
+                                          <button id="bid-button">Liciteaza!</button>
+                                  </div>
+				  </form>
+                                      <button id="show_other_bids">Vezi si alte licitatii</button>
+                                      <div class="profile-activity each_bid">
+                                        {% for oferta in post.oferte.all %}
+                                          <div class="act-time">                                      
+                                              <div class="activity-body act-in">
+                                                  <span class="arrow"></span>
+                                                  <div class="text">
+                                                      <a href="#" class="activity-img"><img class="avatar" src="http://www.gravatar.com/avatar/{{ oferta.spartan.user.account.cod }}" alt=""></a>
+                                                      <p class="attribution"><a href="#">{{ oferta.spartan.user }}</a> {{ oferta.tip }}</p>
+                                                      <h2>{{ oferta.pret }}</h2>
+                                                  </div>
+                                              </div>
+                                          </div>
+					  {% endfor %}
+                                      </div>
+                                </div>
+				{% endif %}
+                                  <!-- profile -->
+                                  <div id="profile" class="tab-pane">
+                                    <section class="panel">
+                                       <h1>Informatii despre autorul anuntului:</h1>
+                                      <div class="panel-body bio-graph-info">
+                                          <div class="row">
+                                              <div class="bio-row">
+                                                  <p><span>Username </span>: {{ post.author.username }} </p>
+                                              </div>
+                                              <div class="bio-row">
+                                                  <p><span>Country </span>: {{ post.author.account.country }}</p>
+                                              </div>
+                                              <div class="bio-row">
+                                                  <p><span>City </span>: {{ post.author.account.city }}</p>
+                                              </div>
+                                          </div>
+                                      </div>
+                                    </section>
+                                      <section>
+                                          <div class="row">                                              
+                                          </div>
+                                      </section>
+                                  </div>
+                              </div>
+                          </div>
+                      </section>
+                 </div>
+              </div>
+              <!-- page end-->
+          </section>
+        </section>
+
+        <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip(); 
+        });
+        </script>
+        <script>
+                $("#show_other_bids").click(function(){
+                    $(".each_bid").toggleClass('show_bids');
+                });
+        </script>
+
+
+
+
+    </body>
+
+    </html>
+
+{% endblock %}

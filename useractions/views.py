@@ -142,7 +142,7 @@ def spartan(request):
                                              address=adress, cnp=cnp,serie=serie,cui=cui,
                                              contBancar=contBancar,
                                              abilitate1=abilitate,
-                                             author=request.user)
+                                             user=request.user)
             spartan.save()
             subject='Activare putere de Spartan'
             messagetip=" Buna % s , \n Ati completat formularul pentru activare puterii de Spartan \n" \
@@ -152,7 +152,7 @@ def spartan(request):
             from_email=settings.EMAIL_HOST_USER
             send_mail(subject, messagetip, from_email,
                       [request.user.email], fail_silently=True)
-            return render(request, 'useractions/spartan.html' ,{'errors': ['Ati completat cu succes formularul,asteptati confirmarea administratorului!'],
+            return render(request, 'useractions/spartan.html' ,{'confirms': ['Ati completat cu succes formularul,asteptati confirmarea administratorului!'],
                                                                     'cod': request.user.account.cod,
                                                                     'form': form})
         else:

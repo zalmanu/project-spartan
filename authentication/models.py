@@ -6,6 +6,7 @@ from django.core.urlresolvers import reverse
 from . import views
 import uuid
 
+    
 class Account(models.Model):
     user = models.OneToOneField(User, primary_key=True)
     city = models.CharField(max_length=100)
@@ -13,9 +14,12 @@ class Account(models.Model):
     telefon = models.IntegerField(null=True)
     cod = models.CharField(max_length=100,null=True, blank=True)
     sold= models.IntegerField(default=0)
+    slug = models.SlugField(default=uuid.uuid1, unique=True)    
 
+    def get_absolute_url(self):
+        return reverse('user', args=[self.slug])
 
-
+    
 class Review(models.Model):
     receiver = models.ForeignKey(User, related_name='reviews')
     submitter = models.ForeignKey(User, related_name='reviewed_by')
@@ -32,8 +36,8 @@ class Spartan(models.Model):
      abilitate1= models.CharField(null=True, max_length=20)
      abilitate2= models.CharField(null=True, max_length=20, blank=True)
      abilitate3= models.CharField(null=True, max_length=20, blank=True)
-     author = models.ForeignKey(User, null=True, blank=True)
-     SpartanStatus=models.BooleanField(default=False)
+     user = models.OneToOneField(User, primary_key=True, default='')
+     spartanStatus = models.BooleanField(default=False)
 
 
 
