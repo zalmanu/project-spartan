@@ -1723,6 +1723,9 @@ header h1 {
 
 @media (max-width: 1400px){
     
+    #wrap{
+        margin-top: 10%;
+    }
      #logo-title{
         font-size: 5    0px !important;
     }
@@ -1929,8 +1932,8 @@ header h1 {
 }
 .confirm{
     font-size: 17px;
-    border: 2px solid gren;
     text-align: center;
+    border: 2px;    
     width: 90% !important;
     margin: 0 auto;
     margin-bottom: 4%;

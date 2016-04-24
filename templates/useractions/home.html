@@ -1,20 +1,20 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
+
     <section class="third-section" id="wrap">
-    <div class="row title-row">
-      <div class="col-12 font-thin
-                  categories-gallery">Alege <span class="font-semibold">o categorie</span> </div>
-    </div>
-    <div class="row line-row">
+      <div class="row title-row">
+				<div class="col-12 font-thin user-first-title">Pick up <span class="font-semibold">a Category</span> </div>
+            </div>
+			<div class="row line-row">
 				<div class="hr">&nbsp;</div>
-    </div></div><!-- /row -->
-   <div class="row subtitle-row">
-		<div class="col-sm-1 hidden-sm">&nbsp;</div>
-		</div><!-- /row -->
-	<div class="main" id="home">
-	  <ul class="cbp-ig-grid">
-	{% for kind in categories %}
+			</div><!-- /row -->
+            <div class="row subtitle-row">
+				<div class="col-sm-1 hidden-sm">&nbsp;</div>
+			</div><!-- /row -->  
+    <div class="main" id="home">
+				<ul class="cbp-ig-grid">
+				  {% for kind in categories %}
 					<li id="cat1" style="background-image: url({% static 'images/categories/' %}{{ kind.path_banner }}");>
 						<a href="/category/{{ kind.name }}" name="kind" value="{{ kind.name }}">
 							<span class="cbp-ig-icon"><img src="{% static 'images/categories/'%}{{ kind.path_icon }}"></span>
@@ -26,11 +26,9 @@
 				</ul>
 			</div>
     </section>
-
-   <section class="third-section">
+    <section class="third-section">
             <div class="row title-row">
-				<div class="col-12 font-thin"><span
-                                        class="font-semibold">Anuțuri</span> recente</div>
+				<div class="col-12 font-thin">Recent <span class="font-semibold">Posts</span> </div>
             </div>
 			<div class="row line-row">
 				<div class="hr">&nbsp;</div>
@@ -40,7 +38,7 @@
 			</div><!-- /row -->
             <div class="row container_allign container">
                 <div class="col-md-3" id="fixed-left-menu">
-                    <p class="lead">Categories</p>
+                    <p class="lead">Category</p>
                     <div class="list-group">
                       {% for kind in categories %}
                             <a href="/category/{{ kind.name }}" class="list-group-item" id="left-menu-button"><img src="{% static 'images/categories/'%}{{ kind.path_mini }}" class="left-menu-category-icon"> |  {{ kind.name }}</a>
@@ -109,4 +107,5 @@
         {% endif %}
         </div>
     </section>
+    
 {% endblock %}

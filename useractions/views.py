@@ -50,7 +50,8 @@ def create_post(request):
             from_email=settings.EMAIL_HOST_USER
             send_mail(subject, messagetip, from_email,
                       [request.user.email], fail_silently=True)
-            return redirect('/')
+            posturl = announcement.get_absolute_url()
+            return redirect(posturl)
         else:
             return render(request, 'useractions/create_post.html', {
                 'cod': curruser.account.cod,
