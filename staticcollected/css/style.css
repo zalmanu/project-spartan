@@ -1929,7 +1929,14 @@ header h1 {
     width: 90% !important;
     margin: 0 auto;
     margin-bottom: 4%;
-    display: none; 
+}
+.confirm{
+    font-size: 17px;
+    text-align: center;
+    border: 2px;    
+    width: 90% !important;
+    margin: 0 auto;
+    margin-bottom: 4%;
 }
 
 #notification-bid{

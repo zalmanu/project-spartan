@@ -1930,10 +1930,10 @@ header h1 {
     margin: 0 auto;
     margin-bottom: 4%;
 }
-.confirms{
+.confirm{
     font-size: 17px;
     text-align: center;
-    border: 2px solid;    
+    border: 2px;    
     width: 90% !important;
     margin: 0 auto;
     margin-bottom: 4%;
