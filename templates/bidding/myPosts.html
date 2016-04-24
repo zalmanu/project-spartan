@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
@@ -10,8 +9,6 @@
               
                   
               </div>
-              <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 <div class="container">
     <div class="row">
 
@@ -119,35 +116,7 @@
 
               <!-- page end-->
           </section>
-        </section>
-
-
-        <script>
-        $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip(); 
-        });
-        </script>
-        <script>
-                $("#show_other_bids").click(function(){
-                    $(".each_bid").toggleClass('show_bids');
-                });
-        </script>
-        <script>
-            $(document).ready(function(){
-            $("#mytable #checkall").click(function () {
-                    if ($("#mytable #checkall").is(':checked')) {
-                        $("#mytable input[type=checkbox]").each(function () {
-                            $(this).prop("checked", true);
-                        });
-
-                    } else {
-                        $("#mytable input[type=checkbox]").each(function () {
-                            $(this).prop("checked", false);
-                        });
-                    }
-                });
-                
-                $("[data-toggle=tooltip]").tooltip();
-            });
-        </script>
+</section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 {% endblock %}
+

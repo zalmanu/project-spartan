@@ -31,11 +31,10 @@
         <link rel="stylesheet" type="text/css" href="{% static "css/scss/wickedpicker.scss" %}"/>
         <link rel="stylesheet" type="text/css" href="{% static "css/wickedpicker.min.css" %}"/>
         <link rel="stylesheet" type="text/css" href="{% static "css/wickedpicker.css" %}"/>
-	    <link rel="stylesheet" type="text/css" href="{% static "css/tcal.css" %}"/>
-	    <link rel="stylesheet" type="text/css" href="{% static "css/table/normalize.css" %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static "css/tcal.css" %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static "css/table/normalize.css" %}"/>
         <link rel="stylesheet" type="text/css" href="{% static "css/table/demo.css" %}"/>
         <link rel="stylesheet" type="text/css" href="{% static "css/table/component.css" %}"/>
-
         <link rel="shortcut icon" href="{% static "favicon.ico"  %}" />
 
 	
@@ -202,58 +201,15 @@
 
 
         <!-- /.container -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script type="text/javascript" src="{% static "js/wickedpicker.js" %}"></script>
         <script type="text/javascript" src="{% static "js/wickedpicker.min.js" %}"></script>
 	<script type="text/javascript" src="{% static "js/tcal.js" %}"></script>
-
-
-
-	<script>
-        $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-        </script>
-        <script>
-                $("#show_other_bids").click(function(){
-                    $(".each_bid").toggleClass('show_bids');
-                });
-        </script>
-
-	<script>
-          $("#expand_menu").click(function(){
-          $(".ham_menu").toggleClass('show_menu');
-          });
-	</script>
-
-
-        <script>
-            $(document).ready(function(){
-            $("#mytable #checkall").click(function () {
-                    if ($("#mytable #checkall").is(':checked')) {
-                        $("#mytable input[type=checkbox]").each(function () {
-                            $(this).prop("checked", true);
-                        });
-
-                    } else {
-                        $("#mytable input[type=checkbox]").each(function () {
-                            $(this).prop("checked", false);
-                        });
-                    }
-                });
-
-                $("[data-toggle=tooltip]").tooltip();
-            });
-        </script>
-
-
-
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
-    <script src="{% static "js/jquery.stickyheader.js" %}" ></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
+	<script src="{% static "js/jquery.stickyheader.js" %}" ></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="{% static "js/script.js" %}"><script>
+	
     </body>
 
     </html>

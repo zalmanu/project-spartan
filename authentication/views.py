@@ -98,6 +98,7 @@ def reset_pass(request):
             if not check:
                 return render(request, "authentication/resetpass.html",
                               {'errors': ['Those two password are not the same'],
+                               'cod': request.user.account.cod,
                                'form': form})
 
             if request.user.check_password(password_old):
@@ -109,15 +110,18 @@ def reset_pass(request):
             else:
                 return render(request, "authentication/resetpass.html",
                               {'errors': ['Incorrect password'],
+                               'cod': request.user.account.cod,
                                'form': form})
 
         else:
             return render(request, "authentication/resetpass.html",
                           {'errors': ['Invalid form'],
+                           'cod': request.user.account.cod,
                            'form': form})
     else:
         form = PasswordResetForm
-        return render(request, "authentication/resetpass.html", {'form': form})
+        return render(request, "authentication/resetpass.html", {'form': form,
+                                                    'cod': request.user.account.cod})
     return redirect('/')
 
 
