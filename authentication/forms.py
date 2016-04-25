@@ -21,3 +21,7 @@ class PasswordResetForm(forms.Form):
     pass1 = forms.CharField(max_length=160, min_length=8, label="New password",widget=forms.PasswordInput(attrs={'required':'required'}))
     pass2 = forms.CharField(max_length=160, min_length=8, label="Type again the new password", widget=forms.PasswordInput(attrs={'required':'required'}))
 
+class ForGotPassword(forms.Form):
+    pass1 = forms.CharField(max_length=160, min_length=8, label="New password",widget=forms.PasswordInput(attrs={'required':'required'}))
+    pass2 = forms.CharField(max_length=160, min_length=8, label="Type again the new password", widget=forms.PasswordInput(attrs={'required':'required'}))
+    

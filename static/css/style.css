@@ -1932,6 +1932,7 @@ header h1 {
 }
 .confirm{
     font-size: 17px;
+    border: 2px;
     text-align: center;
     border: 2px;    
     width: 90% !important;

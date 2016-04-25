@@ -1,0 +1,36 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block content %}
+
+    <section class="wrap" id="first-section">
+        <div class="row title-row">
+        <div class="row line-row">
+				<div class="hr">&nbsp;</div>
+        </div>
+        <div class="slide story" id="slide-6" data-slide="6">
+		<div class="container">
+            <div class="row title-row">
+			<div class="row subtitle-row">
+			</div><!-- /row -->
+			
+            <div class="container">
+              <div class="compact">
+              <div class="card"></div>
+              <div class="card" id="login-box">
+		<h1 style="margin-bottom:10%; margin-top:20%; margin-left:7%;"> Your password has been reset</h1>
+                <div class="button-container">
+                        <button onclick="window.location='/login';" ><span>Go to log in</span></button>
+                    </div>
+              </div>
+
+            <div class="card alt">
+                <h1 class="title">Register
+                  <div class="close"></div>
+                </h1>
+              </div>
+            </div>
+            </div>
+		</div><!-- /container -->
+	</div>
+    </section>
+{% endblock %}

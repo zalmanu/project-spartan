@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import LoginForm, RegisterForm, PasswordResetForm
+from .forms import LoginForm, RegisterForm, PasswordResetForm,ForGotPassword
 import authentication.models
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
@@ -7,8 +7,6 @@ from django.shortcuts import redirect
 from django.contrib import messages
 import md5
 from django.contrib.auth.decorators import login_required
-
-
 def register_page(request):
     if request.user.is_authenticated():
         return redirect('/')
@@ -46,7 +44,6 @@ def register_page(request):
                     return render(request, "authentication/register.html", {
                      'form':form,
                      'errors':["Passwords do not match"]})
-
             else:
                 form = RegisterForm()
                 return render(request, "authentication/register.html", {
@@ -56,8 +53,6 @@ def register_page(request):
             form = RegisterForm()
             return render(request, "authentication/register.html", {
                  'form': form})
-
-
 def login_page(request):
     if request.user.is_authenticated():
         return redirect('/')
@@ -69,7 +64,7 @@ def login_page(request):
                 if user is not None:
                     login(request, user)
                     return redirect('/')
-                
+
                 else:
                     return render(request, "authentication/logIn.html", {
                         'errors': ['Incorrect username or password'],
@@ -85,7 +80,7 @@ def login_page(request):
             return render(request, "authentication/logIn.html",{
                 'form': form
             })
-        
+
 @login_required
 def reset_pass(request):
     if request.method == 'POST':
@@ -93,14 +88,12 @@ def reset_pass(request):
         if form.is_valid():
             password_old = form.cleaned_data['oldpass']
             password_new = form.cleaned_data['pass1']
-
             check = password_new == form.cleaned_data['pass2']
             if not check:
                 return render(request, "authentication/resetpass.html",
                               {'errors': ['Those two password are not the same'],
                                'cod': request.user.account.cod,
                                'form': form})
-
             if request.user.check_password(password_old):
                 request.user.set_password(password_new)
                 request.user.save()
@@ -112,7 +105,6 @@ def reset_pass(request):
                               {'errors': ['Incorrect password'],
                                'cod': request.user.account.cod,
                                'form': form})
-
         else:
             return render(request, "authentication/resetpass.html",
                           {'errors': ['Invalid form'],
@@ -123,5 +115,22 @@ def reset_pass(request):
         return render(request, "authentication/resetpass.html", {'form': form,
                                                     'cod': request.user.account.cod})
     return redirect('/')
-
-
+def forgot(request):
+    if request.method == 'POST':
+      form = Forgot(request.POST)
+      if form.is_valid():
+            email_user = form.cleaned_data['email']
+            return render(request,'authentication/forget.html',{'form':form})
+    else :
+          form = Forgot()
+          return render(request,'authentication/forget.html',{'form':form})
+def forgotnewpass(request):
+    if request.method == 'POST':
+      form = ForGotPassword(request.POST)
+      if form.is_valid():
+            password_1 = form.cleaned_data['pass1']
+            password_2 = form.cleaned_data['pass2']
+            return render(request,'authentication/forget.html',{'form':form})
+    else :
+          form = ForGotPassword()
+          return render(request,'authentication/newpass.html',{'form':form})

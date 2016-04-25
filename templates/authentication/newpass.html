@@ -5,7 +5,7 @@
     <section class="wrap" id="first-section">
         <div class="row title-row">
 				<div class="col-12 font-thin
-                                    categories-gallery">Autentificare</div>
+                                    categories-gallery"><br></br>Reset password</div>
         </div>
         <div class="row line-row">
 				<div class="hr">&nbsp;</div>
@@ -21,46 +21,37 @@
               <div class="card"></div>
               <div class="card" id="login-box">
 
-                  <h1 class="title">Te rog introdu:</h1>
+                  <h1 class="title">Please enter :</h1>
                 <form method="POST">
-                    {% csrf_token %}
-		    {% if errors %}
-                    <div class="error">
-		      {% for message in errors %}
-                        <ul>
-                            <li>{{ message }}</li>
-                        </ul>
-                    {% endfor %}                        
-                    </div>
-		    {% endif %}
+                  {% csrf_token %}
+		  {% if form.new_password1.error or form.new_password2.errors %}
+		  <div class="error">
+		    {{ form.new_password1.errors }}
+		    {{ form.new_password2.errors }}
+		  </div>
+		  {% endif %}
 		    {% for field in form %}
                     <div class="input-container">
 		        {{ field }}
-                        <label for="username">{{ field.label }}</label>
+                        <label for="Password">{{ field.label }}</label>
                         <div class="bar"></div>
                     </div>
 		    {% endfor %}
                     <div class="button-container">
-                        <button><span>Log in</span></button>
+                        <button><span>Reset</span></button>
                     </div>
-                    <div class="footer"><a href="/forgot/">Ți-ai uitat parola?</a></div>
                 </form>
               </div>
 
             <div class="card alt">
                 <div class="toggle"><i><img src="{% static "images/tool1467%20(1).png" %}" id="vector-login"></i></div>
-
                 <h1 class="title">Register
                   <div class="close"></div>
                 </h1>
-
-
               </div>
-
             </div>
             </div>
 		</div><!-- /container -->
 	</div>
-
     </section>
 {% endblock %}
