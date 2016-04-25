@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import LoginForm, RegisterForm, PasswordResetForm, ForgotPasswordForm
+from .forms import LoginForm, RegisterForm, PasswordResetForm,Forgot,ForGotPassword
 import authentication.models
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
@@ -7,11 +7,6 @@ from django.shortcuts import redirect
 from django.contrib import messages
 import md5
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q
-from django.contrib.auth.views import password_reset, password_reset_confirm
-from django.core.urlresolvers import reverse
-
-
 def register_page(request):
     if request.user.is_authenticated():
         return redirect('/')
@@ -49,7 +44,6 @@ def register_page(request):
                     return render(request, "authentication/register.html", {
                      'form':form,
                      'errors':["Passwords do not match"]})
-
             else:
                 form = RegisterForm()
                 return render(request, "authentication/register.html", {
@@ -59,8 +53,6 @@ def register_page(request):
             form = RegisterForm()
             return render(request, "authentication/register.html", {
                  'form': form})
-
-
 def login_page(request):
     if request.user.is_authenticated():
         return redirect('/')
@@ -72,7 +64,7 @@ def login_page(request):
                 if user is not None:
                     login(request, user)
                     return redirect('/')
-                
+
                 else:
                     return render(request, "authentication/logIn.html", {
                         'errors': ['Incorrect username or password'],
@@ -88,7 +80,7 @@ def login_page(request):
             return render(request, "authentication/logIn.html",{
                 'form': form
             })
-        
+
 @login_required
 def reset_pass(request):
     if request.method == 'POST':
@@ -96,13 +88,12 @@ def reset_pass(request):
         if form.is_valid():
             password_old = form.cleaned_data['oldpass']
             password_new = form.cleaned_data['pass1']
-
             check = password_new == form.cleaned_data['pass2']
             if not check:
                 return render(request, "authentication/resetpass.html",
                               {'errors': ['Those two password are not the same'],
+                               'cod': request.user.account.cod,
                                'form': form})
-
             if request.user.check_password(password_old):
                 request.user.set_password(password_new)
                 request.user.save()
@@ -112,38 +103,34 @@ def reset_pass(request):
             else:
                 return render(request, "authentication/resetpass.html",
                               {'errors': ['Incorrect password'],
+                               'cod': request.user.account.cod,
                                'form': form})
-
         else:
             return render(request, "authentication/resetpass.html",
                           {'errors': ['Invalid form'],
+                           'cod': request.user.account.cod,
                            'form': form})
     else:
         form = PasswordResetForm
-        return render(request, "authentication/resetpass.html", {'form': form})
+        return render(request, "authentication/resetpass.html", {'form': form,
+                                                    'cod': request.user.account.cod})
     return redirect('/')
-
-def forgotpassword(request):
-    if request.method == 'POST':  
-        form = ForgotPasswordForm(request.POST)
-        if form.is_valid():
-            email = form.cleaned_data['email']
-            associated_user = User.objects.filter(Q(email = email))
-            print associated_user
-            if associated_user.exists():
-                return password_reset(request, template_name='authentication/forgotpassword.html',
-                                      email_template_name='authentication/password_reset_email.html',
-                                      post_reset_redirect=reverse('forgotpassword'))
-            else:
-                return render(request, 'authentication/forgotpassword.html',
-                              {'form':form ,
-                               'errors': ['There is no user associated with this email adress']})
-
-    else:
-        form = ForgotPasswordForm()
-        return render(request, 'authentication/forgotpassword.html', {'form':form })
-
-
-def reset_confirm(request, uidb64=None, token=None):
-    return password_reset_confirm(request, template_name='forgotten.html',
-        uidb36=uidb36, token=token, post_reset_redirect=reverse('success'))
+def forgot(request):
+    if request.method == 'POST':
+      form = Forgot(request.POST)
+      if form.is_valid():
+            email_user = form.cleaned_data['email']
+            return render(request,'authentication/forget.html',{'form':form})
+    else :
+          form = Forgot()
+          return render(request,'authentication/forget.html',{'form':form})
+def forgotnewpass(request):
+    if request.method == 'POST':
+      form = ForGotPassword(request.POST)
+      if form.is_valid():
+            password_1 = form.cleaned_data['pass1']
+            password_2 = form.cleaned_data['pass2']
+            return render(request,'authentication/forget.html',{'form':form})
+    else :
+          form = ForGotPassword()
+          return render(request,'authentication/newpass.html',{'form':form})

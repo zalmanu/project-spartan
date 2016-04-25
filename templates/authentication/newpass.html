@@ -5,7 +5,7 @@
     <section class="wrap" id="first-section">
         <div class="row title-row">
 				<div class="col-12 font-thin
-                                    categories-gallery">Autentificare</div>
+                                    categories-gallery"><br></br>Reset password</div>
         </div>
         <div class="row line-row">
 				<div class="hr">&nbsp;</div>
@@ -21,7 +21,7 @@
               <div class="card"></div>
               <div class="card" id="login-box">
 
-                  <h1 class="title">Please enter:</h1>
+                  <h1 class="title">Please enter :</h1>
                 <form method="POST">
                     {% csrf_token %}
 		    {% if errors %}
@@ -36,12 +36,12 @@
 		    {% for field in form %}
                     <div class="input-container">
 		        {{ field }}
-                        <label for="username">{{ field.label }}</label>
+                        <label for="Password">{{ field.label }}</label>
                         <div class="bar"></div>
                     </div>
 		    {% endfor %}
                     <div class="button-container">
-                        <button><span>GO</span></button>
+                        <button><span>Reset</span></button>
                     </div>
                 </form>
               </div>
