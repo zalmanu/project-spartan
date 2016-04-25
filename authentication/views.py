@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import LoginForm, RegisterForm, PasswordResetForm,Forgot,ForGotPassword
+from .forms import LoginForm, RegisterForm, PasswordResetForm,ForGotPassword
 import authentication.models
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login

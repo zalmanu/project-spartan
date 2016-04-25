@@ -1,11 +1,11 @@
 {% extends 'base2.html' %}
 {% load staticfiles %}
 {% block content %}
-
+{% load widget_tweaks %}
     <section class="wrap" id="first-section">
         <div class="row title-row">
 				<div class="col-12 font-thin
-                                    categories-gallery">Autentificare</div>
+                                    categories-gallery">Forgot password</div>
         </div>
         <div class="row line-row">
 				<div class="hr">&nbsp;</div>
@@ -21,29 +21,33 @@
               <div class="card"></div>
               <div class="card" id="login-box">
 
-                  <h1 class="title">Te rog introdu:</h1>
+                  <h1 class="title">Please enter:</h1>
                 <form method="POST">
                     {% csrf_token %}
-		    {% if errors %}
+		    {% if form.email.errors %}
                     <div class="error">
-		      {% for message in errors %}
+		      {% for message in form.email.errors %}
                         <ul>
                             <li>{{ message }}</li>
                         </ul>
                     {% endfor %}                        
                     </div>
 		    {% endif %}
+		    <div class="confirms">
+		      <ul>
+			<li>We emailed you a link for resetting your password</li>
+		      </ul>
+		    </div>
 		    {% for field in form %}
                     <div class="input-container">
-		        {{ field }}
+		      {{ field|attr:"required:required" }}
                         <label for="username">{{ field.label }}</label>
                         <div class="bar"></div>
                     </div>
 		    {% endfor %}
                     <div class="button-container">
-                        <button><span>Log in</span></button>
+                        <button><span>Go</span></button>
                     </div>
-                    <div class="footer"><a href="/forgot/">Ți-ai uitat parola?</a></div>
                 </form>
               </div>
 
