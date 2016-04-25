@@ -1,7 +1,7 @@
 {% extends 'base2.html' %}
 {% load staticfiles %}
 {% block content %}
-
+{% load widget_tweaks %}
     <section class="wrap" id="first-section">
         <div class="row title-row">
 				<div class="col-12 font-thin
@@ -21,29 +21,36 @@
               <div class="card"></div>
               <div class="card" id="login-box">
 
-                  <h1 class="title">Te rog introdu:</h1>
+                  <h1 class="title">Please enter:</h1>
                 <form method="POST">
                     {% csrf_token %}
-		    {% if errors %}
+		    {% if form.email.errors %}
                     <div class="error">
-		      {% for message in errors %}
+		      {% for message in form.email.errors %}
                         <ul>
                             <li>{{ message }}</li>
                         </ul>
                     {% endfor %}                        
                     </div>
+		    {% elif confirms %}
+		    <div class="confirms">
+		      {% for message in confirms %}
+                      <ul>
+                        <li>{{ message }}</li>
+                      </ul>
+                      {% endfor %}                        
+		    </div>
 		    {% endif %}
 		    {% for field in form %}
                     <div class="input-container">
-		        {{ field }}
+		      {{ field|attr:"required:required" }}
                         <label for="username">{{ field.label }}</label>
                         <div class="bar"></div>
                     </div>
 		    {% endfor %}
                     <div class="button-container">
-                        <button><span>Log in</span></button>
+                        <button><span>Go</span></button>
                     </div>
-                    <div class="footer"><a href="#">Ți-ai uitat parola?</a></div>
                 </form>
               </div>
 
