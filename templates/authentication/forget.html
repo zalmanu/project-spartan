@@ -20,11 +20,7 @@
               <div class="compact">
               <div class="card"></div>
               <div class="card" id="login-box">
-
-                  <h1 class="title">Please enter:</h1>
-                <form method="POST">
-                    {% csrf_token %}
-		    {% if form.email.errors %}
+				    {% if form.email.errors %}
                     <div class="error">
 		      {% for message in form.email.errors %}
                         <ul>
@@ -32,15 +28,17 @@
                         </ul>
                     {% endfor %}                        
                     </div>
-		    {% elif confirms %}
-		    <div class="confirms">
+		    {% endif %}
+		    {% if confirms %}
+		    <div class="confirm">
 		      {% for message in confirms %}
-                      <ul>
-                        <li>{{ message }}</li>
-                      </ul>
+                        <p>{{ message }}</p>
                       {% endfor %}                        
 		    </div>
 		    {% endif %}
+                  <h1 class="title">Please enter:</h1>
+                <form method="POST">
+                    {% csrf_token %}
 		    {% for field in form %}
                     <div class="input-container">
 		      {{ field|attr:"required:required" }}

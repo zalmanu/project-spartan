@@ -1929,7 +1929,7 @@ header h1 {
 }
 .confirm{
     font-size: 17px;
-    border: 2px solid gren;
+    border: 2px;
     text-align: center;
     width: 90% !important;
     margin: 0 auto;
