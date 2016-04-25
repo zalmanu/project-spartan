@@ -23,16 +23,13 @@
 
                   <h1 class="title">Please enter :</h1>
                 <form method="POST">
-                    {% csrf_token %}
-		    {% if errors %}
-                    <div class="error">
-		      {% for message in errors %}
-                        <ul>
-                            <li>{{ message }}</li>
-                        </ul>
-                    {% endfor %}                        
-                    </div>
-		    {% endif %}
+                  {% csrf_token %}
+		  {% if form.new_password1.error or form.new_password2.errors %}
+		  <div class="error">
+		    {{ form.new_password1.errors }}
+		    {{ form.new_password2.errors }}
+		  </div>
+		  {% endif %}
 		    {% for field in form %}
                     <div class="input-container">
 		        {{ field }}

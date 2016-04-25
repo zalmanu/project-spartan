@@ -5,13 +5,13 @@
     <section class="wrap" id="first-section">
         <div class="row title-row">
 				<div class="col-12 font-thin
-                                    categories-gallery">Forgot password</div>
+                                    categories-gallery">Forgot password?</div>
         </div>
         <div class="row line-row">
 				<div class="hr">&nbsp;</div>
         </div>
         <div class="slide story" id="slide-6" data-slide="6">
-		<div class="container">
+		<div class="cZontainer">
             <div class="row title-row">
 			<div class="row subtitle-row">
 			</div><!-- /row -->
@@ -20,7 +20,7 @@
               <div class="compact">
               <div class="card"></div>
               <div class="card" id="login-box">
-				    {% if form.email.errors %}
+		 {% if form.email.errors %}
                     <div class="error">
 		      {% for message in form.email.errors %}
                         <ul>
@@ -36,7 +36,7 @@
                       {% endfor %}                        
 		    </div>
 		    {% endif %}
-                  <h1 class="title">Please enter:</h1>
+                  <h1 class="title">Enter you email and we will send you a link</h1>
                 <form method="POST">
                     {% csrf_token %}
 		    {% for field in form %}
