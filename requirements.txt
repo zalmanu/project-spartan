@@ -1,3 +1,5 @@
 django==1.9.5
 django-widget-tweaks==1.4.1
 django-registration==2.0.4
+django-announce==0.1.5
+
