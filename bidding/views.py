@@ -10,17 +10,30 @@ from bidding.models import Oferta
 
 @login_required
 def posts(request):
-
-    if request.user and not  request.user.is_superuser:
-           return render(request, 'bidding/myPosts.html',{
-               'posts': request.user.posts.all(),
-               'cod': request.user.account.cod,
-           })
+    if request.method == 'POST':
+        print "capre"
+        if request.user and not  request.user.is_superuser:
+            return render(request, 'bidding/myPosts.html',{
+                'posts': request.user.posts.all(),
+                'cod': request.user.account.cod,
+            })
+        else:
+            return render(request, 'bidding/myPosts.html',{
+                'posts': request.user.posts.all(),
+                'cod': '61e1380365703a4c73c2480673d8993b'
+            })
     else:
-        return render(request, 'bidding/myPosts.html',{
-            'posts': request.user.posts.all(),
-            'cod': '61e1380365703a4c73c2480673d8993b'
-        })
+        if request.user and not  request.user.is_superuser:
+            return render(request, 'bidding/myPosts.html',{
+                'posts': request.user.posts.all(),
+                'cod': request.user.account.cod,
+            })
+        else:
+            return render(request, 'bidding/myPosts.html',{
+                'posts': request.user.posts.all(),
+                'cod': '61e1380365703a4c73c2480673d8993b'
+            })
+
 
 @login_required
 def post(request, slug):

@@ -8,7 +8,7 @@ class ProfileEditForm(forms.Form):
     telefon = forms.IntegerField(label="Phone", required=False)
 
 class PostForm(forms.Form):
-    title = forms.CharField(max_length=20, label="Title")
+    title = forms.CharField(max_length=244, label="Title")
     text = forms.CharField(max_length=500, label="Announcement description")
     adress = forms.CharField(max_length=500, label="Adress")
     category = forms.ChoiceField(choices=[(x, x) for x in ['Garden', 'Moving', 'Cleaning', 'Babysitting', 'Cooking', 'Others']], label="Category", widget=forms.Select(attrs={'class': "form-control input-lg m-bot15", 'id': "choose_category"}))
