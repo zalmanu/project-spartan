@@ -3,7 +3,7 @@
 {% block content %}
                  <section class="wrap" id="first-section">
                     <div class="row title-row">
-                            <div class="col-12 font-thin categories-gallery">Crează<span class="font-semibold"> anunț</span></div>
+                            <div class="col-12 font-thin categories-gallery">Create a new<span class="font-semibold"> post</span></div>
                     </div>
                     <div class="slide story" id="slide-6" data-slide="6">
 
@@ -13,7 +13,6 @@
                           <div class="card"></div>
                           <div class="card" id="login-box">
 
-                              <h1 class="title">Te rog introdu: </h1>
                             <form method="POST">
 			      {% csrf_token %}
 			      {% if errors %}
@@ -22,7 +21,7 @@
 				  <ul>
 				    <li>{{ message }}</li>
 				  </ul>
-				  {% endfor %}                        
+				  {% endfor %}
 				</div>
 				{% endif %}
 				{% for field in form %}

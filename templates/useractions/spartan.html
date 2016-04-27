@@ -3,7 +3,7 @@
 {% block content %}
                  <section class="wrap" id="first-section">
                     <div class="row title-row">
-                            <div class="col-12 font-thin categories-gallery"><br></br>Activarea puterii <span class="font-semibold"> de Spartan</span></div>
+                            <div class="col-12 font-thin categories-gallery"><br></br>Become a <span class="font-semibold">Spartan</span></div>
                     </div>
                     <div class="slide story" id="slide-6" data-slide="6">
 		      {% if errors %}
@@ -27,7 +27,7 @@
                         <div>
                           <div class="card"></div>
                           <div class="card" id="login-box">
-                              <h1 class="title">Please enter :</h1>
+                              <h1 class="title">Please enter:</h1>
                             <form method="POST">
 			      {% csrf_token %}
 			      {% for field in form %}

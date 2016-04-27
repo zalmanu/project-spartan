@@ -3,10 +3,11 @@
 {% block content %}
 
     <section class="third-section" id="wrap">
-      <div class="row title-row">
-				<div class="col-12 font-thin user-first-title">Pick up <span class="font-semibold">a Category</span> </div>
-            </div>
-			<div class="row line-row">
+    <div class="row title-row">
+      <div class="col-12 font-thin
+                  categories-gallery">Choose a <span class="font-semibold">category</span> </div>
+    </div>
+    <div class="row line-row">
 				<div class="hr">&nbsp;</div>
 			</div><!-- /row -->
             <div class="row subtitle-row">
@@ -19,7 +20,7 @@
 						<a href="/category/{{ kind.name }}" name="kind" value="{{ kind.name }}">
 							<span class="cbp-ig-icon"><img src="{% static 'images/categories/'%}{{ kind.path_icon }}"></span>
 							<h3 class="cbp-ig-title">{{ kind.name }}</h3>
-							<span class="cbp-ig-category"> Dă click aici pentru mai multe</span>
+							<span class="cbp-ig-category">Click for details</span>
             </a>
 					</li>
 	{% endfor %}
@@ -28,7 +29,7 @@
     </section>
     <section class="third-section">
             <div class="row title-row">
-				<div class="col-12 font-thin">Recent <span class="font-semibold">Posts</span> </div>
+				<div class="col-12 font-thin"><span class="font-semibold">Recent</span> posts</div>
             </div>
 			<div class="row line-row">
 				<div class="hr">&nbsp;</div>
@@ -54,7 +55,7 @@
                             <div class="col-lg-2 col-sm-2" style="color:black;">
                             <h4>{{  anunt.author.username }}</h4>
                               <div class="follow-ava">
-                                  <img src="http://www.gravatar.com/avatar/{{ anunt.author.account.cod }}s=200"> 
+                                  <img src="http://www.gravatar.com/avatar/{{ anunt.author.account.cod }}s=200">
                               </div>
                             </div>
                             <div class="col-lg-4 col-sm-4 follow-info description_info">

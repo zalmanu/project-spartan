@@ -4,7 +4,7 @@
 <section class="wrap" id="first-section">
         <div class="row title-row">
 				<div class="col-12 font-thin
-                                    categories-gallery">Înregistrare</div>
+                                    categories-gallery">Register</div>
         </div>
         <div class="row line-row">
 				<div class="hr">&nbsp;</div>
@@ -20,7 +20,6 @@
               <div class="card"></div>
               <div class="card" id="login-box">
 
-                <h1 class="title">Te rog introdu: </h1>
                 <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
 		    {% if errors %}
@@ -29,7 +28,7 @@
                         <ul>
                             <li>{{ message }}</li>
                         </ul>
-                    {% endfor %}                        
+                    {% endfor %}
                     </div>
 		    {% endif %}
 		    {% for field in form %}
@@ -42,9 +41,9 @@
                     </div>
 		    {% endfor %}
                     <div class="button-container">
-                        <button type="submit"><span>Înregistrează-te</span></button>
+                        <button type="submit"><span>Register</span></button>
                     </div>
-                    <div class="footer"><a href="#">Ți-ai uitat parola?</a></div>
+                    <div class="footer"><a href="#">Forgot your password?</a></div>
                 </form>
 
               </div>

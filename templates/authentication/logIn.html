@@ -5,7 +5,7 @@
     <section class="wrap" id="first-section">
         <div class="row title-row">
 				<div class="col-12 font-thin
-                                    categories-gallery">Autentificare</div>
+                                    categories-gallery">Log in</div>
         </div>
         <div class="row line-row">
 				<div class="hr">&nbsp;</div>
@@ -21,7 +21,7 @@
               <div class="card"></div>
               <div class="card" id="login-box">
 
-                  <h1 class="title">Te rog introdu:</h1>
+
                 <form method="POST">
                     {% csrf_token %}
 		    {% if errors %}
@@ -43,7 +43,7 @@
                     <div class="button-container">
                         <button><span>Log in</span></button>
                     </div>
-                    <div class="footer"><a href="/forgot/">Ți-ai uitat parola?</a></div>
+                    <div class="footer"><a href="/forgot/">Forgot your password?</a></div>
                 </form>
               </div>
 
