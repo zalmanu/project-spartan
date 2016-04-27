@@ -15,7 +15,7 @@ def contactUS(request):
                 phone=form.cleaned_data['phone']
                 message=form.cleaned_data['message']
                 contact= ContactUS.objects.create(frist_name=frist_name,last_name=last_name,
-                                                  email=email,telefon=phone,message=message)
+                                                  email=email,phone=phone,message=message)
                 contact.save()
                 subject='Contact US '
                 messagetip=" Buna Admin, \n Ati primit un mesaj de la un utilizator \n" \
