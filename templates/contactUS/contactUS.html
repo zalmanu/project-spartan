@@ -19,10 +19,7 @@
               <div class="compact">
               <div class="card"></div>
               <div class="card" id="login-box">
-
-                <form method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
-		    {% if errors %}
+             {% if errors %}
                     <div class="confirm">
 		      {% for message in errors %}
                         <ul>
@@ -31,6 +28,9 @@
                     {% endfor %}
                     </div>
 		    {% endif %}
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+
 		    {% for field in form %}
                     <div class="input-container">
 		      {{ field }}
