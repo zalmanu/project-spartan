@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^', include('basicpages.urls')),
     url(r'^', include('useractions.urls')),
     url(r'^', include('bidding.urls')),
+    url(r'^', include('contactUS.urls')),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

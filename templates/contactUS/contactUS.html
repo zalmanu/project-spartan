@@ -1,0 +1,65 @@
+{% extends 'baseContact.html' %}
+{% load staticfiles %}
+{% block content %}
+<section class="wrap" id="first-section">
+        <div class="row title-row">
+				<div class="col-12 font-thin
+                                    categories-gallery">Contact US</div>
+        </div>
+        <div class="row line-row">
+				<div class="hr">&nbsp;</div>
+        </div>
+        <div class="slide story" id="slide-6" data-slide="6">
+		<div class="container">
+            <div class="row title-row">
+			<div class="row subtitle-row">
+			</div><!-- /row -->
+
+            <div class="container">
+              <div class="compact">
+              <div class="card"></div>
+              <div class="card" id="login-box">
+
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+		    {% if errors %}
+                    <div class="error">
+		      {% for message in errors %}
+                        <ul>
+                            <li>{{ message }}</li>
+                        </ul>
+                    {% endfor %}
+                    </div>
+		    {% endif %}
+		    {% for field in form %}
+                    <div class="input-container">
+		      {{ field }}
+
+                      <label for="{{ field.label }}">{{ field.label }}</label>
+
+                        <div class="bar"></div>
+                    </div>
+		    {% endfor %}
+                     <script src='https://www.google.com/recaptcha/api.js'></script>
+                     <div class="g-recaptcha" data-sitekey="6LfOhB4TAAAAAIP6Nw60oYoCdr0OAfDNxkIZa9U7"></div>
+
+                    <div class="button-container">
+                        <button type="submit"><span>GO</span></button>
+                    </div>
+
+                </form>
+
+              </div>
+
+              <div class="card alt">
+                  <h1 class="title">Contact
+                    <div class="close"></div>
+                  </h1>
+                </div>
+            </div>
+            </div>
+		</div><!-- /container -->
+	</div>
+    </section>
+{% endblock %}
+

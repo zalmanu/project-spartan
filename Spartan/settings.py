@@ -24,6 +24,7 @@ INSTALLED_APPS = (
     'basicpages',
     'useractions',
     'bidding',
+    'contactUS',
 
 )
 
