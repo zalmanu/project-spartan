@@ -2,18 +2,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
-<script>
-$(document).ready(function(){
-   $("#hire").submit(function(event){
-   event.preventDefault();
-        $.ajax({
-             type: "POST",
-             url: "/posts/"
-        });
-        return true;
-   });
-});
-</script>                
         <section class="wrap" id="secound-section">
                     <section class="wrapper">
                          <div class="row title-row"> </div>
@@ -34,7 +22,8 @@ $(document).ready(function(){
         <div class="table-responsive">
 
                 
-              <table id="mytable" class="table table-bordred table-striped">
+              <table id="mytable" class="table table-bordred table-striped"
+                  data-table-post="{{ post.id }}">
                    
                    <thead>
                    
@@ -46,14 +35,20 @@ $(document).ready(function(){
                        <th>Acept</th>
                    </thead>
     <tbody>
-    {% for oferta in  post.oferte.all %}
+    {% for oferta in post.oferte.all %}
     <tr>
     <td>{{ oferta.spartan.prenume }}</td>
     <td>{{ oferta.spartan.nume }}</td>
     <td>{{ oferta.tip }}</td>
     <td>{{ oferta.pret }}</td>
    
-    <td><p data-placement="top" data-toggle="tooltip" ><button class="btn btn-danger btn-xs" data-title="Delete" data-target="#delete" id="choose_button" id="hire" ><span class="glyphicon glyphicon-ok"></span></button></p></td>
+    <td><p data-placement="top" data-toggle="tooltip" >
+        <button class="btn btn-danger btn-xs hire" data-oferta="{{ oferta.id
+            }}" data-post="{{ post.id }}" id="choose_button" id="hire" >
+            <span class="glyphicon glyphicon-ok"></span>
+        </button>
+      </p>
+     </td>
     </tr>
     {% endfor %}
     </tbody>
@@ -131,6 +126,21 @@ $(document).ready(function(){
               <!-- page end-->
           </section>
         </section>
+    <script>
+    $(document).ready(function(){
+        $(".hire").click(function(event){
+            var oferta = $(this).data("oferta");
+            var post_id = $(this).data("post");
+            $.post("/posts/", { "oferta": oferta }, function(response) {
+                 if (response.result == "success") {
+                     console.log("success");
+                     $('*[data-table-post="' + post_id + '"]').remove();
+                 }
+            })
+            return true;
+        });
+    });
+    </script>                
 
 
         <script>

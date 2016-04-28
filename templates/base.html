@@ -208,9 +208,6 @@
         <script type="text/javascript" src="{% static "js/wickedpicker.min.js" %}"></script>
 	<script type="text/javascript" src="{% static "js/tcal.js" %}"></script>
 
-        <script src="{% static "http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.jss" %}"></script>
-
-
    <script>
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();
@@ -243,24 +240,7 @@
                 $("[data-toggle=tooltip]").tooltip();
             });
         </script>
-	<script>
-	  $("#hire").click(function(){
-	       $.post("/post");
-	  };
-	 </script>
-
-
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
-
-    <script src="{% static " js/jquery.stickyheader.js" %}" ></script>
-
-
-
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
+        <script src="{% static "js/jquery.stickyheader.js" %}" ></script>
     </body>
-
-    </html>
-
-    <!-- colors: #47a3da  -main blue;
-                 #1f80af  -dark blue;
-                 #e5f5fa  -light blue;
-                                       -->
+</html>

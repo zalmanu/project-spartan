@@ -1,6 +1,10 @@
+import json
+
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 
 from authentication.models import Account,Spartan
 from useractions.models import Announcement 
@@ -8,20 +12,11 @@ from .forms import LicitatieForm
 from bidding.models import Oferta
 
 
-@login_required
+@csrf_exempt
 def posts(request):
+    print request.method
     if request.method == 'POST':
-        print "capre"
-        if request.user and not  request.user.is_superuser:
-            return render(request, 'bidding/myPosts.html',{
-                'posts': request.user.posts.all(),
-                'cod': request.user.account.cod,
-            })
-        else:
-            return render(request, 'bidding/myPosts.html',{
-                'posts': request.user.posts.all(),
-                'cod': '61e1380365703a4c73c2480673d8993b'
-            })
+        return HttpResponse(json.dumps({"result": "success"}), content_type='application/json')
     else:
         if request.user and not  request.user.is_superuser:
             return render(request, 'bidding/myPosts.html',{
