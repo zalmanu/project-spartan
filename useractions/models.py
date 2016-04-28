@@ -28,6 +28,7 @@ class Announcement(models.Model):
     timePost = models.TimeField('Ora', null=True)
     money = models.IntegerField(null=True)
     spartan = models.ForeignKey(Spartan, related_name='anunturi', null=True, blank=True)
+    pret = models.IntegerField(null=True, blank=True)
 
     
     def get_absolute_url(self):

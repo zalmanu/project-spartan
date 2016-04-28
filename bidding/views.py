@@ -18,6 +18,7 @@ def posts(request):
         oferta_id = request.POST.get('oferta')
         oferta = Oferta.objects.get(id=oferta_id)
         oferta.post.spartan = oferta.spartan
+        oferta.post.pret = oferta.pret
         return HttpResponse(json.dumps({"result": "success"}), content_type='application/json')
     else:
         if request.user and not  request.user.is_superuser:

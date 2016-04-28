@@ -21,16 +21,35 @@
 
               <table id="mytable" class="table table-bordred table-striped"
                   data-table-post="{{ post.id }}">
-                   
-                   <thead>
-                   
-                   <th>First Name</th>
-                    <th>Last Name</th>
-                     <th>Tipul ofertei</th>
-                     <th>Suma Licitata</th>
-                      
-                       <th>Acept</th>
-                   </thead>
+            
+     {% if post.spartan %}
+     <thead>
+       <th>First Name</th>
+       <th>Last Name</th>
+       <th>Email</th>
+       <th>Suna Licitata</th>
+       <th>Chat</th>
+       <th>Lucrare terminata</th>
+     </thead>
+     <tbody>
+       <tr>
+         <td>{{ post.spartan.prenume }}</td>
+         <td>{{ post.spartan.nume }}</td>
+         <td>{{ post.spartan.user.email }}</td>
+         <td>{{ post.pret }}</td>
+         <td><button id="chat_button"><a href="chat.html"><i class="glyphicon glyphicon-envelope" id="chat_icon"></i></a></button></td>
+         <td><input type="checkbox" name="work_in_progress" value="finish_work" id="finish_work"></td>
+       </tr>
+     </tbody>
+     {% else %}
+     <thead>  
+       <th>First Name</th>
+       <th>Last Name</th>
+       <th>Tipul ofertei</th>
+       <th>Suma Licitata</th>
+       
+       <th>Acept</th>
+     </thead>
     <tbody>
     {% if post.oferte.all %}
     {% for oferta in post.oferte.all %}
@@ -51,6 +70,8 @@
     {% else %}
     <tr>
     <td> Nobody made an offer,yet. </td>
+    </tbody>
+    {% endif %}
     {% endif %}
 </table>
 
