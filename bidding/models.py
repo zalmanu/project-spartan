@@ -11,6 +11,4 @@ class Oferta(models.Model):
     spartan = models.ForeignKey(Spartan, related_name='spartan')
     post = models.ForeignKey(Announcement, related_name='oferte')
     tip = models.CharField(max_length=30)
-    status = models.BooleanField(default=False)
-    
     

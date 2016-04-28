@@ -4,6 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 import uuid
 from django.core.urlresolvers import reverse
+from authentication.models import Spartan
 
 
 class Category(models.Model):
@@ -26,6 +27,9 @@ class Announcement(models.Model):
     creation_date = models.DateTimeField(editable=False, auto_now_add=True, null=True)
     timePost = models.TimeField('Ora', null=True)
     money = models.IntegerField(null=True)
+    spartan = models.ForeignKey(Spartan, related_name='anunturi', null=True, blank=True)
+    pret = models.IntegerField(null=True, blank=True)
+    status = models.BooleanField(default = False)
     
     def get_absolute_url(self):
         return reverse('post', args=[self.slug])
