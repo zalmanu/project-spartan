@@ -202,12 +202,14 @@
 
 
         <!-- /.container -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script type="text/javascript" src="{% static "js/wickedpicker.js" %}"></script>
-        <script type="text/javascript" src="{% static "js/wickedpicker.min.js" %}"></script>
+        <script type="text/javascript" src="{% static "js/wickedpicker.min.js" %}"></script>           
 	<script type="text/javascript" src="{% static "js/tcal.js" %}"></script>
-
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
+	<script src="{% static "js/jquery.stickyheader.js" %}" ></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	
    <script>
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();
@@ -224,7 +226,7 @@
 
         <script>
             $(document).ready(function(){
-            $("#mytable #checkall").click(function () {
+             $("#mytable #checkall").click(function () {
                     if ($("#mytable #checkall").is(':checked')) {
                         $("#mytable input[type=checkbox]").each(function () {
                             $(this).prop("checked", true);
@@ -242,5 +244,7 @@
         </script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
         <script src="{% static "js/jquery.stickyheader.js" %}" ></script>
+       <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>				
+       <script src="{% static "js/jquery.stickyheader.js" %}" ></script>	
     </body>
 </html>

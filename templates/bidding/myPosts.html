@@ -32,13 +32,13 @@
                        <th>Acept</th>
                    </thead>
     <tbody>
+    {% if post.oferte.all %}
     {% for oferta in post.oferte.all %}
     <tr>
     <td>{{ oferta.spartan.prenume }}</td>
     <td>{{ oferta.spartan.nume }}</td>
     <td>{{ oferta.tip }}</td>
     <td>{{ oferta.pret }}</td>
-   
     <td><p data-placement="top" data-toggle="tooltip" >
         <button class="btn btn-danger btn-xs hire" data-oferta="{{ oferta.id }}" data-post="{{ post.id }}" id="choose_button" id="hire" >
             <span class="glyphicon glyphicon-ok"></span>
@@ -48,7 +48,10 @@
     </tr>
     {% endfor %}
     </tbody>
-        
+    {% else %}
+    <tr>
+    <td> Nobody made an offer,yet. </td>
+    {% endif %}
 </table>
 
 <div class="clearfix"></div>
@@ -115,7 +118,7 @@
     </div>
     <div class="container">
     <div class="row">
-        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         
 
 
