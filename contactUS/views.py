@@ -1,3 +1,5 @@
+import json
+
 from django.shortcuts import render
 
 # Create your views here.
@@ -5,6 +7,9 @@ from .models import ContactUS
 from .forms import ContactUSForm
 from django.conf import settings
 from django.core.mail import send_mail
+import urllib, urllib2
+
+
 def contactUS(request):
     if request.method == 'POST':
             form = ContactUSForm(request.POST)
@@ -24,7 +29,7 @@ def contactUS(request):
                 from_email=settings.EMAIL_HOST_USER
                 send_mail(subject, messagetip, email,
                       [settings.EMAIL_HOST_USER], fail_silently=True)
-                return render(request, 'contactUS/contactUS.html' ,{'errors': ['Mesajul a fost trimis cu succes ! \n O zi buna!'],
+                return render(request, 'contactUS/contactUS.html' ,{'confirm': ['Mesajul a fost trimis cu succes ! \n O zi buna!'],
                                                                     'form': form})
             else:
                 return render(request, 'contactUS/contactUS.html', {'form': form,

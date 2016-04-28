@@ -17,8 +17,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'captcha',
     'widget_tweaks',
-    
+
     #Usual apps
     'authentication',
     'basicpages',
@@ -27,6 +28,9 @@ INSTALLED_APPS = (
     'contactUS',
 
 )
+
+RECAPTCHA_PUBLIC_KEY = '6LfOhB4TAAAAAIP6Nw60oYoCdr0OAfDNxkIZa9U7'
+RECAPTCHA_PRIVATE_KEY = '6LfOhB4TAAAAADtMc7XrFyCi5AWP1c8a-AakPs_m'
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
@@ -123,5 +127,5 @@ USE_L10N = False
 
 USE_TZ = True
 
-
-
+NOCAPTCHA = True
+RECAPTCHA_USE_SSL = False

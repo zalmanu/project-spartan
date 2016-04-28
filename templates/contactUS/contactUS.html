@@ -19,8 +19,17 @@
               <div class="compact">
               <div class="card"></div>
               <div class="card" id="login-box">
-             {% if errors %}
+             {% if confirm %}
                     <div class="confirm">
+		      {% for message in confirm %}
+                        <ul>
+                            <li>{{ message }}</li>
+                        </ul>
+                    {% endfor %}
+                    </div>
+		    {% endif %}
+              {% if errors %}
+                    <div class="error">
 		      {% for message in errors %}
                         <ul>
                             <li>{{ message }}</li>
@@ -34,14 +43,15 @@
 		    {% for field in form %}
                     <div class="input-container">
 		      {{ field }}
+               {% if field.label != "Captcha" %}
 
                       <label for="{{ field.label }}">{{ field.label }}</label>
+                        {% endif %}
 
                         <div class="bar"></div>
                     </div>
 		    {% endfor %}
-                     <script src='https://www.google.com/recaptcha/api.js'></script>
-                     <div class="g-recaptcha" data-sitekey="6LfOhB4TAAAAAIP6Nw60oYoCdr0OAfDNxkIZa9U7"></div>
+
 
                     <div class="button-container">
                         <button type="submit"><span>GO</span></button>
