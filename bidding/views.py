@@ -14,8 +14,10 @@ from bidding.models import Oferta
 
 @csrf_exempt
 def posts(request):
-    print request.method
     if request.method == 'POST':
+        oferta_id = request.POST.get('oferta')
+        oferta = Oferta.objects.get(id=oferta_id)
+        oferta.post.spartan = oferta.spartan
         return HttpResponse(json.dumps({"result": "success"}), content_type='application/json')
     else:
         if request.user and not  request.user.is_superuser:

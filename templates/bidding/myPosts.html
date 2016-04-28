@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
@@ -12,16 +11,14 @@
               <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 <div class="container">
-    <div class="row">
-
+  <div class="row">
         {% for post in posts %}
-
-        
         <div class="col-md-12">
-        <h4>Anuntul:<b id="post_title_bidders"><a href="yourPost.html">{{ post.title }}</a></b></h4>
+        <h4>Anuntul:<b id="post_title_bidders">
+	    <a href="yourPost.html">{{ post.title }}</a></b>
+	</h4>
         <div class="table-responsive">
 
-                
               <table id="mytable" class="table table-bordred table-striped"
                   data-table-post="{{ post.id }}">
                    
@@ -43,8 +40,7 @@
     <td>{{ oferta.pret }}</td>
    
     <td><p data-placement="top" data-toggle="tooltip" >
-        <button class="btn btn-danger btn-xs hire" data-oferta="{{ oferta.id
-            }}" data-post="{{ post.id }}" id="choose_button" id="hire" >
+        <button class="btn btn-danger btn-xs hire" data-oferta="{{ oferta.id }}" data-post="{{ post.id }}" id="choose_button" id="hire" >
             <span class="glyphicon glyphicon-ok"></span>
         </button>
       </p>
