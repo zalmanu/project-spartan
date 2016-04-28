@@ -12,4 +12,3 @@ class Oferta(models.Model):
     post = models.ForeignKey(Announcement, related_name='oferte')
     tip = models.CharField(max_length=30)
     
-    
