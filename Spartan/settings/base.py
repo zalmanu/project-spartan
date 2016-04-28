@@ -45,6 +45,8 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'Spartan.urls'
 
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -62,6 +64,8 @@ TEMPLATES = [
         },
     },
 ]
+
+
 
 WSGI_APPLICATION = 'Spartan.wsgi.application'
 
