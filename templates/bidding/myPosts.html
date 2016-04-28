@@ -15,7 +15,7 @@
         {% for post in posts %}
         <div class="col-md-12">
         <h4>Anuntul:<b id="post_title_bidders">
-	    <a href="yourPost.html">{{ post.title }}</a></b>
+	    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a></b>
 	</h4>
         <div class="table-responsive">
 
@@ -28,7 +28,6 @@
        <th>Last Name</th>
        <th>Email</th>
        <th>Suna Licitata</th>
-       <th>Chat</th>
        <th>Lucrare terminata</th>
      </thead>
      <tbody>
@@ -37,7 +36,6 @@
          <td>{{ post.spartan.nume }}</td>
          <td>{{ post.spartan.user.email }}</td>
          <td>{{ post.pret }}</td>
-         <td><button id="chat_button"><a href="chat.html"><i class="glyphicon glyphicon-envelope" id="chat_icon"></i></a></button></td>
          <td><input type="checkbox" name="work_in_progress" value="finish_work" id="finish_work"></td>
        </tr>
      </tbody>
@@ -154,7 +152,7 @@
             $.post("/posts/", { "oferta": oferta }, function(response) {
                  if (response.result == "success") {
                      console.log("success");
-                     $('*[data-table-post="' + post_id + '"]').remove();
+                     $(location).attr('href', '/posts/')
                  }
             })
             return true;

@@ -19,6 +19,8 @@ def posts(request):
         oferta = Oferta.objects.get(id=oferta_id)
         oferta.post.spartan = oferta.spartan
         oferta.post.pret = oferta.pret
+        oferta.post.status = True
+        oferta.post.save()
         return HttpResponse(json.dumps({"result": "success"}), content_type='application/json')
     else:
         if request.user and not  request.user.is_superuser:
@@ -35,7 +37,7 @@ def posts(request):
 
 @login_required
 def post(request, slug):
-    post = get_object_or_404(Announcement, slug = slug)
+    post = get_object_or_404(Announcement, slug = slug, status = False)
     if request.method == 'POST':
         form = LicitatieForm(request.POST)
         if form.is_valid():

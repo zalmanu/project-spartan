@@ -8,7 +8,7 @@ def home(request):
         curruser = request.user
         if request.user.is_active and not  request.user.is_superuser:
             return render_to_response('useractions/home.html', {
-                'ann': Announcement.objects.all().order_by('-creation_date')[:5],
+                'ann': Announcement.objects.filter(status = False).order_by('-creation_date')[:5],
                 'categories': categories,
                 'user': curruser,
                 'cod': curruser.account.cod})
