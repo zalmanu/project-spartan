@@ -20,6 +20,8 @@ def posts(request):
         oferta.post.spartan = oferta.spartan
         oferta.post.pret = oferta.pret
         oferta.post.status = True
+        oferta.status = True
+        oferta.save()
         oferta.post.save()
         return HttpResponse(json.dumps({"result": "success"}), content_type='application/json')
     else:
@@ -28,11 +30,9 @@ def posts(request):
             cod = request.user.account.cod
         else:
             cod = '61e1380365703a4c73c2480673d8993b'
-        print request.user.account.cod
         context['cod'] = cod
-        print request.user.account.has_related_object
         if request.user.account.has_related_object():
-            context['bids']= request.user.spartan.licitari.all()
+           context['bids'] = request.user.spartan.licitari.all()
         return render(request, 'bidding/myPosts.html',context)
 
 

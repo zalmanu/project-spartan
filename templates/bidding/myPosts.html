@@ -75,9 +75,54 @@
         </div>
             
         </div>
-        {% endfor %}
+{% endfor %}
+{% if bids %}
+<div class="col-md-12">
+  <h4>Bids<b id="post_title_bidders">
+      <a href="{{ post.get_absolute_url }}">{{ post.title }}</a></b>
+  </h4>
+  <div class="table-responsive">
+
+    <table id="mytable" class="table table-bordred table-striped"
+           data-table-post="{{ post.id }}">
+      <thead>  
+	<th>Annoucement title</th>
+	<th>Offer type</th>
+	<th>Suma licitata</th>       
+	<th>Job done</th>
+      </thead>
+      <tbody>
+	{% for bid in bids %}
+	{% if bid.post.status and bid.status %}
+	<tr>
+	  <td>{{ bid.post.title }}</td>
+	  <td>{{ bid.tip }}</td>
+	  <td>{{ bid.pret }}</td>
+	  <td><input type="checkbox" name="work_in_progress" value="finish_work" id="finish_work"></td>
+	  </td>
+	</tr>
+	{% elif not bid.post.status and not bid.status %}
+	<tr>
+	  <td>{{ bid.post.title }}</td>
+	  <td>{{ bid.tip }}</td>
+	  <td>{{ bid.pret }}</td>
+	  <td>Offer wasn't accepted </td>
+	</tr>
+	{% endif %}
+	{% endfor %}
+      </tbody>
+
+{% endif %}
+</table>
+
+<div class="clearfix"></div>
+        </div>
+        </div>
+
     </div>
 </div>
+
+
 
 
 <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
