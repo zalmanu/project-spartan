@@ -98,7 +98,7 @@
 	  <td>{{ bid.post.title }}</td>
 	  <td>{{ bid.tip }}</td>
 	  <td>{{ bid.pret }}</td>
-	  <td><input type="checkbox" name="work_in_progress" value="finish_work" id="finish_work"></td>
+	  <td><input type="checkbox" name="work_in_progress" value="finish_work" id="finish_work" id="spartan" data-post="{{ bid.post.id }}"></td>
 	  </td>
 	</tr>
 	{% elif not bid.post.status and not bid.status %}
@@ -106,7 +106,7 @@
 	  <td>{{ bid.post.title }}</td>
 	  <td>{{ bid.tip }}</td>
 	  <td>{{ bid.pret }}</td>
-	  <td>Offer wasn't accepted </td>
+	  <td>Offer wasn't accepted, yet.</td>
 	</tr>
 	{% endif %}
 	{% endfor %}
@@ -168,7 +168,7 @@
        
        <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span>Sunteti sigur ca doriti sa incheiati acest contract cu aceasta persoana?</div>
        
-      </div>
+      </div>p
         <div class="modal-footer ">
         <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
         <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
@@ -189,6 +189,7 @@
 </section>
         </section>
     <script>
+      // Jquery pentru accept 
     $(document).ready(function(){
         $(".hire").click(function(event){
             var oferta = $(this).data("oferta");
@@ -203,7 +204,22 @@
         });
     });
     </script>                
-
+        <script>
+	  // Jquery pentru job done la Spartan
+    $(document).ready(function(){
+        $("#spartan").change(function(event){
+	    alert("Toggle apasat");
+/*          var post_id = $(this).data("post");
+            $.post("/posts/", { "post": post_id }, function(response) {
+                 if (response.result == "success") {
+                     console.log("success");
+                     $(location).attr('href', '/posts/')
+                 }
+            })
+            return true; */
+        });
+    });
+    </script>                
 
         <script>
         $(document).ready(function(){

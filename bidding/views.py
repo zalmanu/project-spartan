@@ -15,14 +15,20 @@ from bidding.models import Oferta
 @csrf_exempt
 def posts(request):
     if request.method == 'POST':
-        oferta_id = request.POST.get('oferta')
-        oferta = Oferta.objects.get(id=oferta_id)
-        oferta.post.spartan = oferta.spartan
-        oferta.post.pret = oferta.pret
-        oferta.post.status = True
-        oferta.status = True
-        oferta.save()
-        oferta.post.save()
+        if request.POST.get('oferta'):
+            oferta_id = request.POST.get('oferta')
+            oferta = Oferta.objects.get(id=oferta_id)
+            oferta.post.spartan = oferta.spartan
+            oferta.post.pret = oferta.pret
+            oferta.post.status = True
+            oferta.status = True
+            oferta.save()
+            oferta.post.save()
+        elif request.POST.get('post'):
+            post_id = request.POST.get('post')
+            post = Announcement.objects.get(id=post_id)
+            post.spartan_done = True
+            post.save()
         return HttpResponse(json.dumps({"result": "success"}), content_type='application/json')
     else:
         context = {'posts': request.user.posts.all()}
