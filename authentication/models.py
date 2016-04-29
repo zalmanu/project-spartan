@@ -19,6 +19,14 @@ class Account(models.Model):
     def get_absolute_url(self):
         return reverse('user', args=[self.slug])
 
+    def has_related_object(self):
+        has_spartan = False
+        try:
+            has_spartan = (self.user.spartan is not None)
+        except Spartan.DoesNotExist:
+            pass
+        return has_spartan and (self.user is not None)
+
     
 class Review(models.Model):
     receiver = models.ForeignKey(User, related_name='reviews')
