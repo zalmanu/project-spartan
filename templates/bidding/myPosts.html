@@ -28,15 +28,27 @@
        <th>Suna Licitata</th>
        <th>Lucrare terminata</th>
      </thead>
+     {% if post.employer_done %}
      <tbody>
        <tr>
          <td>{{ post.spartan.prenume }}</td>
          <td>{{ post.spartan.nume }}</td>
          <td>{{ post.spartan.user.email }}</td>
          <td>{{ post.pret }}</td>
-         <td><input type="checkbox" name="work_in_progress" value="finish_work" id="finish_work"></td>
+         <td><input type="checkbox" name="work_in_progress" value="finish_work" id="finish_work" id="employer"></td>
        </tr>
      </tbody>
+     {% else %}
+     <tbody>
+       <tr>
+         <td>{{ post.spartan.prenume }}</td>
+         <td>{{ post.spartan.nume }}</td>
+         <td>{{ post.spartan.user.email }}</td>
+         <td>{{ post.pret }}</td>
+         <td>Waits for spartan's confimation</td>
+       </tr>
+     </tbody>
+     {% endif %}
      {% else %}
      <thead>  
        <th>First Name</th>
@@ -44,7 +56,7 @@
        <th>Tipul ofertei</th>
        <th>Suma Licitata</th>
        
-       <th>Acept</th>
+       <th>Accept</th>
      </thead>
     <tbody>
     {% if post.oferte.all %}
@@ -93,12 +105,20 @@
       </thead>
       <tbody>
 	{% for bid in bids %}
-	{% if bid.post.status and bid.status %}
+	{% if bid.post.status and bid.status and bid.post.spartan_done %}
 	<tr>
 	  <td>{{ bid.post.title }}</td>
 	  <td>{{ bid.tip }}</td>
 	  <td>{{ bid.pret }}</td>
-	  <td><input type="checkbox" name="work_in_progress" value="finish_work" id="finish_work" id="spartan" data-post="{{ bid.post.id }}"></td>
+	  <td>Waiting for employer's confimations</td>
+	  </td>
+	</tr>
+	{% elif bid.post.status and bid.status %}
+	<tr>
+	  <td>{{ bid.post.title }}</td>
+	  <td>{{ bid.tip }}</td>
+	  <td>{{ bid.pret }}</td>
+	  <td><input type="checkbox" name="work_in_progress" value="finish_work" id="finish_work" class="spartan" data-post="{{ bid.post.id }}"></td>
 	  </td>
 	</tr>
 	{% elif not bid.post.status and not bid.status %}
@@ -207,20 +227,33 @@
         <script>
 	  // Jquery pentru job done la Spartan
     $(document).ready(function(){
-        $("#spartan").change(function(event){
-	    alert("Toggle apasat");
-/*          var post_id = $(this).data("post");
+        $(".spartan").change(function(event){
+          var post_id = $(this).data("post");
             $.post("/posts/", { "post": post_id }, function(response) {
                  if (response.result == "success") {
                      console.log("success");
                      $(location).attr('href', '/posts/')
                  }
             })
-            return true; */
+            return true; 
         });
     });
-    </script>                
-
+    </script>               
+        <script>
+	  // Jquery pentru job done la employer
+    $(document).ready(function(){
+        $(".employer").change(function(event){
+          var post_id = $(this).data("post");
+            $.post("/posts/", { "post_empl": post_id }, function(response) {
+                 if (response.result == "success") {
+                     console.log("success");
+                     $(location).attr('href', '/posts/')
+                 }
+            })
+            return true; 
+        });
+    });
+    </script> 
         <script>
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip(); 

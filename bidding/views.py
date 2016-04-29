@@ -29,6 +29,11 @@ def posts(request):
             post = Announcement.objects.get(id=post_id)
             post.spartan_done = True
             post.save()
+        elif request.POST.get('post_empl'):
+            post_id = request.POST.get('post_empl')
+            post = Announcement.objects.get(id=post_id)
+            post.emplyer_done = True
+            post.save()
         return HttpResponse(json.dumps({"result": "success"}), content_type='application/json')
     else:
         context = {'posts': request.user.posts.all()}
