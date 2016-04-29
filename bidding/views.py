@@ -30,10 +30,10 @@ def posts(request):
             post.spartan_done = True
             post.save()
         elif request.POST.get('post_empl'):
+            print "lo"
             post_id = request.POST.get('post_empl')
             post = Announcement.objects.get(id=post_id)
-            post.emplyer_done = True
-            post.save()
+            post.delete()
         return HttpResponse(json.dumps({"result": "success"}), content_type='application/json')
     else:
         context = {'posts': request.user.posts.all()}

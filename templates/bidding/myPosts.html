@@ -28,14 +28,14 @@
        <th>Suna Licitata</th>
        <th>Lucrare terminata</th>
      </thead>
-     {% if post.employer_done %}
+     {% if post.spartan_done %}
      <tbody>
        <tr>
          <td>{{ post.spartan.prenume }}</td>
          <td>{{ post.spartan.nume }}</td>
          <td>{{ post.spartan.user.email }}</td>
          <td>{{ post.pret }}</td>
-         <td><input type="checkbox" name="work_in_progress" value="finish_work" id="finish_work" id="employer"></td>
+         <td><input type="checkbox" name="work_in_progress" value="finish_work" id="finish_work" class="employer" data-postfin="{{ post.id }}"></td>
        </tr>
      </tbody>
      {% else %}
@@ -90,9 +90,7 @@
 {% endfor %}
 {% if bids %}
 <div class="col-md-12">
-  <h4>Bids<b id="post_title_bidders">
-      <a href="{{ post.get_absolute_url }}">{{ post.title }}</a></b>
-  </h4>
+  <h4>Bids<b id="post_title_bidders"></h4>
   <div class="table-responsive">
 
     <table id="mytable" class="table table-bordred table-striped"
@@ -243,7 +241,7 @@
 	  // Jquery pentru job done la employer
     $(document).ready(function(){
         $(".employer").change(function(event){
-          var post_id = $(this).data("post");
+          var post_id = $(this).data("postfin");
             $.post("/posts/", { "post_empl": post_id }, function(response) {
                  if (response.result == "success") {
                      console.log("success");
