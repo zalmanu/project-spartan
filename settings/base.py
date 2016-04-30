@@ -23,6 +23,8 @@ INSTALLED_APPS = (
     'useractions',
     'bidding',
     'contactUS',
+    'review',
+    'SpartanPage',
 
 )
 

@@ -25,5 +25,7 @@ urlpatterns = [
     url(r'^', include('useractions.urls')),
     url(r'^', include('bidding.urls')),
     url(r'^', include('contactUS.urls')),
+    url(r'^', include('review.urls')),
+    url(r'^', include('SpartanPage.urls')),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
