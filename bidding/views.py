@@ -6,7 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 from useractions.models import Announcement
 from .forms import LicitatieForm
 from bidding.models import Oferta
-
+from chat.models import Room 
 
 @csrf_exempt
 def posts(request):
@@ -20,6 +20,10 @@ def posts(request):
             oferta.status = True
             oferta.save()
             oferta.post.save()
+            new_room = Room.objects.create(spartan=oferta.post.spartan, 
+                                           employer=oferta.post.author, 
+                                           offer=oferta)
+            new_room.save()
         elif request.POST.get('post'):
             post_id = request.POST.get('post')
             post = Announcement.objects.get(id=post_id)
