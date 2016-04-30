@@ -26,6 +26,7 @@
        <th>Last Name</th>
        <th>Email</th>
        <th>Suna Licitata</th>
+       <th>Chat</th>
        <th>Lucrare terminata</th>
      </thead>
      {% if post.spartan_done %}
@@ -45,6 +46,7 @@
          <td>{{ post.spartan.nume }}</td>
          <td>{{ post.spartan.user.email }}</td>
          <td>{{ post.pret }}</td>
+	<a href="/submit"><td>Go to chat</td></a>
          <td>Waits for spartan's confimation</td>
        </tr>
      </tbody>
