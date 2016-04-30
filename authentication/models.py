@@ -15,6 +15,14 @@ class Account(models.Model):
     cod = models.CharField(max_length=100,null=True, blank=True)
     sold= models.IntegerField(default=0)
 
+    def has_related_object(self):
+        has_spartan = False
+        try:
+            has_spartan = (self.user.spartan is not None)
+        except Spartan.DoesNotExist:
+            pass
+        return has_spartan and (self.user is not None)
+
 class Spartan(models.Model):
      nume=models.CharField(max_length=40)
      prenume=models.CharField(max_length=40)
