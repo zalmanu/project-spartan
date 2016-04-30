@@ -2218,6 +2218,7 @@ header h1 {
 html, body {
     font-family: 'Lato', sans-serif;
     margin: 0px auto;
+    overflow-x:hidden;
 }
 ::selection{
   background: rgba(82,179,217,0.3);
