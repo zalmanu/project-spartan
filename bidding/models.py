@@ -8,6 +8,8 @@ from useractions.models import Announcement
 
 class Oferta(models.Model):
     pret = models.IntegerField(null=True)
-    spartan = models.ForeignKey(Spartan, related_name='spartan')
+    spartan = models.ForeignKey(Spartan, related_name='licitari')
     post = models.ForeignKey(Announcement, related_name='oferte')
     tip = models.CharField(max_length=30)
+    status = models.BooleanField(default = False)
+

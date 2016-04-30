@@ -10,7 +10,7 @@
               </div>
 <div class="container">
   <div class="row">
-        {% for post in posts %}
+    {% for post in posts %}
         <div class="col-md-12">
         <h4>Anuntul:<b id="post_title_bidders">
 	    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a></b>
@@ -28,15 +28,27 @@
        <th>Suna Licitata</th>
        <th>Lucrare terminata</th>
      </thead>
+     {% if post.spartan_done %}
      <tbody>
        <tr>
          <td>{{ post.spartan.prenume }}</td>
          <td>{{ post.spartan.nume }}</td>
          <td>{{ post.spartan.user.email }}</td>
          <td>{{ post.pret }}</td>
-         <td><input type="checkbox" name="work_in_progress" value="finish_work" id="finish_work"></td>
+         <td><input type="checkbox" name="work_in_progress" value="finish_work" id="finish_work" class="employer" data-postfin="{{ post.id }}"></td>
        </tr>
      </tbody>
+     {% else %}
+     <tbody>
+       <tr>
+         <td>{{ post.spartan.prenume }}</td>
+         <td>{{ post.spartan.nume }}</td>
+         <td>{{ post.spartan.user.email }}</td>
+         <td>{{ post.pret }}</td>
+         <td>Waits for spartan's confimation</td>
+       </tr>
+     </tbody>
+     {% endif %}
      {% else %}
      <thead>  
        <th>First Name</th>
@@ -44,7 +56,7 @@
        <th>Tipul ofertei</th>
        <th>Suma Licitata</th>
        
-       <th>Acept</th>
+       <th>Accept</th>
      </thead>
     <tbody>
     {% if post.oferte.all %}
@@ -75,9 +87,60 @@
         </div>
             
         </div>
-        {% endfor %}
+{% endfor %}
+{% if bids %}
+<div class="col-md-12">
+  <h4>Bids<b id="post_title_bidders"></h4>
+  <div class="table-responsive">
+
+    <table id="mytable" class="table table-bordred table-striped"
+           data-table-post="{{ post.id }}">
+      <thead>  
+	<th>Annoucement title</th>
+	<th>Offer type</th>
+	<th>Suma licitata</th>       
+	<th>Job done</th>
+      </thead>
+      <tbody>
+	{% for bid in bids %}
+	{% if bid.post.status and bid.status and bid.post.spartan_done %}
+	<tr>
+	  <td>{{ bid.post.title }}</td>
+	  <td>{{ bid.tip }}</td>
+	  <td>{{ bid.pret }}</td>
+	  <td>Waiting for employer's confimations</td>
+	  </td>
+	</tr>
+	{% elif bid.post.status and bid.status %}
+	<tr>
+	  <td>{{ bid.post.title }}</td>
+	  <td>{{ bid.tip }}</td>
+	  <td>{{ bid.pret }}</td>
+	  <td><input type="checkbox" name="work_in_progress" value="finish_work" id="finish_work" class="spartan" data-post="{{ bid.post.id }}"></td>
+	  </td>
+	</tr>
+	{% elif not bid.post.status and not bid.status %}
+	<tr>
+	  <td>{{ bid.post.title }}</td>
+	  <td>{{ bid.tip }}</td>
+	  <td>{{ bid.pret }}</td>
+	  <td>Offer wasn't accepted, yet.</td>
+	</tr>
+	{% endif %}
+	{% endfor %}
+      </tbody>
+
+{% endif %}
+</table>
+
+<div class="clearfix"></div>
+        </div>
+        </div>
+
     </div>
 </div>
+
+
 
 
 <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
@@ -123,7 +186,7 @@
        
        <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span>Sunteti sigur ca doriti sa incheiati acest contract cu aceasta persoana?</div>
        
-      </div>
+      </div>p
         <div class="modal-footer ">
         <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
         <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
@@ -144,6 +207,7 @@
 </section>
         </section>
     <script>
+      // Jquery pentru accept 
     $(document).ready(function(){
         $(".hire").click(function(event){
             var oferta = $(this).data("oferta");
@@ -158,8 +222,36 @@
         });
     });
     </script>                
-
-
+        <script>
+	  // Jquery pentru job done la Spartan
+    $(document).ready(function(){
+        $(".spartan").change(function(event){
+          var post_id = $(this).data("post");
+            $.post("/posts/", { "post": post_id }, function(response) {
+                 if (response.result == "success") {
+                     console.log("success");
+                     $(location).attr('href', '/posts/')
+                 }
+            })
+            return true; 
+        });
+    });
+    </script>               
+        <script>
+	  // Jquery pentru job done la employer
+    $(document).ready(function(){
+        $(".employer").change(function(event){
+          var post_id = $(this).data("postfin");
+            $.post("/posts/", { "post_empl": post_id }, function(response) {
+                 if (response.result == "success") {
+                     console.log("success");
+                     $(location).attr('href', '/posts/')
+                 }
+            })
+            return true; 
+        });
+    });
+    </script> 
         <script>
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip(); 

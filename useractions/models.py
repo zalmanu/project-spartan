@@ -34,8 +34,10 @@ class Announcement(models.Model):
     spartan = models.ForeignKey(Spartan, related_name='anunturi', null=True,
                                 blank=True)
     pret = models.IntegerField(null=True, blank=True)
-    status = models.BooleanField(default=False)
-
+    status = models.BooleanField(default = False)
+    employer_done = models.BooleanField(default = False)
+    spartan_done = models.BooleanField(default = False)
+    
     def get_absolute_url(self):
         return reverse('post', args=[self.slug])
 

@@ -137,6 +137,10 @@ def profileGeneral(request):
 @login_required
 def spartan(request):
     if request.method == 'POST':
+        if curruser.account.has_related_object():
+            return render(request, 'useractions/spartan.html', {'cod': request.user.account.cod,
+                                                                'form': SpartanForm(),
+                                                                'errors':['You already submitted the form']})
         form = SpartanForm(request.POST)
         if form.is_valid():
             nume = form.cleaned_data['nume']

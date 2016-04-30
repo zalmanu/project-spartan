@@ -11,25 +11,36 @@ from bidding.models import Oferta
 @csrf_exempt
 def posts(request):
     if request.method == 'POST':
-        oferta_id = request.POST.get('oferta')
-        oferta = Oferta.objects.get(id=oferta_id)
-        oferta.post.spartan = oferta.spartan
-        oferta.post.pret = oferta.pret
-        oferta.post.status = True
-        oferta.post.save()
-        return HttpResponse(json.dumps({"result": "success"}),
-                            content_type='application/json')
+        if request.POST.get('oferta'):
+            oferta_id = request.POST.get('oferta')
+            oferta = Oferta.objects.get(id=oferta_id)
+            oferta.post.spartan = oferta.spartan
+            oferta.post.pret = oferta.pret
+            oferta.post.status = True
+            oferta.status = True
+            oferta.save()
+            oferta.post.save()
+        elif request.POST.get('post'):
+            post_id = request.POST.get('post')
+            post = Announcement.objects.get(id=post_id)
+            post.spartan_done = True
+            post.save()
+        elif request.POST.get('post_empl'):
+            post_id = request.POST.get('post_empl')
+            post = Announcement.objects.get(id=post_id)
+            post.delete()
+        return HttpResponse(json.dumps({"result": "success"}), content_type='application/json')
     else:
+        context = {'posts': request.user.posts.all()}
         if request.user and not request.user.is_superuser:
-            return render(request, 'bidding/myPosts.html',
-                          {'posts': request.user.posts.all(),
-                           'cod': request.user.account.cod,
-                           })
+            cod = request.user.account.cod
         else:
-            return render(request, 'bidding/myPosts.html', {
-                'posts': request.user.posts.all(),
-                'cod': '61e1380365703a4c73c2480673d8993b'
-            })
+            cod = '61e1380365703a4c73c2480673d8993b'
+        context['cod'] = cod
+        if request.user.account.has_related_object():
+           context['bids'] = request.user.spartan.licitari.all()
+        return render(request, 'bidding/myPosts.html',context)
+
 
 
 @login_required
