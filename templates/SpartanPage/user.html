@@ -1,220 +1,9 @@
-    <!DOCTYPE html>
-    <html lang="en">
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
 
-    <head>
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
-
-        <title>Spartan Project</title>
-
-        <!-- Bootstrap Core CSS -->
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
-
-        <!-- Custom CSS -->
-        <link href="../css/half-slider.css" rel="stylesheet">
-        <link href="../css/one-page-wonder.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="../css/default.css" />
-        <link rel="stylesheet" type="text/css" href="../css/component.css" />
-        <link rel="stylesheet" type="text/css" href="../css/heroic-features.css" />
-        <link rel="stylesheet" type="text/css" href="../css/main.css" />
-        <link rel="stylesheet" type="text/css" href="../css/font-awesome.css" />
-        <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css" />
-        <link rel="stylesheet" type="text/css" href="../css/line-icons.css" />
-        <link rel="stylesheet" type="text/css" href="../css/elegant-icons-style.css">
-        <link rel="stylesheet" type="text/css" href="../css/style.css">
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-        <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,600,300,200&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-        <link rel="shortcut icon" href="../favicon.ico">
-        <link rel="stylesheet" type="text/css" href="../css/table/normalize.css" />
-        <link rel="stylesheet" type="text/css" href="../css/table/demo.css" />
-        <link rel="stylesheet" type="text/css" href="../css/table/component.css" />
-
-    </head>
-
-    <body>
-
-        <!-- Navigation -->
-        <div class="cbp-af-header navbar-header" id="user-menu">
-                    <div class="cbp-af-inner">
-                        <a href="../index.html" id="return-home"><h1 id="logo-title">Spartan</h1></a>           
-
-
-                    </div>
-
-            <!-- Notification dropdown -->
-                <div class="top-nav notification-row" id="user-menu-buttons">                
-                    <!-- notificatoin dropdown start-->
-                    <ul class="nav pull-right top-menu">
-
-                        <!-- task notificatoin start -->
-                        <a href="event.html"><li id="task_notificatoin_bar">
-                    <span class="glyphicon glyphicon-plus" id="create_post_icon" toggle="tooltip" data-placement="bottom" title="Hooray!">
-                    </span>
-                             </li>
-        </a>
-                        <!-- task notificatoin end -->
-                        <!-- inbox notificatoin start-->
-                        <li id="mail_notificatoin_bar" class="dropdown">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                <i class="fa fa-envelope-o" id="notifications-icon"></i>
-                                <span class="badge bg-important">5</span>
-                            </a>
-                            <ul class="dropdown-menu extended inbox">
-                                <div class="notify-arrow notify-arrow-blue"></div>
-                                <li>
-                                    <p class="blue">You have 5 new messages</p>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span class="photo"><img alt="avatar" src="../img/avatar-mini.jpg"></span>
-                                        <span class="subject">
-                                        <span class="from">Greg  Martin</span>
-                                        <span class="time">1 min</span>
-                                        </span>
-                                        <span class="message">
-                                            I really like this admin panel.
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span class="photo"><img alt="avatar" src="../img/avatar-mini2.jpg"></span>
-                                        <span class="subject">
-                                        <span class="from">Bob   Mckenzie</span>
-                                        <span class="time">5 mins</span>
-                                        </span>
-                                        <span class="message">
-                                         Hi, What is next project plan?
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span class="photo"><img alt="avatar" src="../img/avatar-mini3.jpg"></span>
-                                        <span class="subject">
-                                        <span class="from">Phillip   Park</span>
-                                        <span class="time">2 hrs</span>
-                                        </span>
-                                        <span class="message">
-                                            SUP^^^^^^^^^^^^^^^^^^^^^^
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span class="photo"><img alt="avatar" src="../img/avatar-mini4.jpg"></span>
-                                        <span class="subject">
-                                        <span class="from">Ray   Munoz</span>
-                                        <span class="time">1 day</span>
-                                        </span>
-                                        <span class="message">
-                                            Icon fonts are great.
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">See all messages</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <!-- inbox notificatoin end -->
-                        <!-- alert notification start-->
-                        <li id="alert_notificatoin_bar" class="dropdown">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-
-                                <i class="fa fa-bell-o" id="notifications-icon"></i>
-                                <span class="badge bg-important">7</span>
-                            </a>
-                            <ul class="dropdown-menu extended notification">
-                                <div class="notify-arrow notify-arrow-blue"></div>
-                                <li>
-                                    <p class="blue">You have 4 new notifications</p>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span class="label label-primary"><i class="icon_profile"></i></span> 
-                                        Friend Request
-                                        <span class="small italic pull-right">5 mins</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span class="label label-warning"><i class="icon_pin"></i></span>  
-                                        John location.
-                                        <span class="small italic pull-right">50 mins</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span class="label label-danger"><i class="icon_book_alt"></i></span> 
-                                        Project 3 Completed.
-                                        <span class="small italic pull-right">1 hr</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span class="label label-success"><i class="icon_like"></i></span> 
-                                        Mick appreciated your work.
-                                        <span class="small italic pull-right"> Today</span>
-                                    </a>
-                                </li>                            
-                                <li>
-                                    <a href="#">See all notifications</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <!-- alert notification end-->
-                        <!-- user login dropdown start-->
-                        <li class="dropdown">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                <span class="profile-ava">
-                                    <img alt="" src="../img/avatar1_small.jpg">
-                                </span>
-                                <span class="username">Jenifer Smith</span>
-                                <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu extended logout">
-                                <div class="log-arrow-up"></div>
-                                <li class="eborder-top">
-                                    <a href="#"><i class="icon_profile"></i> My Profile</a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="icon_mail_alt"></i> My Inbox</a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="icon_clock_alt"></i> Oferte</a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="icon_chat_alt"></i> Mai un Buton</a>
-                                </li>
-                                <li>
-                                    <p class="blue">Logged In As:</p>
-                                </li>
-                                <li>
-                                    <a href="#"><i>Te poti angaja</i><div class="checkbox"> <label> <input type="checkbox">Spartan</label> </div></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i>Poti Angaja</i><div class="checkbox"> <label> <input type="checkbox"> Angajator</label> </div></a>
-                                </li>
-                                <li>
-                                    <a href="documentation.html"><i class="icon_key_alt"></i>LOG OUT</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <!-- user login dropdown end -->
-                    </ul>
-                    <!-- notificatoin dropdown end-->
-                </div>
-        </div>
-
-        <!-- Page Content --> 
-
-        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->  
-                
         <section class="wrap" id="secound-section">
                     <section class="wrapper">
                          <div class="row title-row"> </div>
@@ -225,59 +14,60 @@
                     <div class="profile-widget profile-widget-info" id="post">
                           <div class="panel-body" id="profile-header">
                             <div class="col-lg-2 col-sm-2">
-                              <h4 id="user-name">Jenifer Smith</h4>               
+                              <h4 id="user-name">{{ user.username }}</h4>
                               <div class="follow-ava">
-                                  <img src="../img/profile-widget-avatar.jpg" alt="">
+                                    <img src="http://www.gravatar.com/avatar/{{ cod }}" alt="">
                               </div>
                             </div>
                             <div class="col-lg-4 col-sm-4 follow-info" >
-                                <p>Hello I’m Jenifer Smith, a leading expert in interactive and creative design.</p>
-                                <p>@jenifersmith</p>
-								<p><i class="fa fa-twitter follow-info">jenifertweet</i></p>
-                                <h6>
-                                    <span id="icon_text"><i class="icon_clock_alt"></i>11:05 AM</span>
-                                    <span id="icon_text"><i class="icon_calendar"></i>25.10.13</span>
-                                    <span id="icon_text"><i class="icon_pin_alt"></i>NY</span>
-                                </h6>
+
                             </div>
+
+
                             <div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
+
                                       <ul>
                                           <li class="active">
-                                              
+
                                               <i class="fa fa-comments fa-2x"> </i><br>
-											  
-											  Contrary to popular belief, Lorem Ipsum is not simply
+
+											  Raiting: {{ request.user.spartan.raiting}}
                                           </li>
-										   
+
                                       </ul>
+
                             </div>
 							<div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
                                       <ul>
                                           <li class="active">
-                                              
+
                                               <i class="fa fa-bell fa-2x"> </i><br>
-											  
-											  Contrary to popular belief, Lorem Ipsum is not simply 
+
+											  Tasks:{{ request.user.spartan.tasks}}
+
                                           </li>
-										   
+
                                       </ul>
+
                             </div>
 							<div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
                                       <ul>
                                           <li class="active">
-                                              
+
                                               <i class="fa fa-tachometer fa-2x"> </i><br>
-											  
-											  Contrary to popular belief, Lorem Ipsum is not simply
+
+											  Abilitate:{{ request.user.spartan.abilitate1}}
+
                                           </li>
-										   
+
                                       </ul>
+
                             </div>
                           </div>
                     </div>
-                    
+
                 </div>
-                  
+
               </div>
               <!-- page start-->
           <header class="panel-heading tab-bg-info" id="categoryes_profile">
@@ -287,11 +77,7 @@
                                            Reviews
                                       </a>
                                   </li>
-                                  <li>
-                                      <a data-toggle="tab" href="#profile">
-                                           Profil
-                                      </a>
-                                  </li>
+
                                   <li class="">
                                       <a data-toggle="tab" href="#badges">
                                          Activitate
@@ -305,168 +91,24 @@
                           <div class="panel-body">
                               <div class="tab-content">
                                   <div id="recent-activity" class="tab-pane active">
-                                      <div class="profile-activity">                                          
-                                          <div class="act-time">                                      
+                                      <div class="profile-activity">
+                                          {% for review in reviews.all %}
+                                          <div class="act-time">
                                               <div class="activity-body act-in">
                                                   <span class="arrow"></span>
                                                   <div class="text">
-                                                      <a href="#" class="activity-img"><img class="avatar" src="../img/chat-avatar.jpg" alt=""></a>
-                                                      <p class="attribution"><a href="#">Jonatanh Doe</a> at 4:25pm, 30th Octmber 2014</p>
-                                                      <p>It is a long established fact that a reader will be distracted layout</p>
-                                                      <div class="rating">
-                                                        <h2 id="my-rate">Eu ii dau:</h2><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                                      </div>
+                                                      <a href="#" class="activity-img"><img class="avatar" src="http://www.gravatar.com/avatar/{{ review.submitter.account.cod }}"></a>
+                                                      <p class="attribution"><a href="#">{{ review.submitter.account.user}}</a> {{ review.creation_date }}</p>
+                                                      <p> {{ review.message }}</p>
+
                                                   </div>
                                               </div>
                                           </div>
-                                          <div class="act-time">                                      
-                                              <div class="activity-body act-in">
-                                                  <span class="arrow"></span>
-                                                  <div class="text">
-                                                      <a href="#" class="activity-img"><img class="avatar" src="../img/chat-avatar.jpg" alt=""></a>
-                                                      <p class="attribution"><a href="#">Jhon Loves </a> at 5:25am, 30th Octmber 2014</p>
-                                                      <p>Knowledge speaks, but wisdom listens.</p>
-                                                      <div class="rating">
-                                                        <h2 id="my-rate">Eu ii dau:</h2><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <div class="act-time">                                      
-                                              <div class="activity-body act-in">
-                                                  <span class="arrow"></span>
-                                                  <div class="text">
-                                                      <a href="#" class="activity-img"><img class="avatar" src="../img/chat-avatar.jpg" alt=""></a>
-                                                      <p class="attribution"><a href="#">Rose Crack</a> at 5:25am, 30th Octmber 2014</p>
-                                                      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                                                    <div class="rating">
-                                                        <h2 id="my-rate">Eu ii dau:</h2><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <div class="act-time">                                      
-                                              <div class="activity-body act-in">
-                                                  <span class="arrow"></span>
-                                                  <div class="text">
-                                                      <a href="#" class="activity-img"><img class="avatar" src="../img/chat-avatar.jpg" alt=""></a>
-                                                      <p class="attribution"><a href="#">Jimy Smith</a> at 5:25am, 30th Octmber 2014</p>
-                                                      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-                                                      <div class="rating">
-                                                        <h2 id="my-rate">Eu ii dau:</h2><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <div class="act-time">                                      
-                                              <div class="activity-body act-in">
-                                                  <span class="arrow"></span>
-                                                  <div class="text">
-                                                      <a href="#" class="activity-img"><img class="avatar" src="../img/chat-avatar.jpg" alt=""></a>
-                                                      <p class="attribution"><a href="#">Maria Willyam</a> at 5:25am, 30th Octmber 2014</p>
-                                                      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-                                                      <div class="rating">
-                                                        <h2 id="my-rate">Eu ii dau:</h2><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <div class="act-time">                                      
-                                              <div class="activity-body act-in">
-                                                  <span class="arrow"></span>
-                                                  <div class="text">
-                                                      <a href="#" class="activity-img"><img class="avatar" src="../img/chat-avatar.jpg" alt=""></a>
-                                                      <p class="attribution"><a href="#">Sarah saw</a> at 5:25am, 30th Octmber 2014</p>
-                                                      <p>Knowledge speaks, but wisdom listens.</p>
-                                                      <div class="rating">
-                                                        <h2 id="my-rate">Eu ii dau:</h2><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <div class="act-time">                                      
-                                              <div class="activity-body act-in">
-                                                  <span class="arrow"></span>
-                                                  <div class="text">
-                                                      <a href="#" class="activity-img"><img class="avatar" src="../img/chat-avatar.jpg" alt=""></a>
-                                                      <p class="attribution"><a href="#">Layla night</a> at 5:25am, 30th Octmber 2014</p>
-                                                      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                                                      <div class="rating">
-                                                        <h2 id="my-rate">Eu ii dau:</h2><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <div class="act-time">                                      
-                                              <div class="activity-body act-in">
-                                                  <span class="arrow"></span>
-                                                  <div class="text">
-                                                      <a href="#" class="activity-img"><img class="avatar" src="../img/chat-avatar.jpg" alt=""></a>
-                                                      <p class="attribution"><a href="#">Andriana lee</a> at 5:25am, 30th Octmber 2014</p>
-                                                      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-                                                      <div class="rating">
-                                                        <h2 id="my-rate">Eu ii dau:</h2><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <div class="act-time">                                      
-                                              <div class="activity-body act-in">
-                                                  <span class="arrow"></span>
-                                                  <div class="text">
-                                                      <a href="#" class="activity-img"><img class="avatar" src="../img/chat-avatar.jpg" alt=""></a>
-                                                      <p class="attribution"><a href="#">Maria Willyam</a> at 5:25am, 30th Octmber 2014</p>
-                                                      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-                                                      <div class="rating">
-                                                        <h2 id="my-rate">Eu ii dau:</h2><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
+                                          {% endfor %}
 
                                       </div>
                                   </div>
-                                  <!-- profile -->
-                                  <div id="profile" class="tab-pane">
-                                    <section class="panel">
-                                      <div class="bio-graph-heading">
-                                                Hello I’m Jenifer Smith, a leading expert in interactive and creative design specializing in the mobile medium. My graduation from Massey University with a Bachelor of Design majoring in visual communication.
-                                      </div>
-                                      <div class="panel-body bio-graph-info">
-                                          <h1>Bio Graph</h1>
-                                          <div class="row">
-                                              <div class="bio-row">
-                                                  <p><span>First Name </span>: Jenifer </p>
-                                              </div>
-                                              <div class="bio-row">
-                                                  <p><span>Last Name </span>: Smith</p>
-                                              </div>                                              
-                                              <div class="bio-row">
-                                                  <p><span>Birthday</span>: 27 August 1987</p>
-                                              </div>
-                                              <div class="bio-row">
-                                                  <p><span>Country </span>: United</p>
-                                              </div>
-                                              <div class="bio-row">
-                                                  <p><span>Occupation </span>: UI Designer</p>
-                                              </div>
-                                              <div class="bio-row">
-                                                  <p><span>Email </span>:jenifer@mailname.com</p>
-                                              </div>
-                                              <div class="bio-row">
-                                                  <p><span>Mobile </span>: (+6283) 456 789</p>
-                                              </div>
-                                              <div class="bio-row">
-                                                  <p><span>Phone </span>:  (+021) 956 789123</p>
-                                              </div>
-                                          </div>
-                                      </div>
-                                    </section>
-                                      <section>
-                                          <div class="row">                                              
-                                          </div>
-                                      </section>
-                                  </div>
+
                                   <div id="badges" class="tab-pane">
                                     <section class="panel">
                                             <div class="component">
@@ -533,7 +175,7 @@
                                       </div>
                                     </section>
                                       <section>
-                                          <div class="row">                                              
+                                          <div class="row">
                                           </div>
                                       </section>
                                   </div>
@@ -547,54 +189,9 @@
           </section>
         </section>
 
-         
-        
-        <footer class="footer-distributed">
 
-			<div class="footer-left">
 
-				<h1 id="logo-title">Spartan</h1>
 
-				<p class="footer-links">
-					<a href="#">Acasa</a>
-					·
-					<a href="#">Anunt nou</a>
-					·
-					<a href="#">Profil</a>
-					·
-					<a href="#">Pagina</a>
-					·
-					<a href="#">Categorii</a>
-				</p>
-
-				<p class="footer-company-name">Spartan &copy; 2016</p>
-
-				<div class="footer-icons">
-
-					<a href="#"><i class="fa fa-facebook"></i></a>
-					<a href="#"><i class="fa fa-twitter"></i></a>
-					<a href="#"><i class="fa fa-linkedin"></i></a>
-					<a href="#"><i class="fa fa-github"></i></a>
-
-				</div>
-
-			</div>
-
-			<div class="footer-right">
-
-				<p>Contact Us</p>
-
-				<form action="#" method="post">
-
-					<input type="text" name="email" placeholder="Email" />
-					<textarea name="message" placeholder="Message"></textarea>
-					<button>Send</button>
-
-				</form>
-
-			</div>
-
-		</footer>
 
 
         <!-- /.container -->
@@ -606,7 +203,7 @@
 
         <script>
         $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip(); 
+            $('[data-toggle="tooltip"]').tooltip();
         });
         </script>
 
@@ -616,7 +213,5 @@
 
     </html>
 
-    <!-- colors: #47a3da  -main blue;
-                 #1f80af  -dark blue;
-                 #e5f5fa  -light blue;
-                                       -->
+{% endblock %}
+
