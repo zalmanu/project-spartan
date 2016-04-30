@@ -25,6 +25,7 @@ INSTALLED_APPS = (
     'contactUS',
     'review',
     'SpartanPage',
+    'chat'
 
 )
 
