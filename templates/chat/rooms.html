@@ -18,7 +18,7 @@
 			    {% for room in empl_messages %}
                             <tr id="chat_table_tr"  onclick="window.location='{{ room.get_absolute_url }}';" style="cursor:pointer;">
                               <td id="chat_table_td">Chat with {{ room.spartan.username }}</td>
-                              <td id="chat_table_td">
+                              <td id="chat_table_td" style="display:none">
                                 <i class="fa fa-pencil chat_button alterar"></i>
                                 <i class="fa fa-trash chat_button excluir"></i>
                               </td>

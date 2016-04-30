@@ -4,10 +4,11 @@
                  <section class="wrap" id="first-section">
                    <div class="row title-row">
 		    <br>
-                            <div class="col-12 font-thin categories-gallery">Converseaza cu<span class="font-semibold"> Avasilichioaie Petrika</span></div>
+                            <div class="col-12 font-thin categories-gallery">Chat with<span class="font-semibold"> {{ other.username }}</span></div>
                     </div>
-                    <div class="container" id="chat-frame">
-                  <ol class="chat" style="height: 500px; overflow-y:scroll">
+                   <div class="container" id="chat-frame">
+		   <div style="height: 500px; overflow-y:auto" class="mes">
+                  <ol class="chat">
 		{% if messages %}	
 		{% for message in messages %}
 		{% if message.submitter == other %}  
@@ -25,6 +26,7 @@
 		{% endfor %}
 		{% endif %}
 		  </ol>
+		  </div>
 		  <form method="POST">
 		  {% csrf_token %}
                    {{ form.message }}
@@ -33,5 +35,10 @@
     </section>
 
             </header>
-        </section>  
+</section>
+<script>
+  $(".mes").animate({ scrollTop: $(document).height() }, "slow");
+   return false;
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 {% endblock %}
