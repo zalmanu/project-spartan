@@ -16,7 +16,7 @@
                           </thead>
                           <tbody>
 			    {% for room in empl_messages %}
-                            <tr id="chat_table_tr"  onclick="window.location='{{ room.get_absolute_url }}';">
+                            <tr id="chat_table_tr"  onclick="window.location='{{ room.get_absolute_url }}';" style="cursor:pointer;">
                               <td id="chat_table_td">Chat with {{ room.spartan.username }}</td>
                               <td id="chat_table_td">
                                 <i class="fa fa-pencil chat_button alterar"></i>
@@ -38,7 +38,7 @@
                           </thead>
                           <tbody>
 			    {% for room in spa_messages %}
-                            <tr id="chat_table_tr" onclick="window.location='{{ room.get_absolute_url }}';" style="cursor: hand;">
+                            <tr id="chat_table_tr" onclick="window.location='{{ room.get_absolute_url }}';" style="cursor: pointer;">
                               <td id="chat_table_td">Chat with {{ room.employer.username }}</td>
                               <td id="chat_table_td">
                                 <i class="fa fa-pencil chat_button alterar"></i>
