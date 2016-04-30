@@ -36,6 +36,7 @@
          <td>{{ post.spartan.nume }}</td>
          <td>{{ post.spartan.user.email }}</td>
          <td>{{ post.pret }}</td>
+	 <td onclick="window.location='{{ post.room.get_absolute_url }}';">Go to chat</td>
          <td><input type="checkbox" name="work_in_progress" value="finish_work" id="finish_work" class="employer" data-postfin="{{ post.id }}"></td>
        </tr>
      </tbody>
@@ -46,7 +47,7 @@
          <td>{{ post.spartan.nume }}</td>
          <td>{{ post.spartan.user.email }}</td>
          <td>{{ post.pret }}</td>
-	<a href="/submit"><td>Go to chat</td></a>
+	 <td onclick="window.location='{{ post.room.get_absolute_url }}';">Go to chat</td>
          <td>Waits for spartan's confimation</td>
        </tr>
      </tbody>
@@ -90,6 +91,7 @@
             
         </div>
 {% endfor %}
+</div>
 {% if bids %}
 <div class="col-md-12">
   <h4>Bids<b id="post_title_bidders"></h4>
@@ -100,7 +102,8 @@
       <thead>  
 	<th>Annoucement title</th>
 	<th>Offer type</th>
-	<th>Suma licitata</th>       
+	<th>Suma licitata</th>
+	<th>Chat</th>
 	<th>Job done</th>
       </thead>
       <tbody>
@@ -110,6 +113,7 @@
 	  <td>{{ bid.post.title }}</td>
 	  <td>{{ bid.tip }}</td>
 	  <td>{{ bid.pret }}</td>
+	  <td onclick="window.location='{{ bid.post.room.get_absolute_url }}';" style="cursor: pointer;">Go to chat</td>
 	  <td>Waiting for employer's confimations</td>
 	  </td>
 	</tr>
@@ -118,6 +122,7 @@
 	  <td>{{ bid.post.title }}</td>
 	  <td>{{ bid.tip }}</td>
 	  <td>{{ bid.pret }}</td>
+	  <td onclick="window.location='{{ bid.post.room.get_absolute_url }}';" style="cursor: pointer;">Go to chat</td>
 	  <td><input type="checkbox" name="work_in_progress" value="finish_work" id="finish_work" class="spartan" data-post="{{ bid.post.id }}"></td>
 	  </td>
 	</tr>
@@ -138,7 +143,6 @@
 <div class="clearfix"></div>
         </div>
         </div>
-
     </div>
 </div>
 

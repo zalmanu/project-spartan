@@ -23,6 +23,7 @@ def room(request, slug):
             message = form.cleaned_data['message']
             if message is not None:
                 Message.objects.create(room = room, message=message, submitter=request.user)
+                form = SendMessageForm()
                 return render(request, 'chat/chat.html', {
                     'room': room,
                     'messages': room.messages.all(),

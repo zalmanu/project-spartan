@@ -9,13 +9,14 @@ from django.contrib.auth.models import User
 
 from authentication.models import Spartan
 from bidding.models import Oferta
+from useractions.models import Announcement 
 
 
 class Room(models.Model):
     spartan = models.ForeignKey(User, related_name='spa_rooms')
     employer = models.ForeignKey(User, related_name='empl_rooms')
     slug = models.SlugField(unique=True, default=uuid.uuid1)
-    offer = models.OneToOneField(Oferta, primary_key=True, default='')
+    post = models.OneToOneField(Announcement, primary_key=True, default='')
 
     def get_absolute_url(self):
         return reverse('room', args=[self.slug])
