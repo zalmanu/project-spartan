@@ -33,7 +33,7 @@
                 <div id="recent-posts">
                 {% if ann %}
                 {% for anunt in ann %}
-                <div class="col-lg-12" id="distance">
+                <div class="col-lg-12" id="distance" onclick="window.location='{{ anunt.get_absolute_url }}';">
                     <div class="profile-widget profile-widget-info" id="post">
                           <div class="panel-body" id="post_content">
                             <div class="col-lg-2 col-sm-2" style="color:black;">

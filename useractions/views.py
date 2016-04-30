@@ -119,14 +119,14 @@ def category(request, kind):
             'categories': categories,
             'kind': page_category,
             'cod': curruser.account.cod,
-            'ann': Announcement.objects.filter(category=page_category)
+            'ann': Announcement.objects.filter(category=page_category, status=False)
         })
     else:
         return render(request, 'useractions/category.html', {
             'categories': categories,
             'kind': page_category,
             'cod': '61e1380365703a4c73c2480673d8993b',
-            'ann': Announcement.objects.filter(category=page_category)
+            'ann': Announcement.objects.filter(category=page_category, status=False)
         })
 
 
