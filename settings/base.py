@@ -16,7 +16,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'captcha',
     'widget_tweaks',
-
+    'chat',
+    
     #Usual apps
     'authentication',
     'basicpages',

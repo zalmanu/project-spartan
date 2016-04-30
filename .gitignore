@@ -72,3 +72,4 @@ db.sqlite3
 authentication/migrations
 useractions/migrations
 bidding/migrations
+chat/migrations

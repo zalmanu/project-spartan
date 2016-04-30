@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+                 <section class="wrap" id="first-section">
+                   <div class="row title-row">
+		     <br>
+                            <div class="col-12 font-thin categories-gallery">Mess<span class="font-semibold">ages</span></div>
+                   </div>
+		   {% if empl_messages %}
+                   <div class="container">
+                        <table id="chat_table" style="border:none">
+                          <thead>
+                            <tr id="chat_table_tr">
+                              <th colspan="3" id="chat_table_title">Messages as empolyer</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+			    {% for room in empl_messages %}
+                            <tr id="chat_table_tr"  onclick="window.location='{{ room.get_absolute_url }}';">
+                              <td id="chat_table_td">Chat with {{ room.spartan.username }}</td>
+                              <td id="chat_table_td">
+                                <i class="fa fa-pencil chat_button alterar"></i>
+                                <i class="fa fa-trash chat_button excluir"></i>
+                              </td>
+                            </tr>
+			    {% endfor %}
+                          </tbody>
+                        </table>
+                   </div>
+		   {% endif %}
+		   {% if spa_messages %}
+		   <div class="container">
+                        <table id="chat_table" style="border:none">
+                          <thead>
+                            <tr id="chat_table_tr">
+                              <th colspan="3" id="chat_table_title">Messages as spartan</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+			    {% for room in spa_messages %}
+                            <tr id="chat_table_tr" onclick="window.location='{{ room.get_absolute_url }}';" style="cursor: hand;">
+                              <td id="chat_table_td">Chat with {{ room.employer.username }}</td>
+                              <td id="chat_table_td">
+                                <i class="fa fa-pencil chat_button alterar"></i>
+                                <i class="fa fa-trash chat_button excluir"></i>
+                              </td>
+                            </tr>
+			    {% endfor %}
+                          </tbody>
+                        </table>
+                   </div>
+		   {% endif %}
+    </section>
+
+            </header>
+        </section>
+        
+{% endblock %}

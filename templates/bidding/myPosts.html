@@ -69,7 +69,7 @@
     <td>{{ oferta.tip }}</td>
     <td>{{ oferta.pret }}</td>
     <td><p data-placement="top" data-toggle="tooltip" >
-        <button class="btn btn-danger btn-xs hire" data-oferta="{{ oferta.id }}" data-post="{{ post.id }}" id="choose_button" id="hire" >
+        <button class="btn btn-danger btn-xs hire" data-oferta="{{ oferta.id }}" data-post="{{ post.id }}" id="choose_button">
             <span class="glyphicon glyphicon-ok"></span>
         </button>
       </p>
@@ -217,7 +217,7 @@
             $.post("/posts/", { "oferta": oferta }, function(response) {
                  if (response.result == "success") {
                      console.log("success");
-                     $(location).attr('href', '/posts/')
+                     $(location).attr('href', '/posts/');
                  }
             })
             return true;
@@ -232,7 +232,7 @@
             $.post("/posts/", { "post": post_id }, function(response) {
                  if (response.result == "success") {
                      console.log("success");
-                     $(location).attr('href', '/posts/')
+                     $(location).attr('href', '/posts/');
                  }
             })
             return true; 
@@ -247,7 +247,7 @@
             $.post("/posts/", { "post_empl": post_id }, function(response) {
                  if (response.result == "success") {
                      console.log("success");
-                     $(location).attr('href', '/posts/')
+                     $(location).attr('href', '/posts/');
                  }
             })
             return true; 

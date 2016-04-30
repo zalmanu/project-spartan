@@ -20,7 +20,7 @@ def posts(request):
             oferta.status = True
             oferta.save()
             oferta.post.save()
-            new_room = Room.objects.create(spartan=oferta.post.spartan, 
+            new_room = Room.objects.create(spartan=oferta.post.spartan.user, 
                                            employer=oferta.post.author, 
                                            offer=oferta)
             new_room.save()
@@ -32,6 +32,7 @@ def posts(request):
         elif request.POST.get('post_empl'):
             post_id = request.POST.get('post_empl')
             post = Announcement.objects.get(id=post_id)
+            post.oferta.room.delete()
             post.delete()
         return HttpResponse(json.dumps({"result": "success"}), content_type='application/json')
     else:

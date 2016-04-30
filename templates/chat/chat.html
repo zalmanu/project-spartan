@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+                 <section class="wrap" id="first-section">
+                   <div class="row title-row">
+		    <br>
+                            <div class="col-12 font-thin categories-gallery">Converseaza cu<span class="font-semibold"> Avasilichioaie Petrika</span></div>
+                    </div>
+                    <div class="container" id="chat-frame">
+                  <ol class="chat" style="height: 500px; overflow-y:scroll">
+		{% if messages %}	
+		{% for message in messages %}
+		{% if message.submitter == other %}  
+                <li class="other">
+		 {% else %}
+		<li class="self">
+		 {% endif %}
+                 <div class="avatar"><img src="http://www.gravatar.com/avatar/{{ message.submitter.account.cod }}" draggable="false"/></div>
+                  <div class="msg">
+                    <p>{{ message.message }}</p>
+                    <time>{{ message.timestamp }}</time>
+                  </div>
+                </li>
+                <hr>
+		{% endfor %}
+		{% endif %}
+		  </ol>
+		  <form method="POST">
+		  {% csrf_token %}
+                   {{ form.message }}
+		 </form>  
+                </div>
+    </section>
+
+            </header>
+        </section>  
+{% endblock %}

@@ -25,5 +25,5 @@ urlpatterns = [
     url(r'^', include('useractions.urls')),
     url(r'^', include('bidding.urls')),
     url(r'^', include('contactUS.urls')),
-
+    url(r'^', include('chat.urls'))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

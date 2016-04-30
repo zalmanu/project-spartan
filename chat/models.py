@@ -12,8 +12,8 @@ from bidding.models import Oferta
 
 
 class Room(models.Model):
-    spartan = models.ForeignKey(Spartan, related_name='rooms')
-    employer = models.ForeignKey(User, related_name='rooms')
+    spartan = models.ForeignKey(User, related_name='spa_rooms')
+    employer = models.ForeignKey(User, related_name='empl_rooms')
     slug = models.SlugField(unique=True, default=uuid.uuid1)
     offer = models.OneToOneField(Oferta, primary_key=True, default='')
 
@@ -25,3 +25,4 @@ class Message(models.Model):
     room = models.ForeignKey(Room, related_name='messages')
     message = models.TextField()
     submitter = models.ForeignKey(User, related_name='messages', default='')
+    timestamp = models.DateTimeField(editable=False, auto_now_add=True, null=True)
