@@ -4,7 +4,7 @@ from models import Announcement
 from categories.models import Category
 from django.core.mail import send_mail
 from django.conf import settings
-from .forms import PostForm
+from .forms import PostForm, LicitatieForm
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 
@@ -67,6 +67,58 @@ def create_post(request):
             return render(request, 'posts/create_post.html', {
                 'cod': '61e1380365703a4c73c2480673d8993b',
                 'form': form})
+
+@login_required
+def post(request, slug):
+    post = get_object_or_404(Announcement, slug=slug, status=False)
+    if request.method == 'POST':
+        form = LicitatieForm(request.POST)
+        if form.is_valid():
+            pret = form.cleaned_data['pret']
+            tip = form.cleaned_data['tip']
+            form = LicitatieForm()
+            if pret > post.money:
+                return render(request, 'posts/post.html', {
+                    'cod': request.user.account.cod,
+                    'post': post,
+                    'form': form,
+                    'errors': [
+                     'Oferi mai mult de cat cel ce a pus '
+                     'anuntul este dispus sa plateasca']
+                })
+            else:
+                oferta = Oferta.objects.create(pret=pret, tip=tip,
+                                               spartan=request.user.spartan,
+                                               post=post)
+                oferta.save()
+                return render(request, 'posts/post.html', {
+                    'cod': request.user.account.cod,
+                    'post': post,
+                    'form': form,
+                    'confirms': ['Oferta a fost trimisa']
+                })
+        else:
+            return render(request, 'posts/post.html', {
+                'cod': request.user.account.cod,
+                'post': post,
+                'form': form,
+                'errors': ['Form is not valid']
+            })
+    else:
+        form = LicitatieForm()
+        if request.user and not request.user.is_superuser:
+            return render(request, 'posts/post.html', {
+                'cod': request.user.account.cod,
+                'post': post,
+                'form': form
+            })
+        else:
+            return render(request, 'posts/post.html', {
+                'cod': '61e1380365703a4c73c2480673d8993b',
+                'post': post,
+                'form': form
+            })
+
 
 
 
