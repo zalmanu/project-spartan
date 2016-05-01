@@ -1,8 +1,6 @@
-
+import json 
 
 from django.shortcuts import render
-
-# Create your views here.
 
 from .forms import ReviewForm
 import datetime
@@ -15,6 +13,8 @@ from django.shortcuts import get_object_or_404,redirect
 def review(request,slug):
     if request.method == 'POST':
         form = ReviewForm(request.POST)
+        if request.POST.get('dontp'):
+            return redirect('/')
         if form.is_valid():
             message= form.cleaned_data['message']
             review=Review.objects.create(receiver=get_object_or_404(Spartan, slug=slug),
@@ -29,15 +29,15 @@ def review(request,slug):
         else:
             return render(request, 'review/review.html', {'cod': request.user.account.cod,
                                                                 'form': form,
-                                                                 'errors':['Invalid form']}
+                                                                 'errors':['Invalid form'], 'slug':slug}
                           )
 
     else:
             form = ReviewForm()
             if request.user.is_active and not  request.user.is_superuser:
                 return render(request, 'review/review.html', {'cod': request.user.account.cod,
-                                                                        'form': form})
+                                                                        'form': form, 'slug': slug})
             else :return render(request, 'review/review.html', {'cod': 1,
-                                                                    'form': form })
+                                                                    'form': form , 'slug': slug})
 
 
