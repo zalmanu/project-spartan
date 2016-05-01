@@ -42,4 +42,4 @@ class Spartan(models.Model):
      slug = models.SlugField(default=uuid.uuid1, unique=True)
 
      def get_absolute_url(self):
-        return reverse('user', args=[self.slug])
+        return reverse('users', args=[self.slug])
