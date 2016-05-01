@@ -14,9 +14,9 @@
                     <div class="profile-widget profile-widget-info" id="post">
                           <div class="panel-body" id="profile-header">
                             <div class="col-lg-2 col-sm-2">
-                              <h4 id="user-name">{{ user.username }}</h4>
+                              <h4 id="user-name">{{ spartan.user.username }}</h4>
                               <div class="follow-ava">
-                                    <img src="http://www.gravatar.com/avatar/{{ cod }}" alt="">
+                                    <img src="http://www.gravatar.com/avatar/{{ img_spartan }}" alt="">
                               </div>
                             </div>
                             <div class="col-lg-4 col-sm-4 follow-info" >
@@ -31,7 +31,7 @@
 
                                               <i class="fa fa-comments fa-2x"> </i><br>
 
-											  Raiting: {{ request.user.spartan.raiting}}
+											  Raiting: {{ spartan.user.spartan.raiting}}
                                           </li>
 
                                       </ul>
@@ -43,7 +43,7 @@
 
                                               <i class="fa fa-bell fa-2x"> </i><br>
 
-											  Tasks:{{ request.user.spartan.tasks}}
+											  Tasks:{{ spartan.user.spartan.tasks}}
 
                                           </li>
 
@@ -56,7 +56,7 @@
 
                                               <i class="fa fa-tachometer fa-2x"> </i><br>
 
-											  Abilitate:{{ request.user.spartan.abilitate1}}
+											  Abilitate:{{ spartan.user.spartan.abilitate1}}
 
                                           </li>
 
