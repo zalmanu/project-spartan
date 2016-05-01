@@ -2,15 +2,17 @@ from django.shortcuts import render
 from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
 
 from forms import SpartanForm
 from models import Spartan
+from categories.models import Category
 
 @login_required
 def spartan(request):
     if request.method == 'POST':
         if request.user.account.has_related_object():
-            return render(request, 'useractions/spartan.html', {'cod': request.user.account.cod,
+            return render(request, 'spartan/spartan.html', {'cod': request.user.account.cod,
                                                                 'form': SpartanForm(),
                                                                 'errors':['You already submitted the form']})
         form = SpartanForm(request.POST)
@@ -24,12 +26,13 @@ def spartan(request):
             cui = form.cleaned_data['cui']
             contBancar = form.cleaned_data['cont']
             abilitate = form.cleaned_data['abilitate']
+            abilitate = get_object_or_404(Category, name=abilitate)
             spartan = Spartan.objects.create(nume=nume, prenume=prenume,
                                              data_nasterii=data_nasterii,
                                              address=adress, cnp=cnp,
                                              serie=serie, cui=cui,
                                              contBancar=contBancar,
-                                             abilitate1=abilitate,
+                                             abilitate=abilitate,
                                              user=request.user)
             spartan.save()
             subject = 'Activare putere de Spartan'
@@ -47,13 +50,13 @@ def spartan(request):
             from_email = settings.EMAIL_HOST_USER
             send_mail(subject, messagetip, from_email,
                       [request.user.email], fail_silently=True)
-            return render(request, 'useractions/spartan.html', {'confirms': [
+            return render(request, 'spartan/spartan.html', {'confirms': [
                 'Ati completat cu succes formularul,'
                 'asteptati confirmarea administratorului!'],
                 'cod': request.user.account.cod,
                 'form': form})
         else:
-            return render(request, 'useractions/spartan.html',
+            return render(request, 'spartan/spartan.html',
                           {'cod': request.user.account.cod,
                            'form': form,
                            'errors': ['Invalid form']
@@ -61,9 +64,9 @@ def spartan(request):
     else:
         form = SpartanForm()
         if request.user.is_active and not request.user.is_superuser:
-            return render(request, 'useractions/spartan.html',
+            return render(request, 'spartan/spartan.html',
                           {'cod': request.user.account.cod,
                            'form': form})
         else:
-            return render(request, 'useractions/spartan.html', {'cod': 1,
+            return render(request, 'spartan/spartan.html', {'cod': 1,
                                                                 'form': form})
