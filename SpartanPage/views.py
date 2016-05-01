@@ -6,7 +6,7 @@ from authentication.models import Spartan
 @login_required
 def user(request,slug):
     curent_spartan = get_object_or_404(Spartan, slug=slug)
-    return render(request,'SpartanPage/user.html' ,{
+    return render(request,'SpartanPage/SpartanPage.html' ,{
                                           'reviews':request.user.spartan.reviews,
                                            'spartan':curent_spartan,
                                             'img_spartan':curent_spartan.user.account.cod,
