@@ -7,5 +7,4 @@ urlpatterns = [
     url(r'^category/(?P<kind>\w+)$', views.category, name='category'),
     url(r'^profile/$', views.profile, name='profile'),
     url(r'^spartan/$', views.spartan, name='spartan'),
-    url(r'^general/$', views.profileGeneral, name='profilGeneral'),
 ]

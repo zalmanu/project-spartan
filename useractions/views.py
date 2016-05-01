@@ -130,8 +130,7 @@ def category(request, kind):
         })
 
 
-def profileGeneral(request):
-    return render(request, 'useractions/profilegeneral.html')
+
 
 
 @login_required
