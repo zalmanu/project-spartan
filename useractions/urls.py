@@ -2,7 +2,5 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(r'^submit/$', views.create_post, name='submit'),
-    url(r'^profile/$', views.profile, name='profile'),
-    url(r'^general/$', views.profileGeneral, name='profilGeneral')
+    url(r'^submit/$', views.create_post, name='submit')
 ]
