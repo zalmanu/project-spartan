@@ -62,7 +62,7 @@
               <!-- page start-->
           <header class="panel-heading tab-bg-info" id="categoryes_profile">
             <ul class="nav nav-tabs" id="profile-subpage">
-	      {% if request.user.spartan.spartanStatus and request.user != post.author %} 
+	      {% if request.user.spartan.spartanStatus and request.user != post.author and request.user.spartan.abilitate.name == post.category.name %}
                                   <li class="active">
                                       <a data-toggle="tab" href="#recent-activity">
                                            Licitari
@@ -76,7 +76,7 @@
                                   </li>
                               </ul>
           </header>
-	  {% if request.user.spartan.spartanStatus and request.user != post.author %}
+	  {% if request.user.spartan.spartanStatus and request.user != post.author and request.user.spartan.abilitate.name == post.category.name %}
               <div class="row">
                  <div class="col-lg-12">
                     <section class="panel">
