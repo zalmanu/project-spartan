@@ -10,4 +10,5 @@ def user(request,slug):
                                           'reviews':request.user.spartan.reviews,
                                            'spartan':curent_spartan,
                                             'img_spartan':curent_spartan.user.account.cod,
+                                            'cod':request.user.account.cod,
     })
