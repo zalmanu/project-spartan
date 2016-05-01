@@ -1,26 +1,12 @@
 from django.shortcuts import render
-from django.contrib.auth import logout
 from django.shortcuts import redirect
-from django.core.urlresolvers import reverse
 from useractions.models import Announcement
 from categories.models import Category
-from authentication.models import Account
-from spartan.models import Spartan
-from django.contrib import messages
-from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.conf import settings
 from .forms import ProfileEditForm, PostForm
-import md5
-import datetime
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
-
-
-@login_required
-def logout_view(request):
-    logout(request)
-    return redirect(reverse('home'))
 
 
 @login_required

@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from models import Category
 from useractions.models import Announcement 
 
+
 @login_required
 def category(request, kind):
     categories = Category.objects.all()
@@ -23,4 +24,3 @@ def category(request, kind):
             'cod': '61e1380365703a4c73c2480673d8993b',
             'ann': Announcement.objects.filter(category=page_category, status=False)
         })
-

@@ -1,12 +1,19 @@
 from django.shortcuts import render
-from .forms import LoginForm, RegisterForm, PasswordResetForm, ForGotPassword
+from .forms import LoginForm, RegisterForm, PasswordResetForm
 import authentication.models
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
-from django.contrib import messages
+from django.core.urlresolvers import reverse
+from django.contrib.auth import logout
 import md5
+
+
+@login_required
+def logout_view(request):
+    logout(request)
+    return redirect(reverse('home'))
 
 
 def register_page(request):

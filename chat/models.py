@@ -1,14 +1,11 @@
 from __future__ import unicode_literals
 
 import uuid
-import datetime
 
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.contrib.auth.models import User
 
-from spartan.models import Spartan
-from bidding.models import Oferta
 from useractions.models import Announcement 
 
 

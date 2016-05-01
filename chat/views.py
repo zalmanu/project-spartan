@@ -1,5 +1,3 @@
-import json
-
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
@@ -22,7 +20,7 @@ def room(request, slug):
         if form.is_valid():
             message = form.cleaned_data['message']
             if message is not None:
-                Message.objects.create(room = room, message=message, submitter=request.user)
+                Message.objects.create(room=room, message=message, submitter=request.user)
                 form = SendMessageForm()
                 return render(request, 'chat/chat.html', {
                     'room': room,
@@ -51,12 +49,13 @@ def room(request, slug):
             'other': other,
             'cod': request.user.account.cod
         })
-    
+
+
 def rooms(request):
     user = request.user
     spa_messages = user.spa_rooms
     empl_messages = user.empl_rooms
     context = {'spa_messages': spa_messages.all(),
                'empl_messages': empl_messages.all(),
-               'cod': user.account.cod }
+               'cod': user.account.cod}
     return render(request, 'chat/rooms.html', context)

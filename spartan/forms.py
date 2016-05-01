@@ -1,5 +1,6 @@
 from django import forms
 
+
 class SpartanForm(forms.Form):
     prenume = forms.CharField(max_length=40, label="First name",
                               widget=forms.TextInput(

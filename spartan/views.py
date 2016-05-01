@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.core.mail import send_mail
-from django.shortcuts import get_object_or_404
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 
 from forms import SpartanForm
@@ -9,7 +9,7 @@ from models import Spartan
 @login_required
 def spartan(request):
     if request.method == 'POST':
-        if curruser.account.has_related_object():
+        if request.user.account.has_related_object():
             return render(request, 'useractions/spartan.html', {'cod': request.user.account.cod,
                                                                 'form': SpartanForm(),
                                                                 'errors':['You already submitted the form']})

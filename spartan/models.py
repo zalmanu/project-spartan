@@ -4,6 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from categories.models import Category
 
+
 class Spartan(models.Model):
     nume = models.CharField(max_length=40)
     prenume = models.CharField(max_length=40)
