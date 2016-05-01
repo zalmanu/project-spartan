@@ -19,7 +19,7 @@ INSTALLED_APPS = (
     
     #Usual apps
     'authentication',
-    'basicpages',
+    'homepages',
     'posts',
     'bidding',
     'contactUS',
