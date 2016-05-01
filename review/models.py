@@ -9,7 +9,6 @@ from useractions.models import Announcement
 
 
 class Review(models.Model):
-    review = models.OneToOneField(Announcement, primary_key=True,default=None)
     receiver = models.ForeignKey(Spartan, related_name='reviews')
     submitter = models.ForeignKey(User, related_name='reviews')
     message=models.CharField(null=True, max_length=1000)

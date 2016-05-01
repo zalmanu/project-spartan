@@ -9,22 +9,23 @@ import datetime
 from .models import Review
 from authentication.models import  Spartan
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404,redirect
 
 @login_required
-def review(request):
+def review(request,slug):
     if request.method == 'POST':
         form = ReviewForm(request.POST)
         if form.is_valid():
             message= form.cleaned_data['message']
-
-            review=Review.objects.create(receiver=Spartan.objects,submitter=request.user,
+            review=Review.objects.create(receiver=get_object_or_404(Spartan, slug=slug),
+                                         submitter=request.user,
                                          message=message,data=datetime.datetime.now()
                                          )
             review.save()
-            return render(request, 'useractions/review.html' ,{'errors': ['Multumim pentru review!'],
-                                                                'cod': request.user.account.cod,
-                                                                 'form':form,
-                                                               })
+            curent_spartan =get_object_or_404(Spartan, slug=slug)
+            curent_spartan.raiting += 1
+            curent_spartan.save()
+            return redirect('/')
         else:
             return render(request, 'useractions/review.html', {'cod': request.user.account.cod,
                                                                 'form': form,
