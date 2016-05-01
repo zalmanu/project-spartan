@@ -7,7 +7,7 @@ from django.core.urlresolvers import reverse
 from django.db import models
 from django.contrib.auth.models import User
 
-from authentication.models import Spartan
+from spartan.models import Spartan
 from bidding.models import Oferta
 from useractions.models import Announcement 
 

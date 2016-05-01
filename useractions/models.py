@@ -4,7 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 import uuid
 from django.core.urlresolvers import reverse
-from authentication.models import Spartan
+from spartan.models import Spartan
 from categories.models import Category
 
 

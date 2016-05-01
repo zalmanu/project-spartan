@@ -24,7 +24,8 @@ INSTALLED_APPS = (
     'bidding',
     'contactUS',
     'chat',
-    'categories'
+    'categories',
+    'spartan'
 )
 
 

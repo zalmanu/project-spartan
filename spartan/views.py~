@@ -1,0 +1,68 @@
+from django.shortcuts import render
+from django.core.mail import send_mail
+from django.shortcuts import get_object_or_404
+
+from forms import SpartanForm
+from models import Spartan
+
+@login_required
+def spartan(request):
+    if request.method == 'POST':
+        if curruser.account.has_related_object():
+            return render(request, 'useractions/spartan.html', {'cod': request.user.account.cod,
+                                                                'form': SpartanForm(),
+                                                                'errors':['You already submitted the form']})
+        form = SpartanForm(request.POST)
+        if form.is_valid():
+            nume = form.cleaned_data['nume']
+            prenume = form.cleaned_data['prenume']
+            data_nasterii = form.cleaned_data['data']
+            adress = form.cleaned_data['adress']
+            cnp = form.cleaned_data['CNP']
+            serie = form.cleaned_data['serie']
+            cui = form.cleaned_data['cui']
+            contBancar = form.cleaned_data['cont']
+            abilitate = form.cleaned_data['abilitate']
+            spartan = Spartan.objects.create(nume=nume, prenume=prenume,
+                                             data_nasterii=data_nasterii,
+                                             address=adress, cnp=cnp,
+                                             serie=serie, cui=cui,
+                                             contBancar=contBancar,
+                                             abilitate1=abilitate,
+                                             user=request.user)
+            spartan.save()
+            subject = 'Activare putere de Spartan'
+            messagetip = " Buna % s , \n Ati completat formularul" \
+                         " pentru activare puterii de Spartan \n" \
+                         " Nume : %s ,\n Prenume: %s \n Data nasterii: %s \n" \
+                         " Adresa : %s \n CNP: %s \n Serie: %s \n" \
+                         " CUI : %s \n Cont Bancar: %s \n " \
+                         "Abilitate 1: %s \n  Datele dvs. vor fi analizate " \
+                         "de Admin in vederea" \
+                         " Activarii Puterii de Spartan \nO zi buna!" % (
+                             request.user.username, nume, prenume,
+                             data_nasterii,
+                             adress, cnp, serie, cui, contBancar, abilitate)
+            from_email = settings.EMAIL_HOST_USER
+            send_mail(subject, messagetip, from_email,
+                      [request.user.email], fail_silently=True)
+            return render(request, 'useractions/spartan.html', {'confirms': [
+                'Ati completat cu succes formularul,'
+                'asteptati confirmarea administratorului!'],
+                'cod': request.user.account.cod,
+                'form': form})
+        else:
+            return render(request, 'useractions/spartan.html',
+                          {'cod': request.user.account.cod,
+                           'form': form,
+                           'errors': ['Invalid form']
+                           })
+    else:
+        form = SpartanForm()
+        if request.user.is_active and not request.user.is_superuser:
+            return render(request, 'useractions/spartan.html',
+                          {'cod': request.user.account.cod,
+                           'form': form})
+        else:
+            return render(request, 'useractions/spartan.html', {'cod': 1,
+                                                                'form': form})
