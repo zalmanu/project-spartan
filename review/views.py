@@ -27,15 +27,17 @@ def review(request,slug):
             curent_spartan.save()
             return redirect('/')
         else:
-            return render(request, 'useractions/review.html', {'cod': request.user.account.cod,
+            return render(request, 'review/review.html', {'cod': request.user.account.cod,
                                                                 'form': form,
                                                                  'errors':['Invalid form']}
                           )
 
     else:
-         form = ReviewForm()
-         if request.user.is_active and not  request.user.is_superuser:
-             return render(request, 'useractions/review.html', {'cod': request.user.account.cod,
+            form = ReviewForm()
+            if request.user.is_active and not  request.user.is_superuser:
+                return render(request, 'review/review.html', {'cod': request.user.account.cod,
                                                                         'form': form})
-         else :return render(request, 'useractions/review.html', {'cod': 1,
+            else :return render(request, 'review/review.html', {'cod': 1,
                                                                     'form': form })
+
+

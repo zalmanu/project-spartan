@@ -16,26 +16,80 @@
                                   <img src="http://www.gravatar.com/avatar/{{ cod }}" alt="">
                               </div>
                             </div>
-                            <div class="col-lg-4 col-sm-4 follow-info" >
-                                <!--<p>@{{ user.username }}</p>-->
-								<!--<p><i class="fa fa-twitter follow-info">jenifertweet</i></p>-->
-                                <h6>
-                                    <!--<span id="icon_text"><i class="icon_clock_alt"></i>11:05 AM</span>-->
-                                    <!--<span id="icon_text"><i class="icon_calendar"></i>{{ time }}</span>-->
 
-                                    <!--<span id="icon_text"><i class="icon_pin_alt"></i>NY</span>-->
-                                </h6>
-                            </div>
 
 
 							<div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
-                                <br></br>
-                                <h3>Welcome {{ user.username }}!</h3>
+                                {% if request.user.spartan.spartanStatus  == True %}
+                                   <h1>Welcome SPARTAN!</h1>
+                                    {% else %} <h1>Welcome {{ user.username }} </h1>
+
+                                {% endif %}
 
 
                             </div>
 
+
+                                {% if request.user.spartan.spartanStatus  == True %}
+
+                            <div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
+
+                                <!--am pus acest spatiu pentru a alinia blocurile cum trebuie!!!!-->
+
+                            </div>
+
+                              <div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
+
+
+                                      <ul>
+                                          <li class="active">
+
+                                              <i class="fa fa-comments fa-2x"> </i><br>
+
+											  Raiting: {{ request.user.spartan.raiting}}
+                                          </li>
+
+                                      </ul>
+
+                            </div>
+							<div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
+                                      <ul>
+                                          <li class="active">
+
+                                              <i class="fa fa-bell fa-2x"> </i><br>
+
+											  Tasks:{{ request.user.spartan.tasks}}
+
+                                          </li>
+
+                                      </ul>
+
+                            </div>
+							<div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
+                                      <ul>
+                                          <li class="active">
+
+                                              <i class="fa fa-tachometer fa-2x"> </i><br>
+
+											  Abilitate:{{ request.user.spartan.abilitate1}}
+
+                                          </li>
+
+                                      </ul>
+
+                            </div>
+
+                               {% endif %}
+
+
+
+
+
+
+
+
                           </div>
+
                     </div>
 
                 </div>
@@ -44,11 +98,13 @@
               <!-- page start-->
           <header class="panel-heading tab-bg-info" id="categoryes_profile">
                               <ul class="nav nav-tabs" id="profile-subpage">
+                                   {% if request.user.spartan.spartanStatus  == True %}
                                   <li class="active">
                                       <a data-toggle="tab" href="#recent-activity">
                                            Reviews
                                       </a>
                                   </li>
+                                  {% endif %}
                                   <li>
                                       <a data-toggle="tab" href="#profile">
                                            Profile
@@ -80,97 +136,31 @@
                               <div class="tab-content">
                                   <div id="recent-activity" class="tab-pane active">
                                       <div class="profile-activity">
+                                          {% if request.user.spartan.spartanStatus  == True %}
+
+                                          {% for review in request.user.spartan.reviews.all %}
                                           <div class="act-time">
+                                              <div class="activity-body act-in">
+                                                  <div class="act-time">
                                               <div class="activity-body act-in">
                                                   <span class="arrow"></span>
                                                   <div class="text">
-                                                      <a href="#" class="activity-img"><img class="avatar" src="http://www.gravatar.com/avatar/e0ccac5d1244df3305d1eef5e7ca1d96s=200" alt=""></a>
-                                                      <p class="attribution"><a href="#">Jonatanh Doe</a> at 4:25pm, 30th Martie 2016</p>
-                                                      <p>Sunt foarte multumit de ce a realizat!</p>
-                                                      <div class="rating">
-                                                        <h2 id="my-rate">Eu ii dau:</h2><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                                      </div>
+                                                      <a href="#" class="activity-img"><img class="avatar" src="http://www.gravatar.com/avatar/{{ review.submitter.account.cod }}"></a>
+                                                      <p class="attribution"><a href="#">{{ review.submitter.account.user}}</a> {{ review.creation_date }}</p>
+                                                      <p> {{ review.message }}</p>
+
                                                   </div>
                                               </div>
                                           </div>
-                                          <div class="act-time">
-                                              <div class="activity-body act-in">
-                                                  <span class="arrow"></span>
-                                                  <div class="text">
-                                                      <a href="#" class="activity-img"><img class="avatar" src=" http://www.gravatar.com/avatar/{{ cod }}" alt=""></a>
-                                                      <p class="attribution"><a href="#">Jhon Loves </a> at 5:25am, 15th April 2016</p>
-                                                      <p>A facut o treaba excelenta!</p>
-                                                      <div class="rating">
-                                                        <h2 id="my-rate">Eu ii dau:</h2><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                                      </div>
                                                   </div>
                                               </div>
-                                          </div>
-                                          <div class="act-time">
-                                              <div class="activity-body act-in">
-                                                  <span class="arrow"></span>
-                                                  <div class="text">
-                                                      <a href="#" class="activity-img"><img class="avatar" src="http://www.gravatar.com/avatar/" alt=""></a>
-                                                      <p class="attribution"><a href="#">Rose Crack</a> at 5:25am, 16th April 2016</p>
-                                                      <p>Apreciez caliatatea cu care lucreaza acest domn </p>
-                                                    <div class="rating">
-                                                        <h2 id="my-rate">Eu ii dau:</h2><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <div class="act-time">
-                                              <div class="activity-body act-in">
-                                                  <span class="arrow"></span>
-                                                  <div class="text">
-                                                      <a href="#" class="activity-img"><img class="avatar" src="http://www.gravatar.com/avatar/" alt=""></a>
-                                                      <p class="attribution"><a href="#">Jimy Smith</a> at 5:25am, 17 th April 2016</p>
-                                                      <p>Nu am cuvinte! Un site de milioane ,niste spartani de miliarde !</p>
-                                                      <div class="rating">
-                                                        <h2 id="my-rate">Eu ii dau:</h2><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <div class="act-time">
-                                              <div class="activity-body act-in">
-                                                  <span class="arrow"></span>
-                                                  <div class="text">
-                                                      <a href="#" class="activity-img"><img class="avatar" src="http://www.gravatar.com/avatar/{{ cod }}" alt=""></a>
-                                                      <p class="attribution"><a href="#">Marius Willyam</a> at 5:25am, 18th April 2016</p>
-                                                      <p>Tot respectul!</p>
-                                                      <div class="rating">
-                                                        <h2 id="my-rate">Eu ii dau:</h2><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <div class="act-time">
-                                              <div class="activity-body act-in">
-                                                  <span class="arrow"></span>
-                                                  <div class="text">
-                                                      <a href="#" class="activity-img"><img class="avatar" src="http://www.gravatar.com/avatar/e0ccac5d1244df3305d1eef5e7ca1d96s=200" alt=""></a>
-                                                      <p class="attribution"><a href="#">Sarah saw</a> at 5:25am, 1 th May 2016</p>
-                                                      <p>O treaba facuta bine!</p>
-                                                      <div class="rating">
-                                                        <h2 id="my-rate">Eu ii dau:</h2><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <div class="act-time">
-                                              <div class="activity-body act-in">
-                                                  <span class="arrow"></span>
-                                                  <div class="text">
-                                                      <a href="#" class="activity-img"><img class="avatar" src="http://www.gravatar.com/avatar/" alt=""></a>
-                                                      <p class="attribution"><a href="#">Layla night</a> at 5:25am, 2th May 2016</p>
-                                                      <p>O sa recomand aceasta persoana!</p>
-                                                      <div class="rating">
-                                                        <h2 id="my-rate">Eu ii dau:</h2><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
+                                           {% endfor %}
+
+
+                                          {% endif %}
+
+
+
 
                                           
 
