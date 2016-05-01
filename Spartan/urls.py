@@ -22,7 +22,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('authentication.urls')),
     url(r'^', include('basicpages.urls')),
-    url(r'^', include('useractions.urls')),
+    url(r'^', include('posts.urls')),
     url(r'^', include('bidding.urls')),
     url(r'^', include('contactUS.urls')),
     url(r'^', include('chat.urls')),

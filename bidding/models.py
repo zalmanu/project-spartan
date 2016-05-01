@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.db import models
 
 from spartan.models import Spartan
-from useractions.models import Announcement
+from posts.models import Announcement
 
 
 class Oferta(models.Model):

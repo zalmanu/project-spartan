@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
-from useractions.models import Announcement
+from posts.models import Announcement
 from .forms import LicitatieForm
 from bidding.models import Oferta
 from chat.models import Room 

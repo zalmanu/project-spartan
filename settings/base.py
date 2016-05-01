@@ -20,12 +20,14 @@ INSTALLED_APPS = (
     #Usual apps
     'authentication',
     'basicpages',
-    'useractions',
+    'posts',
     'bidding',
     'contactUS',
     'chat',
     'categories',
-    'spartan'
+    'spartan',
+    'profiles',
+    
 )
 
 

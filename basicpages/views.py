@@ -1,5 +1,5 @@
 from django.shortcuts import render, render_to_response
-from useractions.models import Announcement, Category
+from posts.models import Announcement, Category
 
 
 def home(request):
