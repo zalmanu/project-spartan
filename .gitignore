@@ -73,3 +73,5 @@ authentication/migrations
 useractions/migrations
 bidding/migrations
 chat/migrations
+contactUS/migrations
+categories/migrations

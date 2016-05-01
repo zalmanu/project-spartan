@@ -16,7 +16,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'captcha',
     'widget_tweaks',
-    'chat',
     
     #Usual apps
     'authentication',
@@ -24,7 +23,8 @@ INSTALLED_APPS = (
     'useractions',
     'bidding',
     'contactUS',
-
+    'chat',
+    'categories'
 )
 
 
