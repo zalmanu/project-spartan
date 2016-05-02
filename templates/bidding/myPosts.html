@@ -32,8 +32,8 @@
      {% if post.spartan_done %}
      <tbody>
        <tr>
-         <td>{{ post.spartan.prenume }}</td>
-         <td>{{ post.spartan.nume }}</td>
+         <td> <a href="/user/{{ post.spartan.slug }}">{{ post.spartan.prenume }}</a></td>
+         <td><a href="/user/{{ post.spartan.slug }}">{{ post.spartan.nume }}</a></td>
          <td>{{ post.spartan.user.email }}</td>
          <td>{{ post.pret }}</td>
 	 <td onclick="window.location='{{ post.room.get_absolute_url }}';">Go to chat</td>
@@ -43,8 +43,8 @@
      {% else %}
      <tbody>
        <tr>
-         <td>{{ post.spartan.prenume }}</td>
-         <td>{{ post.spartan.nume }}</td>
+         <td><a href="/user/{{ post.spartan.slug }}">{{ post.spartan.prenume }}</a></td>
+         <td><a href="/user/{{ post.spartan.slug }}">{{ post.spartan.nume }}</a></td>
          <td>{{ post.spartan.user.email }}</td>
          <td>{{ post.pret }}</td>
 	 <td onclick="window.location='{{ post.room.get_absolute_url }}';">Go to chat</td>
@@ -65,8 +65,8 @@
     {% if post.oferte.all %}
     {% for oferta in post.oferte.all %}
     <tr>
-    <td>{{ oferta.spartan.prenume }}</td>
-    <td>{{ oferta.spartan.nume }}</td>
+    <td> <a href="/user/{{ oferta.spartan.slug }}">{{ oferta.spartan.prenume }} </a></td>
+    <td> <a href="/user/{{ oferta.spartan.slug }}">{{ oferta.spartan.nume }} </a></td>
     <td>{{ oferta.tip }}</td>
     <td>{{ oferta.pret }}</td>
     <td><p data-placement="top" data-toggle="tooltip" >
