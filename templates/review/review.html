@@ -1,0 +1,55 @@
+
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+                 <section class="wrap" id="first-section">
+                     <br></br>
+                    <div class="row title-row">
+                            <div class="col-12 font-thin categories-gallery">Review<span class="font-semibold">  spartan</span></div>
+                    </div>
+                    <div class="slide story" id="slide-6" data-slide="6">
+
+
+                        <div class="container">
+                          <div>
+                          <div class="card"></div>
+                          <div class="card" id="login-box">
+
+                              <h1 class="title">Te rog introdu: </h1>
+                            <form method="POST">
+			      {% csrf_token %}
+			      {% if errors %}
+				<div class="error">
+				  {% for message in errors %}
+				  <ul>
+				    <li>{{ message }}</li>
+				  </ul>
+				  {% endfor %}                        
+				</div>
+				{% endif %}
+				{% for field in form %}
+                               <div class="input-container">
+				    {{ field }}
+
+                                    <label for="Username">{{ field.label }}</label>
+				       <div class="bar"></div>
+                                </div>
+			       {% endfor %}
+                                <div class="button-container">
+                                    <button name="dontp" type="submit" value="donp"><span>Don't post</span></button>
+                                    <button neme="rev" type="submit" value="rev"><span>Post Review</span></button>
+                                </div>
+                            </form>
+                          </div>
+
+                        </div>
+                    </div>
+                </div>
+    </section>
+
+            </header>
+</section>
+
+
+{% endblock %}
+

@@ -77,3 +77,4 @@ chat/migrations
 contactUS/migrations
 categories/migrations
 profiles/migrations
+review/migrations

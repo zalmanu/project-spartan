@@ -31,5 +31,3 @@ def profile(request):
                 'form': form})
 
 
-def profileGeneral(request):
-    return render(request, 'profiles/profilegeneral.html')

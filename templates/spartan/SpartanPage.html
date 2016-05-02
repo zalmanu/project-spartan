@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
-        <section class="wrap" id="first-section">
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+        <section class="wrap" id="secound-section">
                     <section class="wrapper">
                          <div class="row title-row"> </div>
             </div>
@@ -11,42 +14,24 @@
                     <div class="profile-widget profile-widget-info" id="post">
                           <div class="panel-body" id="profile-header">
                             <div class="col-lg-2 col-sm-2">
-                              <h4 id="user-name">{{ user.username }}</h4>
+                              <h4 id="user-name">{{ spartan.user.username }}</h4>
                               <div class="follow-ava">
-                                  <img src="http://www.gravatar.com/avatar/{{ cod }}" alt="">
+                                    <img src="http://www.gravatar.com/avatar/{{ img_spartan }}" alt="">
                               </div>
                             </div>
-
-
-
-							<div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
-                                {% if request.user.spartan.spartanStatus  == True %}
-                                   <h1>Welcome SPARTAN!</h1>
-                                    {% else %} <h1>Welcome {{ user.username }} </h1>
-
-                                {% endif %}
-
+                            <div class="col-lg-4 col-sm-4 follow-info" >
 
                             </div>
 
-
-                                {% if request.user.spartan.spartanStatus  == True %}
 
                             <div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
-
-                                <!--am pus acest spatiu pentru a alinia blocurile cum trebuie!!!!-->
-
-                            </div>
-
-                              <div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
-
 
                                       <ul>
                                           <li class="active">
 
                                               <i class="fa fa-comments fa-2x"> </i><br>
 
-											  Reviews: {{ request.user.spartan.raiting}}
+											  Reviews: {{ spartan.raiting }}
                                           </li>
 
                                       </ul>
@@ -58,7 +43,7 @@
 
                                               <i class="fa fa-bell fa-2x"> </i><br>
 
-											  Tasks:{{ request.user.spartan.tasks}}
+											  Tasks:{{ spartan.tasks }}
 
                                           </li>
 
@@ -71,25 +56,14 @@
 
                                               <i class="fa fa-tachometer fa-2x"> </i><br>
 
-											  Abilitate:{{ request.user.spartan.abilitate.name }}
+											  Abilitate:{{ spartan.abilitate.name }}
 
                                           </li>
 
                                       </ul>
 
                             </div>
-
-                               {% endif %}
-
-
-
-
-
-
-
-
                           </div>
-
                     </div>
 
                 </div>
@@ -98,35 +72,17 @@
               <!-- page start-->
           <header class="panel-heading tab-bg-info" id="categoryes_profile">
                               <ul class="nav nav-tabs" id="profile-subpage">
-                                   {% if request.user.spartan.spartanStatus  == True %}
                                   <li class="active">
                                       <a data-toggle="tab" href="#recent-activity">
                                            Reviews
                                       </a>
                                   </li>
-                                  {% endif %}
-                                  <li>
-                                      <a data-toggle="tab" href="#profile">
-                                           Profile
-                                      </a>
-                                  </li>
-                                  <li class="">
-                                      <a data-toggle="tab" href="#edit-profile">
-                                         Edit profile
-                                      </a>
-                                  </li>
-                                   <li class="">
 
-                                      <a  href="/reset/">
-                                         Reset password
-                                      </a>
-                                  </li>
                                   <li class="">
                                       <a data-toggle="tab" href="#badges">
-                                         Activity
+                                         Activitate
                                       </a>
                                   </li>
-
                               </ul>
                           </header>
               <div class="row">
@@ -136,12 +92,8 @@
                               <div class="tab-content">
                                   <div id="recent-activity" class="tab-pane active">
                                       <div class="profile-activity">
-                                          {% if request.user.spartan.spartanStatus  == True %}
-
-                                          {% for review in request.user.spartan.reviews.all %}
+                                          {% for review in reviews.all %}
                                           <div class="act-time">
-                                              <div class="activity-body act-in">
-                                                  <div class="act-time">
                                               <div class="activity-body act-in">
                                                   <span class="arrow"></span>
                                                   <div class="text">
@@ -152,91 +104,26 @@
                                                   </div>
                                               </div>
                                           </div>
-                                                  </div>
-                                              </div>
-                                           {% endfor %}
-
-
-                                          {% endif %}
-
-
-
-
-                                          
+                                          {% endfor %}
 
                                       </div>
                                   </div>
-                                  <!-- profile -->
-                                  <div id="profile" class="tab-pane">
-                                    <section class="panel"> 
-                                      <div class="panel-body bio-graph-info">
-                                          <h1>Bio Graph</h1>
-                                          <div class="row">
-                                              <div class="bio-row">
-                                                  <p><span>Username: </span> {{ user.username }} </p>
-                                              </div>
-                                              <div class="bio-row">
-                                                  <p><span>City: </span>{{ user.account.city }}</p>
-                                              </div>
-                                              <div class="bio-row">
-                                                  <p><span>Country: </span> {{ user.account.country }}</p>
-                                              </div>
-                                              <div class="bio-row">
-                                                  <p><span>E-mail: </span> {{ user.email }} </p>
-                                              </div>
-                                              <div class="bio-row">
-                                                  <p><span>Phone number: </span>{{ user.account.telefon }}</p>
-                                              </div>
-                                               <div class="bio-row">
-                                                  <p><span>Current balance: </span>{{ user.account.sold }} lei</p>
-                                              </div>
-                                          </div>
-                                      </div>
-                                    </section>
-                                      <section>
-                                          <div class="row">
-                                          </div>
-                                      </section>
-                                  </div>
-                                  <!-- edit-profile -->
-                                  <div id="edit-profile" class="tab-pane">
-                                    <section class="panel">
-                                          <div class="panel-body bio-graph-info">
-                                              <h1> Profile Info</h1>
-                                              <form class="form-horizontal" role="form" method="POST">
-                                                {% csrf_token %}
-						{% load widget_tweaks %}
-						{% for field in form %}
-                                                  <div class="form-group">
-                                                      <label class="col-lg-2 control-label">{{ field.label }}</label>
-                                                      <div class="col-lg-6">
-							{{ field |add_class:"form-control"}}
-                                                      </div>
-                                                  </div>
-						{% endfor %}                                                  <div class="form-group">
-                                                      <div class="col-lg-offset-2 col-lg-10">
-                                                          <button type="submit" class="btn btn-primary">Update</button>
-                                                      </div>
-                                                  </div>
-                                              </form>
-                                          </div>
-                                      </section>
-                                  </div>
+
                                   <div id="badges" class="tab-pane">
                                     <section class="panel">
                                             <div class="component">
                                                 <table class="overflow-y">
                                                     <thead>
                                                         <tr>
-                                                            <th style="width: 164px;">Activity</th><th>Alpha</th><th>Beta</th><th>Gamma</th><th>Delta</th><th>Epsilon</th><th>Zeta</th><th>Eta</th><th>Theta</th><th>Iota</th><th>Kappa</th><th>Lambda</th><th>Mu</th><th>Nu</th><th>Xi</th><th>Omicron</th><th>Pi</th><th>Rho</th><th>Sigma</th><th>Tau</th><th>Upsilon</th>
+                                                            <th style="width: 164px;">Activitate</th><th>Alpha</th><th>Beta</th><th>Gamma</th><th>Delta</th><th>Epsilon</th><th>Zeta</th><th>Eta</th><th>Theta</th><th>Iota</th><th>Kappa</th><th>Lambda</th><th>Mu</th><th>Nu</th><th>Xi</th><th>Omicron</th><th>Pi</th><th>Rho</th><th>Sigma</th><th>Tau</th><th>Upsilon</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <th>Anunturi creeate</th><td>23</td><td>88</td><td>8</td><td>2</td><td>67</td><td>83</td><td>81</td><td>37</td><td>91</td><td>96</td><td>13</td><td>3</td><td>95</td><td>98</td><td>10</td><td>87</td><td>70</td><td>54</td><td>72</td><td>75</td>
-                                                        </tr><tr>
-                                                            <th>Anunturi finalizate</th><td>14</td><td>21</td><td>20</td><td>21</td><td>9</td><td>68</td><td>60</td><td>73</td><td>22</td><td>29</td><td>9</td><td>49</td><td>49</td><td>66</td><td>58</td><td>10</td><td>8</td><td>24</td><td>19</td><td>65</td>
-                                                        </tr><tr>
+                                                                <th>Anunturi creeate</th><td>23</td><td>88</td><td>8</td><td>2</td><td>67</td><td>83</td><td>81</td><td>37</td><td>91</td><td>96</td><td>13</td><td>3</td><td>95</td><td>98</td><td>10</td><td>87</td><td>70</td><td>54</td><td>72</td><td>75</td>
+                                                            </tr><tr>
+                                                                <th>Anunturi finalizate</th><td>14</td><td>21</td><td>20</td><td>21</td><td>9</td><td>68</td><td>60</td><td>73</td><td>22</td><td>29</td><td>9</td><td>49</td><td>49</td><td>66</td><td>58</td><td>10</td><td>8</td><td>24</td><td>19</td><td>65</td>
+                                                            </tr><tr>
                                                             <th>Review-uri primite</th><td>4</td><td>50</td><td>89</td><td>72</td><td>99</td><td>90</td><td>24</td><td>86</td><td>95</td><td>44</td><td>32</td><td>97</td><td>18</td><td>90</td><td>81</td><td>9</td><td>38</td><td>4</td><td>85</td><td>15</td>
                                                         </tr><tr>
                                                             <th>Review-uri facute</th><td>10</td><td class="err">Nici una</td><td>32</td><td>45</td><td>53</td><td>29</td><td>35</td><td>35</td><td>75</td><td>9</td><td>69</td><td>66</td><td>93</td><td>42</td><td>81</td><td>85</td><td>72</td><td>70</td><td>15</td><td>38</td>
@@ -301,4 +188,32 @@
               <!-- page end-->
           </section>
         </section>
+
+
+
+
+
+
+        <!-- /.container -->
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
+        <script src="../js/jquery.stickyheader.js"></script>
+
+
+        <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+        </script>
+
+
+
+    </body>
+
+    </html>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 {% endblock %}
+

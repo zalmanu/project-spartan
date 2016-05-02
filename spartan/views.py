@@ -70,3 +70,13 @@ def spartan(request):
         else:
             return render(request, 'spartan/spartan.html', {'cod': 1,
                                                                 'form': form})
+
+@login_required        
+def user(request,slug):
+    curent_spartan = get_object_or_404(Spartan, slug=slug)
+    return render(request,'spartan/SpartanPage.html' ,{
+                                          'reviews': curent_spartan.reviews,
+                                           'spartan':curent_spartan,
+                                            'img_spartan':curent_spartan.user.account.cod,
+                                            'cod':request.user.account.cod,
+    })

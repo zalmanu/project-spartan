@@ -251,7 +251,8 @@
             $.post("/posts/", { "post_empl": post_id }, function(response) {
                  if (response.result == "success") {
                      console.log("success");
-                     $(location).attr('href', '/posts/');
+                     var url = '/review/'+response.slug
+                     $(location).attr('href', url)
                  }
             })
             return true; 

@@ -32,7 +32,12 @@ def posts(request):
             post_id = request.POST.get('post_empl')
             post = Announcement.objects.get(id=post_id)
             post.room.delete()
+            slug = post.spartan.slug
+            post.spartan.tasks +=1
+            post.spartan.save()
             post.delete()
+            return HttpResponse(json.dumps({"result": "success",'slug':slug}), content_type='application/json')
+
         return HttpResponse(json.dumps({"result": "success"}), content_type='application/json')
     else:
         context = {'posts': request.user.posts.all()}
