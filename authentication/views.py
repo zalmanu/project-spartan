@@ -38,6 +38,10 @@ def register_page(request):
                 city = form.cleaned_data['city']
                 country = form.cleaned_data['country']
                 phone = form.cleaned_data['phone']
+                if password.isdigit():
+                    return render(request, "authentication/register.html", {
+                        'form': form,
+                        'errors': ["Password is entirely numeric"]})
                 if password == password2:
                     new_user = User.objects.create_user(
                         username, email, password)
