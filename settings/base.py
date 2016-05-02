@@ -28,6 +28,7 @@ INSTALLED_APPS = (
     'spartan',
     'profiles',
     'review',
+    'faq',
 
 )
 

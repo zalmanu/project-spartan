@@ -30,5 +30,6 @@ urlpatterns = [
     url(r'^', include('spartan.urls')),
     url(r'^', include('profiles.urls')),
     url(r'^', include('review.urls')),
+    url(r'^', include('faq.urls')),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
