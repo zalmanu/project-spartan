@@ -1,6 +1,17 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
+
+{% if  request.user.account.has_related_object   %}
+
+                    <div class="row title-row">
+                            <div class="col-12 font-thin categories-gallery"><br></br>You are already <span class="font-semibold"> a Spartan :)</span></div>
+                    </div>
+
+{% endif %}
+
+
+{% if not request.user.account.has_related_object   %}
                  <section class="wrap" id="first-section">
                     <div class="row title-row">
                             <div class="col-12 font-thin categories-gallery"><br></br>Become a <span class="font-semibold">Spartan</span></div>
@@ -52,4 +63,5 @@
 
             </header>
 </section>
+{% endif %}
 {% endblock %}
