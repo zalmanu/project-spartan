@@ -27,10 +27,18 @@ INSTALLED_APPS = (
     'categories',
     'spartan',
     'profiles',
-    
+    'notifications'
 )
 
-
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "asgi_redis.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
+        },
+        "ROUTING": "notifications.routing.channel_routing",
+    },
+}
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
