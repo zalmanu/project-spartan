@@ -1,5 +1,5 @@
 from django import forms
-
+from captcha.fields import ReCaptchaField
 
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=30, label='Username',
@@ -38,6 +38,7 @@ class RegisterForm(forms.Form):
                                  'required': 'required'}))
     phone = forms.IntegerField(label='Phone number', widget=forms.NumberInput(
         attrs={'required': 'required'}))
+    captcha = ReCaptchaField()
 
 
 class PasswordResetForm(forms.Form):
