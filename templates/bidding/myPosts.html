@@ -126,8 +126,8 @@
 	{% elif bid.post.status and bid.status %}
 	<tr>
 	  <td>{{ bid.post.title }}</td>
-	  <td>{{ bid.tip }}</td>
 	  <td>{{ bid.pret }}</td>
+	  <td>{{ bid.tip }}</td>
 	  <td onclick="window.location='{{ bid.post.room.get_absolute_url }}';" style="cursor: pointer;">Go to chat</td>
 	  <td> {{ bid.post.author.account.telefon }} </td>
 	  <td><input type="checkbox" name="work_in_progress" value="finish_work" id="finish_work" class="spartan" data-post="{{ bid.post.id }}"></td>
@@ -136,8 +136,9 @@
 	{% elif not bid.post.status and not bid.status %}
 	<tr>
 	  <td>{{ bid.post.title }}</td>
-	  <td>{{ bid.tip }}</td>
 	  <td>{{ bid.pret }}</td>
+	  <td>{{ bid.tip }}</td>
+	  <td> - </td>
 	  <td> - </td>
 	  <td>Offer wasn't accepted, yet.</td>
 	</tr>
