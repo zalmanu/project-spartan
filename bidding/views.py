@@ -10,6 +10,7 @@ from chat.models import Room
 @csrf_exempt
 def posts(request):
     if request.method == 'POST':
+        context = {"result": "success"}
         if request.POST.get('oferta'):
             oferta_id = request.POST.get('oferta')
             oferta = Oferta.objects.get(id=oferta_id)
@@ -36,16 +37,11 @@ def posts(request):
             post.spartan.tasks +=1
             post.spartan.save()
             post.delete()
-            return HttpResponse(json.dumps({"result": "success",'slug':slug}), content_type='application/json')
-
-        return HttpResponse(json.dumps({"result": "success"}), content_type='application/json')
+            context['slug'] = slug
+        return HttpResponse(json.dumps(context), content_type='application/json')
     else:
-        context = {'posts': request.user.posts.all()}
-        if request.user and not request.user.is_superuser:
-            cod = request.user.account.cod
-        else:
-            cod = '61e1380365703a4c73c2480673d8993b'
-        context['cod'] = cod
+        context = {'posts': request.user.posts.all(), 
+                   'cod': request.user.account.cod}
         if request.user.account.has_related_object():
            context['bids'] = request.user.spartan.licitari.all()
         return render(request, 'bidding/myPosts.html',context)
