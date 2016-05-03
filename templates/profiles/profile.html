@@ -204,6 +204,15 @@ pp
                                               <form class="form-horizontal" role="form" method="POST">
                                                 {% csrf_token %}
 						{% load widget_tweaks %}
+						{% if errors %}
+						<div class="error">
+						  {% for message in errors %}
+						  <ul>
+						    <li>{{ message }}</li>
+						  </ul>
+						  {% endfor %}
+						</div>
+						{% endif %}
 						{% for field in form %}
                                                   <div class="form-group">
                                                       <label class="col-lg-2 control-label">{{ field.label }}</label>
