@@ -1,3 +1,5 @@
+import md5
+
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -16,16 +18,23 @@ def profile(request):
                     return render(request, "profiles/profile.html", {
                         'form': form,
                         'errors': ["Username is already taken"]})
-                curruser.username = username
-                curruser.save()
+                else:
+                    curruser.username = username
+                    curruser.save()
             if form.cleaned_data['email'] is not None:
                 email  = form.cleaned_data['email']
                 if User.objects.filter(email=email).exists():
                     return render(request, "profiles/profile.html", {
                         'form': form,
                         'errors': ["Email is already taken"]})
-                curruser.email = email
-                curruser.save()
+                else:
+                    curruser.email = email
+                    curruser.save()
+                    usshash = md5.new()
+                    usshash.update(email)
+                    cod=usshash.hexdigest()
+                    curruser.account.cod = cod
+                    curruser.account.save()
             if form.cleaned_data['city'] is not None:
                 city = form.cleaned_data['city']
                 curruser.account.city = city
