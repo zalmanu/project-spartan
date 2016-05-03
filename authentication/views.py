@@ -39,6 +39,7 @@ def register_page(request):
                     errors.append("Password is entirely numeric")
                 if password != password2:
                     errors.append("Passwords do not match")
+                
                     if errors:
                         form = RegisterForm()
                         return render(request, "authentication/register.html", {
