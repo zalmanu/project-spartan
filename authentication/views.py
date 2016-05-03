@@ -22,27 +22,28 @@ def register_page(request):
     else:
         if request.method == 'POST':
             form = RegisterForm(request.POST)
+            errors = []
             if form.is_valid():
                 username = form.cleaned_data['username']
                 if User.objects.filter(username=username).exists():
-                    return render(request, "authentication/register.html", {
-                        'form': form,
-                        'errors': ["Username is already taken"]})
+                    errors.append("Username is already taken")
                 password = form.cleaned_data['password']
                 password2 = form.cleaned_data['password2']
                 email = form.cleaned_data['email']
                 if User.objects.filter(email=email).exists():
-                    return render(request, "authentication/register.html", {
-                        'form': form,
-                        'errors': ["Email is already taken"]})
+                    errors.append("Email is already taken")
                 city = form.cleaned_data['city']
                 country = form.cleaned_data['country']
                 phone = form.cleaned_data['phone']
                 if password.isdigit():
-                    return render(request, "authentication/register.html", {
-                        'form': form,
-                        'errors': ["Password is entirely numeric"]})
-                if password == password2:
+                    errors.append("Password is entirely numeric")
+                if password != password2:
+                    errors.append("Passwords do not match")
+                    if errors:
+                        form = RegisterForm()
+                        return render(request, "authentication/register.html", {
+                            'form': form,
+                            'errors': errors })
                     new_user = User.objects.create_user(
                         username, email, password)
                     new_user.save()
@@ -55,11 +56,6 @@ def register_page(request):
                     user = authenticate(username=username, password=password)
                     login(request, user)
                     return redirect('/')
-                else:
-                    form = RegisterForm()
-                    return render(request, "authentication/register.html", {
-                        'form': form,
-                        'errors': ["Passwords do not match"]})
             else:
                 form = RegisterForm()
                 return render(request, "authentication/register.html", {
