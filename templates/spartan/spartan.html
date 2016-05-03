@@ -2,10 +2,18 @@
 {% load staticfiles %}
 {% block content %}
 
-{% if  request.user.account.has_related_object   %}
+{% if  request.user.spartan.spartanStatus == True  %}
 
                     <div class="row title-row">
                             <div class="col-12 font-thin categories-gallery"><br></br>You are already <span class="font-semibold"> a Spartan :)</span></div>
+                    </div>
+
+{% endif %}
+
+{% if  request.user.spartan.spartanStatus == False  %}
+
+                    <div class="row title-row">
+                            <div class="col-12 font-thin categories-gallery"><br></br>You already submitted the form,<span class="font-semibold"> wait for administrator's confirmation!</span></div>
                     </div>
 
 {% endif %}
@@ -42,14 +50,21 @@
                             <form method="POST">
 			      {% csrf_token %}
 			      {% for field in form %}
-                                <div class="input-container">
-				    {{ field }}
-				    {% if field.label != 'Category' %}
-                                    <label for="Username">{{ field.label }}</label>
-				    {% endif %}
-                                    <div class="bar"></div>
-                                </div>
-				{% endfor %}
+                    <div class="input-container">
+                        {% if field.label == 'Captcha' %}
+                             <div class=".g-recaptcha" style="width: 304px;height: 78px;margin: auto;" >{{ field }}</div>
+                        {% else %}
+                            {{ field }}
+                        {% endif %}
+
+		      {% if field.label != "Category" and  field.label != "Captcha"%}
+                      <label for="{{ field.label }}">{{ field.label }}</label>
+		      {% endif %}
+                        {% if field.label != 'Captcha' %}
+                        <div class="bar"></div>
+                        {% endif %}
+                    </div>
+		    {% endfor %}
                                 <div class="button-container">
                                     <button><span>Go</span></button>
                                 </div>

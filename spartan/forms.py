@@ -1,5 +1,5 @@
 from django import forms
-
+from captcha.fields import ReCaptchaField
 
 class SpartanForm(forms.Form):
     prenume = forms.CharField(max_length=40, label="First name",
@@ -33,3 +33,4 @@ class SpartanForm(forms.Form):
                                       'class': "form-control input-lg m-bot15",
                                       'id': "choose_category",
                                       'required': 'required'}))
+    captcha = ReCaptchaField()
