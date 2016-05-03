@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+                 <section class="wrap" id="first-section">
+                    <div class="row title-row">
+                            <div class="col-12 font-thin categories-gallery">Report a<span class="font-semibold"> Spartan/Employer</span></div>
+                    </div>
+                    <div class="slide story" id="slide-6" data-slide="6">
+
+
+                        <div class="container">
+                          <div>
+                          <div class="card"></div>
+                          <div class="card" id="login-box">
+
+                            <form method="POST">
+			      {% csrf_token %}
+                                {% if confirm %}
+				<div class="confirm">
+				  {% for message in confirm %}
+				  <ul>
+				    <li>{{ message }}</li>
+				  </ul>
+				  {% endfor %}
+				</div>
+				{% endif %}
+
+                                {% if errors %}
+				<div class="error">
+				  {% for message in errors %}
+				  <ul>
+				    <li>{{ message }}</li>
+				  </ul>
+				  {% endfor %}
+				</div>
+				{% endif %}
+				  {% for field in form %}
+                    <div class="input-container">
+                        {% if field.label == 'Captcha' %}
+                             <div class=".g-recaptcha" style="width: 304px;height: 78px;margin: auto;" >{{ field }}</div>
+                        {% else %}
+                            {{ field }}
+                        {% endif %}
+
+		      {% if field.label != "Report" and  field.label != "Captcha" and field.label != "Spartan" and field.label != "Employer"%}
+                      <label for="{{ field.label }}">{{ field.label }}</label>
+		      {% endif %}
+                        {% if field.label != 'Captcha' %}
+                        <div class="bar"></div>
+                        {% endif %}
+                    </div>
+		    {% endfor %}
+
+                                <div class="button-container">
+                                    <button><span>Go</span></button>
+                                </div>
+                            </form>
+                          </div>
+
+                        </div>
+                    </div>
+                </div>
+    </section>
+
+            </header>
+</section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+{% endblock %}

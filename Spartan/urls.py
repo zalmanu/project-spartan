@@ -31,5 +31,6 @@ urlpatterns = [
     url(r'^', include('profiles.urls')),
     url(r'^', include('review.urls')),
     url(r'^', include('faq.urls')),
+    url(r'^', include('report.urls')),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
