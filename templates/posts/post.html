@@ -71,7 +71,7 @@
 		{% endif %}
                                   <li>
                                       <a data-toggle="tab" href="#profile">
-                                           Mai multe informatii
+					More info
                                       </a>
                                   </li>
                               </ul>
@@ -106,13 +106,13 @@
                                           <label class="control-label">{{ form.pret.label }}</label>
                                           <div class="input-group" id="bidding-input-group">
 					    {{ form.pret }}
-                                              <span class="input-group-addon" id="start-date"><span>RON</span></span>
+                                              <span class="input-group-addon" id="start-date"><span>EUR</span></span>
 					    {{ form.tip }}
                                           </div>
-                                          <button id="bid-button">Liciteaza!</button>
+                                          <button id="bid-button">Bid!</button>
                                   </div>
 				  </form>
-                                      <button id="show_other_bids">Vezi si alte licitatii</button>
+                                      <button id="show_other_bids">More bids</button>
                                       <div class="profile-activity each_bid">
                                         {% for oferta in post.oferte.all %}
                                           <div class="act-time">                                      
@@ -132,7 +132,7 @@
                                   <!-- profile -->
                                   <div id="profile" class="tab-pane">
                                     <section class="panel">
-                                       <h1>Informatii despre autorul anuntului:</h1>
+                                       <h1>About the employer</h1>
                                       <div class="panel-body bio-graph-info">
                                           <div class="row">
                                               <div class="bio-row">
