@@ -7,5 +7,3 @@ urlpatterns = [
     url(r'^user/(?P<slug>[^\.]+)/$', views.user, name='SpartanUser')
 ]
 
-handler404 = 'views.custom_404'
-handler404 = 'views.custom_500'

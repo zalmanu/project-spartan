@@ -32,4 +32,8 @@ urlpatterns = [
     url(r'^', include('review.urls')),
     url(r'^', include('faq.urls')),
 
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+handler404 = 'errorPages.views.handler404'
+handler500 = 'errorPages.views.handler500'

@@ -6,7 +6,7 @@ DEBUG = False
 TEMPLATE_DEBUG=DEBUG
 
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 INSTALLED_APPS = (
@@ -31,6 +31,7 @@ INSTALLED_APPS = (
     'profiles',
     'review',
     'faq',
+    'errorPages',
 
 )
 
