@@ -12,21 +12,22 @@
   <div class="row">
     {% for post in posts %}
         <div class="col-md-12">
-        <h4>Anuntul:<b id="post_title_bidders">
+        <h4>Announcement:<b id="post_title_bidders">
 	    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a></b>
 	</h4>
         <div class="table-responsive">
 
               <table id="mytable" class="table table-bordred table-striped"
-                  data-table-post="{{ post.id }}">
+                  data-table-post="{{ post.id }}" style="height:210px;">
             
      {% if post.spartan %}
      <thead>
        <th>First Name</th>
        <th>Last Name</th>
        <th>Email</th>
-       <th>Suna Licitata</th>
+       <th>Offer</th>
        <th>Chat</th>
+       <th>or call the spartan!</th>
        <th>Lucrare terminata</th>
      </thead>
      {% if post.spartan_done %}
@@ -37,6 +38,7 @@
          <td>{{ post.spartan.user.email }}</td>
          <td>{{ post.pret }}</td>
 	 <td onclick="window.location='{{ post.room.get_absolute_url }}';">Go to chat</td>
+	 <td>{{ post.spartan.user.account.telefon }}</td>
          <td><input type="checkbox" name="work_in_progress" value="finish_work" id="finish_work" class="employer" data-postfin="{{ post.id }}"></td>
        </tr>
      </tbody>
@@ -48,6 +50,7 @@
          <td>{{ post.spartan.user.email }}</td>
          <td>{{ post.pret }}</td>
 	 <td onclick="window.location='{{ post.room.get_absolute_url }}';">Go to chat</td>
+	 <td>{{ post.spartan.user.account.telefon }}</td>
          <td>Waits for spartan's confimation</td>
        </tr>
      </tbody>
@@ -56,8 +59,8 @@
      <thead>  
        <th>First Name</th>
        <th>Last Name</th>
-       <th>Tipul ofertei</th>
-       <th>Suma Licitata</th>
+       <th>Offer</th>
+       <th>Offer type</th>
        
        <th>Accept</th>
      </thead>
@@ -67,8 +70,8 @@
     <tr>
     <td> <a href="/user/{{ oferta.spartan.slug }}">{{ oferta.spartan.prenume }} </a></td>
     <td> <a href="/user/{{ oferta.spartan.slug }}">{{ oferta.spartan.nume }} </a></td>
-    <td>{{ oferta.tip }}</td>
     <td>{{ oferta.pret }}</td>
+    <td>{{ oferta.tip }}</td>
     <td><p data-placement="top" data-toggle="tooltip" >
         <button class="btn btn-danger btn-xs hire" data-oferta="{{ oferta.id }}" data-post="{{ post.id }}" id="choose_button">
             <span class="glyphicon glyphicon-ok"></span>
@@ -101,9 +104,10 @@
            data-table-post="{{ post.id }}">
       <thead>  
 	<th>Annoucement title</th>
-	<th>Offer type</th>
-	<th>Suma licitata</th>
+	<th>Offer</th>
+	<th>Offert type</th>
 	<th>Chat</th>
+	<th>or call the employer!</th>
 	<th>Job done</th>
       </thead>
       <tbody>
@@ -111,26 +115,30 @@
 	{% if bid.post.status and bid.status and bid.post.spartan_done %}
 	<tr>
 	  <td>{{ bid.post.title }}</td>
-	  <td>{{ bid.tip }}</td>
 	  <td>{{ bid.pret }}</td>
+	  <td>{{ bid.tip }}</td>
 	  <td onclick="window.location='{{ bid.post.room.get_absolute_url }}';" style="cursor: pointer;">Go to chat</td>
+	  <td> {{ bid.post.author.account.telefon }} </td>
 	  <td>Waiting for employer's confimations</td>
 	  </td>
 	</tr>
 	{% elif bid.post.status and bid.status %}
 	<tr>
 	  <td>{{ bid.post.title }}</td>
-	  <td>{{ bid.tip }}</td>
 	  <td>{{ bid.pret }}</td>
+	  <td>{{ bid.tip }}</td>
 	  <td onclick="window.location='{{ bid.post.room.get_absolute_url }}';" style="cursor: pointer;">Go to chat</td>
+	  <td> {{ bid.post.author.account.telefon }} </td>
 	  <td><input type="checkbox" name="work_in_progress" value="finish_work" id="finish_work" class="spartan" data-post="{{ bid.post.id }}"></td>
 	  </td>
 	</tr>
 	{% elif not bid.post.status and not bid.status %}
 	<tr>
 	  <td>{{ bid.post.title }}</td>
-	  <td>{{ bid.tip }}</td>
 	  <td>{{ bid.pret }}</td>
+	  <td>{{ bid.tip }}</td>
+	  <td> - </td>
+	  <td> - </td>
 	  <td>Offer wasn't accepted, yet.</td>
 	</tr>
 	{% endif %}
@@ -164,7 +172,7 @@
         
         <input class="form-control " type="text" placeholder="Irshad">
         </div>
-        <div class="form-group">
+        <div class="form-grou"p>
         <textarea rows="2" class="form-control" placeholder="CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan"></textarea>
     
         

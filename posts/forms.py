@@ -42,7 +42,7 @@ class LicitatieForm(forms.Form):
                                          'id': "bid-input",
                                          'aria-describedby': "start-date",
                                          'required': 'required'}))
-    tip = forms.ChoiceField(choices=[(x, x) for x in ['Pe anunt', 'Pe ora']],
+    tip = forms.ChoiceField(choices=[(x, x) for x in ['/job', '/hour']],
                             widget=forms.Select(
                                 attrs={
                                     'class':

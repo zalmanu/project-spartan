@@ -11,9 +11,8 @@ class Account(models.Model):
     user = models.OneToOneField(User, primary_key=True)
     city = models.CharField(max_length=100)
     country = models.CharField(max_length=36, null=True)
-    telefon = models.IntegerField(null=True)
+    telefon = models.CharField(null=True, max_length=20)
     cod = models.CharField(max_length=100,null=True, blank=True)
-    sold= models.IntegerField(default=0)
 
     def has_related_object(self):
         has_spartan = False

@@ -26,7 +26,12 @@
 	
     </head>
 
-    <body>
+    <body onload="zoom()">
+    <script type="text/javascript">
+       function zoom() {
+           document.body.style.zoom = "80%" 
+       }
+    </script>
       <div class="cbp-af-header">
 	<div class="cbp-af-inner">
                     <h1><a href="{% url 'home' %}" id="return-home">Spartan</a></h1>
@@ -72,7 +77,17 @@
     
     {% endblock %}
 
+	    <!-- jQuery -->
+	<script src="{% static "js/jquery.js" %}"></script>
 
+	    <!-- Bootstrap Core JavaScript -->
+	<script src="{% static "js/bootstrap.min.js" %}"></script>
+
+	    <!-- animations -->
+        <script src="{% static "js/modernizr.custom.js" %}"></script>
+	<script src="{% static "js/classie.js" %}"></script>
+	<script src="{% static "js/main.js" %}"></script>
+	<script src="{% static "js/modernizr.js" %}"></script>
         <!-- /.container -->
 	<script src="{% static "js/html5shiv.js" %}"></script>
     	<script src="{% static "js/jquery-1.10.2.min.js" %}"></script>
@@ -86,17 +101,7 @@
         <script type="text/javascript" src="{% static "js/wickedpicker.js" %}"></script>
         <script type="text/javascript" src="{% static "js/wickedpicker.min.js" %}"></script>
 	<script type="text/javascript" src="{% static "js/tcal.js" %}"></script>
-	    <!-- jQuery -->
-	<script src="{% static "js/jquery.js" %}"></script>
 
-	    <!-- Bootstrap Core JavaScript -->
-	<script src="{% static "js/bootstrap.min.js" %}"></script>
-
-	    <!-- animations -->
-        <script src="{% static "js/modernizr.custom.js" %}"></script>
-	<script src="{% static "js/classie.js" %}"></script>
-	<script src="{% static "js/main.js" %}"></script>
-	<script src="{% static "js/modernizr.js" %}"></script>
 	    
 	<script>
         $(document).ready(function(){
