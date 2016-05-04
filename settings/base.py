@@ -129,3 +129,20 @@ USE_TZ = True
 
 NOCAPTCHA = True
 RECAPTCHA_USE_SSL = False
+
+
+# SECRET_KEY
+SECRET_KEY = os.getenv('SPARTAN_SECRET_KEY', '')
+
+# RECAPTCHA
+RECAPTCHA_PUBLIC_KEY = os.getenv('SPARTAN_RECAP_PUBLIC', '')
+RECAPTCHA_PRIVATE_KEY = os.getenv('SPARTAN_RECAP_PRIVATE', '')
+
+
+#email settings
+EMAIL_USE_TLS = True
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_HOST_USER=os.getenv('SPARTAN_HOST_USER', '')#insert email
+EMAIL_HOST_PASSWORD=os.getenv('SPARTAN_HOST_PASSWORD', '')#insert password
+EMAIL_PORT=587
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
