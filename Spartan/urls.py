@@ -33,4 +33,8 @@ urlpatterns = [
     url(r'^', include('faq.urls')),
     url(r'^', include('report.urls')),
 
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+handler404 = 'errorPages.views.handler404'
+handler500 = 'errorPages.views.handler500'
