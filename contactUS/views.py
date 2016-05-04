@@ -6,6 +6,8 @@ from .forms import ContactUSForm
 
 
 def contactUS(request):
+    confirm = []
+    errors = []
     if request.method == 'POST':
         form = ContactUSForm(request.POST)
         if form.is_valid():
@@ -28,15 +30,12 @@ def contactUS(request):
                                           email, phone, message)
             send_mail(subject, messagetip, email,
                       [settings.EMAIL_HOST_USER], fail_silently=True)
-            return render(request, 'contactUS/contactUS.html', {
-                'confirm': ['Mesajul a fost trimis cu succes ! \n O zi buna!'],
-                'form': form})
+            confirm.append('Mesajul a fost trimis cu succes ! \n O zi buna!')
         else:
-            return render(request, 'contactUS/contactUS.html',
-                          {'form': form,
-                           'errors': [
-                               'Invalid form']
-                           })
-    else:
-        form = ContactUSForm()
-        return render(request, 'contactUS/contactUS.html', {'form': form})
+            errors.append('Invalid form')
+    form = ContactUSForm()
+    return render(request, 'contactUS/contactUS.html',
+                  {'form': form,
+                   'errors': errors, 
+                   'confirm': confirm})
+
