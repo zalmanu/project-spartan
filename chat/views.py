@@ -8,6 +8,7 @@ from forms import SendMessageForm
 
 @login_required
 def room(request, slug):
+    errors = []
     room = get_object_or_404(Room, slug=slug)
     if room.spartan != request.user and room.employer != request.user:
         return HttpResponseForbidden()
@@ -21,34 +22,17 @@ def room(request, slug):
             message = form.cleaned_data['message']
             if message is not None:
                 Message.objects.create(room=room, message=message, submitter=request.user)
-                form = SendMessageForm()
-                return render(request, 'chat/chat.html', {
-                    'room': room,
-                    'messages': room.messages.all(),
-                    'error': ['Invalid message'],
-                    'form' : form,
-                    'other': other,
-                    'cod': request.user.account.cod
-                })
         else:
-            form = SendMessageForm()
-            return render(request, 'chat/chat.html', {
-                'room': room,
-                'messages': room.messages.all(),
-                'error': ['Invalid message'],
-                'form' : form,
-                'other': other,
-                'cod': request.user.account.cod
-            })
-    else:
-        form = SendMessageForm()
-        return render(request, 'chat/chat.html', {
-            'room': room,
-            'messages': room.messages.all(),
-            'form' : form,
-            'other': other,
-            'cod': request.user.account.cod
-        })
+            errors.append('Invalid message')
+    form = SendMessageForm()
+    return render(request, 'chat/chat.html', {
+        'room': room,
+        'messages': room.messages.all(),
+        'form' : form,
+        'other': other,
+        'errors': errors,
+        'cod': request.user.account.cod
+    })
 
 
 def rooms(request):
