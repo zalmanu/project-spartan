@@ -3,8 +3,6 @@ from django.shortcuts import redirect
 from models import Announcement
 from categories.models import Category
 from bidding.models import Oferta
-from django.core.mail import send_mail
-from django.conf import settings
 from .forms import PostForm, LicitatieForm
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
@@ -39,19 +37,7 @@ def create_post(request):
                                                        author=request.user,
                                                        category=category_object)
             announcement.save()
-            subject = 'Anunt Project Spartan'
-            messagetip = " Buna % s , \n Ati postat un anunt cu succes! \n" \
-                         " Titlul : %s ,\n Text: %s \n Adress: %s \n " \
-                         "Country : %s \n City: %s \n category: %s \n" \
-                         " Time : %s \n Data indepliniri task-ului: %s \n " \
-                         "Suma maxima pentru licitatie: %s lei \n" \
-                         " O zi buna!" % (
-                             request.user.username, title, post_text, adress,
-                             country, city, category, time, data_post,
-                             money_user)
-            from_email = settings.EMAIL_HOST_USER
-            send_mail(subject, messagetip, from_email,
-                      [request.user.email], fail_silently=True)
+            announcement.creation_email(curruser)
             posturl = announcement.get_absolute_url()
             return redirect(posturl)
         else:
