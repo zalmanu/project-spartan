@@ -10,6 +10,8 @@ from categories.models import Category
 
 @login_required
 def spartan(request):
+    errors = []
+    confirms = []
     if request.method == 'POST':
         if request.user.account.has_related_object():
             return render(request, 'spartan/spartan.html', {'cod': request.user.account.cod,
@@ -25,6 +27,8 @@ def spartan(request):
             serie = form.cleaned_data['serie']
             cui = form.cleaned_data['cui']
             contBancar = form.cleaned_data['cont']
+            if len(contBancar) != 16:
+                errors.append("Banck accout has to be 16 digits long")
             abilitate = form.cleaned_data['abilitate']
             abilitate = get_object_or_404(Category, name=abilitate)
             spartan = Spartan.objects.create(nume=nume, prenume=prenume,
@@ -50,26 +54,17 @@ def spartan(request):
             from_email = settings.EMAIL_HOST_USER
             send_mail(subject, messagetip, from_email,
                       [request.user.email], fail_silently=True)
-            return render(request, 'spartan/spartan.html', {'confirms': [
-                'Ati completat cu succes formularul,'
-                'asteptati confirmarea administratorului!'],
-                'cod': request.user.account.cod,
-                'form': form})
+            confirms.append('Ati completat cu succes formularul, asteptati confirmarea administratorului!')
+
         else:
-            return render(request, 'spartan/spartan.html',
-                          {'cod': request.user.account.cod,
-                           'form': form,
-                           'errors': ['Invalid form']
-                           })
-    else:
-        form = SpartanForm()
-        if request.user.is_active and not request.user.is_superuser:
-            return render(request, 'spartan/spartan.html',
-                          {'cod': request.user.account.cod,
-                           'form': form})
-        else:
-            return render(request, 'spartan/spartan.html', {'cod': 1,
-                                                                'form': form})
+            errors.append('Invalid form')
+    form = SpartanForm()
+    return render(request, 'spartan/spartan.html',{
+        'cod': request.user.account.cod,
+        'form': form, 
+        'confirms':confirms,
+        'errors': errors })
+
 
 @login_required        
 def user(request,slug):

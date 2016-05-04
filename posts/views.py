@@ -13,6 +13,7 @@ from django.shortcuts import get_object_or_404
 @login_required
 def create_post(request):
     curruser = request.user
+    errors = []
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
@@ -54,71 +55,43 @@ def create_post(request):
             posturl = announcement.get_absolute_url()
             return redirect(posturl)
         else:
-            return render(request, 'posts/create_post.html', {
-                'cod': curruser.account.cod,
-                'form': form,
-                'errors': ['Invalid form']})
-    else:
-        form = PostForm
-        if request.user.is_active and not request.user.is_superuser:
-            return render(request, 'posts/create_post.html', {
-                'cod': curruser.account.cod,
-                'form': form})
-        else:
-            return render(request, 'posts/create_post.html', {
-                'cod': '61e1380365703a4c73c2480673d8993b',
-                'form': form})
+            errors.append('Invalid form')
+
+    form = PostForm
+    return render(request, 'posts/create_post.html', {
+        'cod': curruser.account.cod,
+        'form': form, 
+        'errors': errors})
 
 @login_required
 def post(request, slug):
     post = get_object_or_404(Announcement, slug=slug, status=False)
+    errors = []
+    confirms = []
     if request.method == 'POST':
         form = LicitatieForm(request.POST)
         if form.is_valid():
             pret = form.cleaned_data['pret']
             tip = form.cleaned_data['tip']
-            form = LicitatieForm()
             if pret > post.money:
-                return render(request, 'posts/post.html', {
-                    'cod': request.user.account.cod,
-                    'post': post,
-                    'form': form,
-                    'errors': [
-                     'Oferi mai mult de cat cel ce a pus '
-                     'anuntul este dispus sa plateasca']
-                })
+               errors.append('Oferi mai mult de cat cel ce a pus '
+                     'anuntul este dispus sa plateasca')
             else:
                 oferta = Oferta.objects.create(pret=pret, tip=tip,
                                                spartan=request.user.spartan,
                                                post=post)
                 oferta.save()
-                return render(request, 'posts/post.html', {
-                    'cod': request.user.account.cod,
-                    'post': post,
-                    'form': form,
-                    'confirms': ['Oferta a fost trimisa']
-                })
+                confirms.append('Oferta a fost trimisa')
         else:
-            return render(request, 'posts/post.html', {
-                'cod': request.user.account.cod,
-                'post': post,
-                'form': form,
-                'errors': ['Form is not valid']
-            })
-    else:
-        form = LicitatieForm()
-        if request.user and not request.user.is_superuser:
-            return render(request, 'posts/post.html', {
-                'cod': request.user.account.cod,
-                'post': post,
-                'form': form
-            })
-        else:
-            return render(request, 'posts/post.html', {
-                'cod': '61e1380365703a4c73c2480673d8993b',
-                'post': post,
-                'form': form
-            })
+            errors.append('Form is not valid')
+    form = LicitatieForm()
+    return render(request, 'posts/post.html', {
+        'cod': request.user.account.cod,
+        'post': post,
+        'form': form,
+        'errors': errors,
+        'confirms': confirms
+    })
 
 
 

@@ -9,6 +9,7 @@ from forms import ProfileEditForm
 @login_required
 def profile(request):
     curruser = request.user
+    errors = []
     if request.method == 'POST':
         form = ProfileEditForm(request.POST)
         if form.is_valid():
@@ -21,7 +22,7 @@ def profile(request):
                 else:
                     curruser.username = username
                     curruser.save()
-            if form.cleaned_data['email'] is not None:
+            if form.cleaned_data['email']!= '':
                 email  = form.cleaned_data['email']
                 if User.objects.filter(email=email).exists():
                     return render(request, "profiles/profile.html", {
@@ -48,29 +49,11 @@ def profile(request):
                 curruser.account.telefon = telefon
                 curruser.account.save()
             form = ProfileEditForm()
-            if request.user.is_active and not request.user.is_superuser:
-                return render(request, 'profiles/profile.html', {
-                    'cod': curruser.account.cod,
-                    'form': form
-                })
-                
-            else:
-                return render(request, 'profiles/profile.html', {
-                    'cod': 1,
-                    'form': form})
         else :
-            return render(request, "authentication/register.html", {
-                        'form': form,
-                        'errors': ["Invalid form"]})
-    else:
-        form = ProfileEditForm()
-        if request.user.is_active and not request.user.is_superuser:
-            return render(request, 'profiles/profile.html', {
-                'cod': curruser.account.cod,
-                'form': form, })
-        else:
-            return render(request, 'profiles/profile.html', {
-                'cod': '61e1380365703a4c73c2480673d8993b',
-                'form': form})
-
-
+            errors.append("Invalid form")
+    form = ProfileEditForm()
+    return render(request, 'profiles/profile.html', {
+        'cod': curruser.account.cod,
+        'form': form, 
+        'errors': errors
+    })

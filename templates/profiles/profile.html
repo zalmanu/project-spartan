@@ -116,12 +116,12 @@ pp
                                       </a>
                                   </li>
                                   {% endif %}
-                                  <li class="">
+                                  <li>
                                       <a data-toggle="tab" href="#edit-profile">
                                          Edit profile
                                       </a>
                                   </li>
-                                   <li class="">
+                                   <li>
 
                                       <a  href="/reset/">
                                          Reset password
@@ -162,7 +162,7 @@ pp
                                           
                                       </div>
                                   </div>
-{% if request.user.has_related_object %}
+{% if request.user.spartan.spartanStatus %}
                                   <div id="profile" class="tab-pane">
 {% else %}
                                    <div id="profile" class="tab-pane active">

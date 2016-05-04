@@ -20,61 +20,55 @@ def register_page(request):
     if request.user.is_authenticated():
         return redirect('/')
     else:
+        errors = []
         if request.method == 'POST':
             form = RegisterForm(request.POST)
             if form.is_valid():
                 username = form.cleaned_data['username']
                 if User.objects.filter(username=username).exists():
-                    return render(request, "authentication/register.html", {
-                        'form': form,
-                        'errors': ["Username is already taken"]})
+                    errors.append("Username is already taken")
                 password = form.cleaned_data['password']
                 password2 = form.cleaned_data['password2']
                 email = form.cleaned_data['email']
                 if User.objects.filter(email=email).exists():
-                    return render(request, "authentication/register.html", {
-                        'form': form,
-                        'errors': ["Email is already taken"]})
+                    errors.append("Email is already taken")
                 city = form.cleaned_data['city']
                 country = form.cleaned_data['country']
                 phone = form.cleaned_data['phone']
                 if password.isdigit():
-                    return render(request, "authentication/register.html", {
-                        'form': form,
-                        'errors': ["Password is entirely numeric"]})
-                if password == password2:
-                    new_user = User.objects.create_user(
-                        username, email, password)
-                    new_user.save()
-                    usshash = md5.new()
-                    usshash.update(new_user.email)
-                    account = authentication.models.Account.objects.create(
-                        user=new_user, city=city, country=country,
-                        telefon=phone, cod=usshash.hexdigest())
-                    account.save()
-                    user = authenticate(username=username, password=password)
-                    login(request, user)
-                    return redirect('/')
-                else:
+                    errors.append("Password is entirely numeric")
+                if password != password2:
+                    errors.append("Passwords do not match")
+                if errors:
                     form = RegisterForm()
                     return render(request, "authentication/register.html", {
                         'form': form,
-                        'errors': ["Passwords do not match"]})
+                        'errors': errors })
+                new_user = User.objects.create_user(
+                username, email, password)
+                new_user.save()
+                usshash = md5.new()
+                usshash.update(new_user.email)
+                account = authentication.models.Account.objects.create(
+                    user=new_user, city=city, country=country,
+                    telefon=phone, cod=usshash.hexdigest())
+                account.save()
+                user = authenticate(username=username, password=password)
+                login(request, user)
+                return redirect('/')
             else:
-                form = RegisterForm()
-                return render(request, "authentication/register.html", {
-                    'form': form,
-                    'errors': ["Invalid form"]})
-        else:
+                errors.append("Invalid form")
             form = RegisterForm()
             return render(request, "authentication/register.html", {
-                'form': form})
+                'form': form,
+                'errors': errors })
 
 
 def login_page(request):
     if request.user.is_authenticated():
         return redirect('/')
     else:
+        errors = []
         if request.method == 'POST':
             form = LoginForm(request.POST)
             if form.is_valid():
@@ -85,24 +79,19 @@ def login_page(request):
                     return redirect('/')
 
                 else:
-                    return render(request, "authentication/logIn.html", {
-                        'errors': ['Incorrect username or password'],
-                        'form': form
-                    })
+                    errors.append('Incorrect username or password')
+
             else:
-                return render(request, "authentication/logIn.html", {
-                    'errors': ['Invalid form'],
-                    'form': form
-                })
-        else:
-            form = LoginForm()
-            return render(request, "authentication/logIn.html", {
-                'form': form
-            })
+                errors.append('Invalid form')
+        form = LoginForm()
+        return render(request, "authentication/logIn.html", {
+            'form': form,
+            'errors':errors})
 
 
 @login_required
 def reset_pass(request):
+    errors = []
     if request.method == 'POST':
         form = PasswordResetForm(request.POST)
         if form.is_valid():
@@ -110,32 +99,23 @@ def reset_pass(request):
             password_new = form.cleaned_data['pass1']
             check = password_new == form.cleaned_data['pass2']
             if not check:
-                return render(request, "authentication/resetpass.html",
-                              {'errors': [
-                                  'Those two password are not the same'],
-                                  'cod': request.user.account.cod,
-                                  'form': form})
-            if request.user.check_password(password_old):
+                errors.append('Those two password are not the same')
+            elif request.user.check_password(password_old):
                 request.user.set_password(password_new)
                 request.user.save()
                 user = authenticate(username=request.user.username,
                                     password=password_new)
                 login(request, user)
+                return redirect('/')
             else:
-                return render(request, "authentication/resetpass.html",
-                              {'errors': ['Incorrect password'],
-                               'cod': request.user.account.cod,
-                               'form': form})
+                errors.append('Incorrect old password')
         else:
-            return render(request, "authentication/resetpass.html",
-                          {'errors': ['Invalid form'],
-                           'cod': request.user.account.cod,
-                           'form': form})
-    else:
-        form = PasswordResetForm
-        return render(request, "authentication/resetpass.html",
-                      {'form': form, 'cod': request.user.account.cod})
-    return redirect('/')
+            errors.append('Invalid form')
+    form = PasswordResetForm
+    return render(request, "authentication/resetpass.html",
+                  {'form': form,
+                   'cod': request.user.account.cod,
+                   'errors': errors})
 
 
 def forgot(request):
