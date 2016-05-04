@@ -74,8 +74,9 @@ def post(request, slug):
             pret = form.cleaned_data['pret']
             tip = form.cleaned_data['tip']
             if pret > post.money:
-               errors.append('Oferi mai mult de cat cel ce a pus '
-                     'anuntul este dispus sa plateasca')
+               errors.append('You offer more than the employer is willing to pay')
+            elif pret < 0:
+                errors.append('Invalid offer')
             else:
                 oferta = Oferta.objects.create(pret=pret, tip=tip,
                                                spartan=request.user.spartan,
