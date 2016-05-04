@@ -17,10 +17,10 @@ class RegisterForm(forms.Form):
     email = forms.CharField(max_length=100, label='Email',
                             widget=forms.EmailInput(attrs=
                                                     {'required': 'required'}))
-    password = forms.CharField(max_length=160, min_length=8, label='Password',
+    password = forms.CharField(max_length=160, label='Password',
                                widget=forms.PasswordInput(
                                    attrs={'required': 'required'}))
-    password2 = forms.CharField(max_length=160, min_length=8,
+    password2 = forms.CharField(max_length=160,
                                 label='Retype password',
                                 widget=forms.PasswordInput(
                                     attrs={'required': 'required'}))

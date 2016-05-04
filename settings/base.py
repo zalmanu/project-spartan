@@ -3,8 +3,6 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DEBUG = True
-TEMPLATE_DEBUG=DEBUG
-
 
 ALLOWED_HOSTS = ['127.0.0.1']
 
@@ -64,6 +62,7 @@ TEMPLATES = [
         ],
         'APP_DIRS': True,
         'OPTIONS': {
+            'debug': DEBUG,
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
