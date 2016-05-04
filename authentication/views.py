@@ -58,8 +58,8 @@ def register_page(request):
                 return redirect('/')
             else:
                 errors.append("Invalid form")
-            form = RegisterForm()
-            return render(request, "authentication/register.html", {
+    form = RegisterForm()
+    return render(request, "authentication/register.html", {
                 'form': form,
                 'errors': errors })
 
