@@ -30,7 +30,9 @@ INSTALLED_APPS = (
     'review',
     'faq',
     'report',
-    'errorPages'
+    'errorPages',
+    'aboutUS',
+
 )
 
 
