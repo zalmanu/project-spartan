@@ -7,6 +7,7 @@ from posts.models import Announcement
 from bidding.models import Oferta
 from chat.models import Room 
 
+
 @csrf_exempt
 def posts(request):
     if request.method == 'POST':
@@ -34,11 +35,12 @@ def posts(request):
             post = Announcement.objects.get(id=post_id)
             post.room.delete()
             slug = post.spartan.slug
-            post.spartan.tasks +=1
+            post.spartan.tasks += 1
             post.spartan.save()
             post.delete()
             context['slug'] = slug
-        return HttpResponse(json.dumps(context), content_type='application/json')
+        return HttpResponse(json.dumps(context),
+                            content_type='application/json')
     else:
         context = {'posts': request.user.posts.all(), 
                    'cod': request.user.account.cod}
