@@ -13,6 +13,11 @@ def report(request):
         form = ReportForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
+            if request.user.username == username:
+                return render(request, 'report/report.html', {
+                    'cod': curruser.account.cod,
+                    'form': form,
+                    'errors': ["This username  is your username "]})
             status = form.cleaned_data['statut']
             if status == 'Employer':
                 try:
