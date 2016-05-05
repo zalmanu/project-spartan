@@ -134,7 +134,7 @@
                                     <section class="panel">
                                        <h1></h1>
                                       <div class="panel-body bio-graph-info">
-                                          <div class="row">
+                                        <div class="row">
                                               <div class="bio-row">
                                                   <p><span>Username: </span>{{ post.author.username }} </p>
                                               </div>
@@ -147,6 +147,9 @@
                                               </div>
                                               <div class="bio-row">
                                                 <p><span>City: </span>{{ post.author.account.city }}</p>
+                                              </div>
+					      <div class="bio-row">
+                                                <p><span>Category: </span>{{ post.category.name }}</p>
                                               </div>
                                          {% if request.user == post.author %}
                                            <div class="button-container">
