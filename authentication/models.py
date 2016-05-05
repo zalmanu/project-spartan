@@ -4,7 +4,7 @@ from django.db import models
 import md5
 from django.core.urlresolvers import reverse
 from spartan.models import Spartan
-import uuid
+
 
 
 class Account(models.Model):
