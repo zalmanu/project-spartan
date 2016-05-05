@@ -46,7 +46,7 @@ def posts(request):
                    'cod': request.user.account.cod}
         if request.user.account.has_related_object():
            context['bids'] = request.user.spartan.licitari.all()
-        return render(request, 'bidding/myPosts.html',context)
+        return render(request, 'bidding/myPosts.html', context)
 
 
 
