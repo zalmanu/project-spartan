@@ -3,9 +3,15 @@
 {% block content %}
                  <section class="wrap" id="first-section">
                    <div class="row title-row">
+		     {% if not spa_messages and not empl_messages %}
 		     <br>
-                            <div class="col-12 font-thin categories-gallery">Mess<span class="font-semibold">ages</span></div>
+                            <div class="col-12 font-thin categories-gallery" style="height:500px">No Mess<span class="font-semibold">ages</span>here, yet.</div>
                    </div>
+		   {% else %}
+		   <br>
+                            <div class="col-12 font-thin categories-gallery">Mess<span class="font-semibold">ages</span></div>
+                        </div>
+{% endif %}
 		   {% if empl_messages %}
                    <div class="container">
                         <table id="chat_table" style="border:none">
