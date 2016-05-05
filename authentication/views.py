@@ -40,7 +40,7 @@ def register_page(request):
                 if password != password2:
                     errors.append("Passwords do not match")
                 if len(password) < 8:
-                    errors.append("Password is too shory")
+                    errors.append("Password is too short")
                 if errors:
                     form = RegisterForm()
                     return render(request, "authentication/register.html", {
