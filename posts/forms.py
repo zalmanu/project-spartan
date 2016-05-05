@@ -1,6 +1,7 @@
 from django import forms
 from django.core.validators import MinValueValidator
 
+
 class PostForm(forms.Form):
     title = forms.CharField(max_length=20, label="Title",
                             widget=forms.TextInput(
@@ -33,9 +34,10 @@ class PostForm(forms.Form):
     timePost = forms.CharField(label="Time", widget=forms.TextInput(
         attrs={'class': "timepicker", 'required': 'required'}))
     price = forms.IntegerField(validators=[MinValueValidator(1)]
-                                           ,label="Highest price you are willing to pay",
+                               , label="Highest price you are willing to pay",
                                widget=forms.NumberInput(
                                    attrs={'required': 'required'}))
+
 
 class LicitatieForm(forms.Form):
     pret = forms.IntegerField(label="Liciteaza:",
