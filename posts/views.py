@@ -68,7 +68,12 @@ def post(request, slug):
     post = get_object_or_404(Announcement, slug=slug, status=False)
     errors = []
     confirms = []
+
     if request.method == 'POST':
+        if request.POST.get("deletePost"):
+            post.delete()
+            return redirect('/')
+
         form = LicitatieForm(request.POST)
         if form.is_valid():
             pret = form.cleaned_data['pret']

@@ -145,6 +145,15 @@
                                                   <p><span>City: </span>{{ post.author.account.city }}</p>
                                               </div>
                                           </div>
+                                         {% if request.user == post.author %}
+                                           <div class="button-container">
+                                               <form method="POST">
+                                                   {% csrf_token %}
+                                                <button type="submit" name = "deletePost" value='deletePost' ><span>Delete</span></button>
+                                                </form>
+                                           </div>
+                                          {% endif %}
+
                                       </div>
                                     </section>
                                       <section>
