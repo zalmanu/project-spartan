@@ -30,12 +30,12 @@ def contactUS(request):
                                           email, phone, message)
             send_mail(subject, messagetip, email,
                       [settings.EMAIL_HOST_USER], fail_silently=True)
-            confirm.append('Mesajul a fost trimis cu succes ! \n O zi buna!')
+            confirm.append(
+                'Your message has been successfully sent!\nThank you!')
         else:
             errors.append('Invalid form')
     form = ContactUSForm()
     return render(request, 'contactUS/contactUS.html',
                   {'form': form,
-                   'errors': errors, 
+                   'errors': errors,
                    'confirm': confirm})
-
