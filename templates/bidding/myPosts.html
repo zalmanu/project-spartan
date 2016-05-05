@@ -51,7 +51,7 @@
          <td>{{ post.pret }}</td>
 	 <td onclick="window.location='{{ post.room.get_absolute_url }}';" style="cursor:pointer">Go to chat</td>
 	 <td>{{ post.spartan.user.account.telefon }}</td>
-         <td>Waits for spartan's confimation</td>
+         <td>Wait for spartan's confimation</td>
        </tr>
      </tbody>
      {% endif %}
@@ -83,7 +83,7 @@
     </tbody>
     {% else %}
     <tr>
-    <td> Nobody made an offer,yet. </td>
+    <td> Nobody made an offer yet. </td>
     </tbody>
     {% endif %}
     {% endif %}
@@ -105,7 +105,7 @@
       <thead>  
 	<th>Annoucement title</th>
 	<th>Offer</th>
-	<th>Offert type</th>
+	<th>Offer type</th>
 	<th>Chat</th>
 	<th>or call the employer!</th>
 	<th>Job done</th>
@@ -194,11 +194,11 @@
     <div class="modal-content">
           <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-        <h4 class="modal-title custom_align" id="Heading">Confirmare:</h4>
+        <h4 class="modal-title custom_align" id="Heading">Confirmation:</h4>
       </div>
           <div class="modal-body">
        
-       <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span>Sunteti sigur ca doriti sa incheiati acest contract cu aceasta persoana?</div>
+       <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span>Are you sure ?</div>
        
       </div>p
         <div class="modal-footer ">
