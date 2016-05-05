@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 
 from forms import ProfileEditForm
 
+
 @login_required
 def profile(request):
     curruser = request.user
@@ -22,8 +23,8 @@ def profile(request):
                 else:
                     curruser.username = username
                     curruser.save()
-            if form.cleaned_data['email']!= '':
-                email  = form.cleaned_data['email']
+            if form.cleaned_data['email'] != '':
+                email = form.cleaned_data['email']
                 if User.objects.filter(email=email).exists():
                     return render(request, "profiles/profile.html", {
                         'form': form,
@@ -33,7 +34,7 @@ def profile(request):
                     curruser.save()
                     usshash = md5.new()
                     usshash.update(email)
-                    cod=usshash.hexdigest()
+                    cod = usshash.hexdigest()
                     curruser.account.cod = cod
                     curruser.account.save()
             if form.cleaned_data['city'] is not None:
@@ -49,11 +50,11 @@ def profile(request):
                 curruser.account.telefon = telefon
                 curruser.account.save()
             form = ProfileEditForm()
-        else :
+        else:
             errors.append("Invalid form")
     form = ProfileEditForm()
     return render(request, 'profiles/profile.html', {
         'cod': curruser.account.cod,
-        'form': form, 
+        'form': form,
         'errors': errors
     })
