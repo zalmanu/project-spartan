@@ -25,6 +25,11 @@ def profile(request):
                     curruser.save()
             if form.cleaned_data['email'] != '':
                 email = form.cleaned_data['email']
+                if request.user.email == email:
+                    return render(request, "profiles/profile.html", {
+                        'form': form,
+                        'errors': ["You are currently using "
+                                   "this email address!"]})
                 if User.objects.filter(email=email).exists():
                     return render(request, "profiles/profile.html", {
                         'form': form,
