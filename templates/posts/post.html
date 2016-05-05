@@ -132,19 +132,22 @@
                                   <!-- profile -->
                                   <div id="profile" class="tab-pane">
                                     <section class="panel">
-                                       <h1>About the employer</h1>
+                                       <h1></h1>
                                       <div class="panel-body bio-graph-info">
                                           <div class="row">
                                               <div class="bio-row">
                                                   <p><span>Username: </span>{{ post.author.username }} </p>
                                               </div>
+					      <div class="bio-row">
+                                                  <p><span>Highest bid: </span>{{ post.money }}</p>
+                                              </div>
+                                          </div>
                                               <div class="bio-row">
                                                   <p><span>Country:</span>{{ post.author.account.country }}</p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>City: </span>{{ post.author.account.city }}</p>
+                                                <p><span>City: </span>{{ post.author.account.city }}</p>
                                               </div>
-                                          </div>
                                          {% if request.user == post.author %}
                                            <div class="button-container">
                                                <form method="POST">
