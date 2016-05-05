@@ -1,4 +1,4 @@
-from django.shortcuts import render,render_to_response
+from django.shortcuts import render, render_to_response
 from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
@@ -9,15 +9,17 @@ from forms import SpartanForm
 from models import Spartan
 from categories.models import Category
 
+
 @login_required
 def spartan(request):
     errors = []
     confirms = []
     if request.method == 'POST':
         if request.user.account.has_related_object():
-            return render(request, 'spartan/spartan.html', {'cod': request.user.account.cod,
-                                                                'form': SpartanForm(),
-                                                                'errors':['You already submitted the form']})
+            return render(request, 'spartan/spartan.html',
+                          {'cod': request.user.account.cod,
+                           'form': SpartanForm(),
+                           'errors': ['You already submitted the form']})
         form = SpartanForm(request.POST)
         if form.is_valid():
             nume = form.cleaned_data['nume']
@@ -55,26 +57,26 @@ def spartan(request):
             from_email = settings.EMAIL_HOST_USER
             send_mail(subject, messagetip, from_email,
                       [request.user.email], fail_silently=True)
-            confirms.append('Ati completat cu succes formularul, asteptati confirmarea administratorului!')
+            confirms.append(
+                'Ati completat cu succes formularul, asteptati confirmarea'
+                ' administratorului!')
 
         else:
             errors.append('Invalid form')
     form = SpartanForm()
-    return render(request, 'spartan/spartan.html',{
+    return render(request, 'spartan/spartan.html', {
         'cod': request.user.account.cod,
-        'form': form, 
-        'confirms':confirms,
-        'errors': errors })
+        'form': form,
+        'confirms': confirms,
+        'errors': errors})
 
 
 @login_required
-def user(request,slug):
+def user(request, slug):
     curent_spartan = get_object_or_404(Spartan, slug=slug)
-    return render(request,'spartan/SpartanPage.html' ,{
-                                          'reviews': curent_spartan.reviews,
-                                           'spartan':curent_spartan,
-                                            'img_spartan':curent_spartan.user.account.cod,
-                                            'cod':request.user.account.cod,
+    return render(request, 'spartan/SpartanPage.html', {
+        'reviews': curent_spartan.reviews,
+        'spartan': curent_spartan,
+        'img_spartan': curent_spartan.user.account.cod,
+        'cod': request.user.account.cod,
     })
-
-

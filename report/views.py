@@ -1,9 +1,10 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from models import Report
 from .forms import ReportForm
 from django.contrib.auth.models import User
 # Create your views here.
 from django.contrib.auth.decorators import login_required
+
 
 @login_required
 def report(request):
@@ -15,13 +16,13 @@ def report(request):
             status = form.cleaned_data['statut']
             if status == 'Employer':
                 try:
-                    user=User.objects.get(username=username)
+                    user = User.objects.get(username=username)
 
                 except User.DoesNotExist:
-                       return render(request, 'report/report.html', {
-                                        'cod': curruser.account.cod,
-                                        'form': form,
-                                         'errors': ["This employer doesn't exist"]})
+                    return render(request, 'report/report.html', {
+                        'cod': curruser.account.cod,
+                        'form': form,
+                        'errors': ["This employer doesn't exist"]})
             else:
                 try:
                     user = User.objects.get(username=username)
@@ -31,16 +32,16 @@ def report(request):
                             'form': form,
                             'errors': ["This spartan doesn't exist"]})
                 except User.DoesNotExist:
-                            return render(request, 'report/report.html', {
-                                            'cod': curruser.account.cod,
-                                            'form': form,
-                                            'errors': ["This spartan doesn't exist"]})
+                    return render(request, 'report/report.html', {
+                        'cod': curruser.account.cod,
+                        'form': form,
+                        'errors': ["This spartan doesn't exist"]})
             text = form.cleaned_data['text']
             report = Report.objects.create(username=username,
                                            status=status,
                                            text=text,
                                            author=request.user,
-                                          )
+                                           )
             report.save()
             return render(request, 'report/report.html', {
                 'cod': curruser.account.cod,

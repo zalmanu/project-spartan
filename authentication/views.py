@@ -45,9 +45,8 @@ def register_page(request):
                     form = RegisterForm()
                     return render(request, "authentication/register.html", {
                         'form': form,
-                        'errors': errors })
-                new_user = User.objects.create_user(
-                username, email, password)
+                        'errors': errors})
+                new_user = User.objects.create_user(username, email, password)
                 new_user.save()
                 usshash = md5.new()
                 usshash.update(new_user.email)
@@ -63,7 +62,7 @@ def register_page(request):
     form = RegisterForm()
     return render(request, "authentication/register.html", {
                 'form': form,
-                'errors': errors })
+                'errors': errors})
 
 
 def login_page(request):
@@ -88,7 +87,7 @@ def login_page(request):
         form = LoginForm()
         return render(request, "authentication/logIn.html", {
             'form': form,
-            'errors':errors})
+            'errors': errors})
 
 
 @login_required

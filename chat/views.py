@@ -21,7 +21,8 @@ def room(request, slug):
         if form.is_valid():
             message = form.cleaned_data['message']
             if message is not None:
-                Message.objects.create(room=room, message=message, submitter=request.user)
+                Message.objects.create(room=room, message=message,
+                                       submitter=request.user)
         else:
             errors.append('Invalid message')
     form = SendMessageForm()

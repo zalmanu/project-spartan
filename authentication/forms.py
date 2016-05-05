@@ -1,6 +1,7 @@
 from django import forms
 from captcha.fields import ReCaptchaField
 
+
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=30, label='Username',
                                widget=forms.TextInput(attrs={

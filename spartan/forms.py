@@ -1,6 +1,7 @@
 from django import forms
 from captcha.fields import ReCaptchaField
 
+
 class SpartanForm(forms.Form):
     prenume = forms.CharField(max_length=40, label="First name",
                               widget=forms.TextInput(

@@ -23,4 +23,5 @@ class Message(models.Model):
     room = models.ForeignKey(Room, related_name='messages')
     message = models.TextField()
     submitter = models.ForeignKey(User, related_name='messages', default='')
-    timestamp = models.DateTimeField(editable=False, auto_now_add=True, null=True)
+    timestamp = models.DateTimeField(editable=False,
+                                     auto_now_add=True, null=True)

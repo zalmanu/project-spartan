@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 
+
 from models import Category
 from posts.models import Announcement 
 
@@ -14,5 +15,6 @@ def category(request, kind):
         'categories': categories,
         'kind': page_category,
         'cod': curruser.account.cod,
-        'ann': Announcement.objects.filter(category=page_category, status=False)
+        'ann': Announcement.objects.filter(category=page_category,
+                                           status=False)
     })

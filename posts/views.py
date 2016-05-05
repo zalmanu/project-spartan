@@ -37,7 +37,8 @@ def create_post(request):
                                                        data=data_post,
                                                        timePost=time,
                                                        author=request.user,
-                                                       category=category_object)
+                                                       category=category_object
+                                                       )
             announcement.save()
             subject = 'Anunt Project Spartan'
             messagetip = " Buna % s , \n Ati postat un anunt cu succes! \n" \
@@ -60,8 +61,9 @@ def create_post(request):
     form = PostForm
     return render(request, 'posts/create_post.html', {
         'cod': curruser.account.cod,
-        'form': form, 
+        'form': form,
         'errors': errors})
+
 
 @login_required
 def post(request, slug):
@@ -79,7 +81,8 @@ def post(request, slug):
             pret = form.cleaned_data['pret']
             tip = form.cleaned_data['tip']
             if pret > post.money:
-               errors.append('You offer more than the employer is willing to pay')
+                errors.append(
+                    'You offer more than the employer is willing to pay')
             elif pret < 0:
                 errors.append('Invalid offer')
             else:
@@ -98,10 +101,3 @@ def post(request, slug):
         'errors': errors,
         'confirms': confirms
     })
-
-
-
-
-
-
-
