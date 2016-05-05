@@ -3,6 +3,9 @@ import uuid
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
+from django.conf import settings
+
 from categories.models import Category
 from django.core.urlresolvers import reverse
 
@@ -24,3 +27,19 @@ class Spartan(models.Model):
 
     def get_absolute_url(self):
         return reverse('users', args=[self.slug])
+        
+    def activation_email(self):
+        subject = 'Spartan activation'
+        messagetip = " Hi! % s , \n You submitted the form" \
+                     " for becoming a spartan!\n" \
+                     " Last name : %s ,\n First name : %s \n Birthday: %s \n" \
+                     " Adresa : %s \n CNP: %s \n Serie: %s \n" \
+                     " CUI : %s \n Bank account: %s \n " \
+                     "Ability: %s \n  An admin will respond soon. " \
+                     " - Team Spartan" % (
+                         self.user.username, self.nume, self.prenume,
+                         self.data_nasterii, self.address, self.cnp, 
+                         self.serie, self.cui, self.contBancar, self.abilitate.name)
+        from_email = settings.EMAIL_HOST_USER
+        send_mail(subject, messagetip, from_email,
+                  [self.user.email], fail_silently=True)

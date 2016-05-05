@@ -21,3 +21,8 @@ class Account(models.Model):
         except Spartan.DoesNotExist:
             pass
         return has_spartan and (self.user is not None)
+
+    def gravatar_photo(self):
+        usshash = md5.new()
+        usshash.update(self.user.email)
+        return usshash.hexdigest()

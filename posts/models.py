@@ -1,8 +1,11 @@
 from __future__ import unicode_literals
+import uuid
 
 from django.db import models
 from django.contrib.auth.models import User
-import uuid
+from django.core.mail import send_mail
+from django.conf import settings
+
 from django.core.urlresolvers import reverse
 from spartan.models import Spartan
 from categories.models import Category
@@ -34,5 +37,21 @@ class Announcement(models.Model):
     def get_absolute_url(self):
         return reverse('post', args=[self.slug])
 
+    def creation_email(self, user):
+        subject = 'Anunt Project Spartan'
+        messagetip = " Hi! % s , \n You successfully posted an announce! \n" \
+                     " Title: %s ,\n Description: %s \n Address: %s \n " \
+                     "Country : %s \n City: %s \n Category: %s \n" \
+                     " Time : %s \n Date: %s \n " \
+                     "Highest bid price: %s eur \n" \
+                     " Have a nice day! - Team Spartan" % (
+                         user.username, self.title,  self.text,  self.address,
+                          self.country,  self.city,  self.category.name, self.timePost, self.data,
+                         self.money)
+        from_email = settings.EMAIL_HOST_USER
+        send_mail(subject, messagetip, from_email,
+                  [user.email], fail_silently=True)
+
+            
     class Meta:
         get_latest_by = 'creation_date'

@@ -42,24 +42,8 @@ def spartan(request):
                                              abilitate=abilitate,
                                              user=request.user)
             spartan.save()
-            subject = 'Activare putere de Spartan'
-            messagetip = " Buna % s , \n Ati completat formularul" \
-                         " pentru activare puterii de Spartan \n" \
-                         " Nume : %s ,\n Prenume: %s \n Data nasterii: %s \n" \
-                         " Adresa : %s \n CNP: %s \n Serie: %s \n" \
-                         " CUI : %s \n Cont Bancar: %s \n " \
-                         "Abilitate 1: %s \n  Datele dvs. vor fi analizate " \
-                         "de Admin in vederea" \
-                         " Activarii Puterii de Spartan \nO zi buna!" % (
-                             request.user.username, nume, prenume,
-                             data_nasterii,
-                             adress, cnp, serie, cui, contBancar, abilitate)
-            from_email = settings.EMAIL_HOST_USER
-            send_mail(subject, messagetip, from_email,
-                      [request.user.email], fail_silently=True)
-            confirms.append(
-                'Ati completat cu succes formularul, asteptati confirmarea'
-                ' administratorului!')
+            spartan.activation_email()
+            confirms.append('Ati completat cu succes formularul, asteptati confirmarea administratorului!')
 
         else:
             errors.append('Invalid form')

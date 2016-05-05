@@ -32,10 +32,7 @@ def profile(request):
                 else:
                     curruser.email = email
                     curruser.save()
-                    usshash = md5.new()
-                    usshash.update(email)
-                    cod = usshash.hexdigest()
-                    curruser.account.cod = cod
+                    curruser.account.cod = curruser.account.gravatar_photo()
                     curruser.account.save()
             if form.cleaned_data['city'] is not None:
                 city = form.cleaned_data['city']

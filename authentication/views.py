@@ -48,11 +48,10 @@ def register_page(request):
                         'errors': errors})
                 new_user = User.objects.create_user(username, email, password)
                 new_user.save()
-                usshash = md5.new()
-                usshash.update(new_user.email)
                 account = authentication.models.Account.objects.create(
                     user=new_user, city=city, country=country,
-                    telefon=phone, cod=usshash.hexdigest())
+                    telefon=phone)
+                account.cod = account.gravatar_photo()
                 account.save()
                 user = authenticate(username=username, password=password)
                 login(request, user)
