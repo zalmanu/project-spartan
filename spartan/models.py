@@ -4,7 +4,7 @@ import uuid
 from django.db import models
 from django.contrib.auth.models import User
 from categories.models import Category
-
+from django.core.urlresolvers import reverse
 
 class Spartan(models.Model):
     nume = models.CharField(max_length=40)
@@ -18,8 +18,8 @@ class Spartan(models.Model):
     abilitate = models.ForeignKey(Category, null=True)
     user = models.OneToOneField(User, primary_key=True, default='')
     spartanStatus = models.BooleanField(default=False)
-    raiting=models.IntegerField(default=0)
-    tasks=models.IntegerField(default=0)
+    raiting = models.IntegerField(default=0)
+    tasks = models.IntegerField(default=0)
     slug = models.SlugField(default=uuid.uuid1, unique=True)
 
     def get_absolute_url(self):
