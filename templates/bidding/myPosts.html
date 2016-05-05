@@ -10,6 +10,17 @@
               </div>
 <div class="container">
   <div class="row">
+      {% if not posts %}
+
+      <div class="row title-row">
+                            <div class="col-12 font-thin categories-gallery"><span>No active </span><span class="font-semibold"> post </span></div>
+                    </div>
+
+      {% endif %}
+
+
+
+
     {% for post in posts %}
         <div class="col-md-12">
         <h4>Announcement:<b id="post_title_bidders">
@@ -144,6 +155,10 @@
 	{% endif %}
 	{% endfor %}
       </tbody>
+
+
+
+
 
 {% endif %}
 </table>
