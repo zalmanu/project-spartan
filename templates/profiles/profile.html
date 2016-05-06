@@ -204,9 +204,9 @@ pp
                                               <form class="form-horizontal" role="form" method="POST">
                                                 {% csrf_token %}
 						{% load widget_tweaks %}
-						{% if errors %}
+						{% if form.errors %}
 						<div class="error">
-						  {% for message in errors %}
+						  {% for message in form.errors %}
 						  <ul>
 						    <li>{{ message }}</li>
 						  </ul>
