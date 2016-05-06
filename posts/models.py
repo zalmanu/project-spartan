@@ -5,6 +5,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.conf import settings
+from django import forms
+from django.forms import ModelForm
 
 from django.core.urlresolvers import reverse
 from spartan.models import Spartan
@@ -55,3 +57,20 @@ class Announcement(models.Model):
             
     class Meta:
         get_latest_by = 'creation_date'
+
+
+class EditPostForm(forms.ModelForm):
+
+    city = forms.ChoiceField(choices=[(x, x) for x in ['Timisoara']])
+    country = forms.ChoiceField(choices=[(x, x) for x in ['Romania']])
+    
+    class Meta:
+        model = Announcement
+        fields = ['title', 'text', 'address', 'country', 'city', 'data', 'timePost', 'money']
+        widgets = {
+            'city': forms.Select(attrs={'class': 'form-control input-lg m-bot15',
+                                        'id': 'choose_category'}),
+            'country': forms.Select(attrs={'class': 'form-control input-lg m-bot15',
+                                           'id': 'choose_category'}),
+        }
+    
