@@ -34,15 +34,17 @@ class PostForm(forms.Form):
     timePost = forms.CharField(label="Time", widget=forms.TextInput(
         attrs={'class': "timepicker", 'required': 'required'}))
     price = forms.IntegerField(validators=[MinValueValidator(1),
-                                           MaxValueValidator(9223372036854775807)],
-                               label="Highest price you are willing to pay",
+                                           MaxValueValidator(
+                                               9223372036854775807)],
+                               label="Highest price you are willing to pay (EUR)",
                                widget=forms.NumberInput(
                                    attrs={'required': 'required'}))
 
 
 class LicitatieForm(forms.Form):
     pret = forms.IntegerField(validators=[MinValueValidator(1),
-                                           MaxValueValidator(9223372036854775807)],
+                                          MaxValueValidator(
+                                              9223372036854775807)],
                               label="Liciteaza:",
                               widget=forms.TextInput(
                                   attrs={'class': "form-control",

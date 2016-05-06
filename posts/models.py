@@ -28,7 +28,7 @@ class Announcement(models.Model):
                                          null=True)
     timePost = models.TimeField('Time FORMAT HH:MM:SS', null=True)
     category = models.ForeignKey(Category, null=True)
-    money = models.IntegerField('Highest price you are willing to pay',null=True)
+    money = models.IntegerField('Highest price you are willing to pay (EUR)',null=True)
     spartan = models.ForeignKey(Spartan, related_name='anunturi', null=True,
                                 blank=True)
     pret = models.IntegerField(null=True, blank=True)
