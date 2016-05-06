@@ -5,6 +5,7 @@ from categories.models import Category
 from bidding.models import Oferta
 from .forms import PostForm, LicitatieForm
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404
 from .models import EditPostForm
 
@@ -57,7 +58,6 @@ def post(request, slug):
     post = get_object_or_404(Announcement, slug=slug, status=False)
     errors = []
     confirms = []
-    edit_post_form = EditPostForm(data=request.POST or None, instance = post)
     if request.method == 'POST':
         if request.POST.get("deletePost"):
             post.delete()
@@ -85,7 +85,22 @@ def post(request, slug):
         'cod': request.user.account.cod,
         'post': post,
         'form': form,
-        'edit_form': edit_post_form,
         'errors': errors,
         'confirms': confirms
+    })
+
+
+def edit_post(request, slug):
+    post = get_object_or_404(Announcement, slug=slug, status=False)
+    if post.author != request.user:
+        return HttpResponseForbidden()
+    form = EditPostForm(data=request.POST or None, instance = post)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return redirect('/post/' + post.slug)
+    return render(request, 'posts/edit_post.html', {
+        'cod': request.user.account.cod,
+        'post': post,
+        'form': form,
     })

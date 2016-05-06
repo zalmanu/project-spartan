@@ -39,6 +39,9 @@ class Announcement(models.Model):
     def get_absolute_url(self):
         return reverse('post', args=[self.slug])
 
+    def edit_url(self):
+        return reverse('post', args=[self.slug])
+    
     def creation_email(self, user):
         subject = 'Anunt Project Spartan'
         messagetip = " Hi! % s , \n You successfully posted an announce! \n" \
@@ -67,10 +70,7 @@ class EditPostForm(forms.ModelForm):
     class Meta:
         model = Announcement
         fields = ['title', 'text', 'address', 'country', 'city', 'data', 'timePost', 'money']
-        widgets = {
-            'city': forms.Select(attrs={'class': 'form-control input-lg m-bot15',
-                                        'id': 'choose_category'}),
-            'country': forms.Select(attrs={'class': 'form-control input-lg m-bot15',
-                                           'id': 'choose_category'}),
-        }
+
+
+
     
