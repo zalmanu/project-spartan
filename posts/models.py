@@ -22,13 +22,13 @@ class Announcement(models.Model):
     address = models.CharField(null=True, max_length=500)
     country = models.TextField(null=True, max_length=50)
     city = models.TextField(null=True, max_length=100)
-    data = models.DateField('Task-ul trebuie indeplinit in data de',
+    data = models.DateField('Date FORMAT YYYY-MM-DD',
                             null=True)
     creation_date = models.DateTimeField(editable=False, auto_now_add=True,
                                          null=True)
-    timePost = models.TimeField('Ora', null=True)
+    timePost = models.TimeField('Time FORMAT HH:MM:SS', null=True)
     category = models.ForeignKey(Category, null=True)
-    money = models.IntegerField(null=True)
+    money = models.IntegerField('Highest price you are willing to pay',null=True)
     spartan = models.ForeignKey(Spartan, related_name='anunturi', null=True,
                                 blank=True)
     pret = models.IntegerField(null=True, blank=True)

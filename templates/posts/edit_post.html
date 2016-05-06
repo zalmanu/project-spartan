@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<body onload="zoom()">
+	<script type="text/javascript">
+        function zoom() {
+            document.body.style.zoom = "80%"
+        }
+	</script>
+                 <section class="wrap" id="first-section">
+                    <div class="row title-row">
+                            <div class="col-12 font-thin categories-gallery">Edit your<span class="font-semibold"> post</span></div>
+                    </div>
+                    <div class="slide story" id="slide-6" data-slide="6">
+
+
+                        <div class="container">
+                          <div>
+                          <div class="card"></div>
+                          <div class="card" id="login-box">
+
+                            <form method="POST">
+			      {% csrf_token %}
+			      {% if form.errors %}
+				<div class="error">
+				  {% for field in form %}
+				  {% for error in field.errors %}
+				  <ul>
+				    <li>{{ error }}</li>
+				  </ul>
+				  {% endfor %}
+				  {% endfor %}
+				</div>
+				{% endif %}
+				{% load widget_tweaks %}
+				{% for field in form %}
+				<div class="input-container">
+				  {{ field |attr:"required:required"|add_class:"form-control input-lg m-bot15"|attr:"id:choose_category"}}
+				    {% if field.label != 'Category' and field.label != 'City' and field.label != 'Country' %}
+                                    <label for="Username">{{ field.label }}</label>
+				    {% endif %}
+                                    <div class="bar"></div>
+                                </div>
+			       {% endfor %}
+                                <div class="button-container">
+                                    <button><span>Edit</span></button>
+                                </div>
+                            </form>
+                          </div>
+
+                        </div>
+                    </div>
+                </div>
+    </section>
+
+            </header>
+</section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    </body>
+{% endblock %}
