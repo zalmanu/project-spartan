@@ -1,4 +1,5 @@
 import json
+import random
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -6,6 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 from posts.models import Announcement
 from bidding.models import Oferta
 from chat.models import Room 
+from review.models import UrlUnique
 
 
 @csrf_exempt
@@ -39,6 +41,9 @@ def posts(request):
             post.spartan.save()
             post.delete()
             context['slug'] = slug
+            uhash = random.getrandbits(32)
+            UrlUnique.objects.create(un_hash=uhash)
+            context['hash'] = uhash
         return HttpResponse(json.dumps(context),
                             content_type='application/json')
     else:

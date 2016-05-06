@@ -13,3 +13,8 @@ class Review(models.Model):
     data = models.DateField('Data publicarii review-ului', null=True)
     creation_date = models.DateTimeField(editable=False, auto_now_add=True,
                                          null=True)
+
+class UrlUnique(models.Model):
+    un_hash = models.CharField('Url', unique=True, max_length=33)
+    expired = models.BooleanField(default = False)
+    
