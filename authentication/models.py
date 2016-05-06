@@ -10,7 +10,7 @@ class Account(models.Model):
     user = models.OneToOneField(User, primary_key=True)
     city = models.CharField(max_length=100)
     country = models.CharField(max_length=36, null=True)
-    telefon = models.CharField(null=True, max_length=20)
+    telefon = models.IntegerField(null=True)
     cod = models.CharField(max_length=100,null=True, blank=True)
 
     def has_related_object(self):

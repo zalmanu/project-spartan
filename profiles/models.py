@@ -40,7 +40,7 @@ class Account_Edit(forms.ModelForm):
             'city': forms.Select(attrs={'class': 'form-control input-lg m-bot15',
                                         'id': 'choose_category'}),
             'country': forms.Select(attrs={'class': 'form-control input-lg m-bot15',
-                                  'id': 'choose_category'})
+                                           'id': 'choose_category'}),
         }
 
 
