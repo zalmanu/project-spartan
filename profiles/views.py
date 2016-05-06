@@ -12,12 +12,12 @@ from models import User_Edit
 def profile(request):
     curruser = request.user
     errors = []
+    form = User_Edit(data=request.POST or None, instance = curruser, user=curruser)
     if request.method == 'POST':
-        form = User_Edit(request.POST or None, instance = curruser)
         if form.is_valid():
+            print "heh"
             form.save()
             return redirect('/')
-    form = User_Edit(instance = curruser)
     return render(request, 'profiles/profile.html', {
         'cod': curruser.account.cod,
         'form': form,

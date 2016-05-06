@@ -206,10 +206,12 @@ pp
 						{% load widget_tweaks %}
 						{% if form.errors %}
 						<div class="error">
-						  {% for message in form.errors %}
+						  {% for field in form %}
+						  {% for message in field.errors %}
 						  <ul>
 						    <li>{{ message }}</li>
 						  </ul>
+						  {% endfor %}
 						  {% endfor %}
 						</div>
 						{% endif %}
