@@ -1727,7 +1727,11 @@ header h1 {
         margin-top: 10%;
     }
      #logo-title{
-        font-size: 5    0px !important;
+         text-transform: uppercase;
+   letter-spacing: 4px;
+   font-size: 4em;
+   margin: 0;
+   color:#2F5A8F;
     }
     .weather-category ul li h4{
     	font-size: 13px !important;
@@ -1992,7 +1996,8 @@ error_profile{
 /* Footer left */
 
 .footer-distributed .footer-left{
-	float: left;
+	 margin: 0;
+    text-align: center;
 }
 
 /* The company logo */
@@ -2023,7 +2028,7 @@ error_profile{
 }
 
 .footer-distributed .footer-company-name{
-	color:  #8f9296;
+	color:  #2F5A8F;
 	font-size: 14px;
 	font-weight: normal;
 	margin: 0;
@@ -2180,7 +2185,7 @@ error_profile{
     letter-spacing: 4px;
     font-size: 4em;
     margin: 0;
-    float: left;
+ 
 }
 
 #categoryes_profile {
