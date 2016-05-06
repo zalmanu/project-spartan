@@ -4,6 +4,7 @@ from django import forms
 from django.forms import ModelForm, Textarea
 from django.db import models
 from django.contrib.auth.models import User
+from authentication.models import Account
 
 class User_Edit(forms.ModelForm):
             
@@ -27,4 +28,20 @@ class User_Edit(forms.ModelForm):
         if User.objects.filter(username=user_name).count() and self.user.username != user_name:
             raise forms.ValidationError("This username already exists")
         return user_name
+
+
+class Account_Edit(forms.ModelForm):
+
+    city = forms.ChoiceField(choices=[(x, x) for x in ['Timisoara']])
+    country = forms.ChoiceField(choices=[(x, x) for x in ['Romania']])
+    class Meta:
+        model = Account
+        fields = ['city', 'country', 'telefon']
+        widgets = {
+            'city': forms.Select(attrs={'class': 'form-control input-lg m-bot15',
+                                        'id': 'choose_category'}),
+            'country': forms.Select(attrs={'class': 'form-control input-lg m-bot15',
+                                  'id': 'choose_category'})
+        }
+
 

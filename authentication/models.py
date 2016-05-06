@@ -6,7 +6,6 @@ from django.core.urlresolvers import reverse
 from spartan.models import Spartan
 
 
-
 class Account(models.Model):
     user = models.OneToOneField(User, primary_key=True)
     city = models.CharField(max_length=100)
