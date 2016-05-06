@@ -1,12 +1,19 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
+<body onload="zoom()">
+	<script type="text/javascript">
+        function zoom() {
+            document.body.style.zoom = "80%"
+        }
+	</script>
 
 {% if  request.user.spartan.spartanStatus == True  %}
 
                     <div class="row title-row">
                             <div class="col-12 font-thin categories-gallery"><br></br>You are already <span class="font-semibold"> a Spartan :)</span></div>
                     </div>
+    <br><br></br></br><br><br></br></br>
 
 {% endif %}
 
@@ -15,6 +22,7 @@
                     <div class="row title-row">
                             <div class="col-12 font-thin categories-gallery"><br></br>You already submitted the form,<span class="font-semibold"> wait for administrator's confirmation!</span></div>
                     </div>
+                   <br><br></br></br><br><br></br></br>
 
 {% endif %}
 
@@ -78,5 +86,6 @@
 
             </header>
 </section>
+    </body>
 {% endif %}
 {% endblock %}

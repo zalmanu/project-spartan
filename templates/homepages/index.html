@@ -1,6 +1,12 @@
 {% extends 'base2.html' %}
 {% load staticfiles %}
 {% block content %}
+<body onload="zoom()">
+	<script type="text/javascript">
+        function zoom() {
+            document.body.style.zoom = "80%"
+        }
+	</script>
 <!-- Half Page Image Background Carousel Header -->
     <header id="myCarousel" class="carousel slide">
         <!-- Indicators -->
@@ -325,4 +331,5 @@
 		});
   });
 </script>
+	</body>
 {% endblock %}

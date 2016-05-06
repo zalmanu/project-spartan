@@ -2,6 +2,14 @@
 {% load staticfiles %}
 {% block content %}
 {% load widget_tweaks %}
+
+<body onload="zoom()">
+	<script type="text/javascript">
+        function zoom() {
+            document.body.style.zoom = "80%"
+        }
+	</script>
+
     <section class="wrap" id="first-section">
         <div class="row title-row">
 				<div class="col-12 font-thin
@@ -67,4 +75,5 @@
 	</div>
 
     </section>
+    </body>
 {% endblock %}

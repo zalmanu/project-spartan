@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
-
+<body onload="zoom()">
+	<script type="text/javascript">
+        function zoom() {
+            document.body.style.zoom = "80%"
+        }
+	</script>
     <section class="wrap" id="first-section">
         <div class="row title-row">
 				<div class="col-12 font-thin
-                                    categories-gallery"><br></br>Reset password</div>
+                                    categories-gallery">Reset password</div>
         </div>
         <div class="row line-row">
 				<div class="hr">&nbsp;</div>
@@ -56,4 +61,5 @@
 		</div><!-- /container -->
 	</div>
     </section>
+    </body>
 {% endblock %}

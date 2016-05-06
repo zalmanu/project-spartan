@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
+<body onload="zoom()">
+	<script type="text/javascript">
+        function zoom() {
+            document.body.style.zoom = "80%"
+        }
+	</script>
                  <section class="wrap" id="first-section">
                     <div class="row title-row">
                             <div class="col-12 font-thin categories-gallery">Report a<span class="font-semibold"> Spartan/Employer</span></div>
@@ -65,4 +71,5 @@
             </header>
 </section>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    </body>
 {% endblock %}

@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
+<body onload="zoom()">
+	<script type="text/javascript">
+        function zoom() {
+            document.body.style.zoom = "80%"
+        }
+	</script>
                  <section class="wrap" id="first-section">
                    <div class="row title-row">
 		     {% if not spa_messages and not empl_messages %}
@@ -54,5 +60,6 @@
 
             </header>
         </section>
+    </body>
         
 {% endblock %}

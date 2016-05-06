@@ -1,6 +1,12 @@
 {% extends  'base.html' %}
 {% load staticfiles %}
 {% block content %}
+<body onload="zoom()">
+	<script type="text/javascript">
+        function zoom() {
+            document.body.style.zoom = "80%"
+        }
+	</script>
         <section class="third-section" id="wrap">
             <header class="jumbotron hero-spacer" id="category-banner" style="background-image: url({% static 'images/categories/'%}{{ kind.path_bg }});">
                 <h1 id="category-title">{{ kind.name }}</h1>
@@ -92,4 +98,5 @@
         {% endif %}
         </div>
 	</section>
+    </body>
 {% endblock %}
