@@ -1931,6 +1931,14 @@ header h1 {
     margin: 0 auto;
     margin-bottom: 4%;
 }
+error_profile{
+    font-size: 17px;
+    border: 2px solid;
+    text-align: center;
+    width: 90% !important;
+    margin: 0 auto;
+    margin-bottom: 4%;
+}
 .confirm{
     font-size: 17px;
     border: 2px;

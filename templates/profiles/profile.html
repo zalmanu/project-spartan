@@ -206,27 +206,47 @@ pp
                                   <div id="edit-profile" class="tab-pane">
                                     <section class="panel">
                                           <div class="panel-body bio-graph-info">
-                                              <h1> Profile Info</h1>
-                                              <form class="form-horizontal" role="form" method="POST">
-                                                {% csrf_token %}
-						{% load widget_tweaks %}
-						{% if errors %}
+                                            <h1> Profile Info</h1>
+					  	{% if form.errors %}
 						<div class="error">
-						  {% for message in errors %}
+						  {% for field in form %}
+						  {% for message in field.errors %}
 						  <ul>
 						    <li>{{ message }}</li>
 						  </ul>
 						  {% endfor %}
+						  {% endfor %}
+						  {% if form_acc.errors %}
+						  {% for field in form_acc %}
+						  {% for message in field.errors %}
+						  <ul>
+						    <li>{{ message }}</li>
+						  </ul>
+						  {% endfor %}
+						  {% endfor %}
+						  {% endif %}
 						</div>
 						{% endif %}
+                                              <form class="form-horizontal" role="form" method="POST">
+                                                {% csrf_token %}
+						{% load widget_tweaks %}
 						{% for field in form %}
                                                   <div class="form-group">
                                                       <label class="col-lg-2 control-label">{{ field.label }}</label>
                                                       <div class="col-lg-6">
-							{{ field |add_class:"form-control"}}
+							{{ field |add_class:"form-control"| attr:"required:required" }}
                                                       </div>
                                                   </div>
-						{% endfor %}                                                  <div class="form-group">
+						  {% endfor %}
+						  {% for field in form_acc %}
+                                                  <div class="form-group">
+                                                      <label class="col-lg-2 control-label">{{ field.label }}</label>
+                                                      <div class="col-lg-6">
+							{{ field |add_class:"form-control"| attr:"required:required"}}
+                                                      </div>
+                                                  </div>
+						  {% endfor %}
+						  <div class="form-group">
                                                       <div class="col-lg-offset-2 col-lg-10">
                                                           <button type="submit" class="btn btn-primary">Update</button>
                                                       </div>

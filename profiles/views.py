@@ -1,62 +1,27 @@
 import md5
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
-from forms import ProfileEditForm
-
+from authentication.models import Account
+from models import User_Edit, Account_Edit
 
 @login_required
 def profile(request):
     curruser = request.user
     errors = []
+    user_form = User_Edit(data=request.POST or None, instance = curruser, user=curruser)
+    account_form = Account_Edit(data=request.POST or None, instance = curruser.account)
     if request.method == 'POST':
-        form = ProfileEditForm(request.POST)
-        if form.is_valid():
-            if form.cleaned_data['username'] != '':
-                username = form.cleaned_data['username']
-                if User.objects.filter(username=username).exists():
-                    return render(request, "profiles/profile.html", {
-                        'form': form,
-                        'errors': ["Username is already taken"]})
-                else:
-                    curruser.username = username
-                    curruser.save()
-            if form.cleaned_data['email'] != '':
-                email = form.cleaned_data['email']
-                if request.user.email == email:
-                    return render(request, "profiles/profile.html", {
-                        'form': form,
-                        'errors': ["You are currently using "
-                                   "this email address!"]})
-                if User.objects.filter(email=email).exists():
-                    return render(request, "profiles/profile.html", {
-                        'form': form,
-                        'errors': ["Email is already taken"]})
-                else:
-                    curruser.email = email
-                    curruser.save()
-                    curruser.account.cod = curruser.account.gravatar_photo()
-                    curruser.account.save()
-            if form.cleaned_data['city'] is not None:
-                city = form.cleaned_data['city']
-                curruser.account.city = city
-                curruser.account.save()
-            if form.cleaned_data['country'] is not None:
-                country = form.cleaned_data['country']
-                curruser.account.country = country
-                curruser.account.save()
-            if form.cleaned_data['telefon'] is not None:
-                telefon = form.cleaned_data['telefon']
-                curruser.account.telefon = telefon
-                curruser.account.save()
-            form = ProfileEditForm()
-        else:
-            errors.append("Invalid form")
-    form = ProfileEditForm()
+        if user_form.is_valid() and account_form.is_valid():
+            user_form.save()
+            account_form.save()
+            curruser.account.cod = curruser.account.gravatar_photo()
+            curruser.account.save()
+            return redirect('/profile')
     return render(request, 'profiles/profile.html', {
         'cod': curruser.account.cod,
-        'form': form,
-        'errors': errors
+        'form': user_form,
+        'form_acc': account_form
     })
