@@ -1,5 +1,4 @@
 from django import forms
-from captcha.fields import ReCaptchaField
 
 
 class ReportForm(forms.Form):
@@ -15,4 +14,3 @@ class ReportForm(forms.Form):
     text = forms.CharField(max_length=5000, label="Report description",
                            widget=forms.TextInput(
                                attrs={'required': 'required'}))
-    captcha = ReCaptchaField()
