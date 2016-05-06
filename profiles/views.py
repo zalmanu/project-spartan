@@ -5,7 +5,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
 from authentication.models import Account
-from forms import ProfileEditForm
 from models import User_Edit, Account_Edit
 
 @login_required
@@ -18,6 +17,8 @@ def profile(request):
         if user_form.is_valid() and account_form.is_valid():
             user_form.save()
             account_form.save()
+            curruser.account.cod = curruser.account.gravatar_photo()
+            curruser.account.save()
             return redirect('/profile')
     return render(request, 'profiles/profile.html', {
         'cod': curruser.account.cod,
