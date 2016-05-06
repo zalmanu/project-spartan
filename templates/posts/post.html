@@ -7,7 +7,7 @@
             document.body.style.zoom = "80%"
         }
 	</script>
-                
+
         <section class="wrap" id="secound-section">
                     <section class="wrapper">
                          <div class="row title-row"> </div>
@@ -18,7 +18,7 @@
                     <div class="profile-widget profile-widget-info" id="post">
                           <div class="panel-body" id="profile-header">
                             <div class="col-lg-2 col-sm-2">
-                              <h4 id="user-name">{{ post.author }}</h4>               
+                              <h4 id="user-name">{{ post.author }}</h4>
                               <div class="follow-ava">
                                   <img src="http://www.gravatar.com/avatar/{{ post.author.account.cod }}" alt="">
                               </div>
@@ -30,40 +30,40 @@
                             <div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
                                       <ul>
                                           <li class="active">
-                                              
+
                                               <i class="icon_clock_alt"> </i><br>
 					      {{ post.timePost }}
                                           </li>
-										   
+
                                       </ul>
                             </div>
 							<div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
                                       <ul>
                                           <li class="active">
-                                              
+
                                               <i class="icon_calendar"> </i><br>
-											  
+
 						{{ post.data }}
                                           </li>
-										   
+
                                       </ul>
                             </div>
 							<div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
                                       <ul>
                                           <li class="active">
-                                              
+
                                               <i class="icon_pin_alt"> </i><br>
-											  
+
 					      {{ post.address }}
                                           </li>
-										   
+
                                       </ul>
                             </div>
                           </div>
                     </div>
-                    
+
                 </div>
-                  
+
               </div>
               <!-- page start-->
           <header class="panel-heading tab-bg-info" id="categoryes_profile">
@@ -77,9 +77,16 @@
 		{% endif %}
                                   <li>
                                       <a data-toggle="tab" href="#profile">
-					More info
+																				More info
                                       </a>
                                   </li>
+				{% if request.user == post.author%}
+				<li>
+				  <a href="/edit/{{ post.slug }}">
+				    Edit post
+				  </a>
+				</li>
+				{% endif %}
                               </ul>
           </header>
 	  {% if request.user.spartan.spartanStatus and request.user != post.author and request.user.spartan.abilitate.name == post.category.name %}
@@ -121,7 +128,7 @@
                                       <button id="show_other_bids">More bids</button>
                                       <div class="profile-activity each_bid">
                                         {% for oferta in post.oferte.all %}
-                                          <div class="act-time">                                      
+                                          <div class="act-time">
                                               <div class="activity-body act-in">
                                                   <span class="arrow"></span>
                                                   <div class="text">
@@ -140,14 +147,12 @@
                                     <section class="panel">
                                        <h1></h1>
                                       <div class="panel-body bio-graph-info">
-                                        <div class="row">
                                               <div class="bio-row">
                                                   <p><span>Username: </span>{{ post.author.username }} </p>
                                               </div>
 					      <div class="bio-row">
                                                   <p><span>Highest bid: </span>{{ post.money }}</p>
                                               </div>
-                                          </div>
                                               <div class="bio-row">
                                                   <p><span>Country:</span>{{ post.author.account.country }}</p>
                                               </div>
@@ -165,25 +170,20 @@
                                                 </form>
                                            </div>
                                           {% endif %}
-
                                       </div>
                                     </section>
-                                      <section>
-                                          <div class="row">                                              
-                                          </div>
-                                      </section>
-                                  </div>
                               </div>
                           </div>
                       </section>
                  </div>
               </div>
+
               <!-- page end-->
           </section>
         </section>
         <script>
         $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip(); 
+            $('[data-toggle="tooltip"]').tooltip();
         });
         </script>
         <script>

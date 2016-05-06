@@ -5,6 +5,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.conf import settings
+from django import forms
+from django.forms import ModelForm
 
 from django.core.urlresolvers import reverse
 from spartan.models import Spartan
@@ -20,13 +22,13 @@ class Announcement(models.Model):
     address = models.CharField(null=True, max_length=500)
     country = models.TextField(null=True, max_length=50)
     city = models.TextField(null=True, max_length=100)
-    data = models.DateField('Task-ul trebuie indeplinit in data de',
+    data = models.DateField('Date FORMAT YYYY-MM-DD',
                             null=True)
     creation_date = models.DateTimeField(editable=False, auto_now_add=True,
                                          null=True)
-    timePost = models.TimeField('Ora', null=True)
+    timePost = models.TimeField('Time FORMAT HH:MM:SS', null=True)
     category = models.ForeignKey(Category, null=True)
-    money = models.IntegerField(null=True)
+    money = models.IntegerField('Highest price you are willing to pay',null=True)
     spartan = models.ForeignKey(Spartan, related_name='anunturi', null=True,
                                 blank=True)
     pret = models.IntegerField(null=True, blank=True)
@@ -37,6 +39,9 @@ class Announcement(models.Model):
     def get_absolute_url(self):
         return reverse('post', args=[self.slug])
 
+    def edit_url(self):
+        return reverse('post', args=[self.slug])
+    
     def creation_email(self, user):
         subject = 'Anunt Project Spartan'
         messagetip = " Hi! % s , \n You successfully posted an announce! \n" \
@@ -55,3 +60,17 @@ class Announcement(models.Model):
             
     class Meta:
         get_latest_by = 'creation_date'
+
+
+class EditPostForm(forms.ModelForm):
+
+    city = forms.ChoiceField(choices=[(x, x) for x in ['Timisoara']])
+    country = forms.ChoiceField(choices=[(x, x) for x in ['Romania']])
+    
+    class Meta:
+        model = Announcement
+        fields = ['title', 'text', 'address', 'country', 'city', 'data', 'timePost', 'money']
+
+
+
+    
