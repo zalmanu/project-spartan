@@ -24,7 +24,6 @@ class User_Edit(forms.ModelForm):
 
     def clean_username(self):
         user_name = self.cleaned_data['username']
-        print user_name
         if User.objects.filter(username=user_name).count() and self.user.username != user_name:
             raise forms.ValidationError("This username already exists")
         return user_name

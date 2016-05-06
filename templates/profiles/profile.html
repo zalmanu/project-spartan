@@ -200,11 +200,8 @@ pp
                                   <div id="edit-profile" class="tab-pane">
                                     <section class="panel">
                                           <div class="panel-body bio-graph-info">
-                                              <h1> Profile Info</h1>
-                                              <form class="form-horizontal" role="form" method="POST">
-                                                {% csrf_token %}
-						{% load widget_tweaks %}
-						{% if form.errors %}
+                                            <h1> Profile Info</h1>
+					  	{% if form.errors %}
 						<div class="error">
 						  {% for field in form %}
 						  {% for message in field.errors %}
@@ -213,13 +210,25 @@ pp
 						  </ul>
 						  {% endfor %}
 						  {% endfor %}
+						  {% if form_acc.errors %}
+						  {% for field in form_acc %}
+						  {% for message in field.errors %}
+						  <ul>
+						    <li>{{ message }}</li>
+						  </ul>
+						  {% endfor %}
+						  {% endfor %}
+						  {% endif %}
 						</div>
 						{% endif %}
+                                              <form class="form-horizontal" role="form" method="POST">
+                                                {% csrf_token %}
+						{% load widget_tweaks %}
 						{% for field in form %}
                                                   <div class="form-group">
                                                       <label class="col-lg-2 control-label">{{ field.label }}</label>
                                                       <div class="col-lg-6">
-							{{ field |add_class:"form-control"}}
+							{{ field |add_class:"form-control"| attr:"required:required" }}
                                                       </div>
                                                   </div>
 						  {% endfor %}
@@ -227,7 +236,7 @@ pp
                                                   <div class="form-group">
                                                       <label class="col-lg-2 control-label">{{ field.label }}</label>
                                                       <div class="col-lg-6">
-							{{ field |add_class:"form-control"}}
+							{{ field |add_class:"form-control"| attr:"required:required"}}
                                                       </div>
                                                   </div>
 						  {% endfor %}
