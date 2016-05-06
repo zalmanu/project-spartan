@@ -1,5 +1,4 @@
 from django import forms
-from captcha.fields import ReCaptchaField
 
 
 class SpartanForm(forms.Form):
@@ -34,4 +33,3 @@ class SpartanForm(forms.Form):
                                       'class': "form-control input-lg m-bot15",
                                       'id': "choose_category",
                                       'required': 'required'}))
-    captcha = ReCaptchaField()
