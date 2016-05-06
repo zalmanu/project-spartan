@@ -20,14 +20,14 @@
             {% if not posts and not request.user.spartan.spartanStatus  %}
 
       <div class="row title-row">
-                            <div class="col-12 font-thin categories-gallery"><span>No active </span><span class="font-semibold"> post </span></div>
+                            <div class="col-12 font-thin categories-gallery" style="height:456px;"><span>No active </span><span class="font-semibold"> posts</span></div>
                     </div>
 
       {% endif %}
 {% if not posts and  request.user.spartan.spartanStatus and not bids %}
 
       <div class="row title-row">
-                            <div class="col-12 font-thin categories-gallery"><span>No active </span><span class="font-semibold"> post </span></div>
+                            <div class="col-12 font-thin categories-gallery"><span>No active </span><span class="font-semibold"> bids </span></div>
                     </div>
 
       {% endif %}
