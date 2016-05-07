@@ -42,7 +42,7 @@
     <!-- Navigation -->
     <div class="cbp-af-header header" id="user-menu">
 				<div class="cbp-af-inner">
-                    <a href="{% url 'home' %}" id="return-home"><h1>Spartan</h1></a>    
+                    <a href="/" id="return-home"><h1>Spartan</h1></a>
       </div>  
 
                 <!-- Notification dropdown -->
@@ -57,57 +57,90 @@
                         <!-- task notificatoin start -->
                         <a href="{% url 'submit' %}">
                         <li id="task_notificatoin_bar" class="hamburger_menu">
-                            <span class="glyphicon glyphicon-plus" id="create_post_icon" toggle="tooltip" data-placement="bottom" title="Hooray!">
+                            <span class="glyphicon glyphicon-plus" id="create_post_icon" toggle="tooltip" data-placement="bottom" title="Create post!">
                             </span>
                         </li>
                         </a>
                         <!-- task notificatoin end -->
 
+
+
+<!---------------------------------------->
+
                         <!-- user login dropdown start-->
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="profile-ava">
-                                <img alt="" src="https://www.gravatar.com/avatar/{{ cod }}">
-                            </span>
-                            <span class="username">{{ user.username }}</span>
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu extended logout">
-                            <div class="log-arrow-up"></div>
-                            <li class="eborder-top">
-                                <a href="{% url 'profile' %}"><i
-                                        class="icon_profile"></i>My profile</a>
-                            </li>
-                            <li>
-                                <a href="/mail"><i class="icon_mail_alt"></i>Mail</a>
-                            </li>
-                            <li>
-                                <a href="/posts"><i class="icon_clock_alt"></i>Announcements</a>
-                            </li>
-                            <li>
-                               <a href="/spartan/" >Become a Spartan</a>
-                            </li>
-                             <li>
-                               <a href="/contact/" >Contact us</a>
-                            </li>
-                            <li>
-                               <a href="/report/" >Report</a>
-                            </li>
-                            <li>
-                               <a href="/faq/" >FAQ</a>
-                            </li>
-                            <li>
-                                <a href="{% url 'logout' %}"><i
-                                        class="icon_key_alt"></i>Log out</a>
-                            </li>
+                        <!--<a data-toggle="dropdown" class="dropdown-toggle" href="#">-->
+                        <a href="/profile/" >
+                            <span   class="profile-ava">
 
-                        </ul>
-                    </li>
+                                <img  src="https://www.gravatar.com/avatar/{{ cod }}">
+
+
+                            </span>
+
+                            </a>
+                        <li>
+                        <br></br>
+                        <span><a  href="/profile/" class="username">{{ user.username }} </a>  <a href="/logout/">| Log out</a> </span>
+                          </li>
+
+                            <!--<b class="caret"></b>-->
+
+                        <!--</a>-->
+
+                        <!--<ul class="dropdown-menu extended logout">-->
+                            <!--<div class="log-arrow-up"></div>-->
+                            <!--<li class="eborder-top">`-->
+                                <!--<a href="{% url 'profile' %}"><i-->
+                                        <!--class="icon_profile"></i>My profile</a>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<a href="/mail"><i class="icon_mail_alt"></i>Mail</a>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<a href="/posts"><i class="icon_clock_alt"></i>Announcements</a>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                               <!--<a href="/spartan/" >Become a Spartan</a>-->
+                            <!--</li>-->
+                             <!--<li>-->
+                               <!--<a href="/contact/" >Contact us</a>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                               <!--<a href="/report/" >Report</a>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                               <!--<a href="/faq/" >FAQ</a>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<a href="/logout/">Log out</a>-->
+                            <!--</li>-->
+
+                        <!--</ul>-->
+                    <!--</li>-->
                     <!-- user login dropdown end -->
                 </ul>
                 <!-- notificatoin dropdown end-->
             </div>
-    </div>
+        	<!--<div class="cbp-af-inner">-->
+
+
+                    <nav id="menu-button">
+						<a href="/mail/"
+                                                    id="menu1-flow">Mail</a>
+
+                        <a href="/posts/" id="menu3-flow">Announcements</a>
+                        <a href="/spartan/" id="menu3-flow">Become a Spartan</a>
+                        <a href="/faq/" id="menu3-flow" >FAQ</a>
+                        <a href="/contact/" >Contact </a>
+                        <a href="/report/" >Report</a>
+
+		                 </nav>
+
+
+	</div>
+    <!--</div>-->
+
     {% block content %}
     
     {% endblock %}
@@ -128,6 +161,7 @@
                     <a href="#"><i class="fa fa-github"></i></a>
 
                 </div>
+
 
             </div>
 
