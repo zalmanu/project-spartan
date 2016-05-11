@@ -96,6 +96,12 @@
                 </div>
                 {% endfor %}
         {% endif %}
+                    {% if not ann %}
+                      <div class="row title-row">
+                            <div class="col-12 font-thin categories-gallery" style="height:456px;"><span>No active </span><span class="font-semibold"> posts</span></div>
+                    </div>
+
+                     {% endif %}
         </div>
 	</section>
     </body>
