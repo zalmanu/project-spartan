@@ -3,7 +3,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class PostForm(forms.Form):
-    title = forms.CharField(max_length=20, label="Title",
+    title = forms.CharField(max_length=256, label="Title",
                             widget=forms.TextInput(
                                 attrs={'required': 'required'}))
     text = forms.CharField(max_length=500, label="Announcement description",
