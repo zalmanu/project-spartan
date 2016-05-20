@@ -34,15 +34,16 @@
 		    {% endif %}
 		    {% for field in form %}
                     <div class="input-container">
-		      {{ field }}
                         {% if field.label == "Captcha "%}
-                             <div class=".g-recaptcha">{{ field}}</div>
-                        {% endif %}
+                        <div class=".g-recaptcha" style="margin-left:5000px;">{{ field }}</div>
+                        {% else %}
+			     {{ field }}
+			 {% endif %}
 
-		      {% if field.label != "Country" and field.label != "City"  and  field.label != "Captcha"%}
+		      {% if field.label != "Country" and field.label != "City"  and  field.label != "Captcha" %}
                       <label for="{{ field.label }}">{{ field.label }}</label>
+		      <div class="bar"></div>
 		      {% endif %}
-                        <div class="bar"></div>
                     </div>
 		    {% endfor %}
                     <div class="button-container">

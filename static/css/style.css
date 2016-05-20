@@ -4,6 +4,11 @@
     color: #47a3da;
 }
 
+div.g-recaptcha {
+  margin: 0 auto;
+  width: 304px;
+}
+
 .font-semibold {
 	font-family: "Titillium Web", sans-serif;
 	font-weight: 600;
