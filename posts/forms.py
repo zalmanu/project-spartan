@@ -1,5 +1,13 @@
 from django import forms
 from django.core.validators import MinValueValidator, MaxValueValidator
+from categories.models import Category
+
+
+def categories():
+    categories = []
+    for x in Category.objects.all():
+        categories.append(getattr(x, 'name'))
+    return categories
 
 
 class PostForm(forms.Form):
@@ -13,10 +21,7 @@ class PostForm(forms.Form):
                              widget=forms.TextInput(
                                  attrs={'required': 'required'}))
     category = forms.ChoiceField(choices=[(x, x)
-                                          for x in
-                                          ['Garden', 'Moving', 'Cleaning',
-                                           'Babysitting', 'Cooking',
-                                           'Others']],
+                                          for x in categories()],
                                  label="Category", widget=forms.Select(
             attrs={'class': "form-control input-lg m-bot15",
                    'id': "choose_category", 'required': 'required'}))

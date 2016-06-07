@@ -1,4 +1,12 @@
 from django import forms
+from categories.models import Category
+
+
+def categories():
+    categories = []
+    for x in Category.objects.all():
+        categories.append(getattr(x, 'name'))
+    return categories
 
 
 class SpartanForm(forms.Form):
@@ -25,11 +33,8 @@ class SpartanForm(forms.Form):
     cont = forms.CharField(max_length=30, label="Banck account",
                            widget=forms.NumberInput(
                                attrs={'required': 'required'}))
-    abilitate = forms.ChoiceField(choices=[(x, x) for x in
-                                           ['Garden', 'Moving', 'Cleaning',
-                                            'Babysitting', 'Cooking',
-                                            'Others']], label="Category",
-                                  widget=forms.Select(attrs={
-                                      'class': "form-control input-lg m-bot15",
-                                      'id': "choose_category",
-                                      'required': 'required'}))
+    abilitate = forms.ChoiceField(choices=[(x, x)
+                                          for x in categories()],
+                                 label="Category", widget=forms.Select(
+            attrs={'class': "form-control input-lg m-bot15",
+                   'id': "choose_category", 'required': 'required'}))
