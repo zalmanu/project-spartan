@@ -1,3 +1,5 @@
+import hashlib
+
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
@@ -29,6 +31,7 @@ def spartan(request):
             contBancar = form.cleaned_data['cont']
             if len(contBancar) != 16:
                 errors.append("Banck accout has to be 16 digits long")
+            contBancar = hashlib.sha224(contBancar).hexdigest()
             abilitate = form.cleaned_data['abilitate']
             abilitate = get_object_or_404(Category, name=abilitate)
             spartan = Spartan.objects.create(nume=nume, prenume=prenume,
@@ -39,7 +42,8 @@ def spartan(request):
                                              abilitate=abilitate,
                                              user=request.user)
             spartan.save()
-            spartan.activation_email()
+            print spartan.contBancar
+#            spartan.activation_email()
             confirms.append('Ati completat cu succes formularul,'
                             'asteptati confirmarea administratorului!')
 
