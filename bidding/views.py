@@ -1,12 +1,11 @@
 import json
 import random
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
-from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from posts.models import Announcement
 from bidding.models import Oferta
-from chat.models import Room 
+from chat.models import Room
 from review.models import UrlUnique
 
 
@@ -23,8 +22,8 @@ def posts(request):
             oferta.status = True
             oferta.save()
             oferta.post.save()
-            new_room = Room.objects.create(spartan=oferta.post.spartan.user, 
-                                           employer=oferta.post.author, 
+            new_room = Room.objects.create(spartan=oferta.post.spartan.user,
+                                           employer=oferta.post.author,
                                            post=oferta.post)
             new_room.save()
         elif request.POST.get('post'):
@@ -47,11 +46,8 @@ def posts(request):
         return HttpResponse(json.dumps(context),
                             content_type='application/json')
     else:
-        context = {'posts': request.user.posts.all(), 
+        context = {'posts': request.user.posts.all(),
                    'cod': request.user.account.cod}
         if request.user.account.has_related_object():
-           context['bids'] = request.user.spartan.licitari.all()
+            context['bids'] = request.user.spartan.licitari.all()
         return render(request, 'bidding/myPosts.html', context)
-
-
-

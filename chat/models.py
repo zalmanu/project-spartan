@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 from django.db import models
 from django.contrib.auth.models import User
 
-from posts.models import Announcement 
+from posts.models import Announcement
 
 
 class Room(models.Model):
@@ -18,7 +18,7 @@ class Room(models.Model):
     def get_absolute_url(self):
         return reverse('room', args=[self.slug])
 
-    
+
 class Message(models.Model):
     room = models.ForeignKey(Room, related_name='messages')
     message = models.TextField()

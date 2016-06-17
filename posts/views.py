@@ -94,7 +94,7 @@ def edit_post(request, slug):
     post = get_object_or_404(Announcement, slug=slug, status=False)
     if post.author != request.user:
         return HttpResponseForbidden()
-    form = EditPostForm(data=request.POST or None, instance = post)
+    form = EditPostForm(data=request.POST or None, instance=post)
     if request.method == 'POST':
         if form.is_valid():
             form.save()

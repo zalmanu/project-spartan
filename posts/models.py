@@ -6,7 +6,6 @@ from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.conf import settings
 from django import forms
-from django.forms import ModelForm
 
 from django.core.urlresolvers import reverse
 from spartan.models import Spartan
@@ -28,20 +27,21 @@ class Announcement(models.Model):
                                          null=True)
     timePost = models.TimeField('Time FORMAT HH:MM:SS', null=True)
     category = models.ForeignKey(Category, null=True)
-    money = models.IntegerField('Highest price you are willing to pay (EUR)',null=True)
+    money = models.IntegerField('Highest price you are willing to pay (EUR)',
+                                null=True)
     spartan = models.ForeignKey(Spartan, related_name='anunturi', null=True,
                                 blank=True)
     pret = models.IntegerField(null=True, blank=True)
-    status = models.BooleanField(default = False)
-    employer_done = models.BooleanField(default = False)
-    spartan_done = models.BooleanField(default = False)
-    
+    status = models.BooleanField(default=False)
+    employer_done = models.BooleanField(default=False)
+    spartan_done = models.BooleanField(default=False)
+
     def get_absolute_url(self):
         return reverse('post', args=[self.slug])
 
     def edit_url(self):
         return reverse('post', args=[self.slug])
-    
+
     def creation_email(self, user):
         subject = 'Anunt Project Spartan'
         messagetip = " Hi! % s , \n You successfully posted an announce! \n" \
@@ -51,13 +51,12 @@ class Announcement(models.Model):
                      "Highest bid price: %s eur \n" \
                      " Have a nice day! - Team Spartan" % (
                          user.username, self.title,  self.text,  self.address,
-                          self.country,  self.city,  self.category.name, self.timePost, self.data,
-                         self.money)
+                         self.country,  self.city,  self.category.name,
+                         self.timePost, self.data, self.money)
         from_email = settings.EMAIL_HOST_USER
         send_mail(subject, messagetip, from_email,
                   [user.email], fail_silently=True)
 
-            
     class Meta:
         get_latest_by = 'creation_date'
 
@@ -66,11 +65,8 @@ class EditPostForm(forms.ModelForm):
 
     city = forms.ChoiceField(choices=[(x, x) for x in ['Timisoara']])
     country = forms.ChoiceField(choices=[(x, x) for x in ['Romania']])
-    
+
     class Meta:
         model = Announcement
-        fields = ['title', 'text', 'address', 'country', 'city', 'data', 'timePost', 'money']
-
-
-
-    
+        fields = ['title', 'text', 'address', 'country',
+                  'city', 'data', 'timePost', 'money']

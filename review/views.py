@@ -1,5 +1,3 @@
-import json
-
 from django.shortcuts import render
 
 from .forms import ReviewForm
@@ -40,4 +38,3 @@ def review(request, slug, url_hash):
                   {'cod': request.user.account.cod,
                    'form': form, 'slug': slug,
                    'errors': errors})
-

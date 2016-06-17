@@ -3,5 +3,6 @@ from . import views
 
 urlpatterns = [
 
- url(r'^review/(?P<slug>[^\.]+)/(?P<url_hash>\w+)/$', views.review, name='review')
+ url(r'^review/(?P<slug>[^\.]+)/(?P<url_hash>\w+)/$',
+     views.review, name='review')
  ]

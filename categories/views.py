@@ -1,9 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 
-
 from models import Category
-from posts.models import Announcement 
+from posts.models import Announcement
 
 
 @login_required

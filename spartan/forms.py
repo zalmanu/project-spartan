@@ -34,7 +34,7 @@ class SpartanForm(forms.Form):
                            widget=forms.NumberInput(
                                attrs={'required': 'required'}))
     abilitate = forms.ChoiceField(choices=[(x, x)
-                                          for x in categories()],
-                                 label="Category", widget=forms.Select(
+                                           for x in categories()],
+                                  label="Category", widget=forms.Select(
             attrs={'class': "form-control input-lg m-bot15",
                    'id': "choose_category", 'required': 'required'}))

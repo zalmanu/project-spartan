@@ -1,8 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from models import Report
 from .forms import ReportForm
 from django.contrib.auth.models import User
-# Create your views here.
 from django.contrib.auth.decorators import login_required
 
 

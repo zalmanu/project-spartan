@@ -9,6 +9,7 @@ from django.conf import settings
 from categories.models import Category
 from django.core.urlresolvers import reverse
 
+
 class Spartan(models.Model):
     nume = models.CharField(max_length=40)
     prenume = models.CharField(max_length=40)
@@ -38,8 +39,9 @@ class Spartan(models.Model):
                      "Ability: %s \n  An admin will respond soon. " \
                      " - Team Spartan" % (
                          self.user.username, self.nume, self.prenume,
-                         self.data_nasterii, self.address, self.cnp, 
-                         self.serie, self.cui, self.contBancar, self.abilitate.name)
+                         self.data_nasterii, self.address,
+                         self.cnp, self.serie, self.cui,
+                         self.contBancar, self.abilitate.name)
         from_email = settings.EMAIL_HOST_USER
         send_mail(subject, messagetip, from_email,
                   [self.user.email], fail_silently=True)

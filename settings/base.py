@@ -16,8 +16,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'captcha',
     'widget_tweaks',
-    
-    #Usual apps
+
+    # Usual apps
     'authentication',
     'homepages',
     'posts',
@@ -36,7 +36,6 @@ INSTALLED_APPS = (
 )
 
 
-
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -49,11 +48,7 @@ MIDDLEWARE_CLASSES = [
 ]
 
 
-
-
-
 ROOT_URLCONF = 'Spartan.urls'
-
 
 
 TEMPLATES = [
@@ -76,7 +71,6 @@ TEMPLATES = [
 ]
 
 
-
 WSGI_APPLICATION = 'Spartan.wsgi.application'
 
 
@@ -96,16 +90,21 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.'
+        'UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
 
@@ -119,7 +118,7 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
-LOGIN_URL='/login/'
+LOGIN_URL = '/login/'
 
 USE_I18N = True
 
@@ -139,10 +138,10 @@ RECAPTCHA_PUBLIC_KEY = os.getenv('SPARTAN_RECAP_PUBLIC', '')
 RECAPTCHA_PRIVATE_KEY = os.getenv('SPARTAN_RECAP_PRIVATE', '')
 
 
-#email settings
+# email settings
 EMAIL_USE_TLS = True
-EMAIL_HOST='smtp.gmail.com'
-EMAIL_HOST_USER=os.getenv('SPARTAN_HOST_USER', '')#insert email
-EMAIL_HOST_PASSWORD=os.getenv('SPARTAN_HOST_PASSWORD', '')#insert password
-EMAIL_PORT=587
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = os.getenv('SPARTAN_HOST_USER', '')  # insert email
+EMAIL_HOST_PASSWORD = os.getenv('SPARTAN_HOST_PASSWORD', '')  # insert password
+EMAIL_PORT = 587
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

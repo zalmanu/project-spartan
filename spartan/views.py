@@ -1,9 +1,6 @@
-from django.shortcuts import render, render_to_response
-from django.core.mail import send_mail
-from django.conf import settings
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
-from django.template import RequestContext
 
 from forms import SpartanForm
 from models import Spartan
@@ -43,7 +40,8 @@ def spartan(request):
                                              user=request.user)
             spartan.save()
             spartan.activation_email()
-            confirms.append('Ati completat cu succes formularul, asteptati confirmarea administratorului!')
+            confirms.append('Ati completat cu succes formularul,'
+                            'asteptati confirmarea administratorului!')
 
         else:
             errors.append('Invalid form')

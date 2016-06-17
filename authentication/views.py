@@ -7,7 +7,6 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.contrib.auth import logout
-import md5
 
 
 @login_required

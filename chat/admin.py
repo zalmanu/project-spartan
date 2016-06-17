@@ -11,6 +11,6 @@ class RoomAdmin(admin.ModelAdmin):
 class MessageAdmin(admin.ModelAdmin):
     list_display = ['message']
     ordering = ['message']
-    
+
 admin.site.register(Room, RoomAdmin)
 admin.site.register(Message, MessageAdmin)

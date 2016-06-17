@@ -41,7 +41,8 @@ class PostForm(forms.Form):
     price = forms.IntegerField(validators=[MinValueValidator(1),
                                            MaxValueValidator(
                                                9223372036854775807)],
-                               label="Highest price you are willing to pay (EUR)",
+                               label="Highest price you are"
+                               "willing to pay (EUR)",
                                widget=forms.NumberInput(
                                    attrs={'required': 'required'}))
 

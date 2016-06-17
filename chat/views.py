@@ -29,7 +29,7 @@ def room(request, slug):
     return render(request, 'chat/chat.html', {
         'room': room,
         'messages': room.messages.all(),
-        'form' : form,
+        'form': form,
         'other': other,
         'errors': errors,
         'cod': request.user.account.cod

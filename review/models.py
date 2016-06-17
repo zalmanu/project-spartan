@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 from django.db import models
 from authentication.models import User
 from spartan.models import Spartan
-from posts.models import Announcement
 
 
 class Review(models.Model):
@@ -14,7 +13,7 @@ class Review(models.Model):
     creation_date = models.DateTimeField(editable=False, auto_now_add=True,
                                          null=True)
 
+
 class UrlUnique(models.Model):
     un_hash = models.CharField('Url', unique=True, max_length=33)
-    expired = models.BooleanField(default = False)
-    
+    expired = models.BooleanField(default=False)

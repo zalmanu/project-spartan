@@ -16,8 +16,8 @@ class RegisterForm(forms.Form):
                                widget=forms.TextInput(
                                    attrs={'required': 'required'}))
     email = forms.CharField(max_length=100, label='Email',
-                            widget=forms.EmailInput(attrs=
-                                                    {'required': 'required'}))
+                            widget=forms.EmailInput(attrs={'required':
+                                                           'required'}))
     password = forms.CharField(max_length=160, label='Password',
                                widget=forms.PasswordInput(
                                    attrs={'required': 'required'}))
