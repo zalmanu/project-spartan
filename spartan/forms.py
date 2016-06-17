@@ -5,7 +5,7 @@ from categories.models import Category
 def categories():
     categories = []
     for x in Category.objects.all():
-        categories.append(getattr(x, 'name'))
+        categories.append(x.name)
     return categories
 
 

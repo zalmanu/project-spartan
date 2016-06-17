@@ -6,7 +6,7 @@ from categories.models import Category
 def categories():
     categories = []
     for x in Category.objects.all():
-        categories.append(getattr(x, 'name'))
+        categories.append(x.name)
     return categories
 
 
@@ -23,8 +23,8 @@ class PostForm(forms.Form):
     category = forms.ChoiceField(choices=[(x, x)
                                           for x in categories()],
                                  label="Category", widget=forms.Select(
-            attrs={'class': "form-control input-lg m-bot15",
-                   'id': "choose_category", 'required': 'required'}))
+                    attrs={'class': "form-control input-lg m-bot15",
+                           'id': "choose_category", 'required': 'required'}))
     country = forms.ChoiceField(choices=[(x, x) for x in ['Romania']],
                                 label="Country", widget=forms.Select(
             attrs={'class': "form-control input-lg m-bot15",
