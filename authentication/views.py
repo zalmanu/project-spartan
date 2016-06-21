@@ -50,7 +50,7 @@ def register_page(request):
                 account = authentication.models.Account.objects.create(
                     user=new_user, city=city, country=country,
                     telefon=phone)
-                account.cod = account.gravatar_photo()
+                account.code = account.gravatar_photo()
                 account.save()
                 user = authenticate(username=username, password=password)
                 login(request, user)
@@ -113,7 +113,7 @@ def reset_pass(request):
     form = PasswordResetForm
     return render(request, "authentication/resetpass.html",
                   {'form': form,
-                   'cod': request.user.account.cod,
+                   'cod': request.user.account.code,
                    'errors': errors})
 
 
