@@ -49,7 +49,7 @@ def register_page(request):
                 new_user.save()
                 account = authentication.models.Account.objects.create(
                     user=new_user, city=city, country=country,
-                    telefon=phone)
+                    phone=phone)
                 account.code = account.gravatar_photo()
                 account.save()
                 user = authenticate(username=username, password=password)
