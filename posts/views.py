@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from models import Announcement
 from categories.models import Category
-from bidding.models import Oferta
+from bidding.models import Offer
 from .forms import PostForm, LicitatieForm
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
@@ -65,19 +65,19 @@ def post(request, slug):
 
         form = LicitatieForm(request.POST)
         if form.is_valid():
-            pret = form.cleaned_data['pret']
-            tip = form.cleaned_data['tip']
-            if pret > post.money:
+            price = form.cleaned_data['pret']
+            kind = form.cleaned_data['tip']
+            if price > post.money:
                 errors.append(
                     'You offer more than the employer is willing to pay')
-            elif pret < 0:
+            elif price < 0:
                 errors.append('Invalid offer')
             else:
-                oferta = Oferta.objects.create(pret=pret, tip=tip,
-                                               spartan=request.user.spartan,
-                                               post=post)
-                oferta.save()
-                confirms.append('Oferta a fost trimisa')
+                offer = Offer.objects.create(price=price, kind=kind,
+                                             spartan=request.user.spartan,
+                                             post=post)
+                offer.save()
+                confirms.append('Offer was sent')
         else:
             errors.append('Form is not valid')
     form = LicitatieForm()
