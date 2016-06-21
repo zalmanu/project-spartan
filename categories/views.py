@@ -13,7 +13,7 @@ def category(request, kind):
     return render(request, 'category/category.html', {
         'categories': categories,
         'kind': page_category,
-        'cod': curruser.account.cod,
+        'cod': curruser.account.code,
         'ann': Announcement.objects.filter(category=page_category,
                                            status=False)
     })

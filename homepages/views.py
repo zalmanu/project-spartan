@@ -11,7 +11,7 @@ def home(request):
                 '-creation_date')[:5],
             'categories': categories,
             'user': curruser,
-            'cod': curruser.account.cod})
+            'cod': curruser.account.code})
     else:
         return render(request, 'homepages/index.html', {
             'categories': categories

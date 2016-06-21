@@ -35,6 +35,6 @@ def review(request, slug, url_hash):
 
     form = ReviewForm()
     return render(request, 'review/review.html',
-                  {'cod': request.user.account.cod,
+                  {'cod': request.user.account.code,
                    'form': form, 'slug': slug,
                    'errors': errors})

@@ -32,7 +32,7 @@ def room(request, slug):
         'form': form,
         'other': other,
         'errors': errors,
-        'cod': request.user.account.cod
+        'cod': request.user.account.code
     })
 
 
@@ -42,5 +42,8 @@ def rooms(request):
     empl_messages = user.empl_rooms
     context = {'spa_messages': spa_messages.all(),
                'empl_messages': empl_messages.all(),
-               'cod': user.account.cod}
+               'cod': user.account.code}
     return render(request, 'chat/rooms.html', context)
+
+
+

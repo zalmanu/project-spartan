@@ -47,7 +47,7 @@ def posts(request):
                             content_type='application/json')
     else:
         context = {'posts': request.user.posts.all(),
-                   'cod': request.user.account.cod}
+                   'cod': request.user.account.code}
         if request.user.account.has_related_object():
             context['bids'] = request.user.spartan.licitari.all()
         return render(request, 'bidding/myPosts.html', context)

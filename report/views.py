@@ -14,7 +14,7 @@ def report(request):
             username = form.cleaned_data['username']
             if request.user.username == username:
                 return render(request, 'report/report.html', {
-                    'cod': curruser.account.cod,
+                    'cod': curruser.account.code,
                     'form': form,
                     'errors': ["This username  is your username "]})
             status = form.cleaned_data['statut']
@@ -24,7 +24,7 @@ def report(request):
 
                 except User.DoesNotExist:
                     return render(request, 'report/report.html', {
-                        'cod': curruser.account.cod,
+                        'cod': curruser.account.code,
                         'form': form,
                         'errors': ["This employer doesn't exist"]})
             else:
@@ -32,12 +32,12 @@ def report(request):
                     user = User.objects.get(username=username)
                     if not user.account.has_related_object():
                         return render(request, 'report/report.html', {
-                            'cod': curruser.account.cod,
+                            'cod': curruser.account.code,
                             'form': form,
                             'errors': ["This spartan doesn't exist"]})
                 except User.DoesNotExist:
                     return render(request, 'report/report.html', {
-                        'cod': curruser.account.cod,
+                        'cod': curruser.account.code,
                         'form': form,
                         'errors': ["This spartan doesn't exist"]})
             text = form.cleaned_data['text']
@@ -48,19 +48,19 @@ def report(request):
                                            )
             report.save()
             return render(request, 'report/report.html', {
-                'cod': curruser.account.cod,
+                'cod': curruser.account.code,
                 'form': form,
                 'confirm': ['The report was sent!']})
         else:
             return render(request, 'report/report.html', {
-                'cod': curruser.account.cod,
+                'cod': curruser.account.code,
                 'form': form,
                 'errors': ['Invalid form']})
     else:
         form = ReportForm
         if request.user.is_active and not request.user.is_superuser:
             return render(request, 'report/report.html', {
-                'cod': curruser.account.cod,
+                'cod': curruser.account.code,
                 'form': form})
         else:
             return render(request, 'report/report.html', {

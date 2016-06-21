@@ -48,7 +48,7 @@ def create_post(request):
 
     form = PostForm
     return render(request, 'posts/create_post.html', {
-        'cod': curruser.account.cod,
+        'cod': curruser.account.code,
         'form': form,
         'errors': errors})
 
@@ -82,7 +82,7 @@ def post(request, slug):
             errors.append('Form is not valid')
     form = LicitatieForm()
     return render(request, 'posts/post.html', {
-        'cod': request.user.account.cod,
+        'cod': request.user.account.code,
         'post': post,
         'form': form,
         'errors': errors,
@@ -100,7 +100,7 @@ def edit_post(request, slug):
             form.save()
             return redirect('/post/' + post.slug)
     return render(request, 'posts/edit_post.html', {
-        'cod': request.user.account.cod,
+        'cod': request.user.account.code,
         'post': post,
         'form': form,
     })
