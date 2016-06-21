@@ -3,7 +3,7 @@ from django.shortcuts import redirect
 from models import Announcement
 from categories.models import Category
 from bidding.models import Offer
-from .forms import PostForm, LicitatieForm
+from .forms import PostForm, BiddingForm
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404
@@ -63,10 +63,10 @@ def post(request, slug):
             post.delete()
             return redirect('/')
 
-        form = LicitatieForm(request.POST)
+        form = BiddingForm(request.POST)
         if form.is_valid():
-            price = form.cleaned_data['pret']
-            kind = form.cleaned_data['tip']
+            price = form.cleaned_data['price']
+            kind = form.cleaned_data['kind']
             if price > post.money:
                 errors.append(
                     'You offer more than the employer is willing to pay')
@@ -80,7 +80,7 @@ def post(request, slug):
                 confirms.append('Offer was sent')
         else:
             errors.append('Form is not valid')
-    form = LicitatieForm()
+    form = BiddingForm()
     return render(request, 'posts/post.html', {
         'cod': request.user.account.code,
         'post': post,
