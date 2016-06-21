@@ -11,12 +11,12 @@ def contactUS(request):
     if request.method == 'POST':
         form = ContactUSForm(request.POST)
         if form.is_valid():
-            frist_name = form.cleaned_data['prenume']
-            last_name = form.cleaned_data['nume']
+            first_name = form.cleaned_data['first_name']
+            last_name = form.cleaned_data['last_name']
             email = form.cleaned_data['email']
             phone = form.cleaned_data['phone']
             message = form.cleaned_data['message']
-            contact = ContactUS.objects.create(frist_name=frist_name,
+            contact = ContactUS.objects.create(first_name=first_name,
                                                last_name=last_name,
                                                email=email, phone=phone,
                                                message=message)
@@ -24,9 +24,9 @@ def contactUS(request):
             subject = 'Contact US '
             messagetip = " Buna Admin, \n Ati primit un mesaj " \
                          "de la un utilizator \n" \
-                         " Nume : %s ,\n Prenume: %s: \n,Email: %s ," \
+                         " Last_Name : %s ,\n Nume: %s: \n,Email: %s ," \
                          "\n Phone: %s,\n" \
-                         "Message: %s" % (frist_name, last_name,
+                         "Message: %s" % (first_name, last_name,
                                           email, phone, message)
             send_mail(subject, messagetip, email,
                       [settings.EMAIL_HOST_USER], fail_silently=True)
