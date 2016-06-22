@@ -1,11 +1,12 @@
-from django.shortcuts import render
-
-from .forms import ReviewForm
 import datetime
-from .models import Review, UrlUnique
-from authentication.models import Spartan
+
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect
+
+from .forms import ReviewForm
+from .models import Review, UrlUnique
+from authentication.models import Spartan
 
 
 @login_required
