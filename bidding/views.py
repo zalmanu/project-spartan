@@ -17,7 +17,7 @@ def posts(request):
             offer_id = request.POST.get('offer')
             offer = Offer.objects.get(id=offer_id)
             offer.post.spartan = offer.spartan
-            offer.post.pret = offer.price
+            offer.post.price = offer.price
             offer.post.status = True
             offer.status = True
             offer.save()

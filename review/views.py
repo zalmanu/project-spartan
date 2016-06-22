@@ -28,7 +28,7 @@ def review(request, slug, url_hash):
                 )
             review.save()
             curent_spartan = get_object_or_404(Spartan, slug=slug)
-            curent_spartan.raiting += 1
+            curent_spartan.rating += 1
             curent_spartan.save()
             return redirect('/')
         else:
