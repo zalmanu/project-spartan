@@ -21,28 +21,28 @@ def spartan(request):
                            'errors': ['You already submitted the form']})
         form = SpartanForm(request.POST)
         if form.is_valid():
-            nume = form.cleaned_data['nume']
-            prenume = form.cleaned_data['prenume']
-            data_nasterii = form.cleaned_data['data']
+            last_name = form.cleaned_data['last_name']
+            first_name = form.cleaned_data['first_name']
+            birthday = form.cleaned_data['birthday']
             adress = form.cleaned_data['adress']
             cnp = form.cleaned_data['CNP']
-            serie = form.cleaned_data['serie']
+            series = form.cleaned_data['series']
             cui = form.cleaned_data['cui']
-            contBancar = form.cleaned_data['cont']
-            if len(contBancar) != 16:
-                errors.append("Banck accout has to be 16 digits long")
-            contBancar = hashlib.sha224(contBancar).hexdigest()
-            abilitate = form.cleaned_data['abilitate']
-            abilitate = get_object_or_404(Category, name=abilitate)
-            spartan = Spartan.objects.create(nume=nume, prenume=prenume,
-                                             data_nasterii=data_nasterii,
+            bank_account = form.cleaned_data['bank_account']
+            if len(bank_account) != 16:
+                errors.append("Bank accout has to be 16 digits long")
+            bank_account = hashlib.sha224(bank_account).hexdigest()
+            category = form.cleaned_data['category']
+            category = get_object_or_404(Category, name=category)
+            spartan = Spartan.objects.create(last_name=last_name,
+                                             first_name=first_name,
+                                             birthday=birthday,
                                              address=adress, cnp=cnp,
-                                             serie=serie, cui=cui,
-                                             contBancar=contBancar,
-                                             abilitate=abilitate,
+                                             series=series, cui=cui,
+                                             bank_account=bank_account,
+                                             category=category,
                                              user=request.user)
             spartan.save()
-            print spartan.contBancar
 #            spartan.activation_email()
             confirms.append('Ati completat cu succes formularul,'
                             'asteptati confirmarea administratorului!')

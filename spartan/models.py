@@ -11,24 +11,24 @@ from django.core.urlresolvers import reverse
 
 
 class Spartan(models.Model):
-    nume = models.CharField(max_length=40)
-    prenume = models.CharField(max_length=40)
-    data_nasterii = models.DateField('Data nasterii', null=True)
+    last_name = models.CharField(max_length=40)
+    first_name = models.CharField(max_length=40)
+    birthday = models.DateField(null=True)
     address = models.CharField(null=True, max_length=500)
     cnp = models.IntegerField(null=True)
-    serie = models.CharField(max_length=30, null=True)
+    series = models.CharField(max_length=30, null=True)
     cui = models.CharField(max_length=30, null=True)
-    contBancar = models.CharField(max_length=30, null=True)
-    abilitate = models.ForeignKey(Category, null=True)
+    bank_account = models.CharField(max_length=30, null=True)
+    category = models.ForeignKey(Category, null=True)
     user = models.OneToOneField(User, primary_key=True, default='')
     spartanStatus = models.BooleanField(default=False)
-    raiting = models.IntegerField(default=0)
+    rating = models.IntegerField(default=0)
     tasks = models.IntegerField(default=0)
     slug = models.SlugField(default=uuid.uuid1, unique=True)
 
     def get_absolute_url(self):
         return reverse('users', args=[self.slug])
-        
+
     def activation_email(self):
         subject = 'Spartan activation'
         messagetip = " Hi! % s , \n You submitted the form" \
@@ -38,10 +38,10 @@ class Spartan(models.Model):
                      " CUI : %s \n Bank account: %s \n " \
                      "Ability: %s \n  An admin will respond soon. " \
                      " - Team Spartan" % (
-                         self.user.username, self.nume, self.prenume,
-                         self.data_nasterii, self.address,
-                         self.cnp, self.serie, self.cui,
-                         self.contBancar, self.abilitate.name)
+                         self.user.username, self.last_name, self.first_name,
+                         self.birthday, self.address,
+                         self.cnp, self.series, self.cui,
+                         self.bank_account, self.category.name)
         from_email = settings.EMAIL_HOST_USER
         send_mail(subject, messagetip, from_email,
                   [self.user.email], fail_silently=True)
