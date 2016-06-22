@@ -51,7 +51,6 @@ class BiddingForm(forms.Form):
     price = forms.IntegerField(validators=[MinValueValidator(1),
                                            MaxValueValidator(
                                                9223372036854775807)],
-                               label="Liciteaza:",
                                widget=forms.TextInput(
                                   attrs={'class': "form-control",
                                          'id': "bid-input",

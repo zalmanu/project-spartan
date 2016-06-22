@@ -58,8 +58,8 @@
      {% if post.spartan_done %}
      <tbody>
        <tr>
-         <td> <a href="/user/{{ post.spartan.slug }}">{{ post.spartan.prenume }}</a></td>
-         <td><a href="/user/{{ post.spartan.slug }}">{{ post.spartan.nume }}</a></td>
+         <td> <a href="/user/{{ post.spartan.slug }}">{{ post.spartan.first_name }}</a></td>
+         <td><a href="/user/{{ post.spartan.slug }}">{{ post.spartan.last_name }}</a></td>
          <td>{{ post.spartan.user.email }}</td>
          <td>{{ post.pret }}</td>
 	 <td onclick="window.location='{{ post.room.get_absolute_url }}';" style="cursor:pointer">Go to chat</td>
@@ -70,10 +70,10 @@
      {% else %}
      <tbody>
        <tr>
-         <td><a href="/user/{{ post.spartan.slug }}">{{ post.spartan.prenume }}</a></td>
-         <td><a href="/user/{{ post.spartan.slug }}">{{ post.spartan.nume }}</a></td>
+         <td><a href="/user/{{ post.spartan.slug }}">{{ post.spartan.first_name }}</a></td>
+         <td><a href="/user/{{ post.spartan.slug }}">{{ post.spartan.last_name }}</a></td>
          <td>{{ post.spartan.user.email }}</td>
-         <td>{{ post.price }}</td>
+         <td>{{ post.pret }}</td>
 	 <td onclick="window.location='{{ post.room.get_absolute_url }}';" style="cursor:pointer">Go to chat</td>
 	 <td>{{ post.spartan.user.account.phone }}</td>
          <td>Wait for spartan's confimation</td>
@@ -93,8 +93,8 @@
     {% if post.offers.all %}
     {% for oferta in post.offers.all %}
     <tr>
-    <td> <a href="/user/{{ oferta.spartan.slug }}">{{ oferta.spartan.prenume }} </a></td>
-    <td> <a href="/user/{{ oferta.spartan.slug }}">{{ oferta.spartan.nume }} </a></td>
+    <td> <a href="/user/{{ oferta.spartan.slug }}">{{ oferta.spartan.first_name }} </a></td>
+    <td> <a href="/user/{{ oferta.spartan.slug }}">{{ oferta.spartan.last_name }} </a></td>
     <td>{{ oferta.price }}</td>
     <td>{{ oferta.kind }}</td>
     <td><p data-placement="top" data-toggle="tooltip" >

@@ -68,7 +68,7 @@
               <!-- page start-->
           <header class="panel-heading tab-bg-info" id="categoryes_profile">
             <ul class="nav nav-tabs" id="profile-subpage">
-	      {% if request.user.spartan.spartanStatus and request.user != post.author and request.user.spartan.abilitate.name == post.category.name %}
+	      {% if request.user.spartan.spartanStatus and request.user != post.author and request.user.spartan.category.name == post.category.name %}
                                   <li class="active">
                                       <a data-toggle="tab" href="#recent-activity">
                                            Bids
@@ -89,7 +89,7 @@
 				{% endif %}
                               </ul>
           </header>
-	  {% if request.user.spartan.spartanStatus and request.user != post.author and request.user.spartan.abilitate.name == post.category.name %}
+	      {% if request.user.spartan.spartanStatus and request.user != post.author and request.user.spartan.category.name == post.category.name %}
               <div class="row">
                  <div class="col-lg-12">
                     <section class="panel">
@@ -116,11 +116,11 @@
                                   <div class="form-group">
 				    <form method="POST">
 				      {% csrf_token %}
-                                          <label class="control-label">{{ form.pret.label }}</label>
+                                          <label class="control-label">{{ form.price.label }}</label>
                                           <div class="input-group" id="bidding-input-group">
-					    {{ form.pret }}
+					    {{ form.price }}
                                               <span class="input-group-addon" id="start-date"><span>EUR</span></span>
-					    {{ form.tip }}
+					    {{ form.kind }}
                                           </div>
                                           <button id="bid-button">Bid!</button>
                                   </div>
