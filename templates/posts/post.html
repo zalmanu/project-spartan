@@ -20,7 +20,7 @@
                             <div class="col-lg-2 col-sm-2">
                               <h4 id="user-name">{{ post.author }}</h4>
                               <div class="follow-ava">
-                                  <img src="http://www.gravatar.com/avatar/{{ post.author.account.cod }}" alt="">
+                                  <img src="http://www.gravatar.com/avatar/{{ post.author.account.code }}" alt="">
                               </div>
                             </div>
                             <div class="col-lg-4 col-sm-4 follow-info" >
@@ -68,10 +68,10 @@
               <!-- page start-->
           <header class="panel-heading tab-bg-info" id="categoryes_profile">
             <ul class="nav nav-tabs" id="profile-subpage">
-	      {% if request.user.spartan.spartanStatus and request.user != post.author and request.user.spartan.abilitate.name == post.category.name %}
+	      {% if request.user.spartan.spartanStatus and request.user != post.author and request.user.spartan.category.name == post.category.name %}
                                   <li class="active">
                                       <a data-toggle="tab" href="#recent-activity">
-                                           Licitari
+                                           Bids
                                       </a>
                                   </li>
 		{% endif %}
@@ -89,7 +89,7 @@
 				{% endif %}
                               </ul>
           </header>
-	  {% if request.user.spartan.spartanStatus and request.user != post.author and request.user.spartan.abilitate.name == post.category.name %}
+	      {% if request.user.spartan.spartanStatus and request.user != post.author and request.user.spartan.category.name == post.category.name %}
               <div class="row">
                  <div class="col-lg-12">
                     <section class="panel">
@@ -116,25 +116,25 @@
                                   <div class="form-group">
 				    <form method="POST">
 				      {% csrf_token %}
-                                          <label class="control-label">{{ form.pret.label }}</label>
+                                          <label class="control-label">{{ form.price.label }}</label>
                                           <div class="input-group" id="bidding-input-group">
-					    {{ form.pret }}
+					    {{ form.price }}
                                               <span class="input-group-addon" id="start-date"><span>EUR</span></span>
-					    {{ form.tip }}
+					    {{ form.kind }}
                                           </div>
                                           <button id="bid-button">Bid!</button>
                                   </div>
 				  </form>
                                       <button id="show_other_bids">More bids</button>
                                       <div class="profile-activity each_bid">
-                                        {% for oferta in post.oferte.all %}
+                                        {% for oferta in post.offers.all %}
                                           <div class="act-time">
                                               <div class="activity-body act-in">
                                                   <span class="arrow"></span>
                                                   <div class="text">
-                                                      <a href="#" class="activity-img"><img class="avatar" src="http://www.gravatar.com/avatar/{{ oferta.spartan.user.account.cod }}" alt=""></a>
-                                                      <p class="attribution"><a href="#">{{ oferta.spartan.user }}</a> {{ oferta.tip }}</p>
-                                                      <h2>{{ oferta.pret }}</h2>
+                                                      <a href="#" class="activity-img"><img class="avatar" src="http://www.gravatar.com/avatar/{{ oferta.spartan.user.account.code }}" alt=""></a>
+                                                      <p class="attribution"><a href="#">{{ oferta.spartan.user }}</a> {{ oferta.kind }}</p>
+                                                      <h2>{{ oferta.price }}</h2>
                                                   </div>
                                               </div>
                                           </div>

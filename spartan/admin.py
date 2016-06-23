@@ -3,8 +3,8 @@ from models import Spartan
 
 
 class SpartanAdmin(admin.ModelAdmin):
-    list_display = ['nume', 'prenume']
-    ordering = ['prenume']
+    list_display = ['last_name', 'first_name']
+    ordering = ['first_name']
 
 
 admin.site.register(Spartan, SpartanAdmin)

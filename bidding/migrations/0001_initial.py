@@ -14,14 +14,12 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Category',
+            name='Oferta',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=20, null=True)),
-                ('path_banner', models.CharField(max_length=500, null=True)),
-                ('path_bg', models.CharField(max_length=500, null=True)),
-                ('path_icon', models.CharField(max_length=500, null=True)),
-                ('path_mini', models.CharField(max_length=500, null=True)),
+                ('pret', models.IntegerField(null=True)),
+                ('tip', models.CharField(max_length=30)),
+                ('status', models.BooleanField(default=False)),
             ],
         ),
     ]

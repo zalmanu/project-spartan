@@ -67,14 +67,3 @@ target/
 
 #Databases
 db.sqlite3
-
-#Migrations
-spartan/migrations
-authentication/migrations
-posts/migrations
-bidding/migrations
-chat/migrations
-contactUS/migrations
-categories/migrations
-profiles/migrations
-review/migrations

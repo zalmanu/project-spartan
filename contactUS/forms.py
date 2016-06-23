@@ -3,10 +3,10 @@ from captcha.fields import ReCaptchaField
 
 
 class ContactUSForm(forms.Form):
-    prenume = forms.CharField(max_length=40, label="First name",
+    first_name = forms.CharField(max_length=40, label="First name",
                               widget=forms.TextInput(
                                   attrs={'required': 'required'}))
-    nume = forms.CharField(max_length=40, label="Last name",
+    last_name = forms.CharField(max_length=40, label="Last name",
                            widget=forms.TextInput(
                                attrs={'required': 'required'}))
     email = forms.CharField(max_length=100, label='Email',

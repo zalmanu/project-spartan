@@ -15,11 +15,11 @@ def profile(request):
         if user_form.is_valid() and account_form.is_valid():
             user_form.save()
             account_form.save()
-            curruser.account.cod = curruser.account.gravatar_photo()
+            curruser.account.code = curruser.account.gravatar_photo()
             curruser.account.save()
             return redirect('/profile')
     return render(request, 'profiles/profile.html', {
-        'cod': curruser.account.cod,
+        'cod': curruser.account.code,
         'form': user_form,
         'form_acc': account_form
     })

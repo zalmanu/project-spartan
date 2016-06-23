@@ -58,24 +58,24 @@
      {% if post.spartan_done %}
      <tbody>
        <tr>
-         <td> <a href="/user/{{ post.spartan.slug }}">{{ post.spartan.prenume }}</a></td>
-         <td><a href="/user/{{ post.spartan.slug }}">{{ post.spartan.nume }}</a></td>
+         <td> <a href="/user/{{ post.spartan.slug }}">{{ post.spartan.first_name }}</a></td>
+         <td><a href="/user/{{ post.spartan.slug }}">{{ post.spartan.last_name }}</a></td>
          <td>{{ post.spartan.user.email }}</td>
-         <td>{{ post.pret }}</td>
+         <td>{{ post.price }}</td>
 	 <td onclick="window.location='{{ post.room.get_absolute_url }}';" style="cursor:pointer">Go to chat</td>
-	 <td>{{ post.spartan.user.account.telefon }}</td>
+	 <td>{{ post.spartan.user.account.phone }}</td>
          <td><input type="checkbox" name="work_in_progress" value="finish_work" id="finish_work" class="employer" data-postfin="{{ post.id }}"></td>
        </tr>
      </tbody>
      {% else %}
      <tbody>
        <tr>
-         <td><a href="/user/{{ post.spartan.slug }}">{{ post.spartan.prenume }}</a></td>
-         <td><a href="/user/{{ post.spartan.slug }}">{{ post.spartan.nume }}</a></td>
+         <td><a href="/user/{{ post.spartan.slug }}">{{ post.spartan.first_name }}</a></td>
+         <td><a href="/user/{{ post.spartan.slug }}">{{ post.spartan.last_name }}</a></td>
          <td>{{ post.spartan.user.email }}</td>
-         <td>{{ post.pret }}</td>
+         <td>{{ post.price }}</td>
 	 <td onclick="window.location='{{ post.room.get_absolute_url }}';" style="cursor:pointer">Go to chat</td>
-	 <td>{{ post.spartan.user.account.telefon }}</td>
+	 <td>{{ post.spartan.user.account.phone }}</td>
          <td>Wait for spartan's confimation</td>
        </tr>
      </tbody>
@@ -90,13 +90,13 @@
        <th>Accept</th>
      </thead>
     <tbody>
-    {% if post.oferte.all %}
-    {% for oferta in post.oferte.all %}
+    {% if post.offers.all %}
+    {% for oferta in post.offers.all %}
     <tr>
-    <td> <a href="/user/{{ oferta.spartan.slug }}">{{ oferta.spartan.prenume }} </a></td>
-    <td> <a href="/user/{{ oferta.spartan.slug }}">{{ oferta.spartan.nume }} </a></td>
-    <td>{{ oferta.pret }}</td>
-    <td>{{ oferta.tip }}</td>
+    <td> <a href="/user/{{ oferta.spartan.slug }}">{{ oferta.spartan.first_name }} </a></td>
+    <td> <a href="/user/{{ oferta.spartan.slug }}">{{ oferta.spartan.last_name }} </a></td>
+    <td>{{ oferta.price }}</td>
+    <td>{{ oferta.kind }}</td>
     <td><p data-placement="top" data-toggle="tooltip" >
         <button class="btn btn-danger btn-xs hire" data-oferta="{{ oferta.id }}" data-post="{{ post.id }}" id="choose_button">
             <span class="glyphicon glyphicon-ok"></span>
@@ -140,28 +140,28 @@
 	{% if bid.post.status and bid.status and bid.post.spartan_done %}
 	<tr>
 	  <td>{{ bid.post.title }}</td>
-	  <td>{{ bid.pret }}</td>
-	  <td>{{ bid.tip }}</td>
+	  <td>{{ bid.price }}</td>
+	  <td>{{ bid.kind }}</td>
 	  <td onclick="window.location='{{ bid.post.room.get_absolute_url }}';" style="cursor: pointer;">Go to chat</td>
-	  <td> {{ bid.post.author.account.telefon }} </td>
+	  <td> {{ bid.post.author.account.phone }} </td>
 	  <td>Waiting for employer's confimations</td>
 	  </td>
 	</tr>
 	{% elif bid.post.status and bid.status %}
 	<tr>
 	  <td>{{ bid.post.title }}</td>
-	  <td>{{ bid.pret }}</td>
-	  <td>{{ bid.tip }}</td>
+	  <td>{{ bid.price }}</td>
+	  <td>{{ bid.kind }}</td>
 	  <td onclick="window.location='{{ bid.post.room.get_absolute_url }}';" style="cursor: pointer;">Go to chat</td>
-	  <td> {{ bid.post.author.account.telefon }} </td>
+	  <td> {{ bid.post.author.account.phone }} </td>
 	  <td><input type="checkbox" name="work_in_progress" value="finish_work" id="finish_work" class="spartan" data-post="{{ bid.post.id }}"></td>
 	  </td>
 	</tr>
 	{% elif not bid.post.status and not bid.status %}
 	<tr>
 	  <td>{{ bid.post.title }}</td>
-	  <td>{{ bid.pret }}</td>
-	  <td>{{ bid.tip }}</td>
+	  <td>{{ bid.price }}</td>
+	  <td>{{ bid.kind }}</td>
 	  <td> - </td>
 	  <td> - </td>
 	  <td>Offer wasn't accepted, yet.</td>
@@ -245,7 +245,7 @@
         
 
 
-              <!-- page end-->
+               <!-- page end-->
           </section>
 </section>
         </section>
@@ -255,7 +255,7 @@
         $(".hire").click(function(event){
             var oferta = $(this).data("oferta");
             var post_id = $(this).data("post");
-            $.post("/posts/", { "oferta": oferta }, function(response) {
+            $.post("/posts/", { "offer": oferta }, function(response) {
                  if (response.result == "success") {
                      console.log("success");
                      $(location).attr('href', '/posts/');
@@ -313,7 +313,6 @@
                         $("#mytable input[type=checkbox]").each(function () {
                             $(this).prop("checked", true);
                         });
-
                     } else {
                         $("#mytable input[type=checkbox]").each(function () {
                             $(this).prop("checked", false);
@@ -327,4 +326,3 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     </body>
 {% endblock %}
-

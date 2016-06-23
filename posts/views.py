@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from models import Announcement
 from categories.models import Category
-from bidding.models import Oferta
-from .forms import PostForm, LicitatieForm
+from bidding.models import Offer
+from .forms import PostForm, BiddingForm
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404
@@ -48,7 +48,7 @@ def create_post(request):
 
     form = PostForm
     return render(request, 'posts/create_post.html', {
-        'cod': curruser.account.cod,
+        'cod': curruser.account.code,
         'form': form,
         'errors': errors})
 
@@ -63,26 +63,26 @@ def post(request, slug):
             post.delete()
             return redirect('/')
 
-        form = LicitatieForm(request.POST)
+        form = BiddingForm(request.POST)
         if form.is_valid():
-            pret = form.cleaned_data['pret']
-            tip = form.cleaned_data['tip']
-            if pret > post.money:
+            price = form.cleaned_data['price']
+            kind = form.cleaned_data['kind']
+            if price > post.money:
                 errors.append(
                     'You offer more than the employer is willing to pay')
-            elif pret < 0:
+            elif price < 0:
                 errors.append('Invalid offer')
             else:
-                oferta = Oferta.objects.create(pret=pret, tip=tip,
-                                               spartan=request.user.spartan,
-                                               post=post)
-                oferta.save()
-                confirms.append('Oferta a fost trimisa')
+                offer = Offer.objects.create(price=price, kind=kind,
+                                             spartan=request.user.spartan,
+                                             post=post)
+                offer.save()
+                confirms.append('Offer was sent')
         else:
             errors.append('Form is not valid')
-    form = LicitatieForm()
+    form = BiddingForm()
     return render(request, 'posts/post.html', {
-        'cod': request.user.account.cod,
+        'cod': request.user.account.code,
         'post': post,
         'form': form,
         'errors': errors,
@@ -100,7 +100,7 @@ def edit_post(request, slug):
             form.save()
             return redirect('/post/' + post.slug)
     return render(request, 'posts/edit_post.html', {
-        'cod': request.user.account.cod,
+        'cod': request.user.account.code,
         'post': post,
         'form': form,
     })
