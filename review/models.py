@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from authentication.models import User
-from spartan.models import Spartan
+from spartans.models import Spartan
 
 
 class Review(models.Model):

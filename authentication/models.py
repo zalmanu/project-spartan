@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from django.db import models
 import md5
-from spartan.models import Spartan
+from spartans.models import Spartan
 
 
 class Account(models.Model):

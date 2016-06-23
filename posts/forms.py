@@ -21,7 +21,7 @@ class PostForm(forms.Form):
                              widget=forms.TextInput(
                                  attrs={'required': 'required'}))
     category = forms.ChoiceField(choices=[(x, x)
-                                          for x in categories()],
+                                          for x in []],
                                  label="Category", widget=forms.Select(
                     attrs={'class': "form-control input-lg m-bot15",
                            'id': "choose_category", 'required': 'required'}))

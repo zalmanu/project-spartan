@@ -12,7 +12,7 @@ urlpatterns = [
     url(r'^', include('contactUS.urls')),
     url(r'^', include('chat.urls')),
     url(r'^', include('categories.urls')),
-    url(r'^', include('spartan.urls')),
+    url(r'^', include('spartans.urls')),
     url(r'^', include('profiles.urls')),
     url(r'^', include('review.urls')),
     url(r'^', include('faq.urls')),

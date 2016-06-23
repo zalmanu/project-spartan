@@ -8,7 +8,7 @@ from django.conf import settings
 from django import forms
 
 from django.core.urlresolvers import reverse
-from spartan.models import Spartan
+from spartans.models import Spartan
 from categories.models import Category
 
 
