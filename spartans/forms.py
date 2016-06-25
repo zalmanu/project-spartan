@@ -2,13 +2,6 @@ from django import forms
 from categories.models import Category
 
 
-def categories():
-    categories = []
-    for x in Category.objects.all():
-        categories.append(x.name)
-    return categories
-
-
 class SpartanForm(forms.Form):
     first_name = forms.CharField(max_length=40, label="First name",
                                  widget=forms.TextInput(
@@ -34,7 +27,7 @@ class SpartanForm(forms.Form):
                                    widget=forms.NumberInput(
                                        attrs={'required': 'required'}))
     category = forms.ChoiceField(choices=[(x, x)
-                                          for x in []],
+                                          for x in Category.categories()],
                                  label="Category", widget=forms.Select(
             attrs={'class': "form-control input-lg m-bot15",
                    'id': "choose_category", 'required': 'required'}))

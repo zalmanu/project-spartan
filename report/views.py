@@ -7,62 +7,46 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def report(request):
+    errors = []
+    confirms = []
     curruser = request.user
+    form = ReportForm(request.POST)
     if request.method == 'POST':
         form = ReportForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
-            if request.user.username == username:
-                return render(request, 'report/report.html', {
-                    'cod': curruser.account.code,
-                    'form': form,
-                    'errors': ["This username  is your username "]})
-            status = form.cleaned_data['statut']
-            if status == 'Employer':
-                try:
-                    user = User.objects.get(username=username)
+            try:
+                user = User.objects.get(username=username)
+                if curruser.username == username:
+                    errors.append("This username  is your username")
+                else:
+                    status = form.cleaned_data['statut']
+                    if status == 'Employer':
+                        text = form.cleaned_data['text']
+                        report = Report.objects.create(username=username,
+                                                       status=status,
+                                                       text=text,
+                                                       author=curruser)
+                        report.save()
+                        confirms.append("The report was sent")
+                    else:
+                        if user.account.has_related_object():
+                            text = form.cleaned_data['text']
+                            report = Report.objects.create(username=username,
+                                                           status=status,
+                                                           text=text,
+                                                           author=curruser)
+                            report.save()
+                            confirms.append("The report was sent")
+                        else:
+                            errors.append("This user is not a spartan")
+            except User.DoesNotExist:
+                errors.append("This user does not exist")
 
-                except User.DoesNotExist:
-                    return render(request, 'report/report.html', {
-                        'cod': curruser.account.code,
-                        'form': form,
-                        'errors': ["This employer doesn't exist"]})
-            else:
-                try:
-                    user = User.objects.get(username=username)
-                    if not user.account.has_related_object():
-                        return render(request, 'report/report.html', {
-                            'cod': curruser.account.code,
-                            'form': form,
-                            'errors': ["This spartan doesn't exist"]})
-                except User.DoesNotExist:
-                    return render(request, 'report/report.html', {
-                        'cod': curruser.account.code,
-                        'form': form,
-                        'errors': ["This spartan doesn't exist"]})
-            text = form.cleaned_data['text']
-            report = Report.objects.create(username=username,
-                                           status=status,
-                                           text=text,
-                                           author=request.user,
-                                           )
-            report.save()
-            return render(request, 'report/report.html', {
-                'cod': curruser.account.code,
-                'form': form,
-                'confirm': ['The report was sent!']})
         else:
-            return render(request, 'report/report.html', {
-                'cod': curruser.account.code,
-                'form': form,
-                'errors': ['Invalid form']})
-    else:
-        form = ReportForm
-        if request.user.is_active and not request.user.is_superuser:
-            return render(request, 'report/report.html', {
-                'cod': curruser.account.code,
-                'form': form})
-        else:
-            return render(request, 'report/report.html', {
-                'cod': '61e1380365703a4c73c2480673d8993b',
-                'form': form})
+            errors.append("Invalid form")
+    return render(request, 'report/report.html', {
+        'cod': curruser.account.code,
+        'form': form,
+        'confirm': confirms,
+        'errors': errors})

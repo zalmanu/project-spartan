@@ -20,8 +20,8 @@ def register_page(request):
         return redirect('/')
     else:
         errors = []
+        form = RegisterForm(request.POST)
         if request.method == 'POST':
-            form = RegisterForm(request.POST)
             if form.is_valid():
                 username = form.cleaned_data['username']
                 if User.objects.filter(username=username).exists():
@@ -41,7 +41,6 @@ def register_page(request):
                 if len(password) < 8:
                     errors.append("Password is too short")
                 if errors:
-                    form = RegisterForm()
                     return render(request, "authentication/register.html", {
                         'form': form,
                         'errors': errors})
@@ -57,7 +56,6 @@ def register_page(request):
                 return redirect('/')
             else:
                 errors.append("Invalid form")
-    form = RegisterForm()
     return render(request, "authentication/register.html", {
                 'form': form,
                 'errors': errors})
@@ -68,8 +66,8 @@ def login_page(request):
         return redirect('/')
     else:
         errors = []
+        form = LoginForm(request.POST)
         if request.method == 'POST':
-            form = LoginForm(request.POST)
             if form.is_valid():
                 user = authenticate(username=form.cleaned_data['username'],
                                     password=form.cleaned_data['password'])
@@ -82,7 +80,6 @@ def login_page(request):
 
             else:
                 errors.append('Invalid form')
-        form = LoginForm()
         return render(request, "authentication/logIn.html", {
             'form': form,
             'errors': errors})
@@ -91,8 +88,8 @@ def login_page(request):
 @login_required
 def reset_pass(request):
     errors = []
+    form = PasswordResetForm(request.POST)
     if request.method == 'POST':
-        form = PasswordResetForm(request.POST)
         if form.is_valid():
             password_old = form.cleaned_data['oldpass']
             password_new = form.cleaned_data['pass1']
@@ -110,7 +107,6 @@ def reset_pass(request):
                 errors.append('Incorrect old password')
         else:
             errors.append('Invalid form')
-    form = PasswordResetForm
     return render(request, "authentication/resetpass.html",
                   {'form': form,
                    'cod': request.user.account.code,
