@@ -21,7 +21,7 @@ class PostForm(forms.Form):
                              widget=forms.TextInput(
                                  attrs={'required': 'required'}))
     category = forms.ChoiceField(choices=[(x, x)
-                                          for x in categories()],
+                                          for x in []],
                                  label="Category", widget=forms.Select(
                     attrs={'class': "form-control input-lg m-bot15",
                            'id': "choose_category", 'required': 'required'}))
@@ -47,18 +47,17 @@ class PostForm(forms.Form):
                                    attrs={'required': 'required'}))
 
 
-class LicitatieForm(forms.Form):
-    pret = forms.IntegerField(validators=[MinValueValidator(1),
-                                          MaxValueValidator(
-                                              9223372036854775807)],
-                              label="Liciteaza:",
-                              widget=forms.TextInput(
+class BiddingForm(forms.Form):
+    price = forms.IntegerField(validators=[MinValueValidator(1),
+                                           MaxValueValidator(
+                                               9223372036854775807)],
+                               widget=forms.TextInput(
                                   attrs={'class': "form-control",
                                          'id': "bid-input",
                                          'aria-describedby': "start-date",
                                          'required': 'required'}))
-    tip = forms.ChoiceField(choices=[(x, x) for x in ['/job', '/hour']],
-                            widget=forms.Select(
+    kind = forms.ChoiceField(choices=[(x, x) for x in ['/job', '/hour']],
+                             widget=forms.Select(
                                 attrs={
                                     'class':
                                         "form-control input-lg m-bot15 "

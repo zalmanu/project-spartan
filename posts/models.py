@@ -8,7 +8,7 @@ from django.conf import settings
 from django import forms
 
 from django.core.urlresolvers import reverse
-from spartan.models import Spartan
+from spartans.models import Spartan
 from categories.models import Category
 
 
@@ -31,7 +31,7 @@ class Announcement(models.Model):
                                 null=True)
     spartan = models.ForeignKey(Spartan, related_name='anunturi', null=True,
                                 blank=True)
-    pret = models.IntegerField(null=True, blank=True)
+    price = models.IntegerField(null=True, blank=True)
     status = models.BooleanField(default=False)
     employer_done = models.BooleanField(default=False)
     spartan_done = models.BooleanField(default=False)
