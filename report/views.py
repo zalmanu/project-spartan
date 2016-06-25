@@ -10,13 +10,14 @@ def report(request):
     errors = []
     confirms = []
     curruser = request.user
+    form = ReportForm(request.POST)
     if request.method == 'POST':
         form = ReportForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
             try:
                 user = User.objects.get(username=username)
-                if request.user.username == username:
+                if curruser.username == username:
                     errors.append("This username  is your username")
                 else:
                     status = form.cleaned_data['statut']
@@ -25,7 +26,7 @@ def report(request):
                         report = Report.objects.create(username=username,
                                                        status=status,
                                                        text=text,
-                                                       author=request.user)
+                                                       author=curruser)
                         report.save()
                         confirms.append("The report was sent")
                     else:
@@ -34,7 +35,7 @@ def report(request):
                             report = Report.objects.create(username=username,
                                                            status=status,
                                                            text=text,
-                                                           author=request.user)
+                                                           author=curruser)
                             report.save()
                             confirms.append("The report was sent")
                         else:
@@ -44,7 +45,6 @@ def report(request):
 
         else:
             errors.append("Invalid form")
-    form = ReportForm
     return render(request, 'report/report.html', {
         'cod': curruser.account.code,
         'form': form,
