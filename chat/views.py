@@ -10,6 +10,7 @@ from forms import SendMessageForm
 def room(request, slug):
     errors = []
     room = get_object_or_404(Room, slug=slug)
+    form = SendMessageForm(request.POST)
     if room.spartan != request.user and room.employer != request.user:
         return HttpResponseForbidden()
     if room.employer == request.user:
@@ -17,7 +18,6 @@ def room(request, slug):
     else:
         other = room.employer
     if request.method == "POST":
-        form = SendMessageForm(request.POST)
         if form.is_valid():
             message = form.cleaned_data['message']
             if message is not None:
@@ -25,7 +25,6 @@ def room(request, slug):
                                        submitter=request.user)
         else:
             errors.append('Invalid message')
-    form = SendMessageForm()
     return render(request, 'chat/chat.html', {
         'room': room,
         'messages': room.messages.all(),
@@ -44,6 +43,3 @@ def rooms(request):
                'empl_messages': empl_messages.all(),
                'cod': user.account.code}
     return render(request, 'chat/rooms.html', context)
-
-
-

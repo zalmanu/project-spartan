@@ -13,13 +13,13 @@ from categories.models import Category
 def spartan(request):
     errors = []
     confirms = []
+    form = SpartanForm(request.POST)
     if request.method == 'POST':
         if request.user.account.has_related_object():
             return render(request, 'spartan/spartan.html',
                           {'cod': request.user.account.code,
                            'form': SpartanForm(),
                            'errors': ['You already submitted the form']})
-        form = SpartanForm(request.POST)
         if form.is_valid():
             last_name = form.cleaned_data['last_name']
             first_name = form.cleaned_data['first_name']
@@ -49,7 +49,6 @@ def spartan(request):
 
         else:
             errors.append('Invalid form')
-    form = SpartanForm()
     return render(request, 'spartan/spartan.html', {
         'cod': request.user.account.code,
         'form': form,

@@ -14,8 +14,8 @@ from .models import EditPostForm
 def create_post(request):
     curruser = request.user
     errors = []
+    form = PostForm(request.POST)
     if request.method == 'POST':
-        form = PostForm(request.POST)
         if form.is_valid():
             title = form.cleaned_data['title']
             post_text = form.cleaned_data['text']
@@ -45,8 +45,6 @@ def create_post(request):
             return redirect(posturl)
         else:
             errors.append('Invalid form')
-
-    form = PostForm
     return render(request, 'posts/create_post.html', {
         'cod': curruser.account.code,
         'form': form,
