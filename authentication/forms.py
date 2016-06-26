@@ -1,5 +1,6 @@
 from django import forms
 from captcha.fields import ReCaptchaField
+from phonenumber_field.formfields import PhoneNumberField
 
 
 class LoginForm(forms.Form):
@@ -37,8 +38,9 @@ class RegisterForm(forms.Form):
                                  'class': "form-control input-lg m-bot15",
                                  'id': "choose_category",
                                  'required': 'required'}))
-    phone = forms.IntegerField(label='Phone number', widget=forms.NumberInput(
-        attrs={'required': 'required'}))
+    phone = PhoneNumberField(label='Phone number(starts with +prefix)',
+                             widget=forms.NumberInput(
+                                 attrs={'required': 'required'}))
     captcha = ReCaptchaField()
 
 
