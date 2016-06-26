@@ -8,8 +8,8 @@ from .forms import ContactUSForm
 def contactUS(request):
     confirm = []
     errors = []
+    form = ContactUSForm(request.POST)
     if request.method == 'POST':
-        form = ContactUSForm(request.POST)
         if form.is_valid():
             first_name = form.cleaned_data['first_name']
             last_name = form.cleaned_data['last_name']
@@ -34,7 +34,6 @@ def contactUS(request):
                 'Your message has been successfully sent!\nThank you!')
         else:
             errors.append('Invalid form')
-    form = ContactUSForm()
     return render(request, 'contactUS/contactUS.html',
                   {'form': form,
                    'errors': errors,
