@@ -139,7 +139,7 @@
 	{% for bid in bids %}
 	{% if bid.post.status and bid.status and bid.post.spartan_done %}
 	<tr>
-	  <td>{{ bid.post.title }}</td>
+	  <td onclick="window.location='{{ bid.post.get_absolute_url }}';" style="cursor: pointer;">{{ bid.post.title }}</td>
 	  <td>{{ bid.price }}</td>
 	  <td>{{ bid.kind }}</td>
 	  <td onclick="window.location='{{ bid.post.room.get_absolute_url }}';" style="cursor: pointer;">Go to chat</td>
@@ -149,7 +149,7 @@
 	</tr>
 	{% elif bid.post.status and bid.status %}
 	<tr>
-	  <td>{{ bid.post.title }}</td>
+	  <td onclick="window.location='{{ bid.post.get_absolute_url }}';" style="cursor: pointer;">{{ bid.post.title }}</td>
 	  <td>{{ bid.price }}</td>
 	  <td>{{ bid.kind }}</td>
 	  <td onclick="window.location='{{ bid.post.room.get_absolute_url }}';" style="cursor: pointer;">Go to chat</td>

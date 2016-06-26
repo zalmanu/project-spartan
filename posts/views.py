@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
+from django.http import Http404
 from models import Announcement
 from categories.models import Category
 from bidding.models import Offer
@@ -53,7 +54,10 @@ def create_post(request):
 
 @login_required
 def post(request, slug):
-    post = get_object_or_404(Announcement, slug=slug, status=False)
+    post = get_object_or_404(Announcement, slug=slug)
+    if post.status and request.user != post.author and \
+       request.user != post.spartan.user:
+        raise Http404()
     errors = []
     confirms = []
     if request.method == 'POST':
