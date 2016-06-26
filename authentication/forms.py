@@ -39,7 +39,7 @@ class RegisterForm(forms.Form):
                                  'id': "choose_category",
                                  'required': 'required'}))
     phone = PhoneNumberField(label='Phone number(starts with +prefix)',
-                             widget=forms.NumberInput(
+                             widget=forms.TextInput(
                                  attrs={'required': 'required'}))
     captcha = ReCaptchaField()
 
