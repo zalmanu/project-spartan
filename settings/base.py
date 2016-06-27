@@ -17,6 +17,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'captcha',
     'widget_tweaks',
+    'phonenumber_field',
 
     # Usual apps
     'authentication',

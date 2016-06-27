@@ -207,7 +207,7 @@ pp
                                     <section class="panel">
                                           <div class="panel-body bio-graph-info">
                                             <h1> Profile Info</h1>
-					  	{% if form.errors %}
+					  	{% if form.errors or form_acc.errors %}
 						<div class="error">
 						  {% for field in form %}
 						  {% for message in field.errors %}
@@ -216,7 +216,6 @@ pp
 						  </ul>
 						  {% endfor %}
 						  {% endfor %}
-						  {% if form_acc.errors %}
 						  {% for field in form_acc %}
 						  {% for message in field.errors %}
 						  <ul>
@@ -224,7 +223,6 @@ pp
 						  </ul>
 						  {% endfor %}
 						  {% endfor %}
-						  {% endif %}
 						</div>
 						{% endif %}
                                               <form class="form-horizontal" role="form" method="POST">
