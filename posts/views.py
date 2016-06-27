@@ -2,54 +2,27 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.http import Http404
 from models import Announcement
-from categories.models import Category
 from bidding.models import Offer
-from .forms import PostForm, BiddingForm
+from .forms import BiddingForm
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404
-from .models import EditPostForm
+from .models import EditPostForm, CreatePostForm
 
 
 @login_required
 def create_post(request):
     curruser = request.user
-    errors = []
-    form = PostForm(request.POST)
+    form = CreatePostForm(data=request.POST or None)
     if request.method == 'POST':
         if form.is_valid():
-            title = form.cleaned_data['title']
-            post_text = form.cleaned_data['text']
-            adress = form.cleaned_data['adress']
-            country = form.cleaned_data['country']
-            city = form.cleaned_data['city']
-            category = form.cleaned_data['category']
-            time = form.cleaned_data['timePost']
-            time = ":".join(map(lambda item: item.strip(), time.split(":")))
-            data_post = form.cleaned_data['data']
-            money_user = form.cleaned_data['price']
-            category_object = get_object_or_404(Category, name=category)
-            announcement = Announcement.objects.create(title=title,
-                                                       text=post_text,
-                                                       address=adress,
-                                                       country=country,
-                                                       money=money_user,
-                                                       city=city,
-                                                       data=data_post,
-                                                       timePost=time,
-                                                       author=request.user,
-                                                       category=category_object
-                                                       )
-            announcement.save()
-            announcement.creation_email(curruser)
-            posturl = announcement.get_absolute_url()
-            return redirect(posturl)
-        else:
-            errors.append('Invalid form')
+            form.instance.author = curruser
+            form.save()
+            form.instance.creation_email(curruser)
+            return redirect(form.instance.get_absolute_url())
     return render(request, 'posts/create_post.html', {
         'cod': curruser.account.code,
-        'form': form,
-        'errors': errors})
+        'form': form})
 
 
 @login_required

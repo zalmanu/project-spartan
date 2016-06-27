@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
+{% load widget_tweaks %}
 <body onload="zoom()">
 	<script type="text/javascript">
         function zoom() {
@@ -21,22 +22,24 @@
 
                             <form method="POST">
 			      {% csrf_token %}
-			      {% if errors %}
-				<div class="error">
-				  {% for message in errors %}
+			      {% if form.errors %}
+			      <div class="error">
+				{% for field in form %}
+				  {% for message in field.errors %}
 				  <ul>
 				    <li>{{ message }}</li>
 				  </ul>
+				  {% endfor %}
 				  {% endfor %}
 				</div>
 				{% endif %}
 				{% for field in form %}
                                <div class="input-container">
-				    {{ field }}
+				    {{ field |add_class:"form-control"| attr:"required:required" }}
 				    {% if field.label != 'Category' and field.label != 'City' and field.label != 'Country' %}
                                     <label for="Username">{{ field.label }}</label>
+				    <div class="bar"></div>
 				    {% endif %}
-                                    <div class="bar"></div>
                                 </div>
 			       {% endfor %}
                                 <div class="button-container">
