@@ -54,8 +54,6 @@ def register_page(request):
                 user = authenticate(username=username, password=password)
                 login(request, user)
                 return redirect('/')
-            else:
-                errors.append("Invalid form")
     return render(request, "authentication/register.html", {
                 'form': form,
                 'errors': errors})
