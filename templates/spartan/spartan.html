@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
+{% load widget_tweaks %}
 <body onload="zoom()">
 	<script type="text/javascript">
         function zoom() {
@@ -33,12 +34,14 @@
                             <div class="col-12 font-thin categories-gallery"><br></br>Become a <span class="font-semibold">Spartan</span></div>
                     </div>
                     <div class="slide story" id="slide-6" data-slide="6">
-		      {% if errors %}
+		      {% if form.errors %}
 		      <div class="error">
-			{% for message in errors %}
+			{% for field in form %}
+			{% for message in field.errors  %}
 			<ul>
 			  <li>{{ message }}</li>
 			</ul>
+			{% endfor %}
 			{% endfor %}
 		      </div>
 		      {% elif confirms %}
@@ -55,22 +58,17 @@
                           <div class="card"></div>
                           <div class="card" id="login-box">
                               <h1 class="title">Please enter:</h1>
-                            <form method="POST">
-			      {% csrf_token %}
-			      {% for field in form %}
+                    <form method="POST">
+		      {% csrf_token %}
+		      {% for field in form %}
                     <div class="input-container">
-                        {% if field.label == 'Captcha' %}
-                             <div class=".g-recaptcha" style="width: 304px;height: 78px;margin: auto;" >{{ field }}</div>
-                        {% else %}
-                            {{ field }}
-                        {% endif %}
-
-		      {% if field.label != "Category" and  field.label != "Captcha"%}
+		      {{ field |add_class:"form-control"| attr:"required:required" }}
+		      {% if field.label != "Category" %}
                       <label for="{{ field.label }}">{{ field.label }}</label>
 		      {% endif %}
-                        {% if field.label != 'Captcha' %}
+                      {% if field.label != 'Category' %}
                         <div class="bar"></div>
-                        {% endif %}
+                      {% endif %}
                     </div>
 		    {% endfor %}
                                 <div class="button-container">

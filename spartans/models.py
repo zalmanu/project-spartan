@@ -1,24 +1,28 @@
 from __future__ import unicode_literals
+import hashlib
 import uuid
 
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.conf import settings
+from django import forms
+from django.shortcuts import get_object_or_404
+from django.core.urlresolvers import reverse
 
 from categories.models import Category
-from django.core.urlresolvers import reverse
 
 
 class Spartan(models.Model):
     last_name = models.CharField(max_length=40)
     first_name = models.CharField(max_length=40)
-    birthday = models.DateField(null=True)
+    birthday = models.DateField('Date FORMAT YYYY-MM-DD', null=True)
     address = models.CharField(null=True, max_length=500)
-    cnp = models.IntegerField(null=True)
-    series = models.CharField(max_length=30, null=True)
-    cui = models.CharField(max_length=30, null=True)
-    bank_account = models.CharField(max_length=30, null=True)
+    cnp = models.IntegerField('CNP', null=True)
+    series = models.CharField('ID card series', max_length=30, null=True)
+    cui = models.CharField('CUI', max_length=30, null=True)
+    bank = models.CharField('Bank account', max_length=60,
+                            null=True)
     category = models.ForeignKey(Category, null=True)
     user = models.OneToOneField(User, primary_key=True, default='')
     spartanStatus = models.BooleanField(default=False)
@@ -45,3 +49,28 @@ class Spartan(models.Model):
         from_email = settings.EMAIL_HOST_USER
         send_mail(subject, messagetip, from_email,
                   [self.user.email], fail_silently=True)
+
+
+class CreateSpartanForm(forms.ModelForm):
+
+    category = forms.ChoiceField(choices=[(x, x)
+                                          for x in Category.categories()])
+
+    class Meta:
+        model = Spartan
+        fields = ['first_name', 'last_name', 'birthday', 'address',
+                  'cnp', 'series', 'cui', 'bank', 'category']
+
+    def clean_bank(self):
+        bank_account = self.cleaned_data['bank']
+        if len(bank_account) != 16:
+            raise forms.ValidationError("Bank account must be"
+                                        " 16 characters long")
+        else:
+            bank_account = hashlib.sha224(bank_account).hexdigest()
+        return bank_account
+
+    def clean_category(self):
+        cat_name = self.cleaned_data['category']
+        category = get_object_or_404(Category, name=cat_name)
+        return category
