@@ -13,7 +13,7 @@ def spartan(request):
         if not request.user.account.has_related_object() and form.is_valid():
             form.instance.user = request.user
             form.save()
-#            form.instance.activation_email()
+            form.instance.activation_email()
             confirm.append('You\'ve completed the form, '
                            'wait for admin\'s confirmation')
     return render(request, 'spartan/spartan.html', {

@@ -1,7 +1,6 @@
 from django.shortcuts import render
-from .forms import LoginForm, RegisterForm, PasswordResetForm
-import authentication.models
-from django.contrib.auth.models import User
+from .forms import LoginForm, PasswordResetForm
+from .models import UserRegisterForm, AccountRegisterForm
 from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
@@ -16,49 +15,22 @@ def logout_view(request):
 
 
 def register_page(request):
-    if request.user.is_authenticated():
-        return redirect('/')
-    else:
-        errors = []
-        form = RegisterForm(request.POST)
-        if request.method == 'POST':
-            if form.is_valid():
-                username = form.cleaned_data['username']
-                if User.objects.filter(username=username).exists():
-                    errors.append("Username is already taken")
-                password = form.cleaned_data['password']
-                password2 = form.cleaned_data['password2']
-                email = form.cleaned_data['email']
-                if User.objects.filter(email=email).exists():
-                    errors.append("Email is already taken")
-                city = form.cleaned_data['city']
-                country = form.cleaned_data['country']
-                phone = form.cleaned_data['phone']
-                if password.isdigit():
-                    errors.append("Password is entirely numeric")
-                if password != password2:
-                    errors.append("Passwords do not match")
-                if len(password) < 8:
-                    errors.append("Password is too short")
-                if errors:
-                    return render(request, "authentication/register.html", {
-                        'form': form,
-                        'errors': errors})
-                new_user = User.objects.create_user(username, email, password)
-                new_user.save()
-                account = authentication.models.Account.objects.create(
-                    user=new_user, city=city, country=country,
-                    phone=phone)
-                account.code = account.gravatar_photo()
-                account.save()
-                user = authenticate(username=username, password=password)
-                login(request, user)
-                return redirect('/')
-            else:
-                errors.append("Invalid form")
+    form = UserRegisterForm(data=request.POST or None)
+    acc_form = AccountRegisterForm(data=request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid() and acc_form.is_valid():
+            form.save()
+            acc_form.instance.user = form.instance
+            acc_form.instance.code = acc_form.instance.gravatar_photo()
+            acc_form.save()
+            user = authenticate(username=form.instance.username,
+                                password=form.instance.password)
+            login(request, user)
+            return redirect('/')
     return render(request, "authentication/register.html", {
                 'form': form,
-                'errors': errors})
+                'acc_form': acc_form
+        })
 
 
 def login_page(request):
