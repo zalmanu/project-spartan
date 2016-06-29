@@ -24,13 +24,15 @@
                               <h1 class="title">Enter: </h1>
                             <form method="POST">
 			      {% csrf_token %}
-			      {% if errors %}
+			      {% if form.errors %}
 				<div class="error">
-				  {% for message in errors %}
+				  {% for field in form %}
+				  {% for message in field.errors %}
 				  <ul>
 				    <li>{{ message }}</li>
 				  </ul>
-				  {% endfor %}                        
+				  {% endfor %}
+				  {% endfor %}
 				</div>
 				{% endif %}
 				{% for field in form %}
