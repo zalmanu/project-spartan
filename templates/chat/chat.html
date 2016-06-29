@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
+{% load widget_tweaks %}
 <body onload="zoom()">
 	<script type="text/javascript">
         function zoom() {
@@ -33,7 +34,7 @@
 		  </ol>
 		  <form method="POST">
 		  {% csrf_token %}
-                   {{ form.message }}
+                   {{ form.message|add_class:'textarea'|attr:"placeholder: Type here!" }}
 		 </form>  
                 </div>
     </section>

@@ -67,7 +67,7 @@ class AccountRegisterForm(forms.ModelForm):
 
     city = forms.ChoiceField(choices=[(x, x) for x in ['Timisoara']])
     country = forms.ChoiceField(choices=[(x, x) for x in ['Romania']])
-#    captcha = ReCaptchaField()
+    captcha = ReCaptchaField()
 
     class Meta:
         model = Account
