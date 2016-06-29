@@ -1,6 +1,7 @@
 {% extends 'baseContact.html' %}
 {% load staticfiles %}
 {% block content %}
+{% load widget_tweaks %}
 <section class="wrap" id="first-section">
         <div class="row title-row">
 				<div class="col-12 font-thin
@@ -28,13 +29,15 @@
                     {% endfor %}
                     </div>
 		    {% endif %}
-              {% if errors %}
+              {% if form.errors %}
                     <div class="error">
-		      {% for message in errors %}
+		      {% for field in form %}
+		      {% for message in field.errors %}
                         <ul>
                             <li>{{ message }}</li>
                         </ul>
-                    {% endfor %}
+			{% endfor %}
+			{% endfor %}
                     </div>
 		    {% endif %}
                 <form method="POST" enctype="multipart/form-data">
@@ -43,7 +46,7 @@
 		    {% for field in form %}
                     <div class="input-container">
 		      {{ field }}
-               {% if field.label != "Captcha" %}
+		      {% if field.label != "Captcha" %}
 
                       <label for="{{ field.label }}">{{ field.label }}</label>
                         <div class="bar"></div>
