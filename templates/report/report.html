@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
+{% load widget_tweaks %}
 <body onload="zoom()">
 	<script type="text/javascript">
         function zoom() {
@@ -31,12 +32,14 @@
 				</div>
 				{% endif %}
 
-                                {% if errors %}
+                                {% if form.errors %}
 				<div class="error">
-				  {% for message in errors %}
+				  {% for field in form %}
+				  {% for message in field.errors %}
 				  <ul>
 				    <li>{{ message }}</li>
 				  </ul>
+				  {% endfor %}
 				  {% endfor %}
 				</div>
 				{% endif %}
@@ -44,14 +47,18 @@
                     <div class="input-container">
                         {% if field.label == 'Captcha' %}
                              <div class=".g-recaptcha" style="width: 304px;height: 78px;margin: auto; ">{{ field }}</div>
-                        {% else %}
-                            {{ field }}
+                             {% else %}
+			     {% if field.label == "Status" %}
+                             {{ field|add_class:"form-control input-lg m-bot15"|attr:"required: required"}}
+			     {% else %}
+			     {{ field|attr:"required:required" }}
+			     {% endif %}
                         {% endif %}
 
-		      {% if field.label != "Report" and  field.label != "Captcha" and field.label != "Spartan" and field.label != "Employer"%}
+		      {% if field.label != "Status" and  field.label != "Captcha" and field.label != "Spartan" and field.label != "Employer"%}
                       <label for="{{ field.label }}">{{ field.label }}</label>
 		      {% endif %}
-                        {% if field.label != 'Captcha' %}
+                        {% if field.label != 'Captcha' and field.label != "Status" %}
                         <div class="bar"></div>
                         {% endif %}
                     </div>
