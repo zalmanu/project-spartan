@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
+{% load widget_tweaks %}
 <body onload="zoom()">
 	<script type="text/javascript">
         function zoom() {
@@ -96,12 +97,14 @@
                           <div class="panel-body">
                               <div class="tab-content">
                                 <div id="recent-activity" class="tab-pane active">
-				  {% if errors %}
+				  {% if form.errors %}
 				  <div class="error">
-				      {% for message in errors %}
+				    {% for field in form %}
+				      {% for message in field.errors %}
 				      <ul>
 					<li>{{ message }}</li>
 				      </ul>
+				      {% endfor %}
 				      {% endfor %}
 				    </div>
 				    {% elif confirms %}
@@ -118,9 +121,9 @@
 				      {% csrf_token %}
                                           <label class="control-label">{{ form.price.label }}</label>
                                           <div class="input-group" id="bidding-input-group">
-					    {{ form.price }}
-                                              <span class="input-group-addon" id="start-date"><span>EUR</span></span>
-					    {{ form.kind }}
+					    {{ form.price |add_class:"form-control input-lg m-bot15 bid-sort"|attr:"id: sorty-by"|attr:"required: required" }}
+                                              <span class="input-group-addon"></span>
+					    {{ form.kind|add_class:"form-control"|attr:"bid-input"| attr:"aria-describedby: start_date"| attr:"required: required"}}
                                           </div>
                                           <button id="bid-button">Bid!</button>
                                   </div>

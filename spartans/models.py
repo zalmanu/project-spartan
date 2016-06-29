@@ -45,7 +45,7 @@ class Spartan(models.Model):
                          self.user.username, self.last_name, self.first_name,
                          self.birthday, self.address,
                          self.cnp, self.series, self.cui,
-                         self.bank_account, self.category.name)
+                         self.bank, self.category.name)
         from_email = settings.EMAIL_HOST_USER
         send_mail(subject, messagetip, from_email,
                   [self.user.email], fail_silently=True)
