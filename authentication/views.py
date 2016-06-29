@@ -19,12 +19,14 @@ def register_page(request):
     acc_form = AccountRegisterForm(data=request.POST or None)
     if request.method == 'POST':
         if form.is_valid() and acc_form.is_valid():
+            form.instance.set_password(form.cleaned_data['password'])
             form.save()
             acc_form.instance.user = form.instance
+            acc_form.save()
             acc_form.instance.code = acc_form.instance.gravatar_photo()
             acc_form.save()
             user = authenticate(username=form.instance.username,
-                                password=form.instance.password)
+                                password=form.cleaned_data['password'])
             login(request, user)
             return redirect('/')
     return render(request, "authentication/register.html", {
