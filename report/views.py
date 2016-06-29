@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from models import Report
-from .forms import ReportForm
+from models import Report, CreateReportForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
