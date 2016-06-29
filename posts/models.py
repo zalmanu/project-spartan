@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 import uuid
 
 from django.db import models
+from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.conf import settings
@@ -14,7 +15,8 @@ from categories.models import Category
 
 class Announcement(models.Model):
     title = models.CharField(null=True, max_length=256)
-    text = models.CharField(null=True, max_length=500)
+    text = models.CharField('Announcement description',
+                            null=True, max_length=500)
     slug = models.SlugField(default=uuid.uuid1, unique=True)
     author = models.ForeignKey(to=User, related_name='posts',
                                null=True, blank=True)
@@ -70,3 +72,27 @@ class EditPostForm(forms.ModelForm):
         model = Announcement
         fields = ['title', 'text', 'address', 'country',
                   'city', 'data', 'timePost', 'money']
+
+
+class CreatePostForm(forms.ModelForm):
+
+    city = forms.ChoiceField(choices=[(x, x) for x in ['Timisoara']])
+    country = forms.ChoiceField(choices=[(x, x) for x in ['Romania']])
+    category = forms.ChoiceField(choices=[(x, x)
+                                          for x in Category.categories()])
+
+    class Meta:
+        model = Announcement
+        fields = ['title', 'text', 'address', 'country',
+                  'city', 'data', 'timePost', 'money', 'category']
+
+    def clean_category(self):
+        category = get_object_or_404(Category,
+                                     name=self.cleaned_data['category'])
+        return category
+
+    def clean_money(self):
+        money = self.cleaned_data['money']
+        if money < 1 or money > 9223372036854775807:
+            raise forms.ValidationError('Enter a valid price')
+        return money
