@@ -1,5 +1,14 @@
-
 import os
+from django.core.exceptions import ImproperlyConfigured
+
+
+def get_env_variable(var_name):
+    try:
+        return os.environ[var_name]
+    except KeyError:
+        error_msg = "Set the %s environment variable" % var_name
+        raise ImproperlyConfigured(error_msg)
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -76,13 +85,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Spartan.wsgi.application'
 
 
-DATABASES = {
-     'default': {
-         'ENGINE': 'django.db.backends.sqlite3',
-         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticcollected")
@@ -132,18 +134,11 @@ NOCAPTCHA = True
 RECAPTCHA_USE_SSL = False
 
 
-# SECRET_KEY
-SECRET_KEY = os.getenv('SPARTAN_SECRET_KEY', '')
-
-# RECAPTCHA
-RECAPTCHA_PUBLIC_KEY = os.getenv('SPARTAN_RECAP_PUBLIC', '')
-RECAPTCHA_PRIVATE_KEY = os.getenv('SPARTAN_RECAP_PRIVATE', '')
 
 
-# email settings
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = os.getenv('SPARTAN_HOST_USER', '')  # insert email
-EMAIL_HOST_PASSWORD = os.getenv('SPARTAN_HOST_PASSWORD', '')  # insert password
-EMAIL_PORT = 587
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+
+
+
+
+
