@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'report',
     'errorPages',
     'aboutUS',
+    'realtime',
 
 )
 
@@ -111,6 +112,13 @@ AUTH_PASSWORD_VALIDATORS = [
         'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "asgiref.inmemory.ChannelLayer",
+        "ROUTING": "realtime.routing.channel_routing",
+    },
+}
 
 DATE_FORMAT = 'd/m/Y'
 
