@@ -5,6 +5,7 @@ from django import forms
 from django.db import models
 from django.contrib.auth.models import User
 from captcha.fields import ReCaptchaField
+from phonenumber_field.modelfields import PhoneNumberField
 
 from spartans.models import Spartan
 
@@ -13,7 +14,7 @@ class Account(models.Model):
     user = models.OneToOneField(User, primary_key=True)
     city = models.CharField(max_length=100)
     country = models.CharField(max_length=36, null=True)
-    phone = models.IntegerField(null=True)
+    phone = PhoneNumberField(null=True)
     code = models.CharField(max_length=100, null=True, blank=True)
 
     def has_related_object(self):

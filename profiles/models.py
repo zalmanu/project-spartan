@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django import forms
 from django.contrib.auth.models import User
+
 from authentication.models import Account
 
 
@@ -44,4 +45,5 @@ class Account_Edit(forms.ModelForm):
             'country': forms.Select(attrs={'class':
                                            'form-control input-lg m-bot15',
                                            'id': 'choose_category'}),
+            'phone': forms.TextInput(attrs={'required': 'required'})
         }

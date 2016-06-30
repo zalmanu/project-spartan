@@ -33,7 +33,7 @@
                         </ul>
 			{% endfor %}
 			{% endfor %}
-			{% for field in acc_form.errors %}
+			{% for field in acc_form %}
 			{% for message in field.errors %}
 			<ul>
 			  <li> {{ message }} </li>

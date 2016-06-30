@@ -1,10 +1,8 @@
-import datetime
-
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect
 
-from .models import Review, UrlUnique, CreateReviewForm
+from .models import UrlUnique, CreateReviewForm
 from authentication.models import Spartan
 
 
