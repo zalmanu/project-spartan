@@ -36,12 +36,12 @@ class Spartan(models.Model):
     def activation_email(self):
         subject = 'Spartan activation'
         email = " Hi! % s , \n You submitted the form" \
-                     " for becoming a spartan!\n" \
-                     " Last name : %s ,\n First name : %s \n Birthday: %s \n" \
-                     " Address : %s \n CNP: %s \n Serie: %s \n" \
-                     " CUI : %s \n Bank account: %s \n " \
-                     "Ability: %s \n  An admin will respond soon. " \
-                     " - Team Spartan" % (
+                " for becoming a spartan!\n" \
+                " Last name : %s ,\n First name : %s \n Birthday: %s \n" \
+                " Address : %s \n CNP: %s \n Serie: %s \n" \
+                " CUI : %s \n Bank account: %s \n " \
+                "Ability: %s \n  An admin will respond soon. " \
+                " - Team Spartan" % (
                          self.user.username, self.last_name, self.first_name,
                          self.birthday, self.address,
                          self.cnp, self.series, self.cui,
