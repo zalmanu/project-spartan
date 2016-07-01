@@ -18,6 +18,7 @@ urlpatterns = [
     url(r'^', include('faq.urls')),
     url(r'^', include('report.urls')),
     url(r'^', include('aboutUS.urls')),
+    url(r'^search/', include('haystack.urls')),
 
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
