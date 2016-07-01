@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import CreateContact
 
 
-def contactUS(request):
+def contact_us(request):
     confirm = []
     form = CreateContact(request.POST or None)
     if request.method == 'POST':
@@ -10,6 +10,6 @@ def contactUS(request):
             form.save()
             confirm.append(
                 'Your message has been successfully sent!\nThank you!')
-    return render(request, 'contactUS/contactUS.html',
+    return render(request, 'contact_us/contact_us.html',
                   {'form': form,
                    'confirm': confirm})

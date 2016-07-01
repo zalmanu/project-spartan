@@ -9,7 +9,7 @@ urlpatterns = [
     url(r'^', include('homepages.urls')),
     url(r'^', include('posts.urls')),
     url(r'^', include('bidding.urls')),
-    url(r'^', include('contactUS.urls')),
+    url(r'^', include('contact_us.urls')),
     url(r'^', include('chat.urls')),
     url(r'^', include('categories.urls')),
     url(r'^', include('spartans.urls')),

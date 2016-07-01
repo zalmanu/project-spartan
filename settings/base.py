@@ -33,7 +33,7 @@ INSTALLED_APPS = (
     'homepages',
     'posts',
     'bidding',
-    'contactUS',
+    'contact_us',
     'chat',
     'categories',
     'spartans',
