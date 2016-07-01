@@ -9,7 +9,8 @@ from models import Room, CreateMessageForm
 def room(request, slug):
     chat_room = get_object_or_404(Room, slug=slug)
     form = CreateMessageForm(data=request.POST or None)
-    if chat_room.spartan != request.user and chat_room.employer != request.user:
+    if chat_room.spartan != request.user and \
+       chat_room.employer != request.user:
         return HttpResponseForbidden()
     if chat_room.employer == request.user:
         other = chat_room.spartan
