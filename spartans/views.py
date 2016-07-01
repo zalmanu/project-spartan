@@ -24,10 +24,10 @@ def spartan(request):
 
 @login_required
 def user(request, slug):
-    curent_spartan = get_object_or_404(Spartan, slug=slug)
+    current_spartan = get_object_or_404(Spartan, slug=slug)
     return render(request, 'spartan/SpartanPage.html', {
-        'reviews': curent_spartan.reviews,
-        'spartan': curent_spartan,
-        'img_spartan': curent_spartan.user.account.code,
+        'reviews': current_spartan.reviews,
+        'spartan': current_spartan,
+        'img_spartan': current_spartan.user.account.code,
         'cod': request.user.account.code,
     })
