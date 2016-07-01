@@ -42,7 +42,7 @@ INSTALLED_APPS = (
     'faq',
     'report',
     'errorPages',
-    'aboutUS',
+    'about_us',
 
 )
 

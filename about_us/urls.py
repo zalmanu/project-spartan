@@ -2,6 +2,6 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(r'^aboutus/$', views.aboutUS, name='contact'),
+    url(r'^aboutus/$', views.about_us, name='contact'),
 
 ]

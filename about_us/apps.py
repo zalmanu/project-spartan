@@ -4,4 +4,4 @@ from django.apps import AppConfig
 
 
 class AboutusConfig(AppConfig):
-    name = 'aboutUS'
+    name = 'about_us'
