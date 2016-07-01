@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="height:200px;">
+</div>
+<form type="get" action=".">
+    <input type="text" name="q">
+    <button type="submit">Search</button>
+</form>
+
+{% for note in posts %}
+<h1>{{ note.title }}</h1>
+<p>
+    {{ note.text }}
+</p>
+{% endfor %}
+{% endblock %}
