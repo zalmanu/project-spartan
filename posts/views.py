@@ -11,16 +11,16 @@ from .models import EditPostForm, CreatePostForm
 
 @login_required
 def create_post(request):
-    curruser = request.user
+    current_user = request.user
     form = CreatePostForm(data=request.POST or None)
     if request.method == 'POST':
         if form.is_valid():
-            form.instance.author = curruser
+            form.instance.author = current_user
             form.save()
-            form.instance.creation_email(curruser)
+            form.instance.creation_email(current_user)
             return redirect(form.instance.get_absolute_url())
     return render(request, 'posts/create_post.html', {
-        'cod': curruser.account.code,
+        'cod': current_user.account.code,
         'form': form})
 
 
