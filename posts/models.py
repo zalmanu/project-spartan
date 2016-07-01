@@ -38,6 +38,9 @@ class Announcement(models.Model):
     employer_done = models.BooleanField(default=False)
     spartan_done = models.BooleanField(default=False)
 
+    def __unicode__(self):
+        return self.title
+
     def get_absolute_url(self):
         return reverse('post', args=[self.slug])
 

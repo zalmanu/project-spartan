@@ -4,8 +4,8 @@ from .models import Announcement
 
 
 class AnnouncementIndex(indexes.SearchIndex, indexes.Indexable):
-    title = indexes.CharField(model_attr='title', document=True)
-    text = indexes.CharField(model_attr='text')
+    text = indexes.CharField(document=True, use_template=True)
+    title = indexes.CharField(model_attr="title")
     author = indexes.CharField(model_attr='author')
     status = indexes.BooleanField(model_attr='status')
 
@@ -13,4 +13,4 @@ class AnnouncementIndex(indexes.SearchIndex, indexes.Indexable):
         return Announcement
 
     def index_queryset(self, using=Announcement):
-        return self.get_model().objects.filter(status__lte=False)
+        return self.get_model().objects.filter(status=False)
