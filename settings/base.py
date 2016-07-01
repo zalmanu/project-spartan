@@ -41,7 +41,7 @@ INSTALLED_APPS = (
     'review',
     'faq',
     'report',
-    'errorPages',
+    'error_pages',
     'about_us',
 
 )

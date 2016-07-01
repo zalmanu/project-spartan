@@ -4,7 +4,7 @@ from captcha.fields import ReCaptchaField
 from phonenumber_field.modelfields import PhoneNumberField
 
 
-class ContactUS(models.Model):
+class ContactUs(models.Model):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     phone = PhoneNumberField(null=True)
@@ -16,5 +16,5 @@ class CreateContact(forms.ModelForm):
     captcha = ReCaptchaField()
 
     class Meta:
-        model = ContactUS
+        model = ContactUs
         fields = '__all__'
