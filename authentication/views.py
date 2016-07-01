@@ -65,9 +65,9 @@ def reset_pass(request):
     form = PasswordResetForm(request.POST)
     if request.method == 'POST':
         if form.is_valid():
-            password_old = form.cleaned_data['oldpass']
-            password_new = form.cleaned_data['pass1']
-            check = password_new == form.cleaned_data['pass2']
+            password_old = form.cleaned_data['old_password']
+            password_new = form.cleaned_data['password_1']
+            check = password_new == form.cleaned_data['password_2']
             if not check:
                 errors.append('Those two password are not the same')
             elif request.user.check_password(password_old):

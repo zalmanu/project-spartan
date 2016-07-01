@@ -9,11 +9,11 @@ from posts.models import Announcement
 def category(request, kind):
     categories = Category.objects.all()
     page_category = get_object_or_404(Category, name=kind)
-    curruser = request.user
+    current_user = request.user
     return render(request, 'category/category.html', {
         'categories': categories,
         'kind': page_category,
-        'cod': curruser.account.code,
+        'cod': current_user.account.code,
         'ann': Announcement.objects.filter(category=page_category,
                                            status=False)
     })
