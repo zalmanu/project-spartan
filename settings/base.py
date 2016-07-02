@@ -46,6 +46,7 @@ INSTALLED_APPS = (
 
     'error_pages',
     'about_us',
+    'channels',
 
 
 )
