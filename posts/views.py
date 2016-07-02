@@ -49,6 +49,7 @@ def post(request, slug):
     })
 
 
+@login_required
 def edit_post(request, slug):
     post = get_object_or_404(Announcement, slug=slug, status=False)
     if post.author != request.user:
