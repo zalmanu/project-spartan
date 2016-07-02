@@ -18,7 +18,7 @@ class Spartan(models.Model):
     first_name = models.CharField(max_length=40)
     birthday = models.DateField('Date FORMAT YYYY-MM-DD', null=True)
     address = models.CharField(null=True, max_length=500)
-    cnp = models.IntegerField('CNP', null=True)
+    cnp = models.CharField('CNP', null=True, max_length=20)
     series = models.CharField('ID card series', max_length=30, null=True)
     cui = models.CharField('CUI', max_length=30, null=True)
     bank = models.CharField('Bank account', max_length=60,
@@ -35,19 +35,19 @@ class Spartan(models.Model):
 
     def activation_email(self):
         subject = 'Spartan activation'
-        messagetip = " Hi! % s , \n You submitted the form" \
-                     " for becoming a spartan!\n" \
-                     " Last name : %s ,\n First name : %s \n Birthday: %s \n" \
-                     " Adresa : %s \n CNP: %s \n Serie: %s \n" \
-                     " CUI : %s \n Bank account: %s \n " \
-                     "Ability: %s \n  An admin will respond soon. " \
-                     " - Team Spartan" % (
+        email = " Hi! % s , \n You submitted the form" \
+                " for becoming a spartan!\n" \
+                " Last name : %s ,\n First name : %s \n Birthday: %s \n" \
+                " Address : %s \n CNP: %s \n Serie: %s \n" \
+                " CUI : %s \n Bank account: %s \n " \
+                "Ability: %s \n  An admin will respond soon. " \
+                " - Team Spartan" % (
                          self.user.username, self.last_name, self.first_name,
                          self.birthday, self.address,
                          self.cnp, self.series, self.cui,
                          self.bank, self.category.name)
         from_email = settings.EMAIL_HOST_USER
-        send_mail(subject, messagetip, from_email,
+        send_mail(subject, email, from_email,
                   [self.user.email], fail_silently=True)
 
 

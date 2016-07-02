@@ -9,7 +9,7 @@ urlpatterns = [
     url(r'^', include('homepages.urls')),
     url(r'^', include('posts.urls')),
     url(r'^', include('bidding.urls')),
-    url(r'^', include('contactUS.urls')),
+    url(r'^', include('contact_us.urls')),
     url(r'^', include('chat.urls')),
     url(r'^', include('categories.urls')),
     url(r'^', include('spartans.urls')),
@@ -17,7 +17,7 @@ urlpatterns = [
     url(r'^', include('review.urls')),
     url(r'^', include('faq.urls')),
     url(r'^', include('report.urls')),
-    url(r'^', include('aboutUS.urls')),
+    url(r'^', include('about_us.urls')),
 
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

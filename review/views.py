@@ -19,9 +19,9 @@ def review(request, slug, url_hash):
             form.instance.receiver = get_object_or_404(Spartan, slug=slug)
             form.instance.submitter = request.user
             form.save()
-            curent_spartan = form.instance.receiver
-            curent_spartan.rating += 1
-            curent_spartan.save()
+            current_spartan = form.instance.receiver
+            current_spartan.rating += 1
+            current_spartan.save()
             return redirect('/')
     return render(request, 'review/review.html',
                   {
