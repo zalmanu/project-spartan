@@ -1,4 +1,4 @@
-from django.test import TestCase, RequestFactory
+from django.test import TestCase
 from django.contrib.auth.models import User
 
 from .models import UserRegisterForm, AccountRegisterForm
@@ -7,7 +7,6 @@ from .forms import LoginForm
 
 class AuthFormsTestCase(TestCase):
     def setup(self):
-        self.factory = RequestFactory()
         self.user = User.objects.create_user(username="tester",
                                              email="smt@smt.com",
                                              password="top_secret")
