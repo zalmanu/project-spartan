@@ -7,8 +7,9 @@ from posts.models import Announcement
 
 @login_required
 def category(request, kind):
+    print kind
     categories = Category.objects.all()
-    page_category = get_object_or_404(Category, name=kind)
+    page_category = get_object_or_404(Category, id=kind)
     current_user = request.user
     return render(request, 'category/category.html', {
         'categories': categories,
