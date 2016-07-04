@@ -1,335 +1,179 @@
-{% extends 'base2.html' %}
-{% load staticfiles %}
-{% block content %}
-<body onload="zoom()">
-	<script type="text/javascript">
-        function zoom() {
-            document.body.style.zoom = "80%"
-        }
-	</script>
-<!-- Half Page Image Background Carousel Header -->
-    <header id="myCarousel" class="carousel slide">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
+<!DOCTYPE html>
+<html>
 
-        <!-- Wrapper for Slides -->
-        <div class="carousel-inner">
-            <div class="item active">
-                <!-- Set the first background image using inline CSS below. -->
-                <div class="fill" style="background-image:url({% static "images/home-bg.jpg" %});"></div>
-                <div class="carousel-caption">
-                    <h2>#TaskCooking</h2>
-                </div>
+  <head>
+    {% load staticfiles %}
+    <title>Spartan Tasks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+    <!-- CSS Libs -->
+    <link rel="stylesheet" type="text/css" href="{% static "lib/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "lib/css/font-awesome.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "lib/css/animate.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "lib/css/bootstrap-switch.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "lib/css/checkbox3.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "lib/css/jquery.dataTables.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "lib/css/dataTables.bootstrap.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "lib/css/select2.min.css" %}">
+    <!-- CSS App -->
+    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/themes/flat-blue.css" %}">
+</head>
+
+<body class="flat-blue landing-page">
+    <nav class="navbar navbar-inverse navbar-fixed-top  navbar-affix" role="navigation" data-spy="affix" data-offset-top="60">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <img src="{% static "img/logo/logo.png" %}" class="icon">
+                    <div class="title">Spartan Tasks</div>
+                </a>
             </div>
-            <div class="item">
-                <!-- Set the second background image using inline CSS below. -->
-                <div class="fill" style="background-image:url({% static "images/contact-bg.jpg" %});"></div>
-                <div class="carousel-caption">
-                    <h2>#TaskGarden</h2>
-                </div>
+            <div id="navbar" class="navbar-collapse collapse " aria-expanded="true">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a id="btn-home-index">Home</a></li>
+                    <li><a id="btn-about-index">About</a></li>
+                    <li><a id="btn-contact-index">Contact</a></li>
+                    <li><a href="login.html">LOG IN</a></li>
+                    <li><a href="signup.html" id="btn-signup">| SIGN UP</a></li>
+                </ul>
             </div>
-            <div class="item">
-                <!-- Set the third background image using inline CSS below. -->
-                <div class="fill" style="background-image:url({% static "images/post-bg.jpg" %});"></div>
-                <div class="carousel-caption">
-                    <h2>#TaskMoving</h2>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+    <div class="jumbotron app-header">
+        <div class="container">
+            <h2 class="text-center"><img src="{% static "img/logo/logo.png" %}" class="icon app-logo fa fa-connectdevelop fa-5x color-white" id="main-logo"><div class="color-white">Spartan Tasks</div></h2>
+            <p class="text-center color-white app-description">Una sait dragut, facut cu hastemeleu, si ceseseu.</p>
+            <p class="text-center"><a class="btn btn-primary btn-lg app-btn" href="#" role="button">Learn more </a></p>
+        </div>
+    </div>
+    <div class="container-fluid app-content-a">
+        <div class="container">        
+            <h1 class="center section-title">How does it works?</h1>
+            <div class="row text-center">
+            <div class="col-md-4 col-sm-6">
+                <span class="fa-stack fa-lg fa-5x">
+                  <i class="fa fa-circle-thin fa-stack-2x"></i>
+                  <i class="fa fa-twitter fa-stack-1x"></i>
+                </span>
+                <h2>Post your problem</h2>
+                <p>Once you enter our platform, it means that you have a special problem.Go ahead and post your problem, where our Spartans can help you.</p>
+            </div>
+            <!-- /.col-lg-4 -->
+            <div class="col-md-4 col-sm-6">
+                <span class="fa-stack fa-lg fa-5x">
+                  <i class="fa fa-circle-thin fa-stack-2x"></i>
+                  <i class="fa fa-inbox fa-stack-1x"></i>
+                </span>
+                <h2>Choose a Spartan</h2>
+                <p>Your post will be bided, and all you have to do is to check all the bids, and see which one is better(we recomend to check Spartan's profile page to see they're reviews).</p>
+            </div>
+            <!-- /.col-lg-4 -->
+            <div class="col-md-4 col-sm-6">
+                <span class="fa-stack fa-lg fa-5x">
+                  <i class="fa fa-circle-thin fa-stack-2x"></i>
+                  <i class="fa fa-comments-o fa-stack-1x"></i>
+                </span>
+                <h2>Save money and time</h2>
+                <p>When the work is done, all you will have to do is to pay the Spartan and enjoy his work! :)</p>
+            </div>
+            <!-- /.col-lg-4 -->
+        </div>
+        </div>
+    </div>
+    <div class="container-fluid app-content-b feature-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 col-sm-6">
+                </div>
+                <div class="col-md-5 col-sm-6 text-right color-white">
+                    <h2 class="featurette-heading">First featurette heading. It'll blow your mind.</h2>
+                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
                 </div>
             </div>
         </div>
-
-        <!-- Controls -->
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-            <span class="icon-prev"></span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">
-            <span class="icon-next"></span>
-        </a>
-
-    </header>
-
-    <!-- Page Content -->
-
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-    <section class="first-section" id="first-section">
-        <div class="slide story" id="slide-6" data-slide="6">
-		<div class="container">
-            <div class="row title-row">
-				<div class="col-12 font-thin">How it <span
-                                        class="font-semibold">works</span>?</div>
+    </div>
+    <div class="container-fluid app-content-a">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="text-center app-content-header">How to become a Spartan?</h2>
+                    <p class="text-center app-content-description">Becoming a Spartan is pretty easy, all you have to do is to create an account and hit the button "Become a Spartan", where you will have to give us a few more detalies about yourself, so we can have an evidence of all our spartans.</p>
+                </div>
             </div>
-			<div class="row line-row">
-				<div class="hr">&nbsp;</div>
-			</div><!-- /row -->
-			<div class="row subtitle-row">
-				<div class="col-sm-1 hidden-sm">&nbsp;</div>
-				<div class="col-sm-1 hidden-sm">&nbsp;</div>
-			</div><!-- /row -->
-			<div id="contact-row-4" class="row">
-				<div class="col-sm-1 hidden-sm">&nbsp;</div>
-<!-- ^^^^^^^^^^^ Primul Pas ^^^^^^^^^^^ -->
-                <div class="col-12 col-sm-2 with-hover-text">
-					<p><a target="_blank" href="#"><img src="{% static "img/icons/1.png" %}"></a></p>
-					<span class="hover-text font-light " style="display: inline-block; opacity: 1; padding-top: 12px;">1.Register now!</span>
-                    <p id="vector-title">Fineas</p>
-                    </a>
-				</div><!-- /col12 -->
-
-<!-- ^^^^^^^^^^^ Al  Pas ^^^^^^^^^^^ -->
-                <div class="col-12 col-sm-2 with-hover-text">
-					<p><a target="_blank" href="#"><img src="{% static "img/icons/2.png" %}"></a></p>
-					<span class="hover-text font-light " style="display: inline-block; opacity: 1; padding-top: 12px;">2.Create a post</span>
-                    <p id="vector-title">Fineas</p>
-                    </a>
-				</div><!-- /col12 -->
-
-<!-- ^^^^^^^^^^^ Primul Pas ^^^^^^^^^^^ -->
-                <div class="col-12 col-sm-2 with-hover-text">
-					<p><a target="_blank" href="#"><img src="{% static "img/icons/3.png" %}"></a></p>
-					<span class="hover-text font-light " style="display: inline-block; opacity: 1; padding-top: 12px;">3.Wait for offers<br>zip code 98443</span>
-                    <p id="vector-title">Fineas</p>
-                    </a>
-                </div><!-- /col12 -->
-
-<!-- ^^^^^^^^^^^ Primul Pas ^^^^^^^^^^^ -->
-                <div class="col-12 col-sm-2 with-hover-text">
-					<p><a target="_blank" href="#"><img src="{% static "img/icons/4.png" %}"></a></p>
-					<span class="hover-text font-light " style="display: inline-block; opacity: 1; padding-top: 12px;">4.Choose an offer</span>
-                    <p id="vector-title">Fineas</p>
-                    </a>
-				</div><!-- /col12 -->
-
-<!-- ^^^^^^^^^^^ Primul Pas ^^^^^^^^^^^ -->
-                <div class="col-12 col-sm-2 with-hover-text">
-					<p><a target="_blank" href="#"><img src="{% static "img/icons/5.png" %}"></i></a></p>
-					<span class="hover-text font-light " style="display: inline-block; opacity: 1; padding-top: 12px;">Problem solved</span>
-                    <p id="vector-title">Fineas</p>
-                    </a>
-				</div><!-- /col12 -->
-
-				<div class="col-sm-1 hidden-sm">&nbsp;</div>
-			</div><!-- /row -->
-		</div><!-- /container -->
-	</div>
-    </section>
-
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Secound Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-    <section class="secound-section" id="secound-section" style="background-image: url({% static "images/try2.jpg" %});">
-    <section id="cd-timeline" class="cd-container ">
-		<div class="cd-timeline-block">
-			<div class="cd-timeline-img cd-picture">
-				<img src="{% static "img/cd-icon-picture.svg" alt="Picture" %}">
-			</div> <!-- cd-timeline-img -->
-
-			<div class="cd-timeline-content">
-				<h2>1.Create an account</h2>
-				<p>Click the Sign up button and then create your account for FREE !</p>
-				<span class="cd-date">First step</span>
-			</div> <!-- cd-timeline-content -->
-		</div> <!-- cd-timeline-block -->
-
-		<div class="cd-timeline-block">
-			<div class="cd-timeline-img cd-movie">
-				<img src="{% static "img/cd-icon-movie.svg" %}" alt="Movie">
-			</div> <!-- cd-timeline-img -->
-
-			<div class="cd-timeline-content">
-				<h2>2.Add a new post</h2>
-				<p> Select the Add a new post button. Write a description, tell us how much do you want to pay, your address and the deadline</p>
-				<span class="cd-date">Second step</span>
-			</div> <!-- cd-timeline-content -->
-		</div> <!-- cd-timeline-block -->
-
-		<div class="cd-timeline-block">
-			<div class="cd-timeline-img cd-picture">
-				<img src="{% static "img/cd-icon-picture.svg" %}" alt="Picture">
-			</div> <!-- cd-timeline-img -->
-
-			<div class="cd-timeline-content">
-				<h2>3. Wait for your offers to come</h2>
-				<p>Now all you have to do is to wait for offers from our well-trained Spartans to solve your problems.</p>
-				<span class="cd-date">The third step</span>
-			</div> <!-- cd-timeline-content -->
-		</div> <!-- cd-timeline-block -->
-
-		<div class="cd-timeline-block">
-			<div class="cd-timeline-img cd-movie">
-				<img src="{% static "img/cd-icon-location.svg" %}" alt="Location">
-			</div> <!-- cd-timeline-img -->
-
-			<div class="cd-timeline-content">
-				<h2>4. Choose an offer</h2>
-				<p>You're almost done! Choose an offer that meets your needs.</p>
-				<span class="cd-date">The fourth step</span>
-			</div> <!-- cd-timeline-content -->
-		</div> <!-- cd-timeline-block -->
-
-
-
-		<div class="cd-timeline-block">
-			<div class="cd-timeline-img cd-movie">
-				<img src="{% static "img/cd-icon-movie.svg" %}" alt="Movie">
-			</div> <!-- cd-timeline-img -->
-
-			<div class="cd-timeline-content">
-				<h2>Your problem is solved!</h2>
-				<p>You have completed all the steps. Congratulations, your problem is now solved!</p>
-				<span class="cd-date">The fifth step</span>
-			</div> <!-- cd-timeline-content -->
-		</div> <!-- cd-timeline-block -->
-	</section> <!-- cd-timeline -->
-    </section>
-
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Third Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-		<section class="third-section" id="third-section">
-    <div class="row title-row">
-				<div class="col-12 font-thin
-                                    categories-gallery">Categories</div>
-    </div>
-    <div class="row line-row">
-				<div class="hr">&nbsp;</div>
-    </div>
-    <div class="main">
-      <ul class="cbp-ig-grid">
-	{% for kind in categories %}
-	<li id="cat1" style="background-image: url({% static 'images/categories/' %}{{ kind.path_banner }}");>
-	  <a name="kind">
-	    <span class="cbp-ig-icon"><img src="{% static 'images/categories/'%}{{ kind.path_icon }}"></span>
-	    <h3 class="cbp-ig-title">{{ kind.name }}</h3>
-          </a>
-	</li>
-	{% endfor %}
-      </ul>
-    </div>
-		</section>
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Fourth Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-    <section class="fourth-section" id="fourth-section"  style="background-image: url({% static "images/slide-cover.jpg" %});">
-        <center><div class="slide story" id="slide-6" data-slide="6">
-		<div class="container">
-            <div class="row title-row">
-	      <div class="col-12 font-thin" id="fourth-section-title">Do you want to join us?</div>
+            <div class="row">
+                <center><button class="btn btn-success btn-signUp">Sign Up Here</button></center>
             </div>
-			<div class="row line-row">
-				<div class="hr">&nbsp;</div>
-			</div><!-- /row -->
-			<div class="row subtitle-row">
-				<div class="col-sm-1 hidden-sm">&nbsp;</div>
-				<div class="col-sm-1 hidden-sm">&nbsp;</div>
-			</div><!-- /row -->
-			<div id="contact-row-4" class="row">
-				<div class="col-sm-1 hidden-sm">&nbsp;</div>
-				<div class="col-12 col-sm-2 with-hover-text">
-					<p><a target="_blank" href="#"><img src="{% static "images/male226.png" %}"></a></p>
-					<span class="hover-text font-light " style="display: inline-block; opacity: 2; padding-top: 12px; " color="#FFFFFF">What </span></a>
-				</div><!-- /col12 -->
-				<div class="col-12 col-sm-2 with-hover-text">
-					<p><a target="_blank" href="#"><img src="{% static "images/male226.png" %}"></a></p>
-					<span class="hover-text font-light " style="display: inline-block; opacity: 1; padding-top: 12px;">are </span></a>
-				</div><!-- /col12 -->
-				<div class="col-12 col-sm-2 with-hover-text">
-					<p><a target="_blank" href="#"><img src="{% static "images/male226.png" %}"></a></p>
-					<span class="hover-text font-light " style="display: inline-block; opacity: 1; padding-top: 12px;">you<br>zip code 98443</span></a>
-				</div><!-- /col12 -->
-				<div class="col-12 col-sm-2 with-hover-text">
-					<p><a target="_blank" href="#"><img src="{% static "images/male226.png" %}"></a></p>
-                    <span class="hover-text font-light " style="display: inline-block; opacity: 1; padding-top: 12px;">waiting</span></a>
-				</div><!-- /col12 -->
-				<div class="col-12 col-sm-2 with-hover-text">
-					<p><a target="_blank" href="#"><img src="{% static "images/male226.png" %}"></i></a></p>
-					<span class="hover-text font-light " style="display: inline-block; opacity: 1; padding-top: 12px;">for?</span></a>
-				</div><!-- /col12 -->
- 				<div class="col-sm-1 hidden-sm">&nbsp;</div>
-			</div><!-- /row -->
-		</div><!-- /container -->
-	</div>
-    <a class="cbp-vm-icon cbp-vm-add" href="/register">Join us!</a></center>
-</section>
-                    <script>
-                    $(function() {
-                      $('a[href*=#]:not([href=#])').click(function() {
-                        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-                          var target = $(this.hash);
-                          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-                          if (target.length) {
-                            $('html,body').animate({
-                              scrollTop: target.offset().top
-                            }, 1000);
-                            return false;
-                          }
-                        }
-                      });
-                    });
-                    </script>
-    <script>
-			new cbpScroller( document.getElementById( 'cbp-so-scroller' ) );
+        </div>
+    </div>
+    <div class="container-fluid app-content-b contact-us">
+        <div class="container">
+            <div class="row featurette">
+                <div class="col-md-6"><h2 class="color-white contact-us-header">Contact Us</h2>
+                <p class="color-white contact-us-description">If you're interested in our website and you've got like some questions...don't be afraid, dare to ask us anything.We're here for you!</p></div>
+                <div class="col-md-6">
+                    <form>
+
+                        <div class="row">
+                            <div class="col-sm-6"><input id="name" name="name" type="text" class="form-control" placeholder="Full Name"> </div>
+                            <div class="col-sm-6"><input id="email" name="email" type="email" class="form-control" placeholder="Email address"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12"><textarea id="message" name="message" class="form-control" placeholder="Your Message" rows="5"></textarea></div>
+                        </div>
+                        <div>
+                            <button id="contact-submit" type="submit" class="btn btn-success pull-right">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /END THE FEATURETTES -->
+    <!-- FOOTER -->
+    <footer class="app-footer">
+      <div class="container">
+        <p class="text-muted">&copy; 2016, Spartan Tasks</p>
+      </div>
+    </footer>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js">
     </script>
-
-    <!-- Script to Activate the Carousel -->
     <script>
-    $('.carousel').carousel({
-        interval: 7000 //changes the speed
-    })
+        $("#btn-home-index").click(function() {
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+        return false;
+        });
+        $("#btn-about-index").click(function() {
+        $("html, body").animate({ scrollTop: 525 }, "slow");
+        return false;
+        });
+        $("#btn-contact-index").click(function() {
+        $("html, body").animate({ scrollTop: $(document).height() }, "slow");
+        return false;
+        });
     </script>
-    <!-- fancybox init -->
-    <script>
-	$(document).ready(function(e) {
-		var lis = $('.nav > li');
-		menu_focus( lis[0], 1 );
-		$(".fancybox").fancybox({
-			padding: 10,
-			helpers: {
-				overlay: {
-					locked: false
-				}
-			}
-		});
-	});
-	</script>
+    <!-- Javascript Libs -->
+    <script type="text/javascript" src="{% static "lib/js/jquery.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "lib/js/bootstrap.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "lib/js/Chart.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "lib/js/bootstrap-switch.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "lib/js/jquery.matchHeight-min.js" %}"></script>
+    <script type="text/javascript" src="{% static "lib/js/jquery.dataTables.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "lib/js/dataTables.bootstrap.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "lib/js/select2.full.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "lib/js/ace/ace.js" %}"></script>
+    <script type="text/javascript" src="{% static "lib/js/ace/mode-html.js" %}"></script>
+    <script type="text/javascript" src="{% static "lib/js/ace/theme-github.js" %}"></script>
+    <!-- /.container -->
+</body>
 
-	<!-- fancybox init -->
-	<script>
-	$(document).ready(function(e) {
-		var lis = $('.nav > li');
-		menu_focus( lis[0], 1 );
-		$(".fancybox").fancybox({
-			padding: 10,
-			helpers: {
-				overlay: {
-					locked: false
-				}
-			}
-		});
-	});
-	</script><script>
-  new cbpScroller( document.getElementById( 'cbp-so-scroller' ) );
-</script>
-<script src="{% static "js/cbpAnimatedHeader.min.js" %}"></script>
-
-<script>
-  $('.carousel').carousel({
-  interval: 7000 //changes the speed
-  })
-</script>
-<script>
-  $(document).ready(function(e) {
-  var lis = $('.nav > li');
-  menu_focus( lis[0], 1 );
-		$(".fancybox").fancybox({
-			padding: 10,
-			helpers: {
-				overlay: {
-					locked: false
-				}
-			}
-		});
-  });
-</script>
-	</body>
-{% endblock %}
+</html>
