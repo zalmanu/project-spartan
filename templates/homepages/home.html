@@ -295,27 +295,4 @@
                 </div>
             </div>
         </div>
-        <footer class="app-footer">
-            <div class="wrapper">
-                <span class="pull-right"><i class="fa fa-long-arrow-up" id="arrow"></i></span>SpartanTasks @ 2016 Copyright.
-            </div>
-        </footer>
-
-        <div>
-            <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js">
-            </script>
-            <script>
-                $('#bid-group').hide();
-                $('#open-bid').click(function(){
-                    $('#bid-group').toggle();
-                });
-            </script>
-            <script>
-                $("#arrow").click(function() {
-                $("html, body").animate({ scrollTop: 0 }, "slow");
-                return false;
-                });
-            </script>
-            <script type="text/javascript" src="{% static "js/app.js" %}"></script>
-            <script type="text/javascript" src="{% static "js/index.js" %}"></script>
 {% endblock %}
