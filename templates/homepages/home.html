@@ -97,16 +97,17 @@
                         <li class="dropdown profile">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ user.username }} <span class="caret"></span></a>
                             <ul class="dropdown-menu animated fadeInDown">
+			      <br>
                                 <li class="profile-img">
-                                    <img src="{% static "/img/profile/picjumbo.com_HNCK4153_resize.jpg" class="profile-img" %}">
+                                    <img src="https://www.gravatar.com/avatar/{{ cod }}?s=200">
                                 </li>
                                 <li>
-                                    <div class="profile-info">
-                                        <h4 class="username">Fineas</h4>
-                                        <p>finymelly@gmail.com</p>
+                                  <div class="profile-info">
+                                        <h4 class="username">{{ user.username }}</h4>
+                                        <p>{{ user.email }}</p>
                                         <div class="btn-group margin-bottom-2x" role="group">
-                                            <button type="button" class="btn btn-default"><i class="fa fa-user"></i> Profile</button>
-                                            <button type="button" class="btn btn-default"><i class="fa fa-sign-out"></i> Logout</button>
+                                            <a type="button" href="/profile" class="btn btn-default"><i class="fa fa-user"></i> Profile</a>
+                                            <a type="button" class="btn btn-default" href="/logout"><i class="fa fa-sign-out"></i> Logout</a>
                                         </div>
                                     </div>
                                 </li>
@@ -142,7 +143,7 @@
                                     <div class="panel-body">
                                       <ul class="nav navbar-nav">
 					{% for category in categories %}
-                                            <li><a href="/category/{{ category.id }}" name="kind" value={{ category.id }}>{{ category.name }}</a>
+                                            <li><a href="/category/{{ category.id }}" name="kind" value={{ category.id }}> {{ category.name }}</a>
                                             </li>
 					{% endfor %}
                                         </ul>
@@ -151,15 +152,21 @@
                             </li>
                             <li class="panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#dropdown-table">
-                                    <span class="icon fa fa-table"></span><span class="title">My Posts</span>
+                                    <span class="icon fa fa-table"></span><span class="title">My Announcements</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                                 <div id="dropdown-table" class="panel-collapse collapse">
                                     <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="#">Not accepted yet</a>
+                                      <ul class="nav navbar-nav">
+					{% if user.posts.all %}
+					{% for post in user.posts.all %}
+                                            <li><a href="{{ post.get_absolute_url }}"> {{ post.title }}</a>
                                             </li>
-                                            <li><a href="#">Work in progress</a>
+					    {% endfor %}
+					<li><a href="/submit">Add an announcement</a>
+					    {% else %}
+					<li><a href="/submit">Add an announcement</a>
+					  {% endif %}
                                             </li>
                                         </ul>
                                     </div>
@@ -191,11 +198,13 @@
                                     </div>
                                 </div>
                             </li>
+			    {% if not user.account.has_related_object %}
                             <li>
                                 <a href="/spartan">
                                     <span class="icon fa fa-file-text-o"></span><span class="title">Become a Spartan</span>
                                 </a>
                             </li>
+			    {% endif %}
                             <li>
                                 <a href="/report">
                                     <span class="icon fa fa-file-text-o"></span><span class="title">Report a Spartan/Employer</span>
@@ -222,84 +231,35 @@
                 <div class="side-body padding-top">
                     <h1>Categories</h1>
                     <div class="row">
-                        <div class="col-lg-2 col-md-6 col-sm-12">
+		      {% for category in categories %}
+                      <div class="col-lg-2 col-md-6 col-sm-12">
+			<a href="/category/{{ category.id }}" name="kind" value={{ category.id }}>
                             <div class="card primary">
-                                <div class="card-background garden-category no-padding">
+                                <div class="card-background garden-category no-padding" style="background-image: url({% static 'img/category/'%}{{ category.path_banner }});">
                                     <div class="category"></div>
                                 </div>
                                 <div class="card-body half-padding">
-                                    <h4 class="no-margin font-weight-300 center">Garden</h4>
+                                    <h4 class="no-margin font-weight-300 center">{{ category.name }}</h4>
                                     <div class="clear-both"></div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-2 col-md-6 col-sm-12">
-                            <div class="card primary">
-                                <div class="card-background baby-category no-padding">
-                                    <div class="category"></div>
-                                </div>
-                                <div class="card-body half-padding">
-                                    <h4 class="no-margin font-weight-300 center">Baby sitting</h4>
-                                    <div class="clear-both"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-6 col-sm-12">
-                            <div class="card primary">
-                                <div class="card-background cleaning-category no-padding">
-                                    <div class="category"></div>
-                                </div>
-                                <div class="card-body half-padding">
-                                    <h4 class="no-margin font-weight-300 center">Cleaning</h4>
-                                    <div class="clear-both"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-6 col-sm-12">
-                            <div class="card primary">
-                                <div class="card-background cooking-category no-padding">
-                                    <div class="category"></div>
-                                </div>
-                                <div class="card-body half-padding">
-                                    <h4 class="no-margin font-weight-300 center">Cooking</h4>
-                                    <div class="clear-both"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-6 col-sm-12">
-                            <div class="card primary">
-                                <div class="card-background moving-category no-padding">
-                                    <div class="category"></div>
-                                </div>
-                                <div class="card-body half-padding">
-                                    <h4 class="no-margin font-weight-300 center">Moving</h4>
-                                    <div class="clear-both"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-6 col-sm-12">
-                            <div class="card primary">
-                                <div class="card-background other-category no-padding">
-                                    <div class="category"></div>
-                                </div>
-                                <div class="card-body half-padding">
-                                    <h4 class="no-margin font-weight-300 center">Other</h4>
-                                    <div class="clear-both"></div>
-                                </div>
-                            </div>
-                        </div>
+                      </div>
+		      </a>
+			{% endfor %}
                     </div>
                         <h1>Recent Posts</h1>
-                    <div class="row  no-margin-bottom">
+			<div class="row  no-margin-bottom">
+			  {% for post in ann %}
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                             <div class="thumbnail no-margin-bottom">
                                 <img src="{% static "img/thumbnails/picjumbo.com_IMG_3241.jpg" %}" class="img-responsive">
                                 <div class="caption">
-                                    <h3 id="thumbnail-label">Nevoie urgenta de un zugrav<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
-                                    <p>Daca te crezi in stare sa imi zugravesti un perete si doi tavan, te cumpar sa mil vopsesti.</p>
+                                    <h3 id="thumbnail-label">{{ post.title }}<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
+                                    <p>{{ post.text }}</p>
                                     <p>
-                                        <a href="post-page.html" class="btn btn-success" role="button">View Post</a>
-                                        <button class="btn btn-default" id="open-bid">Bid</button>
+                                        <a href="{{ post.get_absolute_url }}" class="btn btn-success" role="button">View Post</a>
+<!--                                        <button class="btn btn-default" id="open-bid">Bid</button>
+-->
                                     <br>
                                         <div id="bid-group">
                                             <input type="number" class="form-control" placeholder="Insert your offer...">
@@ -309,208 +269,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                            <div class="thumbnail no-margin-bottom">
-                                <img src="{% static "img/thumbnails/picjumbo.com_IMG_3241.jpg" %}" class="img-responsive">
-                                <div class="caption">
-                                    <h3 id="thumbnail-label">Thumbnail label<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
-                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                   <p>
-                                        <a href="post-page.html" class="btn btn-success" role="button">View Post</a>
-                                        <button class="btn btn-default" id="open-bid">Bid</button>
-                                    <br>
-                                        <div id="bid-group">
-                                            <input type="number" class="form-control" placeholder="Insert your offer...">
-                                            <button type="submit" class="btn btn-default">Send!</button>
-                                        </div> 
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                            <div class="thumbnail no-margin-bottom">
-                                <img src="{% static "img/thumbnails/picjumbo.com_IMG_3241.jpg" %}" class="img-responsive">
-                                <div class="caption">
-                                    <h3 id="thumbnail-label">Thumbnail label<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
-                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                    <p>
-                                        <a href="post-page.html" class="btn btn-success" role="button">View Post</a>
-                                        <button class="btn btn-default" id="open-bid">Bid</button>
-                                    <br>
-                                       <div id="bid-group">
-                                            <input type="number" class="form-control" placeholder="Insert your offer...">
-                                            <button type="submit" class="btn btn-default">Send!</button>
-                                        </div> 
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                            <div class="thumbnail no-margin-bottom">
-                                <img src="{% static "img/thumbnails/picjumbo.com_IMG_3241.jpg" %}" class="img-responsive">
-                                <div class="caption">
-                                    <h3 id="thumbnail-label">Thumbnail label<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
-                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                   <p>
-                                        <a href="post-page.html" class="btn btn-success" role="button">View Post</a>
-                                        <button class="btn btn-default" id="open-bid">Bid</button>
-                                    <br>
-                                       <div id="bid-group">
-                                            <input type="number" class="form-control" placeholder="Insert your offer...">
-                                            <button type="submit" class="btn btn-default">Send!</button>
-                                        </div> 
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row  no-margin-bottom">
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                            <div class="thumbnail no-margin-bottom">
-                                <img src="{% static "img/thumbnails/picjumbo.com_IMG_3241.jpg"%}" class="img-responsive">
-                                <div class="caption">
-                                    <h3 id="thumbnail-label">Nevoie urgenta de un zugrav<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
-                                    <p>Daca te crezi in stare sa imi zugravesti un perete si doi tavan, te cumpar sa mil vopsesti.</p>
-                                    <p>
-                                        <a href="post-page.html" class="btn btn-success" role="button">View Post</a>
-                                        <button class="btn btn-default" id="open-bid">Bid</button>
-                                    <br>
-                                       <div id="bid-group">
-                                            <input type="number" class="form-control" placeholder="Insert your offer...">
-                                            <button type="submit" class="btn btn-default">Send!</button>
-                                        </div> 
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                            <div class="thumbnail no-margin-bottom">
-                                <img src="{% static "img/thumbnails/picjumbo.com_IMG_3241.jpg"%}" class="img-responsive">
-                                <div class="caption">
-                                    <h3 id="thumbnail-label">Thumbnail label<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
-                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                   <p>
-                                        <a href="post-page.html" class="btn btn-success" role="button">View Post</a>
-                                        <button class="btn btn-default" id="open-bid">Bid</button>
-                                    <br>
-                                        <div id="bid-group">
-                                            <input type="number" class="form-control" placeholder="Insert your offer...">
-                                            <button type="submit" class="btn btn-default">Send!</button>
-                                        </div> 
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                            <div class="thumbnail no-margin-bottom">
-                                <img src="{% static "img/thumbnails/picjumbo.com_IMG_3241.jpg"%}" class="img-responsive">
-                                <div class="caption">
-                                    <h3 id="thumbnail-label">Thumbnail label<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
-                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                    <p>
-                                        <a href="post-page.html" class="btn btn-success" role="button">View Post</a>
-                                        <button class="btn btn-default" id="open-bid">Bid</button>
-                                    <br>
-                                        <div id="bid-group">
-                                            <input type="number" class="form-control" placeholder="Insert your offer...">
-                                            <button type="submit" class="btn btn-default">Send!</button>
-                                        </div> 
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                            <div class="thumbnail no-margin-bottom">
-                                <img src="{% static "img/thumbnails/picjumbo.com_IMG_3241.jpg"%}" class="img-responsive">
-                                <div class="caption">
-                                    <h3 id="thumbnail-label">Thumbnail label<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
-                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                   <p>
-                                        <a href="post-page.html" class="btn btn-success" role="button">View Post</a>
-                                        <button class="btn btn-default" id="open-bid">Bid</button>
-                                    <br>
-                                       <div id="bid-group">
-                                            <input type="number" class="form-control" placeholder="Insert your offer...">
-                                            <button type="submit" class="btn btn-default">Send!</button>
-                                        </div> 
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row  no-margin-bottom">
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                            <div class="thumbnail no-margin-bottom">
-                                <img src="{% static "img/thumbnails/picjumbo.com_IMG_3241.jpg"%}" class="img-responsive">
-                                <div class="caption">
-                                    <h3 id="thumbnail-label">Nevoie urgenta de un zugrav<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
-                                    <p>Daca te crezi in stare sa imi zugravesti un perete si doi tavan, te cumpar sa mil vopsesti.</p>
-                                    <p>
-                                        <a href="post-page.html" class="btn btn-success" role="button">View Post</a>
-                                        <button class="btn btn-default" id="open-bid">Bid</button>
-                                    <br>
-                                        <div id="bid-group">
-                                            <input type="number" class="form-control" placeholder="Insert your offer...">
-                                            <button type="submit" class="btn btn-default">Send!</button>
-                                        </div> 
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                            <div class="thumbnail no-margin-bottom">
-                                <img src="{% static "img/thumbnails/picjumbo.com_IMG_3241.jpg"%}" class="img-responsive">
-                                <div class="caption">
-                                    <h3 id="thumbnail-label">Thumbnail label<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
-                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                   <p>
-                                        <a href="post-page.html" class="btn btn-success" role="button">View Post</a>
-                                        <button class="btn btn-default" id="open-bid">Bid</button>
-                                    <br>
-                                        <div id="bid-group">
-                                            <input type="number" class="form-control" placeholder="Insert your offer...">
-                                            <button type="submit" class="btn btn-default">Send!</button>
-                                        </div> 
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                            <div class="thumbnail no-margin-bottom">
-                                <img src="{% static "img/thumbnails/picjumbo.com_IMG_3241.jpg"%}" class="img-responsive">
-                                <div class="caption">
-                                    <h3 id="thumbnail-label">Thumbnail label<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
-                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                    <p>
-                                        <a href="post-page.html" class="btn btn-success" role="button">View Post</a>
-                                        <button class="btn btn-default" id="open-bid">Bid</button>
-                                    <br>
-                                        <div id="bid-group">
-                                            <input type="number" class="form-control" placeholder="Insert your offer...">
-                                            <button type="submit" class="btn btn-default">Send!</button>
-                                        </div> 
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                            <div class="thumbnail no-margin-bottom">
-                                <img src="{% static "img/thumbnails/picjumbo.com_IMG_3241.jpg"%}" class="img-responsive">
-                                <div class="caption">
-                                    <h3 id="thumbnail-label">Thumbnail label<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
-                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                   <p>
-                                        <a href="post-page.html" class="btn btn-success" role="button">View Post</a>
-                                        <button class="btn btn-default" id="open-bid">Bid</button>
-                                    <br>
-                                        <div id="bid-group">
-                                            <input type="number" class="form-control" placeholder="Insert your offer...">
-                                            <button type="submit" class="btn btn-default">Send!</button>
-                                        </div> 
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+			{% endfor %}
                     </div>
                     <div class="no-padding no-margin-bottom">
                                         <nav>
