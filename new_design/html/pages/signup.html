@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Spartan Tasks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+    <!-- CSS Libs -->
+    <link rel="stylesheet" type="text/css" href="../../lib/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/css/bootstrap-switch.min.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/css/checkbox3.min.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/css/dataTables.bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/css/select2.min.css">
+    <!-- CSS App -->
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../css/themes/flat-blue.css">
+</head>
+
+<body class="flat-blue login-page" id="container">
+    <div class="container">
+        <div class="login-box">
+            <div>
+                <div class="login-form row">
+                    <div class="col-sm-12 text-center login-header">
+                        <h1 class="login-title"><a href="index.html">Spartan Tasks</a></h1>
+                    </div>
+                    <div class="col-sm-12">
+                            <center>
+                            <div id="wrapper">
+                              <br>
+                              <span class='baricon'>1</span>
+                              <span id="bar1" class='progress_bar'></span>
+                              <span class='baricon'>2</span>
+                              <span id="bar2" class='progress_bar'></span>
+                              <span class='baricon'>3</span>
+
+                              <form method="post" action="">
+                              <div id="account_details">
+                                <p class='form_head'>Account Details</p>
+                                <p>Email Address</p>
+                                <input type="text" placeholder='Email Address' class="form-control login-field">
+                                <div class="alert alert-danger fade in" id="input-alert">
+                                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                  <strong>Warning!</strong>Scrie frumos ca te bat ba!
+                                </div>
+                                <p>Password</p>
+                                <input type="text" placeholder='Password' class="form-control login-field">
+                                <div class="alert alert-danger fade in" id="input-alert">
+                                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                  <strong>Warning!</strong>Scrie frumos ca te bat ba!
+                                </div>
+                                <br>
+                                <input type="button" value="Next" onclick="show_next('account_details','user_details','bar1');" class="btn btn-success next-login-infos">
+                              </div>
+
+                              <div id="user_details">
+                                <p class='form_head'>User Details</p>
+                                <p>First Name</p>
+                                <input type="text" placeholder='First Name'class="form-control login-field">
+                                <p>Last Name</p>
+                                <input type="text" placeholder='Last Name' class="form-control login-field">
+                                <p>Gender</p>
+                                <input type="text" placeholder='Gender' class="form-control login-field">
+                                <br>
+                                <input type="button" value="Previous" onclick="show_prev('account_details','bar1');" class="btn btn-success next-login-infos">
+                                <input type="button" value="Next" onclick="show_next('user_details','qualification','bar2');" class="btn btn-success next-login-infos">
+                              </div>
+                                    
+                              <div id="qualification">
+                                <p class='form_head'>Qualification</p>
+                                <p>Qualification</p>
+                                <input type="text" placeholder='Qualification' class="form-control login-field">
+                                <p>Hobbies</p>
+                                <input type="text" placeholder='Hobbies' class="form-control login-field">
+                                <br>
+                                <input type="button" value="Previous" onclick="show_prev('user_details','bar2');"  class="btn btn-success next-login-infos">
+                                <input type="Submit" value="Submit" class="btn btn-success next-login-infos">
+                              </div>
+                              </form>
+                            </div>
+                            </center>
+                        <div class="login-footer">
+                            <span class="text-right"><a href="#" class="color-blue">Forgot password?</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Javascript Libs -->
+    <script>
+    function show_next(id,nextid,bar)
+    {
+      var ele=document.getElementById(id).getElementsByTagName("input");
+      var error=0;
+      for(var i=0;i<ele.length;i++)
+      {
+        if(ele[i].type=="text" && ele[i].value=="")
+      {
+        error++;
+      }
+      }
+        
+      if(error==0)
+      {
+        document.getElementById("account_details").style.display="none";
+        document.getElementById("user_details").style.display="none";
+        document.getElementById("qualification").style.display="none";
+        $("#"+nextid).fadeIn();
+        document.getElementById(bar).style.backgroundColor="#19B5FE";
+      }
+      else
+      {
+        alert("Fill All The details");
+      }
+    }
+
+    function show_prev(previd,bar)
+    {
+      document.getElementById("account_details").style.display="none";
+      document.getElementById("user_details").style.display="none";
+      document.getElementById("qualification").style.display="none";
+      $("#"+previd).fadeIn();
+      document.getElementById(bar).style.backgroundColor="#D8D8D8";
+    }
+    </script>
+    <script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
+    <script type="text/javascript" src="../../lib/js/bootstrap-switch.min.js"></script>
+    
+    <script type="text/javascript" src="../../lib/js/jquery.matchHeight-min.js"></script>
+    <script type="text/javascript" src="../../lib/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="../../lib/js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
+    <script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
+    <script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
+    <script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
+    <!-- Javascript -->
+    <script type="text/javascript" src="../../js/app.js"></script>
+</body>
+
+</html>
