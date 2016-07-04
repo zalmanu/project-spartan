@@ -1,27 +1,6 @@
-<!DOCTYPE html>
-<html>
-
-  <head>
-    {% load staticfiles %}
-    <title>Spartan Tasks</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
-    <!-- CSS Libs -->
-    <link rel="stylesheet" type="text/css" href="{% static "lib/css/bootstrap.min.css" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "lib/css/font-awesome.min.css" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "lib/css/animate.min.css" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "lib/css/bootstrap-switch.min.css" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "lib/css/checkbox3.min.css" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "lib/css/jquery.dataTables.min.css" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "lib/css/dataTables.bootstrap.css" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "lib/css/select2.min.css" %}">
-    <!-- CSS App -->
-    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "css/themes/flat-blue.css" %}">
-</head>
-
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
 <body class="flat-blue landing-page">
     <nav class="navbar navbar-inverse navbar-fixed-top  navbar-affix" role="navigation" data-spy="affix" data-offset-top="60">
         <div class="container">
@@ -145,35 +124,4 @@
         <p class="text-muted">&copy; 2016, Spartan Tasks</p>
       </div>
     </footer>
-    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js">
-    </script>
-    <script>
-        $("#btn-home-index").click(function() {
-        $("html, body").animate({ scrollTop: 0 }, "slow");
-        return false;
-        });
-        $("#btn-about-index").click(function() {
-        $("html, body").animate({ scrollTop: 525 }, "slow");
-        return false;
-        });
-        $("#btn-contact-index").click(function() {
-        $("html, body").animate({ scrollTop: $(document).height() }, "slow");
-        return false;
-        });
-    </script>
-    <!-- Javascript Libs -->
-    <script type="text/javascript" src="{% static "lib/js/jquery.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "lib/js/bootstrap.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "lib/js/Chart.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "lib/js/bootstrap-switch.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "lib/js/jquery.matchHeight-min.js" %}"></script>
-    <script type="text/javascript" src="{% static "lib/js/jquery.dataTables.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "lib/js/dataTables.bootstrap.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "lib/js/select2.full.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "lib/js/ace/ace.js" %}"></script>
-    <script type="text/javascript" src="{% static "lib/js/ace/mode-html.js" %}"></script>
-    <script type="text/javascript" src="{% static "lib/js/ace/theme-github.js" %}"></script>
-    <!-- /.container -->
-</body>
-
-</html>
+ {% endblock %}
