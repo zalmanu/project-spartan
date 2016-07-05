@@ -90,7 +90,7 @@
                 </div>
             </div>
             <div class="row">
-                <center><button class="btn btn-success btn-signUp">Sign Up Here</button></center>
+                <center><a class="btn btn-success btn-signUp" href="/register">Sign Up Here</a></center>
             </div>
         </div>
     </div>
@@ -98,10 +98,9 @@
         <div class="container">
             <div class="row featurette">
                 <div class="col-md-6"><h2 class="color-white contact-us-header">Contact Us</h2>
-                <p class="color-white contact-us-description">If you're interested in our website and you've got like some questions...don't be afraid, dare to ask us anything.We're here for you!</p></div>
+                <p class="color-white contact-us-description" id="contact-text">If you're interested in our website and you've got like some questions...don't be afraid, dare to ask us anything.We're here for you!</p></div>
                 <div class="col-md-6">
                     <form>
-
                         <div class="row">
                             <div class="col-sm-6"><input id="name" name="name" type="text" class="form-control" placeholder="Full Name"> </div>
                             <div class="col-sm-6"><input id="email" name="email" type="email" class="form-control" placeholder="Email address"></div>
@@ -110,18 +109,11 @@
                             <div class="col-sm-12"><textarea id="message" name="message" class="form-control" placeholder="Your Message" rows="5"></textarea></div>
                         </div>
                         <div>
-                            <button id="contact-submit" type="submit" class="btn btn-success pull-right">Send</button>
+                            <button id="contact-submit" type="button" class="btn btn-success pull-right" onclick="formsub()">Send</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <!-- /END THE FEATURETTES -->
-    <!-- FOOTER -->
-    <footer class="app-footer">
-      <div class="container">
-        <p class="text-muted">&copy; 2016, Spartan Tasks</p>
-      </div>
-    </footer>
  {% endblock %}
