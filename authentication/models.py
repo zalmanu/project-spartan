@@ -32,13 +32,22 @@ class Account(models.Model):
 
 
 class UserRegisterForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Retype password',
-                                widget=forms.PasswordInput)
+    retype_password = forms.CharField(widget=forms.PasswordInput(attrs={
+        'placeholder': 'Retype password',
+        'label': 'Retype password',
+        'required': 'required'}))
 
     class Meta:
         model = User
         fields = ['username', 'email', 'password']
+        widgets = {
+            'username': forms.TextInput({'required': 'required',
+                                         'placeholder': 'Username'}),
+            'email': forms.EmailInput({'required': 'required',
+                                       'placeholder': 'Email'}),
+            'password': forms.PasswordInput(attrs={'required': 'required',
+                                                   'placeholder': 'Password'})
+        }
 
     def clean_email(self):
         email = self.cleaned_data['email']
@@ -54,7 +63,7 @@ class UserRegisterForm(forms.ModelForm):
 
     def clean_password2(self):
         password = self.cleaned_data['password']
-        password2 = self.cleaned_data['password2']
+        password2 = self.cleaned_data['retype_password']
         if password.isdigit():
             raise forms.ValidationError("Password is entirely numeric")
         if password != password2:
