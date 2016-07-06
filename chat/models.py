@@ -24,8 +24,6 @@ class Message(models.Model):
     room = models.ForeignKey(Room, related_name='messages')
     message = models.CharField(max_length=999)
     submitter = models.ForeignKey(User, related_name='messages', default='')
-    timestamp = models.DateTimeField(editable=False,
-                                     auto_now_add=True, null=True)
 
 
 class CreateMessageForm(forms.ModelForm):
