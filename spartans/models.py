@@ -54,7 +54,7 @@ class Spartan(models.Model):
 class CreateSpartanForm(forms.ModelForm):
 
     category = forms.ChoiceField(choices=[(x, x)
-                                          for x in Category.categories()])
+                                          for x in Category.objects.all()])
 
     class Meta:
         model = Spartan

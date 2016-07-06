@@ -11,9 +11,3 @@ class Category(models.Model):
     path_icon = models.CharField(null=True, max_length=500)
     path_mini = models.CharField(null=True, max_length=500)
 
-    @staticmethod
-    def categories():
-        categories = []
-        for x in Category.objects.all():
-            categories.append(x.name)
-        return categories
