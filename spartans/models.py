@@ -61,6 +61,17 @@ class CreateSpartanForm(forms.ModelForm):
         fields = ['first_name', 'last_name', 'birthday', 'address',
                   'cnp', 'series', 'cui', 'bank', 'category']
 
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super(CreateSpartanForm, self).__init__(*args, **kwargs)
+
+    def clean(self):
+        data = self.cleaned_data
+        user = self.user
+        if(user.account.has_related_object()):
+            raise forms.ValidationError("User is already a spartan")
+        return data
+
     def clean_bank(self):
         bank_account = self.cleaned_data['bank']
         if len(bank_account) != 16:
