@@ -15,17 +15,20 @@
                             <center>
                             <div id="wrapper">
                               <br>
-                              <span class='baricon'>1</span>
-                              <span id="bar1" class='progress_bar'></span>
-                              <span class='baricon'>2</span>
-                              <span id="bar2" class='progress_bar'></span>
-                              <span class='baricon'>3</span>
 
-                              <form method="post" action="">
+
+                              <form method="POST">
+                                  {% csrf_token %}
+
                               <div id="account_details">
-                                <p class='form_head'>Account Details</p>
+                                <p class='form_head'>Register</p>
 				{% for field in form %}
+                                  {% if field.label == "Retypepassword" %}
+                                     <p>Retype password</p>
+                                   {% else %}
+
                                 <p>{{ field.label }}</p>
+                                  {% endif %}
 				{{ field|add_class:"form-control login_field" }}
 				{% if form.errors %}
 				{% if field.errors %}
@@ -39,33 +42,38 @@
 				{% endif %}
 				{% endif %}
 				{% endfor %}
+
+
+                 {% for field in acc_form %}
+
+
+                                  <p>{{ field.label }}</p>
+                                  
+                {% if field.label == "Phone" %}
+                                  {{ field|add_class:"form-control login_field"|attr:"placeholder:Phone" }}
+                                  {% else %}
+				{{ field|add_class:"form-control login_field" }}
+                                  {% endif %}
+
+				{% if form.errors or acc_form.errors %}
+				{% if field.errors %}
+                                <div class="alert alert-danger fade in" id="input-alert">
+                                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                  <strong>Warning!</strong>
+				  {% for error in field.errors %}
+				  {{ error }}
+				  {% endfor %}
+                                </div>
+				{% endif %}
+				{% endif %}
+				{% endfor %}
                                 <br>
-                                <input type="button" value="Next" onclick="show_next('account_details','user_details','bar1');" class="btn btn-success next-login-infos">
+
+                                        <button class="btn btn-success next-login-infos" type="submit"><span>Register</span></button>
+
+
                               </div>
 
-                              <div id="user_details">
-                                <p class='form_head'>User Details</p>
-                                <p>First Name</p>
-                                <input type="text" placeholder='First Name'class="form-control login-field">
-                                <p>Last Name</p>
-                                <input type="text" placeholder='Last Name' class="form-control login-field">
-                                <p>Gender</p>
-                                <input type="text" placeholder='Gender' class="form-control login-field">
-                                <br>
-                                <input type="button" value="Previous" onclick="show_prev('account_details','bar1');" class="btn btn-success next-login-infos">
-                                <input type="button" value="Next" onclick="show_next('user_details','qualification','bar2');" class="btn btn-success next-login-infos">
-                              </div>
-                                    
-                              <div id="qualification">
-                                <p class='form_head'>Qualification</p>
-                                <p>Qualification</p>
-                                <input type="text" placeholder='Qualification' class="form-control login-field">
-                                <p>Hobbies</p>
-                                <input type="text" placeholder='Hobbies' class="form-control login-field">
-                                <br>
-                                <input type="button" value="Previous" onclick="show_prev('user_details','bar2');"  class="btn btn-success next-login-infos">
-                                <input type="Submit" value="Submit" class="btn btn-success next-login-infos">
-                              </div>
                               </form>
                             </div>
                             </center>

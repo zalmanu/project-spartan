@@ -32,7 +32,7 @@ class Account(models.Model):
 
 
 class UserRegisterForm(forms.ModelForm):
-    retype_password = forms.CharField(widget=forms.PasswordInput(attrs={
+    retypepassword = forms.CharField(widget=forms.PasswordInput(attrs={
         'placeholder': 'Retype password',
         'label': 'Retype password',
         'required': 'required'}))
@@ -61,9 +61,9 @@ class UserRegisterForm(forms.ModelForm):
             raise forms.ValidationError("This username already exists")
         return user_name
 
-    def clean_password2(self):
+    def clean_retypepassword(self):
         password = self.cleaned_data['password']
-        password2 = self.cleaned_data['retype_password']
+        password2 = self.cleaned_data['retypepassword']
         if password.isdigit():
             raise forms.ValidationError("Password is entirely numeric")
         if password != password2:
