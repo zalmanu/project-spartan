@@ -6,6 +6,7 @@ def ws_add(message):
 
 
 def ws_message(message):
+    print "capre"
     Group("chat").send({
         "text": "[user] %s" % message.content['text'],
     })

@@ -32,9 +32,9 @@
 		{% endfor %}
 		{% endif %}
 		  </ol>
-		  <form method="POST">
+		  <form method="POST" onsubmit="sendmessage()">
 		  {% csrf_token %}
-                   {{ form.message|add_class:'textarea'|attr:"placeholder: Type here!"|attr:"onsubmit:sendmessage();"|attr:"id:textcase;" }}
+                   {{ form.message|add_class:'textarea'|attr:"placeholder: Type here!"|attr:"id:textcase;"}}
 		 </form>  
                 </div>
     </section>
@@ -45,10 +45,10 @@
   var objDiv = document.getElementById("mesg");
   objDiv.scrollTop = objDiv.scrollHeight;
   socket = new WebSocket("ws://" + window.location.host + window.location.pathname);
-  socket.onopen = function sendmessage() {
-    field = document.getElementById("textcase");
-    console.log(field.value);
-    socket.send("hello world");
+  function sendmessage() {
+   field = document.getElementById("textcase");
+    socket.send(field.value);
+    return True;
 }
 </script>
     </body>
