@@ -18,9 +18,22 @@ def ws_message(message):
     user = get_object_or_404(User, username=data['user_name'])
     message = Message.objects.create(room=room, message=data['text'],
                                      submitter=user)
+
+    html_txt = """
+    <div class="avatar"><img src="http://www.gravatar.com/avatar/
+""" + message.submitter.account.code + """" draggable="false"/></div>
+    <div class="msg">
+    <p>""" + message.message + """</p>
+    <time>""" + message.timestamp.strftime('%B %d, %Y, %I:%M %p') + """</time>
+    </div>
+    </li>
+    <hr>
+    """
     dic = {
         'message': data['text'],
-        'submitter': user.username
+        'submitter': user.username,
+        'code': user.account.code,
+        'html': html_txt
     }
     Group("chat").send({'text': json.dumps(dic)})
 
