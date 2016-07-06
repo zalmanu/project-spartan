@@ -30,6 +30,7 @@ def room(request, slug):
     })
 
 
+@login_required
 def rooms(request):
     user = request.user
     spartan_messages = user.spa_rooms

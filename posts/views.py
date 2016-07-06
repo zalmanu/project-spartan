@@ -32,7 +32,7 @@ def post(request, slug):
        request.user != post.spartan.user:
         raise Http404()
     confirms = []
-    if request.method == 'POST':
+    if request.method == 'POST' and post.author == request.user:
         if request.POST.get("deletePost"):
             post.delete()
             return redirect('/')
@@ -49,6 +49,7 @@ def post(request, slug):
     })
 
 
+@login_required
 def edit_post(request, slug):
     post = get_object_or_404(Announcement, slug=slug, status=False)
     if post.author != request.user:
