@@ -1338,6 +1338,11 @@ body.login-page {
     }
 }
 
+.gallery-pictures{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 @media (max-width: 1199px){
   .garden-category{
     background: url('../img/category/garden.jpg');
@@ -1485,13 +1490,5 @@ body.login-page {
   color: #19b5fe;
 }
 
-.other-info{
-  border: 1px solid blue;
-  padding: 10px;
-}
-
-.gallery{
-  height: 220px;
-}
 
 #19B5FE

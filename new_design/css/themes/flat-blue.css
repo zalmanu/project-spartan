@@ -190,7 +190,7 @@
       .flat-blue .card.red .card-header .title, .flat-blue .card.yellow .card-header .title, .flat-blue .card.green .card-header .title, .flat-blue .card.blue .card-header .title, .flat-blue .card.dark .card-header .title {
         color: #FFF; }
   .flat-blue .card {
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 1px rgba(108, 116, 117, 1);
     border: 0px solid #E4E4E4; }
     .flat-blue .card .card-header {
       border-bottom: 1px solid #E4E4E4; }

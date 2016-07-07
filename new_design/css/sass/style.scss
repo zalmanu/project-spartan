@@ -1,0 +1,84 @@
+//Colors
+
+$blue: #19B5FE;
+$gray: #363c46;
+$white: #ffffff;
+
+//Fonts
+
+$font: 'Roboto Condensed', sans-serif; 
+
+
+//Imports
+
+@import 'forms';
+
+
+
+/* ------------------Edit ------------------ */
+
+.subtitle{
+	color: $blue;
+}
+
+.aditional-info{
+	border-right: 1px solid $gray;
+}
+
+.bid-tab{
+	color: #000 !important;
+	font-size: 50px;
+	text-allign: center;
+}
+
+#bidding-place{
+	border-radius: 1px;
+	box-shadow: none;
+	padding: 6px 12px;
+	background-color: $white;
+	height: 34px;
+	border: 1px solid #ccc;
+}
+
+ #gallery-image{
+ 	width: 270px;
+ 	height: 150px !important;
+ }
+
+ .me-chat{
+ 	padding-left: 0px !important;
+ }
+
+ #chat-body{
+ 	height: 470px;
+ 	overflow-y: scroll;
+ }
+
+ #chat-input{
+ 	width: 80%;
+ 	height: 33px;
+ }
+
+ #chat-choose-img{
+ 	height: 60px;
+ }
+
+ .chat-choose-name{
+ 	dispaly: inline-block;
+ }
+
+ .chat-list li{
+ 	list-style: none;
+ }
+
+ .chat-card{
+ 	background-color: $blue;
+ }
+
+ .chat-title-box{
+ 	color: $white !important;
+ }
+
+ .choose-chater{
+ 	background-color: #eee;
+ }
