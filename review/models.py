@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from django import forms
+
 from django.db import models
 from django.utils import timezone
 from authentication.models import User
@@ -20,8 +20,4 @@ class UrlUnique(models.Model):
     expired = models.BooleanField(default=False)
 
 
-class CreateReviewForm(forms.ModelForm):
 
-    class Meta:
-        model = Review
-        fields = ['message']
