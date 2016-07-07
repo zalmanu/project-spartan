@@ -1,6 +1,4 @@
-from django import forms
 from django.db import models
-from captcha.fields import ReCaptchaField
 from phonenumber_field.modelfields import PhoneNumberField
 
 
@@ -12,9 +10,3 @@ class ContactUs(models.Model):
     message = models.CharField(max_length=1000, null=True)
 
 
-class CreateContact(forms.ModelForm):
-    captcha = ReCaptchaField()
-
-    class Meta:
-        model = ContactUs
-        fields = '__all__'
