@@ -8,10 +8,11 @@ def home(request):
         current_user = request.user
         return render_to_response('homepages/home.html', {
             'ann': Announcement.objects.filter(status=False).order_by(
-                '-creation_date')[:5],
+                '-creation_date')[:4],
             'categories': categories,
             'user': current_user,
-            'cod': current_user.account.code})
+            'cod': current_user.account.code
+        })
     else:
         return render(request, 'homepages/index.html', {
             'categories': categories

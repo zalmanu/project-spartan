@@ -1,72 +1,48 @@
-{% extends 'base2.html' %}
+{% extends "base.html" %}
 {% load staticfiles %}
 {% block content %}
-<body onload="zoom()">
-	<script type="text/javascript">
-        function zoom() {
-            document.body.style.zoom = "80%"
-        }
-	</script>
-
-    <section class="wrap" id="first-section">
-        <div class="row title-row">
-				<div class="col-12 font-thin
-                                    categories-gallery">Log in</div>
-        </div>
-        <div class="row line-row">
-				<div class="hr">&nbsp;</div>
-        </div>
-        <div class="slide story" id="slide-6" data-slide="6">
-		<div class="container">
-            <div class="row title-row">
-			<div class="row subtitle-row">
-			</div><!-- /row -->
-
-            <div class="container">
-              <div class="compact">
-              <div class="card"></div>
-              <div class="card" id="login-box">
-
-
-                <form method="POST">
-                    {% csrf_token %}
-		    {% if errors %}
-                    <div class="error">
-		      {% for message in errors %}
-                        <ul>
-                            <li>{{ message }}</li>
-                        </ul>
-                    {% endfor %}                        
+{% load widget_tweaks %}
+<body class="flat-blue login-page" id="container">
+    <div class="container">
+        <div class="login-box">
+            <div>
+                <div class="login-form row">
+                    <div class="col-sm-12 text-center login-header">
+                        <h1 class="login-title"><a href="/">Spartan Tasks</a></h1>
                     </div>
-		    {% endif %}
-		    {% for field in form %}
-                    <div class="input-container">
-		        {{ field }}
-                        <label for="username">{{ field.label }}</label>
-                        <div class="bar"></div>
+                    <div class="col-sm-12">
+                            <center>
+                            <div id="wrapper">
+                              <br>
+
+                              <form method="post">
+				{% csrf_token %}
+				<div id="account_details">
+                                  <p class='form_head'><b>Log In</b> <small>into your account</small></p>
+				  {% for field in form %}
+                                  <p>{{ field.label }}</p>
+				  {{ field|add_class:"form-control login_field"|attr:"required:required"}}
+				  {% endfor %}
+				  {% if errors %}
+				  {% for error in errors %}
+				  <div class="alert alert-danger fade in" id="input-alert">
+                                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                  <strong>Warning!</strong>{{ error }}
+                                  </div>
+				  {% endfor %}
+				  {% endif %}
+                                <input type="submit" value="Log In" class="btn btn-success next-login-infos">
+                              </div>
+                                  
+                              </form>
+                            </div>
+                            </center>
+                        <div class="login-footer">
+                            <span class="text-right"><a href="/forgot" class="color-blue">Forgot password?</a></span>
+                        </div>
                     </div>
-		    {% endfor %}
-                    <div class="button-container">
-                        <button><span>Log in</span></button>
-                    </div>
-                    <div class="footer"><a href="/forgot/">Forgot your password?</a></div>
-                </form>
-              </div>
-
-            <div class="card alt">
-
-                <h1 class="title">Register
-                  <div class="close"></div>
-                </h1>
-
-
-              </div>
-
+                </div>
             </div>
-            </div>
-		</div><!-- /container -->
-	</div>
-
-    </section>
-    </body>
+        </div>
+    </div>
 {% endblock %}

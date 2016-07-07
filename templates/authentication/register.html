@@ -1,85 +1,85 @@
-{% extends 'base2.html' %}
+{% extends "base.html" %}
 {% load staticfiles %}
 {% block content %}
 {% load widget_tweaks %}
 
-<section class="wrap" id="first-section">
-        <div class="row title-row">
-				<div class="col-12 font-thin
-                                    categories-gallery">Register</div>
-        </div>
-        <div class="row line-row">
-				<div class="hr">&nbsp;</div>
-        </div>
-        <div class="slide story" id="slide-6" data-slide="6">
-		<div class="container">
-            <div class="row title-row">
-			<div class="row subtitle-row">
-			</div><!-- /row -->
-
-            <div class="container">
-              <div class="compact">
-              <div class="card"></div>
-              <div class="card" id="login-box">
-
-                <form method="POST">
-                    {% csrf_token %}
-		    {% if form.errors or acc_form.errors %}
-                    <div class="error">
-		      {% for field in form %}
-		      {% for message in field.errors %}
-                        <ul>
-                            <li>{{ message }}</li>
-                        </ul>
-			{% endfor %}
-			{% endfor %}
-			{% for field in acc_form %}
-			{% for message in field.errors %}
-			<ul>
-			  <li> {{ message }} </li>
-			</ul>
-			{% endfor %}
-			{% endfor %}
+<body class="flat-blue login-page" id="container">
+    <div class="container">
+        <div class="login-box">
+            <div>
+                <div class="login-form row">
+                    <div class="col-sm-12 text-center login-header">
+                        <h1 class="login-title"><a href="/">Spartan Tasks</a></h1>
                     </div>
-		    {% endif %}
-		    {% for field in form %}
-                    <div class="input-container">
-		      {{ field |add_class:"form-control"| attr:"required:required" }}
-		      <label for="{{ field.label }}">{{ field.label }}</label>
-		      <div class="bar"></div>
-		    </div>
-		    {% endfor %}
-		    {% for field in acc_form %}
-		    <div class="input-container">
-                        {% if field.label == "Captcha "%}
-                        <div class=".g-recaptcha" style="margin-left:5000px;">{{ field }}</div>
-                        {% else %}
-			{{ field |add_class:"form-control"| attr:"required:required" }}
-			 {% endif %}
+                    <div class="col-sm-12">
+                            <center>
+                            <div id="wrapper">
+                              <br>
 
-		      {% if field.label != "Country" and field.label != "City"  and  field.label != "Captcha" %}
-                      <label for="{{ field.label }}">{{ field.label }}</label>
-		      <div class="bar"></div>
-		      {% endif %}
+
+                              <form method="POST">
+                                  {% csrf_token %}
+
+                              <div id="account_details">
+                                <p class='form_head'>Register</p>
+				{% for field in form %}
+                                  {% if field.label == "Retypepassword" %}
+                                     <p>Retype password</p>
+                                   {% else %}
+
+                                <p>{{ field.label }}</p>
+                                  {% endif %}
+				{{ field|add_class:"form-control login_field" }}
+				{% if form.errors %}
+				{% if field.errors %}
+                                <div class="alert alert-danger fade in" id="input-alert">
+                                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                  <strong>Warning!</strong>
+				  {% for error in field.errors %}
+				  {{ error }}
+				  {% endfor %}
+                                </div>
+				{% endif %}
+				{% endif %}
+				{% endfor %}
+
+
+                 {% for field in acc_form %}
+
+
+                                  <p>{{ field.label }}</p>
+
+                {% if field.label == "Phone" %}
+                                  {{ field|add_class:"form-control login_field"|attr:"placeholder:Phone" }}
+                                  {% else %}
+				{{ field|add_class:"form-control login_field" }}
+                                  {% endif %}
+
+				{% if form.errors or acc_form.errors %}
+				{% if field.errors %}
+                                <div class="alert alert-danger fade in" id="input-alert">
+                                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                  <strong>Warning!</strong>
+				  {% for error in field.errors %}
+				  {{ error }}
+				  {% endfor %}
+                                </div>
+				{% endif %}
+				{% endif %}
+				{% endfor %}
+                                <br>
+
+                                        <button class="btn btn-success next-login-infos" type="submit"><span>Register</span></button>
+
+
+                              </div>
+
+                              </form>
+                            </div>
+                            </center>
                     </div>
-		    {% endfor %}
-                    <div class="button-container">
-                        <button type="submit"><span>Register</span></button>
-                    </div>
-                </form>
-
-              </div>
-
-              <div class="card alt">
-                  <h1 class="title">Register
-                    <div class="close"></div>
-                  </h1>
                 </div>
             </div>
-            </div>
-		</div><!-- /container -->
-	</div>
-    </section>
-
+        </div>
+    </div>
 {% endblock %}
-

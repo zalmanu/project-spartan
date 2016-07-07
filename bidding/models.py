@@ -11,17 +11,15 @@ class Offer(models.Model):
     price = models.IntegerField(null=True)
     spartan = models.ForeignKey(Spartan, related_name='bids')
     post = models.ForeignKey(Announcement, related_name='offers')
-    kind = models.CharField(max_length=30)
     status = models.BooleanField(default=False)
 
 
 class CreateOfferForm(forms.ModelForm):
 
-    kind = forms.ChoiceField(choices=[(x, x) for x in ['/job', '/hour']])
 
     class Meta:
         model = Offer
-        fields = ['price', 'kind']
+        fields = ['price']
 
     def __init__(self, *args, **kwargs):
         self.post = kwargs.pop('post', None)
