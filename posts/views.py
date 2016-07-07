@@ -6,7 +6,7 @@ from bidding.forms import CreateOfferForm
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404
-from .models import EditPostForm, CreatePostForm
+from .forms import EditPostForm, CreatePostForm
 
 
 @login_required
