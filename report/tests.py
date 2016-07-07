@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 from authentication.models import Account
 from spartans.models import Spartan
-from .models import CreateReportForm
+from .forms import CreateReportForm
 
 
 class ReportFormTestCase(TestCase):
