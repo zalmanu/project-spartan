@@ -38,6 +38,7 @@
         <link rel='shortcut icon' type='image/x-icon' href="{% static "img/favicon.ico" %}" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="{% static "js/chat_script.js" %}"></script>
+	<script src="{% static "js/notifications_script.js" %}"></script>
     </head>
 
     <body onload="zoom()">
@@ -52,6 +53,34 @@
                     <a href="#menuExpand" id="expand_menu">Menu</a>
                 </div>
                 <div class="top-nav notification-row ham_menu" id="user-menu-buttons">                
+                        <li id="alert_notificatoin_bar" class="dropdown hamburger_menu">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+
+                                <i class="fa fa-bell-o" id="notifications-icon"></i>
+                                <span class="badge bg-important">7</span>
+                            </a>
+                            <ul class="dropdown-menu extended inbox">
+                                <div class="notify-arrow notify-arrow-blue"></div>
+                                <li>
+                                    <p class="blue">You have 4 new notifications</p>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="photo"><img alt="avatar" src="../img/avatar-mini.jpg"></span>
+                                        <span class="subject">
+                                        <span class="from">Gregggg  Martin</span>
+                                        <span class="time">1 min</span>
+                                        </span>
+                                        <span class="message">
+                                            Bid on you <b id="notification-bid">50 RON</b>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">See all notifications</a>
+                                </li>
+                            </ul>
+                        </li>
 
                     <!-- notificatoin dropdown start-->
                     <ul class="nav pull-right top-menu">
