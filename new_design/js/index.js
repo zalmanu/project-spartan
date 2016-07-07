@@ -1,7 +1,7 @@
 $('#chat').hide();
 
 $('.open-chat-box').click(function(){
-  $('#chat').show();
+  $('#chat').fadeIn();
 });
 
 $('#close-chat-box').click(function(){
