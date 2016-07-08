@@ -264,11 +264,47 @@
                                                     <h5>{{ post.text }}</h5>
                                                 </div>
                                                 <div class="card-body">
+                                                     {% if request.user.spartan.spartanStatus and request.user != post.author and request.user.spartan.category.name == post.category.name and post.spartan != request.user.spartan %}
                                                     <h4><b>Bid</b></h4>
-                                                    <input type="number" id="bidding-place">
-                                                    <button type="submit" class="btn btn-success">
-                                                        Send your offer 
-                                                    </button>
+                                                            {% if form.errors %}
+				                                                <div class="error">
+				                                                         {% for field in form %}
+                                                                                {% for message in field.errors %}
+				                                                                        <ul>
+					                                                            <li>{{ message }}</li>
+                                                                                        </ul>
+				                                                                 {% endfor %}
+                                                                                 {% endfor %}
+                                                                </div>
+                                                            {% elif confirms %}
+				                                                <div class="confirm">
+				                                                        {% for message in confirms %}
+                                                                    <ul>
+                                                                        <li>{{ message }}</li>
+                                                                    </ul>
+				                                                         {% endfor %}
+                                                                </div>
+				                                             {% endif %}
+                                                    <!--<input type="number" id="bidding-place">-->
+<!---->
+                                                    <!--<button type="submit" class="btn btn-success" id="bid-button">-->
+                                                        <!--Send your offer-->
+                                                    <!--</button>-->
+                                            <form method="POST">
+				                                {% csrf_token %}
+
+
+
+                                          <div class="input-group" id="bidding-input-group">
+					                             {{ form.price }}
+                                              <button id="bid-button">Bid!</button>
+
+
+                                          </div>
+
+
+                                                </form>
+                                                    {% endif %}
                                                     <button class="pull-right btn" id="show-bidding-field">Show other Bids</button>
                                                     <br>
                                                     <div class="other-bids">
@@ -381,9 +417,6 @@
                 $('.other-bids').hide();
                 $('#show-bidding-field').on('click', function(){
                   $('.other-bids').toggle();
-                });
-                $('#bidding-place').click(function(){
-                    alert('The value must be in Dollars($).')
                 });
             </script>
 
