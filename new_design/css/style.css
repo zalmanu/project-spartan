@@ -1495,6 +1495,12 @@ body.login-page {
   margin-bottom: 0 !important;
 }
 
+#select-form{
+  width: 100%;
+  display: inline-block;
+}
+
+
 #19B5FE
 
 

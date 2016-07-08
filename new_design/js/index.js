@@ -7,3 +7,11 @@ $('.open-chat-box').click(function(){
 $('#close-chat-box').click(function(){
   $('#chat').hide();
 });
+
+$('#show-reviews').click(function(){
+  $('.review-card').slideToggle();
+});
+
+$('#edit-profile-btn').click(function(){
+  $('#card-edit-profile').slideToggle();
+});
