@@ -305,8 +305,13 @@
 
                                                 </form>
                                                     {% endif %}
+
+                                                    {% if request.user == post.author%}
+                                                    <button  class="pull-right btn" ><a href="/edit/{{ post.slug }}" >Edit post </a></button>
+                                                    {% endif %}
+
                                                     <button class="pull-right btn" id="show-bidding-field">Show other Bids</button>
-                                                    <br>
+
                                                     <div class="other-bids">
                                                         <br>
                                                         <div class="row">
@@ -319,8 +324,8 @@
                                                                             <thead>
                                                                                 <tr>
                                                                                     <th>No.</th>
-                                                                                    <th>First Name</th>
-                                                                                    <th>Username</th>
+                                                                                    <th> Username</th>
+                                                                                    <th>Price</th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
@@ -331,8 +336,8 @@
 
                                                                                     <th scope="row">{{ oferta.id }}</th>
 
-                                                                                    <td>{{ oferta.spartan.user.username }}</td>
-                                                                                    <td>{{ oferta.price }}</td>
+                                                                                    <td> <a href="/user/{{ oferta.spartan.slug }}" >{{ oferta.spartan.user.username }} </a></td>
+                                                                                    <td><a href="/user/{{ oferta.spartan.slug }}" >{{ oferta.price }} </a></td>
                                                                                 </tr>
                                                                             {% endfor %}
 
