@@ -142,34 +142,32 @@
                                 <!-- Dropdown level 1 -->
                                 <div id="dropdown-element" class="panel-collapse collapse">
                                     <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="#">Garden</a>
+                                      <ul class="nav navbar-nav">
+					{% for category in categories %}
+                                            <li><a href="/category/{{ category.id }}" name="kind" value={{ category.id }}> {{ category.name }}</a>
                                             </li>
-                                            <li><a href="#">Baby sitting</a>
-                                            </li>
-                                            <li><a href="#">Cleaning</a>
-                                            </li>
-                                            <li><a href="#">Cooking</a>
-                                            </li>
-                                            <li><a href="#">Moving</a>
-                                            </li>
-                                            <li><a href="#">Other</a>
-                                            </li>
+					{% endfor %}
                                         </ul>
                                     </div>
                                 </div>
                             </li>
                             <li class="panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#dropdown-table">
-                                    <span class="icon fa fa-table"></span><span class="title">My Posts</span>
+                                    <span class="icon fa fa-table"></span><span class="title">My Announcements</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                                 <div id="dropdown-table" class="panel-collapse collapse">
                                     <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="#">Not accepted yet</a>
+                                      <ul class="nav navbar-nav">
+					{% if user.posts.all %}
+					{% for post in user.posts.all %}
+                                            <li><a href="{{ post.get_absolute_url }}"> {{ post.title }}</a>
                                             </li>
-                                            <li><a href="#">Work in progress</a>
+					    {% endfor %}
+					<li><a href="/submit">Add an announcement</a>
+					    {% else %}
+					<li><a href="/submit">Add an announcement</a>
+					  {% endif %}
                                             </li>
                                         </ul>
                                     </div>
@@ -183,33 +181,44 @@
                                 <!-- Dropdown level 1 -->
                                 <div id="component-example" class="panel-collapse collapse">
                                     <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="#">Chat with George</a>
+                                      <ul class="nav navbar-nav">
+					{% if user.spa_rooms.all or user.empl_rooms.all %}
+					{% for room in empl_rooms.all %}
+                                            <li><a href="{{ room.get_absolute_url }}">Chat with {{ room.spartan.user.username }}</a>
                                             </li>
-                                            <li><a href="#">Chat with Ionela</a>
-                                            </li>
+					    {% endfor %}
+					    {% for room in user.spa_rooms.all %}
+					<li><a href="{{ room.get_absolute_url }}">Chat with {{ room.employer.username }}</a>
+                                        </li>
+					{% endfor %}
+					 {% else %}
+					<li><a> No chat room, yet</a>
+					</li>
+					{% endif %}
                                         </ul>
                                     </div>
                                 </div>
                             </li>
+			    {% if not user.account.has_related_object %}
                             <li>
-                                <a data-toggle="collapse" href="#">
+                                <a href="/spartan">
                                     <span class="icon fa fa-file-text-o"></span><span class="title">Become a Spartan</span>
                                 </a>
                             </li>
+			    {% endif %}
                             <li>
-                                <a data-toggle="collapse" href="#">
-                                    <span class="icon fa fa-file-text-o"></span><span class="title">Report a Spartan</span>
+                                <a href="/report">
+                                    <span class="icon fa fa-file-text-o"></span><span class="title">Report a Spartan/Employer</span>
                                 </a>
                             </li>
                             <!-- Dropdown-->
                             <li>
-                                <a data-toggle="collapse" href="#">
+                                <a href="/faq">
                                     <span class="icon fa fa-archive"></span><span class="title">Faq</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="license.html">
+                                <a href="/contact">
                                     <span class="icon fa fa-thumbs-o-up"></span><span class="title">Contact Us</span>
                                 </a>
                             </li>
