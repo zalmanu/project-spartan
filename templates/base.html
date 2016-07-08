@@ -37,7 +37,6 @@
         <link rel="stylesheet" type="text/css" href="{% static "css/table/component.css" %}"/>
         <link rel='shortcut icon' type='image/x-icon' href="{% static "img/favicon.ico" %}" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="{% static "js/chat_script.js" %}"></script>
 	<script src="{% static "js/notifications_script.js" %}"></script>
     </head>
 
@@ -112,7 +111,7 @@
                             </a>
                         <li>
                         <br></br>
-                        <span><a  href="/profile/" class="username">{{ user.username }} </a>  <a href="/logout/">| Log out</a> </span>
+                        <span><a  href="/profile/" class="username" id="user_name_not">{{ user.username }} </a>  <a href="/logout/">| Log out</a> </span>
                           </li>
 
                             <!--<b class="caret"></b>-->

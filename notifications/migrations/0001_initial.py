@@ -11,11 +11,13 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Category',
+            name='Notification',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('name', models.CharField(max_length=20, null=True)),
-                ('path_banner', models.CharField(max_length=500, null=True)),
+                ('title', models.CharField(max_length=40)),
+                ('description', models.CharField(max_length=100)),
+                ('url', models.CharField(max_length=120)),
+                ('seen', models.BooleanField(default=False)),
             ],
         ),
     ]

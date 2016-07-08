@@ -12,9 +12,10 @@ from chat.models import Room, Message
 @channel_session
 def ws_add(message):
     label = message['path'].strip('/').split('/')
-    room = Room.objects.get(slug=label[1])
-    Group("chat-" + label[1]).add(message.reply_channel)
-    message.channel_session['room'] = room.slug
+    if(label[0] == "room"):
+        room = Room.objects.get(slug=label[1])
+        Group("chat-" + label[1]).add(message.reply_channel)
+        message.channel_session['room'] = room.slug
 
 
 @channel_session

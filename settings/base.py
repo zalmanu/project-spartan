@@ -27,6 +27,7 @@ INSTALLED_APPS = (
     'captcha',
     'widget_tweaks',
     'phonenumber_field',
+    'channels',
 
     # Usual apps
     'authentication',
@@ -44,9 +45,7 @@ INSTALLED_APPS = (
     'realtime',
     'error_pages',
     'about_us',
-    'channels',
-
-
+    'notifications'
 )
 
 

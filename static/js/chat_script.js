@@ -1,4 +1,4 @@
- socket = new WebSocket("ws://" + window.location.host + window.location.pathname);
+socket = new WebSocket("ws://" + window.location.host + window.location.pathname);
  function sendmessage() {
  var field = document.getElementById("textcase");
  if(field.value == '')return false;
@@ -12,6 +12,7 @@
 	 
      }
      socket.send(JSON.stringify(message));
+     field.value = '';
      return false;
  }
  socket.onmessage = function(message){
