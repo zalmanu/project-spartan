@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
 
-from .models import UserRegisterForm, AccountRegisterForm
+from .forms import UserRegisterForm, AccountRegisterForm
 from .forms import LoginForm
 
 

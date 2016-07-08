@@ -2,7 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
 
-from models import Room, CreateMessageForm
+from models import Room
+from .forms import CreateMessageForm
 
 
 @login_required

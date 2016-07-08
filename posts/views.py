@@ -2,11 +2,11 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.http import Http404
 from models import Announcement
-from bidding.models import CreateOfferForm
+from bidding.forms import CreateOfferForm
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404
-from .models import EditPostForm, CreatePostForm
+from .forms import EditPostForm, CreatePostForm
 
 
 @login_required
@@ -32,8 +32,8 @@ def post(request, slug):
        request.user != post.spartan.user:
         raise Http404()
     confirms = []
-    if request.method == 'POST' and post.author == request.user:
-        if request.POST.get("deletePost"):
+    if request.method == 'POST':
+        if request.POST.get("deletePost") and post.author == request.user:
             post.delete()
             return redirect('/')
         if form.is_valid():

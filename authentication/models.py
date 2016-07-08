@@ -1,10 +1,9 @@
 from __future__ import unicode_literals
 import md5
 
-from django import forms
 from django.db import models
 from django.contrib.auth.models import User
-from captcha.fields import ReCaptchaField
+
 from phonenumber_field.modelfields import PhoneNumberField
 
 from spartans.models import Spartan
@@ -30,46 +29,3 @@ class Account(models.Model):
         usshash.update(self.user.email)
         return usshash.hexdigest()
 
-
-class UserRegisterForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Retype password',
-                                widget=forms.PasswordInput)
-
-    class Meta:
-        model = User
-        fields = ['username', 'email', 'password']
-
-    def clean_email(self):
-        email = self.cleaned_data['email']
-        if User.objects.filter(email=email):
-            raise forms.ValidationError("This email already exists")
-        return email
-
-    def clean_username(self):
-        user_name = self.cleaned_data['username']
-        if User.objects.filter(username=user_name).count():
-            raise forms.ValidationError("This username already exists")
-        return user_name
-
-    def clean_password2(self):
-        password = self.cleaned_data['password']
-        password2 = self.cleaned_data['password2']
-        if password.isdigit():
-            raise forms.ValidationError("Password is entirely numeric")
-        if password != password2:
-            raise forms.ValidationError("Passwords do not match")
-        if len(password) < 8:
-            raise forms.ValidationError("Password is too short")
-        return password2
-
-
-class AccountRegisterForm(forms.ModelForm):
-
-    city = forms.ChoiceField(choices=[(x, x) for x in ['Timisoara']])
-    country = forms.ChoiceField(choices=[(x, x) for x in ['Romania']])
-    captcha = ReCaptchaField()
-
-    class Meta:
-        model = Account
-        exclude = ['user', 'code']

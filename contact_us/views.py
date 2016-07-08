@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import CreateContact
+from .forms import CreateContact
 
 
 def contact_us(request):

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
-from models import User_Edit, Account_Edit
+from forms import User_Edit, Account_Edit
 
 
 @login_required

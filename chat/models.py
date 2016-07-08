@@ -4,7 +4,6 @@ import uuid
 
 from django.core.urlresolvers import reverse
 from django.db import models
-from django import forms
 from django.contrib.auth.models import User
 
 from posts.models import Announcement
@@ -27,15 +26,3 @@ class Message(models.Model):
     timestamp = models.DateTimeField(editable=False,
                                      auto_now_add=True, null=True)
 
-
-class CreateMessageForm(forms.ModelForm):
-
-    class Meta:
-        model = Message
-        fields = ['message']
-
-    def clean_message(self):
-        message = self.cleaned_data['message']
-        if not message:
-            raise forms.ValidationError("The message is empty")
-        return message

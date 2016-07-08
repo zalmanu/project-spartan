@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 from spartans.models import Spartan
 from categories.models import Category
-from .models import CreateSpartanForm
+from .forms import CreateSpartanForm
 from authentication.models import Account
 
 

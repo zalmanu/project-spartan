@@ -2,15 +2,16 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 
-from models import Spartan, CreateSpartanForm
+from models import Spartan
+from .forms import CreateSpartanForm
 
 
 @login_required
 def spartan(request):
     confirm = []
-    form = CreateSpartanForm(data=request.POST or None)
+    form = CreateSpartanForm(data=request.POST or None, user=request.user)
     if request.method == 'POST':
-        if not request.user.account.has_related_object() and form.is_valid():
+        if form.is_valid():
             form.instance.user = request.user
             form.save()
             form.instance.activation_email()
