@@ -42,6 +42,9 @@ def post(request, slug):
             form.save()
             confirms.append('Offer was sent')
     return render(request, 'posts/post.html', {
+        'ann': Announcement.objects.filter(status=False).order_by(
+            '-creation_date')[:4],
+        'user': request.user,
         'cod': request.user.account.code,
         'post': post,
         'form': form,

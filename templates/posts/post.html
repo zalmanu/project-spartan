@@ -1,203 +1,381 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load staticfiles %}
 {% block content %}
 {% load widget_tweaks %}
-<body onload="zoom()">
-	<script type="text/javascript">
-        function zoom() {
-            document.body.style.zoom = "80%"
-        }
-	</script>
 
-        <section class="wrap" id="secound-section">
-                    <section class="wrapper">
-                         <div class="row title-row"> </div>
-            </div>
-              <div class="row">
-                <!-- profile-widget -->
-                <div class="col-lg-12">
-                    <div class="profile-widget profile-widget-info" id="post">
-                          <div class="panel-body" id="profile-header">
-                            <div class="col-lg-2 col-sm-2">
-                              <h4 id="user-name">{{ post.author }}</h4>
-                              <div class="follow-ava">
-                                  <img src="http://www.gravatar.com/avatar/{{ post.author.account.code }}" alt="">
-                              </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-4 follow-info" >
-                              <p>{{ post.title }}</p>
-			      <p>{{ post.text }}</p>
-                            </div>
-                            <div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
-                                      <ul>
-                                          <li class="active">
-
-                                              <i class="icon_clock_alt"> </i><br>
-					      {{ post.timePost }}
-                                          </li>
-
-                                      </ul>
-                            </div>
-							<div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
-                                      <ul>
-                                          <li class="active">
-
-                                              <i class="icon_calendar"> </i><br>
-
-						{{ post.data }}
-                                          </li>
-
-                                      </ul>
-                            </div>
-							<div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
-                                      <ul>
-                                          <li class="active">
-
-                                              <i class="icon_pin_alt"> </i><br>
-
-					      {{ post.address }}
-                                          </li>
-
-                                      </ul>
-                            </div>
-                          </div>
+<body class="flat-blue">
+    <div class="app-container">
+        <div class="row content-container">
+            <nav class="navbar navbar-default navbar-fixed-top navbar-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-expand-toggle" id="expand-menu-button">
+                            <i class="fa fa-bars icon"></i>
+                        </button>
+                        <ol class="breadcrumb navbar-breadcrumb">
+                            <li class="active"><input type="text" class="form-control" placeholder="Search..." id="search-bar"></li>
+                        </ol>
+                        <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
+                            <i class="fa fa-th icon"></i>
+                        </button>
                     </div>
-
-                </div>
-
-              </div>
-              <!-- page start-->
-          <header class="panel-heading tab-bg-info" id="categoryes_profile">
-            <ul class="nav nav-tabs" id="profile-subpage">
-	      {% if request.user.spartan.spartanStatus and request.user != post.author and request.user.spartan.category.name == post.category.name and post.spartan != request.user %}
-                                  <li class="active">
-                                      <a data-toggle="tab" href="#recent-activity">
-                                           Bids
-                                      </a>
-                                  </li>
-		{% endif %}
-                                  <li>
-                                      <a data-toggle="tab" href="#profile">
-																				More info
-                                      </a>
-                                  </li>
-				{% if request.user == post.author%}
-				<li>
-				  <a href="/edit/{{ post.slug }}">
-				    Edit post
-				  </a>
-				</li>
-				{% endif %}
-                              </ul>
-          </header>
-	      {% if request.user.spartan.spartanStatus and request.user != post.author and request.user.spartan.category.name == post.category.name and post.spartan != request.user.spartan %}
-              <div class="row">
-                 <div class="col-lg-12">
-                    <section class="panel">
-                          <div class="panel-body">
-                              <div class="tab-content">
-                                <div id="recent-activity" class="tab-pane active">
-				  {% if form.errors %}
-				  <div class="error">
-				    {% for field in form %}
-				      {% for message in field.errors %}
-				      <ul>
-					<li>{{ message }}</li>
-				      </ul>
-				      {% endfor %}
-				      {% endfor %}
-				    </div>
-				    {% elif confirms %}
-				    <div class="confirm">
-				      {% for message in confirms %}
-				      <ul>
-					<li>{{ message }}</li>
-				      </ul>
-				      {% endfor %}
-				    </div>
-				    {% endif %}
-                                  <div class="form-group">
-				    <form method="POST">
-				      {% csrf_token %}
-                                          <label class="control-label">{{ form.price.label }}</label>
-                                          <div class="input-group" id="bidding-input-group">
-					    {{ form.price |add_class:"form-control input-lg m-bot15 bid-sort"|attr:"id: sorty-by"|attr:"required: required" }}
-                                              <span class="input-group-addon"></span>
-					    {{ form.kind|add_class:"form-control"|attr:"bid-input"| attr:"aria-describedby: start_date"| attr:"required: required"}}
-                                          </div>
-                                          <button id="bid-button">Bid!</button>
-                                  </div>
-				  </form>
-                                      <button id="show_other_bids">More bids</button>
-                                      <div class="profile-activity each_bid">
-                                        {% for oferta in post.offers.all %}
-                                          <div class="act-time">
-                                              <div class="activity-body act-in">
-                                                  <span class="arrow"></span>
-                                                  <div class="text">
-                                                      <a href="#" class="activity-img"><img class="avatar" src="http://www.gravatar.com/avatar/{{ oferta.spartan.user.account.code }}" alt=""></a>
-                                                      <p class="attribution"><a href="#">{{ oferta.spartan.user }}</a> {{ oferta.kind }}</p>
-                                                      <h2>{{ oferta.price }}</h2>
-                                                  </div>
-                                              </div>
-                                          </div>
-					  {% endfor %}
-                                      </div>
+                    <ul class="nav navbar-nav navbar-right" id="toggle-menu">
+                        <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
+                            <i class="fa fa-times icon"></i>
+                        </button>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-comments-o"></i></a>
+                            <ul class="dropdown-menu danger  animated fadeInDownx">
+                                <li class="title">
+                                    Messages <span class="badge pull-right">0</span>
+                                </li>
+                                <div class="notifications-list">
+                                    <li class="message">
+                                        No new messages
+                                    </li>
+                                    <li class="message">
+                                        No new messages
+                                    </li>
+                                    <li class="message">
+                                        No new messages
+                                    </li>   
                                 </div>
-				{% endif %}
-                                  <!-- profile -->
-                                  <div id="profile" class="tab-pane">
-                                    <section class="panel">
-                                       <h1></h1>
-                                      <div class="panel-body bio-graph-info">
-                                              <div class="bio-row">
-                                                  <p><span>Username: </span>{{ post.author.username }} </p>
-                                              </div>
-					      <div class="bio-row">
-                                                  <p><span>Highest bid: </span>{{ post.money }}  EUR </p>
-                                              </div>
-                                              <div class="bio-row">
-                                                  <p><span>Country:</span>{{ post.author.account.country }}</p>
-                                              </div>
-                                              <div class="bio-row">
-                                                <p><span>City: </span>{{ post.author.account.city }}</p>
-                                              </div>
-					      <div class="bio-row">
-                                                <p><span>Category: </span>{{ post.category.name }}</p>
-                                              </div>
-                                         {% if request.user == post.author %}
-                                           <div class="button-container">
-                                               <form method="POST">
-                                                   {% csrf_token %}
-                                                <button type="submit" name = "deletePost" value='deletePost'  class="btn btn-primary"><span>Delete</span></button>
-                                                </form>
-                                           </div>
-                                          {% endif %}
-                                      </div>
-                                    </section>
-                              </div>
-                          </div>
-                      </section>
-                 </div>
-              </div>
+                            </ul>
+                        </li>
+                        <li class="dropdown danger">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-star-half-o"></i> 4</a>
+                            <ul class="dropdown-menu danger  animated fadeInDown">
+                                <li class="title">
+                                    Notification <span class="badge pull-right">4</span>
+                                </li>
+                                <li>
+                                    <ul class="list-group notifications">
+                                        <div class="notifications-list">
+                                            <a href="#">
+                                                <li class="list-group-item">
+                                                    <span class="badge">1</span> <i class="fa fa-exclamation-circle icon"></i> new registration
+                                                </li>
+                                            </a>
+                                            <a href="#">
+                                                <li class="list-group-item">
+                                                    <span class="badge success">1</span> <i class="fa fa-check icon"></i> new orders
+                                                </li>
+                                            </a>
+                                            <a href="#">
+                                                <li class="list-group-item">
+                                                    <span class="badge success">1</span> <i class="fa fa-check icon"></i> new orders
+                                                </li>
+                                            </a>
+                                            <a href="#">
+                                                <li class="list-group-item">
+                                                    <span class="badge success">1</span> <i class="fa fa-check icon"></i> new orders
+                                                </li>
+                                            </a>
+                                            <a href="#">
+                                                <li class="list-group-item">
+                                                    <span class="badge success">1</span> <i class="fa fa-check icon"></i> new orders
+                                                </li>
+                                            </a>
+                                            <a href="#">
+                                                <li class="list-group-item">
+                                                    <span class="badge success">1</span> <i class="fa fa-check icon"></i> new orders
+                                                </li>
+                                            </a>
+                                            <a href="#">
+                                                <li class="list-group-item">
+                                                    <span class="badge danger">2</span> <i class="fa fa-comments icon"></i> customers messages
+                                                </li>
+                                            </a>
+                                        </div>
+                                        <a href="#">
+                                            <li class="list-group-item message">
+                                                view all
+                                            </li>
+                                        </a>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown profile">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ request.user.username }}<span class="caret"></span></a>
+                            <ul class="dropdown-menu animated fadeInDown">
+                                <li class="profile-img">
+                                    <img src="https://www.gravatar.com/avatar/{{ cod }}?s=200">
+                                </li>
+                                <li>
+                                    <div class="profile-info">
+                                        <h4 class="username">{{ request.user.username }}</h4>
+                                        <p>{{ request.user.email }}</p>
+                                        <div class="btn-group margin-bottom-2x" role="group">
+                                           <a type="button" href="/profile" class="btn btn-default"><i class="fa fa-user"></i> Profile</a>
+                                            <a type="button" class="btn btn-default" href="/logout"><i class="fa fa-sign-out"></i> Logout</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="side-menu sidebar-inverse">
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="side-menu-container">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="#">
+                                <div class="icon fa"><img src="{% static "img/logo/logo.png" %}"  id="logo"></div>
+                                <div class="title">Spartan Tasks</div>
+                            </a>
+                            <button type="button" class="navbar-expand-toggle pull-right visible-xs">
+                                <i class="fa fa-times icon"></i>
+                            </button>
+                        </div>
+                        <ul class="nav navbar-nav">
+                            <li class="active">
+                                <a href="index.html">
+                                    <span class="icon glyphicon glyphicon-home"></span><span class="title">Home</span>
+                                </a>
+                            </li>
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="#dropdown-element">
+                                    <span class="icon fa fa-desktop"></span><span class="title">Categories</span>
+                                </a>
+                                <!-- Dropdown level 1 -->
+                                <div id="dropdown-element" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="#">Garden</a>
+                                            </li>
+                                            <li><a href="#">Baby sitting</a>
+                                            </li>
+                                            <li><a href="#">Cleaning</a>
+                                            </li>
+                                            <li><a href="#">Cooking</a>
+                                            </li>
+                                            <li><a href="#">Moving</a>
+                                            </li>
+                                            <li><a href="#">Other</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="#dropdown-table">
+                                    <span class="icon fa fa-table"></span><span class="title">My Posts</span>
+                                </a>
+                                <!-- Dropdown level 1 -->
+                                <div id="dropdown-table" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="#">Not accepted yet</a>
+                                            </li>
+                                            <li><a href="#">Work in progress</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- Dropdown-->
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="#component-example">
+                                    <span class="icon fa fa-cubes"></span><span class="title">Chats</span>
+                                </a>
+                                <!-- Dropdown level 1 -->
+                                <div id="component-example" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="#">Chat with George</a>
+                                            </li>
+                                            <li><a href="#">Chat with Ionela</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <a data-toggle="collapse" href="#">
+                                    <span class="icon fa fa-file-text-o"></span><span class="title">Become a Spartan</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-toggle="collapse" href="#">
+                                    <span class="icon fa fa-file-text-o"></span><span class="title">Report a Spartan</span>
+                                </a>
+                            </li>
+                            <!-- Dropdown-->
+                            <li>
+                                <a data-toggle="collapse" href="#">
+                                    <span class="icon fa fa-archive"></span><span class="title">Faq</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="license.html">
+                                    <span class="icon fa fa-thumbs-o-up"></span><span class="title">Contact Us</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </nav>
+            </div>
+            <!-- Main Content -->
+            <div class="container-fluid">
+                <div class="side-body padding-top">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="card-title">
+                                        <div class="title">{{ post.title }} </div>
+                                        <div class="description">{{ post.category.name }}</div>
+                                    </div>
+                                </div>
 
-              <!-- page end-->
-          </section>
-        </section>
-        <script>
-        $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-        </script>
-        <script>
-                $("#show_other_bids").click(function(){
-                    $(".each_bid").toggleClass('show_bids');
+                                <div class="card-body">
+                                    <div class="row no-margin">
+                                        <div class="col-sm-6">
+                                            <div class="card primary">
+                                                <div class="card-jumbotron no-padding">
+                                                    <img src="{% static "img/thumbnails/ram.jpg" height="533" width="800" class="img-responsive" %}">
+                                                </div>
+                                                <div class="card-body">
+                                                    <h4><b>Other details</b></h4>
+                                                    <div class="row">    
+                                                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 aditional-info"><h4 class="subtitle">Date</h4>{{ post.data }}</div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 aditional-info"><h4 class="subtitle">Location</h4>{{ post.address }}</div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><h4 class="subtitle">Time</h4>{{ post.timePost }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="card">
+                                                <div class="card-jumbotron">
+                                                    <h4><b>{{ post.title }}</b></h4>
+                                                    <h5>{{ post.text }}</h5>
+                                                </div>
+                                                <div class="card-body">
+                                                    <h4><b>Bid</b></h4>
+                                                    <input type="number" id="bidding-place">
+                                                    <button type="submit" class="btn btn-success">
+                                                        Send your offer 
+                                                    </button>
+                                                    <button class="pull-right btn" id="show-bidding-field">Show other Bids</button>
+                                                    <br>
+                                                    <div class="other-bids">
+                                                        <br>
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <div class="card">
+                                                                    <div class="card-header"></div>
+                                                                    <div class="card-body no-padding">
+                                                                        <div class="sub-title title-bidders">Other Bidders</div>
+                                                                        <table class="table table-bordered">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th>No.</th>
+                                                                                    <th>First Name</th>
+                                                                                    <th>Username</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+
+                                                                            {% for oferta in post.offers.all %}
+
+                                                                                <tr>
+
+                                                                                    <th scope="row">{{ oferta.id }}</th>
+
+                                                                                    <td>{{ oferta.spartan.user.username }}</td>
+                                                                                    <td>{{ oferta.price }}</td>
+                                                                                </tr>
+                                                                            {% endfor %}
+
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                   
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="card-title">
+                                        <div class="title">Pictures</div>
+                                        <div class="description">Here are some media files about the service</div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                            <a href="#">
+                                                <img src="{% static "img/profile/profile-1.jpg" id="gallery-image" %}">
+                                            </a>
+                                        </div>
+                                        <a>   </a>
+                                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                            <a href="#">
+                                                <img src="{% static "img/profile/profile-1.jpg" id="gallery-image" %}">
+                                            </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                            <a href="#">
+                                                <img src="{% static "img/profile/profile-1.jpg" id="gallery-image" %}">
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Other Posts</h2>
+                    <div class="row no-margin-bottom">
+                         {% for post in ann %}
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                            <div class="thumbnail no-margin-bottom">
+                                <img src="{% static "img/category/garden.jpg" id="gallery-image" %}">
+                                <div class="caption">
+                                    <h3 id="thumbnail-label">{{ post.title }}<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
+                                    <p>{{ post.text }}  </p>
+                                    <p>
+                                        <a href="{{ post.get_absolute_url }}" class="btn btn-success" role="button">View Post</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js">
+            </script>
+            <script>
+                $("#arrow").click(function() {
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                return false;
                 });
-        </script>
-
-
-    </body>
-
-    </html>
+                $('.other-bids').hide();
+                $('#show-bidding-field').on('click', function(){
+                  $('.other-bids').toggle();
+                });
+                $('#bidding-place').click(function(){
+                    alert('The value must be in Dollars($).')
+                });
+            </script>
 
 {% endblock %}
