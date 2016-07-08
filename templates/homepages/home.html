@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block content %}
+{% load widget_tweaks %}
 <body class="flat-blue">
     <div class="app-container">
         <div class="row content-container">
@@ -11,7 +12,11 @@
                             <i class="fa fa-bars icon"></i>
                         </button>
                         <ol class="breadcrumb navbar-breadcrumb">
-                            <li class="active"><input type="text" class="form-control" placeholder="Search..." id="search-bar"></li>
+                          <li class="active">
+			    <form method="GET">
+				  {% csrf_token %}
+				  {{ form.q|add_class:"form-control"|attr:"placeholder: Search..."|attr:"id:search-bar" }}
+			    </form>
                         </ol>
                         <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
                             <i class="fa fa-th icon"></i>
@@ -130,7 +135,7 @@
                         </div>
                         <ul class="nav navbar-nav">
                             <li class="active">
-                                <a href="index.html">
+                                <a href="/">
                                     <span class="icon glyphicon glyphicon-home"></span><span class="title">Home</span>
                                 </a>
                             </li>
@@ -182,7 +187,7 @@
                                     <div class="panel-body">
                                       <ul class="nav navbar-nav">
 					{% if user.spa_rooms.all or user.empl_rooms.all %}
-					{% for room in empl_rooms.all %}
+					{% for room in user.empl_rooms.all %}
                                             <li><a href="{{ room.get_absolute_url }}">Chat with {{ room.spartan.user.username }}</a>
                                             </li>
 					    {% endfor %}
@@ -255,7 +260,7 @@
                                 <img src="{% static "img/thumbnails/picjumbo.com_IMG_3241.jpg" %}" class="img-responsive">
                                 <div class="caption">
                                     <h3 id="thumbnail-label">{{ post.title }}<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
-                                    <p>{{ post.text }}</p>
+                                    <p>{{ post.description }}</p>
                                     <p>
                                         <a href="{{ post.get_absolute_url }}" class="btn btn-success" role="button">View Post</a>
 <!--
@@ -268,27 +273,6 @@
                         </div>
 			{% endfor %}
                     </div>
-                    <div class="no-padding no-margin-bottom">
-                                        <nav>
-                                            <ul class="pagination">
-                                                <li>
-                                                    <a href="#" aria-label="Previous">
-                                                        <span aria-hidden="true">&laquo;</span>
-                                                    </a>
-                                                </li>
-                                                <li class="active"><a href="#">1</a></li>
-                                                <li><a href="#">2</a></li>
-                                                <li><a href="#">3</a></li>
-                                                <li><a href="#">4</a></li>
-                                                <li><a href="#">5</a></li>
-                                                <li>
-                                                    <a href="#" aria-label="Next">
-                                                        <span aria-hidden="true">&raquo;</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </nav>
-                                    </div>
                 </div>
             </div>
         </div>

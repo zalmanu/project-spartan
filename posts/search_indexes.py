@@ -6,8 +6,7 @@ from .models import Announcement
 class AnnouncementIndex(indexes.SearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)
     title = indexes.CharField(model_attr="title")
-    author = indexes.CharField(model_attr='author')
-    status = indexes.BooleanField(model_attr='status')
+    description = indexes.CharField(model_attr="description")
 
     def get_model(self):
         return Announcement

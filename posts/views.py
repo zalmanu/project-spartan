@@ -5,9 +5,8 @@ from models import Announcement
 from bidding.models import CreateOfferForm
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
-from django.shortcuts import get_object_or_404, render_to_response
+from django.shortcuts import get_object_or_404
 from .models import EditPostForm, CreatePostForm
-from .forms import PostsSearchForm
 
 
 @login_required
@@ -65,8 +64,3 @@ def edit_post(request, slug):
         'form': form,
     })
 
-
-def search_posts(request):
-    form = PostsSearchForm(request.GET)
-    posts = form.search()
-    return render_to_response('search/search.html', {'posts': posts})

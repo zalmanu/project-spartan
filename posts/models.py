@@ -15,8 +15,8 @@ from categories.models import Category
 
 class Announcement(models.Model):
     title = models.CharField(null=True, max_length=256)
-    text = models.CharField('Announcement description',
-                            null=True, max_length=500)
+    description = models.CharField('Announcement description',
+                                   null=True, max_length=500)
     slug = models.SlugField(default=uuid.uuid1, unique=True)
     author = models.ForeignKey(to=User, related_name='posts',
                                null=True, blank=True)
@@ -73,7 +73,7 @@ class EditPostForm(forms.ModelForm):
 
     class Meta:
         model = Announcement
-        fields = ['title', 'text', 'address', 'country',
+        fields = ['title', 'description', 'address', 'country',
                   'city', 'data', 'timePost', 'money']
 
 
@@ -82,11 +82,11 @@ class CreatePostForm(forms.ModelForm):
     city = forms.ChoiceField(choices=[(x, x) for x in ['Timisoara']])
     country = forms.ChoiceField(choices=[(x, x) for x in ['Romania']])
     category = forms.ChoiceField(choices=[(x, x)
-                                          for x in Category.objects.all()])
+                                          for x in Category.categories()])
 
     class Meta:
         model = Announcement
-        fields = ['title', 'text', 'address', 'country',
+        fields = ['title', 'description', 'address', 'country',
                   'city', 'data', 'timePost', 'money', 'category']
 
     def clean_category(self):
