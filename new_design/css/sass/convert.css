@@ -54,4 +54,34 @@
 .choose-chater {
   background-color: #eee; }
 
+#reviews-body {
+  height: 300px;
+  overflow-y: scroll; }
+
+.rating {
+  border: none;
+  float: left; }
+
+.rating > input {
+  display: none; }
+
+.rating > label:before {
+  margin: 5px;
+  font-size: 2.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005"; }
+
+.rating > .half:before {
+  content: "\f089";
+  position: absolute; }
+
+.rating > label {
+  color: #ddd;
+  float: right; }
+
+.review-card {
+  margin-bottom: 10px;
+  display: none; }
+
 /*# sourceMappingURL=convert.css.map */
