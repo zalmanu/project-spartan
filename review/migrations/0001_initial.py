@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('message', models.CharField(max_length=1000, null=True, verbose_name='Review message')),
-                ('data', models.DateField(default=datetime.datetime(2016, 7, 1, 14, 50, 59, 622889, tzinfo=utc), null=True, verbose_name='Review publication day')),
+                ('data', models.DateField(default=datetime.datetime(2016, 7, 9, 13, 9, 33, 92549, tzinfo=utc), null=True, verbose_name='Review publication day')),
             ],
         ),
         migrations.CreateModel(

@@ -66,3 +66,4 @@ def edit_post(request, slug):
         'post': post,
         'form': form,
     })
+
