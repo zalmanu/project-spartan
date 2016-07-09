@@ -234,25 +234,7 @@
             <!-- Main Content -->
             <div class="container-fluid">
                 <div class="side-body padding-top">
-                    <h1>Categories</h1>
-                    <div class="row">
-		      {% for category in categories %}
-                      <div class="col-lg-2 col-md-6 col-sm-12">
-			<a href="/category/{{ category.id }}" name="kind" value={{ category.id }}>
-                            <div class="card primary">
-                                <div class="card-background garden-category no-padding" style="background-image: url({% static 'img/category/'%}{{ category.path_banner }});">
-                                    <div class="category"></div>
-                                </div>
-                                <div class="card-body half-padding">
-                                    <h4 class="no-margin font-weight-300 center">{{ category.name }}</h4>
-                                    <div class="clear-both"></div>
-                                </div>
-                            </div>
-                      </div>
-		      </a>
-			{% endfor %}
-                    </div>
-                        <h1>Recent Posts</h1>
+                        <h1>Search results</h1>
 			<div class="row  no-margin-bottom">
 			  {% for post in posts %}
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
@@ -262,7 +244,7 @@
                                     <h3 id="thumbnail-label">{{ post.title }}<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
                                     <p>{{ post.description }}</p>
                                     <p>
-                                        <a href="{{ post.get_absolute_url }}" class="btn btn-success" role="button">View Post</a>
+                                        <a href="/post/{{ post.slug }}" class="btn btn-success" role="button">View Post</a>
 <!--
 -->
                                     <br>

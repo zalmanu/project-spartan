@@ -55,7 +55,8 @@ class Announcement(models.Model):
                      " Time : %s \n Date: %s \n " \
                      "Highest bid price: %s eur \n" \
                      " Have a nice day! - Team Spartan" % (
-                         user.username, self.title,  self.text,  self.address,
+                         user.username, self.title,  self.description,
+                         self.address,
                          self.country,  self.city,  self.category.name,
                          self.timePost, self.data, self.money)
         from_email = settings.EMAIL_HOST_USER

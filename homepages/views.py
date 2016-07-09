@@ -2,7 +2,6 @@ from django.shortcuts import render, render_to_response
 from django.contrib.auth.decorators import login_required
 
 from haystack.forms import SearchForm
-from haystack.query import SearchQuerySet
 
 from posts.models import Announcement, Category
 
@@ -14,8 +13,7 @@ def home(request):
         form = SearchForm(request.GET)
         posts = None
         if form.data != {} and form.is_valid():
-            posts = SearchQuerySet().filter(text=form.cleaned_data['q'])
-            print posts
+            posts = form.search()
             return render_to_response('search/search.html', {
                 'posts': posts,
                 'form': form
