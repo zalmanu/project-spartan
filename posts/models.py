@@ -3,12 +3,13 @@ import uuid
 
 from django.db import models
 from django.shortcuts import get_object_or_404
+from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.conf import settings
 from django import forms
 
-from django.core.urlresolvers import reverse
+
 from spartans.models import Spartan
 from categories.models import Category
 
@@ -79,7 +80,7 @@ class CreatePostForm(forms.ModelForm):
     city = forms.ChoiceField(choices=[(x, x) for x in ['Timisoara']])
     country = forms.ChoiceField(choices=[(x, x) for x in ['Romania']])
     category = forms.ChoiceField(choices=[(x, x)
-                                          for x in []])
+                                          for x in Category.categories()])
 
     class Meta:
         model = Announcement

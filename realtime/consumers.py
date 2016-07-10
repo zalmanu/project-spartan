@@ -26,6 +26,7 @@ def ws_add(message):
     user = User.objects.get(id=uid)
     message.channel_session['user'] = user.username
     if user.account.has_related_object():
+        print "spartans-" + user.spartan.category.name
         Group("spartans-" + user.spartan.category.name).add(
             message.reply_channel)
     if(label[0] == "room"):
@@ -37,6 +38,7 @@ def ws_add(message):
 @channel_session
 def ws_message(message):
     data = json.loads(message['text'])
+    print data['mesaj']
     label = message.channel_session['room']
     room = get_object_or_404(Room, slug=data['room_slug'])
     user = get_object_or_404(User, username=data['user_name'])

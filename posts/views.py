@@ -1,11 +1,16 @@
+import json
+
+from django.http import HttpResponseForbidden
+from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.http import Http404
+
+from channels import Group
+
 from models import Announcement
 from bidding.models import CreateOfferForm
-from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseForbidden
-from django.shortcuts import get_object_or_404
 from .models import EditPostForm, CreatePostForm
 
 
@@ -18,6 +23,9 @@ def create_post(request):
             form.instance.author = current_user
             form.save()
             form.instance.creation_email(current_user)
+            print "spartans-" + form.instance.category.name
+            Group("spartans-" + form.instance.category.name).send(
+                {'text': json.dumps('mesaj: frumos')})
             return redirect(form.instance.get_absolute_url())
     return render(request, 'posts/create_post.html', {
         'cod': current_user.account.code,
