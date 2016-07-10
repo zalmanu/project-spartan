@@ -14,14 +14,20 @@ from chat.models import Room, Message
 def ws_add(message):
     label = message['path'].strip('/').split('/')
     session_string = message.content['headers'][9][1]
-    head, sep, tail = session_string.partition('=')
-    head, sep, tail = tail.partition(';')
-    session_key = head
+    for f_char in session_string.split(' '):
+        if f_char[0] == 's':
+            splited = f_char.split('=')
+            if splited[1].endswith(";"):
+                splited[1] = splited[1][:-1]
+            session_key = splited[1]
     session = Session.objects.get(session_key=session_key)
     session_data = session.get_decoded()
     uid = session_data.get('_auth_user_id')
     user = User.objects.get(id=uid)
-    print user.username
+    message.channel_session['user'] = user.username
+    if user.account.has_related_object():
+        Group("spartans-" + user.spartan.category.name).add(
+            message.reply_channel)
     if(label[0] == "room"):
         room = Room.objects.get(slug=label[1])
         Group("chat-" + label[1]).add(message.reply_channel)
