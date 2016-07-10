@@ -1,6 +1,7 @@
 import json
 
 from django.contrib.auth.models import User
+from django.contrib.sessions.models import Session
 from django.shortcuts import get_object_or_404
 
 from channels import Group
@@ -12,6 +13,15 @@ from chat.models import Room, Message
 @channel_session
 def ws_add(message):
     label = message['path'].strip('/').split('/')
+    session_string = message.content['headers'][9][1]
+    head, sep, tail = session_string.partition('=')
+    head, sep, tail = tail.partition(';')
+    session_key = head
+    session = Session.objects.get(session_key=session_key)
+    session_data = session.get_decoded()
+    uid = session_data.get('_auth_user_id')
+    user = User.objects.get(id=uid)
+    print user.username
     if(label[0] == "room"):
         room = Room.objects.get(slug=label[1])
         Group("chat-" + label[1]).add(message.reply_channel)
