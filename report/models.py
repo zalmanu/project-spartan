@@ -17,6 +17,7 @@ class CreateReportForm(forms.ModelForm):
 
     status = forms.ChoiceField(choices=[(x, x) for x in ['Employer',
                                                          'Spartan']])
+    license  = forms.BooleanField()
 
     class Meta:
         model = Report
@@ -25,6 +26,7 @@ class CreateReportForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop('user', None)
         super(CreateReportForm, self).__init__(*args, **kwargs)
+
 
     def clean_status(self):
         username = self.cleaned_data['username']

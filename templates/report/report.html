@@ -256,11 +256,13 @@
                                          {% endif %}
                                         {% for field in form %}
 
+                                        {% if field.label != 'License' %}
                                         {{ field.label }}
+                                        {% endif %}
 
                                         {% if field.label == 'Status' %}
 
-                                            {{ field|add_class:"form-control "|attr:"placeholder"|add_class:"btn btn-default dropdown-toggle"}}
+                                            {{ field|add_class:"form-control "|attr:"placeholder"|add_class:"btn btn-default dropdown-toggle"|attr:"required:required"}}
                                             {% if field.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
                                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -271,9 +273,9 @@
                                                             </div>
                                                             {% endif %}
 
-                                        {% else %}
+                                        {% elif field.label != 'License' %}
 
-                                         {{ field|add_class:"form-control "|attr:"placeholder" }}
+                                         {{ field|add_class:"form-control "|attr:"placeholder"|attr:"required:required"}}
                                            {% if field.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
                                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -284,20 +286,27 @@
                                                             </div>
                                                             {% endif %}
 
+
+
+                                        {% endif %}
+
+                                        {% if field.label == 'License' %}
+
+
+                                        {{ field|add_class:"checkbox"|attr:"required:required" }}
+
+                                                    <a style="padding: 8px 0 8px 30px;" > I Agree Terms and Conditions </a>
+                                        
                                         {% endif %}
 
                                          {% endfor %}
 
 
 
-                                        
-                                        <div class="checkbox">
-                                            <div class="checkbox3 checkbox-round">
-                                                <input type="checkbox" id="checkbox-1">
-                                                <label for="checkbox-1">
-                                                    I Agree Terms and Conditions
-                                                </label>
-                                            </div>
+
+
+                                        <div>
+
                                         </div>
                                         <button type="submit" class="btn btn-default">Submit</button>
                                     </form>
