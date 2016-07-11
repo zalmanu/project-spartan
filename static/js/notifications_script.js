@@ -3,7 +3,6 @@ notif_socket.onmessage = function(message) {
     var data = JSON.parse(message.data);
     username = document.getElementById("user_name_not");
     if(username.value != data.author){
-	console.log("wow");
         $("#notif_list").append(data.html);
     }
 }

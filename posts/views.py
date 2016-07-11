@@ -9,9 +9,9 @@ from django.http import Http404
 
 from channels import Group
 
-from models import Announcement
+from models import Announcement, EditPostForm, CreatePostForm
 from bidding.models import CreateOfferForm
-from .models import EditPostForm, CreatePostForm
+from notifications.models import Notification
 
 
 @login_required
@@ -23,23 +23,15 @@ def create_post(request):
             form.instance.author = current_user
             form.save()
             form.instance.creation_email(current_user)
-            html = """
-            <a>
-            <span class="photo"><img alt="avatar"
-src="http://www.gravatar.com/avatar/""" + form.instance.author.account.code + """></span>
-            <span class="subject">
-            <span class="from">""" + form.instance.author.username + """</span>
-            </span>
-            <span class="message">
-            A new post <b id="notification-bid">in your area</b>
-            </span>
-            </a>
-            """
+            notification = Notification.objects.create(
+                user=form.instance.author)
+            notification.spartan_notif()
+            notification.save()
             dic = {
-                'html': html,
-                'author': current_user.username
+                'author': notification.user.username,
+                'html': notification.html
             }
-            Group("spartans-" + form.instance.category.name).send(
+            Group("spartans").send(
                 {'text': json.dumps(dic)})
             return redirect(form.instance.get_absolute_url())
     return render(request, 'posts/create_post.html', {
