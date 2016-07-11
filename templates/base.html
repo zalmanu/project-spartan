@@ -68,12 +68,22 @@
                                         <span class="photo"><img alt="avatar" src="../img/avatar-mini.jpg"></span>
                                         <span class="subject">
                                         <span class="from">Gregggg  Martin</span>
-                                        <span class="time">1 min</span>
                                         </span>
                                         <span class="message">
                                             Bid on you <b id="notification-bid">50 RON</b>
                                         </span>
                                     </a>
+				    {% for notification in user.notifications.all %}
+				    <a href="#n">
+                                        <span class="photo"><img alt="avatar" src="http://www.gravatar.com/avatar/{{ notification.user.account.code"></span>
+                                        <span class="subject">
+                                        <span class="from">{{ notification.user.username }}</span>
+                                        </span>
+                                        <span class="message">
+					  A new post <b id="notification-bid">in your area</b>
+                                        </span>
+                                    </a>
+				    {% endfor %}
                                 </li>
                                 <li>
                                     <a href="#">See all notifications</a>
