@@ -4,4 +4,5 @@ django-recaptcha==1.0.5
 gunicorn==19.4.5
 django-phonenumber-field==1.1.0
 psycopg2==2.6.1
+djutils==0.3.2
 channels
