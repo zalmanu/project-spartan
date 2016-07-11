@@ -253,7 +253,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="col-sm-6">
                                             <div class="card">
 
@@ -322,30 +322,58 @@
                                                 <div class="card-jumbotron" style="padding: 8px;">
                                                     <h3><b>Edit your profile:</b></h3>
                                                 </div>
+
+
+
+                                        <form method="POST" >
+                                            {% csrf_token %}
                                                 <div class="card-body">
-                                                    <b style="float:left;"><h5>Name:</h5></b>
-                                                    <input type="text" placeholder="Insert your text here" class="form-control">
-                                                    <b style="float:left;"><h5>Family Name:</h5></b>
-                                                    <input type="text" placeholder="Insert your text here" class="form-control">
-                                                    <b style="float:left;"><h5>User Name:</h5></b>
-                                                    <input type="text" placeholder="Insert your text here" class="form-control">
-                                                    <b style="float:left;"><h5>E-mail:</h5></b>
-                                                    <input type="text" placeholder="Insert your text here" class="form-control">
-                                                    <b style="float:left;"><h5>Password:</h5></b>
-                                                    <input type="text" placeholder="Insert your text here" class="form-control">
-                                                    <b style="float:left;"><h5>Re-enter Password:</h5></b>
-                                                    <input type="text" placeholder="Insert your text here" class="form-control">
-                                                    <b style="float:left;"><h5>Country:</h5></b>
-                                                    <input type="text" placeholder="Insert your text here" class="form-control"> 
-                                                    <b style="float:left;"><h5>City:</h5></b>
-                                                    <input type="text" placeholder="Insert your text here" class="form-control">
+                                                    {% for field in form %}
+
+                                                     <p style="float:left" >{{ field.label }}</p>
+
+                                                    {{ field|add_class:"form-control "|attr:"placeholder,form-control" }}
+                                                    {% if field.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in field.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                                            {% endif %}
+
+
+                                                    {% endfor %}
+
+                                                    {% for field in form_acc %}
+
+                                                    <p style="float:left" >{{ field.label }}</p>
+
+                                                    {{ field|add_class:"form-control "|attr:"placeholder,form-control" }}
+
+                                                    {% if field.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in field.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                                            {% endif %}
+
+                                                    {% endfor %}
+
 
 
                                                     <!-- Buttons -->
                                                     <br>
-                                                    <button type="button" class="btn btn-danger">Cancel</button>
-                                                    <button type="button" class="btn btn-success">Save</button>
+                                                    <button type="button" class="btn btn-danger" id="cancel_button">Cancel</button>
+                                                    <button type="submit" class="btn btn-success">Update</button>
+
+
                                                 </div>
+                                            <form>
                                             </div>
                                         </div>
                                     </center>
@@ -386,6 +414,10 @@
                 });
 
                 $('#edit-profile-btn').click(function(){
+                 $('#card-edit-profile').slideToggle();
+                 });
+
+                 $('#cancel_button').click(function(){
                  $('#card-edit-profile').slideToggle();
                  });
             </script>
