@@ -38,7 +38,7 @@
                                     </li>
                                     <li class="message">
                                         No new messages
-                                    </li>   
+                                    </li>
                                 </div>
                             </ul>
                         </li>
@@ -97,18 +97,18 @@
                             </ul>
                         </li>
                         <li class="dropdown profile">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Silaghi Fineas <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ request.user.username }} <span class="caret"></span></a>
                             <ul class="dropdown-menu animated fadeInDown">
                                 <li class="profile-img">
-                                    <img src="../../img/profile/picjumbo.com_HNCK4153_resize.jpg" class="profile-img">
+                                    <img src="https://www.gravatar.com/avatar/{{ cod }}?s=200">
                                 </li>
                                 <li>
                                     <div class="profile-info">
-                                        <h4 class="username">Fineas</h4>
-                                        <p>finymelly@gmail.com</p>
+                                        <h4 class="username">{{ user.username }}</h4>
+                                        <p>{{ user.email }}</p>
                                         <div class="btn-group margin-bottom-2x" role="group">
-                                            <button type="button" class="btn btn-default"><i class="fa fa-user"></i> Profile</button>
-                                            <button type="button" class="btn btn-default"><i class="fa fa-sign-out"></i> Logout</button>
+                                            <a type="button" href="/profile" class="btn btn-default"><i class="fa fa-user"></i> Profile</a>
+                                            <a type="button" class="btn btn-default" href="/logout"><i class="fa fa-sign-out"></i> Logout</a>
                                         </div>
                                     </div>
                                 </li>
@@ -235,8 +235,12 @@
                             <div class="card">
                                 <div class="card-header">
                                     <div class="card-title">
-                                        <div class="title">Nume Prenume</div>
-                                        <div class="description">Tara, Oras</div>
+                                        {% if request.user.spartan.spartanStatus  == True %}
+                                                    <h3>Welcome SPARTAN!</h3>
+                                                    {% else %}
+                                                    <h3>Welcome {{ user.username }} ! </h3>
+
+                                                   {% endif %}
                                     </div>
                                 </div>
 
@@ -245,22 +249,37 @@
                                         <div class="col-sm-6">
                                             <div class="card primary">
                                                 <div class="card-jumbotron no-padding">
-                                                    <img src="../../img/thumbnails/picjumbo.com_IMG_3241.jpg" height="533" width="800" class="img-responsive">
+                                                    <img src="https://www.gravatar.com/avatar/{{ cod }}?s=200">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="card">
-                                                <div class="card-jumbotron">
-                                                    <h4><b>About Me:</b></h4>
-                                                    <h5>Descrierea anutului luaraksd saud aoi doiasm odisa iudn suindifineas diusnd s d woij  daosid woia sidua doina dqdia dsoind aowi daiodsmwodm s adsud sadius dsausa fsafsaoijdsa diuwdn asdm usand sadkiasj dusa dsoaudh  kjnsa d auwdasd spojd qon asdjsnadoi wjna osdin wanoina wimd .</h5>
-                                                </div>
+
                                                 <div class="card-body">
-                                                    <h4><b>Spartan:</b> Yes / No</h4>
-                                                    <h4><b>Category:</b> Garden</h4>
-                                                    <h4><b>Contracte incheiate:</b> 15</h4>
-                                                    <hr>
-                                                    <h4 style="display: inline-block;"><b>Reviews:</b> 15</h4><button type="button" style="display: inline-block;" class="pull-right btn btn-success" id="show-reviews">Show Reviews</button>
+                                                    <div class="row">
+                                              <div class="bio-row">
+                                                  <p><span>Username: </span> {{ user.username }} </p>
+                                              </div>
+                                              <div class="bio-row">
+                                                  <p><span>City: </span>{{ user.account.city }}</p>
+                                              </div>
+                                              <div class="bio-row">
+                                                  <p><span>Country: </span> {{ user.account.country }}</p>
+                                              </div>
+                                              <div class="bio-row">
+                                                  <p><span>E-mail: </span> {{ user.email }} </p>
+                                              </div>
+                                              <div class="bio-row">
+                                                  <p><span>Phone number: </span>{{ user.account.phone }}</p>
+                                              </div>
+                                                        {% if user.spartan.spartanStatus  == True %}
+                                                            <h4 style="display: inline-block;"><b>Reviews:</b> 15</h4><button type="button" style="display: inline-block;" class="pull-right btn btn-success" id="show-reviews">Show Reviews</button>
+                                                        {% endif %}
+
+                                          </div>
+
+
                                                     <div class="row col-lg-12 col-md-12 col-sm-12">
                                                         
                                                         <div class="card review-card">
@@ -292,52 +311,8 @@
                                                                             </div>
                                                                         </li>
                                                                     </a>
-                                                                    <a>
-                                                                        <li>
-                                                                            <img src="../../img/profile/profile-1.jpg" class="profile-img pull-left">
-                                                                            <div class="message-block">
-                                                                                <div><span class="username">Client Name</span> <span class="message-datetime">Short Review description (max 40 char.)</span>
-                                                                                </div>
-                                                                                <div class="message">
-                                                                                    <fieldset class="rating">
-                                                                                        <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-                                                                                        <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-                                                                                        <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-                                                                                        <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                                                                                        <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-                                                                                        <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-                                                                                        <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-                                                                                        <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                                                                                        <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-                                                                                        <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-                                                                                    </fieldset>
-                                                                                </div>
-                                                                            </div>
-                                                                        </li>
-                                                                    </a>
-                                                                    <a>
-                                                                        <li>
-                                                                            <img src="../../img/profile/profile-1.jpg" class="profile-img pull-left">
-                                                                            <div class="message-block">
-                                                                                <div><span class="username">Client Name</span> <span class="message-datetime">Short Review description (max 40 char.)</span>
-                                                                                </div>
-                                                                                <div class="message">
-                                                                                    <fieldset class="rating">
-                                                                                        <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-                                                                                        <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-                                                                                        <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-                                                                                        <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                                                                                        <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-                                                                                        <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-                                                                                        <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-                                                                                        <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                                                                                        <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-                                                                                        <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-                                                                                    </fieldset>
-                                                                                </div>
-                                                                            </div>
-                                                                        </li>
-                                                                    </a>
+
+
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -411,7 +386,17 @@
                 $('#bidding-place').click(function(){
                     alert('The value must be in Dollars($).')
                 });
+
+                $('.review-card').hide();
+                $('#show-reviews').click(function(){
+                 $('.review-card').slideToggle();
+                });
+
+                $('#edit-profile-btn').click(function(){
+                 $('#card-edit-profile').slideToggle();
+                 });
             </script>
-           
+
+
 
 {% endblock %}
