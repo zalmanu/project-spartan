@@ -31,7 +31,8 @@ def create_post(request):
                 'author': notification.user.username,
                 'html': notification.html
             }
-            Group("spartans").send(
+            Group("spartans-" + form.instance.category.name +
+                  "-" + form.instance.city).send(
                 {'text': json.dumps(dic)})
             return redirect(form.instance.get_absolute_url())
     return render(request, 'posts/create_post.html', {
