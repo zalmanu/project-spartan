@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('title', models.CharField(max_length=256, null=True)),
-                ('text', models.CharField(max_length=500, null=True, verbose_name='Announcement description')),
+                ('description', models.CharField(max_length=500, null=True, verbose_name='Announcement description')),
                 ('slug', models.SlugField(default=uuid.uuid1, unique=True)),
                 ('address', models.CharField(max_length=500, null=True)),
                 ('country', models.TextField(max_length=50, null=True)),

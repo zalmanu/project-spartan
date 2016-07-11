@@ -17,8 +17,7 @@ urlpatterns = [
     url(r'^', include('review.urls')),
     url(r'^', include('faq.urls')),
     url(r'^', include('report.urls')),
-    url(r'^', include('about_us.urls')),
-
+    url(r'^', include('about_us.urls'))
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

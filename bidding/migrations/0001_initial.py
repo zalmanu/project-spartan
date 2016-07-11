@@ -15,7 +15,6 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('price', models.IntegerField(null=True)),
-                ('kind', models.CharField(max_length=30)),
                 ('status', models.BooleanField(default=False)),
             ],
         ),
