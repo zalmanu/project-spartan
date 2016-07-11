@@ -1,4 +1,4 @@
-# Copyright 2015-2016 Emanuel Covaci, Fineas Silaghi, Sebastian Males
+# Copyright 2015-2016 Emanuel Danci, Emanuel Covaci, Fineas Silaghi, Sebastian Males, Vlad Temian
 #
 # This file is part of Project Spartan.
 #
