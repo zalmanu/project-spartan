@@ -1,0 +1,31 @@
+#aleo {
+  color: #19B5FE !important; }
+
+/* ------------------Edit ------------------ */
+.subtitle {
+  color: #19B5FE; }
+
+.aditional-info {
+  border-right: 1px solid #363c46; }
+
+.bid-tab {
+  color: #000 !important;
+  font-size: 50px;
+  text-allign: center; }
+
+#bidding-place {
+  border-radius: 1px;
+  box-shadow: none;
+  padding: 6px 12px;
+  background-color: #ffffff;
+  height: 34px;
+  border: 1px solid #ccc; }
+
+#gallery-image {
+  width: 270px;
+  height: 150px !important; }
+
+.me-chat {
+  padding-left: 0px !important; }
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,88 @@
+#aleo {
+  color: #19B5FE !important; }
+
+/* ------------------Edit ------------------ */
+.subtitle {
+  color: #19B5FE; }
+
+.aditional-info {
+  border-right: 1px solid #363c46; }
+
+.bid-tab {
+  color: #000 !important;
+  font-size: 50px;
+  text-allign: center; }
+
+#bidding-place {
+  border-radius: 1px;
+  box-shadow: none;
+  padding: 6px 12px;
+  background-color: #ffffff;
+  height: 34px;
+  border: 1px solid #ccc; }
+
+#gallery-image {
+  width: 270px;
+  height: 150px !important; }
+
+.me-chat {
+  padding-left: 0px !important; }
+
+#chat-body {
+  height: 470px;
+  overflow-y: scroll; }
+
+#chat-input {
+  width: 80%;
+  height: 33px; }
+
+#chat-choose-img {
+  height: 60px; }
+
+.chat-choose-name {
+  dispaly: inline-block; }
+
+.chat-list li {
+  list-style: none; }
+
+.chat-card {
+  background-color: #19B5FE; }
+
+.chat-title-box {
+  color: #ffffff !important; }
+
+.choose-chater {
+  background-color: #eee; }
+
+#reviews-body {
+  height: 300px;
+  overflow-y: scroll; }
+
+.rating {
+  border: none;
+  float: left; }
+
+.rating > input {
+  display: none; }
+
+.rating > label:before {
+  margin: 5px;
+  font-size: 2.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005"; }
+
+.rating > .half:before {
+  content: "\f089";
+  position: absolute; }
+
+.rating > label {
+  color: #ddd;
+  float: right; }
+
+.review-card {
+  margin-bottom: 10px;
+  display: none;
+  margin-top: 10px; }
+
+/*# sourceMappingURL=convert.css.map */

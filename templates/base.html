@@ -20,6 +20,8 @@
     <!-- CSS App -->
     <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
     <link rel="stylesheet" type="text/css" href="{% static "css/themes/flat-blue.css" %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"> </script>
+
  </head>
   {% block content %}
   {% endblock %}
@@ -28,8 +30,8 @@
       <span class="pull-right"><i class="fa fa-long-arrow-up" id="arrow"></i></span>SpartanTasks @ 2016 Copyright.
     </div>
   </footer>
-    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js">
-    </script>
+
+
     <script>
         $("#btn-home-index").click(function() {
         $("html, body").animate({ scrollTop: 0 }, "slow");
@@ -66,8 +68,10 @@
     <script type="text/javascript" src="{% static "lib/js/ace/mode-html.js" %}"></script>
     <script type="text/javascript" src="{% static "lib/js/ace/theme-github.js" %}"></script>
     <!-- Javascript -->
+
     <script type="text/javascript" src="{% static  "app.js" %}"></script>
-    <script type="text/javascript" src="{% static "js/index.js" %}"></script>
+    <script type="text/javascript" src="{% static  "js/index.js" %}"></script>
+
     <!-- /.container -->
 </body>
 

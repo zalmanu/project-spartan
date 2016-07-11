@@ -1338,6 +1338,11 @@ body.login-page {
     }
 }
 
+.gallery-pictures{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 @media (max-width: 1199px){
   .garden-category{
     background: url('../img/category/garden.jpg');
@@ -1485,13 +1490,21 @@ body.login-page {
   color: #19b5fe;
 }
 
-.other-info{
-  border: 1px solid blue;
-  padding: 10px;
+
+.title-bidders{
+  margin-bottom: 0 !important;
 }
 
-.gallery{
-  height: 220px;
+#select-form{
+  width: 100%;
+  display: inline-block;
 }
+
 
 #19B5FE
+
+
+
+
+
+/* create-post, report, become a spartan, contact, faq, profile(+reset pass, edit profile), category-page, notifications page, 404, forgot password  */ 
