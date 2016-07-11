@@ -241,26 +241,55 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Report Title</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter a title">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputPassword1">Report Description</label>
-                                            <div>
-                                                <textarea placeholder="Enter a description" class="form-control" rows="3"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">    
-                                            <label for="exampleInputEmail">Select the status of the pearson you want to report</label>
-                                            <div>
-                                                <select class="btn btn-default dropdown-toggle">
-                                                <option>Spartan</option>
-                                                <option>Employer</option>
-                                                </select>
-                                            </div>
-                                        </div>
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                         {% if confirm %}
+				                           <div  class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong >
+                                                            {% for message in confirm %}
+				                                                {{ message }}
+				                                        {% endfor %} !
+                                                        </strong>
+
+                                                            </div>
+                                         {% endif %}
+                                        {% for field in form %}
+
+                                        {{ field.label }}
+
+                                        {% if field.label == 'Status' %}
+
+                                            {{ field|add_class:"form-control "|attr:"placeholder"|add_class:"btn btn-default dropdown-toggle"}}
+                                            {% if field.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in field.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                                            {% endif %}
+
+                                        {% else %}
+
+                                         {{ field|add_class:"form-control "|attr:"placeholder" }}
+                                           {% if field.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in field.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                                            {% endif %}
+
+                                        {% endif %}
+
+                                         {% endfor %}
+
+
+
                                         
                                         <div class="checkbox">
                                             <div class="checkbox3 checkbox-round">
