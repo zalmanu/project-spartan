@@ -9,9 +9,10 @@ from django.http import Http404
 
 from channels import Group
 
-from models import Announcement, EditPostForm, CreatePostForm
+from .models import Announcement, EditPostForm, CreatePostForm
+from .background import notif_spartans
 from bidding.models import CreateOfferForm
-from notifications.models import Notification
+from spartans.model import Spartan
 
 
 @login_required
@@ -23,16 +24,18 @@ def create_post(request):
             form.instance.author = current_user
             form.save()
             form.instance.creation_email(current_user)
-            notification = Notification.objects.create(
-                user=form.instance.author)
-            notification.spartan_notif()
-            notification.save()
+            notif_spartans(form.instance.city, form.instance.category.name)
+            for spartan in Spartan.objects.filter(spartanStatus=True,
+                                                  category =
+                                                  form.instance.category.name):
+                notification = Notification.objects.create(receiver=spartan.user)
+                notification.spartan_notif()
+                notification.save()
             dic = {
                 'author': notification.user.username,
                 'html': notification.html
             }
-            Group("spartans-" + form.instance.category.name +
-                  "-" + form.instance.city).send(
+            Group("spartans-" + category + "-" + city).send(
                 {'text': json.dumps(dic)})
             return redirect(form.instance.get_absolute_url())
     return render(request, 'posts/create_post.html', {

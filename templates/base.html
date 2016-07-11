@@ -64,18 +64,9 @@
                                     <p class="blue">You have 4 new notifications</p>
                                 </li>
                                 <li>
-                                    <a href="#">
-                                        <span class="photo"><img alt="avatar" src="../img/avatar-mini.jpg"></span>
-                                        <span class="subject">
-                                        <span class="from">Gregggg  Martin</span>
-                                        </span>
-                                        <span class="message">
-                                            Bid on you <b id="notification-bid">50 RON</b>
-                                        </span>
-                                    </a>
 				    {% for notification in user.notifications.all %}
 				    <a href="#n">
-                                        <span class="photo"><img alt="avatar" src="http://www.gravatar.com/avatar/{{ notification.user.account.code"></span>
+                                        <span class="photo"><img alt="avatar" src="http://www.gravatar.com/avatar/{{ notification.user.account.code }}"></span>
                                         <span class="subject">
                                         <span class="from">{{ notification.user.username }}</span>
                                         </span>

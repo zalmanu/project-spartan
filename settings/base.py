@@ -24,10 +24,13 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Django packages
     'captcha',
     'widget_tweaks',
     'phonenumber_field',
     'channels',
+    'background_task',
 
     # Usual apps
     'authentication',
