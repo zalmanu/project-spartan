@@ -15,3 +15,7 @@ $('#show-reviews').click(function(){
 $('#edit-profile-btn').click(function(){
   $('#card-edit-profile').slideToggle();
 });
+
+$('#cancel_button').click(function(){
+$('#card-edit-profile').slideToggle();
+});
