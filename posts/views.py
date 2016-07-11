@@ -23,9 +23,24 @@ def create_post(request):
             form.instance.author = current_user
             form.save()
             form.instance.creation_email(current_user)
-            print "spartans-" + form.instance.category.name
+            html = """
+            <a>
+            <span class="photo"><img alt="avatar"
+src="http://www.gravatar.com/avatar/""" + form.instance.author.account.code + """></span>
+            <span class="subject">
+            <span class="from">""" + form.instance.author.username + """</span>
+            </span>
+            <span class="message">
+            A new post <b id="notification-bid">in your area</b>
+            </span>
+            </a>
+            """
+            dic = {
+                'html': html,
+                'author': current_user.username
+            }
             Group("spartans-" + form.instance.category.name).send(
-                {'text': json.dumps('mesaj: frumos')})
+                {'text': json.dumps(dic)})
             return redirect(form.instance.get_absolute_url())
     return render(request, 'posts/create_post.html', {
         'cod': current_user.account.code,

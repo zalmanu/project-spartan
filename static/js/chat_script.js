@@ -2,7 +2,7 @@ socket = new WebSocket("ws://" + window.location.host + window.location.pathname
  function sendmessage() {
  var field = document.getElementById("textcase");
  if(field.value == '')return false;
-     var username = document.getElementById("user_name");
+     var username = document.getElementById("user_name_not");
      var url_path = window.location.href.split('/');
      var len = url_path.length;
      message = {
@@ -18,7 +18,7 @@ socket = new WebSocket("ws://" + window.location.host + window.location.pathname
  socket.onmessage = function(message){
      var data = JSON.parse(message.data);
      var elem = document.getElementById("mesg");
-     var username = document.getElementById("user_name");
+     var username = document.getElementById("user_name_not");
      var clas ='other';
      if(username.value == data.submitter)clas='self';
      $("#mesg").append("<li class=" + clas + ">" + data.html);

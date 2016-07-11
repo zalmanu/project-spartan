@@ -13,14 +13,22 @@ from chat.models import Room, Message
 @channel_session
 def ws_add(message):
     label = message['path'].strip('/').split('/')
-    session_string = message.content['headers'][9][1]
-    for f_char in session_string.split(' '):
-        if f_char[0] == 's':
-            splited = f_char.split('=')
-            if splited[1].endswith(";"):
-                splited[1] = splited[1][:-1]
-            session_key = splited[1]
-    session = Session.objects.get(session_key=session_key)
+    headers = message.content.get('headers')
+    found = False
+    for tup in headers:
+        if found:
+            break
+        for item in tup:
+            if item.startswith('sessionid'):
+                session_id = item.split('=')[1]
+                found = True
+                break
+            elif item.startswith('csrftoken'):
+                session_id = item.split(';')[1]
+                session_id = session_id.split('=')[1]
+                found = True
+                break
+    session = Session.objects.get(session_key=session_id)
     session_data = session.get_decoded()
     uid = session_data.get('_auth_user_id')
     user = User.objects.get(id=uid)
@@ -38,7 +46,6 @@ def ws_add(message):
 @channel_session
 def ws_message(message):
     data = json.loads(message['text'])
-    print data['mesaj']
     label = message.channel_session['room']
     room = get_object_or_404(Room, slug=data['room_slug'])
     user = get_object_or_404(User, username=data['user_name'])

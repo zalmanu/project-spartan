@@ -1,7 +1,9 @@
 notif_socket = new WebSocket("ws://" + window.location.host);
 notif_socket.onmessage = function(message) {
-    print message.data
     var data = JSON.parse(message.data);
-    console.log("what");
-    console.log(data.mesaj);
+    username = document.getElementById("user_name_not");
+    if(username.value != data.author){
+	console.log("wow");
+        $("#notif_list").append(data.html);
+    }
 }
