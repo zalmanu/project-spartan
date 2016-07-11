@@ -1,226 +1,356 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load staticfiles %}
 {% block content %}
-<body onload="zoom()">
-	<script type="text/javascript">
-        function zoom() {
-            document.body.style.zoom = "80%"
-        }
-	</script>
+{% load widget_tweaks %}
 
-        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First Section~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-        <section class="wrap" id="secound-section">
-                    <section class="wrapper">
-                         <div class="row title-row"> </div>
-            </div>
-              <div class="row">
-                <!-- profile-widget -->
-                <div class="col-lg-12">
-                    <div class="profile-widget profile-widget-info" id="post">
-                          <div class="panel-body" id="profile-header">
-                            <div class="col-lg-2 col-sm-2">
-                              <h4 id="user-name">{{ spartan.user.username }}</h4>
-                              <div class="follow-ava">
-                                    <img src="http://www.gravatar.com/avatar/{{ img_spartan }}" alt="">
-                              </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-4 follow-info" >
-
-                            </div>
-
-
-                            <div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
-
-                                      <ul>
-                                          <li class="active">
-
-                                              <i class="fa fa-comments fa-2x"> </i><br>
-
-											  Reviews: {{ spartan.rating }}
-                                          </li>
-
-                                      </ul>
-
-                            </div>
-							<div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
-                                      <ul>
-                                          <li class="active">
-
-                                              <i class="fa fa-bell fa-2x"> </i><br>
-
-											  Tasks:{{ spartan.tasks }}
-
-                                          </li>
-
-                                      </ul>
-
-                            </div>
-							<div class="col-lg-2 col-sm-6 follow-info weather-category" id="profile_square">
-                                      <ul>
-                                          <li class="active">
-
-                                              <i class="fa fa-tachometer fa-2x"> </i><br>
-
-											  Ability:{{ spartan.category.name }}
-
-                                          </li>
-
-                                      </ul>
-
-                            </div>
-                          </div>
+<body class="flat-blue">
+    <div class="app-container">
+        <div class="row content-container">
+            <nav class="navbar navbar-default navbar-fixed-top navbar-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-expand-toggle" id="expand-menu-button">
+                            <i class="fa fa-bars icon"></i>
+                        </button>
+                        <ol class="breadcrumb navbar-breadcrumb">
+                            <li class="active"><input type="text" class="form-control" placeholder="Search..." id="search-bar"></li>
+                        </ol>
+                        <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
+                            <i class="fa fa-th icon"></i>
+                        </button>
                     </div>
-
+                    <ul class="nav navbar-nav navbar-right" id="toggle-menu">
+                        <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
+                            <i class="fa fa-times icon"></i>
+                        </button>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-comments-o"></i></a>
+                            <ul class="dropdown-menu danger  animated fadeInDownx">
+                                <li class="title">
+                                    Messages <span class="badge pull-right">0</span>
+                                </li>
+                                <div class="notifications-list">
+                                    <li class="message">
+                                        No new messages
+                                    </li>
+                                    <li class="message">
+                                        No new messages
+                                    </li>
+                                    <li class="message">
+                                        No new messages
+                                    </li>
+                                </div>
+                            </ul>
+                        </li>
+                        <li class="dropdown danger">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-star-half-o"></i> 4</a>
+                            <ul class="dropdown-menu danger  animated fadeInDown">
+                                <li class="title">
+                                    Notification <span class="badge pull-right">4</span>
+                                </li>
+                                <li>
+                                    <ul class="list-group notifications">
+                                        <div class="notifications-list">
+                                            <a href="#">
+                                                <li class="list-group-item">
+                                                    <span class="badge">1</span> <i class="fa fa-exclamation-circle icon"></i> new registration
+                                                </li>
+                                            </a>
+                                            <a href="#">
+                                                <li class="list-group-item">
+                                                    <span class="badge success">1</span> <i class="fa fa-check icon"></i> new orders
+                                                </li>
+                                            </a>
+                                            <a href="#">
+                                                <li class="list-group-item">
+                                                    <span class="badge success">1</span> <i class="fa fa-check icon"></i> new orders
+                                                </li>
+                                            </a>
+                                            <a href="#">
+                                                <li class="list-group-item">
+                                                    <span class="badge success">1</span> <i class="fa fa-check icon"></i> new orders
+                                                </li>
+                                            </a>
+                                            <a href="#">
+                                                <li class="list-group-item">
+                                                    <span class="badge success">1</span> <i class="fa fa-check icon"></i> new orders
+                                                </li>
+                                            </a>
+                                            <a href="#">
+                                                <li class="list-group-item">
+                                                    <span class="badge success">1</span> <i class="fa fa-check icon"></i> new orders
+                                                </li>
+                                            </a>
+                                            <a href="#">
+                                                <li class="list-group-item">
+                                                    <span class="badge danger">2</span> <i class="fa fa-comments icon"></i> customers messages
+                                                </li>
+                                            </a>
+                                        </div>
+                                        <a href="#">
+                                            <li class="list-group-item message">
+                                                view all
+                                            </li>
+                                        </a>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown profile">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ request.user.username }} <span class="caret"></span></a>
+                            <ul class="dropdown-menu animated fadeInDown">
+                                <li class="profile-img">
+                                    <img src="https://www.gravatar.com/avatar/{{ cod }}?s=200">
+                                </li>
+                                <li>
+                                    <div class="profile-info">
+                                        <h4 class="username">{{ user.username }}</h4>
+                                        <p>{{ user.email }}</p>
+                                        <div class="btn-group margin-bottom-2x" role="group">
+                                            <a type="button" href="/profile" class="btn btn-default"><i class="fa fa-user"></i> Profile</a>
+                                            <a type="button" class="btn btn-default" href="/logout"><i class="fa fa-sign-out"></i> Logout</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
+            </nav>
+                     <div class="side-menu sidebar-inverse">
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="side-menu-container">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="/">
+                                <div class="icon fa"><img src="{% static "img/logo/logo.png" %}"  id="logo"></div>
+                                <div class="title">Spartan Tasks</div>
+                            </a>
+                            <button type="button" class="navbar-expand-toggle pull-right visible-xs">
+                                <i class="fa fa-times icon"></i>
+                            </button>
+                        </div>
+                        <ul class="nav navbar-nav">
+                            <li class="active">
+                                <a href="/">
+                                    <span class="icon glyphicon glyphicon-home"></span><span class="title">Home</span>
+                                </a>
+                            </li>
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="#dropdown-element">
+                                    <span class="icon fa fa-desktop"></span><span class="title">Categories</span>
+                                </a>
+                                <!-- Dropdown level 1 -->
+                                <div id="dropdown-element" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                      <ul class="nav navbar-nav">
+					{% for category in categories %}
+                                            <li><a href="/category/{{ category.id }}" name="kind" value={{ category.id }}> {{ category.name }}</a>
+                                            </li>
+					{% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="#dropdown-table">
+                                    <span class="icon fa fa-table"></span><span class="title">My Announcements</span>
+                                </a>
+                                <!-- Dropdown level 1 -->
+                                <div id="dropdown-table" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                      <ul class="nav navbar-nav">
+					{% if user.posts.all %}
+					{% for post in user.posts.all %}
+                                            <li><a href="{{ post.get_absolute_url }}"> {{ post.title }}</a>
+                                            </li>
+					    {% endfor %}
+					<li><a href="/submit">Add an announcement</a>
+					    {% else %}
+					<li><a href="/submit">Add an announcement</a>
+					  {% endif %}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- Dropdown-->
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="#component-example">
+                                    <span class="icon fa fa-cubes"></span><span class="title">Chats</span>
+                                </a>
+                                <!-- Dropdown level 1 -->
+                                <div id="component-example" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                      <ul class="nav navbar-nav">
+					{% if user.spa_rooms.all or user.empl_rooms.all %}
+					{% for room in user.empl_rooms.all %}
+                                            <li><a href="{{ room.get_absolute_url }}">Chat with {{ room.spartan.user.username }}</a>
+                                            </li>
+					    {% endfor %}
+					    {% for room in user.spa_rooms.all %}
+					<li><a href="{{ room.get_absolute_url }}">Chat with {{ room.employer.username }}</a>
+                                        </li>
+					{% endfor %}
+					 {% else %}
+					<li><a> No chat room, yet</a>
+					</li>
+					{% endif %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+			    {% if not user.account.has_related_object %}
+                            <li>
+                                <a href="/spartan">
+                                    <span class="icon fa fa-file-text-o"></span><span class="title">Become a Spartan</span>
+                                </a>
+                            </li>
+			    {% endif %}
+                            <li>
+                                <a href="/report">
+                                    <span class="icon fa fa-file-text-o"></span><span class="title">Report a Spartan/Employer</span>
+                                </a>
+                            </li>
+                            <!-- Dropdown-->
+                            <li>
+                                <a href="/faq">
+                                    <span class="icon fa fa-archive"></span><span class="title">Faq</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/contact">
+                                    <span class="icon fa fa-thumbs-o-up"></span><span class="title">Contact Us</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </nav>
+            </div>
+            <!-- Main Content -->
+            <div class="container-fluid">
+                <div class="side-body padding-top">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="card-title">
+                                       {{ spartan.first_name }} {{ spartan.last_name }}
+                                    </div>
+                                </div>
 
-              </div>
-              <!-- page start-->
-          <header class="panel-heading tab-bg-info" id="categoryes_profile">
-                              <ul class="nav nav-tabs" id="profile-subpage">
-                                  <li class="active">
-                                      <a data-toggle="tab" href="#recent-activity">
-                                           Reviews
-                                      </a>
-                                  </li>
+                                <div class="card-body">
+                                    <div class="row no-margin">
+                                        <div class="col-sm-6">
+                                            <div class="card primary">
+                                                <div class="card-jumbotron no-padding">
+                                                    <img src="http://www.gravatar.com/avatar/{{ img_spartan }}" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                  <li class="">
-                                      <a data-toggle="tab" href="#badges">
-                                         Activitate
-                                      </a>
-                                  </li>
-                              </ul>
-                          </header>
-              <div class="row">
-                 <div class="col-lg-12">
-                    <section class="panel">
-                          <div class="panel-body">
-                              <div class="tab-content">
-                                  <div id="recent-activity" class="tab-pane active">
-                                      <div class="profile-activity">
-                                          {% for review in reviews.all %}
-                                          <div class="act-time">
-                                              <div class="activity-body act-in">
-                                                  <span class="arrow"></span>
-                                                  <div class="text">
-                                                      <a href="#" class="activity-img"><img class="avatar" src="http://www.gravatar.com/avatar/{{ review.submitter.account.code }}"></a>
-                                                      <p class="attribution"><a href="#">{{ review.submitter.account.user}}</a> {{ review.creation_date }}</p>
-                                                      <p> {{ review.message }}</p>
+                                        <div class="col-sm-6">
+                                            <div class="card">
 
-                                                  </div>
+                                                <div class="card-body">
+                                                    <div class="row">
+                                              <div class="bio-row">
+                                                  <p><span>Username: </span> {{ spartan.first_name }} {{ spartan.last_name }} </p>
                                               </div>
+                                              <div class="bio-row">
+                                                  <p><span>Tasks: </span> {{ spartan.tasks}}</p>
+                                              </div>
+                                              <div class="bio-row">
+                                                  <p><span>Ability: </span> {{ spartan.category.name }} </p>
+                                              </div>
+
+
+                                                            <h4 style="display: inline-block;"><b>Reviews:</b> {{ spartan.rating }}</h4><button type="button" style="display: inline-block;" class="pull-right btn btn-success" id="show-reviews">Show Reviews</button>
+
+
                                           </div>
-                                          {% endfor %}
-
-                                      </div>
-                                  </div>
-
-                                  <div id="badges" class="tab-pane">
-                                    <section class="panel">
-                                            <div class="component">
-                                                <table class="overflow-y">
-                                                    <thead>
-                                                        <tr>
-                                                            <th style="width: 164px;">Activitate</th><th>Alpha</th><th>Beta</th><th>Gamma</th><th>Delta</th><th>Epsilon</th><th>Zeta</th><th>Eta</th><th>Theta</th><th>Iota</th><th>Kappa</th><th>Lambda</th><th>Mu</th><th>Nu</th><th>Xi</th><th>Omicron</th><th>Pi</th><th>Rho</th><th>Sigma</th><th>Tau</th><th>Upsilon</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                                <th>Anunturi creeate</th><td>23</td><td>88</td><td>8</td><td>2</td><td>67</td><td>83</td><td>81</td><td>37</td><td>91</td><td>96</td><td>13</td><td>3</td><td>95</td><td>98</td><td>10</td><td>87</td><td>70</td><td>54</td><td>72</td><td>75</td>
-                                                            </tr><tr>
-                                                                <th>Anunturi finalizate</th><td>14</td><td>21</td><td>20</td><td>21</td><td>9</td><td>68</td><td>60</td><td>73</td><td>22</td><td>29</td><td>9</td><td>49</td><td>49</td><td>66</td><td>58</td><td>10</td><td>8</td><td>24</td><td>19</td><td>65</td>
-                                                            </tr><tr>
-                                                            <th>Review-uri primite</th><td>4</td><td>50</td><td>89</td><td>72</td><td>99</td><td>90</td><td>24</td><td>86</td><td>95</td><td>44</td><td>32</td><td>97</td><td>18</td><td>90</td><td>81</td><td>9</td><td>38</td><td>4</td><td>85</td><td>15</td>
-                                                        </tr><tr>
-                                                            <th>Review-uri facute</th><td>10</td><td class="err">Nici una</td><td>32</td><td>45</td><td>53</td><td>29</td><td>35</td><td>35</td><td>75</td><td>9</td><td>69</td><td>66</td><td>93</td><td>42</td><td>81</td><td>85</td><td>72</td><td>70</td><td>15</td><td>38</td>
-                                                        </tr><tr>
-                                                            <th>Activitati efectuate</th><td>85</td><td>42</td><td>71</td><td>56</td><td>30</td><td>3</td><td>41</td><td>87</td><td>94</td><td>99</td><td>24</td><td>20</td><td>96</td><td>62</td><td>90</td><td>13</td><td>38</td><td>47</td><td>9</td><td>6</td>
-                                                        </tr><tr>
-                                                            <th>Skiluri</th><td>18</td><td>80</td><td>85</td><td>65</td><td>9</td><td>93</td><td>93</td><td>61</td><td>49</td><td>10</td><td>45</td><td>3</td><td>93</td><td>61</td><td>4</td><td>80</td><td>2</td><td>60</td><td>53</td><td>81</td>
-                                                        </tr><tr>
-                                                            <th>Alta statistica</th><td>30</td><td>81</td><td>46</td><td>50</td><td>71</td><td>60</td><td>8</td><td>33</td><td>87</td><td>34</td><td>35</td><td>74</td><td>34</td><td>31</td><td>97</td><td>10</td><td>40</td><td>95</td><td>92</td><td>93</td>
-                                                        </tr><tr>
-                                                            <th>Alta statistica</th><td>29</td><td>91</td><td>85</td><td>92</td><td>2</td><td>84</td><td>29</td><td>28</td><td>25</td><td>63</td><td>18</td><td>97</td><td>87</td><td>59</td><td>53</td><td>7</td><td>47</td><td>21</td><td>62</td><td>11</td>
-                                                        </tr><tr>
-                                                            <th>Alta statistica</th><td>45</td><td>96</td><td>25</td><td>60</td><td>56</td><td>67</td><td>48</td><td>7</td><td>30</td><td>64</td><td>10</td><td>0</td><td>38</td><td>72</td><td>83</td><td>61</td><td>35</td><td>96</td><td>84</td><td>49</td>
-                                                        </tr><tr>
-                                                            <th>Alta statistica</th><td>66</td><td>63</td><td>25</td><td>28</td><td>67</td><td>83</td><td>25</td><td>10</td><td>0</td><td>18</td><td>98</td><td>92</td><td>73</td><td>40</td><td>78</td><td>88</td><td>99</td><td>30</td><td>74</td><td>88</td>
-                                                        </tr><tr>
-                                                            <th>Alta statistica</th><td>8</td><td>34</td><td>9</td><td>56</td><td>38</td><td>37</td><td>17</td><td>74</td><td>33</td><td>55</td><td>76</td><td>95</td><td>34</td><td>5</td><td>39</td><td>13</td><td>99</td><td>35</td><td>15</td><td>56</td>
-                                                        </tr><tr>
-                                                            <th>Alta statistica</th><td>28</td><td>1</td><td>93</td><td>79</td><td>56</td><td>7</td><td>70</td><td>62</td><td>58</td><td>96</td><td>25</td><td>40</td><td>49</td><td>35</td><td>44</td><td>67</td><td>6</td><td>73</td><td>38</td><td>91</td>
-                                                        </tr><tr>
-                                                            <th>Alta statistica</th><td>85</td><td>1</td><td>70</td><td>31</td><td>32</td><td>42</td><td>91</td><td>75</td><td>51</td><td>77</td><td>35</td><td>53</td><td>7</td><td>79</td><td>17</td><td>75</td><td>55</td><td>47</td><td>42</td><td>41</td>
-                                                        </tr><tr>
-                                                            <th>Alta statistica</th><td>93</td><td>59</td><td>47</td><td>68</td><td>75</td><td>61</td><td>37</td><td>34</td><td>44</td><td>36</td><td>59</td><td>95</td><td>31</td><td>10</td><td>11</td><td>62</td><td>98</td><td>34</td><td>58</td><td>93</td>
-                                                        </tr><tr>
-                                                            <th>Alta statistica</th><td>81</td><td>28</td><td>36</td><td>88</td><td>85</td><td>66</td><td>66</td><td>68</td><td>78</td><td>64</td><td>95</td><td>59</td><td>35</td><td>15</td><td>51</td><td>84</td><td>59</td><td>29</td><td>22</td><td>35</td>
-                                                        </tr><tr>
-                                                            <th>Alta statistica</th><td>71</td><td>90</td><td>78</td><td>60</td><td>28</td><td>61</td><td>88</td><td>2</td><td>23</td><td>48</td><td>11</td><td>79</td><td>93</td><td>19</td><td>74</td><td>31</td><td>55</td><td>10</td><td>70</td><td>95</td>
-                                                        </tr><tr>
-                                                            <th>Alta statistica</th><td>64</td><td>17</td><td>49</td><td>71</td><td>6</td><td>44</td><td>38</td><td>14</td><td>95</td><td>70</td><td>69</td><td>9</td><td>76</td><td>41</td><td>77</td><td>83</td><td>99</td><td>43</td><td>54</td><td>33</td>
-                                                        </tr><tr>
-                                                            <th>Alta statistica</th><td>20</td><td>36</td><td>10</td><td>0</td><td>35</td><td>35</td><td>2</td><td>29</td><td>98</td><td>22</td><td>30</td><td>45</td><td>49</td><td>80</td><td>48</td><td>20</td><td>11</td><td>31</td><td>14</td><td>12</td>
-                                                        </tr><tr>
-                                                            <th>Alta statistica</th><td>23</td><td>74</td><td>72</td><td>43</td><td>99</td><td class="err">Nici una</td><td>96</td><td>34</td><td>9</td><td>59</td><td>56</td><td>10</td><td>19</td><td>53</td><td>21</td><td>71</td><td>75</td><td>55</td><td>51</td><td>82</td>
-                                                        </tr><tr>
-                                                            <th>Alta statistica</th><td>16</td><td>88</td><td>17</td><td>85</td><td>6</td><td>45</td><td>41</td><td>67</td><td>12</td><td>70</td><td>83</td><td>73</td><td>85</td><td>19</td><td>4</td><td>5</td><td>13</td><td>85</td><td>53</td><td>6</td>
-                                                        </tr><tr>
-                                                            <th>Alta statistica</th><td>35</td><td>34</td><td>69</td><td>78</td><td>10</td><td>89</td><td>38</td><td>81</td><td>95</td><td>51</td><td>37</td><td>49</td><td>50</td><td>66</td><td>17</td><td>15</td><td>99</td><td>19</td><td>54</td><td>29</td>
-                                                        </tr><tr>
-                                                            <th>Alta statistica</th><td>88</td><td>65</td><td>97</td><td>73</td><td>38</td><td>74</td><td>92</td><td>86</td><td>75</td><td>77</td><td>34</td><td>28</td><td>31</td><td>12</td><td>78</td><td>25</td><td>79</td><td>60</td><td>8</td><td>86</td>
-                                                        </tr><tr>
-                                                            <th>Alta statistica</th><td>86</td><td>18</td><td>11</td><td>37</td><td>70</td><td>86</td><td>2</td><td>6</td><td>50</td><td>24</td><td>82</td><td>9</td><td>15</td><td>70</td><td>29</td><td>74</td><td>15</td><td>86</td><td>42</td><td>14</td>
-                                                        </tr><tr>
-                                                            <th>Alta statistica</th><td>80</td><td>62</td><td>69</td><td>25</td><td>90</td><td>16</td><td>27</td><td>93</td><td>70</td><td>53</td><td>89</td><td>60</td><td>39</td><td>31</td><td>43</td><td>67</td><td>94</td><td>31</td><td>38</td><td>91</td>
-                                                        </tr><tr>
-                                                            <th>Alta statistica</th><td>94</td><td>80</td><td>13</td><td>11</td><td>65</td><td>20</td><td>85</td><td>86</td><td>51</td><td>67</td><td>15</td><td>54</td><td>34</td><td>75</td><td>87</td><td>79</td><td>11</td><td>43</td><td>32</td><td>52</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                      </div>
-                                    </section>
-                                      <section>
-                                          <div class="row">
-                                          </div>
-                                      </section>
-                                  </div>
-                              </div>
-                          </div>
-                      </section>
-                 </div>
-              </div>
-
-              <!-- page end-->
-          </section>
-        </section>
 
 
+                                                    <div class="row col-lg-12 col-md-12 col-sm-12">
+                                                        
+                                                        <div class="card review-card">
+                                                            <div class="card-header choose-chater">
+                                                                <div class="clear-both"></div>
+                                                            </div>
+                                                            <div class="card-body no-padding" id="reviews-body">
+                                                                <ul class="message-list">
+                                                                    {% for review in reviews.all %}
+                                                                    <a>
+                                                                        <li>
+                                                                            <img src="http://www.gravatar.com/avatar/{{ review.submitter.account.code }}" class="profile-img pull-left">
+                                                                            <div class="message-block">
+                                                                                <div><span class="username">{{ review.submitter.account.user}}</span> <span class="message-datetime">{{ review.data }}</span>
+                                                                                </div>
+                                                                                <div class="message">
+                                                                                     {{ review.message }}
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+                                                                    </a>
+                                                                    {% endfor %}
 
 
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                    <!-- End of Row -->
+                </div>
+            </div>
+        </div>
+        <footer class="app-footer">
+            <div class="wrapper">
+                <span class="pull-right"><i class="fa fa-long-arrow-up" id="arrow"></i></span>SpartanTasks @ 2016 Copyright.
+            </div>
+        </footer>
+</div>
+            <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js">
+            </script>
+            <script>
+                $("#arrow").click(function() {
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                return false;
+                });
+
+                $('.other-bids').hide();
+                $('#show-bidding-field').on('click', function(){
+                  $('.other-bids').toggle();
+                });
+
+                $('#bidding-place').click(function(){
+                    alert('The value must be in Dollars($).')
+                });
+
+                $('.review-card').hide();
+                $('#show-reviews').click(function(){
+                 $('.review-card').slideToggle();
+                });
+
+                $('#edit-profile-btn').click(function(){
+                 $('#card-edit-profile').slideToggle();
+                 });
+
+                 $('#cancel_button').click(function(){
+                 $('#card-edit-profile').slideToggle();
+                 });
+            </script>
 
 
-        <!-- /.container -->
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
-        <script src="../js/jquery.stickyheader.js"></script>
-
-
-        <script>
-        $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-        </script>
-
-
-
-    </body>
-
-    </html>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 {% endblock %}
-
