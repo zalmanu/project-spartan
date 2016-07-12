@@ -4,5 +4,10 @@ django-recaptcha==1.0.5
 gunicorn==19.4.5
 django-phonenumber-field==1.1.0
 psycopg2==2.6.1
-django-background-task==0.1.8
 channels==0.15.1
+amqp==1.4.9
+anyjson==0.3.3
+billiard==3.3.0.23
+celery==3.1.23
+kombu==3.0.35
+redis==2.10.5
