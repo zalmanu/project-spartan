@@ -19,9 +19,13 @@ class CreateReportForm(forms.ModelForm):
                                                          'Spartan']])
     license = forms.BooleanField()
 
+
     class Meta:
         model = Report
         exclude = ["author"]
+        widgets = {'text': forms.Textarea(attrs={'required': 'required',
+                                                 'placeholder': 'text'})
+                   }
 
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop('user', None)
