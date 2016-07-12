@@ -264,11 +264,151 @@
                                         {% for field in form %}
 
 
+
+                                        {% if field.label == 'Date FORMAT YYYY-MM-DD'  %}
+
+
+
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail">Date</label>
+                                            <div class="input-group">
+                                                {{ field|add_class:"form-control "|attr:"required:required"|add_class:"form-control datepicker"|attr:"placeholder:Enter a date"}}
+                                                <span class="input-group-addon" id="basic-addon1">
+                                                    <i class="glyphicon glyphicon-calendar" data-time-icon="icon-time" data-date-icon="icon-calendar">
+                                                    </i>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        {% if field.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in field.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                                            {% endif %}
+                                        {% elif field.label == 'First name'%}
+
                                         {{ field.label }}
 
+                                         {{ field|add_class:"form-control "|attr:"placeholder:Enter first name"|attr:"required:required"}}
+                                           {% if field.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in field.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                                            {% endif %}
+
+
+                                        {% elif  field.label == 'Last name' %}
+
+                                          {{ field.label }}
+
+                                         {{ field|add_class:"form-control "|attr:"placeholder:Enter last name"|attr:"required:required"}}
+                                           {% if field.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in field.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                                            {% endif %}
+
+                                        {% elif field.label == 'Address' %}
+
+
+                                        {{ field.label }}
+
+                                         {{ field|add_class:"form-control "|attr:"placeholder:Enter address"|attr:"required:required"}}
+                                           {% if field.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in field.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                                            {% endif %}
 
 
 
+
+                                        {% elif field.label == 'CNP' %}
+
+                                        {{ field.label }}
+
+                                         {{ field|add_class:"form-control "|attr:"placeholder:Enter CNP"|attr:"required:required"}}
+                                           {% if field.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in field.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                                            {% endif %}
+
+
+
+
+                                        {% elif field.label == 'ID card series' %}
+
+                                        {{ field.label }}
+
+                                         {{ field|add_class:"form-control "|attr:"placeholder:Enter ID card series"|attr:"required:required"}}
+                                           {% if field.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in field.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                                            {% endif %}
+
+                                        {% elif field.label == 'CUI' %}
+
+                                        {{ field.label }}
+
+                                         {{ field|add_class:"form-control "|attr:"placeholder:Enter CUI"|attr:"required:required"}}
+                                           {% if field.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in field.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                                            {% endif %}
+
+                                        {% elif field.label == 'Bank account' %}
+
+                                        {{ field.label }}
+
+                                         {{ field|add_class:"form-control "|attr:"placeholder:Enter Bank account"|attr:"required:required"}}
+                                           {% if field.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in field.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                                            {% endif %}
+                                        {% else %}
+
+
+
+
+
+                                        {{ field.label }}
 
 
                                          {{ field|add_class:"form-control "|attr:"placeholder"|attr:"required:required"}}
@@ -281,6 +421,7 @@
 				                                        {% endfor %}
                                                             </div>
                                                             {% endif %}
+                                        {% endif %}
 
                                         {% endfor %}
 
