@@ -1,12 +1,15 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
+from django.core.exceptions import PermissionDenied
 
 from models import Spartan, CreateSpartanForm
 
 
 @login_required
 def spartan(request):
+    if request.user.account.has_related_object() and request.user.spartan.spartanStatus:
+        raise PermissionDenied
     confirm = []
     form = CreateSpartanForm(data=request.POST or None)
     if request.method == 'POST':
