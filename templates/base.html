@@ -38,6 +38,7 @@
         <link rel='shortcut icon' type='image/x-icon' href="{% static "img/favicon.ico" %}" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="{% static "js/notifications_script.js" %}"></script>
+	<script src="{% static "js/seen_script.js" %}"></script>
     </head>
 
     <body onload="zoom()">
@@ -56,16 +57,20 @@
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 
                                 <i class="fa fa-bell-o" id="notifications-icon"></i>
-                                <span class="badge bg-important">7</span>
+                                <span class="badge bg-important" id="iconcount">7</span>
                             </a>
                             <ul class="dropdown-menu extended inbox" id="notif_list">
                                 <div class="notify-arrow notify-arrow-blue"></div>
                                 <li>
-                                    <p class="blue">You have 4 new notifications</p>
+                                    <p class="blue" id="notifnum"></p>
                                 </li>
                                 <li>
-				    {% for notification in user.notifications.all %}
-				    <a href="#n">
+				  {% for notification in user.notifications.all %}
+				  {% if notifications.seen %}
+				  <script>
+				    seencount(true);
+				  </script>
+				    <a>
                                         <span class="photo"><img alt="avatar" src="http://www.gravatar.com/avatar/{{ notification.user.account.code }}"></span>
                                         <span class="subject">
                                         <span class="from">{{ notification.user.username }}</span>
@@ -74,7 +79,24 @@
 					  A new post <b id="notification-bid">in your area</b>
                                         </span>
                                     </a>
-				    {% endfor %}
+				    {% else %}
+				  <script>
+				    seencount(false);
+				  </script>
+				  <a href="#n" style="background-color:red;" id="seen_not"  data-notification="{{ notification.pk }}">
+                                        <span class="photo"><img alt="avatar" src="http://www.gravatar.com/avatar/{{ notification.user.account.code }}"></span>
+                                        <span class="subject">
+                                        <span class="from">{{ notification.user.username }}</span>
+                                        </span>
+                                        <span class="message">
+					  A new post <b id="notification-bid">in your area</b>
+                                        </span>
+                                    </a>
+				  {% endif %}
+				  {% endfor %}
+				  <script>
+				    seencheck();
+				   </script>
                                 </li>
                                 <li>
                                     <a href="#">See all notifications</a>
