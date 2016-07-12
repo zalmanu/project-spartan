@@ -19,12 +19,13 @@ def ws_add(message):
         if found:
             break
         for item in tup:
-            if item.startswith('sessionid'):
-                session_id = item.split('=')[1]
+            if item.startswith('csrftoken'):
+                session_id = item.split(' ')[1]
+                session_id = session_id.split('=')[1]
                 found = True
                 break
-            elif item.startswith('csrftoken'):
-                session_id = item.split(';')[1]
+            elif item.startswith('sessionid'):
+                session_id = item.split(';')[0]
                 session_id = session_id.split('=')[1]
                 found = True
                 break
@@ -72,5 +73,11 @@ def ws_message(message):
 
 @channel_session
 def ws_disconnect(message):
-    label = message.channel_session['room']
-    Group("chat-" + label).discard(message.reply_channel)
+    username = message.channel_session['user']
+    user = User.objects.get(username=username)
+    if message.channel_session['room']:
+        label = message.channel_session['room']
+        Group("chat-" + label).discard(message.reply_channel)
+    if user.account.has_related_object() and user.spartan.spartanStatus:
+        Group("spartans-" + user.spartan.category.name + "-" +
+              user.account.city).discard(message.reply_channel)

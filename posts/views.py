@@ -11,8 +11,7 @@ from channels import Group
 
 from .models import Announcement, EditPostForm, CreatePostForm
 from bidding.models import CreateOfferForm
-from spartans.models import Spartan
-from notifications.models import Notification
+from .tasks import notify_spartans
 
 
 @login_required
@@ -25,19 +24,22 @@ def create_post(request):
             form.save()
             form.instance.creation_email(current_user)
             category = form.instance.category
-            for spartan in Spartan.objects.filter(spartanStatus=True,
-                                                  category=category):
-                notification = Notification.objects.create(
-                    receiver=spartan.user)
-                notification.spartan_notif()
-                notification.save()
+            notify_spartans.delay(category.name, form.instance.city,
+                                  form.instance.author.username)
+            html = """
+            <span class="subject">
+            </span>
+            <span class="message">
+            A new post <b id="notification-bid">in your area</b>
+            </span>
+            </a>
+            """
             dic = {
-                'author': form.instance.author.username,
-                'html': notification.html
+                'author': current_user.username,
+                'html': html
             }
-            Group("spartans-" + form.instance.category.name +
-                  "-" + form.instance.city).send(
-                {'text': json.dumps(dic)})
+            Group("spartans-" + category.name +
+                  "-" + form.instance.city).send({'text': json.dumps(dic)})
             return redirect(form.instance.get_absolute_url())
     return render(request, 'posts/create_post.html', {
         'cod': current_user.account.code,

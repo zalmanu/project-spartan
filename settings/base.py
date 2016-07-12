@@ -30,7 +30,6 @@ INSTALLED_APPS = (
     'widget_tweaks',
     'phonenumber_field',
     'channels',
-    'background_task',
 
     # Usual apps
     'authentication',
@@ -65,6 +64,12 @@ MIDDLEWARE_CLASSES = [
 
 
 ROOT_URLCONF = 'Spartan.urls'
+
+# Celery settings
+BROKER_URL = 'redis://localhost:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
 
 
 TEMPLATES = [

@@ -80,7 +80,7 @@ class CreatePostForm(forms.ModelForm):
     city = forms.ChoiceField(choices=[(x, x) for x in ['Timisoara']])
     country = forms.ChoiceField(choices=[(x, x) for x in ['Romania']])
     category = forms.ChoiceField(choices=[(x, x)
-                                          for x in []])
+                                          for x in Category.categories()])
 
     class Meta:
         model = Announcement
