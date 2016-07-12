@@ -89,6 +89,9 @@ class CreatePostForm(forms.ModelForm):
         model = Announcement
         fields = ['title', 'description', 'address', 'country',
                   'city', 'data', 'timePost', 'money', 'category']
+        widgets = {'description': forms.Textarea(attrs={'required': 'required',
+                                                 })
+                   }
 
     def clean_category(self):
         category = get_object_or_404(Category,

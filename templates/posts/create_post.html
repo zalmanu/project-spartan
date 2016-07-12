@@ -240,37 +240,191 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Post Title</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter a title">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputPassword1">Post Description</label>
-                                            <div>
-                                                <textarea placeholder="Enter a description" class="form-control" rows="3"></textarea>
-                                            </div>
-                                        </div>
+                                    <form method="POST">
+                                         {% csrf_token %}
+                                         {% if confirm %}
+				                           <div  class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong >
+                                                            {% for message in confirm %}
+				                                                {{ message }}
+				                                        {% endfor %} !
+                                                        </strong>
+
+                                                            </div>
+                                         {% endif %}
+
+                                        {% for field in form %}
+
+                                         {% if field.label == 'Title' %}
+
+                                            {{ field.label }}
+                                         {{ field|add_class:"form-control "|attr:"placeholder:Enter a title"|attr:"required:required"}}
+                                           {% if field.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in field.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                                            {% endif %}
+
+
+
+                                        {% elif field.label == 'Announcement description' %}
+
+                                        {{ field.label }}
+
+                                         {{ field|add_class:"form-control "|attr:"placeholder:Enter a description"|attr:"required:required"}}
+                                           {% if field.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in field.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                                            {% endif %}
+
+                                        {% endif %}
+
+
+                                        {% if field.label == 'Address' %}
+                                        {{ field.label }}
+
+                                         {{ field|add_class:"form-control "|attr:"placeholder:Enter a address"|attr:"required:required"}}
+                                           {% if field.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in field.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                                            {% endif %}
+
+
+
+                                        {% endif %}
+
+                                        {% if field.label == 'Country' or field.label == 'City'  %}
+                                        {{ field.label }}
+
+                                         {{ field|add_class:"form-control "|attr:"required:required"}}
+                                           {% if field.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in field.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                                            {% endif %}
+
+
+
+                                        {% endif %}
+
+
+
+                                        {% if field.label == 'Date FORMAT YYYY-MM-DD'  %}
+
+
+
+
                                         <div class="form-group">    
                                             <label for="exampleInputEmail">Date</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control datepicker" placeholder="Pick up a date">
+                                                {{ field|add_class:"form-control "|attr:"required:required"|add_class:"form-control datepicker"|attr:"placeholder:Enter a date"}}
                                                 <span class="input-group-addon" id="basic-addon1">
                                                     <i class="glyphicon glyphicon-calendar" data-time-icon="icon-time" data-date-icon="icon-calendar">
                                                     </i>
                                                 </span>
                                             </div>
                                         </div>
+
+                                        {% if field.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in field.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                                            {% endif %}
+                                        {% endif %}
+
+
+
+
+                                        {% if field.label == 'Time FORMAT HH:MM:SS'  %}
+
+
                                         <div class="form-group">
                                             <label for="exampleInputFile">Time</label>
                                             <div id="datetimepicker2" class="input-group">
-                                                <input data-format="HH:mm:ss PP" type="text"  class="form-control" placeholder="Pick up a time"></input>
+                                                 {{ field|add_class:"form-control "|attr:"required:required"|attr:"placeholder:Enter a time in format HH:MM:SS"}}
+
                                                 <span class="input-group-addon" id="basic-addon1">
                                                     <i class="glyphicon glyphicon-time" data-time-icon="icon-time" data-date-icon="icon-calendar">
                                                     </i>
                                                 </span>
                                             </div>
                                         </div>
+
+
+                                        {% if field.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in field.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                                            {% endif %}
+                                        {% endif %}
+
+
+                                        {% if field.label == 'Category'  %}
+                                        {{ field.label }}
+
+                                         {{ field|add_class:"form-control "|attr:"required:required"}}
+                                           {% if field.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in field.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                                            {% endif %}
+
+
+
+                                        {% endif %}
+
+                                        {% if field.label == 'Highest price you are willing to pay (EUR)'  %}
+                                        {{ field.label }}
+
+                                         {{ field|add_class:"form-control "|attr:"required:required"|attr:"placeholder:Enter a price"}}
+                                           {% if field.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in field.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                                            {% endif %}
+
+
+
+                                        {% endif %}
+
+
+
+                                        {% endfor %}
                                         <div class="form-group">
                                             <label for="exampleInputEmail">Location</label>
                                             <br>
@@ -331,6 +485,9 @@
                                                 </label>
                                             </div>
                                         </div>
+
+
+
                                         <button type="submit" class="btn btn-default">Submit</button>
                                     </form>
                                 </div>
