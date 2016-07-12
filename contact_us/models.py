@@ -15,3 +15,12 @@ class CreateContact(forms.ModelForm):
     class Meta:
         model = ContactUs
         fields = '__all__'
+        fields = ['name', 'email', 'message']
+        widgets = {
+            'name': forms.TextInput({'required': 'required',
+                                         'placeholder': 'Name'}),
+            'email': forms.EmailInput({'required': 'required',
+                                       'placeholder': 'Email'}),
+            'message': forms.Textarea(attrs={'required': 'required',
+                                                   'placeholder': 'Message'})
+        }

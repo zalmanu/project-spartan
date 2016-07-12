@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from .models import CreateContact
+from django.contrib.auth.decorators import login_required
 
 
+@login_required
 def contact_us(request):
     confirm = []
     form = CreateContact(request.POST or None)
