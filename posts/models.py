@@ -76,6 +76,9 @@ class EditPostForm(forms.ModelForm):
         model = Announcement
         fields = ['title', 'description', 'address', 'country',
                   'city', 'data', 'timePost', 'money']
+        widgets = {'description': forms.Textarea(attrs={'required': 'required',
+                                                        })
+                   }
 
 
 class CreatePostForm(forms.ModelForm):
