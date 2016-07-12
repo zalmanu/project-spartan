@@ -17,7 +17,6 @@ class CreateReportForm(forms.ModelForm):
 
     status = forms.ChoiceField(choices=[(x, x) for x in ['Employer',
                                                          'Spartan']])
-    license = forms.BooleanField()
 
 
     class Meta:

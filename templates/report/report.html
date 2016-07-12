@@ -273,9 +273,9 @@
                                                             </div>
                                                             {% endif %}
 
-                                        {% elif field.label != 'License' %}
+                                        {% elif field.label == 'Username' %}
 
-                                         {{ field|add_class:"form-control "|attr:"placeholder"|attr:"required:required"}}
+                                         {{ field|add_class:"form-control "|attr:"placeholder:Enter username of spartan / employer"|attr:"required:required"}}
                                            {% if field.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
                                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -290,16 +290,22 @@
 
                                         {% endif %}
 
-                                        {% if field.label == 'License' %}
+                                        {% if field.label == 'Report description' %}
 
-
-                                        {{ field|add_class:"checkbox"|attr:"required:required" }}
-
-                                                    <a style="padding: 8px 0 8px 30px;" > I Agree Terms and Conditions </a>
+                                         {{ field|add_class:"form-control "|attr:"placeholder:Enter a description"|attr:"required:required"}}
+                                           {% if field.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in field.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                                            {% endif %}
 
                                         {% endif %}
 
-                                         {% endfor %}
+                                        {% endfor %}
 
 
 
