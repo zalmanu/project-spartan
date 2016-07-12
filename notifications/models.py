@@ -10,8 +10,6 @@ class Notification(models.Model):
 
     def spartan_notif(self):
         self.html = """
-            <span class="photo"><img alt="avatar"
-src="http://www.gravatar.com/avatar/""" + self.user.account.code + """></span>
             <span class="subject">
             </span>
             <span class="message">
