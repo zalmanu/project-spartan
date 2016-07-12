@@ -256,13 +256,55 @@
                                          {% endif %}
                                         {% for field in form %}
 
+                                         {% if  field.label == 'Name' %}
+
+                                          {{ field.label }}
+
+                                         {{ field|add_class:"form-control "|attr:"placeholder:Enter name"|attr:"required:required"}}
+                                           {% if field.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in field.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                                            {% endif %}
+
+                                         {% elif  field.label == 'Email' %}
+
+                                          {{ field.label }}
+
+                                         {{ field|add_class:"form-control "|attr:"placeholder:Enter email "|attr:"required:required"}}
+                                           {% if field.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in field.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                                            {% endif %}
+
+                                         {% elif  field.label == 'Message' %}
+
+                                          {{ field.label }}
+
+                                         {{ field|add_class:"form-control "|attr:"placeholder:Enter your message "|attr:"required:required"}}
+                                           {% if field.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in field.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                                            {% endif %}
+
+                                        {% else %}
+
 
                                         {{ field.label }}
-
-
-
-
-
 
                                          {{ field|add_class:"form-control "|attr:"placeholder"|attr:"required:required"}}
                                            {% if field.errors %}
@@ -274,6 +316,8 @@
 				                                        {% endfor %}
                                                             </div>
                                                             {% endif %}
+
+                                        {% endif %}
 
                                         {% endfor %}
 
