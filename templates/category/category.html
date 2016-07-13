@@ -45,7 +45,8 @@
                             <div class="col-lg-2 col-sm-2" style="color:black;">
                             <h4>          {{  anunt.author.username }}</h4>
                               <div class="follow-ava">
-                                  <img src="http://www.gravatar.com/avatar/{{ anunt.author.account.code }}s=200" alt="">
+                                  
+                                  <img src='{{  anunt.author.account.profile_image.url }}' class = 'img-responsive'/>
                               </div>
                             </div>
                             <div class="col-lg-4 col-sm-4 follow-info description_info">

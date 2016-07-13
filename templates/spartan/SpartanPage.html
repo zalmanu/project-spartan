@@ -100,7 +100,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ request.user.username }} <span class="caret"></span></a>
                             <ul class="dropdown-menu animated fadeInDown">
                                 <li class="profile-img">
-                                    <img src="https://www.gravatar.com/avatar/{{ cod }}?s=200">
+                                     <img src='{{ user.account.profile_image.url }}' class = 'img-responsive'/>
                                 </li>
                                 <li>
                                     <div class="profile-info">
@@ -244,7 +244,8 @@
                                         <div class="col-sm-6">
                                             <div class="card primary">
                                                 <div class="card-jumbotron no-padding">
-                                                    <img src="http://www.gravatar.com/avatar/{{ img_spartan }}" alt="">
+
+                                                     <img src='{{ spartan.user.account.profile_image.url }}' class = 'img-responsive'/>
                                                 </div>
                                             </div>
                                         </div>
@@ -282,7 +283,8 @@
                                                                     {% for review in reviews.all %}
                                                                     <a>
                                                                         <li>
-                                                                            <img src="http://www.gravatar.com/avatar/{{ review.submitter.account.code }}" class="profile-img pull-left">
+
+                                                                            <img src='{{ review.submitter.account.profile_image.url }}' class = 'img-responsive' style="max-width: 35%;"/>
                                                                             <div class="message-block">
                                                                                 <div><span class="username">{{ review.submitter.account.user}}</span> <span class="message-datetime">{{ review.data }}</span>
                                                                                 </div>
@@ -337,10 +339,10 @@
                     alert('The value must be in Dollars($).')
                 });
 
-                $('.review-card').hide();
-                $('#show-reviews').click(function(){
-                 $('.review-card').slideToggle();
-                });
+                <!--$('.review-card').hide();-->
+                <!--$('#show-reviews').click(function(){-->
+                 <!--$('.review-card').slideToggle();-->
+                <!--});-->
 
                 $('#edit-profile-btn').click(function(){
                  $('#card-edit-profile').slideToggle();
