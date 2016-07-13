@@ -15,6 +15,7 @@ from categories.models import Category
 
 class Announcement(models.Model):
     title = models.CharField(null=True, max_length=256)
+    image = models.FileField(null=True, blank=True)
     description = models.CharField('Announcement description',
                                    null=True, max_length=500)
     slug = models.SlugField(default=uuid.uuid1, unique=True)
