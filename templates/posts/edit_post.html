@@ -240,7 +240,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <form method="POST">
+                                    <form method="POST" enctype="multipart/form-data">
                                          {% csrf_token %}
                                          {% if confirm %}
 				                           <div  class="alert alert-danger fade in" id="input-alert">
@@ -424,22 +424,28 @@
 
 
 
-                                        {% endfor %}
+                                      {% if field.label == 'Image' %}
+
+
 
 
                                         <div class="form-group">
                                             <br>
-                                            <label for="exampleInputFile">Choose some reprezentative pictures<span style="color:red;">*</span></label>
-                                            <input type="file" id="exampleInputFile">
-                                        </div>
-                                        <div class="checkbox">
-                                            <div class="checkbox3 checkbox-round">
-                                                <input type="checkbox" id="checkbox-1">
-                                                <label for="checkbox-1">
-                                                    I Agree Terms and Conditions
-                                                </label>
-                                            </div>
-                                        </div>
+                                            <label for="exampleInputFile">Choose some reprezentative pictures<span style="color:red;">*</span></label><br>
+                                            {{ field|add_class:"form-control "}}
+
+
+                                        {% elif field.label == 'Image2' or  field.label == 'Image3' or  field.label == 'Image4' %}
+
+                                         {{ field|add_class:"form-control "}}
+
+
+
+                                        {% endif %}
+
+
+
+                                        {% endfor %}
 
 
 
