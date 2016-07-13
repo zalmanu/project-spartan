@@ -16,14 +16,12 @@ def logout_view(request):
 
 def register_page(request):
     form = UserRegisterForm(data=request.POST or None)
-    acc_form = AccountRegisterForm(data=request.POST or None)
+    acc_form = AccountRegisterForm(request.POST or None, request.FILES or None)
     if request.method == 'POST':
         if form.is_valid() and acc_form.is_valid():
             form.instance.set_password(form.cleaned_data['password'])
             form.save()
             acc_form.instance.user = form.instance
-            acc_form.save()
-            acc_form.instance.code = acc_form.instance.gravatar_photo()
             acc_form.save()
             user = authenticate(username=form.instance.username,
                                 password=form.cleaned_data['password'])

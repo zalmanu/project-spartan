@@ -17,7 +17,7 @@
                               <br>
 
 
-                              <form method="POST">
+                              <form method="POST" enctype="multipart/form-data">
                                   {% csrf_token %}
 
                               <div id="account_details">
@@ -50,7 +50,11 @@
                                   <p>{{ field.label }}</p>
 
                 {% if field.label == "Phone" %}
-                                  {{ field|add_class:"form-control login_field"|attr:"placeholder:Phone" }}
+                         {{ field|add_class:"form-control login_field"|attr:"placeholder:Phone" }}
+
+                    {% elif field.label == "Profile image" %}
+                          {{ field|add_class:"form-control "|attr:"required:required"}}
+
                                   {% else %}
 				{{ field|add_class:"form-control login_field" }}
                                   {% endif %}

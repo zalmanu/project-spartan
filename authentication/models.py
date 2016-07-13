@@ -84,4 +84,5 @@ class AccountRegisterForm(forms.ModelForm):
 
     class Meta:
         model = Account
-        exclude = ['user', 'code','profile_image']
+        exclude = ['user','height_field','width_field']
+        fields = ['profile_image']
