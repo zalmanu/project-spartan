@@ -325,7 +325,7 @@
 
 
 
-                                        <form method="POST" >
+                                        <form method="POST" enctype="multipart/form-data">
                                             {% csrf_token %}
                                                 <div class="card-body">
                                                     {% for field in form %}
@@ -348,9 +348,19 @@
 
                                                     {% for field in form_acc %}
 
-                                                    <p style="float:left" >{{ field.label }}</p>
+                                                    {% if field.label == 'Profile image' %}
 
-                                                    {{ field|add_class:"form-control "|attr:"placeholder,form-control" }}
+                                                    <div style="float:left"  class="form-group">
+                                            <br>
+                                            <label for="exampleInputFile">Choose some reprezentative pictures<span style="color:red;">*</span></label>
+                                            {{ field|add_class:"form-control " }}
+                                        </div> <br>
+
+                                                    {% else %}
+
+                                                         <p style="float:left" >{{ field.label }}</p>
+
+                                                              {{ field|add_class:"form-control "|attr:"placeholder" }}
 
                                                     {% if field.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
@@ -362,12 +372,18 @@
                                                             </div>
                                                             {% endif %}
 
+                                                    {% endif %}
+
+
+
                                                     {% endfor %}
 
 
 
                                                     <!-- Buttons -->
+                                                    </div>
                                                     <br>
+
                                                     <button type="button" class="btn btn-danger" id="cancel_button">Cancel</button>
                                                     <button type="submit" class="btn btn-success">Update</button>
 
