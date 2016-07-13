@@ -429,10 +429,11 @@
                                             <br>
                                             <label for="exampleInputFile">Choose some reprezentative pictures<span style="color:red;">*</span></label>
                                             {{ field|add_class:"form-control "|attr:"required:required"}}
-                                        </div>
 
 
+                                        {% elif field.label == 'Image2' or  field.label == 'Image3' or  field.label == 'Image4' %}
 
+                                         {{ field|add_class:"form-control "|attr:"required:required"}}
 
 
 

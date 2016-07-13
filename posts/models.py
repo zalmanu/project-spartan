@@ -23,6 +23,18 @@ class Announcement(models.Model):
                               null=True, blank=True,
                               height_field="height_field",
                               width_field="width_field")
+    image2 = models.ImageField(upload_to=upload_location,
+                               null=True, blank=True,
+                               height_field="height_field",
+                               width_field="width_field")
+    image3 = models.ImageField(upload_to=upload_location,
+                               null=True, blank=True,
+                               height_field="height_field",
+                               width_field="width_field")
+    image4 = models.ImageField(upload_to=upload_location,
+                               null=True, blank=True,
+                               height_field="height_field",
+                               width_field="width_field")
     height_field = models.IntegerField(default=0)
     width_field = models.IntegerField(default=0)
     description = models.CharField('Announcement description',
@@ -99,7 +111,7 @@ class CreatePostForm(forms.ModelForm):
     class Meta:
         model = Announcement
         fields = ['title', 'description', 'address', 'country',
-                  'city', 'data', 'timePost', 'money', 'category', 'image']
+                  'city', 'data', 'timePost', 'money', 'category', 'image','image2','image3','image4']
         widgets = {'description': forms.Textarea(attrs={'required': 'required',
                                                         })
                    }
