@@ -11,7 +11,7 @@ from channels import Group
 
 from .models import Announcement, EditPostForm, CreatePostForm
 from bidding.models import CreateOfferForm
-from .tasks import notify_spartans
+from .tasks import notify_spartans, email_user
 
 
 @login_required
@@ -20,10 +20,23 @@ def create_post(request):
     form = CreatePostForm(data=request.POST or None)
     if request.method == 'POST':
         if form.is_valid():
+            post = form.instance
             form.instance.author = current_user
             form.save()
-            form.instance.creation_email(current_user)
             category = form.instance.category
+            messagetip = " Hi! % s , \n You successfully"\
+                         "posted an announce! \n" \
+                         " Title: %s ,\n Description: %s \n Address: %s \n " \
+                         "Country : %s \n City: %s \n Category: %s \n" \
+                         " Time : %s \n Date: %s \n " \
+                         "Highest bid price: %s eur \n" \
+                         " Have a nice day! - Team Spartan" % (
+                             current_user.username, post.title,  post.text,
+                             post.address,
+                             post.country,  post.city,  post.category.name,
+                             post.timePost, post.data, post.money)
+            email_user.delay(messagetip, current_user.email,
+                             "Spartan Tasks Post")
             notify_spartans.delay(category.name, form.instance.city,
                                   form.instance.author.username)
             html = """

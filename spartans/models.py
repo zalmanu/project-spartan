@@ -4,8 +4,6 @@ import uuid
 
 from django.db import models
 from django.contrib.auth.models import User
-from django.core.mail import send_mail
-from django.conf import settings
 from django import forms
 from django.shortcuts import get_object_or_404
 from django.core.urlresolvers import reverse
@@ -33,28 +31,11 @@ class Spartan(models.Model):
     def get_absolute_url(self):
         return reverse('users', args=[self.slug])
 
-    def activation_email(self):
-        subject = 'Spartan activation'
-        email = " Hi! % s , \n You submitted the form" \
-                " for becoming a spartan!\n" \
-                " Last name : %s ,\n First name : %s \n Birthday: %s \n" \
-                " Address : %s \n CNP: %s \n Serie: %s \n" \
-                " CUI : %s \n Bank account: %s \n " \
-                "Ability: %s \n  An admin will respond soon. " \
-                " - Team Spartan" % (
-                         self.user.username, self.last_name, self.first_name,
-                         self.birthday, self.address,
-                         self.cnp, self.series, self.cui,
-                         self.bank, self.category.name)
-        from_email = settings.EMAIL_HOST_USER
-        send_mail(subject, email, from_email,
-                  [self.user.email], fail_silently=True)
-
 
 class CreateSpartanForm(forms.ModelForm):
 
     category = forms.ChoiceField(choices=[(x, x)
-                                          for x in []])
+                                          for x in Category.categories()])
 
     class Meta:
         model = Spartan
