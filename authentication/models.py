@@ -43,7 +43,7 @@ class UserRegisterForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password',]
+        fields = ['username', 'email', 'password']
         widgets = {
             'username': forms.TextInput({'required': 'required',
                                          'placeholder': 'Username'}),
@@ -84,5 +84,5 @@ class AccountRegisterForm(forms.ModelForm):
 
     class Meta:
         model = Account
-        exclude = ['user','height_field','width_field']
-        fields = ['profile_image']
+        exclude = ['user','height_field','width_field',]
+        fields = ['profile_image','phone']

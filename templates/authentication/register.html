@@ -49,10 +49,9 @@
 
                                   <p>{{ field.label }}</p>
 
-                {% if field.label == "Phone" %}
-                         {{ field|add_class:"form-control login_field"|attr:"placeholder:Phone" }}
+               
 
-                    {% elif field.label == "Profile image" %}
+                    {% if field.label == "Profile image" %}
                           {{ field|add_class:"form-control "|attr:"required:required"}}
 
                                   {% else %}
