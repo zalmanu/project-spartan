@@ -57,7 +57,7 @@
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 
                                 <i class="fa fa-bell-o" id="notifications-icon"></i>
-                                <span class="badge bg-important" id="iconcount">7</span>
+                                <span class="badge bg-important" id="iconcount"></span>
                             </a>
                             <ul class="dropdown-menu extended inbox" id="notif_list">
                                 <div class="notify-arrow notify-arrow-blue"></div>
@@ -66,11 +66,11 @@
                                 </li>
                                 <li>
 				  {% for notification in user.notifications.all %}
-				  {% if notifications.seen %}
+				  {% if notification.seen %}
 				  <script>
 				    seencount(true);
 				  </script>
-				    <a>
+				  <a>
                                         <span class="photo"><img alt="avatar" src="http://www.gravatar.com/avatar/{{ notification.user.account.code }}"></span>
                                         <span class="subject">
                                         <span class="from">{{ notification.user.username }}</span>
@@ -83,7 +83,7 @@
 				  <script>
 				    seencount(false);
 				  </script>
-				  <a href="#n" style="background-color:red;" id="seen_not"  data-notification="{{ notification.pk }}">
+				  <a href="#n" style="background-color:red;" id="seen_not"  data-notification="{{ notification.id }}">
                                         <span class="photo"><img alt="avatar" src="http://www.gravatar.com/avatar/{{ notification.user.account.code }}"></span>
                                         <span class="subject">
                                         <span class="from">{{ notification.user.username }}</span>
