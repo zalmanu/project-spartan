@@ -240,7 +240,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <form method="POST">
+                                    <form method="POST" enctype="multipart/form-data">
                                          {% csrf_token %}
                                          {% if confirm %}
 				                           <div  class="alert alert-danger fade in" id="input-alert">
@@ -418,6 +418,22 @@
                                                             </div>
                                                             {% endif %}
 
+                                         {% endif %}
+
+                                        {% if field.label == 'Image' %}
+
+
+
+
+                                        <div class="form-group">
+                                            <br>
+                                            <label for="exampleInputFile">Choose some reprezentative pictures<span style="color:red;">*</span></label>
+                                            {{ field|add_class:"form-control "|attr:"required:required"}}
+                                        </div>
+
+
+
+
 
 
                                         {% endif %}
@@ -426,66 +442,6 @@
 
                                         {% endfor %}
 
-                                        <!--<div class="form-group">-->
-                                            <!--<label for="exampleInputEmail">Location</label>-->
-                                            <!--<br>-->
-                                            <!--<button type="button" class="btn" data-toggle="modal" data-target="#myModal">-->
-                                              <!--Pick up your location-->
-                                            <!--</button>-->
-                                            <!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">    -->
-                                                <!--<div class="modal-dialog" role="document">-->
-                                                    <!--<div class="modal-content">-->
-                                                        <!--<div class="modal-header">-->
-                                                            <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-                                                                <!--<span aria-hidden="true">&times;</span>-->
-                                                            <!--</button>-->
-                                                            <!--<h4 class="modal-title">Pick up your location</h4>-->
-                                                        <!--</div>-->
-                                                        <!--<div class="modal-body">-->
-                                                            <!--Location: <input type="text" id="us2-address" style="width: 200px"/>-->
-                                                            <!--<br>-->
-                                                            <!--<div id="us2" style="width: 500px; height: 400px;"></div>      -->
-                                                            <!--<script>-->
-                                                            <!--$('#somecomponent').locationpicker({-->
-                                                                <!--location: {latitude: 46.15242437752303, longitude: 2.7470703125},   -->
-                                                                    <!--radius: 300,-->
-                                                                    <!--inputBinding: {-->
-                                                                        <!--latitudeInput: $('#us2-lat'),-->
-                                                                        <!--longitudeInput: $('#us2-lon'),-->
-                                                                        <!--radiusInput: $('#us2-radius'),-->
-                                                                        <!--locationNameInput: $('#us2-address')-->
-                                                                    <!--}-->
-                                                            <!--});-->
-                                                            <!--$('#us2').locationpicker({-->
-                                                                <!--location: {latitude: 46.15242437752303, longitude: 2.7470703125},   -->
-                                                                <!--radius: 300,-->
-                                                                <!--inputBinding: {-->
-                                                                    <!--locationNameInput: $('#us2-address')-->
-                                                                <!--}-->
-                                                                <!--});-->
-                                                            <!--</script>-->
-                                                        <!--</div>-->
-                                                        <!--<div class="modal-footer">-->
-                                                            <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-                                                            <!--<button type="button" class="btn btn-primary">Save changes</button>-->
-                                                        <!--</div>   -->
-                                                    <!--</div>-->
-                                                <!--</div>-->
-                                            <!--</div>          -->
-                                        <!--</div>-->
-                                        <div class="form-group">
-                                            <br>
-                                            <label for="exampleInputFile">Choose some reprezentative pictures<span style="color:red;">*</span></label>
-                                            <input type="file" id="exampleInputFile">
-                                        </div>
-                                        <div class="checkbox">
-                                            <div class="checkbox3 checkbox-round">
-                                                <input type="checkbox" id="checkbox-1">
-                                                <label for="checkbox-1">
-                                                    I Agree Terms and Conditions
-                                                </label>
-                                            </div>
-                                        </div>
 
 
 

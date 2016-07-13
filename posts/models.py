@@ -13,9 +13,18 @@ from spartans.models import Spartan
 from categories.models import Category
 
 
+def upload_location(instance, filename):
+    return "%s/%s" % (instance.slug, filename)
+
+
 class Announcement(models.Model):
     title = models.CharField(null=True, max_length=256)
-    image = models.FileField(null=True, blank=True)
+    image = models.ImageField(upload_to=upload_location,
+                              null=True, blank=True,
+                              height_field="height_field",
+                              width_field="width_field")
+    height_field = models.IntegerField(default=0)
+    width_field = models.IntegerField(default=0)
     description = models.CharField('Announcement description',
                                    null=True, max_length=500)
     slug = models.SlugField(default=uuid.uuid1, unique=True)
@@ -56,9 +65,9 @@ class Announcement(models.Model):
                      " Time : %s \n Date: %s \n " \
                      "Highest bid price: %s eur \n" \
                      " Have a nice day! - Team Spartan" % (
-                         user.username, self.title,  self.description,
+                         user.username, self.title, self.description,
                          self.address,
-                         self.country,  self.city,  self.category.name,
+                         self.country, self.city, self.category.name,
                          self.timePost, self.data, self.money)
         from_email = settings.EMAIL_HOST_USER
         send_mail(subject, messagetip, from_email,
@@ -69,7 +78,6 @@ class Announcement(models.Model):
 
 
 class EditPostForm(forms.ModelForm):
-
     city = forms.ChoiceField(choices=[(x, x) for x in ['Timisoara']])
     country = forms.ChoiceField(choices=[(x, x) for x in ['Romania']])
 
@@ -83,7 +91,6 @@ class EditPostForm(forms.ModelForm):
 
 
 class CreatePostForm(forms.ModelForm):
-
     city = forms.ChoiceField(choices=[(x, x) for x in ['Timisoara']])
     country = forms.ChoiceField(choices=[(x, x) for x in ['Romania']])
     category = forms.ChoiceField(choices=[(x, x)
@@ -92,9 +99,9 @@ class CreatePostForm(forms.ModelForm):
     class Meta:
         model = Announcement
         fields = ['title', 'description', 'address', 'country',
-                  'city', 'data', 'timePost', 'money', 'category']
+                  'city', 'data', 'timePost', 'money', 'category', 'image']
         widgets = {'description': forms.Textarea(attrs={'required': 'required',
-                                                 })
+                                                        })
                    }
 
     def clean_category(self):
