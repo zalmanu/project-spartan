@@ -23,7 +23,6 @@ def home(request):
                 '-creation_date')[:4],
             'categories': categories,
             'user': current_user,
-            'cod': current_user.account.code,
             'form': form
         })
     else:

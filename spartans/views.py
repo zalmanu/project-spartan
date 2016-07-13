@@ -20,7 +20,6 @@ def spartan(request):
             confirm.append('You\'ve completed the form, '
                            'wait for admin\'s confirmation')
     return render(request, 'spartan/spartan.html', {
-        'cod': request.user.account.code,
         'form': form,
         'confirms': confirm})
 
@@ -31,6 +30,5 @@ def user(request, slug):
     return render(request, 'spartan/SpartanPage.html', {
         'reviews': current_spartan.reviews,
         'spartan': current_spartan,
-        'img_spartan': current_spartan.user.account.code,
-        'cod': request.user.account.code,
+        'img_spartan': current_spartan.user.account.profile_image,
     })

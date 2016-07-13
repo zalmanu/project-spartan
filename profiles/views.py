@@ -19,7 +19,6 @@ def profile(request):
             current_user.account.save()
             return redirect('/profile')
     return render(request, 'profiles/profile.html', {
-        'cod': current_user.account.code,
         'form': user_form,
         'form_acc': account_form
     })

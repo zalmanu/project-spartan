@@ -83,7 +83,6 @@ def reset_pass(request):
             errors.append('Invalid form')
     return render(request, "authentication/resetpass.html",
                   {'form': form,
-                   'cod': request.user.account.code,
                    'errors': errors})
 
 

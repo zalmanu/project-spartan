@@ -10,12 +10,21 @@ from phonenumber_field.modelfields import PhoneNumberField
 from spartans.models import Spartan
 
 
+def upload_location(instance, filename):
+    return "%s/%s" % (instance.user, filename)
+
+
 class Account(models.Model):
     user = models.OneToOneField(User, primary_key=True)
     city = models.CharField(max_length=100)
     country = models.CharField(max_length=36, null=True)
     phone = PhoneNumberField(null=True)
-    code = models.CharField(max_length=100, null=True, blank=True)
+    profile_image = models.ImageField(upload_to=upload_location,
+                                      null=True, blank=True,
+                                      height_field="height_field",
+                                      width_field="width_field")
+    height_field = models.IntegerField(default=0)
+    width_field = models.IntegerField(default=0)
 
     def has_related_object(self):
         has_spartan = False
@@ -24,11 +33,6 @@ class Account(models.Model):
         except Spartan.DoesNotExist:
             pass
         return has_spartan and (self.user is not None)
-
-    def gravatar_photo(self):
-        usshash = md5.new()
-        usshash.update(self.user.email)
-        return usshash.hexdigest()
 
 
 class UserRegisterForm(forms.ModelForm):
@@ -39,7 +43,7 @@ class UserRegisterForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password']
+        fields = ['username', 'email', 'password',]
         widgets = {
             'username': forms.TextInput({'required': 'required',
                                          'placeholder': 'Username'}),
@@ -74,11 +78,10 @@ class UserRegisterForm(forms.ModelForm):
 
 
 class AccountRegisterForm(forms.ModelForm):
-
     city = forms.ChoiceField(choices=[(x, x) for x in ['Timisoara']])
     country = forms.ChoiceField(choices=[(x, x) for x in ['Romania']])
     captcha = ReCaptchaField()
 
     class Meta:
         model = Account
-        exclude = ['user', 'code']
+        exclude = ['user', 'code','profile_image']

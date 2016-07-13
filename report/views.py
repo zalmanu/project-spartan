@@ -14,7 +14,6 @@ def report(request):
             form.save()
             confirms.append("The report was sent")
     return render(request, 'report/report.html', {
-        'cod': current_user.account.code,
         'form': form,
         'confirm': confirms
     })

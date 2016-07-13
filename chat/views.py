@@ -26,7 +26,6 @@ def room(request, slug):
         'messages': chat_room.messages.all(),
         'form': form,
         'other': other,
-        'cod': request.user.account.code
     })
 
 
@@ -36,5 +35,5 @@ def rooms(request):
     employer_messages = user.empl_rooms
     context = {'spa_messages': spartan_messages.all(),
                'empl_messages': employer_messages.all(),
-               'cod': user.account.code}
+               }
     return render(request, 'chat/rooms.html', context)

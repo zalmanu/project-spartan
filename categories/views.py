@@ -14,7 +14,6 @@ def category(request, kind):
     return render(request, 'category/category.html', {
         'categories': categories,
         'kind': page_category,
-        'cod': current_user.account.code,
         'ann': Announcement.objects.filter(category=page_category,
                                            status=False)
     })
