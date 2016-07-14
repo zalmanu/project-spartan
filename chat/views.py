@@ -23,18 +23,8 @@ def room(request, slug):
             form.save()
     return render(request, 'chat/chat.html', {
         'chat_room': chat_room,
-        'messages': chat_room.messages.all(),
+        'messages': chat_room.messages.order_by('timestamp'),
         'form': form,
         'other': other,
         'cod': request.user.account.code
     })
-
-
-def rooms(request):
-    user = request.user
-    spartan_messages = user.spa_rooms
-    employer_messages = user.empl_rooms
-    context = {'spa_messages': spartan_messages.all(),
-               'empl_messages': employer_messages.all(),
-               'cod': user.account.code}
-    return render(request, 'chat/rooms.html', context)

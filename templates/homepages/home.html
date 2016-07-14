@@ -188,7 +188,7 @@
                                       <ul class="nav navbar-nav">
 					{% if user.spa_rooms.all or user.empl_rooms.all %}
 					{% for room in user.empl_rooms.all %}
-                                            <li><a href="{{ room.get_absolute_url }}">Chat with {{ room.spartan.user.username }}</a>
+                                            <li><a href="{{ room.get_absolute_url }}">Chat with {{ room.spartan.username }}</a>
                                             </li>
 					    {% endfor %}
 					    {% for room in user.spa_rooms.all %}

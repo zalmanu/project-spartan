@@ -62,6 +62,14 @@
         $("#arrow").click(function() {
         $("html, body").animate({ scrollTop: 0 }, "slow");
         return false;
+        });	
+	
+        $('.other-bids').hide();
+        $('#show-bidding-field').on('click', function(){
+        $('.other-bids').toggle();
+        });
+        $('#bidding-place').click(function(){
+        alert('The value must be in Dollars($).')
         });
     </script>
 
@@ -79,7 +87,7 @@
     <script type="text/javascript" src="{% static "lib/js/ace/theme-github.js" %}"></script>
     <!-- Javascript -->
 
-    <script type="text/javascript" src="{% static  "app.js" %}"></script>
+    <script type="text/javascript" src="{% static  "js/app.js" %}"></script>
     <script type="text/javascript" src="{% static  "js/index.js" %}"></script>
     <script type="text/javascript" src="{% static  "js/bootstrap-datepicker.js" %}"></script>
 

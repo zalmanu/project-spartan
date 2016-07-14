@@ -48,25 +48,25 @@ def ws_message(message):
     data = json.loads(message['text'])
     label = message.channel_session['room']
     room = get_object_or_404(Room, slug=data['room_slug'])
-    user = get_object_or_404(User, username=data['user_name'])
+    user = get_object_or_404(User, username=message.channel_session['user'])
     message = Message.objects.create(room=room, message=data['text'],
                                      submitter=user)
-
     html_txt = """
-    <div class="avatar"><img src="http://www.gravatar.com/avatar/
-""" + message.submitter.account.code + """" draggable="false"/></div>
-    <div class="msg">
-    <p>""" + message.message + """</p>
-    <time>""" + message.timestamp.strftime('%B %d, %Y, %I:%M %p') + """</time>
+    <div class="message-block">
+    <div><span class="username">""" + message.submitter.username + """</span>
+    <span class="message-datetime">""" + message.timestamp.strftime('%B %d, %Y, %I:%M %p') + """</span>
     </div>
-    </li>
-    <hr>
+    <div class="message">""" + message.message + """</div>
+                                                </div>
+                                            </li>
+                                        </a>
     """
     dic = {
         'message': data['text'],
         'submitter': user.username,
         'code': user.account.code,
-        'html': html_txt
+        'html': html_txt,
+        'username': user.username
     }
     Group("chat-" + label).send({'text': json.dumps(dic)})
 
