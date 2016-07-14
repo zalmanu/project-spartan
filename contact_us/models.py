@@ -4,7 +4,8 @@ from captcha.fields import ReCaptchaField
 
 
 class ContactUs(models.Model):
-    name = models.CharField(max_length=20)
+    first_name = models.CharField(max_length=20, default='')
+    last_name = models.CharField(max_length=20, default='')
     email = models.CharField(max_length=30)
     message = models.CharField(max_length=1000, null=True)
 
@@ -15,12 +16,11 @@ class CreateContact(forms.ModelForm):
     class Meta:
         model = ContactUs
         fields = '__all__'
-        fields = ['name', 'email', 'message']
         widgets = {
             'name': forms.TextInput({'required': 'required',
-                                         'placeholder': 'Name'}),
+                                     'placeholder': 'Name'}),
             'email': forms.EmailInput({'required': 'required',
                                        'placeholder': 'Email'}),
             'message': forms.Textarea(attrs={'required': 'required',
-                                                   'placeholder': 'Message'})
+                                             'placeholder': 'Message'})
         }
