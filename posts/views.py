@@ -1,13 +1,14 @@
 import json
 
 from django.http import HttpResponseForbidden
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render_to_response
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.http import Http404
 
 from channels import Group
+from haystack.forms import SearchForm
 
 from .models import Announcement, EditPostForm, CreatePostForm
 from bidding.models import CreateOfferForm
@@ -87,11 +88,13 @@ def post(request, slug):
     })
 
 
+@login_required
 def edit_post(request, slug):
     post = get_object_or_404(Announcement, slug=slug, status=False)
     if post.author != request.user:
         return HttpResponseForbidden()
-    form = EditPostForm(request.POST or None, request.FILES or None, instance=post)
+    form = EditPostForm(request.POST or None, request.FILES or None,
+                        instance=post)
     if request.method == 'POST':
         if form.is_valid():
             form.save()
@@ -102,3 +105,13 @@ def edit_post(request, slug):
         'form': form,
     })
 
+
+@login_required
+def search(request):
+    form = SearchForm(request.GET)
+    posts = None
+    if form.data != {} and form.is_valid():
+        posts = form.search()
+    return render_to_response('search/search.html', {
+        'posts': posts
+    })

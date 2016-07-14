@@ -5,4 +5,5 @@ urlpatterns = [
     url(r'^submit/$', views.create_post, name='submit'),
     url(r'^post/(?P<slug>[^\.]+)/$', views.post, name='post'),
     url(r'^edit/(?P<slug>[^\.]+)/$', views.edit_post, name='edit_post'),
+    url(r'^search/$', views.search, name='search')
 ]
