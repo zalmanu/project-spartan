@@ -96,7 +96,7 @@ class EditPostForm(forms.ModelForm):
     class Meta:
         model = Announcement
         fields = ['title', 'description', 'address', 'country',
-                  'city', 'data', 'timePost', 'money','image','image2','image3','image4']
+                  'city', 'data', 'timePost', 'money', 'image', 'image2', 'image3', 'image4']
         widgets = {'description': forms.Textarea(attrs={'required': 'required',
                                                         })
                    }
@@ -111,7 +111,7 @@ class CreatePostForm(forms.ModelForm):
     class Meta:
         model = Announcement
         fields = ['title', 'description', 'address', 'country',
-                  'city', 'data', 'timePost', 'money', 'category', 'image','image2','image3','image4']
+                  'city', 'data', 'timePost', 'money', 'category', 'image', 'image2', 'image3', 'image4']
         widgets = {'description': forms.Textarea(attrs={'required': 'required',
                                                         })
                    }
