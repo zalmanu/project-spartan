@@ -12,7 +12,7 @@ from .models import EditPostForm, CreatePostForm
 @login_required
 def create_post(request):
     current_user = request.user
-    form = CreatePostForm(data=request.POST or None)
+    form = CreatePostForm(request.POST or None, request.FILES or None)
     if request.method == 'POST':
         if form.is_valid():
             form.instance.author = current_user
@@ -56,7 +56,7 @@ def edit_post(request, slug):
     post = get_object_or_404(Announcement, slug=slug, status=False)
     if post.author != request.user:
         return HttpResponseForbidden()
-    form = EditPostForm(data=request.POST or None, instance=post)
+    form = EditPostForm(request.POST or None, request.FILES or None, instance=post)
     if request.method == 'POST':
         if form.is_valid():
             form.save()
