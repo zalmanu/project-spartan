@@ -39,7 +39,7 @@
                                     </li>
                                     <li class="message">
                                         No new messages
-                                    </li>   
+                                    </li>
                                 </div>
                             </ul>
                         </li>
@@ -98,18 +98,18 @@
                             </ul>
                         </li>
                         <li class="dropdown profile">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Silaghi Fineas <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ user.username }} <span class="caret"></span></a>
                             <ul class="dropdown-menu animated fadeInDown">
                                 <li class="profile-img">
-                                    <img src="../../img/profile/picjumbo.com_HNCK4153_resize.jpg" class="profile-img">
+                                    <img src='{{ user.account.profile_image.url }}' class = 'img-responsive'/>
                                 </li>
                                 <li>
                                     <div class="profile-info">
-                                        <h4 class="username">Fineas</h4>
-                                        <p>finymelly@gmail.com</p>
+                                        <h4 class="username">{{ user.username }}</h4>
+                                        <p>{{ user.email }}</p>
                                         <div class="btn-group margin-bottom-2x" role="group">
-                                            <a href="profile.html"><button type="button" class="btn btn-default"><i class="fa fa-user"></i> Profile</button></a>
-                                            <a href="profile.html"><button type="button" class="btn btn-default"><i class="fa fa-sign-out"></i> Logout</button></a>
+                                            <a type="button" href="/profile" class="btn btn-default"><i class="fa fa-user"></i> Profile</a>
+                                            <a type="button" class="btn btn-default" href="/logout"><i class="fa fa-sign-out"></i> Logout</a>
                                         </div>
                                     </div>
                                 </li>
@@ -118,12 +118,12 @@
                     </ul>
                 </div>
             </nav>
-            <div class="side-menu sidebar-inverse">
+<div class="side-menu sidebar-inverse">
                 <nav class="navbar navbar-default" role="navigation">
                     <div class="side-menu-container">
                         <div class="navbar-header">
-                            <a class="navbar-brand" href="#">
-                                <div class="icon fa"><img src="../../img/logo/logo.png" id="logo"></div>
+                            <a class="navbar-brand" href="/">
+                                <div class="icon fa"><img src="{% static "img/logo/logo.png" %}"  id="logo"></div>
                                 <div class="title">Spartan Tasks</div>
                             </a>
                             <button type="button" class="navbar-expand-toggle pull-right visible-xs">
@@ -132,7 +132,7 @@
                         </div>
                         <ul class="nav navbar-nav">
                             <li class="active">
-                                <a href="index.html">
+                                <a href="/">
                                     <span class="icon glyphicon glyphicon-home"></span><span class="title">Home</span>
                                 </a>
                             </li>
@@ -143,34 +143,32 @@
                                 <!-- Dropdown level 1 -->
                                 <div id="dropdown-element" class="panel-collapse collapse">
                                     <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="#">Garden</a>
+                                      <ul class="nav navbar-nav">
+					{% for category in categories %}
+                                            <li><a href="/category/{{ category.id }}" name="kind" value={{ category.id }}> {{ category.name }}</a>
                                             </li>
-                                            <li><a href="#">Baby sitting</a>
-                                            </li>
-                                            <li><a href="#">Cleaning</a>
-                                            </li>
-                                            <li><a href="#">Cooking</a>
-                                            </li>
-                                            <li><a href="#">Moving</a>
-                                            </li>
-                                            <li><a href="#">Other</a>
-                                            </li>
+					{% endfor %}
                                         </ul>
                                     </div>
                                 </div>
                             </li>
                             <li class="panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#dropdown-table">
-                                    <span class="icon fa fa-table"></span><span class="title">My Posts</span>
+                                    <span class="icon fa fa-table"></span><span class="title">My Announcements</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                                 <div id="dropdown-table" class="panel-collapse collapse">
                                     <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="#">Not accepted yet</a>
+                                      <ul class="nav navbar-nav">
+					{% if user.posts.all %}
+					{% for post in user.posts.all %}
+                                            <li><a href="{{ post.get_absolute_url }}"> {{ post.title }}</a>
                                             </li>
-                                            <li><a href="#">Work in progress</a>
+					    {% endfor %}
+					<li><a href="/submit">Add an announcement</a>
+					    {% else %}
+					<li><a href="/submit">Add an announcement</a>
+					  {% endif %}
                                             </li>
                                         </ul>
                                     </div>
@@ -184,33 +182,44 @@
                                 <!-- Dropdown level 1 -->
                                 <div id="component-example" class="panel-collapse collapse">
                                     <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="#">Chat with George</a>
+                                      <ul class="nav navbar-nav">
+					{% if user.spa_rooms.all or user.empl_rooms.all %}
+					{% for room in user.empl_rooms.all %}
+                                            <li><a href="{{ room.get_absolute_url }}">Chat with {{ room.spartan.user.username }}</a>
                                             </li>
-                                            <li><a href="#">Chat with Ionela</a>
-                                            </li>
+					    {% endfor %}
+					    {% for room in user.spa_rooms.all %}
+					<li><a href="{{ room.get_absolute_url }}">Chat with {{ room.employer.username }}</a>
+                                        </li>
+					{% endfor %}
+					 {% else %}
+					<li><a> No chat room, yet</a>
+					</li>
+					{% endif %}
                                         </ul>
                                     </div>
                                 </div>
                             </li>
+			    {% if not user.account.has_related_object %}
                             <li>
-                                <a data-toggle="collapse" href="#">
+                                <a href="/spartan">
                                     <span class="icon fa fa-file-text-o"></span><span class="title">Become a Spartan</span>
                                 </a>
                             </li>
+			    {% endif %}
                             <li>
-                                <a data-toggle="collapse" href="#">
-                                    <span class="icon fa fa-file-text-o"></span><span class="title">Report a Spartan</span>
+                                <a href="/report">
+                                    <span class="icon fa fa-file-text-o"></span><span class="title">Report a Spartan/Employer</span>
                                 </a>
                             </li>
                             <!-- Dropdown-->
                             <li>
-                                <a data-toggle="collapse" href="#">
+                                <a href="/faq">
                                     <span class="icon fa fa-archive"></span><span class="title">Faq</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="license.html">
+                                <a href="/contact">
                                     <span class="icon fa fa-thumbs-o-up"></span><span class="title">Contact Us</span>
                                 </a>
                             </li>
@@ -235,28 +244,65 @@
                                     <form>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Post Title</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter a title">
+                                            {{ form.title|add_class:"form-control "|attr:"placeholder:Enter a title"|attr:"required:required"}}
+
+                                            {% if form.title.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form.title.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
                                         </div>
+
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Post Description</label>
                                             <div>
-                                                <textarea placeholder="Enter a description" class="form-control" rows="3"></textarea>
+
+                                                 {{ form.description|add_class:"form-control "|attr:"placeholder:Enter a description"|attr:"required:required"}}
+
+                                                {% if form.description.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form.description.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
                                             </div>
                                         </div>
+
                                         <div class="form-group">    
                                             <label for="exampleInputEmail">Date</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control datepicker" placeholder="Pick up a date">
+
+                                                {{ form.data|add_class:"form-control "|attr:"required:required"|add_class:"form-control datepicker"|attr:"placeholder:Pick up a date"}}
+
+                                                {% if form.data.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form.data.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
                                                 <span class="input-group-addon" id="basic-addon1">
                                                     <i class="glyphicon glyphicon-calendar" data-time-icon="icon-time" data-date-icon="icon-calendar">
                                                     </i>
                                                 </span>
                                             </div>
                                         </div>
+
+
                                         <div class="form-group">
                                             <label for="exampleInputFile">Time</label>
                                             <div class="input-group">
                                                 <input id="timepicker1" type="text" name="timepicker1" class="form-control timepicker" placeholder="Pick up a time"/>
+                                                <!--{{ form.timePost|add_class:"form-control timepicker"|attr:"required:required"|attr:"placeholder:Pick up a date"}}-->
                                                 <span class="input-group-addon" id="basic-addon1">
                                                     <i class="glyphicon glyphicon-time" data-time-icon="icon-time" data-date-icon="icon-calendar">
                                                     </i>
