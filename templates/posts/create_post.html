@@ -3,6 +3,7 @@
 {% block content %}
 {% load widget_tweaks %}
 
+
 <body class="flat-blue">
     <div class="app-container">
         <div class="row content-container">
@@ -97,18 +98,18 @@
                             </ul>
                         </li>
                         <li class="dropdown profile">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ user.username }}<span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Silaghi Fineas <span class="caret"></span></a>
                             <ul class="dropdown-menu animated fadeInDown">
                                 <li class="profile-img">
-                                   <img src='{{ user.account.profile_image.url }}' class = 'img-responsive'/>
+                                    <img src="../../img/profile/picjumbo.com_HNCK4153_resize.jpg" class="profile-img">
                                 </li>
                                 <li>
                                     <div class="profile-info">
-                                        <h4 class="username">{{ user.username }}</h4>
-                                        <p>{{ user.email }}</p>
+                                        <h4 class="username">Fineas</h4>
+                                        <p>finymelly@gmail.com</p>
                                         <div class="btn-group margin-bottom-2x" role="group">
-                                            <a type="button" href="/profile" class="btn btn-default"><i class="fa fa-user"></i> Profile</a>
-                                            <a type="button" class="btn btn-default" href="/logout"><i class="fa fa-sign-out"></i> Logout</a>
+                                            <a href="profile.html"><button type="button" class="btn btn-default"><i class="fa fa-user"></i> Profile</button></a>
+                                            <a href="profile.html"><button type="button" class="btn btn-default"><i class="fa fa-sign-out"></i> Logout</button></a>
                                         </div>
                                     </div>
                                 </li>
@@ -121,8 +122,8 @@
                 <nav class="navbar navbar-default" role="navigation">
                     <div class="side-menu-container">
                         <div class="navbar-header">
-                            <a class="navbar-brand" href="/">
-                                <div class="icon fa"><img src="{% static "img/logo/logo.png" %}"  id="logo"></div>
+                            <a class="navbar-brand" href="#">
+                                <div class="icon fa"><img src="../../img/logo/logo.png" id="logo"></div>
                                 <div class="title">Spartan Tasks</div>
                             </a>
                             <button type="button" class="navbar-expand-toggle pull-right visible-xs">
@@ -131,7 +132,7 @@
                         </div>
                         <ul class="nav navbar-nav">
                             <li class="active">
-                                <a href="/">
+                                <a href="index.html">
                                     <span class="icon glyphicon glyphicon-home"></span><span class="title">Home</span>
                                 </a>
                             </li>
@@ -142,32 +143,34 @@
                                 <!-- Dropdown level 1 -->
                                 <div id="dropdown-element" class="panel-collapse collapse">
                                     <div class="panel-body">
-                                      <ul class="nav navbar-nav">
-					{% for category in categories %}
-                                            <li><a href="/category/{{ category.id }}" name="kind" value={{ category.id }}> {{ category.name }}</a>
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="#">Garden</a>
                                             </li>
-					{% endfor %}
+                                            <li><a href="#">Baby sitting</a>
+                                            </li>
+                                            <li><a href="#">Cleaning</a>
+                                            </li>
+                                            <li><a href="#">Cooking</a>
+                                            </li>
+                                            <li><a href="#">Moving</a>
+                                            </li>
+                                            <li><a href="#">Other</a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
                             </li>
                             <li class="panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#dropdown-table">
-                                    <span class="icon fa fa-table"></span><span class="title">My Announcements</span>
+                                    <span class="icon fa fa-table"></span><span class="title">My Posts</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                                 <div id="dropdown-table" class="panel-collapse collapse">
                                     <div class="panel-body">
-                                      <ul class="nav navbar-nav">
-					{% if user.posts.all %}
-					{% for post in user.posts.all %}
-                                            <li><a href="{{ post.get_absolute_url }}"> {{ post.title }}</a>
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="#">Not accepted yet</a>
                                             </li>
-					    {% endfor %}
-					<li><a href="/submit">Add an announcement</a>
-					    {% else %}
-					<li><a href="/submit">Add an announcement</a>
-					  {% endif %}
+                                            <li><a href="#">Work in progress</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -181,44 +184,33 @@
                                 <!-- Dropdown level 1 -->
                                 <div id="component-example" class="panel-collapse collapse">
                                     <div class="panel-body">
-                                      <ul class="nav navbar-nav">
-					{% if user.spa_rooms.all or user.empl_rooms.all %}
-					{% for room in user.empl_rooms.all %}
-                                            <li><a href="{{ room.get_absolute_url }}">Chat with {{ room.spartan.user.username }}</a>
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="#">Chat with George</a>
                                             </li>
-					    {% endfor %}
-					    {% for room in user.spa_rooms.all %}
-					<li><a href="{{ room.get_absolute_url }}">Chat with {{ room.employer.username }}</a>
-                                        </li>
-					{% endfor %}
-					 {% else %}
-					<li><a> No chat room, yet</a>
-					</li>
-					{% endif %}
+                                            <li><a href="#">Chat with Ionela</a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
                             </li>
-			    {% if not user.account.has_related_object %}
                             <li>
-                                <a href="/spartan">
+                                <a data-toggle="collapse" href="#">
                                     <span class="icon fa fa-file-text-o"></span><span class="title">Become a Spartan</span>
                                 </a>
                             </li>
-			    {% endif %}
                             <li>
-                                <a href="/report">
-                                    <span class="icon fa fa-file-text-o"></span><span class="title">Report a Spartan/Employer</span>
+                                <a data-toggle="collapse" href="#">
+                                    <span class="icon fa fa-file-text-o"></span><span class="title">Report a Spartan</span>
                                 </a>
                             </li>
                             <!-- Dropdown-->
                             <li>
-                                <a href="/faq">
+                                <a data-toggle="collapse" href="#">
                                     <span class="icon fa fa-archive"></span><span class="title">Faq</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="/contact">
+                                <a href="license.html">
                                     <span class="icon fa fa-thumbs-o-up"></span><span class="title">Contact Us</span>
                                 </a>
                             </li>
@@ -240,212 +232,127 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <form method="POST" enctype="multipart/form-data">
-                                         {% csrf_token %}
-                                         {% if confirm %}
-				                           <div  class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong >
-                                                            {% for message in confirm %}
-				                                                {{ message }}
-				                                        {% endfor %} !
-                                                        </strong>
-
-                                                            </div>
-                                         {% endif %}
-
-                                        {% for field in form %}
-
-                                         {% if field.label == 'Title' %}
-
-                                            {{ field.label }}
-                                         {{ field|add_class:"form-control "|attr:"placeholder:Enter a title"|attr:"required:required"}}
-                                           {% if field.errors %}
-                                                        <div class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for error in field.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
-                                                            </div>
-                                                            {% endif %}
-
-
-
-                                        {% elif field.label == 'Announcement description' %}
-
-                                        {{ field.label }}
-
-                                         {{ field|add_class:"form-control "|attr:"placeholder:Enter a description"|attr:"required:required"}}
-                                           {% if field.errors %}
-                                                        <div class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for error in field.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
-                                                            </div>
-                                                            {% endif %}
-
-                                        {% endif %}
-
-
-                                        {% if field.label == 'Address' %}
-                                        {{ field.label }}
-
-                                         {{ field|add_class:"form-control "|attr:"placeholder:Enter a address"|attr:"required:required"}}
-                                           {% if field.errors %}
-                                                        <div class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for error in field.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
-                                                            </div>
-                                                            {% endif %}
-
-
-
-                                        {% endif %}
-
-                                        {% if field.label == 'Country' or field.label == 'City'  %}
-                                        {{ field.label }}
-
-                                         {{ field|add_class:"form-control "|attr:"required:required"}}
-                                           {% if field.errors %}
-                                                        <div class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for error in field.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
-                                                            </div>
-                                                            {% endif %}
-
-
-
-                                        {% endif %}
-
-
-
-                                        {% if field.label == 'Date FORMAT YYYY-MM-DD'  %}
-
-
-
-
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Post Title</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter a title">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Post Description</label>
+                                            <div>
+                                                <textarea placeholder="Enter a description" class="form-control" rows="3"></textarea>
+                                            </div>
+                                        </div>
                                         <div class="form-group">    
                                             <label for="exampleInputEmail">Date</label>
                                             <div class="input-group">
-                                                {{ field|add_class:"form-control "|attr:"required:required"|add_class:"form-control datepicker"|attr:"placeholder:Enter a date"}}
+                                                <input type="text" class="form-control datepicker" placeholder="Pick up a date">
                                                 <span class="input-group-addon" id="basic-addon1">
                                                     <i class="glyphicon glyphicon-calendar" data-time-icon="icon-time" data-date-icon="icon-calendar">
                                                     </i>
                                                 </span>
                                             </div>
                                         </div>
-
-                                        {% if field.errors %}
-                                                        <div class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for error in field.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
-                                                            </div>
-                                                            {% endif %}
-                                        {% endif %}
-
-
-
-
-                                        {% if field.label == 'Time FORMAT HH:MM:SS'  %}
-
-
                                         <div class="form-group">
                                             <label for="exampleInputFile">Time</label>
-                                            <div id="datetimepicker2" class="input-group">
-                                                 {{ field|add_class:"form-control "|attr:"required:required"|attr:"placeholder:Enter a time in format HH:MM:SS"}}
-
+                                            <div class="input-group">
+                                                <input id="timepicker1" type="text" name="timepicker1" class="form-control timepicker" placeholder="Pick up a time"/>
                                                 <span class="input-group-addon" id="basic-addon1">
                                                     <i class="glyphicon glyphicon-time" data-time-icon="icon-time" data-date-icon="icon-calendar">
                                                     </i>
                                                 </span>
                                             </div>
                                         </div>
-
-
-                                        {% if field.errors %}
-                                                        <div class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for error in field.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
-                                                            </div>
-                                                            {% endif %}
-                                        {% endif %}
-
-
-                                        {% if field.label == 'Category'  %}
-                                        {{ field.label }}
-
-                                         {{ field|add_class:"form-control "|attr:"required:required"}}
-                                           {% if field.errors %}
-                                                        <div class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for error in field.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
-                                                            </div>
-                                                            {% endif %}
-
-
-
-                                        {% endif %}
-
-                                        {% if field.label == 'Highest price you are willing to pay (EUR)'  %}
-                                        {{ field.label }}
-
-                                         {{ field|add_class:"form-control "|attr:"required:required"|attr:"placeholder:Enter a price"}}
-                                           {% if field.errors %}
-                                                        <div class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for error in field.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
-                                                            </div>
-                                                            {% endif %}
-
-                                         {% endif %}
-
-                                        {% if field.label == 'Image' %}
-
-
-
-
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail">Location</label>
+                                            <br>
+                                            <button type="button" class="btn" data-toggle="modal" data-target="#myModal">
+                                              Pick up your location
+                                            </button>
+                                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">    
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                            <h4 class="modal-title">Pick up your location</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Location: <input type="text" id="us2-address" style="width: 200px"/>
+                                                            <br>
+                                                            <div id="us2" style="width: 500px; height: 400px;"></div>      
+                                                            <script>
+                                                            $('#somecomponent').locationpicker({
+                                                                location: {latitude: 46.15242437752303, longitude: 2.7470703125},   
+                                                                    radius: 300,
+                                                                    inputBinding: {
+                                                                        latitudeInput: $('#us2-lat'),
+                                                                        longitudeInput: $('#us2-lon'),
+                                                                        radiusInput: $('#us2-radius'),
+                                                                        locationNameInput: $('#us2-address')
+                                                                    }
+                                                            });
+                                                            $('#us2').locationpicker({
+                                                                location: {latitude: 46.15242437752303, longitude: 2.7470703125},   
+                                                                radius: 300,
+                                                                inputBinding: {
+                                                                    locationNameInput: $('#us2-address')
+                                                                }
+                                                                });
+                                                            </script>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                                        </div>   
+                                                    </div>
+                                                </div>
+                                            </div>          
+                                        </div>
                                         <div class="form-group">
                                             <br>
                                             <label for="exampleInputFile">Choose some reprezentative pictures<span style="color:red;">*</span></label>
-                                            {{ field|add_class:"form-control "|attr:"required:required"}}
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <img id="uploadPreview1" src="{% static "img/no_image.jpg" %}"style="height: 100px; width: 100px;"/><br />
+                                                        <input id="uploadImage1" type="file" name="p1" onchange="PreviewImage(1);" />
+                                                    </td>
+                                                    <td>
+                                                        <img id="uploadPreview1" src="{% static "img/no_image.jpg" %}"style="height: 100px; width: 100px;"/><br />
+                                                        <input id="uploadImage2" type="file" name="p2" onchange="PreviewImage(2);" />
+                                                    </td>
+                                                    <td>
+                                                        <img id="uploadPreview1" src="{% static "img/no_image.jpg" %}"style="height: 100px; width: 100px;"/><br />
+                                                        <input id="uploadImage3" type="file" name="p3" onchange="PreviewImage(3);" />
+                                                    </td>
+                                                    <td>
+                                                        <img id="uploadPreview1" src="{% static "img/no_image.jpg" %}"style="height: 100px; width: 100px;"/><br />
+                                                        <input id="uploadImage4" type="file" name="p4" onchange="PreviewImage(4);" />
+                                                    </td>   
+                                                </tr>
+                                                </table>
+                                                        
+                                                <script type="text/javascript">
+                                                    function PreviewImage(no) {
+                                                        var oFReader = new FileReader();
+                                                        oFReader.readAsDataURL(document.getElementById("uploadImage"+no).files[0]);
 
-
-                                        {% elif field.label == 'Image2' or  field.label == 'Image3' or  field.label == 'Image4' %}
-
-                                         {{ field|add_class:"form-control "|attr:"required:required"}}
-
-
-
-                                        {% endif %}
-
-
-
-                                        {% endfor %}
-
-
-
-
+                                                        oFReader.onload = function (oFREvent) {
+                                                            document.getElementById("uploadPreview"+no).src = oFREvent.target.result;
+                                                        };
+                                                    }
+                                                </script>
+                                        </div>
+                                        <div class="checkbox">
+                                            <div class="checkbox3 checkbox-round">
+                                                <input type="checkbox" id="checkbox-1">
+                                                <label for="checkbox-1">
+                                                    I Agree Terms and Conditions
+                                                </label>
+                                            </div>
+                                        </div>
                                         <button type="submit" class="btn btn-default">Submit</button>
                                     </form>
                                 </div>
@@ -463,6 +370,7 @@
         <div>
             <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js">
             </script>
+            <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
             <script>
                 $("#arrow").click(function() {
                 $("html, body").animate({ scrollTop: 0 }, "slow");
@@ -479,6 +387,9 @@
                 });
             </script>
 
+            <script>
+            $('#timepicker1').timepicki();
+            </script>
+
 
 {% endblock %}
-

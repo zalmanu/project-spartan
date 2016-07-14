@@ -985,7 +985,7 @@ body.login-page {
     border-bottom: 1px dotted #EEE;
     padding: 8px; }
     .message-list > a > li > .message-block {
-      
+      padding-left: 70px;
       min-height: 60px; }
       .message-list > a > li > .message-block .username {
         font-size: 12px;
@@ -1500,6 +1500,38 @@ body.login-page {
   display: inline-block;
 }
 
+/* addtional css */
+.dl-horizontal {
+  text-align:left;
+}
+.height500 {
+    height: 500px;
+    margin: 85px 0;
+    overflow: auto;
+}
+input[type='text'] {
+   color:#333333;
+}
+.myclass input[type='text']{
+   color:#5CB85C
+}
+.indexpicker .time_pick {
+  width:270px;
+  display:inline-block;
+}
+.indexpicker .time_pick > input { width:100%; margin-bottom:20px;}
+
+.open-chat-box{
+  cursor: pointer;
+}
+
+#catgory-page-picture{
+  padding: 0 !important;
+}
+
+#no-padding-category{
+  padding: 0 !important;
+}
 
 #19B5FE
 
