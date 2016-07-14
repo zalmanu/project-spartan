@@ -1,12 +1,17 @@
+import json
+
+from django.http import HttpResponseForbidden
+from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.http import Http404
-from models import Announcement
+
+from channels import Group
+
+from .models import Announcement, EditPostForm, CreatePostForm
 from bidding.models import CreateOfferForm
-from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseForbidden
-from django.shortcuts import get_object_or_404
-from .models import EditPostForm, CreatePostForm
+from .tasks import notify_spartans, email_user
 
 
 @login_required
@@ -15,9 +20,39 @@ def create_post(request):
     form = CreatePostForm(request.POST or None, request.FILES or None)
     if request.method == 'POST':
         if form.is_valid():
+            post = form.instance
             form.instance.author = current_user
             form.save()
-            form.instance.creation_email(current_user)
+            category = form.instance.category
+            messagetip = " Hi! % s , \n You successfully"\
+                         "posted an announce! \n" \
+                         " Title: %s ,\n Description: %s \n Address: %s \n " \
+                         "Country : %s \n City: %s \n Category: %s \n" \
+                         " Time : %s \n Date: %s \n " \
+                         "Highest bid price: %s eur \n" \
+                         " Have a nice day! - Team Spartan" % (
+                             current_user.username, post.title,  post.text,
+                             post.address,
+                             post.country,  post.city,  post.category.name,
+                             post.timePost, post.data, post.money)
+            email_user.delay(messagetip, current_user.email,
+                             "Spartan Tasks Post")
+            notify_spartans.delay(category.name, form.instance.city,
+                                  form.instance.author.username)
+            html = """
+            <span class="subject">
+            </span>
+            <span class="message">
+            A new post <b id="notification-bid">in your area</b>
+            </span>
+            </a>
+            """
+            dic = {
+                'author': current_user.username,
+                'html': html
+            }
+            Group("spartans-" + category.name +
+                  "-" + form.instance.city).send({'text': json.dumps(dic)})
             return redirect(form.instance.get_absolute_url())
     return render(request, 'posts/create_post.html', {
         'cod': current_user.account.code,

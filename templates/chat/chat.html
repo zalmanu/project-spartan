@@ -8,6 +8,7 @@
             document.body.style.zoom = "80%"
         }
 	</script>
+	<script src="{% static "js/chat_script.js" %}"></script>
                  <section class="wrap" id="first-section">
                    <div class="row title-row">
 		    <br>
@@ -32,9 +33,10 @@
 		{% endfor %}
 		{% endif %}
 		  </ol>
-		  <form method="POST">
+		  <form method="POST" onsubmit="return sendmessage();">
 		  {% csrf_token %}
-                   {{ form.message|add_class:'textarea'|attr:"placeholder: Type here!" }}
+                  {{ form.message|add_class:'textarea'|attr:"placeholder: Type here!"|attr:"id:textcase"}}
+		  <input type="hidden" value={{ request.user.username }} id="user_name">
 		 </form>  
                 </div>
     </section>
@@ -44,6 +46,9 @@
 <script>
   var objDiv = document.getElementById("mesg");
   objDiv.scrollTop = objDiv.scrollHeight;
+</script>
+<script>
+
 </script>
     </body>
 {% endblock %}

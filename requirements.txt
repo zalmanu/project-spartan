@@ -7,4 +7,10 @@ psycopg2==2.6.1
 Whoosh==2.7.4
 django-haystack==2.4.1
 Pillow==3.3.0
-
+channels==0.15.1
+amqp==1.4.9
+anyjson==0.3.3
+billiard==3.3.0.23
+celery==3.1.23
+kombu==3.0.35
+redis==2.10.5

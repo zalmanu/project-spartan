@@ -3,12 +3,11 @@ import uuid
 
 from django.db import models
 from django.shortcuts import get_object_or_404
+from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
-from django.core.mail import send_mail
-from django.conf import settings
 from django import forms
 
-from django.core.urlresolvers import reverse
+
 from spartans.models import Spartan
 from categories.models import Category
 
@@ -69,22 +68,6 @@ class Announcement(models.Model):
     def edit_url(self):
         return reverse('post', args=[self.slug])
 
-    def creation_email(self, user):
-        subject = 'Anunt Project Spartan'
-        messagetip = " Hi! % s , \n You successfully posted an announce! \n" \
-                     " Title: %s ,\n Description: %s \n Address: %s \n " \
-                     "Country : %s \n City: %s \n Category: %s \n" \
-                     " Time : %s \n Date: %s \n " \
-                     "Highest bid price: %s eur \n" \
-                     " Have a nice day! - Team Spartan" % (
-                         user.username, self.title, self.description,
-                         self.address,
-                         self.country, self.city, self.category.name,
-                         self.timePost, self.data, self.money)
-        from_email = settings.EMAIL_HOST_USER
-        send_mail(subject, messagetip, from_email,
-                  [user.email], fail_silently=True)
-
     class Meta:
         get_latest_by = 'creation_date'
 
@@ -96,7 +79,8 @@ class EditPostForm(forms.ModelForm):
     class Meta:
         model = Announcement
         fields = ['title', 'description', 'address', 'country',
-                  'city', 'data', 'timePost', 'money','image','image2','image3','image4']
+                  'city', 'data', 'timePost', 'money', 'image',
+                  'image2', 'image3', 'image4']
         widgets = {'description': forms.Textarea(attrs={'required': 'required',
                                                         })
                    }
@@ -111,7 +95,8 @@ class CreatePostForm(forms.ModelForm):
     class Meta:
         model = Announcement
         fields = ['title', 'description', 'address', 'country',
-                  'city', 'data', 'timePost', 'money', 'category', 'image','image2','image3','image4']
+                  'city', 'data', 'timePost', 'money', 'category',
+                  'image', 'image2', 'image3', 'image4']
         widgets = {'description': forms.Textarea(attrs={'required': 'required',
                                                         })
                    }
