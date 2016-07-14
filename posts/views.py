@@ -32,7 +32,8 @@ def create_post(request):
                          " Time : %s \n Date: %s \n " \
                          "Highest bid price: %s eur \n" \
                          " Have a nice day! - Team Spartan" % (
-                             current_user.username, post.title,  post.text,
+                             current_user.username, post.title,
+                             post.description,
                              post.address,
                              post.country,  post.city,  post.category.name,
                              post.timePost, post.data, post.money)
@@ -41,11 +42,11 @@ def create_post(request):
             notify_spartans.delay(category.name, form.instance.city,
                                   form.instance.author.username)
             html = """
-            <span class="subject">
-            </span>
-            <span class="message">
-            A new post <b id="notification-bid">in your area</b>
-            </span>
+            <a href=\"""" + form.instance.get_absolute_url() + """\">
+            <li class="list-group-item">
+            <span class="badge">1</span>
+            <i class="fa fa-exclamation-circle icon"></i>New post in your area
+            </li>
             </a>
             """
             dic = {
