@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.db import migrations, models
 from django.conf import settings
+import posts.models
 import uuid
 
 
@@ -19,6 +20,12 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('title', models.CharField(max_length=256, null=True)),
+                ('image', models.ImageField(height_field='height_field', width_field='width_field', null=True, upload_to=posts.models.upload_location, blank=True)),
+                ('image2', models.ImageField(height_field='height_field', width_field='width_field', null=True, upload_to=posts.models.upload_location, blank=True)),
+                ('image3', models.ImageField(height_field='height_field', width_field='width_field', null=True, upload_to=posts.models.upload_location, blank=True)),
+                ('image4', models.ImageField(height_field='height_field', width_field='width_field', null=True, upload_to=posts.models.upload_location, blank=True)),
+                ('height_field', models.IntegerField(default=0)),
+                ('width_field', models.IntegerField(default=0)),
                 ('description', models.CharField(max_length=500, null=True, verbose_name='Announcement description')),
                 ('slug', models.SlugField(default=uuid.uuid1, unique=True)),
                 ('address', models.CharField(max_length=500, null=True)),

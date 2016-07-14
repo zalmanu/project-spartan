@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.db import migrations, models
 from django.conf import settings
 import phonenumber_field.modelfields
+import authentication.models
 
 
 class Migration(migrations.Migration):
@@ -20,7 +21,9 @@ class Migration(migrations.Migration):
                 ('city', models.CharField(max_length=100)),
                 ('country', models.CharField(max_length=36, null=True)),
                 ('phone', phonenumber_field.modelfields.PhoneNumberField(max_length=128, null=True)),
-                ('code', models.CharField(max_length=100, null=True, blank=True)),
+                ('profile_image', models.ImageField(height_field='height_field', width_field='width_field', null=True, upload_to=authentication.models.upload_location, blank=True)),
+                ('height_field', models.IntegerField(default=0)),
+                ('width_field', models.IntegerField(default=0)),
             ],
         ),
     ]
