@@ -48,7 +48,7 @@ def ws_message(message):
     data = json.loads(message['text'])
     label = message.channel_session['room']
     room = get_object_or_404(Room, slug=data['room_slug'])
-    user = get_object_or_404(User, username=message.channel_session['user'])
+    user = get_object_or_404(User, username=data['user_name'])
     message = Message.objects.create(room=room, message=data['text'],
                                      submitter=user)
     html_txt = """
@@ -66,7 +66,6 @@ def ws_message(message):
         'submitter': user.username,
         'code': user.account.code,
         'html': html_txt,
-        'username': user.username
     }
     Group("chat-" + label).send({'text': json.dumps(dic)})
 

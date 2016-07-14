@@ -238,7 +238,7 @@
                             <div class="card" id="chat">
                                 <div class="card-header chat-card">
                                     <div class="card-title">
-                                        <div class="title chat-title-box">Chat with {{ other }} <h6 style="display:inline-block;x"> online / last seen at 12:40</h6></div>
+                                        <div class="title chat-title-box">Chat with {{ other }} <h6 style="display:inline-block;x"></h6></div>
                                     </div>
                                     <div class="pull-right card-action">
                                         <div class="btn-group" role="group" aria-label="...">
@@ -264,15 +264,15 @@
                                             </li>
                                         </a>
 					{% endfor %}
-                                        <a href="#" id="message-load-more">
-                                          <li class="text-center load-more">
+                                  </ul>
+				  <a href="#" id="message-load-more">
+                                          <div class="text-center load-more">
 					    <form method="POST" onsubmit="return sendmessage();">
 					      {% csrf_token %}
                                               <input type="text" id="chat-input" class="class="form-control""> <button type="button" class="btn btn-success">Send</button>
 					      </form>
-                                            </li>
+                                            </div>
                                         </a>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
