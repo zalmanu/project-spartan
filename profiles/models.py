@@ -37,7 +37,7 @@ class Account_Edit(forms.ModelForm):
 
     class Meta:
         model = Account
-        fields = ['city', 'country', 'phone']
+        fields = ['city', 'country', 'phone','profile_image']
         widgets = {
             'city': forms.Select(attrs={'class':
                                         'form-control input-lg m-bot15',

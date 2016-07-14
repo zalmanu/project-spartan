@@ -25,6 +25,5 @@ def review(request, slug, url_hash):
             return redirect('/')
     return render(request, 'review/review.html',
                   {
-                    'cod': request.user.account.code,
                     'form': form, 'slug': slug
                   })

@@ -20,7 +20,6 @@ def create_post(request):
             form.instance.creation_email(current_user)
             return redirect(form.instance.get_absolute_url())
     return render(request, 'posts/create_post.html', {
-        'cod': current_user.account.code,
         'form': form})
 
 
@@ -45,7 +44,6 @@ def post(request, slug):
         'ann': Announcement.objects.filter(status=False).order_by(
             '-creation_date')[:4],
         'user': request.user,
-        'cod': request.user.account.code,
         'post': post,
         'form': form,
         'confirms': confirms
@@ -62,7 +60,6 @@ def edit_post(request, slug):
             form.save()
             return redirect('/post/' + post.slug)
     return render(request, 'posts/edit_post.html', {
-        'cod': request.user.account.code,
         'post': post,
         'form': form,
     })
