@@ -241,7 +241,8 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <form>
+                                    <form method="POST" enctype="multipart/form-data">
+                                        {% csrf_token %}
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Post Title</label>
                                             {{ form.title|add_class:"form-control "|attr:"placeholder:Enter a title"|attr:"required:required"}}
@@ -301,104 +302,199 @@
                                         <div class="form-group">
                                             <label for="exampleInputFile">Time</label>
                                             <div class="input-group">
-                                                <input id="timepicker1" type="text" name="timepicker1" class="form-control timepicker" placeholder="Pick up a time"/>
+                                                <!--<input id="timepicker1" type="text" name="timepicker1" class="form-control timepicker" placeholder="Pick up a time"/>-->
                                                 <!--{{ form.timePost|add_class:"form-control timepicker"|attr:"required:required"|attr:"placeholder:Pick up a date"}}-->
+                                                {{ form.timePost|add_class:"form-control "|attr:"required:required"|attr:"placeholder:Enter a time in format HH:MM"}}
+                                                {% if form.timePost.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form.timePost.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
                                                 <span class="input-group-addon" id="basic-addon1">
                                                     <i class="glyphicon glyphicon-time" data-time-icon="icon-time" data-date-icon="icon-calendar">
                                                     </i>
                                                 </span>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail">Location</label>
-                                            <br>
-                                            <button type="button" class="btn" data-toggle="modal" data-target="#myModal">
-                                              Pick up your location
-                                            </button>
-                                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">    
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                            <h4 class="modal-title">Pick up your location</h4>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            Location: <input type="text" id="us2-address" style="width: 200px"/>
-                                                            <br>
-                                                            <div id="us2" style="width: 500px; height: 400px;"></div>      
-                                                            <script>
-                                                            $('#somecomponent').locationpicker({
-                                                                location: {latitude: 46.15242437752303, longitude: 2.7470703125},   
-                                                                    radius: 300,
-                                                                    inputBinding: {
-                                                                        latitudeInput: $('#us2-lat'),
-                                                                        longitudeInput: $('#us2-lon'),
-                                                                        radiusInput: $('#us2-radius'),
-                                                                        locationNameInput: $('#us2-address')
-                                                                    }
-                                                            });
-                                                            $('#us2').locationpicker({
-                                                                location: {latitude: 46.15242437752303, longitude: 2.7470703125},   
-                                                                radius: 300,
-                                                                inputBinding: {
-                                                                    locationNameInput: $('#us2-address')
-                                                                }
-                                                                });
-                                                            </script>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                                        </div>   
-                                                    </div>
-                                                </div>
-                                            </div>          
-                                        </div>
-                                        <div class="form-group">
-                                            <br>
-                                            <label for="exampleInputFile">Choose some reprezentative pictures<span style="color:red;">*</span></label>
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <img id="uploadPreview1" src="{% static "img/no_image.jpg" %}"style="height: 100px; width: 100px;"/><br />
-                                                        <input id="uploadImage1" type="file" name="p1" onchange="PreviewImage(1);" />
-                                                    </td>
-                                                    <td>
-                                                        <img id="uploadPreview1" src="{% static "img/no_image.jpg" %}"style="height: 100px; width: 100px;"/><br />
-                                                        <input id="uploadImage2" type="file" name="p2" onchange="PreviewImage(2);" />
-                                                    </td>
-                                                    <td>
-                                                        <img id="uploadPreview1" src="{% static "img/no_image.jpg" %}"style="height: 100px; width: 100px;"/><br />
-                                                        <input id="uploadImage3" type="file" name="p3" onchange="PreviewImage(3);" />
-                                                    </td>
-                                                    <td>
-                                                        <img id="uploadPreview1" src="{% static "img/no_image.jpg" %}"style="height: 100px; width: 100px;"/><br />
-                                                        <input id="uploadImage4" type="file" name="p4" onchange="PreviewImage(4);" />
-                                                    </td>   
-                                                </tr>
-                                                </table>
-                                                        
-                                                <script type="text/javascript">
-                                                    function PreviewImage(no) {
-                                                        var oFReader = new FileReader();
-                                                        oFReader.readAsDataURL(document.getElementById("uploadImage"+no).files[0]);
 
-                                                        oFReader.onload = function (oFREvent) {
-                                                            document.getElementById("uploadPreview"+no).src = oFREvent.target.result;
-                                                        };
-                                                    }
-                                                </script>
-                                        </div>
-                                        <div class="checkbox">
-                                            <div class="checkbox3 checkbox-round">
-                                                <input type="checkbox" id="checkbox-1">
-                                                <label for="checkbox-1">
-                                                    I Agree Terms and Conditions
-                                                </label>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Address</label>
+                                            <div>
+
+                                                 {{ form.address|add_class:"form-control "|attr:"required:required"|attr:"placeholder:Enter a address"}}
+
+                                                {% if form.address.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form.address.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
                                             </div>
                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">City</label>
+                                            <div>
+
+                                                 {{ form.city|add_class:"form-control "|attr:"required:required"}}
+
+                                                {% if form.city.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form.city.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
+                                            </div>
+                                        </div>
+
+                                         <div class="form-group">
+                                            <label for="exampleInputPassword1">Country</label>
+                                            <div>
+
+                                                 {{ form.country|add_class:"form-control "|attr:"required:required"}}
+
+                                                {% if form.country.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form.country.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
+                                            </div>
+                                        </div>
+
+                                         <div class="form-group">
+                                            <label for="exampleInputPassword1">Highest price you are willing to pay (EUR)</label>
+                                            <div>
+
+                                                 {{ form.money|add_class:"form-control "|attr:"required:required"|attr:"placeholder:Enter Highest price you are willing to pay (EUR)"}}
+
+                                                {% if form.money.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form.money.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Category</label>
+                                            <div>
+
+                                                 {{ form.category|add_class:"form-control "|attr:"required:required"}}
+
+                                                {% if form.description.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form.description.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
+                                            </div>
+                                        </div>
+
+                                            <div class="form-group">
+                                            <br>
+                                            <label for="exampleInputFile">Choose some reprezentative pictures<span style="color:red;">*</span></label>
+
+                                                 {{ form.image|add_class:"form-control "|attr:"required:required"}}
+                                                {% if form.image.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form.image.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
+                                                 {{ form.image2|add_class:"form-control "|attr:"required:required"}}
+                                                {% if form.image2.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form.image2.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
+                                                 {{ form.image3|add_class:"form-control "|attr:"required:required"}}
+                                                {% if form.image3.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form.image3.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
+                                                 {{ form.image4|add_class:"form-control "|attr:"required:required"}}
+                                                {% if form.image4.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form.image4.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
+
+                                            </div>
+
+                                        <!--<div class="form-group">-->
+                                            <!--<br>-->
+                                            <!--<label for="exampleInputFile">Choose some reprezentative pictures<span style="color:red;">*</span></label>-->
+                                            <!--<table>-->
+                                                <!--<tr>-->
+                                                    <!--<td>-->
+                                                        <!--<img id="uploadPreview1" src="{% static "img/no_image.jpg" %}"style="height: 100px; width: 100px;"/><br />-->
+                                                        <!--{{ form.image|attr:"required:required"|attr:"id:uploadImage1"|attr:"name:p1"|attr:"onchange:PreviewImage(1);"}}-->
+                                                    <!--</td>-->
+                                                    <!--<td>-->
+                                                        <!--<img id="uploadPreview2" src="{% static "img/no_image.jpg" %}"style="height: 100px; width: 100px;"/><br />-->
+                                                        <!--{{ form.image2|attr:"id:uploadImage2"|attr:"name:p2"|attr:"onchange:PreviewImage(2);"|attr:"required:required"}}-->
+<!---->
+                                                    <!--</td>-->
+                                                    <!--<td>-->
+                                                        <!--<img id="uploadPreview3" src="{% static "img/no_image.jpg" %}"style="height: 100px; width: 100px;"/><br />-->
+                                                        <!--{{ form.image3|attr:"required:required"|attr:"id:uploadImage3"|attr:"name:p3"|attr:"onchange:PreviewImage(3);"}}-->
+                                                    <!--</td>-->
+                                                    <!--<td>-->
+                                                        <!--<img id="uploadPreview4" src="{% static "img/no_image.jpg" %}"style="height: 100px; width: 100px;"/><br />-->
+                                                        <!--{{ form.image4|attr:"required:required"|attr:"id:uploadImage4"|attr:"name:p4"|attr:"onchange:PreviewImage(4);"}}-->
+                                                    <!--</td>   -->
+                                                <!--</tr>-->
+                                                <!--</table>-->
+                                                        <!---->
+                                                <!--<script type="text/javascript">-->
+                                                    <!--function PreviewImage(no) {-->
+                                                        <!--var oFReader = new FileReader();-->
+                                                        <!--oFReader.readAsDataURL(document.getElementById("uploadImage"+no).files[0]);-->
+<!---->
+                                                        <!--oFReader.onload = function (oFREvent) {-->
+                                                            <!--document.getElementById("uploadPreview"+no).src = oFREvent.target.result;-->
+                                                        <!--};-->
+                                                    <!--}-->
+                                                <!--</script>-->
+                                        <!--</div>-->
+
                                         <button type="submit" class="btn btn-default">Submit</button>
                                     </form>
                                 </div>
