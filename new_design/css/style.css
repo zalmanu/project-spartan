@@ -1525,6 +1525,14 @@ input[type='text'] {
   cursor: pointer;
 }
 
+#catgory-page-picture{
+  padding: 0 !important;
+}
+
+#no-padding-category{
+  padding: 0 !important;
+}
+
 #19B5FE
 
 
