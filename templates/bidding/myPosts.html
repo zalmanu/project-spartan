@@ -1,7 +1,7 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
-{% load widget_tweaks %}
+
 
 
 <body class="flat-blue">
@@ -39,7 +39,7 @@
                                     </li>
                                     <li class="message">
                                         No new messages
-                                    </li>   
+                                    </li>
                                 </div>
                             </ul>
                         </li>
@@ -98,10 +98,10 @@
                             </ul>
                         </li>
                         <li class="dropdown profile">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ user.username }} <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ request.user.username }} <span class="caret"></span></a>
                             <ul class="dropdown-menu animated fadeInDown">
                                 <li class="profile-img">
-                                    <img src='{{ user.account.profile_image.url }}' class = 'img-responsive'/>
+                                     <img src='{{ user.account.profile_image.url }}' class = 'img-responsive'/>
                                 </li>
                                 <li>
                                     <div class="profile-info">
@@ -118,7 +118,7 @@
                     </ul>
                 </div>
             </nav>
-<div class="side-menu sidebar-inverse">
+            <div class="side-menu sidebar-inverse">
                 <nav class="navbar navbar-default" role="navigation">
                     <div class="side-menu-container">
                         <div class="navbar-header">
@@ -229,52 +229,60 @@
                 </nav>
             </div>
 
-            {% if not posts and not request.user.spartan.spartanStatus  %}
-
-  <br>
-                                <br><br><br>
-                                <br><br>
-                <div class="side-body padding-top">
-                    <br>
-                    <div class="row">
-                        <div class="col-lg-12" id="message">
-                            <center><h1 style="color: #19B5FE;"><b>No active post!</b></h1>
-                                <br>
-                                <br><br>
-                           <button class="btn btn-success"><a href="/">Go back to the website</a></button></center>
-                        </div>
-                    </div>
-
-      {% endif %}
-{% if not posts and  request.user.spartan.spartanStatus and not bids %}
-
-                    <br>
-                                <br><br><br>
-                                <br><br>
-
-      <div class="side-body padding-top">
-                    <br>
-                    <div class="row">
-                        <div class="col-lg-12" id="message">
-                            <center><h1 style="color: #19B5FE;"><b>No active post!</b></h1>
-                                <br>
-                                <br><br>
-                           <button class="btn btn-success"><a href="/">Go back to the website</a></button></center>
-                        </div>
-                    </div>
-      {% endif %}
-
-
-            <!-- Main Content -->
+            <br><br><br><br>
+<!-- Main Content -->
             <div class="container-fluid">
                 <div class="side-body padding-top">
                         <div class="col-lg-12">
 
                             {% if posts %}
+
+
+
                                 <h2>Your Posts with it's bidders</h2>
+                            {% for post in posts %}
                                 <br>
-                                <h4><a style="cursor:pointer;">Alege-ti un Spartan (in loc de ce am scris eu vine pus titlul anuntului)</a></h4>
+                                <h4><a style="cursor:pointer;"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></b></a></h4>
                                 <div id="table">
+
+                                    {% if post.spartan %}
+                                    <div id="table">
+                                <div class="header blue" id="row">
+                                  <div class="cell">
+                                    First Name
+                                  </div>
+                                  <div class="cell">
+                                    Last Name
+                                  </div>
+                                  <div class="cell">
+                                    Email
+                                  </div>
+                                  <div class="cell">
+                                    Offer
+                                  </div>
+                                    <div class="cell">
+                                    Chator call the spartan!
+                                  </div>
+                                    <div class="cell">
+                                    Or call the spartan!
+                                  </div>
+
+                                  <div class="cell">
+                                    <center>Status</center>
+                                  </div>
+                                </div>
+
+
+                                  {% endif %}
+
+                                        
+
+
+
+
+                                        {% if post.offers.all %}
+
+                                        <div id="table">
                                 <div class="header blue" id="row">
                                   <div class="cell">
                                     ID
@@ -288,223 +296,54 @@
                                   <div class="cell">
                                     Bid
                                   </div>
+
                                   <div class="cell">
                                     <center>Status</center>
                                   </div>
                                 </div>
-                                
+
+
+                                        {% for oferta in post.offers.all %}
+
+
+
+
                                 <div id="row">
                                   <div class="cell">
                                     1
                                   </div>
                                   <div class="cell">
-                                    Silaghi
+                                     <a href="/user/{{ oferta.spartan.slug }}">{{ oferta.spartan.first_name }} </a>
                                   </div>
                                   <div class="cell">
-                                    Fineas
+                                    <a href="/user/{{ oferta.spartan.slug }}">{{ oferta.spartan.last_name }} </a>
                                   </div>
                                   <div class="cell">
-                                    20$
+                                   {{ oferta.price }}
                                   </div>
+
                                   <div class="cell">
-                                    <center><input type="checkbox"></center>
-                                  </div>
-                                </div>
-                                
-                                <div id="row">
-                                  <div class="cell">
-                                    2
-                                  </div>
-                                  <div class="cell">
-                                    Silaghi
-                                  </div>
-                                  <div class="cell">
-                                    Fineas
-                                  </div>
-                                  <div class="cell">
-                                    20$
-                                  </div>
-                                  <div class="cell">
-                                    <center><input type="checkbox"></center>
-                                  </div>
-                                </div>
-                                
-                                <div id="row">
-                                  <div class="cell">
-                                    3
-                                  </div>
-                                  <div class="cell">
-                                    Silaghi
-                                  </div>
-                                  <div class="cell">
-                                    Fineas
-                                  </div>
-                                  <div class="cell">
-                                    20$
-                                  </div>
-                                  <div class="cell">
-                                    <center><input type="checkbox"></center>
-                                  </div>
-                                </div>
-                                
-                                <div id="row">
-                                  <div class="cell">
-                                    4
-                                  </div>
-                                  <div class="cell">
-                                    Silaghi
-                                  </div>
-                                  <div class="cell">
-                                    Fineas
-                                  </div>
-                                  <div class="cell">
-                                    20$
-                                  </div>
-                                  <div class="cell">
-                                    <center><input type="checkbox"></center>
+                                    <p data-placement="top" data-toggle="tooltip" >
+        <button class="btn btn-danger btn-xs hire" data-oferta="{{ oferta.id }}" data-post="{{ post.id }}" id="choose_button">
+            <span class="glyphicon glyphicon-ok"></span>
+        </button>
+      </p>
                                   </div>
                                 </div>
 
+                                        {% endfor %}
+
+
+
                                 </div>
+                                         {% endif %}
+                            {% endfor %}
+
+
                                 <br>
-                                <h4><a style="cursor:pointer;">Anunt in desfasurare (in loc de ce am scris eu vine pus titlul anuntului)</a></h4>
-                                <div id="table">
-                               <div class="header blue" id="row">
-                                  <div class="cell">
-                                    Username
-                                  </div>
-                                  <div class="cell">
-                                    Bid
-                                  </div>
-                                  <div class="cell">
-                                    E-mail
-                                  </div>
-                                  <div class="cell">
-                                    Phone Number
-                                  </div>
-                                  <div class="cell">
-                                    <center>Chat</center>
-                                  </div>
-                                </div>
-                                    
-                                
-                                <div id="row">
-                                  <div class="cell">
-                                    Fineas
-                                  </div>
-                                  <div class="cell">
-                                    20$
-                                  </div>
-                                  <div class="cell">
-                                    finymelly@gmail.com
-                                  </div>
-                                  <div class="cell">
-                                    0735674822
-                                  </div>
-                                  <div class="cell">
-                                    <center><button type="button">chat</button></center>
-                                  </div>
-                                </div>
-                
 
-                                </div>
-                                <br>
-                                <h4><a style="cursor:pointer;">Alege-ti un Spartan (in loc de ce am scris eu vine pus titlul anuntului)</a></h4>
-                                <div id="table">
-                                <div class="header blue" id="row">
-                                  <div class="cell">
-                                    ID
-                                  </div>
-                                  <div class="cell">
-                                    First Name
-                                  </div>
-                                  <div class="cell">
-                                    Last Name
-                                  </div>
-                                  <div class="cell">
-                                    Bid
-                                  </div>
-                                  <div class="cell">
-                                    <center>Status</center>
-                                  </div>
-                                </div>
-                                
-                                <div id="row">
-                                  <div class="cell">
-                                    1
-                                  </div>
-                                  <div class="cell">
-                                    Silaghi
-                                  </div>
-                                  <div class="cell">
-                                    Fineas
-                                  </div>
-                                  <div class="cell">
-                                    20$
-                                  </div>
-                                  <div class="cell">
-                                    <center><input type="checkbox"></center>
-                                  </div>
-                                </div>
-                                
-                                <div id="row">
-                                  <div class="cell">
-                                    2
-                                  </div>
-                                  <div class="cell">
-                                    Silaghi
-                                  </div>
-                                  <div class="cell">
-                                    Fineas
-                                  </div>
-                                  <div class="cell">
-                                    20$
-                                  </div>
-                                  <div class="cell">
-                                    <center><input type="checkbox"></center>
-                                  </div>
-                                </div>
-                                
-                                <div id="row">
-                                  <div class="cell">
-                                    3
-                                  </div>
-                                  <div class="cell">
-                                    Silaghi
-                                  </div>
-                                  <div class="cell">
-                                    Fineas
-                                  </div>
-                                  <div class="cell">
-                                    20$
-                                  </div>
-                                  <div class="cell">
-                                    <center><input type="checkbox"></center>
-                                  </div>
-                                </div>
-                                
-                                <div id="row">
-                                  <div class="cell">
-                                    4
-                                  </div>
-                                  <div class="cell">
-                                    Silaghi
-                                  </div>
-                                  <div class="cell">
-                                    Fineas
-                                  </div>
-                                  <div class="cell">
-                                    20$
-                                  </div>
-                                  <div class="cell">
-                                    <center><input type="checkbox"></center>
-                                  </div>
-                                </div>
-
-                                </div>
-                        </div>
                     {% endif %}
-                    
+
                 </div>
             </div>
         <footer class="app-footer">
@@ -512,25 +351,82 @@
                 <span class="pull-right"><i class="fa fa-long-arrow-up" id="arrow"></i></span>SpartanTasks @ 2016 Copyright.
             </div>
         </footer>
-        <div>
-            <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js">
-            </script>
-            <script>
-                $("#arrow").click(function() {
-                $("html, body").animate({ scrollTop: 0 }, "slow");
-                return false;
+                     <script>
+      // Jquery pentru accept
+    $(document).ready(function(){
+        $(".hire").click(function(event){
+            var oferta = $(this).data("oferta");
+            var post_id = $(this).data("post");
+            $.post("/posts/", { "offer": oferta }, function(response) {
+                 if (response.result == "success") {
+                     console.log("success");
+                     $(location).attr('href', '/posts/');
+                 }
+            })
+            return true;
+        });
+    });
+    </script>
+        <script>
+	  // Jquery pentru job done la Spartan
+    $(document).ready(function(){
+        $(".spartan").change(function(event){
+          var post_id = $(this).data("post");
+            $.post("/posts/", { "post": post_id }, function(response) {
+                 if (response.result == "success") {
+                     console.log("success");
+                     $(location).attr('href', '/posts/');
+                 }
+            })
+            return true;
+        });
+    });
+    </script>
+        <script>
+	  // Jquery pentru job done la employer
+    $(document).ready(function(){
+        $(".employer").change(function(event){
+          var post_id = $(this).data("postfin");
+            $.post("/posts/", { "post_empl": post_id }, function(response) {
+                 if (response.result == "success") {
+                     console.log("success");
+                     var url = '/review/'+response.slug + '/' + response.hash
+                     $(location).attr('href', url)
+                 }
+            })
+            return true;
+        });
+    });
+    </script>
+        <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+        </script>
+        <script>
+                $("#show_other_bids").click(function(){
+                    $(".each_bid").toggleClass('show_bids');
+                });
+        </script>
+        <script>
+            $(document).ready(function(){
+            $("#mytable #checkall").click(function () {
+                    if ($("#mytable #checkall").is(':checked')) {
+                        $("#mytable input[type=checkbox]").each(function () {
+                            $(this).prop("checked", true);
+                        });
+                    } else {
+                        $("#mytable input[type=checkbox]").each(function () {
+                            $(this).prop("checked", false);
+                        });
+                    }
                 });
 
-                $('.other-bids').hide();
-                $('#show-bidding-field').on('click', function(){
-                  $('.other-bids').toggle();
-                });
-
-                $('#bidding-place').click(function(){
-                    alert('The value must be in Dollars($).')
-                });
-            </script>
-            <!-- Javascript Libs -->
+                $("[data-toggle=tooltip]").tooltip();
+            });
+        </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    </body>
 
 
 {% endblock %}
