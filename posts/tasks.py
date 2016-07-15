@@ -11,12 +11,13 @@ from categories.models import Category
 
 
 @task
-def notify_spartans(category_name, city, username):
+def notify_spartans(category_name, city, username, url, id_hash):
     category = Category.objects.get(name=category_name)
     for spartan in Spartan.objects.filter(spartanStatus=True,
                                           category=category):
         notification = Notification.objects.create(
-            receiver=spartan.user)
+            receiver=spartan.user, not_type="post", url=url,
+            id_hash=id_hash)
         notification.spartan_notif()
         notification.save()
 

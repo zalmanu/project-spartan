@@ -1,4 +1,6 @@
 import json
+import random
+import string
 
 from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404, render_to_response
@@ -25,6 +27,7 @@ def create_post(request):
             form.instance.author = current_user
             form.save()
             category = form.instance.category
+            url = form.instance.get_absolute_url()
             messagetip = " Hi! % s , \n You successfully"\
                          "posted an announce! \n" \
                          " Title: %s ,\n Description: %s \n Address: %s \n " \
@@ -39,12 +42,15 @@ def create_post(request):
                              post.timePost, post.data, post.money)
             email_user.delay(messagetip, current_user.email,
                              "Spartan Tasks Post")
+            id_hash = ''.join(random.choice(
+                string.ascii_uppercase + string.digits) for _ in range(6))
             notify_spartans.delay(category.name, form.instance.city,
-                                  form.instance.author.username)
+                                  form.instance.author.username,
+                                  url, id_hash)
             html = """
-            <a href=\"""" + form.instance.get_absolute_url() + """\">
+            <a href=\"""" + url + """\" id="seen_notif_req"
+            data-notification=\"""" + id_hash + """\">
             <li class="list-group-item">
-            <span class="badge">1</span>
             <i class="fa fa-exclamation-circle icon"></i>New post in your area
             </li>
             </a>

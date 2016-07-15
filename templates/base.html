@@ -31,11 +31,10 @@
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src='http://maps.google.com/maps/api/js?sensor=false&libraries=places'></script>
     <script src="{% static "js/locationpicker.jquery.js" %}"></script>
-    <script src="{% static "js/chat_script.js" %}"></script>
+    <script src="{% static "js/seen_script.js" %}"></script>
   </head>
 {% load widget_tweaks %}
 <body class="flat-blue">
-  <script src="{% static "js/chat_script.js" %}"></script>
     <div class="app-container">
         <div class="row content-container">
             <nav class="navbar navbar-default navbar-fixed-top navbar-top">
@@ -79,20 +78,39 @@
                             </ul>
                         </li>
                         <li class="dropdown danger">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-star-half-o"></i> 4</a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="iconcount"><i class="fa fa-star-half-o"></i></a>
                             <ul class="dropdown-menu danger  animated fadeInDown">
                                 <li class="title">
-                                    Notification <span class="badge pull-right">4</span>
+				  Notifications <span class="badge pull-right" id="notifnum">0</span>
                                 </li>
                                 <li>
                                     <ul class="list-group notifications">
-                                        <div class="notifications-list" id="noti-list">
-                                            <a href="#">
-                                                <li class="list-group-item">
-                                                    <span class="badge">1</span> <i class="fa fa-exclamation-circle icon"></i> new registration
-                                                </li>
-                                            </a>
-                                        </div>
+                                      <div class="notifications-list" id="noti-list">
+					{% for notification in user.notifications.all %}
+					{% if notification.not_type == "post" %}
+					{% if notification.seen %}
+					<a href="{{ notification.url}}">
+                                          <li class="list-group-item">
+                  <i class="fa"></i> New post in your area
+                                          </li>
+                                        </a>
+					{% else %}
+<a href="{{ notification.url }}" id="seen_notif_req" data-notification="{{ notification.id_hash }}">
+                                          <li class="list-group-item">
+	<i class="fa fa-exclamation-circle icon"></i>New post in your area
+                                          </li>
+</a>
+
+					<script>
+					  seennumber++;
+					</script>
+					{% endif %}
+					{% endif %}
+					{% endfor %}
+					<script>
+					  seencheck();
+					 </script>
+				      </div>
                                         <a href="#">
                                             <li class="list-group-item message">
                                                 view all
@@ -277,7 +295,6 @@
     <!-- Javascript Libs -->
     <script type="text/javascript" src="{% static "lib/js/jquery.min.js" %}"></script>
     <script type="text/javascript" src="{% static "lib/js/bootstrap.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "lib/js/Chart.min.js" %}"></script>
     <script type="text/javascript" src="{% static "lib/js/bootstrap-switch.min.js" %}"></script>
     <script type="text/javascript" src="{% static "lib/js/jquery.matchHeight-min.js" %}"></script>
     <script type="text/javascript" src="{% static "lib/js/jquery.dataTables.min.js" %}"></script>

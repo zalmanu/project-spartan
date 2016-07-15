@@ -12,7 +12,9 @@ def seen(request):
         if request.POST.get('notif'):
             context = {"result": "success"}
             notif_id = request.POST.get("notif")
-            notification = Notification.objects.get(id=notif_id)
+            notification = Notification.objects.get(id_hash=notif_id)
+            if notification.seen:
+                return HttpResponseForbidden()
             notification.seen = True
             notification.save()
             return HttpResponse(json.dumps(context),
