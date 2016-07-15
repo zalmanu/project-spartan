@@ -3,7 +3,6 @@
 {% block content %}
 {% load widget_tweaks %}
 
-
 <body class="flat-blue">
     <div class="app-container">
         <div class="row content-container">
@@ -98,10 +97,10 @@
                             </ul>
                         </li>
                         <li class="dropdown profile">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ request.user.username }} <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ user.username }} <span class="caret"></span></a>
                             <ul class="dropdown-menu animated fadeInDown">
                                 <li class="profile-img">
-                                     <img src='{{ user.account.profile_image.url }}' class = 'img-responsive'/>
+                                    <img src='{{ user.account.profile_image.url }}' class = 'img-responsive'/>
                                 </li>
                                 <li>
                                     <div class="profile-info">
@@ -237,18 +236,32 @@
                             <div class="card">
                                 <div class="card-header">
                                     <div class="card-title">
-                                        <div class="title">Become a spartan</div>
+                                        <div class="title">Become a Spartan</div>
                                     </div>
                                 </div>
+                                <div class="card-body">
+                                     {% if  request.user.spartan.spartanStatus == False  %}
 
+                                     <div class="container-fluid">
+                <div class="side-body padding-top">
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-12" id="message">
+                            <center><h1 style="color: #19B5FE;"><b>Thank you for your submit!</b></h1>
+                                <br>
+                            <h3>We will check your datas and come with an answer.</h3>
+                                <br><br>
+                           <button class="btn btn-success"><a href="/">Go back to the website</a></button></center>
+                        </div>
+                    </div>
 
-                                {% if  request.user.spartan.spartanStatus == False  %}
-                                   <h3>You submitted the form  wait for administrator's confirmation!</h3>
+                </div>
+            </div>
                                 {% endif %}
 
-                               {% if not request.user.account.has_related_object   %}
-                                <div class="card-body">
+                                    {% if not request.user.account.has_related_object   %}
                                     <form method="POST">
+
                                         {% csrf_token %}
                                          {% if confirm %}
 				                           <div  class="alert alert-danger fade in" id="input-alert">
@@ -261,178 +274,163 @@
 
                                                             </div>
                                          {% endif %}
-                                        {% for field in form %}
-
-
-
-                                        {% if field.label == 'Date FORMAT YYYY-MM-DD'  %}
-
 
 
 
                                         <div class="form-group">
-                                            <label for="exampleInputEmail">Date</label>
+                                            <label for="exampleInputEmail1">First Name</label>
+                                            {{ form.first_name|add_class:"form-control "|attr:"placeholder:Enter first name"|attr:"required:required"}}
+
+                                            {% if form.first_name.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form.first_name.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                            {% endif %}
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Last Name</label>
+                                            {{ form.last_name|add_class:"form-control "|attr:"placeholder:Enter last name"|attr:"required:required"}}
+
+                                            {% if form.last_name.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form.last_name.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                            {% endif %}
+                                        </div>
+
+                                        <div class="form-group">    
+                                            <label for="exampleInputEmail">Birth Date</label>
                                             <div class="input-group">
-                                                {{ field|add_class:"form-control "|attr:"required:required"|add_class:"form-control datepicker"|attr:"placeholder:Enter a date"}}
+                                                {{ form.birthday|add_class:"form-control "|attr:"required:required"|add_class:"form-control datepicker"|attr:"placeholder:Enter a birthday"}}
                                                 <span class="input-group-addon" id="basic-addon1">
                                                     <i class="glyphicon glyphicon-calendar" data-time-icon="icon-time" data-date-icon="icon-calendar">
                                                     </i>
                                                 </span>
+                                                {% if form.birthday.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form.birthday.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                            {% endif %}
                                             </div>
                                         </div>
 
-                                        {% if field.errors %}
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail">Adress</label>
+                                            <br>
+                                            {{ form.address|add_class:"form-control "|attr:"placeholder:Enter address"|attr:"required:required"}}
+
+                                             {% if form.address.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
                                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                                         <strong>Warning!</strong>
-				                                        {% for error in field.errors %}
+				                                        {% for error in form.address.errors %}
 				                                                {{ error }}
 				                                        {% endfor %}
                                                             </div>
-                                                            {% endif %}
-                                        {% elif field.label == 'First name'%}
+                                            {% endif %}
 
-                                        {{ field.label }}
+                                            </div>
 
-                                         {{ field|add_class:"form-control "|attr:"placeholder:Enter first name"|attr:"required:required"}}
-                                           {% if field.errors %}
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">CNP</label>
+                                             {{ form.cnp|add_class:"form-control "|attr:"placeholder:Enter your CNP"|attr:"required:required"}}
+
+                                            {% if form.cnp.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
                                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                                         <strong>Warning!</strong>
-				                                        {% for error in field.errors %}
+				                                        {% for error in form.cnp.errors %}
 				                                                {{ error }}
 				                                        {% endfor %}
                                                             </div>
-                                                            {% endif %}
-
-
-                                        {% elif  field.label == 'Last name' %}
-
-                                          {{ field.label }}
-
-                                         {{ field|add_class:"form-control "|attr:"placeholder:Enter last name"|attr:"required:required"}}
-                                           {% if field.errors %}
-                                                        <div class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for error in field.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
-                                                            </div>
-                                                            {% endif %}
-
-                                        {% elif field.label == 'Address' %}
-
-
-                                        {{ field.label }}
-
-                                         {{ field|add_class:"form-control "|attr:"placeholder:Enter address"|attr:"required:required"}}
-                                           {% if field.errors %}
-                                                        <div class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for error in field.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
-                                                            </div>
-                                                            {% endif %}
-
-
-
-
-                                        {% elif field.label == 'CNP' %}
-
-                                        {{ field.label }}
-
-                                         {{ field|add_class:"form-control "|attr:"placeholder:Enter CNP"|attr:"required:required"}}
-                                           {% if field.errors %}
-                                                        <div class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for error in field.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
-                                                            </div>
-                                                            {% endif %}
-
-
-
-
-                                        {% elif field.label == 'ID card series' %}
-
-                                        {{ field.label }}
-
-                                         {{ field|add_class:"form-control "|attr:"placeholder:Enter ID card series"|attr:"required:required"}}
-                                           {% if field.errors %}
-                                                        <div class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for error in field.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
-                                                            </div>
-                                                            {% endif %}
-
-                                        {% elif field.label == 'CUI' %}
-
-                                        {{ field.label }}
-
-                                         {{ field|add_class:"form-control "|attr:"placeholder:Enter CUI"|attr:"required:required"}}
-                                           {% if field.errors %}
-                                                        <div class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for error in field.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
-                                                            </div>
-                                                            {% endif %}
-
-                                        {% elif field.label == 'Bank account' %}
-
-                                        {{ field.label }}
-
-                                         {{ field|add_class:"form-control "|attr:"placeholder:Enter Bank account"|attr:"required:required"}}
-                                           {% if field.errors %}
-                                                        <div class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for error in field.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
-                                                            </div>
-                                                            {% endif %}
-                                        {% else %}
-
-
-
-
-
-                                        {{ field.label }}
-
-
-                                         {{ field|add_class:"form-control "|attr:"placeholder"|attr:"required:required"}}
-                                           {% if field.errors %}
-                                                        <div class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for error in field.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
-                                                            </div>
-                                                            {% endif %}
-                                        {% endif %}
-
-                                        {% endfor %}
-
-
-
-
-
-                                        <div>
+                                            {% endif %}
 
                                         </div>
-                                        <button type="submit" class="btn btn-default">Submit</button>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">ID Card Series</label>
+                                             {{ form.series|add_class:"form-control "|attr:"placeholder:Enter your ID Card Series"|attr:"required:required"}}
+
+                                            {% if form.series.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form.series.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                            {% endif %}
+
+
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">CUI</label>
+                                            {{ form.cui|add_class:"form-control "|attr:"placeholder:Enter your CUI"|attr:"required:required"}}
+
+                                             {% if form.cui.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form.cui.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                            {% endif %}
+
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Bank Account</label>
+                                            {{ form.bank|add_class:"form-control "|attr:"placeholder:Enter your Bank Account"|attr:"required:required"}}
+
+                                            {% if form.bank.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form.bank.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                            {% endif %}
+
+
+                                        </div>
+
+                                        <div class="form-group">    
+                                            <label for="exampleInputEmail">Select the category you will work in</label>
+                                            {{ form.category|add_class:"form-control "|attr:"placeholder"|attr:"required:required"}}
+
+                                             {% if form.category.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form.category.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                            {% endif %}
+
+
+                                        </div>
+                                        
+
+                                         <button type="submit" class="btn btn-default">Submit</button>
                                     </form>
                                     {% endif %}
                                 </div>

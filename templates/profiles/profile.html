@@ -292,7 +292,8 @@
                                                                     {% for review in request.user.spartan.reviews.all %}
                                                                     <a>
                                                                         <li>
-                                                                            <img src="http://www.gravatar.com/avatar/{{ review.submitter.account.code }}" class="profile-img pull-left">
+
+                                                                             <img src='{{ review.submitter.account.profile_image.url }}' class = 'img-responsive' style="max-width: 35%;"/>
                                                                             <div class="message-block">
                                                                                 <div><span class="username">{{ review.submitter.account.user}}</span> <span class="message-datetime">{{ review.data }}</span>
                                                                                 </div>
