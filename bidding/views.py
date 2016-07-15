@@ -46,8 +46,7 @@ def posts(request):
         return HttpResponse(json.dumps(context),
                             content_type='application/json')
     else:
-        context = {'posts': request.user.posts.all(),
-                   'cod': request.user.account.code}
+        context = {'posts': request.user.posts.all()}
         if request.user.account.has_related_object():
             context['bids'] = request.user.spartan.bids.all()
         return render(request, 'bidding/myPosts.html', context)
