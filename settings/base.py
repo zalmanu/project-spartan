@@ -21,6 +21,7 @@ INSTALLED_APPS = (
     'widget_tweaks',
     'phonenumber_field',
     'haystack',
+    'django_cleanup',
 
     # Usual apps
     'authentication',
