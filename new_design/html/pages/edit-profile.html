@@ -246,7 +246,7 @@
                 <div class="side-body padding-top">
                     <div class="row">
                         <div class="col-xs-12">
-                            <div class="card">
+                            <div class="card" style="overflow: visible;">
                                 <div class="card-header">
                                     <div class="card-title">
                                         <div class="title">Nume Prenume</div>
@@ -364,7 +364,7 @@
                                     <center>
                                         <div class="row edit-profile">
                                             <center><button class="btn btn-success" id="edit-profile-btn">Edit Profile</button></center>
-                                            <div class="card" style="display: none;" id="card-edit-profile">
+                                            <div class="card" style="display: none;overflow:visible;" id="card-edit-profile">
                                                 <div class="card-jumbotron" style="padding: 8px;">
                                                     <h3><b>Edit your profile:</b></h3>
                                                 </div>
@@ -381,11 +381,30 @@
                                                     <input type="text" placeholder="Insert your text here" class="form-control">
                                                     <b style="float:left;"><h5>Re-enter Password:</h5></b>
                                                     <input type="text" placeholder="Insert your text here" class="form-control">
-                                                    <b style="float:left;"><h5>Country:</h5></b>
-                                                    <input type="text" placeholder="Insert your text here" class="form-control"> 
+                                                    <b style="float:left;"><h5>Country:</h5></b><br><br>
+                                                    <div class="btn-group" style="float: left; width: 100%; text-align: left;text-align:left !important;">
+                                                      <button type="button" class="form-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        Select your Country <span class="caret"></span>
+                                                      </button>
+                                                      <ul class="dropdown-menu">
+                                                        <li><a href="#">Action</a></li>
+                                                        <li><a href="#">Another action</a></li>
+                                                        <li><a href="#">Something else here</a></li>
+                                                        <li><a href="#">Separated link</a></li>
+                                                      </ul>
+                                                    </div><br>
                                                     <b style="float:left;"><h5>City:</h5></b>
-                                                    <input type="text" placeholder="Insert your text here" class="form-control">
-
+                                                    <div class="btn-group" style="float: left; width: 100%; text-align: left;text-align:left !important;">
+                                                      <button type="button" class="form-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        Select your City <span class="caret"></span>
+                                                      </button>
+                                                      <ul class="dropdown-menu">
+                                                        <li><a href="#">Action</a></li>
+                                                        <li><a href="#">Another action</a></li>
+                                                        <li><a href="#">Something else here</a></li>
+                                                        <li><a href="#">Separated link</a></li>
+                                                      </ul>
+                                                    </div><br>
 
                                                     <!-- Buttons -->
                                                     <br>
