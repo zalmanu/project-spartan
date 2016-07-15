@@ -1,3 +1,4 @@
+
 import json
 
 from django.views.decorators.csrf import csrf_exempt
@@ -9,6 +10,7 @@ from .models import Notification
 @csrf_exempt
 def seen(request):
     if request.method == "POST":
+        print "dwa"
         if request.POST.get('notif'):
             context = {"result": "success"}
             notif_id = request.POST.get("notif")

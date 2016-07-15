@@ -49,8 +49,9 @@ def create_post(request):
                                   url, id_hash)
             html = """
             <a href=\"""" + url + """\" id="seen_notif_req"
-            data-notification=\"""" + id_hash + """\">
-            <li class="list-group-item">
+            data-notification=\"""" + id_hash + """\"
+            onmouseover="seen_not(this.getAttribute('data-notification'));">
+            <li class="list-group-item" id=\"""" + id_hash +"""\">
             <i class="fa fa-exclamation-circle icon"></i>New post in your area
             </li>
             </a>
