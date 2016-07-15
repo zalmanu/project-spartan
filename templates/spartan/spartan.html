@@ -241,7 +241,22 @@
                                 </div>
                                 <div class="card-body">
                                      {% if  request.user.spartan.spartanStatus == False  %}
-                                   <h3>You submitted the form  wait for administrator's confirmation!</h3>
+
+                                     <div class="container-fluid">
+                <div class="side-body padding-top">
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-12" id="message">
+                            <center><h1 style="color: #19B5FE;"><b>Thank you for your submit!</b></h1>
+                                <br>
+                            <h3>We will check your datas and come with an answer.</h3>
+                                <br><br>
+                           <button class="btn btn-success"><a href="/">Go back to the website</a></button></center>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
                                 {% endif %}
 
                                     {% if not request.user.account.has_related_object   %}
