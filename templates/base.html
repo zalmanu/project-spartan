@@ -88,7 +88,7 @@
                                       <div class="notifications-list" id="noti-list">
 					{% for notification in user.notifications.all %}
 					{% if notification.not_type == "post" %}
-					{% if notification.seen %}
+÷					{% if notification.seen %}
 					<a href="{{ notification.url}}">
                                           <li class="list-group-item">
                   <i class="fa"></i> New post in your area
@@ -101,6 +101,23 @@
                                           </li>
 </a>
 
+					<script>
+					  seennumber++;
+					</script>
+					{% endif %}
+					{% elif notification.not_type == "bid" %}
+					{% if notification.seen %}
+					<a href="{{ notification.url}}">
+                                          <li class="list-group-item">
+					    <i class="fa"></i> Someone bid on your post
+                                          </li>
+                                        </a>
+					{% else %}
+	<a href="{{ notification.url }}" id="seen_notif_req" data-notification="{{ notification.id_hash }}" onmouseover="seen_not(this.getAttribute('data-notification'));">
+          <li class="list-group-item" id="{{ notification.id_hash }}">
+	<i class="fa fa-exclamation-circle icon"></i>Someone bid on your post
+                                          </li>
+</a>
 					<script>
 					  seennumber++;
 					</script>

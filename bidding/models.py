@@ -16,7 +16,6 @@ class Offer(models.Model):
 
 class CreateOfferForm(forms.ModelForm):
 
-
     class Meta:
         model = Offer
         fields = ['price']

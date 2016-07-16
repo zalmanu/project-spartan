@@ -19,7 +19,10 @@ function seen_not(notif_data){
 		in_bar.innerHTML = "<i class=\"fa fa-star-half-o\"></i>"+parseInt(in_dropdown.innerHTML);
 	    else
 		in_bar.innerHTML = "<i class=\"fa fa-star-half-o\"></i>";
-	    seen_bar.innerHTML = "<i class=\"fa\"></i>New post in your area";
+	    if(response.type == "post")
+		seen_bar.innerHTML = "<i class=\"fa\"></i>New post in your area";
+	    else
+		seen_bar.innerHTML = "<i class=\"fa\"></i> Someone bid on your post";		
         }
     })
     return true;

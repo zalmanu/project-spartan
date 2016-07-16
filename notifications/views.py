@@ -1,4 +1,3 @@
-
 import json
 
 from django.views.decorators.csrf import csrf_exempt
@@ -12,13 +11,15 @@ def seen(request):
     if request.method == "POST":
         print "dwa"
         if request.POST.get('notif'):
-            context = {"result": "success"}
             notif_id = request.POST.get("notif")
             notification = Notification.objects.get(id_hash=notif_id)
             if notification.seen:
                 return HttpResponseForbidden()
             notification.seen = True
             notification.save()
+            context = {"result": "success",
+                       "type": notification.not_type
+            }
             return HttpResponse(json.dumps(context),
                                 content_type='application/json')
     return HttpResponseForbidden()

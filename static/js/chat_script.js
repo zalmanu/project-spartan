@@ -1,5 +1,5 @@
 socket = new WebSocket("ws://" + window.location.host + window.location.pathname);
- function sendmessage() {
+function sendmessage() {
  var field = document.getElementById("chat-input");
  if(field.value == '')return false;
      var username = $('#user_name_not').text();

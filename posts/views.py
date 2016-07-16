@@ -14,7 +14,7 @@ from haystack.forms import SearchForm
 
 from .models import Announcement, EditPostForm, CreatePostForm
 from bidding.models import CreateOfferForm
-from .tasks import notify_spartans, email_user
+from .tasks import notify_spartans, email_user, notify_bid
 
 
 @login_required
@@ -51,7 +51,7 @@ def create_post(request):
             <a href=\"""" + url + """\" id="seen_notif_req"
             data-notification=\"""" + id_hash + """\"
             onmouseover="seen_not(this.getAttribute('data-notification'));">
-            <li class="list-group-item" id=\"""" + id_hash +"""\">
+            <li class="list-group-item" id=\"""" + id_hash + """\">
             <i class="fa fa-exclamation-circle icon"></i>New post in your area
             </li>
             </a>
@@ -84,6 +84,28 @@ def post(request, slug):
             form.instance.post = post
             form.instance.spartan = request.user.spartan
             form.save()
+            receiver = post.author.username
+            id_hash = ''.join(random.choice(
+                string.ascii_uppercase + string.digits) for _ in range(6))
+            html = """
+            <a href=\"""" + post.get_absolute_url() + """\" id="seen_notif_req"
+            data-notification=\"""" + id_hash + """\"
+            onmouseover="seen_not(this.getAttribute('data-notification'));">
+            <li class="list-group-item" id=\"""" + id_hash + """\">
+            <i class="fa fa-exclamation-circle icon"></i>
+            Someone bid on your post
+            </li>
+            </a>
+            """
+            dic = {
+                'html': html,
+                'author': form.instance.spartan.user.username
+            }
+            print "bau"
+            print "channel-" + receiver
+            Group("channel-" + receiver).send({
+                'text': json.dumps(dic)})
+            notify_bid.delay(receiver, post.get_absolute_url(), id_hash)
             confirms.append('Offer was sent')
     return render(request, 'posts/post.html', {
         'ann': Announcement.objects.filter(status=False).order_by(

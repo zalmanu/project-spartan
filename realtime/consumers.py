@@ -41,6 +41,7 @@ def ws_add(message):
         room = Room.objects.get(slug=label[1])
         Group("chat-" + label[1]).add(message.reply_channel)
         message.channel_session['room'] = room.slug
+    Group("channel-" + user.username).add(message.reply_channel)
 
 
 @channel_session

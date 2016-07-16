@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 
+from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.conf import settings
 
@@ -27,3 +28,12 @@ def email_user(email_message, email, subject):
     from_email = settings.EMAIL_HOST_USER
     send_mail(subject, email_message, from_email,
               [email], fail_silently=True)
+
+
+@task
+def notify_bid(username, url, id_hash):
+    receiver = User.objects.get(username=username)
+    notification = Notification.objects.create(receiver=receiver,
+                                               not_type="bid", url=url,
+                                               id_hash=id_hash)
+    notification.save()
