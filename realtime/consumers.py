@@ -41,11 +41,12 @@ def ws_add(message):
     if user.account.has_related_object() and user.spartan.spartanStatus:
         Group("spartans-" + user.spartan.category.name + "-" +
               user.account.city).add(message.reply_channel)
+    Group("messages-" + user.username).add(message.reply_channel)
     if(label[0] == "room"):
         room = Room.objects.get(slug=label[1])
         Group("chat-" + label[1]).add(message.reply_channel)
         message.channel_session['room'] = room.slug
-    Group("messages-" + user.username).add(message.reply_channel)
+        Group("messages-" + user.username).discard(message.reply_channel)
 
 
 @channel_session
@@ -86,7 +87,9 @@ def ws_message(message):
     bar_dic = {
         'type': 'chat',
         'submitter': user.username,
-        'html': bar_html
+        'html': bar_html,
+        'url': url,
+        'id': id_hash
     }
     Group("chat-" + label).send({'text': json.dumps(chat_dic)})
     if(room.employer == user):
