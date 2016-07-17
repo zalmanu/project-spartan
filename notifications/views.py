@@ -18,8 +18,7 @@ def seen(request):
             notification.seen = True
             notification.save()
             context = {"result": "success",
-                       "type": notification.not_type
-            }
+                       "type": notification.not_type}
             return HttpResponse(json.dumps(context),
                                 content_type='application/json')
     return HttpResponseForbidden()

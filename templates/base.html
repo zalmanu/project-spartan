@@ -68,15 +68,26 @@
 				  {% for notification in user.notifications.all %}
 				  {% if notification.not_type == "chat" %}
 				  <a href="{{ notification.url }}">
-                                    <li class="message">
+                                    <li class="message" data-notification="{{ notification.id_hash }}" onmouseover="seen_not(this.getAttribute('data-notification'));" id="{{ notification.id_hash }}">
 				      You received a message
                                     </li>
 				  </a>
+				  {% if notification.seen == False %}
+				  <script>
+				    seennumber++;
+				  </script>
+				  {% endif %}
 				    {% endif %}
-				    {% endfor %}
+				  {% endfor %}
+				  <script>
+				    seencheck("chat");
+				  </script>
                                 </div>
                             </ul>
                         </li>
+			<script>
+			  seennumber=0;
+			</script>
                         <li class="dropdown danger">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="iconcount"><i class="fa fa-star-half-o"></i></a>
                             <ul class="dropdown-menu danger  animated fadeInDown">
@@ -125,7 +136,7 @@
 					{% endif %}
 					{% endfor %}
 					<script>
-					  seencheck();
+					  seencheck("notif");
 					 </script>
 				      </div>
                                         <a href="#">

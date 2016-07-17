@@ -67,8 +67,12 @@ def ws_message(message):
                                         </a>
     """
     url = "/room/" + label
+    id_hash = ''.join(random.choice(
+        string.ascii_uppercase + string.digits) for _ in range(6))
     bar_html = """
-    <a href=\"""" + url + """\">
+    <a href=\"""" + url + """\" data-notification=\"""" + id_hash + """\"
+    onmouseover="seen_not(this.getAttribute('data-notification'));"
+    id=\"""" + id_hash + """\">
     <li class="message">
      You received a message
     </li>
@@ -93,8 +97,6 @@ def ws_message(message):
         Group("messages-" + room.employer.username).send({'text':
                                                           json.dumps(bar_dic)})
         receiver = room.employer
-    id_hash = ''.join(random.choice(
-        string.ascii_uppercase + string.digits) for _ in range(6))
     notification = Notification.objects.create(receiver=receiver,
                                                not_type="chat", url=url,
                                                id_hash=id_hash)

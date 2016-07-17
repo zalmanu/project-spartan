@@ -10,13 +10,3 @@ class Notification(models.Model):
                                  default='')
     url = models.CharField(max_length=1000, default='')
     id_hash = models.CharField(max_length=10000, default='')
-
-    def spartan_notif(self):
-        self.html = """
-            <span class="subject">
-            </span>
-            <span class="message">
-            A new post <b id="notification-bid">in your area</b>
-            </span>
-            </a>
-            """
