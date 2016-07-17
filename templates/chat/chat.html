@@ -1,49 +1,63 @@
+
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block content %}
 {% load widget_tweaks %}
-<body onload="zoom()">
-	<script type="text/javascript">
-        function zoom() {
-            document.body.style.zoom = "80%"
-        }
-	</script>
-                 <section class="wrap" id="first-section">
-                   <div class="row title-row">
-		    <br>
-                            <div class="col-12 font-thin categories-gallery">Chat with<span class="font-semibold"> {{ other.username }}</span></div>
+{% block content %}
+<script src="{% static "js/chat_script.js" %}"></script>
+<!-- Main Content -->
+            <div class="container-fluid">
+                <div class="side-body padding-top">                
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card" id="chat">
+                                <div class="card-header chat-card">
+                                    <div class="card-title">
+                                        <div class="title chat-title-box">Chat with {{ other }} <h6 style="display:inline-block;x"></h6></div>
+                                    </div>
+                                    <div class="pull-right card-action">
+                                        <div class="btn-group" role="group" aria-label="...">
+                                            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#modalCardExample"><i class="glyphicon glyphicon-remove chat-title-box" id="close-chat-box"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body no-padding" id="chat-body">
+                                  <ul class="message-list" id="mesg-list">
+				    {% for message in messages %}
+                                        <a>
+                                          <li>
+					    {% if message.submitter == user %}
+                                            <img src="{{ message.submitter.account.profile_image.url }}" class="profile-img pull-right">
+					    {% else %}
+					    <img src="{{ message.submitter.account.profile_image.url }}" class="profile-img pull-left">
+					    {% endif %}
+                                                <div class="message-block">
+                                                    <div><span class="username">{{ message.submitter }}</span> <span class="message-datetime">{{ message.timestamp }}</span>
+                                                    </div>
+                                                    <div class="message">{{ message.message }}</div>
+                                                </div>
+                                            </li>
+                                        </a>
+					{% endfor %}
+                                  </ul>
+				  <a href="#" id="message-load-more">
+                                          <div class="text-center load-more">
+					    <form method="POST" onsubmit="return sendmessage();">
+					      {% csrf_token %}
+					      {{ form.message|attr:"id:chat-input"}}
+					      <button type="button" class="btn btn-success">Send</button>
+					      </form>
+                                            </div>
+                                        </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="container" id="chat-frame">
-                  <ol class="chat" style="height: 500px; overflow-y:auto" id="mesg">
-		{% if messages %}	
-		{% for message in messages %}
-		{% if message.submitter == other %}  
-                <li class="other">
-		 {% else %}
-		<li class="self">
-		 {% endif %}
-                 <div class="avatar"><img src="http://www.gravatar.com/avatar/{{ message.submitter.account.code}}" draggable="false"/></div>
-                  <div class="msg">
-                    <p>{{ message.message }}</p>
-                    <time>{{ message.timestamp }}</time>
-                  </div>
-                </li>
-                <hr>
-		{% endfor %}
-		{% endif %}
-		  </ol>
-		  <form method="POST">
-		  {% csrf_token %}
-                   {{ form.message|add_class:'textarea'|attr:"placeholder: Type here!" }}
-		 </form>  
+                    
                 </div>
-    </section>
-
-            </header>
-</section>
+            </div>
 <script>
-  var objDiv = document.getElementById("mesg");
+  var objDiv = document.getElementById("chat-body");
   objDiv.scrollTop = objDiv.scrollHeight;
 </script>
-    </body>
 {% endblock %}
