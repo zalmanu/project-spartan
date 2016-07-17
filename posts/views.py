@@ -24,10 +24,10 @@ def create_post(request):
     if request.method == 'POST':
         if form.is_valid():
             post = form.instance
-            form.instance.author = current_user
+            post.author = current_user
             form.save()
-            category = form.instance.category
-            url = form.instance.get_absolute_url()
+            category = post.category
+            url = post.get_absolute_url()
             messagetip = " Hi! % s , \n You successfully"\
                          "posted an announce! \n" \
                          " Title: %s ,\n Description: %s \n Address: %s \n " \
@@ -44,8 +44,8 @@ def create_post(request):
                              "Spartan Tasks Post")
             id_hash = ''.join(random.choice(
                 string.ascii_uppercase + string.digits) for _ in range(6))
-            notify_spartans.delay(category.name, form.instance.city,
-                                  form.instance.author.username,
+            notify_spartans.delay(category.name, post.city,
+                                  post.author.username,
                                   url, id_hash)
             html = """
             <a href=\"""" + url + """\" id="seen_notif_req"
@@ -62,8 +62,8 @@ def create_post(request):
                 'posts': 'post'
             }
             Group("spartans-" + category.name +
-                  "-" + form.instance.city).send({'text': json.dumps(dic)})
-            return redirect(form.instance.get_absolute_url())
+                  "-" + post.city).send({'text': json.dumps(dic)})
+            return redirect(url)
     return render(request, 'posts/create_post.html', {
         'cod': current_user.account.code,
         'form': form})
@@ -82,8 +82,9 @@ def post(request, slug):
             post.delete()
             return redirect('/')
         if form.is_valid():
-            form.instance.post = post
-            form.instance.spartan = request.user.spartan
+            bid = form.instance
+            bid.post = post
+            bid.spartan = request.user.spartan
             form.save()
             receiver = post.author.username
             id_hash = ''.join(random.choice(
@@ -100,7 +101,7 @@ def post(request, slug):
             """
             dic = {
                 'html': html,
-                'author': form.instance.spartan.user.username,
+                'author': bid.spartan.user.username,
                 'type': 'bid'
             }
             Group("channel-" + receiver).send({

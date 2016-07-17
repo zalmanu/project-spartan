@@ -57,6 +57,9 @@ def ws_message(message):
     user = get_object_or_404(User, username=data['user_name'])
     message = Message.objects.create(room=room, message=data['text'],
                                      submitter=user)
+    url = "/room/" + label
+    id_hash = ''.join(random.choice(
+        string.ascii_uppercase + string.digits) for _ in range(6))
     html_txt = """
     <div class="message-block">
     <div><span class="username">""" + message.submitter.username + """</span>
@@ -67,9 +70,6 @@ def ws_message(message):
                                             </li>
                                         </a>
     """
-    url = "/room/" + label
-    id_hash = ''.join(random.choice(
-        string.ascii_uppercase + string.digits) for _ in range(6))
     bar_html = """
     <a href=\"""" + url + """\" data-notification=\"""" + id_hash + """\"
     onmouseover="seen_not(this.getAttribute('data-notification'));"
