@@ -1,4 +1,6 @@
 import json
+import string
+import random
 
 from django.contrib.auth.models import User
 from django.contrib.sessions.models import Session
@@ -8,6 +10,7 @@ from channels import Group
 from channels.sessions import channel_session
 
 from chat.models import Room, Message
+from notifications.models import Notification
 
 
 @channel_session
@@ -34,6 +37,7 @@ def ws_add(message):
     uid = session_data.get('_auth_user_id')
     user = User.objects.get(id=uid)
     message.channel_session['user'] = user.username
+    Group("channel-" + user.username).add(message.reply_channel)
     if user.account.has_related_object() and user.spartan.spartanStatus:
         Group("spartans-" + user.spartan.category.name + "-" +
               user.account.city).add(message.reply_channel)
@@ -41,7 +45,7 @@ def ws_add(message):
         room = Room.objects.get(slug=label[1])
         Group("chat-" + label[1]).add(message.reply_channel)
         message.channel_session['room'] = room.slug
-    Group("channel-" + user.username).add(message.reply_channel)
+    Group("messages-" + user.username).add(message.reply_channel)
 
 
 @channel_session
@@ -62,13 +66,39 @@ def ws_message(message):
                                             </li>
                                         </a>
     """
-    dic = {
+    url = "/room/" + label
+    bar_html = """
+    <a href=\"""" + url + """\">
+    <li class="message">
+     You received a message
+    </li>
+    """
+    chat_dic = {
         'message': data['text'],
         'submitter': user.username,
-        'code': user.account.code,
         'html': html_txt,
+        'type': 'chat_mess'
     }
-    Group("chat-" + label).send({'text': json.dumps(dic)})
+    bar_dic = {
+        'type': 'chat',
+        'submitter': user.username,
+        'html': bar_html
+    }
+    Group("chat-" + label).send({'text': json.dumps(chat_dic)})
+    if(room.employer == user):
+        Group("messages-" + room.spartan.username).send({'text':
+                                                         json.dumps(bar_dic)})
+        receiver = room.spartan
+    else:
+        Group("messages-" + room.employer.username).send({'text':
+                                                          json.dumps(bar_dic)})
+        receiver = room.employer
+    id_hash = ''.join(random.choice(
+        string.ascii_uppercase + string.digits) for _ in range(6))
+    notification = Notification.objects.create(receiver=receiver,
+                                               not_type="chat", url=url,
+                                               id_hash=id_hash)
+    notification.save()
 
 
 @channel_session

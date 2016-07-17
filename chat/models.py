@@ -27,7 +27,7 @@ class Message(models.Model):
     timestamp = models.DateTimeField(editable=False,
                                      auto_now_add=True, null=True)
 
-    
+
 class CreateMessageForm(forms.ModelForm):
 
     class Meta:

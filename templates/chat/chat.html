@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load widget_tweaks %}
 {% block content %}
 <script src="{% static "js/chat_script.js" %}"></script>
 <!-- Main Content -->
@@ -42,7 +43,8 @@
                                           <div class="text-center load-more">
 					    <form method="POST" onsubmit="return sendmessage();">
 					      {% csrf_token %}
-                                              <input type="text" id="chat-input" class="class="form-control""> <button type="button" class="btn btn-success">Send</button>
+					      {{ form.message|attr:"id:chat-input"}}
+					      <button type="button" class="btn btn-success">Send</button>
 					      </form>
                                             </div>
                                         </a>

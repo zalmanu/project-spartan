@@ -58,7 +58,8 @@ def create_post(request):
             """
             dic = {
                 'author': current_user.username,
-                'html': html
+                'html': html,
+                'posts': 'post'
             }
             Group("spartans-" + category.name +
                   "-" + form.instance.city).send({'text': json.dumps(dic)})
@@ -99,10 +100,9 @@ def post(request, slug):
             """
             dic = {
                 'html': html,
-                'author': form.instance.spartan.user.username
+                'author': form.instance.spartan.user.username,
+                'type': 'bid'
             }
-            print "bau"
-            print "channel-" + receiver
             Group("channel-" + receiver).send({
                 'text': json.dumps(dic)})
             notify_bid.delay(receiver, post.get_absolute_url(), id_hash)

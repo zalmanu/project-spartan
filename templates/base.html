@@ -59,21 +59,21 @@
                             <i class="fa fa-times icon"></i>
                         </button>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-comments-o"></i></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="chatcount"><i class="fa fa-comments-o"></i></a>
                             <ul class="dropdown-menu danger  animated fadeInDownx">
                                 <li class="title">
-                                    Messages <span class="badge pull-right">0</span>
+                                    Messages <span class="badge pull-right" id="chatnum">0</span>
                                 </li>
-                                <div class="notifications-list">
+                                <div class="notifications-list" id="chat-noti-bar-list">
+				  {% for notification in user.notifications.all %}
+				  {% if notification.not_type == "chat" %}
+				  <a href="{{ notification.url }}">
                                     <li class="message">
-                                        No new messages
+				      You received a message
                                     </li>
-                                    <li class="message">
-                                        No new messages
-                                    </li>
-                                    <li class="message">
-                                        No new messages
-                                    </li>   
+				  </a>
+				    {% endif %}
+				    {% endfor %}
                                 </div>
                             </ul>
                         </li>

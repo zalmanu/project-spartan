@@ -16,11 +16,13 @@ function sendmessage() {
  }
 socket.onmessage = function(message){
     var data = JSON.parse(message.data);
-    var elem = document.getElementById("chat-body");
-    var list = document.getElementById("mesg-list");
-    var clas ='profile-img pull-left';
-    var username = $('#user_name_not').text();
-    if(username == data.submitter)clas='profile-img pull-right';
-    $("#mesg-list").append("<a><li><img class=\""+ clas + "\">" + data.html);
-    elem.scrollTop = objDiv.scrollHeight;
+    if(data.type == "chat_mess"){
+	var elem = document.getElementById("chat-body");
+	var list = document.getElementById("mesg-list");
+	var clas ='profile-img pull-left';
+	var username = $('#user_name_not').text();
+	if(username == data.submitter)clas='profile-img pull-right';
+	$("#mesg-list").append("<a><li><img class=\""+ clas + "\">" + data.html);
+	elem.scrollTop = objDiv.scrollHeight;
+    }
  }
