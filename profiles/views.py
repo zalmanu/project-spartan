@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 
 from models import User_Edit, Account_Edit
@@ -21,4 +22,5 @@ def profile(request):
     return render(request, 'profiles/profile.html', {
         'form': user_form,
         'form_acc': account_form
-    })
+    },
+                  context_instance=RequestContext(request))

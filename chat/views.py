@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.template import RequestContext
 from django.http import HttpResponseForbidden
 
 from models import Room, CreateMessageForm
@@ -26,4 +27,4 @@ def room(request, slug):
         'messages': chat_room.messages.order_by('timestamp'),
         'form': form,
         'other': other,
-    })
+    }, context_instance=RequestContext(request))

@@ -1,8 +1,11 @@
 import json
 import random
+
 from django.http import HttpResponse
+from django.template import RequestContext
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
+
 from posts.models import Announcement
 from bidding.models import Offer
 from chat.models import Room
@@ -46,7 +49,8 @@ def posts(request):
         return HttpResponse(json.dumps(context),
                             content_type='application/json')
     else:
-        context = {'posts': request.user.posts.all()}
+        cont = {'posts': request.user.posts.all()}
         if request.user.account.has_related_object():
-            context['bids'] = request.user.spartan.bids.all()
-        return render(request, 'bidding/myPosts.html', context)
+            cont['bids'] = request.user.spartan.bids.all()
+        return render(request, 'bidding/myPosts.html', cont,
+                      context_instance=RequestContext(request))

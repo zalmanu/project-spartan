@@ -16,10 +16,11 @@ def notify_spartans(category_name, city, username, url, id_hash):
     category = Category.objects.get(name=category_name)
     for spartan in Spartan.objects.filter(spartanStatus=True,
                                           category=category):
-        notification = Notification.objects.create(
-            receiver=spartan.user, not_type="post", url=url,
-            id_hash=id_hash)
-        notification.save()
+        if spartan.user.account.city == city:
+            notification = Notification.objects.create(
+                receiver=spartan.user, not_type="post", url=url,
+                id_hash=id_hash)
+            notification.save()
 
 
 @task

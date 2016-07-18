@@ -1,357 +1,320 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load staticfiles %}
 {% block content %}
+{% load widget_tweaks %}
 
+        <!-- Main Content -->
 
+        <!--Anunturi -->
+        <div class="container-fluid">
+            <div class="side-body padding-top">
+                <div class="col-lg-12">
+                    <h2>Your Posts with it's bidders</h2>
 
-<body class="flat-blue">
-    <div class="app-container">
-        <div class="row content-container">
-            <nav class="navbar navbar-default navbar-fixed-top navbar-top">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-expand-toggle" id="expand-menu-button">
-                            <i class="fa fa-bars icon"></i>
-                        </button>
-                        <ol class="breadcrumb navbar-breadcrumb">
-                            <li class="active"><input type="text" class="form-control" placeholder="Search..." id="search-bar"></li>
-                        </ol>
-                        <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
-                            <i class="fa fa-th icon"></i>
-                        </button>
-                    </div>
-                    <ul class="nav navbar-nav navbar-right" id="toggle-menu">
-                        <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
-                            <i class="fa fa-times icon"></i>
-                        </button>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-comments-o"></i></a>
-                            <ul class="dropdown-menu danger  animated fadeInDownx">
-                                <li class="title">
-                                    Messages <span class="badge pull-right">0</span>
-                                </li>
-                                <div class="notifications-list">
-                                    <li class="message">
-                                        No new messages
-                                    </li>
-                                    <li class="message">
-                                        No new messages
-                                    </li>
-                                    <li class="message">
-                                        No new messages
-                                    </li>
-                                </div>
-                            </ul>
-                        </li>
-                        <li class="dropdown danger">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-star-half-o"></i> 4</a>
-                            <ul class="dropdown-menu danger  animated fadeInDown">
-                                <li class="title">
-                                    Notification <span class="badge pull-right">4</span>
-                                </li>
-                                <li>
-                                    <ul class="list-group notifications">
-                                        <div class="notifications-list">
-                                            <a href="#">
-                                                <li class="list-group-item">
-                                                    <span class="badge">1</span> <i class="fa fa-exclamation-circle icon"></i> new registration
-                                                </li>
-                                            </a>
-                                            <a href="#">
-                                                <li class="list-group-item">
-                                                    <span class="badge success">1</span> <i class="fa fa-check icon"></i> new orders
-                                                </li>
-                                            </a>
-                                            <a href="#">
-                                                <li class="list-group-item">
-                                                    <span class="badge success">1</span> <i class="fa fa-check icon"></i> new orders
-                                                </li>
-                                            </a>
-                                            <a href="#">
-                                                <li class="list-group-item">
-                                                    <span class="badge success">1</span> <i class="fa fa-check icon"></i> new orders
-                                                </li>
-                                            </a>
-                                            <a href="#">
-                                                <li class="list-group-item">
-                                                    <span class="badge success">1</span> <i class="fa fa-check icon"></i> new orders
-                                                </li>
-                                            </a>
-                                            <a href="#">
-                                                <li class="list-group-item">
-                                                    <span class="badge success">1</span> <i class="fa fa-check icon"></i> new orders
-                                                </li>
-                                            </a>
-                                            <a href="#">
-                                                <li class="list-group-item">
-                                                    <span class="badge danger">2</span> <i class="fa fa-comments icon"></i> customers messages
-                                                </li>
-                                            </a>
-                                        </div>
-                                        <a href="#">
-                                            <li class="list-group-item message">
-                                                view all
-                                            </li>
-                                        </a>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown profile">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ request.user.username }} <span class="caret"></span></a>
-                            <ul class="dropdown-menu animated fadeInDown">
-                                <li class="profile-img">
-                                     <img src='{{ user.account.profile_image.url }}' class = 'img-responsive'/>
-                                </li>
-                                <li>
-                                    <div class="profile-info">
-                                        <h4 class="username">{{ user.username }}</h4>
-                                        <p>{{ user.email }}</p>
-                                        <div class="btn-group margin-bottom-2x" role="group">
-                                            <a type="button" href="/profile" class="btn btn-default"><i class="fa fa-user"></i> Profile</a>
-                                            <a type="button" class="btn btn-default" href="/logout"><i class="fa fa-sign-out"></i> Logout</a>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
                 </div>
-            </nav>
-            <div class="side-menu sidebar-inverse">
-                <nav class="navbar navbar-default" role="navigation">
-                    <div class="side-menu-container">
-                        <div class="navbar-header">
-                            <a class="navbar-brand" href="/">
-                                <div class="icon fa"><img src="{% static "img/logo/logo.png" %}"  id="logo"></div>
-                                <div class="title">Spartan Tasks</div>
-                            </a>
-                            <button type="button" class="navbar-expand-toggle pull-right visible-xs">
-                                <i class="fa fa-times icon"></i>
-                            </button>
+            </div>
+        </div>
+
+{% for post in posts %}
+
+
+        <div class="container-fluid">
+            <div class="side-body padding-top">
+                <div class="col-lg-12">
+
+                    <h4>
+                        <a style="cursor:pointer;"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></b></a>
+                    </h4>
+                    <h4><a style="cursor:pointer;"></a></h4>
+
+             {% if post.spartan %}
+                    <div id="table">
+                        <div class="header blue" id="row">
+
+                            <div class="cell">
+                                First Name
+                            </div>
+                            <div class="cell">
+                                Last Name
+                            </div>
+                            <div class="cell">
+                                Email
+                            </div>
+                            <div class="cell">
+                                Offer
+                            </div>
+                            <div class="cell">
+                                Chat
+                            </div>
+                            <div class="cell">
+                                or call the spartan!
+                            </div>
+                            <div class="cell">
+                                <center>Finished task</center>
+                            </div>
                         </div>
-                        <ul class="nav navbar-nav">
-                            <li class="active">
-                                <a href="/">
-                                    <span class="icon glyphicon glyphicon-home"></span><span class="title">Home</span>
-                                </a>
-                            </li>
-                            <li class="panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#dropdown-element">
-                                    <span class="icon fa fa-desktop"></span><span class="title">Categories</span>
-                                </a>
-                                <!-- Dropdown level 1 -->
-                                <div id="dropdown-element" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                      <ul class="nav navbar-nav">
-					{% for category in categories %}
-                                            <li><a href="/category/{{ category.id }}" name="kind" value={{ category.id }}> {{ category.name }}</a>
-                                            </li>
-					{% endfor %}
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#dropdown-table">
-                                    <span class="icon fa fa-table"></span><span class="title">My Announcements</span>
-                                </a>
-                                <!-- Dropdown level 1 -->
-                                <div id="dropdown-table" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                      <ul class="nav navbar-nav">
-					{% if user.posts.all %}
-					{% for post in user.posts.all %}
-                                            <li><a href="{{ post.get_absolute_url }}"> {{ post.title }}</a>
-                                            </li>
-					    {% endfor %}
-					<li><a href="/submit">Add an announcement</a>
-					    {% else %}
-					<li><a href="/submit">Add an announcement</a>
-					  {% endif %}
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- Dropdown-->
-                            <li class="panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#component-example">
-                                    <span class="icon fa fa-cubes"></span><span class="title">Chats</span>
-                                </a>
-                                <!-- Dropdown level 1 -->
-                                <div id="component-example" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                      <ul class="nav navbar-nav">
-					{% if user.spa_rooms.all or user.empl_rooms.all %}
-					{% for room in user.empl_rooms.all %}
-                                            <li><a href="{{ room.get_absolute_url }}">Chat with {{ room.spartan.user.username }}</a>
-                                            </li>
-					    {% endfor %}
-					    {% for room in user.spa_rooms.all %}
-					<li><a href="{{ room.get_absolute_url }}">Chat with {{ room.employer.username }}</a>
-                                        </li>
-					{% endfor %}
-					 {% else %}
-					<li><a> No chat room, yet</a>
-					</li>
-					{% endif %}
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-			    {% if not user.account.has_related_object %}
-                            <li>
-                                <a href="/spartan">
-                                    <span class="icon fa fa-file-text-o"></span><span class="title">Become a Spartan</span>
-                                </a>
-                            </li>
-			    {% endif %}
-                            <li>
-                                <a href="/report">
-                                    <span class="icon fa fa-file-text-o"></span><span class="title">Report a Spartan/Employer</span>
-                                </a>
-                            </li>
-                            <!-- Dropdown-->
-                            <li>
-                                <a href="/faq">
-                                    <span class="icon fa fa-archive"></span><span class="title">Faq</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/contact">
-                                    <span class="icon fa fa-thumbs-o-up"></span><span class="title">Contact Us</span>
-                                </a>
-                            </li>
-                        </ul>
+
+                        {% if post.spartan_done %}
+
+                        <!--continut tabel-->
+                        <div id="row">
+
+                            <div class="cell">
+                                <a href="/user/{{ post.spartan.slug }}">{{ post.spartan.first_name }}</a>
+                            </div>
+                            <div class="cell">
+                                <a href="/user/{{ post.spartan.slug }}">{{ post.spartan.last_name }}</a>
+                            </div>
+                            <div class="cell">
+                                {{ post.spartan.user.email }}
+                            </div>
+                            <div class="cell">
+                                {{ post.price }}
+                            </div>
+                            <div  onclick="window.location='{{ post.room.get_absolute_url }}';" style="cursor:pointer" class="cell">
+                                Go to chat
+                            </div>
+                            <div class="cell">
+                                {{ post.spartan.user.account.phone }}
+                            </div>
+
+                            <div class="cell">
+                                <center><input type="checkbox" name="work_in_progress" value="finish_work" id="finish_work" class="employer" data-postfin="{{ post.id }}"></center>
+                            </div>
+                        </div>
+
+                        {% else %}
+
+                        <!--continut tabel-->
+                        <div id="row">
+
+                            <div class="cell">
+                                <a href="/user/{{ post.spartan.slug }}">{{ post.spartan.first_name }}</a>
+                            </div>
+                            <div class="cell">
+                                <a href="/user/{{ post.spartan.slug }}">{{ post.spartan.last_name }}</a>
+                            </div>
+                            <div class="cell">
+                                {{ post.spartan.user.email }}
+                            </div>
+                            <div class="cell">
+                                {{ post.price }}
+                            </div>
+                            <div  onclick="window.location='{{ post.room.get_absolute_url }}';" style="cursor:pointer" class="cell">
+                                Go to chat
+                            </div>
+                            <div class="cell">
+                                {{ post.spartan.user.account.phone }}
+                            </div>
+
+                            <div class="cell">
+                                <center>Wait for spartan's confimation</center>
+                            </div>
+                        </div>
+
+                        {% endif %}
+
+              {% else %}
+
+                        <div class="header blue" id="row">
+
+                            <div class="cell">
+                                First Name
+                            </div>
+                            <div class="cell">
+                                Last Name
+                            </div>
+                            <div class="cell">
+                                Offer
+                            </div>
+                            <div class="cell">
+                                <center>Accept</center>
+                            </div>
+                        </div>
+
+                        {% if post.offers.all %}
+
+                            {% for oferta in post.offers.all %}
+
+                                        <div id="row">
+
+                                            <div class="cell">
+                                                <a href="/user/{{ post.spartan.slug }}">{{ post.spartan.first_name }}</a>
+                                            </div>
+                                            <div class="cell">
+                                                <a href="/user/{{ post.spartan.slug }}">{{ post.spartan.last_name }}</a>
+                                            </div>
+                                            <div class="cell">
+                                                {{ post.price }}
+                                            </div>
+                                            <div class="cell">
+                                               	<p data-placement="top" data-toggle="tooltip" >
+                                                        <button class="btn btn-danger btn-xs hire" data-oferta="{{ oferta.id }}" data-post="{{ post.id }}" id="choose_button">
+                                                                <span class="glyphicon glyphicon-ok"></span>
+                                                        </button>
+												</p>
+                                            </div>
+
+                                        </div>
+                             {% endfor %}
+
+                        {% else %}
+                        </div> Nobody made an offer yet. </div>
+
+
+
+
+
+
+
                     </div>
-                    <!-- /.navbar-collapse -->
-                </nav>
-            </div>
-
-            <br><br><br><br>
-<!-- Main Content -->
-            <div class="container-fluid">
-                <div class="side-body padding-top">
-                        <div class="col-lg-12">
-
-                            {% if posts %}
-
-
-
-                                <h2>Your Posts with it's bidders</h2>
-                            {% for post in posts %}
-                                <br>
-                                <h4><a style="cursor:pointer;"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></b></a></h4>
-                                <div id="table">
-
-                                    {% if post.spartan %}
-                                    <div id="table">
-                                <div class="header blue" id="row">
-                                  <div class="cell">
-                                    First Name
-                                  </div>
-                                  <div class="cell">
-                                    Last Name
-                                  </div>
-                                  <div class="cell">
-                                    Email
-                                  </div>
-                                  <div class="cell">
-                                    Offer
-                                  </div>
-                                    <div class="cell">
-                                    Chator call the spartan!
-                                  </div>
-                                    <div class="cell">
-                                    Or call the spartan!
-                                  </div>
-
-                                  <div class="cell">
-                                    <center>Status</center>
-                                  </div>
-                                </div>
-
-
-                                  {% endif %}
-
-                                        
-
-
-
-
-                                        {% if post.offers.all %}
-
-                                        <div id="table">
-                                <div class="header blue" id="row">
-                                  <div class="cell">
-                                    ID
-                                  </div>
-                                  <div class="cell">
-                                    First Name
-                                  </div>
-                                  <div class="cell">
-                                    Last Name
-                                  </div>
-                                  <div class="cell">
-                                    Bid
-                                  </div>
-
-                                  <div class="cell">
-                                    <center>Status</center>
-                                  </div>
-                                </div>
-
-
-                                        {% for oferta in post.offers.all %}
-
-
-
-
-                                <div id="row">
-                                  <div class="cell">
-                                    1
-                                  </div>
-                                  <div class="cell">
-                                     <a href="/user/{{ oferta.spartan.slug }}">{{ oferta.spartan.first_name }} </a>
-                                  </div>
-                                  <div class="cell">
-                                    <a href="/user/{{ oferta.spartan.slug }}">{{ oferta.spartan.last_name }} </a>
-                                  </div>
-                                  <div class="cell">
-                                   {{ oferta.price }}
-                                  </div>
-
-                                  <div class="cell">
-                                    <p data-placement="top" data-toggle="tooltip" >
-        <button class="btn btn-danger btn-xs hire" data-oferta="{{ oferta.id }}" data-post="{{ post.id }}" id="choose_button">
-            <span class="glyphicon glyphicon-ok"></span>
-        </button>
-      </p>
-                                  </div>
-                                </div>
-
-                                        {% endfor %}
-
-
-
-                                </div>
-                                         {% endif %}
-                            {% endfor %}
-
-
-                                <br>
-
-                    {% endif %}
-
                 </div>
             </div>
-        <footer class="app-footer">
-            <div class="wrapper">
-                <span class="pull-right"><i class="fa fa-long-arrow-up" id="arrow"></i></span>SpartanTasks @ 2016 Copyright.
-            </div>
-        </footer>
-                     <script>
+
+        </div>
+
+{% endif %}
+ {% endif %}
+{% endfor %}
+    </div>
+
+
+
+    <!--sfarsit-->
+
+{% if bids %}
+
+
+                    <div id="table">
+                        <div class="header blue" id="row">
+
+                            <div class="cell">
+                                Annoucement title
+                            </div>
+                            <div class="cell">
+                                Offer
+                            </div>
+                            <div class="cell">
+                                Chat
+                            </div>
+                            <div class="cell">
+                               or call the employer!
+                            </div>
+                            <div class="cell">
+                               Job done
+                            </div>
+                        </div>
+
+                        {% for bid in bids %}
+
+			                    {% if bid.post.status and bid.status and bid.post.spartan_done %}
+
+                                         <div id="row">
+
+                                                <div class="cell">
+                                                    <a onclick="window.location='{{ bid.post.get_absolute_url }}';" style="cursor: pointer;">{{ bid.post.title }}</a>
+                                                </div>
+                                                <div class="cell">
+                                                    {{ bid.price }}
+                                                </div>
+                                                <div onclick="window.location='{{ bid.post.room.get_absolute_url }}';" style="cursor: pointer;" class="cell">
+                                                    Go to chat
+                                                </div>
+                                                <div class="cell">
+                                                    {{ bid.post.author.account.phone }}
+                                                </div>
+                                                <div class="cell">
+                                                    Waiting for employer's confimations
+                                                </div>
+                                         </div>
+
+                                {% elif bid.post.status and bid.status %}
+
+                                            <div id="row">
+
+                                                <div class="cell">
+                                                    <a onclick="window.location='{{ bid.post.get_absolute_url }}';" style="cursor: pointer;">{{ bid.post.title }}</a>
+                                                </div>
+                                                <div class="cell">
+                                                    {{ bid.price }}
+                                                </div>
+                                                <div onclick="window.location='{{ bid.post.room.get_absolute_url }}';" style="cursor: pointer;" class="cell">
+                                                    Go to chat
+                                                </div>
+                                                <div class="cell">
+                                                    {{ bid.post.author.account.phone }}
+                                                </div>
+                                                <div class="cell">
+                                                    <input type="checkbox" name="work_in_progress" value="finish_work" id="finish_work" class="spartan" data-post="{{ bid.post.id }}">
+                                                </div>
+                                         </div>
+
+
+                                {% elif not bid.post.status and not bid.status %}
+
+
+                                         <div id="row">
+
+                                                <div class="cell">
+                                                    {{ bid.post.title }}
+                                                </div>
+                                                <div class="cell">
+                                                    {{ bid.price }}
+                                                </div>
+
+                                                <div class="cell">
+                                                    -
+                                                </div>
+                                             <div class="cell">
+                                                    -
+                                                </div>
+                                                <div class="cell">
+                                                    Offer wasn't accepted, yet.
+                                                </div>
+                                         </div>
+
+                                {% endif %}
+
+	                    {% endfor %}
+
+
+                        </div>
+{% endif %}
+
+
+
+
+
+
+
+
+
+    <footer class="app-footer">
+        <div class="wrapper">
+            <span class="pull-right"><i class="fa fa-long-arrow-up" id="arrow"></i></span>SpartanTasks @ 2016 Copyright.
+        </div>
+    </footer>
+    <div>
+        <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js">
+        </script>
+        <script>
+                $("#arrow").click(function() {
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                return false;
+                });
+
+                $('.other-bids').hide();
+                $('#show-bidding-field').on('click', function(){
+                  $('.other-bids').toggle();
+                });
+
+                $('#bidding-place').click(function(){
+                    alert('The value must be in Dollars($).')
+                });
+
+        </script>
+
+          <script>
       // Jquery pentru accept
     $(document).ready(function(){
         $(".hire").click(function(event){
@@ -426,7 +389,7 @@
             });
         </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    </body>
 
 
-{% endblock %}
+
+        {% endblock %}
