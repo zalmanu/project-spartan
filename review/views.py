@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.template import RequestContext
 from django.shortcuts import get_object_or_404, redirect
 
 from .models import UrlUnique, CreateReviewForm
@@ -24,6 +25,5 @@ def review(request, slug, url_hash):
             current_spartan.save()
             return redirect('/')
     return render(request, 'review/review.html',
-                  {
-                    'form': form, 'slug': slug
-                  })
+                  {'form': form, 'slug': slug},
+                  context_instance=RequestContext(request))

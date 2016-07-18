@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from .models import CreateContact
+from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
+
+from .models import CreateContact
 
 
 @login_required
@@ -14,4 +16,5 @@ def contact_us(request):
                 'Your message has been successfully sent!\nThank you!')
     return render(request, 'contact_us/contact_us.html',
                   {'form': form,
-                   'confirm': confirm})
+                   'confirm': confirm},
+                  context_instance=RequestContext(request))

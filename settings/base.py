@@ -75,6 +75,7 @@ TEMPLATES = [
         'OPTIONS': {
             'debug': DEBUG,
             'context_processors': [
+                'Spartan.context_processors.template_context',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',

@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from models import CreateReportForm
+from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
+
+from models import CreateReportForm
 
 
 @login_required
@@ -16,4 +18,5 @@ def report(request):
     return render(request, 'report/report.html', {
         'form': form,
         'confirm': confirms
-    })
+    },
+                  context_instance=RequestContext(request))

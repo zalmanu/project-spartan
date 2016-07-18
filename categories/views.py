@@ -1,3 +1,4 @@
+from django.template import RequestContext
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 
@@ -12,6 +13,7 @@ def category(request, kind):
     return render(request, 'category/category.html', {
         'categories': categories,
         'kind': page_category,
-        'ann': Announcement.objects.filter(category=page_category,
-                                           status=False)
-    })
+        'anns': Announcement.objects.filter(category=page_category,
+                                            status=False),
+    },
+                  context_instance=RequestContext(request))

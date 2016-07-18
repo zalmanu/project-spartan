@@ -4,6 +4,7 @@ import string
 
 from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404, render_to_response
+from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.shortcuts import redirect
@@ -65,7 +66,7 @@ def create_post(request):
                   "-" + post.city).send({'text': json.dumps(dic)})
             return redirect(post.get_absolute_url())
     return render(request, 'posts/create_post.html', {
-        'form': form})
+        'form': form}, context_instance=RequestContext(request))
 
 
 @login_required
@@ -108,13 +109,10 @@ def post(request, slug):
             notify_bid.delay(receiver, post.get_absolute_url(), id_hash)
             confirms.append('Offer was sent')
     return render(request, 'posts/post.html', {
-        'ann': Announcement.objects.filter(status=False).order_by(
-            '-creation_date')[:4],
-        'user': request.user,
         'post': post,
         'form': form,
         'confirms': confirms
-    })
+    }, context_instance=RequestContext(request))
 
 
 @login_required
@@ -131,7 +129,7 @@ def edit_post(request, slug):
     return render(request, 'posts/edit_post.html', {
         'post': post,
         'form': form,
-    })
+    }, context_instance=RequestContext(request))
 
 
 @login_required
@@ -140,6 +138,6 @@ def search(request):
     posts = None
     if form.data != {} and form.is_valid():
         posts = form.search()
-    return render_to_response('search/search.html', {
-        'posts': posts
-    })
+        return render_to_response('search/search.html', {
+                                      'posts': posts
+                                  }, context_instance=RequestContext(request))

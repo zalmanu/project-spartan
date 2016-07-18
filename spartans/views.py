@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.core.exceptions import PermissionDenied
@@ -9,7 +10,8 @@ from posts.tasks import email_user
 
 @login_required
 def spartan(request):
-    if request.user.account.has_related_object() and request.user.spartan.spartanStatus:
+    cuser = request.user
+    if cuser.account.has_related_object() and cuser.spartan.spartanStatus:
         raise PermissionDenied
     confirm = []
     form = CreateSpartanForm(data=request.POST or None)
@@ -39,7 +41,9 @@ def spartan(request):
                            'wait for admin\'s confirmation')
     return render(request, 'spartan/spartan.html', {
         'form': form,
-        'confirms': confirm})
+        'confirms': confirm,
+        },
+                  context_instance=RequestContext(request))
 
 
 @login_required
@@ -49,4 +53,5 @@ def user(request, slug):
         'reviews': current_spartan.reviews,
         'spartan': current_spartan,
         'img_spartan': current_spartan.user.account.profile_image,
-    })
+    },
+                  context_instance=RequestContext(request))
