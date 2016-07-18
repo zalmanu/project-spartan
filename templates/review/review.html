@@ -1,63 +1,77 @@
-
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load staticfiles %}
 {% block content %}
-<body onload="zoom()">
-	<script type="text/javascript">
-        function zoom() {
-            document.body.style.zoom = "80%"
-        }
-	</script>
-                 <section class="wrap" id="first-section">
-                     <br></br>
-                    <div class="row title-row">
-                            <div class="col-12 font-thin categories-gallery">Review<span class="font-semibold">  spartan</span></div>
-                    </div>
-                    <div class="slide story" id="slide-6" data-slide="6">
-
-
-                        <div class="container">
-                          <div>
-                          <div class="card"></div>
-                          <div class="card" id="login-box">
-
-                              <h1 class="title">Enter: </h1>
-                            <form method="POST">
-			      {% csrf_token %}
-			      {% if form.errors %}
-				<div class="error">
-				  {% for field in form %}
-				  {% for message in field.errors %}
-				  <ul>
-				    <li>{{ message }}</li>
-				  </ul>
-				  {% endfor %}
-				  {% endfor %}
-				</div>
-				{% endif %}
-				{% for field in form %}
-                               <div class="input-container">
-				    {{ field }}
-
-                                    <label for="Username">{{ field.label }}</label>
-				       <div class="bar"></div>
+{% load widget_tweaks %}
+            <!-- Main Content -->
+            <div class="container-fluid">
+                <div class="side-body padding-top">                
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="card-title">
+                                        <div class="title">Review <h5 style="display: inline;"><i> your review is verry important for us.</i></h5></div>
+                                    </div>
                                 </div>
-			       {% endfor %}
-                                <div class="button-container">
-                                    <button name="dontp" type="submit" value="donp"><span>Don't post</span></button>
-                                    <button neme="rev" type="submit" value="rev"><span>Post Review</span></button>
-                                </div>
-                            </form>
-                          </div>
+                                <div class="card-body">
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                              {% if form.errors %}
+                                            <div class="error">
+                                              {% for field in form %}
+                                              {% for message in field.errors %}
+                                              <ul>
+                                                <li>{{ message }}</li>
+                                              </ul>
+                                              {% endfor %}
+                                              {% endfor %}
+                                            </div>
+                                            {% endif %}
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">What do you think about your Spartan...</label>
+                                            <div>
 
+                                                {{ form.message|add_class:"form-control "|attr:"placeholder:Enter a description"|attr:"required:required"}}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">    
+                                            <button name="dontp" type="submit" value="donp"  class="btn btn-danger" ><span>Don't Post my Review</span></button>
+                                            <button neme="rev" type="submit" value="rev" class="btn btn-success" ><span>Post my Review</span></button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    
                 </div>
-    </section>
+            </div>
+        <footer class="app-footer">
+            <div class="wrapper">
+                <span class="pull-right"><i class="fa fa-long-arrow-up" id="arrow"></i></span>SpartanTasks @ 2016 Copyright.
+            </div>
+        </footer>
+        <div>
+            <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js">
+            </script>
+            <script>
+                $("#arrow").click(function() {
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                return false;
+                });
 
-            </header>
-</section>
-    </body>
+                $('.other-bids').hide();
+                $('#show-bidding-field').on('click', function(){
+                  $('.other-bids').toggle();
+                });
+
+                $('#bidding-place').click(function(){
+                    alert('The value must be in Dollars($).')
+                });
+            </script>
+
+
 
 
 {% endblock %}
