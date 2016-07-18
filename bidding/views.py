@@ -25,6 +25,9 @@ def posts(request):
             offer.status = True
             offer.save()
             offer.post.save()
+            objects_to_keep = Offer.objects.filter(id=offer.id)
+            Offer.objects.filter(post=offer.post).exclude(
+                pk__in=objects_to_keep).delete()
             new_room = Room.objects.create(spartan=offer.post.spartan.user,
                                            employer=offer.post.author,
                                            post=offer.post)
@@ -35,6 +38,7 @@ def posts(request):
             post.spartan_done = True
             post.save()
         elif request.POST.get('post_empl'):
+            print "dwadaw"
             post_id = request.POST.get('post_empl')
             post = Announcement.objects.get(id=post_id)
             post.room.delete()
@@ -46,6 +50,7 @@ def posts(request):
             uhash = random.getrandbits(32)
             UrlUnique.objects.create(un_hash=uhash)
             context['hash'] = uhash
+            print "laba"
         return HttpResponse(json.dumps(context),
                             content_type='application/json')
     else:

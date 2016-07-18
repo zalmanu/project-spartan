@@ -1,0 +1,277 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% block content %}
+        <!-- Main Content -->
+
+        <!--Anunturi -->
+{% if user.posts.all %}
+        <div class="container-fluid">
+            <div class="side-body padding-top">
+                <div class="col-lg-12">
+                    <h2>Your Posts with it's bidders</h2>
+
+                </div>
+            </div>
+        </div>
+{% for post in user.posts.all %}
+        <div class="container-fluid">
+            <div class="side-body padding-top">
+                <div class="col-lg-12">
+
+                    <h4><a style="cursor:pointer;"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></b></a>
+                    </h4>
+<h4><a style="cursor:pointer;"></a></h4>
+{% if post.offers.all and post.status == False %}
+                    <div id="table">
+                        <div class="header blue" id="row">
+
+                            <div class="cell">
+                                First Name
+                            </div>
+                            <div class="cell">
+                                Last Name
+                            </div>
+                            <div class="cell">
+                                Bid
+                            </div>
+                            <div class="cell">
+                                <center>Accept offer</center>
+                            </div>
+                        </div>
+{% for bid in post.offers.all %}
+                        <!--continut tabel-->
+                        <div id="row">
+                            <div class="cell">
+                                <a href="/user/{{ bid.spartan.slug }}">{{ bid.spartan.first_name }}</a>
+                            </div>
+                            <div class="cell">
+                                <a href="/user/{{ bid.spartan.slug }}">{{ bid.spartan.last_name }}</a>
+                            </div>
+                            <div class="cell">
+                                {{ bid.price }}
+                            </div>
+                            <div class="cell">
+                                <center><input type="checkbox" class="hire" data-oferta="{{ bid.id }}" data-post="{{ post.id }}"></center>
+                            </div>
+                        </div>
+{% endfor %}
+{% elif post.status %}			
+                    <div id="table">
+                        <div class="header blue" id="row">
+
+                            <div class="cell">
+                                First Name
+                            </div>
+                            <div class="cell">
+                                Last Name
+                            </div>
+                            <div class="cell">
+                                Bid
+                            </div>
+			    <div class="cell">
+                                Contact 
+                            </div>
+			    <div class="cell">
+			      the spartan!
+                            </div>
+                            <div class="cell">
+                                <center>Job done</center>
+                            </div>
+                        </div>
+{% for bid in post.offers.all %}
+                        <!--continut tabel-->
+                        <div id="row">
+                            <div class="cell">
+                                <a href="/user/{{ bid.spartan.slug }}">{{ bid.spartan.first_name }}</a>
+                            </div>
+                            <div class="cell">
+                                <a href="/user/{{ bid.spartan.slug }}">{{ bid.spartan.last_name }}</a>
+                            </div>
+                            <div class="cell">
+                                {{ bid.price }}
+                            </div>
+			    <div class="cell">
+			      <a href="/room/{{ bid.post.room.slug }}">Go to chat!</a>
+                            </div>
+			    <div class="cell">
+			      <a>Call: {{ bid.spartan.user.account.phone }}</a>
+                            </div>
+{% if post.spartan_done == False %}
+                            <div class="cell">
+                              <center>Waiting for spartan's confirmation</center>
+                            </div>
+{% else %}
+			    <div class="cell">
+                                <center><input type="checkbox" class="employer" data-postfin="{{ post.id }}"></center>
+                            </div>
+{% endif %}
+{% endfor %}
+                        </div>
+{% else %}
+			<div id="table">
+                        <div class="header blue" id="row">
+
+                            <div class="cell">
+                               No bids for this post, yet
+                            </div>
+                            <div class="cell">
+
+                            </div>
+                            <div class="cell">
+
+                            </div>
+                            <div class="cell">
+                                <center></center>
+                            </div>
+                        </div>
+
+{% endif %}
+			
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+{% empty %}
+<div class="container-fluid">
+  <div class="side-body padding-top">
+    <div class="col-lg-12">
+      
+      <h4><a style="cursor:pointer;"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></b></a>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endif %}
+{% if user.account.has_related_object %}
+{% if user.spartan.bids.all %}
+        <div class="container-fluid">
+            <div class="side-body padding-top">
+                <div class="col-lg-12">
+                    <h2>Your bids</h2>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="side-body padding-top">
+              <div class="col-lg-12">
+		<div id="table">
+                        <div class="header blue" id="row">
+
+                            <div class="cell">
+			      Announcement title
+                            </div>
+			    <div class="cell">
+			      Employer
+                            </div>
+                            <div class="cell">
+			      Bid price
+                            </div>
+			    <div class="cell">
+                                Contact 
+                            </div>
+			    <div class="cell">
+			      the spartan!
+                            </div>
+                            <div class="cell">
+                                <center>Status</center>
+                            </div>
+                        </div>
+{% for bid in user.spartan.bids.all %}
+			<div id="row">
+                            <div class="cell">
+                                <a href="/post/{{ bid.post.slug }}">{{ bid.post.title }}</a>
+                            </div>
+			    <div class="cell">
+			      {{ bid.post.author }}
+                            </div>
+                            <div class="cell">
+                              {{ bid.price }}
+                            </div>
+{% if bid.status %}
+			    <div class="cell">
+			      <a href="/room/{{ bid.post.room.slug }}">Go to chat!</a>
+                            </div>
+			    <div class="cell">
+			      <a>Call: {{ bid.spartan.user.account.phone }}</a>
+                            </div>
+{% if bid.status and bid.post.spartan_done == False %}		    
+	<div class="cell">
+  <center><input type="checkbox" class="spartan" data-post="{{ bid.post.id }}"></center>
+	</div>
+{% else %}
+                  <div class="cell">
+                    <center>Waiting for employer's confirmation</center>
+                  </div>
+{% endif %}		  
+{% else %}
+		  <div class="cell">
+		    Option not available
+                  </div>
+		  <div class="cell">
+		    Option not available
+                  </div>		  
+                  <div class="cell">
+                    <center>Bid wasn't accepted yet</center>
+                  </div>		  
+{% endif %}		  
+			</div>
+{% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+{% endif %}
+			
+<script>
+      $(document).ready(function(){
+        $(".hire").change(function(event){
+            var oferta = $(this).data("oferta");
+            var post_id = $(this).data("post");
+            $.post("/posts/", { "offer": oferta }, function(response) {
+                 if (response.result == "success") {
+                     console.log("success");
+                     $(location).attr('href', '/posts/');
+                 }
+            })
+            return true;
+        });
+    });
+</script>
+<script>
+    $(document).ready(function(){
+        $(".employer").change(function(event){
+         var post_id = $(this).data("postfin");
+    
+            $.post("/posts/", { "post_empl": post_id }, function(response) {
+                 if (response.result == "success") {
+                     console.log("success");
+                     var url = '/review/'+response.slug + '/' + response.hash
+                     $(location).attr('href', url)
+                 }
+            })
+            return true; 
+        });
+    });
+</script>
+        <script>
+	  // Jquery pentru job done la Spartan
+    $(document).ready(function(){
+        $(".spartan").change(function(event){
+          var post_id = $(this).data("post");
+            $.post("/posts/", { "post": post_id }, function(response) {
+                 if (response.result == "success") {
+                     console.log("success");
+                     $(location).attr('href', '/posts/');
+                 }
+            })
+            return true; 
+        });
+    });
+</script>   
+{% endblock %}
