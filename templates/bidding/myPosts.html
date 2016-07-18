@@ -227,6 +227,7 @@
                                                     Waiting for employer's confimations
                                                 </div>
                                          </div>
+
                                 {% elif bid.post.status and bid.status %}
 
                                             <div id="row">
@@ -247,7 +248,10 @@
                                                     <input type="checkbox" name="work_in_progress" value="finish_work" id="finish_work" class="spartan" data-post="{{ bid.post.id }}">
                                                 </div>
                                          </div>
+
+
                                 {% elif not bid.post.status and not bid.status %}
+
 
                                          <div id="row">
 
@@ -268,8 +272,11 @@
                                                     Offer wasn't accepted, yet.
                                                 </div>
                                          </div>
+
                                 {% endif %}
+
 	                    {% endfor %}
+
 
                         </div>
 {% endif %}
