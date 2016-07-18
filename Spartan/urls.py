@@ -17,7 +17,8 @@ urlpatterns = [
     url(r'^', include('review.urls')),
     url(r'^', include('faq.urls')),
     url(r'^', include('report.urls')),
-    url(r'^', include('about_us.urls'))
+    url(r'^', include('about_us.urls')),
+    url(r'^', include('notifications.urls'))
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
@@ -25,4 +26,5 @@ handler404 = 'errorPages.views.handler404'
 handler500 = 'errorPages.views.handler500'
 
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

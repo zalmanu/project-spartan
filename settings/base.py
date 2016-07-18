@@ -16,10 +16,11 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Added
+    # Django packages
     'captcha',
     'widget_tweaks',
     'phonenumber_field',
+    'channels',
     'haystack',
     'django_cleanup',
 
@@ -36,9 +37,10 @@ INSTALLED_APPS = (
     'review',
     'faq',
     'report',
+    'realtime',
     'error_pages',
     'about_us',
-
+    'notifications'
 )
 
 
@@ -55,6 +57,12 @@ MIDDLEWARE_CLASSES = [
 
 
 ROOT_URLCONF = 'Spartan.urls'
+
+# Celery settings
+BROKER_URL = 'redis://localhost:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
 
 
 TEMPLATES = [
@@ -76,12 +84,15 @@ TEMPLATES = [
     },
 ]
 
+# Haystack config
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
         'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
     },
 }
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
 
 WSGI_APPLICATION = 'Spartan.wsgi.application'
 
@@ -115,6 +126,13 @@ AUTH_PASSWORD_VALIDATORS = [
         'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "asgiref.inmemory.ChannelLayer",
+        "ROUTING": "realtime.routing.channel_routing",
+    },
+}
 
 DATE_FORMAT = 'd/m/Y'
 
