@@ -2,6 +2,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
+from django.views.generic import TemplateView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -15,12 +16,18 @@ urlpatterns = [
     url(r'^', include('spartans.urls')),
     url(r'^', include('profiles.urls')),
     url(r'^', include('review.urls')),
-    url(r'^', include('faq.urls')),
     url(r'^', include('report.urls')),
-    url(r'^', include('about_us.urls')),
     url(r'^', include('notifications.urls'))
 
+
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+urlpatterns += [
+                   url(r'^faq/$', TemplateView.as_view(template_name="faq/faq.html")),
+                   url(r'^about/$', TemplateView.as_view(template_name="about_us/about_us.html")),
+]
+
 
 handler404 = 'errorPages.views.handler404'
 handler500 = 'errorPages.views.handler500'
