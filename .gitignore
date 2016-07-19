@@ -72,3 +72,6 @@ media/
 
 #Haystack indexes
 settings/whoosh_index/
+
+#Sebi's mac thing
+.DS_store
