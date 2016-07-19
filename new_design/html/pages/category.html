@@ -23,7 +23,16 @@
     
     <!-- CSS App -->
     <link rel="stylesheet" type="text/css" href="../../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../css/datepicker.css">
+    <link rel="stylesheet" type="text/css" href="../../css/wickedpicker.min.css">
     <link rel="stylesheet" type="text/css" href="../../css/themes/flat-blue.css">
+
+    <!-- Less -->
+    <link rel="stylesheet/less" type="text/css" href="../../less/datepicker.less" />
+
+    <!-- Sass-->
+    <link rel="stylesheet" type="text/css" href="../../css/wickedpicker.css">
+
 </head>
 
 <body class="flat-blue">
@@ -247,10 +256,55 @@
                     <br>
                     <div class="row">
                         <div class=" col-lg-12 col-md-12 col-xs-12">
-                            <div class="card">
+                            <div class="card" style="overflow:visible;">
                                 <div class="card-header">
                                     <div class="card-title">
                                         <div class="title">Garden Category</div>
+                                    </div>
+                                    <div class="pull-right card-action">
+                                        <div class="btn-group" role="group" aria-label="...">
+                                            <div class="btn-group">
+                                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Sort By Price:<span class="caret"></span>
+                                              </button>
+                                              <ul class="dropdown-menu">
+                                                <li><a href="#">Max Price:  <input type="text" placeholder="$" /></a></li>
+                                                <li><a href="#">Min Price:  <input type="text" placeholder="$" /></a></li>
+                                              </ul>
+                                            </div>
+
+                                            <div class="btn-group" style="margin-left:5px;">
+                                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Sort By Date:<span class="caret"></span>
+                                              </button>
+                                              <ul class="dropdown-menu" style="margin-left:-100px">
+                                                <li><a href="#">Till the date of:<input type="text" class="form-control datepicker" placeholder="Pick up a date"></a></li>
+                                            </div>
+
+                                            <div class="btn-group" style="margin-left:5px;">
+                                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                City<span class="caret"></span>
+                                              </button>
+                                              <ul class="dropdown-menu" style="height: 200px; margin-left: -100px; overflow: scroll;">
+                                                <li><a href="#">All</a></li>
+                                                <li role="separator" class="divider"></li>
+                                                <li><a href="#">Descending</a></li>
+                                                <li><a href="#">Descending</a></li>
+                                                <li><a href="#">Descending</a></li>
+                                                <li><a href="#">Descending</a></li>
+                                                <li><a href="#">Descending</a></li>
+                                                <li><a href="#">Descending</a></li>
+                                                <li><a href="#">Descending</a></li>
+                                                <li><a href="#">Descending</a></li>
+                                                <li><a href="#">Descending</a></li>
+                                                <li><a href="#">Descending</a></li>
+                                                <li><a href="#">Descending</a></li>
+                                                <li><a href="#">Descending</a></li>
+                                                <li><a href="#">Descending</a></li>
+                                                <li><a href="#">Descending</a></li>
+                                                <li><a href="#">Descending</a></li>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -549,6 +603,9 @@
             <!-- Javascript -->
             <script type="text/javascript" src="../../js/app.js"></script>
             <script type="text/javascript" src="../../js/index.js"></script>
+            <script type="text/javascript" src="../../js/bootstrap-datepicker.js"></script>
+            <script type="text/javascript" src="../../js/wickedpicker.min.js"></script>
+            <script type="text/jquery" src="../../js/wickedpickerSpec.js"></script>
 </body>
 
 </html>
