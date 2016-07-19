@@ -35,11 +35,9 @@ INSTALLED_APPS = (
     'spartans',
     'profiles',
     'review',
-    'faq',
     'report',
     'realtime',
     'error_pages',
-    'about_us',
     'notifications'
 )
 
