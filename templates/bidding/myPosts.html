@@ -56,7 +56,7 @@
                             </div>
                         </div>
 {% endfor %}
-{% elif post.status %}			
+{% elif post.status %}
                     <div id="table">
                         <div class="header blue" id="row">
 
@@ -69,16 +69,16 @@
                             <div class="cell">
                                 Bid
                             </div>
-			    <div class="cell">
-                                Contact 
-                            </div>
-			    <div class="cell">
-			      the spartan!
-                            </div>
-                            <div class="cell">
-                                <center>Job done</center>
-                            </div>
-                        </div>
+  			                    <div class="cell">
+                                  Contact
+                              </div>
+  			    <div class="cell">
+  			      the spartan!
+                              </div>
+                              <div class="cell">
+                                  <center>Job done</center>
+                              </div>
+                          </div>
 {% for bid in post.offers.all %}
                         <!--continut tabel-->
                         <div id="row">
@@ -106,6 +106,7 @@
                                 <center><input type="checkbox" class="employer" data-postfin="{{ post.id }}"></center>
                             </div>
 {% endif %}
+                            </div>
 {% endfor %}
                         </div>
 {% else %}
@@ -125,22 +126,18 @@
                                 <center></center>
                             </div>
                         </div>
-
+              </div>
 {% endif %}
-			
-                    </div>
                 </div>
             </div>
-
         </div>
-    </div>
 
 
 {% empty %}
 <div class="container-fluid">
   <div class="side-body padding-top">
     <div class="col-lg-12">
-      
+
       <h4><a style="cursor:pointer;"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></b></a>
     </div>
   </div>
@@ -172,7 +169,7 @@
 			      Bid price
                             </div>
 			    <div class="cell">
-                                Contact 
+                                Contact
                             </div>
 			    <div class="cell">
 			      the spartan!
@@ -199,7 +196,7 @@
 			    <div class="cell">
 			      <a>Call: {{ bid.spartan.user.account.phone }}</a>
                             </div>
-{% if bid.status and bid.post.spartan_done == False %}		    
+{% if bid.status and bid.post.spartan_done == False %}
 	<div class="cell">
   <center><input type="checkbox" class="spartan" data-post="{{ bid.post.id }}"></center>
 	</div>
@@ -207,18 +204,18 @@
                   <div class="cell">
                     <center>Waiting for employer's confirmation</center>
                   </div>
-{% endif %}		  
+{% endif %}
 {% else %}
 		  <div class="cell">
 		    Option not available
                   </div>
 		  <div class="cell">
 		    Option not available
-                  </div>		  
+                  </div>
                   <div class="cell">
                     <center>Bid wasn't accepted yet</center>
-                  </div>		  
-{% endif %}		  
+                  </div>
+{% endif %}
 			</div>
 {% endfor %}
                 </div>
@@ -227,7 +224,7 @@
     </div>
 {% endif %}
 {% endif %}
-			
+
 <script>
       $(document).ready(function(){
         $(".hire").change(function(event){
@@ -247,7 +244,7 @@
     $(document).ready(function(){
         $(".employer").change(function(event){
          var post_id = $(this).data("postfin");
-    
+
             $.post("/posts/", { "post_empl": post_id }, function(response) {
                  if (response.result == "success") {
                      console.log("success");
@@ -255,7 +252,7 @@
                      $(location).attr('href', url)
                  }
             })
-            return true; 
+            return true;
         });
     });
 </script>
@@ -270,8 +267,8 @@
                      $(location).attr('href', '/posts/');
                  }
             })
-            return true; 
+            return true;
         });
     });
-</script>   
+</script>
 {% endblock %}
