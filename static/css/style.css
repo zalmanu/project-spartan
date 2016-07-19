@@ -1537,6 +1537,20 @@ input[type='text'] {
   margin-top: 10%;
 }
 
+.faq-answer{
+  color: #19B5FE;
+  font-family: 'Roboto Condensed', sans-serif !important;
+  font-size: 15px;
+}
+
+.faq-icon{
+  font-size: 20px;
+}
+
+.open-answer{
+  cursor: pointer;
+}
+
 #19B5FE
 
 
