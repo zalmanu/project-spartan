@@ -4,6 +4,7 @@ from datetime import datetime
 from django.template import RequestContext
 from django.http import HttpResponseForbidden, HttpResponse
 from django.core.paginator import Paginator
+from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
@@ -54,7 +55,8 @@ def filter(request):
             data = datetime.strptime(data,
                                      "%m/%d/%Y")
             posts = Announcement.objects.filter(category=posts_category,
-                                                data__lte=data)
+                                                data__range=[timezone.now(),
+                                                             data])
         elif request.POST.get("city"):
             city = request.POST.get("city")
             posts = Announcement.objects.filter(category=posts_category,
