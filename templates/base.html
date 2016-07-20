@@ -41,6 +41,7 @@
     <link href="{% static "ss/timepicki.css" rel="stylesheet" %}">
     <script src="{% static "js/jquery.min.js" %}"></script>
     <script src="{% static "js/timepicki.js" %}"></script>
+    <script src="{% static "js/filters_script.js" %}"></script>
   </head>
   
 {% load widget_tweaks %}
@@ -207,7 +208,7 @@
                                     <div class="panel-body">
                                       <ul class="nav navbar-nav">
 					{% for category in categories %}
-                                            <li><a href="/category/{{ category.id }}" name="kind" value={{ category.id }}> {{ category.name }}</a>
+                                            <li><a href="/category/{{ category.name }}/?page=1" name="kind" value={{ category.name }}> {{ category.name }}</a>
                                             </li>
 					{% endfor %}
                                         </ul>
