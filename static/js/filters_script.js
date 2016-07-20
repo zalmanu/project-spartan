@@ -1,3 +1,6 @@
+path = window.location.pathname;
+path = path.split("/");
+
 function ask_for_posts(obj, path, type){
     var dict_values = {
 	'category': path
@@ -43,16 +46,22 @@ function ask_for_posts(obj, path, type){
 
 $(document).ready(function(){
     $("#maxprice").keyup(function(event){
-	path = window.location.pathname;
-	path = path.split("/");
-	ask_for_posts(this.value, path[2], "maxprice");
+	if(this.value)
+	    ask_for_posts(this.value, path[2], "maxprice");
         });
 });
+
 $(document).ready(function(){
     $("#minprice").keyup(function(event){
-	path = window.location.pathname;
-	path = path.split("/");
-	ask_for_posts(this.value, path[2], "minprice");
+	if(this.value)
+	    ask_for_posts(this.value, path[2], "minprice");
         });
-    });
+});
 
+$(document).ready(function(){
+    $('#filter_date').datepicker();
+    $('#filter_date').on("changeDate", function() {
+	if(this.value)
+	    ask_for_posts(this.value, path[2], "date");
+    });
+});

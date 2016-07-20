@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 
 from django.template import RequestContext
 from django.http import HttpResponseForbidden, HttpResponse
@@ -27,19 +28,29 @@ def category(request, kind):
 @csrf_exempt
 def filter(request):
     category = request.POST.get("category")
-    if request.POST.get("maxprice") or request.POST.get("minprice"):
+    posts_category = get_object_or_404(Category, name=category)
+    if (
+        request.POST.get("maxprice") or request.POST.get("minprice") or
+        request.POST.get("date")
+    ):
         if request.POST.get("maxprice"):
             price = request.POST.get("maxprice")
             price = int(price)
-            posts_category = get_object_or_404(Category, name=category)
             posts = Announcement.objects.filter(category=posts_category,
                                                 money__lte=price)
-        else:
+        elif request.POST.get("minprice"):
             price = request.POST.get("minprice")
             price = int(price)
-            posts_category = get_object_or_404(Category, name=category)
             posts = Announcement.objects.filter(category=posts_category,
                                                 money__gte=price)
+        elif request.POST.get("date"):
+            data = request.POST.get("date")
+            print data
+            data = datetime.strptime(data,
+                                     "%m/%d/%Y")
+            print data
+            posts = Announcement.objects.filter(category=posts_category,
+                                                data__lte=data)
         results = {'posts': []}
         array = results.get('posts')
         for post in posts:
