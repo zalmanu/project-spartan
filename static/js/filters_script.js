@@ -65,3 +65,11 @@ $(document).ready(function(){
 	    ask_for_posts(this.value, path[2], "date");
     });
 });
+
+$(document).ready(function(){
+    $("#filter_city").click(function(event){
+	if(this.innerHTML)
+	   ask_for_posts(this.innerHTML, path[2], "city");
+        });
+});
+

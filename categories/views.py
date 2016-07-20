@@ -31,7 +31,7 @@ def filter(request):
     posts_category = get_object_or_404(Category, name=category)
     if (
         request.POST.get("maxprice") or request.POST.get("minprice") or
-        request.POST.get("date")
+        request.POST.get("date") or request.POST.get("city")
     ):
         if request.POST.get("maxprice"):
             price = request.POST.get("maxprice")
@@ -45,12 +45,14 @@ def filter(request):
                                                 money__gte=price)
         elif request.POST.get("date"):
             data = request.POST.get("date")
-            print data
             data = datetime.strptime(data,
                                      "%m/%d/%Y")
-            print data
             posts = Announcement.objects.filter(category=posts_category,
                                                 data__lte=data)
+        elif request.POST.get("city"):
+            city = request.POST.get("city")
+            posts = Announcement.objects.filter(category=posts_category,
+                                                city=city)
         results = {'posts': []}
         array = results.get('posts')
         for post in posts:
