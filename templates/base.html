@@ -208,7 +208,7 @@
                                     <div class="panel-body">
                                       <ul class="nav navbar-nav">
 					{% for category in categories %}
-                                            <li><a href="/category/{{ category.id }}" name="kind" value={{ category.id }}> {{ category.name }}</a>
+                                            <li><a href="/category/{{ category.name }}" name="kind" value={{ category.name }}> {{ category.name }}</a>
                                             </li>
 					{% endfor %}
                                         </ul>
