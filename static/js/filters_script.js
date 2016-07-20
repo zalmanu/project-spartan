@@ -41,6 +41,7 @@ function ask_for_posts(obj, path, type){
 		"</div>";
 	    $("#posts_div").append(html);
 	}
+	$("#pages_div").remove();
     });
 }
 

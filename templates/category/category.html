@@ -58,7 +58,7 @@
                         </div>  
                         <br><br>
 			<div class="row  no-margin-bottom" id="posts_div">
-			  {% for post in anns %}
+			  {% for post in anns.object_list %}
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                             <div class="thumbnail no-margin-bottom">
                                 <img src= '{{ post.image.url }}' class = 'img-responsive'/>
@@ -76,28 +76,32 @@
                             </div>
                         </div>
 			{% endfor %}
-                    </div>
-                    <div class="no-padding no-margin-bottom">
+			</div>
+			{% if num_pages > 1 %}
+			<div class="no-padding no-margin-bottom" id="pages_div">
                                         <nav>
-                                            <ul class="pagination">
-                                                <li>
-                                                    <a href="#" aria-label="Previous">
+                                          <ul class="pagination">
+					    {% if anns.has_previous %}
+                                                <li onclick="location.href='/category/{{ kind.name }}/?page={{ anns.previous_page_number }}'">
+                                                    <a href="/category/{{ kind.name }}/?page={{ anns.previous_page_number }}" aria-label="Previous">
                                                         <span aria-hidden="true">&laquo;</span>
                                                     </a>
                                                 </li>
-                                                <li class="active"><a href="#">1</a></li>
-                                                <li><a href="#">2</a></li>
-                                                <li><a href="#">3</a></li>
-                                                <li><a href="#">4</a></li>
-                                                <li><a href="#">5</a></li>
-                                                <li>
-                                                    <a href="#" aria-label="Next">
+						{% endif %}
+						{% for i in anns.paginator.page_range %}
+                                            <li onclick="location.href='/category/{{ kind.name }}/?page={{ i }}'"><a class="active" href="/category/{{ kind.name }}/?page={{ i }}">{{ i }}</a></li>
+						  {% endfor %}
+						{% if anns.has_next %}
+						<li onclick="/category/{{ kind.name }}/?page={{ anns.next_page_number }}">
+                                                    <a href="/category/{{ kind.name }}/?page={{ anns.next_page_number }}" aria-label="Next">
                                                         <span aria-hidden="true">&raquo;</span>
                                                     </a>
                                                 </li>
+						{% endif %}
                                             </ul>
                                         </nav>
-                                    </div>  
+                        </div>
+			{% endif %}
                 </div>
             </div>
 {% endblock %}

@@ -3,6 +3,7 @@ from datetime import datetime
 
 from django.template import RequestContext
 from django.http import HttpResponseForbidden, HttpResponse
+from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
@@ -15,11 +16,16 @@ from posts.models import Announcement
 def category(request, kind):
     categories = Category.objects.all()
     page_category = get_object_or_404(Category, name=kind)
+    anns = Announcement.objects.all().filter(category=page_category,
+                                             status=False)
+    page = request.GET.get('page')
+    paginator = Paginator(anns, 8)
     return render(request, 'category/category.html', {
         'categories': categories,
         'kind': page_category,
-        'anns': Announcement.objects.filter(category=page_category,
-                                            status=False),
+        'anns': paginator.page(page),
+        'num_pages': paginator.num_pages,
+        'page_number': page
     },
                   context_instance=RequestContext(request))
 
