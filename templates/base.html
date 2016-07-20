@@ -335,7 +335,14 @@
         alert('The value must be in Dollars($).')
         });
     </script>
-
+    
+    <audio style="display:none;" id="notification_sound">
+        <source src="{% static "audio/chime.mp3" %}" type="audio/mp3">
+    </audio>
+    
+    <audio style="display:none;" id="chat_sound">
+    	<source src="{% static "audio/notificare.mp3" %}" type="audio/mp3">
+    </audio>
     <!-- Javascript Libs -->
     <script type="text/javascript" src="{% static "lib/js/jquery.min.js" %}"></script>
     <script type="text/javascript" src="{% static "lib/js/bootstrap.min.js" %}"></script>

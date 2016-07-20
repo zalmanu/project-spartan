@@ -17,7 +17,7 @@ function sendmessage() {
 socket.onmessage = function(message){
     var data = JSON.parse(message.data);
     if(data.type == "chat_mess"){
-	console.log("dwa");
+	var chat_audio = document.getElementById("chat_sound");    
 	var elem = document.getElementById("chat-body");
 	var list = document.getElementById("mesg-list");
 	var clas ='profile-img pull-left';
@@ -25,5 +25,6 @@ socket.onmessage = function(message){
 	if(username == data.submitter)clas='profile-img pull-right';
 	$("#mesg-list").append("<a><li><img src=\"" + data.img + "\"class=\""+ clas + "\">" + data.html);
 	elem.scrollTop = objDiv.scrollHeight;
+	chat_audio.play();
     }
  }
