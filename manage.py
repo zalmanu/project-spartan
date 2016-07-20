@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+# Copyright 2015-2016 Emanuel Danci, Emanuel Covaci, Fineas Silaghi, Sebastian Males, Vlad Temian
 import os
 import sys
 

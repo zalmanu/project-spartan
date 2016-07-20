@@ -1,3 +1,19 @@
+# Copyright 2015-2016 Emanuel Danci, Emanuel Covaci, Fineas Silaghi, Sebastian Males, Vlad Temian
+#
+# This file is part of Project Spartan.
+#
+# Project Spartan is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Project Spartan is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Project Spartan.  If not, see <http://www.gnu.org/licenses/>.
 import json
 import random
 import string
@@ -13,8 +29,9 @@ from django.http import Http404
 from channels import Group
 from haystack.forms import SearchForm
 
-from .models import Announcement, EditPostForm, CreatePostForm
-from bidding.models import CreateOfferForm
+from .models import Announcement
+from .forms import EditPostForm, CreatePostForm
+from bidding.forms import CreateOfferForm
 from .tasks import notify_spartans, email_user, notify_bid
 
 
@@ -78,7 +95,7 @@ def post(request, slug):
         raise Http404()
     confirms = []
     if request.method == 'POST':
-        if request.POST.get("deletePost"):
+        if request.POST.get("deletePost") and post.author == request.user:
             post.delete()
             return redirect('/')
         if form.is_valid():
