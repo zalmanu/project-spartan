@@ -12,14 +12,14 @@
 				if(settings.show_meridian){
 					return tim + " : " + mini + " : " + meri;
 				}else{
-					return tim + " : " + mini;
+					return tim + ":" + mini;
 				}
 			},
 			increase_direction: 'down',
 			custom_classes: '',
-			min_hour_value: 1,
-			max_hour_value: 12,
-			show_meridian: true,
+			min_hour_value: 0,
+			max_hour_value: 23,
+			show_meridian: false,
 			step_size_hours: '1',
 			step_size_minutes: '1',
 			overflow_minutes: false,

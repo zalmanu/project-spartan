@@ -73,13 +73,12 @@
                                         </div>
 
 
-                                        <div class="form-group">
-                                            <label for="exampleInputFile">Time</label>
-                                            <div class="input-group">
-                                                <!--<input id="timepicker1" type="text" name="timepicker1" class="form-control timepicker" placeholder="Pick up a time"/>-->
-                                                <!--{{ form.timePost|add_class:"form-control timepicker"|attr:"required:required"|attr:"placeholder:Pick up a date"}}-->
-                                                {{ form.timePost|add_class:"form-control "|attr:"required:required"|attr:"placeholder:Enter a time in format HH:MM"}}
-                                                {% if form.timePost.errors %}
+                                <div class="form-group">
+                                    <label for="exampleInputFile">Time</label>
+
+                                    {{ form.timePost|attr:"required:required"|attr:"placeholder:Enter a time"|add_class:"time_element form-control"}}
+
+                                     {% if form.timePost.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
                                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                                         <strong>Warning!</strong>
@@ -88,12 +87,8 @@
 				                                        {% endfor %}
                                                             </div>
                                              {% endif %}
-                                                <span class="input-group-addon" id="basic-addon1">
-                                                    <i class="glyphicon glyphicon-time" data-time-icon="icon-time" data-date-icon="icon-calendar">
-                                                    </i>
-                                                </span>
-                                            </div>
-                                        </div>
+
+                                </div>
 
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Address</label>
@@ -303,9 +298,11 @@
                 });
             </script>
 
-            <script>
-            $('#timepicker1').timepicki();
-            </script>
+              <script>
+                  $(document).ready(function(){
+                   $(".time_element").timepicki();
+                   });
+              </script>
 
 
 {% endblock %}

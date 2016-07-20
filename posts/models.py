@@ -111,3 +111,6 @@ class CreatePostForm(forms.ModelForm):
         if money < 1 or money > 9223372036854775807:
             raise forms.ValidationError('Enter a valid price')
         return money
+
+
+
