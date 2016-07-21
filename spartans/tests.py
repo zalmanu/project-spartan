@@ -80,6 +80,4 @@ class SpartanFormsTestCase(TestCase):
                      'category': self.category.name,
                      'bank': '1234123412341234'}
         form = CreateSpartanForm(data=form_data)
-        if not form.is_valid():
-            print form.errors
         self.assertFalse(form.is_valid())

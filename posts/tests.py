@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Project Spartan.  If not, see <http://www.gnu.org/licenses/>.
 
-from django.test import TestCase, RequestFactory
+from django.test import TestCase, RequestFactory, Client
 from django.contrib.auth.models import User
 
 from .models import Announcement
@@ -24,6 +24,7 @@ from .views import post, edit_post
 
 class PostsViewsTestCase(TestCase):
     def setUp(self):
+        self.client = Client()
         self.factory = RequestFactory()
         self.user = User.objects.create_user(username="tester",
                                              email="smt@smt.com",
@@ -52,3 +53,14 @@ class PostsViewsTestCase(TestCase):
         request.user = self.user2
         resposne = edit_post(request, self.post.slug)
         self.assertNotEqual(resposne.status_code, 200)
+
+    def test_search_empty_data(self):
+        request = self.client.get('/search/')
+        request.user = self.user
+        self.assertIsNone(request.context)
+
+    def test_search_valid_data(self):
+        request = self.client.get('/search/', {'q': 'Zugrav'})
+        request.user = self.user
+        print request.response
+        self.assertTrue(request.response)

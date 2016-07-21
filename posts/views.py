@@ -151,10 +151,10 @@ def edit_post(request, slug):
 
 @login_required
 def search(request):
-    form = SearchForm(request.GET)
+    form = SearchForm(request.POST or None)
     posts = None
     if form.data != {} and form.is_valid():
         posts = form.search()
-        return render_to_response('search/search.html', {
-                                      'posts': posts
-                                  }, context_instance=RequestContext(request))
+    return render_to_response('search/search.html', {
+        'posts': posts
+    }, context_instance=RequestContext(request))

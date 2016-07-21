@@ -18,7 +18,7 @@
 import json
 import random
 
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseForbidden
 from django.template import RequestContext
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
@@ -34,43 +34,47 @@ from review.models import UrlUnique
 def posts(request):
     if request.method == 'POST':
         context = {"result": "success"}
-        if request.POST.get('offer'):
-            offer_id = request.POST.get('offer')
-            offer = Offer.objects.get(id=offer_id)
-            offer.post.spartan = offer.spartan
-            offer.post.price = offer.price
-            offer.post.status = True
-            offer.status = True
-            offer.save()
-            offer.post.save()
-            objects_to_keep = Offer.objects.filter(id=offer.id)
-            Offer.objects.filter(post=offer.post).exclude(
-                pk__in=objects_to_keep).delete()
-            new_room = Room.objects.create(spartan=offer.post.spartan.user,
-                                           employer=offer.post.author,
-                                           post=offer.post)
-            new_room.save()
-        elif request.POST.get('post'):
-            post_id = request.POST.get('post')
-            post = Announcement.objects.get(id=post_id)
-            post.spartan_done = True
-            post.save()
-        elif request.POST.get('post_empl'):
-            print "dwadaw"
-            post_id = request.POST.get('post_empl')
-            post = Announcement.objects.get(id=post_id)
-            post.room.delete()
-            slug = post.spartan.slug
-            post.spartan.tasks += 1
-            post.spartan.save()
-            post.delete()
-            context['slug'] = slug
-            uhash = random.getrandbits(32)
-            UrlUnique.objects.create(un_hash=uhash)
-            context['hash'] = uhash
-            print "laba"
-        return HttpResponse(json.dumps(context),
-                            content_type='application/json')
+        if(
+            request.POST.get('offer') or request.POST.get('post') or
+                request.POST.get('post_empl')
+        ):
+            if request.POST.get('offer'):
+                offer_id = request.POST.get('offer')
+                offer = Offer.objects.get(id=offer_id)
+                offer.post.spartan = offer.spartan
+                offer.post.price = offer.price
+                offer.post.status = True
+                offer.status = True
+                offer.save()
+                offer.post.save()
+                objects_to_keep = Offer.objects.filter(id=offer.id)
+                Offer.objects.filter(post=offer.post).exclude(
+                    pk__in=objects_to_keep).delete()
+                new_room = Room.objects.create(spartan=offer.post.spartan.user,
+                                               employer=offer.post.author,
+                                               post=offer.post)
+                new_room.save()
+            elif request.POST.get('post'):
+                post_id = request.POST.get('post')
+                post = Announcement.objects.get(id=post_id)
+                post.spartan_done = True
+                post.save()
+            elif request.POST.get('post_empl'):
+                post_id = request.POST.get('post_empl')
+                post = Announcement.objects.get(id=post_id)
+                post.room.delete()
+                slug = post.spartan.slug
+                post.spartan.tasks += 1
+                post.spartan.save()
+                post.delete()
+                context['slug'] = slug
+                uhash = random.getrandbits(32)
+                UrlUnique.objects.create(un_hash=uhash)
+                context['hash'] = uhash
+            return HttpResponse(json.dumps(context),
+                                content_type='application/json')
+        else:
+            return HttpResponseForbidden
     else:
         cont = {'posts': request.user.posts.all()}
         if request.user.account.has_related_object():
