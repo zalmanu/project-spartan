@@ -19,7 +19,8 @@ import json
 
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponseForbidden, HttpResponse
-
+from django.shortcuts import render_to_response
+from django.template import RequestContext
 from .models import Notification
 
 
@@ -50,3 +51,7 @@ def notification_delete(request):
             return HttpResponse(json.dumps({'result': 'succes'}),
                                 content_type='application/json')
     return HttpResponseForbidden()
+
+
+def notification_page(request):
+    return render_to_response('notifications/notifications-page.html',context_instance=RequestContext(request))

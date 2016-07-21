@@ -20,5 +20,6 @@ from . import views
 
 urlpatterns = [
     url(r'^seen/$', views.seen, name='seen'),
-    url(r'^delete/$', views.notification_delete, name='delete')
+    url(r'^delete/$', views.notification_delete, name='delete'),
+    url(r'^notifications/$', views.notification_page, name='notifications')
 ]
