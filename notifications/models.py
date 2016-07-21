@@ -27,3 +27,4 @@ class Notification(models.Model):
                                  default='')
     url = models.CharField(max_length=1000, default='')
     id_hash = models.CharField(max_length=10000, default='')
+    context = models.CharField(max_length=10000, blank=True, default='')

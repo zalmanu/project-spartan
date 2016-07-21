@@ -18,7 +18,6 @@
 from django.test import TestCase, RequestFactory
 from django.contrib.auth.models import User
 
-from authentication.models import Account
 from .models import Announcement
 from .views import post, edit_post
 
@@ -34,15 +33,8 @@ class PostsViewsTestCase(TestCase):
                                               email="smt@gmail.com",
                                               password="top_secret2")
         self.user2.save()
-        account = Account.objects.create(city="Timisoara", country="Romania",
-                                         user=self.user)
-        account.save()
-        account2 = Account.objects.create(city="Timisoara",
-                                          country="Romania",
-                                          user=self.user2)
-        account2.save()
         self.post = Announcement.objects.create(title="Zugrav",
-                                                text="Asa de un zugrav",
+                                                description="Asa de un zugrav",
                                                 author=self.user,
                                                 price=200)
         self.post.save()

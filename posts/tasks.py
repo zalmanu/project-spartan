@@ -29,23 +29,23 @@ from categories.models import Category
 
 
 @task
-def notify_spartans(category_name, city, username, url, id_hash):
+def notify_spartans(category_name, city, title, url, id_hash):
     category = Category.objects.get(name=category_name)
     for spartan in Spartan.objects.filter(spartanStatus=True,
                                           category=category):
         if spartan.user.account.city == city:
             notification = Notification.objects.create(
                 receiver=spartan.user, not_type="post", url=url,
-                id_hash=id_hash)
+                id_hash=id_hash, context=title)
             notification.save()
 
 
 @task
-def notify_bid(username, url, id_hash):
+def notify_bid(username, url, title, id_hash):
     receiver = User.objects.get(username=username)
     notification = Notification.objects.create(receiver=receiver,
                                                not_type="bid", url=url,
-                                               id_hash=id_hash)
+                                               id_hash=id_hash, context=title)
     notification.save()
 
 

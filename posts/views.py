@@ -63,7 +63,7 @@ def create_post(request):
             id_hash = ''.join(random.choice(
                 string.ascii_uppercase + string.digits) for _ in range(6))
             notify_spartans.delay(category.name, post.city,
-                                  post.author.username,
+                                  post.title,
                                   url, id_hash)
             html = """
             <a href=\"""" + url + """\" id="seen_notif_req"
@@ -123,7 +123,7 @@ def post(request, slug):
             }
             Group("channel-" + receiver).send({
                 'text': json.dumps(dic)})
-            notify_bid.delay(receiver, post.get_absolute_url(), id_hash)
+            notify_bid.delay(receiver, post.get_absolute_url(), bid.post.title, id_hash)
             confirms.append('Offer was sent')
     return render(request, 'posts/post.html', {
         'post': post,

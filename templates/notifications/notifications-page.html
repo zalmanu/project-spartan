@@ -23,57 +23,29 @@
 
 
                                            	{% for notification in user.notifications.all %}
-					                                {% if notification.not_type == "post" %}
-					                                        {% if notification.seen %}
-                                                            <a href="{{ notification.url}}">
+                                                        <a href="{{ notification.url}}">
                                                                 <li>
-                                                                    <img src="{% static "img/alarm.png" %}" class="profile-img pull-left">
-                                                                    <div class="message-block me-chat">
+                                                                    {% if notification.not_type == "post" %}
+                                                                   <img src="{% static "img/map.png" %}" class="profile-img pull-left">
+                                                                    <div class="message-block">
+                                                                        <div>
+                                                                            <span class="username">{{ notification.context }}</span>
+                                                                        </div>
+                                                                        <div class="message">New post in your area</div>
+                                                                      {% elif notification.not_type == "bid" %}
+                                                                     <img src="{% static "img/bid.png" %}" class="profile-img pull-left">
+                                                                    <div class="message-block">
+                                                                        <div>
+                                                                            <span class="username">{{ notification.context }}</span>
+                                                                        </div>
+                                                                        <div class="message">Someone bid on your post</div>
+					                                                    {% endif %}
+                                                                 </li>
+                                                         </a>
 
-                                                                        <div >New post in your area</div>
-                                                                    </div>
-                                                                </li>
-                                                            </a>
-
-                                                            {% else %}
 
 
-                                                            <a href="{{ notification.url}}">
-                                                                <li>
-                                                                    <img src="{% static "img/alarm.png" %}" class="profile-img pull-left">
-                                                                    <div class="message-block me-chat">
 
-                                                                        <div >New post in your area</div>
-                                                                    </div>
-                                                                </li>
-                                                            </a>
-                                                            {% endif %}
-
-                                                    {% elif notification.not_type == "bid" %}
-                                                             {% if notification.seen %}
-
-                                                                            <a href="{{ notification.url}}">
-                                                                                <li>
-                                                                                    <img src="{% static "img/money.png" %}" class="profile-img pull-left">
-                                                                                    <div class="message-block me-chat">
-
-                                                                                        <div >Someone bid on your post</div>
-                                                                                    </div>
-                                                                                </li>
-                                                                             </a>
-                                                             {% else %}
-                                                                                <a href="{{ notification.url}}">
-                                                                                <li>
-                                                                                    <img src="{% static "img/money.png" %}" class="profile-img pull-left">
-                                                                                    <div class="message-block me-chat">
-
-                                                                                        <div >Someone bid on your post</div>
-                                                                                    </div>
-                                                                                </li>
-                                                                             </a>
-
-                                                              {% endif %}
-					                                 {% endif %}
 					                        {% endfor %}
 
 
