@@ -37,7 +37,11 @@ class PostsViewsTestCase(TestCase):
         self.post = Announcement.objects.create(title="Zugrav",
                                                 description="Asa de un zugrav",
                                                 author=self.user,
-                                                price=200)
+                                                price=200,
+                                                image='tests/tests.png',
+                                                image2='tests/tests.png',
+                                                image3='tests/tests.png',
+                                                image4='tests/tests.png')
         self.post.save()
 
     def test_delete_post_from_another_user(self):
@@ -58,9 +62,3 @@ class PostsViewsTestCase(TestCase):
         request = self.client.get('/search/')
         request.user = self.user
         self.assertIsNone(request.context)
-
-    def test_search_valid_data(self):
-        request = self.client.get('/search/', {'q': 'Zugrav'})
-        request.user = self.user
-        print request.response
-        self.assertTrue(request.response)
