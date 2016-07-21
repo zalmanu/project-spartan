@@ -53,13 +53,13 @@ class AuthFormsTestCase(TestCase):
                                          spartanStatus=True)
         spartan.save()
         self.post = Announcement.objects.create(title="Zugrav",
-                                                text="Asa de un zugrav",
+                                                description="Asa de un zugrav",
                                                 author=self.user,
                                                 price=200)
         self.post.save()
         self.offer = Offer.objects.create(price=20,
                                           spartan=self.spartan.spartan,
-                                          post=self.post, kind="/job")
+                                          post=self.post)
         self.offer.save()
 
     def test_offer_view(self):

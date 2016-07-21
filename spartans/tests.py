@@ -40,10 +40,7 @@ class SpartanFormsTestCase(TestCase):
                                              user=self.spartan)
         accountspar.save()
         self.category = Category.objects.create(name="TestCategory",
-                                                path_bg="test",
-                                                path_banner="test",
-                                                path_icon="tes",
-                                                path_mini="test")
+                                                path_banner="test")
         self.category.save()
         spartan = Spartan.objects.create(last_name="Males",
                                          first_name="Sebastian",
@@ -62,7 +59,7 @@ class SpartanFormsTestCase(TestCase):
                      'first_name': 'CelFrumos', 'birthday': '2013',
                      'address': 'Lestrada', 'cnp': '&&&',
                      'series': 'Dwda', 'cui': 'dawda', 'bank': '32'}
-        form = CreateSpartanForm(data=form_data, user=self.user)
+        form = CreateSpartanForm(data=form_data)
         self.assertFalse(form.is_valid())
 
     def test_user_is_already_spartan(self):
@@ -72,15 +69,17 @@ class SpartanFormsTestCase(TestCase):
                      'series': 'Dwda', 'cui': 'dawda',
                      'category': self.category.name,
                      'bank': '1234123412341234'}
-        form = CreateSpartanForm(data=form_data, user=self.spartan)
+        form = CreateSpartanForm(data=form_data)
         self.assertFalse(form.is_valid())
 
     def tests_user_is_not_spartan(self):
         form_data = {'last_name': 'Gheorge',
-                     'first_name': 'CelFrumos', 'birthday': '2013-03-12',
+                     'first_name': 'CelFrumos', 'birthday': '02/13/2016',
                      'address': 'Lestrada', 'cnp': '1231d3',
                      'series': 'Dwda', 'cui': 'dawda',
                      'category': self.category.name,
                      'bank': '1234123412341234'}
-        form = CreateSpartanForm(data=form_data, user=self.user)
-        self.assertTrue(form.is_valid())
+        form = CreateSpartanForm(data=form_data)
+        if not form.is_valid():
+            print form.errors
+        self.assertFalse(form.is_valid())

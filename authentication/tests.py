@@ -41,8 +41,9 @@ class AuthFormsTestCase(TestCase):
 
     def test_valid_user_form(self):
         form_data = {'username': 'usernamedetest', 'email': 'sdwmt@gmail.com',
-                     'password': 'aloha123', 'password2': 'aloha123'}
+                     'password': 'aloha123', 'retypepassword': 'aloha123'}
         form = UserRegisterForm(data=form_data)
+        print form.errors
         self.assertTrue(form.is_valid())
 
     def tests_account_valid_phone(self):

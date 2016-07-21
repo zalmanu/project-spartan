@@ -21,7 +21,6 @@ from django.contrib.auth.models import User
 
 from .models import Category
 from .views import category
-from authentication.models import Account
 
 
 class CategoriesViewsTestCase(TestCase):
@@ -30,18 +29,13 @@ class CategoriesViewsTestCase(TestCase):
         self.user = User.objects.create_user(username="tester",
                                              email="smt@smt.com",
                                              password="top_secret")
-        account = Account.objects.create(city="Timisoara", country="Romania",
-                                         user=self.user)
-        account.save()
         self.category = Category.objects.create(name="TestCategory",
-                                                path_bg="test",
-                                                path_banner="test",
-                                                path_icon="tes",
-                                                path_mini="test")
+                                                path_banner="test")
         self.category.save()
 
     def test_valid_view(self):
-        request = self.factory.get('/category')
+        request = self.factory.get(
+            '/category/?page=1')
         request.user = self.user
         status = category(request, self.category.name)
         self.assertEqual(status.status_code, 200)
