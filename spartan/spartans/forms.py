@@ -26,7 +26,7 @@ from .models import Spartan
 class CreateSpartanForm(forms.ModelForm):
 
     category = forms.ChoiceField(choices=[(x, x)
-                                          for x in []])
+                                          for x in Category.categories()])
 
     class Meta:
         model = Spartan
