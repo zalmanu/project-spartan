@@ -15,3 +15,5 @@ billiard==3.3.0.23
 celery==3.1.23
 kombu==3.0.35
 redis==2.10.5
+django-cacheops==2.4.5
+funcy==1.7.1

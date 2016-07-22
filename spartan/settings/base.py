@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'channels',
     'haystack',
     'django_cleanup',
+    'cacheops',
 
     # Usual apps
     'authentication',
@@ -78,6 +79,16 @@ BROKER_URL = 'redis://localhost:6379/0'
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
+
+# Cacheops settings
+CACHEOPS_REDIS = {
+    'host': 'localhost',
+    'port': 6379,
+    'db': 1,
+}
+CACHEOPS = {
+    '*.*': {'timeout': 60*60}
+}
 
 
 TEMPLATES = [
