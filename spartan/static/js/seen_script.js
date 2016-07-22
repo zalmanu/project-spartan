@@ -23,9 +23,9 @@ function seen_not(notif_data){
 		var seen_bar = document.getElementById(notif);
 		in_dropdown.innerHTML = parseInt(in_dropdown.innerHTML) - 1;
 		if(in_dropdown.innerHTML > 0)
-		    in_bar.innerHTML = "<i class=\"fa fa-star-half-o\"></i>"+parseInt(in_dropdown.innerHTML);
+		    in_bar.innerHTML = "<i class=\"glyphicon glyphicon-globe\"></i>"+parseInt(in_dropdown.innerHTML);
 		else
-		    in_bar.innerHTML = "<i class=\"fa fa-star-half-o\"></i>";
+		    in_bar.innerHTML = "<i class=\"glyphicon glyphicon-globe\"></i>";
 		if(response.type == "post")
 		    seen_bar.innerHTML = "<i class=\"fa\"></i>New post in your area";
 		else
