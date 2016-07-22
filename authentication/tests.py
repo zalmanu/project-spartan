@@ -50,6 +50,7 @@ class AuthFormsTestCase(TestCase):
         form_data = {'city': 'Timisoara', 'country': 'Romania',
                      'phone': '+40736180165'}
         form = AccountRegisterForm(data=form_data)
+        print form.errors
         self.assertTrue(form.is_valid())
 
     def tests_account_invalid_phone(self):

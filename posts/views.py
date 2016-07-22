@@ -91,7 +91,7 @@ def post(request, slug):
     post = get_object_or_404(Announcement, slug=slug)
     form = CreateOfferForm(data=request.POST or None, post=post)
     if post.status and request.user != post.author and \
-                    request.user != post.spartan.user:
+       request.user != post.spartan.user:
         raise Http404()
     confirms = []
     if request.method == 'POST':
@@ -151,7 +151,7 @@ def edit_post(request, slug):
 
 @login_required
 def search(request):
-    form = SearchForm(request.GET)
+    form = SearchForm(request.POST or None)
     posts = None
     if form.data != {} and form.is_valid():
         posts = form.search()

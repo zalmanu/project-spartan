@@ -17,6 +17,7 @@
 
 import json
 
+from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponseForbidden, HttpResponse
 from django.shortcuts import render_to_response
@@ -24,13 +25,14 @@ from django.template import RequestContext
 from .models import Notification
 
 
+@login_required
 @csrf_exempt
 def seen(request):
     if request.method == "POST":
         if request.POST.get('notif'):
             notif_id = request.POST.get("notif")
             notification = Notification.objects.get(id_hash=notif_id)
-            if notification.seen:
+            if notification.seen or notification.receiver != request.user:
                 return HttpResponseForbidden()
             notification.seen = True
             notification.save()
@@ -41,12 +43,15 @@ def seen(request):
     return HttpResponseForbidden()
 
 
+@login_required
 @csrf_exempt
 def notification_delete(request):
     if request.method == "POST":
         if request.POST.get("id"):
             notif_id = request.POST.get("id")
             notification = Notification.objects.get(id_hash=notif_id)
+            if request.user != notification.receiver:
+                return HttpResponseForbidden()
             notification.delete()
             return HttpResponse(json.dumps({'result': 'succes'}),
                                 content_type='application/json')

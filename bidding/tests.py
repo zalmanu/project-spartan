@@ -73,3 +73,9 @@ class AuthFormsTestCase(TestCase):
         posts(request)
         post = Announcement.objects.get(id=self.post.id)
         self.assertTrue(post.spartan_done)
+
+    def test_invalid_post_argument(self):
+        request = self.factory.post('/posts', {"dawd": "dwada"})
+        request.user = self.user
+        response = posts(request)
+        self.assertNotEqual(response.status_code, 200)
