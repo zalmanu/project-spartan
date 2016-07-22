@@ -46,19 +46,8 @@ def create_post(request):
             form.save()
             category = post.category
             url = post.get_absolute_url()
-            messagetip = " Hi! % s , \n You successfully" \
-                         "posted an announce! \n" \
-                         " Title: %s ,\n Description: %s \n Address: %s \n " \
-                         "Country : %s \n City: %s \n Category: %s \n" \
-                         " Time : %s \n Date: %s \n " \
-                         "Highest bid price: %s eur \n" \
-                         " Have a nice day! - Team Spartan" % (
-                             current_user.username, post.title,
-                             post.description,
-                             post.address,
-                             post.country, post.city, post.category.name,
-                             post.timePost, post.data, post.money)
-            email_user.delay(messagetip, current_user.email,
+            messagetip = " You successfully posted an announce!"
+            email_user.delay(messagetip, current_user.username, current_user.email,
                              "Spartan Tasks Post")
             id_hash = ''.join(random.choice(
                 string.ascii_uppercase + string.digits) for _ in range(6))

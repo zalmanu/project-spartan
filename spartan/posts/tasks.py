@@ -53,10 +53,12 @@ def notify_bid(username, url, title, id_hash):
 
 
 @task
-def email_user(email_message, email, subject):
+def email_user(email_message, user, email, subject):
     from_email = settings.EMAIL_HOST_USER
     ctx = {
-        'email_message': email_message,
+
+        'user': user,
+        'email_message':email_message
     }
     to = [email]
     message = get_template('mail/mail.html').render(Context(ctx))

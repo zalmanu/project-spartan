@@ -1,6 +1,9 @@
+{% load staticfiles %}
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
    <head>
+
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <title>Spartan Tasks</title>
@@ -120,10 +123,12 @@
                                             <center> <div width="184" height="50" style="background-color:#f7f7f7;margin:0 auto;text-align:center;" align="left">
                                                 <div class="imgpop">
                                                    <a target="_blank" href="#">
-                                                   <center><img src="../img/logo/logoB.png" alt="" border="0" width="100" height="100" style="display:block; border:none; outline:none; text-decoration:none;"><span style="font-size:25px;text-transform:uppercase;font-family:helvetica;">Spartan Tasks</center>
+                                                   <!--<center><img src="{{site}}{% static 'img/logo/logoB.png' %}" alt="" border="0" width="100" height="100" style="display:block; border:none; outline:none; text-decoration:none;"><span style="font-size:25px;text-transform:uppercase;font-family:helvetica;">Spartan Tasks</center>-->
+                                                   <center><span style="font-size:25px;text-transform:uppercase;font-family:helvetica;">Spartan Tasks</center>
                                                    </a>
                                                 </div>
                                              </div></center>
+
                                      
 <table width="100%" bgcolor="#f7f7f7" cellpadding="0" cellspacing="0" border="0" id="backgroundTable" st-sortable="menu" >
    <tbody>
@@ -131,13 +136,12 @@
          <td>
             <hr class="line" style="width: 45%;height: 20px;background-color: #363c46;border:1px solid #363c46;">
             <center>
-                <br>
-                <span style="color:red;font-size: 40px;font-family: helvetica;"><h2>Warning!</h2></span>
+                
                 <span style="color:#7CFC00  ;font-size: 40px;font-family: helvetica;"><h2>Success!</h2></span>
 
-               {{ email_message }}
                 <div style="width:70%;">
-                <p style="width: 60%; font-size: 20px;line-height: 25px;">We are sorry, but we cannot make you a Spartan , cause your infos don't match with the real content and bla bla bla!</p>
+                <p style="width: 60%; font-size: 20px;line-height: 25px;">Hi {{ user }} !</p><br></br>
+                   <p style="width: 60%; font-size: 20px;line-height: 25px;">{{ email_message }}</p><br></br>
                 </div>
             </center>
          </td>
@@ -183,9 +187,11 @@
                                                       <tr>
                                                          <!-- title -->
                                                       </tr>
-                                                      <tr>
+                                                      <tr><br></br>
                                                          <td style="font-family: Helvetica, arial, sans-serif; font-size: 24px; font-weight:400; color: #ffffff; text-align:left; line-height: 30px;">
-                                                            If You still have any questions, dare to ask us.
+                                                            <a href="spartantasks.com/about_us" style="color:white;">
+                                                            -Team SpartanTasks-
+                                                               </a>
                                                          </td>
                                                       </tr>
                                                       <!-- end of title -->
@@ -214,7 +220,7 @@
                                                                   </tr>
                                                                   <tr>
                                                                      <td height="30" align="center" valign="middle" style="font-family: Helvetica, arial, sans-serif;  font-size: 24px;color: #ffffff; text-align:center;line-height: 30px;" class="tablet-button">
-                                                                        <a style="font-size: 18px; color: #ffffff; text-align:center;text-decoration: none;" href="#">RETURN TO OUR WEBSITE!</a>
+                                                                        <a style="font-size: 18px; color: #ffffff; text-align:center;text-decoration: none;" href="https://spartantasks.com/">RETURN TO OUR WEBSITE!</a>
                                                                      </td>
                                                                   </tr>
                                                                   <tr>
@@ -272,7 +278,7 @@
                                        <tbody>
                                           <tr>
                                              <td align="left" valign="middle" style="font-family: Helvetica, arial, sans-serif; font-size: 12px;color: #666666" st-content="viewonline">
-                                                If you haven't subscribed yet to newslatter <a href="#" style="text-decoration:none;color:#19B5FE">DO IT NOW!</a>
+                                               If You still have any questions, dare to ask us. <a href="spartantasks.com/contact" style="text-decoration:none;color:#19B5FE">ask us !</a>
                                              </td>
                                           </tr>
                                        </tbody>
