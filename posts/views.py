@@ -123,7 +123,8 @@ def post(request, slug):
             }
             Group("channel-" + receiver).send({
                 'text': json.dumps(dic)})
-            notify_bid.delay(receiver, post.get_absolute_url(), bid.post.title, id_hash)
+            notify_bid.delay(receiver, post.get_absolute_url(),
+                             bid.post.title, id_hash)
             confirms.append('Offer was sent')
     return render(request, 'posts/post.html', {
         'post': post,
