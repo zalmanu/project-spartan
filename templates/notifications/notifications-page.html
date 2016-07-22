@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+{% load widget_tweaks %}
+
+
+            <!-- Main Content -->
+            <div class="container-fluid">
+                <div class="side-body padding-top">                
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card" id="chat">
+                                <div class="card-header chat-card">
+                                    <div class="card-title">
+                                        <div class="title chat-title-box">Notifications</div>
+                                    </div>
+
+                                </div>
+                                <div class="card-body no-padding" id="chat-body">
+                                    <ul class="message-list">
+
+
+
+                                           	{% for notification in user.notifications.all %}
+                                                        <a href="{{ notification.url}}">
+                                                                <li>
+                                                                    {% if notification.not_type == "post" %}
+                                                                   <img src="{% static "img/map.png" %}" class="profile-img pull-left">
+                                                                    <div class="message-block">
+                                                                        <div>
+                                                                            <span class="username">{{ notification.context }}</span>
+                                                                        </div>
+                                                                        <div class="message">New post in your area</div>
+                                                                      {% elif notification.not_type == "bid" %}
+                                                                     <img src="{% static "img/bid.png" %}" class="profile-img pull-left">
+                                                                    <div class="message-block">
+                                                                        <div>
+                                                                            <span class="username">{{ notification.context }}</span>
+                                                                        </div>
+                                                                        <div class="message">Someone bid on your post</div>
+					                                                    {% endif %}
+                                                                 </li>
+                                                         </a>
+
+
+
+
+					                        {% endfor %}
+
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        <footer class="app-footer">
+            <div class="wrapper">
+                <span class="pull-right"><i class="fa fa-long-arrow-up" id="arrow"></i></span>SpartanTasks @ 2016 Copyright.
+            </div>
+        </footer>
+        <div>
+            <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js">
+            </script>
+            <script>
+                $("#arrow").click(function() {
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                return false;
+                });
+
+                $('.other-bids').hide();
+                $('#show-bidding-field').on('click', function(){
+                  $('.other-bids').toggle();
+                });
+
+                $('#bidding-place').click(function(){
+                    alert('The value must be in Dollars($).')
+                });
+            </script>
+            <!-- Javascript Libs -->
+
+            {% endblock %}

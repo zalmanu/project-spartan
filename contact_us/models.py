@@ -1,6 +1,21 @@
-from django import forms
+# Copyright 2015-2016 Emanuel Danci, Emanuel Covaci, Fineas Silaghi, Sebastian Males, Vlad Temian
+#
+# This file is part of Project Spartan.
+#
+# Project Spartan is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Project Spartan is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Project Spartan.  If not, see <http://www.gnu.org/licenses/>.
+
 from django.db import models
-from captcha.fields import ReCaptchaField
 
 
 class ContactUs(models.Model):
@@ -8,19 +23,3 @@ class ContactUs(models.Model):
     last_name = models.CharField(max_length=20, default='')
     email = models.CharField(max_length=30)
     message = models.CharField(max_length=1000, null=True)
-
-
-class CreateContact(forms.ModelForm):
-    captcha = ReCaptchaField()
-
-    class Meta:
-        model = ContactUs
-        fields = '__all__'
-        widgets = {
-            'name': forms.TextInput({'required': 'required',
-                                     'placeholder': 'Name'}),
-            'email': forms.EmailInput({'required': 'required',
-                                       'placeholder': 'Email'}),
-            'message': forms.Textarea(attrs={'required': 'required',
-                                             'placeholder': 'Message'})
-        }

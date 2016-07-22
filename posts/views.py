@@ -1,3 +1,19 @@
+# Copyright 2015-2016 Emanuel Danci, Emanuel Covaci, Fineas Silaghi, Sebastian Males, Vlad Temian
+#
+# This file is part of Project Spartan.
+#
+# Project Spartan is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Project Spartan is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Project Spartan.  If not, see <http://www.gnu.org/licenses/>.
 import json
 import random
 import string
@@ -13,8 +29,9 @@ from django.http import Http404
 from channels import Group
 from haystack.forms import SearchForm
 
-from .models import Announcement, EditPostForm, CreatePostForm
-from bidding.models import CreateOfferForm
+from .models import Announcement
+from .forms import EditPostForm, CreatePostForm
+from bidding.forms import CreateOfferForm
 from .tasks import notify_spartans, email_user, notify_bid
 
 
@@ -29,7 +46,7 @@ def create_post(request):
             form.save()
             category = post.category
             url = post.get_absolute_url()
-            messagetip = " Hi! % s , \n You successfully"\
+            messagetip = " Hi! % s , \n You successfully" \
                          "posted an announce! \n" \
                          " Title: %s ,\n Description: %s \n Address: %s \n " \
                          "Country : %s \n City: %s \n Category: %s \n" \
@@ -39,14 +56,14 @@ def create_post(request):
                              current_user.username, post.title,
                              post.description,
                              post.address,
-                             post.country,  post.city,  post.category.name,
+                             post.country, post.city, post.category.name,
                              post.timePost, post.data, post.money)
             email_user.delay(messagetip, current_user.email,
                              "Spartan Tasks Post")
             id_hash = ''.join(random.choice(
                 string.ascii_uppercase + string.digits) for _ in range(6))
             notify_spartans.delay(category.name, post.city,
-                                  post.author.username,
+                                  post.title,
                                   url, id_hash)
             html = """
             <a href=\"""" + url + """\" id="seen_notif_req"
@@ -74,11 +91,11 @@ def post(request, slug):
     post = get_object_or_404(Announcement, slug=slug)
     form = CreateOfferForm(data=request.POST or None, post=post)
     if post.status and request.user != post.author and \
-       request.user != post.spartan.user:
+                    request.user != post.spartan.user:
         raise Http404()
     confirms = []
     if request.method == 'POST':
-        if request.POST.get("deletePost"):
+        if request.POST.get("deletePost") and post.author == request.user:
             post.delete()
             return redirect('/')
         if form.is_valid():
@@ -106,7 +123,7 @@ def post(request, slug):
             }
             Group("channel-" + receiver).send({
                 'text': json.dumps(dic)})
-            notify_bid.delay(receiver, post.get_absolute_url(), id_hash)
+            notify_bid.delay(receiver, post.get_absolute_url(), bid.post.title, id_hash)
             confirms.append('Offer was sent')
     return render(request, 'posts/post.html', {
         'post': post,
@@ -139,5 +156,5 @@ def search(request):
     if form.data != {} and form.is_valid():
         posts = form.search()
         return render_to_response('search/search.html', {
-                                      'posts': posts
-                                  }, context_instance=RequestContext(request))
+            'posts': posts
+        }, context_instance=RequestContext(request))

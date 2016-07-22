@@ -41,7 +41,7 @@ function seen_not(notif_data){
 		    in_bar.innerHTML = "<i class=\"fa fa-comments-o\"></i>";
 	    }
         }
-    })
+    });
     return true;
 }
 
