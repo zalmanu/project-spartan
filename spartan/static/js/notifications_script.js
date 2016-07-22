@@ -25,7 +25,7 @@ notif_socket.onmessage = function(message) {
 	    var in_dropdown = document.getElementById("notifnum");
 	    var in_bar = document.getElementById("iconcount");
 	    in_dropdown.innerHTML = parseInt(in_dropdown.innerHTML) + 1;
-	    in_bar.innerHTML = "<i class=\"fa fa-star-half-o\"></i>"+parseInt(in_dropdown.innerHTML);
+	    in_bar.innerHTML = "<i class=\"glyphicon glyphicon-globe\"></i>"+parseInt(in_dropdown.innerHTML);
 	    noti_audio.play();
 	}
     }
