@@ -61,7 +61,7 @@ def email_user(email_message, user, email, subject):
         'email_message':email_message
     }
     to = [email]
-    message = get_template('mail/mail.html').render(Context(ctx))
-    msg = EmailMessage(subject, message, to=to, from_email=from_email)
-    msg.content_subtype = 'html'
-    msg.send()
+    template = get_template('mail/mail.html').render(Context(ctx))
+    mail = EmailMessage(subject, template, to=to, from_email=from_email)
+    mail.content_subtype = 'html'
+    mail.send()

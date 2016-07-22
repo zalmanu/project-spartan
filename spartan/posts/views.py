@@ -47,7 +47,8 @@ def create_post(request):
             category = post.category
             url = post.get_absolute_url()
             messagetip = " You successfully posted an announce!"
-            email_user.delay(messagetip, current_user.username, current_user.email,
+            email_user.delay(messagetip, current_user.username,
+                             current_user.email,
                              "Spartan Tasks Post")
             id_hash = ''.join(random.choice(
                 string.ascii_uppercase + string.digits) for _ in range(6))
@@ -80,7 +81,7 @@ def post(request, slug):
     post = get_object_or_404(Announcement, slug=slug)
     form = CreateOfferForm(data=request.POST or None, post=post)
     if post.status and request.user != post.author and \
-       request.user != post.spartan.user:
+                    request.user != post.spartan.user:
         raise Http404()
     confirms = []
     if request.method == 'POST':
