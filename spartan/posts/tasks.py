@@ -20,6 +20,9 @@ from __future__ import absolute_import
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.conf import settings
+from django.template import Context
+from django.template.loader import get_template
+from django.core.mail import EmailMessage
 
 from celery import task
 
@@ -52,5 +55,11 @@ def notify_bid(username, url, title, id_hash):
 @task
 def email_user(email_message, email, subject):
     from_email = settings.EMAIL_HOST_USER
-    send_mail(subject, email_message, from_email,
-              [email], fail_silently=True)
+    ctx = {
+        'email_message': email_message,
+    }
+    to = [email]
+    message = get_template('mail/mail.html').render(Context(ctx))
+    msg = EmailMessage(subject, message, to=to, from_email=from_email)
+    msg.content_subtype = 'html'
+    msg.send()
