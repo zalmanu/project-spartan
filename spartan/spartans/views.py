@@ -38,29 +38,16 @@ def spartan(request):
             form.instance.user = request.user
             form.save()
             new_spartan = form.instance
-            email_message = " Hi! % s , \n You submitted the form" \
-                            " for becoming a spartan!\n" \
-                            " Last name : %s ,\n First name : %s \n" \
-                            "Birthday: %s \n" \
-                            " Address : %s \n CNP: %s \n Serie: %s \n" \
-                            " CUI : %s \n Bank account: %s \n " \
-                            "Ability: %s \n  An admin will respond soon. " \
-                            " - Team Spartan" % (
-                                new_spartan.user.username,
-                                new_spartan.last_name,
-                                new_spartan.first_name,
-                                new_spartan.birthday, new_spartan.address,
-                                new_spartan.cnp, new_spartan.series,
-                                new_spartan.cui,
-                                new_spartan.bank, new_spartan.category.name)
-            email_user.delay(email_message, request.user.email,
+            email_message = " You submitted the form for becoming a spartan! "
+            email_user.delay(email_message, request.user.username,
+                             request.user.email,
                              "Spartan activation")
             confirm.append('You\'ve completed the form, '
                            'wait for admin\'s confirmation')
     return render(request, 'spartan/spartan.html', {
         'form': form,
         'confirms': confirm,
-        },
+    },
                   context_instance=RequestContext(request))
 
 
