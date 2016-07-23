@@ -275,9 +275,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Post Description</label>
-                                            <div>
-                                                <textarea placeholder="Enter a description" class="form-control" rows="3"></textarea>
-                                            </div>
+                                            <textarea placeholder="Enter a description" class="form-control" rows="3"></textarea>
                                         </div>
                                         <div class="form-group">    
                                             <label for="exampleInputEmail">Date</label>
@@ -299,91 +297,103 @@
                                                 </span>
                                             </div>
                                         </div>
-                                        <div>
-                                            <div class="btn-group" style="float: left; width: 100%; text-align: left;text-align:left !important;">
-                                                <label for="exampleInputEmail">Country</label>
-                                                <br>
-                                                <select class="btn btn-default form-control">
-                                                <option>Garden</option>
-                                                <option>Cooking</option>
-                                                <option>Cleaning</option>
-                                                <option>Baby Sitting</option>
-                                                <option>Moving</option>
-                                                <option>Other</option>
-                                                </select>  
+                                        <div class="form-gorup">
+                                            <label for="exampleInputEmail">Country</label>
+                                            <div class="dropdown">
+                                              <button class="btn btn-secondary dropdown-toggle" style="background-color: #fff;border: 1px solid #ccc !important;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Select the Country
+                                              </button>
+                                              <div class="dropdown-menu" style="height: 300px; overflow:scroll;" aria-labelledby="dropdownMenu1">
+                                                <a class="dropdown-item" href="#">Action</a><br>
+                                                <a class="dropdown-item" href="#">Another action</a><br>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                              </div>
                                             </div>
                                         </div>
-                                        <div>
-                                            <div class="btn-group" style="float: left; width: 100%; text-align: left;text-align:left !important;">
-                                                <label for="exampleInputEmail">City</label>
-                                                <br>
-                                                <select class="btn btn-default form-control">
-                                                <option>Garden</option>
-                                                <option>Cooking</option>
-                                                <option>Cleaning</option>
-                                                <option>Baby Sitting</option>
-                                                <option>Moving</option>
-                                                <option>Other</option>
-                                                </select>  
-                                            </div>
-                                        </div>
-                                        <br>
                                         <div class="form-group">
-                                            <label for="exampleInputEmail">Location</label>
-                                            <br>
-                                            <button type="button" class="btn" data-toggle="modal" data-target="#myModal">
-                                              Pick up your location
-                                            </button>
-                                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">    
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                            <h4 class="modal-title">Pick up your location</h4>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            Location: <input type="text" id="us2-address" style="width: 200px"/>
-                                                            <br>
-                                                            <div id="us2" style="width: 500px; height: 400px;"></div>      
-                                                            <script>
-                                                            $('#somecomponent').locationpicker({
-                                                                location: {latitude: 46.15242437752303, longitude: 2.7470703125},   
+                                            <label for="exampleInputEmail">City</label>
+                                            <div class="dropdown">
+                                              <button class="btn btn-secondary dropdown-toggle" style="background-color: #fff;border: 1px solid #ccc !important;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Select the City
+                                              </button>
+                                              <div class="dropdown-menu" style="height: 300px; overflow:scroll;" aria-labelledby="dropdownMenu1">
+                                                <a class="dropdown-item" href="#">Action</a><br>
+                                                <a class="dropdown-item" href="#">Another action</a><br>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                              </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-grpup">
+                                            <label for="exampleInputEmail">Location</label> 
+                                            
+
+                                            <!-- Location Picker using Input type -->
+                                            <div id="location-TYPE" class="form-group">
+                                                <input type="text" placeholder="Please enter the following: Street Name, Number" class="form-control" />
+                                            </div>  
+                                            
+
+                                            <!-- Location picker using Google Maps -->
+                                            <div id="location-GM" class="form-group">
+                                                <label for="exampleInputEmail">Or</label>
+                                                <button type="button" class="btn" data-toggle="modal" data-target="#myModal">
+                                                  Pick up your location using Google Maps
+                                                </button>
+                                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">    
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                                <h4 class="modal-title">Pick up your location</h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Location: <input type="text" id="us2-address" style="width: 200px"/>
+                                                                <br>
+                                                                <div id="us2" style="width: 500px; height: 400px;"></div>      
+                                                                <script>
+                                                                $('#somecomponent').locationpicker({
+                                                                    location: {latitude: 46.15242437752303, longitude: 2.7470703125},   
+                                                                        radius: 300,
+                                                                        inputBinding: {
+                                                                            latitudeInput: $('#us2-lat'),
+                                                                            longitudeInput: $('#us2-lon'),
+                                                                            radiusInput: $('#us2-radius'),
+                                                                            locationNameInput: $('#us2-address')
+                                                                        }
+                                                                });
+                                                                $('#us2').locationpicker({
+                                                                    location: {latitude: 46.15242437752303, longitude: 2.7470703125},   
                                                                     radius: 300,
                                                                     inputBinding: {
-                                                                        latitudeInput: $('#us2-lat'),
-                                                                        longitudeInput: $('#us2-lon'),
-                                                                        radiusInput: $('#us2-radius'),
                                                                         locationNameInput: $('#us2-address')
                                                                     }
-                                                            });
-                                                            $('#us2').locationpicker({
-                                                                location: {latitude: 46.15242437752303, longitude: 2.7470703125},   
-                                                                radius: 300,
-                                                                inputBinding: {
-                                                                    locationNameInput: $('#us2-address')
-                                                                }
-                                                                });
-                                                            </script>
+                                                                    });
+                                                                </script>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                                            </div>   
                                                         </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                                        </div>   
                                                     </div>
                                                 </div>
-                                            </div>          
+                                            </div>        
                                         </div>  
-                                            <label>Select the category you will work in</label>
-                                                <select class="btn btn-default form-control">
-                                                <option>Garden</option>
-                                                <option>Cooking</option>
-                                                <option>Cleaning</option>
-                                                <option>Baby Sitting</option>
-                                                <option>Moving</option>
-                                                <option>Other</option>
-                                                </select>     
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail">Category</label>
+                                            <div class="dropdown">
+                                              <button class="btn btn-secondary dropdown-toggle" style="background-color: #fff;border: 1px solid #ccc !important;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Select the Category
+                                              </button>
+                                              <div class="dropdown-menu" style="height: 300px; overflow:scroll;" aria-labelledby="dropdownMenu1">
+                                                <a class="dropdown-item" href="#">Action</a><br>
+                                                <a class="dropdown-item" href="#">Another action</a><br>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                              </div>
+                                            </div>
+                                        </div>
                                         <div class="form-group">
                                             <br>
                                             <label for="exampleInputFile">Choose some reprezentative pictures<span style="color:red;">*</span></label>
@@ -418,14 +428,6 @@
                                                         };
                                                     }
                                                 </script>
-                                        </div>
-                                        <div class="checkbox">
-                                            <div class="checkbox3 checkbox-round">
-                                                <input type="checkbox" id="checkbox-1">
-                                                <label for="checkbox-1">
-                                                    I Agree Terms and Conditions
-                                                </label>
-                                            </div>
                                         </div>
                                         <button type="submit" class="btn btn-default">Submit</button>
                                     </form>
