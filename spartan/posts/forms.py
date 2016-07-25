@@ -28,18 +28,23 @@ class EditPostForm(forms.ModelForm):
     class Meta:
         model = Announcement
         fields = ['title', 'description', 'address', 'country',
-                  'city', 'data', 'timePost', 'money', 'image',
-                  'image2', 'image3', 'image4']
+                  'city', 'data', 'timePost', 'money', 'category',
+                  'image', 'image2', 'image3', 'image4']
         widgets = {'description': forms.Textarea(attrs={'required': 'required',
                                                         })
                    }
+
+        def clean_categoryd(self):
+            category = get_object_or_404(Category,
+                                         name=self.cleaned_data['category'])
+            return category
 
 
 class CreatePostForm(forms.ModelForm):
     city = forms.ChoiceField(choices=[(x, x) for x in ['Timisoara']])
     country = forms.ChoiceField(choices=[(x, x) for x in ['Romania']])
     category = forms.ChoiceField(choices=[(x, x)
-                                          for x in Category.categories()])
+                                          for x in Category.objects.all()])
 
     class Meta:
         model = Announcement
