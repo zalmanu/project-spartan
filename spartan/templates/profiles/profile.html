@@ -122,38 +122,60 @@
 
                                                     {% endfor %}
 
-                                                    {% for field in form_acc %}
+                                                     <div >
+                                                         <div align="left" >
+                                            <label  for="exampleInputPassword1">City</label> </div>
+                                            <div  align="left" >
 
-                                                    {% if field.label == 'Profile image' %}
+                                                 {{ form_acc.city|add_class:"form-control "|attr:"required:required"}}
 
-                                                    <div style="float:left"  class="form-group">
-                                            <br>
-                                            <label for="exampleInputFile">Choose some reprezentative pictures<span style="color:red;">*</span></label>
-                                            {{ field|add_class:"form-control " }}
-                                        </div> <br>
-
-                                                    {% else %}
-
-                                                         <p style="float:left" >{{ field.label }}</p>
-
-                                                              {{ field|add_class:"form-control "|attr:"placeholder" }}
-
-                                                    {% if field.errors %}
+                                                {% if form_acc.city.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
                                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                                         <strong>Warning!</strong>
-				                                        {% for error in field.errors %}
+				                                        {% for error in form_acc.city.errors %}
 				                                                {{ error }}
 				                                        {% endfor %}
                                                             </div>
-                                                            {% endif %}
+                                             {% endif %}
+                                            </div>
+                                        </div>
 
-                                                    {% endif %}
+                                         <div align="left">
+                                            <label for="exampleInputPassword1">Country</label>
+                                            <div>
 
+                                                 {{ form_acc.country|add_class:"form-control "|attr:"required:required"}}
 
+                                                {% if form_acc.country.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form_acc.country.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
+                                            </div>
+                                        </div>
 
-                                                    {% endfor %}
+                                                    <div align="left">
+                                            <label for="exampleInputPassword1">Country</label>
+                                            <div>
 
+                                                 {{ form_acc.phone|add_class:"form-control "|attr:"required:required"}}
+
+                                                {% if form_acc.phone.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form_acc.phone.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
+                                            </div>
+                                        </div>
 
 
                                                     <!-- Buttons -->
