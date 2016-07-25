@@ -136,17 +136,23 @@
                                         {% if field.label == 'Time FORMAT HH:MM:SS'  %}
 
 
-                                        <div class="form-group">
-                                            <label for="exampleInputFile">Time</label>
-                                            <div id="datetimepicker2" class="input-group">
-                                                 {{ field|add_class:"form-control "|attr:"required:required"|attr:"placeholder:Enter a time in format HH:MM:SS"}}
 
-                                                <span class="input-group-addon" id="basic-addon1">
-                                                    <i class="glyphicon glyphicon-time" data-time-icon="icon-time" data-date-icon="icon-calendar">
-                                                    </i>
-                                                </span>
-                                            </div>
-                                        </div>
+                                <div class="form-group">
+                                    <label for="exampleInputFile">Time</label>
+
+                                    {{ form.timePost|attr:"required:required"|attr:"placeholder:Enter a time"|add_class:"time_element form-control"}}
+
+                                     {% if form.timePost.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form.timep.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
+
+                                </div>
 
 
                                         {% if field.errors %}
@@ -256,6 +262,11 @@
                     alert('The value must be in Dollars($).')
                 });
             </script>
+              <script>
+                  $(document).ready(function(){
+                   $(".time_element").timepicki();
+                   });
+              </script>
 
 
 {% endblock %}
