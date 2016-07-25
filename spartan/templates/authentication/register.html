@@ -51,8 +51,9 @@
 
 
 
-                    {% if field.label == "Profile image" %}
-                          {{ field|add_class:"form-control "|attr:"required:required"}}
+
+                    {% if field.label == "Phone" %}
+                          {{ field|add_class:"form-control "|attr:"required:required"|attr:"placeholder:Enter your phone "}}
 
                                   {% else %}
 				{{ field|add_class:"form-control login_field" }}
