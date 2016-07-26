@@ -24,6 +24,20 @@ $('.faq-froup').on('click', function(){
 
 
 
+var post_description = $('.description').text().length;
+
+console.log(post_description);
+
+$(document).ready(function(){
+
+     $(".description").each(function() {
+         if($(this).text().length > 270) {
+           $(this).text($(this).text().substr(0, 270)+"...");
+         }
+     });
+});
+
+
 
 
 
