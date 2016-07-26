@@ -26,13 +26,23 @@ $('.faq-froup').on('click', function(){
 
 var post_description = $('.description').text().length;
 
-console.log(post_description);
 
 $(document).ready(function(){
 
      $(".description").each(function() {
          if($(this).text().length > 270) {
            $(this).text($(this).text().substr(0, 270)+"...");
+         }
+     });
+});
+
+var title_description = $('.description_title').text().length;
+
+$(document).ready(function(){
+
+     $(".description_tile").each(function() {
+         if($(this).text().length > 20) {
+           $(this).text($(this).text().substr(0, 20)+"...");
          }
      });
 });
