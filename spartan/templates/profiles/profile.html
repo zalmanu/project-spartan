@@ -159,8 +159,8 @@
                                             </div>
                                         </div>
 
-                                                    <div align="left">
-                                            <label for="exampleInputPassword1">Country</label>
+                                         <div align="left">
+                                            <label for="exampleInputPassword1">Phone</label>
                                             <div>
 
                                                  {{ form_acc.phone|add_class:"form-control "|attr:"required:required"}}
@@ -170,6 +170,24 @@
                                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                                         <strong>Warning!</strong>
 				                                        {% for error in form_acc.phone.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
+                                            </div>
+                                        </div>
+
+                                                     <div align="left">
+                                            <label for="exampleInputPassword1">Profile image</label>
+                                            <div>
+
+                                                 {{ form_acc.profile_image|add_class:"form-control "}}
+
+                                                {% if form_acc.profile_image.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form_acc.profile_image.errors %}
 				                                                {{ error }}
 				                                        {% endfor %}
                                                             </div>

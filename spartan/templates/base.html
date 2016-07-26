@@ -30,7 +30,7 @@
     <link rel="stylesheet/less" type="text/css" href="{% static "less/datepicker.less" %}"/>
 
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src='http://maps.google.com/maps/api/js?sensor=false&libraries=places'></script>
+    <script type="text/javascript" src='http://maps.google.com/maps/api/js?sensor=true&libraries=places'></script>
     <script src="{% static "js/locationpicker.jquery.js" %}"></script>
     <script src="{% static "js/seen_script.js" %}"></script>
     <!-- Sass -->
@@ -43,6 +43,11 @@
     <script src="{% static "js/timepicki.js" %}"></script>
     <script src="{% static "js/filters_script.js" %}"></script>
   </head>
+
+
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src='http://maps.google.com/maps/api/js?sensor=false&libraries=places'></script>
+<script src="{% static "js/locationpicker.jquery.js" %}"></script>
   
 {% load widget_tweaks %}
 <body class="flat-blue">
