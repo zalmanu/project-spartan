@@ -39,10 +39,10 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'spartan',
-        'USER': 'myusername',
-        'PASSWORD': 'mypassword',
-        'HOST': 'localhost',
-        'PORT': '',
+        'NAME': os.environ.get('DB_ENV_DB', 'postgres'),
+        'USER': os.environ.get('DB_ENV_POSTGRES_USER', 'postgres'),
+        'PASSWORD': os.environ.get('DB_ENV_POSTGRES_PASSWORD', ''),
+        'HOST': os.environ.get('DB_PORT_5432_TCP_ADDR', ''),
+        'PORT': os.environ.get('DB_PORT_5432_TCP_PORT', ''),
     }
 }

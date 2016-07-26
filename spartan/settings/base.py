@@ -40,7 +40,6 @@ INSTALLED_APPS = (
     'channels',
     'haystack',
     'django_cleanup',
-    'cacheops',
 
     # Usual apps
     'authentication',
@@ -75,7 +74,10 @@ MIDDLEWARE_CLASSES = [
 ROOT_URLCONF = 'config.urls'
 
 # Celery settings
-BROKER_URL = 'redis://localhost:6379/0'
+REDIS_PORT = 6379  
+REDIS_DB = 0  
+REDIS_HOST = os.environ.get('REDIS_PORT_6379_TCP_ADDR', '127.0.0.1')
+CELERY_RESULT_BACKEND = 'redis://%s:%d/%d' % (REDIS_HOST, REDIS_PORT, REDIS_DB)  
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'

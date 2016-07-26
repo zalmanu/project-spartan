@@ -1,0 +1,31 @@
+# database container
+db:
+  image: postgres:latest
+  environment:
+    - POSTGRES_PASSWORD=mysecretpassword
+
+#redis container
+redis:
+  image: redis:latest
+  ports:
+    - "6379:6379"
+# container with django web server
+web:
+  build: .
+  command: sh run_web.sh
+  volumes:
+    - .:/project-spartan
+  ports:
+    - "8000"
+  links:
+    - db:db
+    - redis:redis
+# container with Redis worke
+worker:
+  build: .
+  command: sh run_celery.sh
+  volumes:
+    - .:/project-spartan
+  links:
+    - db:db
+    - redis:redis
