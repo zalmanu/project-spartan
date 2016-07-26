@@ -90,22 +90,29 @@
 
                                 </div>
 
-                                        <div class="form-group">
-                                            <label for="exampleInputPassword1">Address</label>
-                                            <div>
+                                        <div class="form-grpup">
+                                            <label for="exampleInputEmail">Location</label>
+                                            <div id="location-TYPE" class="form-group">
 
-                                                 {{ form.address|add_class:"form-control "|attr:"required:required"|attr:"placeholder:Enter a address"}}
+                                                 {{ form.address|add_class:"form-control "|attr:"required:required"|attr:"placeholder:Please enter the following: Street Name, Number"|attr:"id:us6-address"}}
 
-                                                {% if form.address.errors %}
-                                                        <div class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for error in form.address.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
-                                                            </div>
-                                             {% endif %}
                                             </div>
+                                            <div class="location-picker-by-map" id="us6" style="width: 500px; height: 400px;"></div>
+                                            <script>
+                                                $('#us6').locationpicker({
+                                                    location: {latitude: 45.760696, longitude: 21.226788},
+                                                    radius: 300,
+                                                    inputBinding: {
+                                                        locationNameInput: $('#us6-address')
+                                                    },
+                                                    enableAutocomplete: true
+                                                });
+                                                $('#us6-dialog').on('shown.bs.modal', function () {
+                                                    $('#us6').locationpicker('autosize');
+                                                });
+
+                                            </script>
+
                                         </div>
 
                                         <div >
