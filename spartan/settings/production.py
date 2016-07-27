@@ -45,3 +45,10 @@ DATABASES = {
         'PORT': os.environ.get('DB_PORT_5432_TCP_PORT', ''),
     }
 }
+
+# Celery settings
+BROKER_URL = 'redis://192.168.99.100:6379/0'
+CELERY_BROKER_URL = 'redis://192.168.99.100:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
