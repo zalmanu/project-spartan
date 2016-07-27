@@ -14,10 +14,8 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Project Spartan.  If not, see <http://www.gnu.org/licenses/>.
-
 import os
 from base import *
-
 
 
 # SECRET_KEY
@@ -37,12 +35,18 @@ EMAIL_PORT=587
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'spartan',
-        'USER': 'myusername',
-        'PASSWORD': 'mypassword',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
+   'default': {
+       'ENGINE': 'django.db.backends.postgresql_psycopg2',
+       'NAME': 'spartan',
+       'USER': 'myusername',
+       'PASSWORD': 'mypassword',
+       'HOST': 'localhost',
+       'PORT': '',
+   }
 }
+
+# Celery settings
+BROKER_URL = 'redis://localhost:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'

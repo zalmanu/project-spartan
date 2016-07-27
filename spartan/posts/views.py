@@ -52,7 +52,7 @@ def create_post(request):
                              "Spartan Tasks Post")
             id_hash = ''.join(random.choice(
                 string.ascii_uppercase + string.digits) for _ in range(6))
-            notify_spartans.delay(category.name, post.city,
+            notify_spartans.delay("Moving", post.city,
                                   post.title,
                                   url, id_hash)
             html = """
@@ -69,7 +69,7 @@ def create_post(request):
                 'html': html,
                 'posts': 'post'
             }
-            Group("spartans-" + category.name +
+            Group("spartans-" + "Moving"  +
                   "-" + post.city).send({'text': json.dumps(dic)})
             return redirect(post.get_absolute_url())
     return render(request, 'posts/create_post.html', {

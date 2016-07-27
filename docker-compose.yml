@@ -1,0 +1,30 @@
+version: '2'
+services:
+    db:
+      image: postgres:latest
+      env_file: docker-compose.env
+    redis:
+      image: redis:latest
+      command: redis-server
+      ports:
+        - "6379:6379"
+    web:
+      build: .
+      command: dockerize -wait tcp://redis:6379 ./docker-web-entrypoint
+      env_file: docker-compose.env
+      volumes:
+        - .:/project-spartan
+      ports:
+        - "8000:8000"
+      links:
+        - db:db
+        - redis:redis
+    worker:
+      build: .
+      env_file: docker-compose.env
+      command: dockerize -wait tcp://redis:6379 ./docker-worker-entrypoint
+      volumes:
+        - .:/project-spartan
+      links:
+        - db:db
+        - redis:redis

@@ -25,9 +25,6 @@ from .models import Spartan
 
 class CreateSpartanForm(forms.ModelForm):
 
-    category = forms.ChoiceField(choices=[(x, x)
-                                          for x in Category.objects.all()])
-
     class Meta:
         model = Spartan
         fields = ['first_name', 'last_name', 'birthday', 'address',

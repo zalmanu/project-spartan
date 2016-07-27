@@ -34,7 +34,7 @@ class EditPostForm(forms.ModelForm):
                                                         })
                    }
 
-        def clean_categoryd(self):
+        def clean_category(self):
             category = get_object_or_404(Category,
                                          name=self.cleaned_data['category'])
             return category
@@ -43,22 +43,15 @@ class EditPostForm(forms.ModelForm):
 class CreatePostForm(forms.ModelForm):
     city = forms.ChoiceField(choices=[(x, x) for x in ['Timisoara']])
     country = forms.ChoiceField(choices=[(x, x) for x in ['Romania']])
-    category = forms.ChoiceField(choices=[(x, x)
-                                          for x in Category.objects.all()])
 
     class Meta:
         model = Announcement
         fields = ['title', 'description', 'address', 'country',
-                  'city', 'data', 'timePost', 'money', 'category',
+                  'city', 'data', 'timePost', 'money', 
                   'image', 'image2', 'image3', 'image4']
         widgets = {'description': forms.Textarea(attrs={'required': 'required',
                                                         })
                    }
-
-    def clean_category(self):
-        category = get_object_or_404(Category,
-                                     name=self.cleaned_data['category'])
-        return category
 
     def clean_money(self):
         money = self.cleaned_data['money']

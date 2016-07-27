@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd spartan
+celery -A config worker -l info
