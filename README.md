@@ -28,9 +28,10 @@ frontend developer
 * Jquery
 * Python
 * Django
-* Bootstrap
+* Bootstrap 3
 * PostgreSQL
-* Elasticsearch
+* Less
+* Sass
 
 
 
@@ -56,8 +57,10 @@ frontend developer
 
 ## Editoare folosite
 * Emacs
+* Vim
 * PyCharm
 * Atom
+* Sublime
 
 ## Pentru a rula proiectul se executa urmatoarea comanda in terminal 
 ```sh
