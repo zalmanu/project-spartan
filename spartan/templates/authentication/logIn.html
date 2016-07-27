@@ -18,7 +18,7 @@
                               <form method="post">
 				{% csrf_token %}
 				<div id="account_details">
-                                  <p class='form_head'><b>Log In</b> <small>into your account</small></p>
+                                  <p class='form_head'><b>Log In</b> <small>into your account reload test</small></p>
 				  {% for field in form %}
                                   <p>{{ field.label }}</p>
 				  {{ field|add_class:"form-control login_field"|attr:"required:required"}}
@@ -33,7 +33,7 @@
 				  {% endif %}
                                 <input type="submit" value="Log In" class="btn btn-success next-login-infos">
                               </div>
-                                  
+
                               </form>
                             </div>
                             </center>
