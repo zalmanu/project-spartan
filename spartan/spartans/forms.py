@@ -48,7 +48,7 @@ class CreateSpartanForm(forms.ModelForm):
     def clean_cui(self):
         cui = self.cleaned_data['cui']
         valid = True
-        if(cui[:2] != "RO"):
+        if cui[:2] != "RO":
             valid = False
         else:
             cui = cui[2:]
@@ -68,25 +68,25 @@ class CreateSpartanForm(forms.ModelForm):
                     cui = cui / 10
                     testing = testing / 10
                 c2 = sum * 10 % 11
-                if(c2 == 10):
+                if c2 == 10:
                     c2 = 0
-                if(c1 == c2):
+                if c1 == c2:
                     valid = False
-        if(not valid):
+        if not valid:
             raise forms.ValidationError("Enter a valid CUI")
         return cui
 
     def clean_cnp(self):
         cnp = self.cleaned_data['cnp']
-        if(len(cnp) != 13):
+        if len(cnp) != 13:
             raise forms.ValidationError("CNP is not 13 characters long")
-        elif(not cnp.isdigit()):
+        elif not cnp.isdigit():
             raise forms.ValidationError("Invalid CNP")
         return cnp
 
     def clean_birthday(self):
         birthday = self .cleaned_data['birthday']
-        if(birthday > date.today()):
+        if birthday > date.today():
             raise forms.ValidationError("Enter a valid birthday")
         else:
             delta = date.today() - birthday
@@ -94,3 +94,14 @@ class CreateSpartanForm(forms.ModelForm):
                 raise forms.ValidationError("You have to be at least 18 "
                                             "to be a spartan")
         return birthday
+
+    def clean_series(self):
+        series = self.cleaned_data['series']
+        if len(series) < 8:
+            raise forms.ValidationError("Id series is not 8 characters long")
+        else:
+            if(not series[0:2].isalpha()):
+                raise forms.ValidationError("First two digits must be letters")
+            if(not series[3:8].isdigit()):
+                raise forms.ValidationError("Series number is not numeric")
+        return series
