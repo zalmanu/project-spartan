@@ -80,6 +80,21 @@ CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 
+# Cacheops settings
+CACHEOPS_REDIS = {
+    'host': 'localhost', # redis-server is on same machine
+    'port': 6379,        # default redis port
+    'db': 1,             # SELECT non-default redis database
+}
+
+CACHEOPS = {
+    'auth.user': {'ops': 'all', 'timeout': 60*15},
+    'authentication.account': {'ops': 'all', 'timeout': 60*15},
+    'posts.announcement': {'ops': 'all', 'timeout': 60*15},
+    'categories.category': {'ops': 'all', 'timeout': 60*15}, 
+    'chat.messages': {'ops': 'all', 'timeout': 60*15},
+    'chat.rooms': {'ops': 'all', 'timeout': 60*15}
+}
 
 TEMPLATES = [
     {
