@@ -1,4 +1,3 @@
-
 # Copyright 2015-2016 Emanuel Danci, Emanuel Covaci, Fineas Silaghi, Sebastian Males, Vlad Temian
 #
 # This file is part of Project Spartan.
@@ -23,7 +22,7 @@ from base import *
 SECRET_KEY = 'er&cazxnks3w4jh_6(w5jq10^b05&evags5g%#@r5esleqt%t#'
 
 # RECAPTCHA
-RECAPTCHA_PUBLIC_KEY = '6LfOhB4TAAAAAIP6Nw60oYoCdr0OAfDNxkIZa9U7'
+RECAPTCHA_PUBLIC_KEY = '6LdpMR8TAAAAADiGdkwM95JyCq5_VVJto4eqSNQq'
 RECAPTCHA_PRIVATE_KEY = '6LdWFh8TAAAAAM_jX3R5CTLKP5slzYBmaybBjiP8'
 
 
