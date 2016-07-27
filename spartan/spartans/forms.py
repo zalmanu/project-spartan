@@ -16,6 +16,7 @@
 # along with Project Spartan.  If not, see <http://www.gnu.org/licenses/>.
 
 import hashlib
+from datetime import date
 
 from django import forms
 from django.shortcuts import get_object_or_404
@@ -58,6 +59,7 @@ class CreateSpartanForm(forms.ModelForm):
                 sum = 0
                 if len(cui) > 10 or len(cui) < 6:
                     valid = False
+
                 cui = int(cui)
                 c1 = cui % 10
                 cui = int(cui / 10)
@@ -73,3 +75,22 @@ class CreateSpartanForm(forms.ModelForm):
         if(not valid):
             raise forms.ValidationError("Enter a valid CUI")
         return cui
+
+    def clean_cnp(self):
+        cnp = self.cleaned_data['cnp']
+        if(len(cnp) != 13):
+            raise forms.ValidationError("CNP is not 13 characters long")
+        elif(not cnp.isdigit()):
+            raise forms.ValidationError("Invalid CNP")
+        return cnp
+
+    def clean_birthday(self):
+        birthday = self .cleaned_data['birthday']
+        if(birthday > date.today()):
+            raise forms.ValidationError("Enter a valid birthday")
+        else:
+            delta = date.today() - birthday
+            if delta.days < 6570:
+                raise forms.ValidationError("You have to be at least 18 "
+                                            "to be a spartan")
+        return birthday
