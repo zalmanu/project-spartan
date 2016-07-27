@@ -93,7 +93,15 @@
                                     <hr>
                                     <center>
                                         <div class="row edit-profile">
+
+
+
+                                            {% if form_acc.phone.errors or form.username.errors or form.email.errors %}
+                                            <center><button class="btn btn-success" id="edit-profile-btn" style="color:red;">Error update profile</button></center>
+
+                                            {% else %}
                                             <center><button class="btn btn-success" id="edit-profile-btn">Edit Profile</button></center>
+                                            {% endif %}
                                             <div class="card" style="display: none;" id="card-edit-profile">
                                                 <div class="card-jumbotron" style="padding: 8px;">
                                                     <h3><b>Edit your profile:</b></h3>
@@ -249,9 +257,9 @@
                  <!--$('#card-edit-profile').slideToggle();-->
                  <!--});-->
 
-                 <!--$('#cancel_button').click(function(){-->
-                 <!--$('#card-edit-profile').slideToggle();-->
-                 <!--});-->
+                 $('#cancel_button').click(function(){
+                 $('#card-edit-profile').slideToggle();
+                 });
             </script>
 
 
