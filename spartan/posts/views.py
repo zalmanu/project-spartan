@@ -142,7 +142,7 @@ def edit_post(request, slug):
 
 @login_required
 def search(request):
-    form = SearchForm(request.POST or None)
+    form = SearchForm(request.GET or None)
     posts = None
     if form.data != {} and form.is_valid():
         posts = form.search()
