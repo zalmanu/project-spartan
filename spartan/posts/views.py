@@ -52,7 +52,7 @@ def create_post(request):
                              "Spartan Tasks Post")
             id_hash = ''.join(random.choice(
                 string.ascii_uppercase + string.digits) for _ in range(6))
-            notify_spartans.delay("Moving", post.city,
+            notify_spartans.delay(category.name, post.city,
                                   post.title,
                                   url, id_hash)
             html = """
@@ -69,7 +69,7 @@ def create_post(request):
                 'html': html,
                 'posts': 'post'
             }
-            Group("spartans-" + "Moving"  +
+            Group("spartans-" + category.name +
                   "-" + post.city).send({'text': json.dumps(dic)})
             return redirect(post.get_absolute_url())
     return render(request, 'posts/create_post.html', {
@@ -81,7 +81,7 @@ def post(request, slug):
     post = get_object_or_404(Announcement, slug=slug)
     form = CreateOfferForm(data=request.POST or None, post=post)
     if post.status and request.user != post.author and \
-                    request.user != post.spartan.user:
+       request.user != post.spartan.user:
         raise Http404()
     confirms = []
     if request.method == 'POST':

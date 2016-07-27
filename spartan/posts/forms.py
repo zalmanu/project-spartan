@@ -47,7 +47,7 @@ class CreatePostForm(forms.ModelForm):
     class Meta:
         model = Announcement
         fields = ['title', 'description', 'address', 'country',
-                  'city', 'data', 'timePost', 'money', 
+                  'city', 'data', 'timePost', 'money', 'category',
                   'image', 'image2', 'image3', 'image4']
         widgets = {'description': forms.Textarea(attrs={'required': 'required',
                                                         })
@@ -58,3 +58,8 @@ class CreatePostForm(forms.ModelForm):
         if money < 1 or money > 9223372036854775807:
             raise forms.ValidationError('Enter a valid price')
         return money
+
+    def clean_category(self):
+        category = get_object_or_404(Category,
+                                     name=self.cleaned_data['category'])
+        return category
