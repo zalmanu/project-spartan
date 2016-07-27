@@ -146,6 +146,6 @@ def search(request):
     posts = None
     if form.data != {} and form.is_valid():
         posts = form.search()
-        return render_to_response('search/search.html', {
-            'posts': posts
-        }, context_instance=RequestContext(request))
+    return render_to_response('search/search.html', {
+        'posts': posts
+    }, context_instance=RequestContext(request))
