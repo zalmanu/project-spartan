@@ -35,7 +35,6 @@ frontend developer
 
 
 ## Pachete folosite de la  Django
-* Pentru sistemul de operare linux e necesar instalarea urmatoarelor aplicatii
 * django
 * django-widget-tweaks
 * django-recaptcha
