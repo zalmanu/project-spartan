@@ -61,9 +61,11 @@ frontend developer
 
 ## Pentru a rula proiectul se executa urmatoarea comanda in terminal 
 ```sh
-$ docker run
+$ docker-compose build
 ```
-
+```sh
+$ docker-compose up
+```
 ## Resurse folosite: 
 * Python http://learnpythonthehardway.org/book/
 * Django https://docs.djangoproject.com/en/1.9/
