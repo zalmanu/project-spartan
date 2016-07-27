@@ -1,4 +1,4 @@
 #!/bin/sh
 
 cd spartan
-celery worker -A config.celery -Q default -n default@%h
+celery -A config worker -l info
