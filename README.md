@@ -79,5 +79,5 @@ $ docker run
 * Celery http://www.celeryproject.org/
 * Docker https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-getting-started
 * JavaScript http://www.w3schools.com/js/
-* Pentru rezolvarea erorilor de backend a fost folosit foarte mult http://stackoverflow.com/
+* Stack Overflow http://stackoverflow.com/
 
