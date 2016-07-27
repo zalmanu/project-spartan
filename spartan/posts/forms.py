@@ -34,7 +34,7 @@ class EditPostForm(forms.ModelForm):
                                                         })
                    }
 
-        def clean_categoryd(self):
+        def clean_category(self):
             category = get_object_or_404(Category,
                                          name=self.cleaned_data['category'])
             return category
@@ -47,16 +47,11 @@ class CreatePostForm(forms.ModelForm):
     class Meta:
         model = Announcement
         fields = ['title', 'description', 'address', 'country',
-                  'city', 'data', 'timePost', 'money', 'category',
+                  'city', 'data', 'timePost', 'money', 
                   'image', 'image2', 'image3', 'image4']
         widgets = {'description': forms.Textarea(attrs={'required': 'required',
                                                         })
                    }
-
-    def clean_category(self):
-        category = get_object_or_404(Category,
-                                     name=self.cleaned_data['category'])
-        return category
 
     def clean_money(self):
         money = self.cleaned_data['money']
