@@ -11,7 +11,7 @@
                       <div class="col-lg-2 col-md-6 col-sm-12">
 			<a href="/category/{{ category.name }}/?page=1" name="kind" value={{ category.name }}>
                             <div class="card primary">
-                                <div class="card-background garden-category no-padding" style="background-image: url({% static 'img/category/'%}{{ category.path_banner }});">
+                                <div class="card-background garden-category no-padding" style="background-image: url({% static 'img/category/'%}{{ category.path_banner }});background-size: cover;background-position:center;">
                                     <div class="category"></div>
                                 </div>
                                 <div class="card-body half-padding">

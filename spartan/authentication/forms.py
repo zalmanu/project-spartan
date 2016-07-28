@@ -14,6 +14,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Project Spartan.  If not, see <http://www.gnu.org/licenses/>.
+import re
 
 from captcha.fields import ReCaptchaField
 from django.contrib.auth.models import User
@@ -45,6 +46,31 @@ class PasswordResetForm(forms.Form):
                                  label="Type again the new password",
                                  widget=forms.PasswordInput(
                                      attrs={'required': 'required'}))
+
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super(PasswordResetForm, self).__init__(*args, **kwargs)
+
+    def clean_old_password(self):
+        password_old = self.cleaned_data['old_password']
+        if not self.user.check_password(password_old):
+            raise forms.ValidationError("Incorrect old password")
+
+    def clean_password_1(self):
+        password_1 = self.cleaned_data['password_1']
+        if password_1.isdigit():
+            raise forms.ValidationError("Password is entirely numeric")
+        if len(password_1) < 8:
+            raise forms.ValidationError("Password is too short")
+
+    def clean_password_2(self):
+        password_2 = self.cleaned_data['password_2']
+        if password_2.isdigit():
+            raise forms.ValidationError("Password is entirely numeric")
+        if len(password_2) < 8:
+            raise forms.ValidationError("Password is too short")
+
+
 
 
 class ForGotPassword(forms.Form):
@@ -86,6 +112,10 @@ class UserRegisterForm(forms.ModelForm):
         user_name = self.cleaned_data['username']
         if User.objects.filter(username=user_name).count():
             raise forms.ValidationError("This username already exists")
+        elif(
+                re.match(r"^[\w.@+-]+$", user_name) or user_name.isdigit()
+        ):
+            raise forms.ValidationError("Username contains invalid characters")
         return user_name
 
     def clean_retypepassword(self):
