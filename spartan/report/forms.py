@@ -14,7 +14,6 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Project Spartan.  If not, see <http://www.gnu.org/licenses/>.
-
 from django import forms
 from django.forms import ValidationError
 from django.contrib.auth.models import User
@@ -46,6 +45,18 @@ class CreateReportForm(forms.ModelForm):
                 raise ValidationError("You can't report yourself!")
             elif status == "Spartan" and not user.account.has_related_object():
                 raise ValidationError("This user is not a spartan")
+            elif(Report.objects.filter(author=self.user,
+                                       status=status,
+                                       username=username).count()):
+                raise ValidationError("You already submitted a report"
+                                      "for this user as a " + status)
         except User.DoesNotExist:
             raise ValidationError("This user does not exists")
-        return username
+        return status
+
+    def clean_text(self):
+        description = self.cleaned_data['text']
+        if len(description) < 50:
+            raise ValidationError("Description has to be"
+                                  "at least 50 characters long")
+        return description
