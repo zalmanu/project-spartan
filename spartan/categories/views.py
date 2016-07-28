@@ -17,6 +17,7 @@
 
 import json
 from datetime import datetime
+from cgi import escape
 
 from django.template import RequestContext
 from django.http import HttpResponseForbidden, HttpResponse
@@ -82,8 +83,8 @@ def filter(request):
         array = results.get('posts')
         for post in posts:
             post_details = {
-                'title': post.title,
-                'description': post.description,
+                'title': escape(post.title),
+                'description': escape(post.description),
                 'slug': post.get_absolute_url(),
                 'image': post.image.url
             }
