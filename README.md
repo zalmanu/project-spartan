@@ -28,14 +28,14 @@ frontend developer
 * Jquery
 * Python
 * Django
-* Bootstrap
+* Bootstrap 3
 * PostgreSQL
-* Elasticsearch
+* Less
+* Sass
 
 
 
 ## Pachete folosite de la  Django
-* Pentru sistemul de operare linux e necesar instalarea urmatoarelor aplicatii
 * django
 * django-widget-tweaks
 * django-recaptcha
@@ -57,14 +57,18 @@ frontend developer
 
 ## Editoare folosite
 * Emacs
+* Vim
 * PyCharm
 * Atom
+* Sublime
 
 ## Pentru a rula proiectul se executa urmatoarea comanda in terminal 
 ```sh
-$ docker run
+$ docker-compose build
 ```
-
+```sh
+$ docker-compose up
+```
 ## Resurse folosite: 
 * Python http://learnpythonthehardway.org/book/
 * Django https://docs.djangoproject.com/en/1.9/
