@@ -17,6 +17,7 @@
 import json
 import string
 import random
+from cgi import escape
 
 from django.contrib.auth.models import User
 from django.contrib.sessions.models import Session
@@ -78,10 +79,10 @@ def ws_message(message):
         string.ascii_uppercase + string.digits) for _ in range(6))
     html_txt = """
     <div class="message-block">
-    <div><span class="username">""" + message.submitter.username + """</span>
+    <div><span class="username">""" + escape(message.submitter.username) + """</span>
     <span class="message-datetime">""" + message.timestamp.strftime('%B %d, %Y, %I:%M %p') + """</span>
     </div>
-    <div class="message">""" + message.message + """</div>
+    <div class="message">""" + escape(message.message) + """</div>
                                                 </div>
                                             </li>
                                         </a>
