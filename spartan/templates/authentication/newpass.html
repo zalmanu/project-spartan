@@ -1,63 +1,58 @@
-{% extends 'base2.html' %}
+{% extends "base2.html" %}
 {% load staticfiles %}
 {% block content %}
-<body onload="zoom()">
-	<script type="text/javascript">
-        function zoom() {
-            document.body.style.zoom = "80%"
-        }
-	</script>
+{% load widget_tweaks %}
 
-    <section class="wrap" id="first-section">
-        <div class="row title-row">
-				<div class="col-12 font-thin
-                                    categories-gallery"><br></br>Reset password</div>
-        </div>
-        <div class="row line-row">
-				<div class="hr">&nbsp;</div>
-        </div>
-        <div class="slide story" id="slide-6" data-slide="6">
-		<div class="container">
-            <div class="row title-row">
-			<div class="row subtitle-row">
-			</div><!-- /row -->
-
-            <div class="container">
-              <div class="compact">
-              <div class="card"></div>
-              <div class="card" id="login-box">
-
-                  <h1 class="title">Please enter :</h1>
-                <form method="POST">
-                  {% csrf_token %}
-		  {% if form.new_password1.error or form.new_password2.errors %}
-		  <div class="error">
-		    {{ form.new_password1.errors }}
-		    {{ form.new_password2.errors }}
-		  </div>
-		  {% endif %}
-		    {% for field in form %}
-                    <div class="input-container">
-		        {{ field }}
-                        <label for="Password">{{ field.label }}</label>
-                        <div class="bar"></div>
+<body class="flat-blue login-page" id="container">
+    <div class="container">
+        <div class="login-box">
+            <div>
+                <div class="login-form row">
+                    <div class="col-sm-12 text-center login-header">
+                        <h1 class="login-title"><a href="index.html">Spartan Tasks</a></h1>
                     </div>
-		    {% endfor %}
-                    <div class="button-container">
-                        <button><span>Reset</span></button>
-                    </div>
-                </form>
-              </div>
+                    <div class="col-sm-12">
+                            <center>
+                            <div id="wrapper">
+                              <br>
 
-            <div class="card alt">
-                <h1 class="title">Register
-                  <div class="close"></div>
-                </h1>
-              </div>
+                              <form method="POST">
+                                {% csrf_token %}
+                              <div id="account_details">
+                                  <p class='form_head'>Enter your new Password</p>
+                                  {% for field in form %}
+
+                                <div id="password-input">
+                                    <p>{{ field.label }}</p>
+
+                                    {{ field|attr:"required:required"|add_class:"form-control login_field"|attr:"placeholder:Please enter new password" }}
+                                     {% if field.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in field.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                    {% endif %}
+
+                                </div>
+{% endfor %}<button><span>Reset</span></button>
+                                <!-- Message for SEND -->
+
+                              </div>
+
+
+
+                                  
+                              </form>
+                            </div>
+                            </center>
+                    </div>
+                </div>
             </div>
-            </div>
-		</div><!-- /container -->
-	</div>
-    </section>
-    </body>
+        </div>
+    </div>
+
 {% endblock %}
+
