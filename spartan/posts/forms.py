@@ -14,7 +14,8 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Project Spartan.  If not, see <http://www.gnu.org/licenses/>.
-from django.core.validators import MinLengthValidator
+from datetime import date
+
 from django.shortcuts import get_object_or_404
 from django import forms
 
@@ -35,10 +36,43 @@ class EditPostForm(forms.ModelForm):
                                                         })
                    }
 
-        def clean_category(self):
-            category = get_object_or_404(Category,
-                                         name=self.cleaned_data['category'])
-            return category
+    def clean_title(self):
+        title = self.cleaned_data['title']
+        if len(title) < 5:
+            raise forms.ValidationError(
+                u'Ensure your title has at '
+                'least 5 characters')
+        return title
+
+    def clean_description(self):
+        description = self.cleaned_data['description']
+        if len(description) < 20:
+            raise forms.ValidationError(
+                u'Ensure your description has at '
+                'least 20 characters')
+        return description
+
+    def clean_data(self):
+        data = self.cleaned_data['data']
+        if data < date.today():
+            raise forms.ValidationError("Date is not valid")
+        else:
+            delta = data - date.today()
+            if delta.days > 31:
+                raise forms.ValidationError("Task can scheduled with at"
+                                            "most 31 days before")
+        return data
+
+    def clean_money(self):
+        money = self.cleaned_data['money']
+        if money < 1 or money > 9223372036854775807:
+            raise forms.ValidationError('Enter a valid price')
+        return money
+
+    def clean_category(self):
+        category = get_object_or_404(Category,
+                                     name=self.cleaned_data['category'])
+        return category
 
 
 class CreatePostForm(forms.ModelForm):
@@ -56,17 +90,30 @@ class CreatePostForm(forms.ModelForm):
 
     def clean_title(self):
         title = self.cleaned_data['title']
-        if len(title) < 10:
+        if len(title) < 5:
             raise forms.ValidationError(
                 u'Ensure your title has at '
                 'least 5 characters')
+        return title
 
     def clean_description(self):
         description = self.cleaned_data['description']
-        if len(description) < 100:
+        if len(description) < 20:
             raise forms.ValidationError(
-                u'Ensure your title has at '
+                u'Ensure your description has at '
                 'least 20 characters')
+        return description
+
+    def clean_data(self):
+        data = self.cleaned_data['data']
+        if data < date.today():
+            raise forms.ValidationError("Date is not valid")
+        else:
+            delta = data - date.today()
+            if delta.days > 31:
+                raise forms.ValidationError("Task can scheduled with at"
+                                            "most 31 days before")
+        return data
 
     def clean_money(self):
         money = self.cleaned_data['money']
