@@ -77,22 +77,32 @@ def login_page(request):
 
 @login_required
 def reset_pass(request):
-    form = PasswordResetForm(request.POST or None)
+    errors = []
+    form = PasswordResetForm(request.POST)
     if request.method == 'POST':
         if form.is_valid():
-            password_1 = form.cleaned_data['password_1']
-            password_2 = form.cleaned_data['password_2']
-            if password_1 != password_2:
-                return render(request, "authentication/resetpass.html",
-                              {'form': form,})
-            password_new = form.cleaned_data['password_2']
-            request.user.set_password(password_new)
-            user = authenticate(username=request.user.username,
-                                password=password_new)
-            login(request, user)
-            return redirect('/')
-    print form.errors
-    return render(request, "authentication/resetpass.html", {'form': form, })
+            password_old = form.cleaned_data['old_password']
+            password_new = form.cleaned_data['password_1']
+            check = password_new == form.cleaned_data['password_2']
+            if not check:
+                errors.append('Those two password are not the same')
+            elif request.user.check_password(password_old):
+                if password_new.isdigit():
+                    errors.append('Password is entirely numeric')
+                else:
+                    request.user.set_password(password_new)
+                    request.user.save()
+                    user = authenticate(username=request.user.username,
+                                        password=password_new)
+                    login(request, user)
+                    return redirect('/')
+            else:
+                errors.append('Incorrect old password')
+        else:
+            errors.append('Invalid form')
+    return render(request, "authentication/resetpass.html",
+                  {'form': form,
+                   'errors': errors})
 
 
 def forgot(request):
