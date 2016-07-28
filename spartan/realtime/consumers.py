@@ -49,6 +49,13 @@ def ws_add(message):
                 session_id = session_id.split('=')[1]
                 found = True
                 break
+            elif item.startswith('__cfduid'):
+                session_id_array = item.split(';')
+                for ses_id in session_id_array:
+                    if ses_id.startswith(' session_id'):
+                        session_id = ses_id.split('=')[1]
+                        found = True
+                        break
     session = Session.objects.get(session_key=session_id)
     session_data = session.get_decoded()
     uid = session_data.get('_auth_user_id')
@@ -126,7 +133,7 @@ def ws_message(message):
 
 @channel_session
 def ws_disconnect(message):
-    username = message.channel_session['user']
+    username = message.channel_session['user_name']
     user = User.objects.get(username=username)
     if message.channel_session['room']:
         label = message.channel_session['room']
