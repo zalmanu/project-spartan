@@ -14,7 +14,8 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Project Spartan.  If not, see <http://www.gnu.org/licenses/>.
-from django.core.validators import MinLengthValidator
+from datetime import date
+
 from django.shortcuts import get_object_or_404
 from django import forms
 
@@ -67,6 +68,11 @@ class CreatePostForm(forms.ModelForm):
             raise forms.ValidationError(
                 u'Ensure your title has at '
                 'least 20 characters')
+
+    def clean_data(self):
+        data = self.cleaned_data['data']
+        if data < date.today():
+            raise forms.ValidationError("Date is not valid")
 
     def clean_money(self):
         money = self.cleaned_data['money']
