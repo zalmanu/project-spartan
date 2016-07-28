@@ -97,10 +97,17 @@
 
 
                                             {% if form_acc.phone.errors or form.username.errors or form.email.errors %}
-                                            <center><button class="btn btn-success" id="edit-profile-btn" style="color:red;">Error update profile</button></center>
+                                            <center>
+                                                <button class="btn btn-success" id="edit-profile-btn" style="color:red;">Error update profile</button>
+                                                <a href="/reset"><button class="btn btn-warning">Reset Password</button></a>
+
+                                            </center>
 
                                             {% else %}
-                                            <center><button class="btn btn-success" id="edit-profile-btn">Edit Profile</button></center>
+                                            <center>
+                                                <button class="btn btn-success" id="edit-profile-btn">Edit Profile</button>
+                                                <a href="/reset"><button class="btn btn-warning">Reset Password</button></a>
+                                            </center>
                                             {% endif %}
                                             <div class="card" style="display: none;" id="card-edit-profile">
                                                 <div class="card-jumbotron" style="padding: 8px;">
@@ -129,16 +136,7 @@
 
 
                                                     {% endfor %}
-                                                    <div align="left">
-                                                        <label  for="exampleInputPassword1">Reset your password </label>
 
-                                                    <div align="left" >
-
-
-                                                    <button  class="btn btn-success"  ><a href="/reset">Reset password </a></button>
-                                                        </div>
-
-                                                        </div>
 
                                                      <div >
 
