@@ -1,79 +1,60 @@
-{% extends 'base2.html' %}
+{% extends "base2.html" %}
 {% load staticfiles %}
 {% block content %}
 {% load widget_tweaks %}
 
-<body onload="zoom()">
-	<script type="text/javascript">
-        function zoom() {
-            document.body.style.zoom = "80%"
-        }
-	</script>
-
-    <section class="wrap" id="first-section">
-        <div class="row title-row">
-				<div class="col-12 font-thin
-                                    categories-gallery">Forgot password?</div>
-        </div>
-        <div class="row line-row">
-				<div class="hr">&nbsp;</div>
-        </div>
-        <div class="slide story" id="slide-6" data-slide="6">
-		<div class="cZontainer">
-            <div class="row title-row">
-			<div class="row subtitle-row">
-			</div><!-- /row -->
-
-            <div class="container">
-              <div class="compact">
-              <div class="card"></div>
-              <div class="card" id="login-box">
-		 {% if form.email.errors %}
-                    <div class="error">
-		      {% for message in form.email.errors %}
-                        <ul>
-                            <li>{{ message }}</li>
-                        </ul>
-                    {% endfor %}                        
+<body class="flat-blue login-page" id="container">
+    <div class="container">
+        <div class="login-box">
+            <div>
+                <div class="login-form row">
+                    <div class="col-sm-12 text-center login-header">
+                        <h1 class="login-title"><a href="index.html">Spartan Tasks</a></h1>
                     </div>
-		    {% endif %}
-		    {% if confirms %}
-		    <div class="confirm">
-		      {% for message in confirms %}
-                        <p>{{ message }}</p>
-                      {% endfor %}                        
-		    </div>
-		    {% endif %}
-                  <h1 class="title">Enter you email and we will send you a link</h1>
-                <form method="POST">
-                    {% csrf_token %}
-		    {% for field in form %}
-                    <div class="input-container">
-		      {{ field|attr:"required:required" }}
-                        <label for="username">{{ field.label }}</label>
-                        <div class="bar"></div>
+                    <div class="col-sm-12">
+                            <center>
+                            <div id="wrapper">
+
+
+                              <form method="post" action="">
+                                  {% csrf_token %}
+
+                                  {% for field in form %}
+                              <div id="account_details">
+                                <p class='form_head'>Forgot Password</p>
+                                <div id="password-input">
+
+                                    <p>Enter you email and we will send you a link</p>
+
+                                    <!--<input type="text" placeholder='Email Address' class="form-control login-field">-->
+                                    {{ field|attr:"required:required"|add_class:"form-control login_field"|attr:"placeholder:Email" }}
+
+                                    <br>
+                                    <button><span>Go</span></button>
+                                    <!--<button class="btn btn-success next-login-infos" type="submit"><span>Send</span></button>-->
+                                </div>
+                                <!-- Message for SEND -->
+
+                              </div>
+                                  {% endfor %}
+
+                              </form>
+
+
+
+
+
+
+
+
+
+                            </div>
+                            </center>
                     </div>
-		    {% endfor %}
-                    <div class="button-container">
-                        <button><span>Go</span></button>
-                    </div>
-                </form>
-              </div>
-
-            <div class="card alt">
-
-                <h1 class="title">Register
-                  <div class="close"></div>
-                </h1>
-
-
-              </div>
-
+                </div>
             </div>
-            </div>
-		</div><!-- /container -->
-	</div>
+        </div>
+    </div>
+    <!-- Javascript Libs -->
 
-    </section>
-    </body>
 {% endblock %}
