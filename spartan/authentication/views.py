@@ -80,13 +80,18 @@ def reset_pass(request):
     form = PasswordResetForm(request.POST or None)
     if request.method == 'POST':
         if form.is_valid():
-            password_new = form.cleaned_data['password_1']
+            password_1 = form.cleaned_data['password_1']
+            password_2 = form.cleaned_data['password_2']
+            if password_1 != password_2:
+                return render(request, "authentication/resetpass.html",
+                              {'form': form,})
+            password_new = form.cleaned_data['password_2']
             request.user.set_password(password_new)
-            request.user.save()
             user = authenticate(username=request.user.username,
                                 password=password_new)
             login(request, user)
             return redirect('/')
+    print form.errors
     return render(request, "authentication/resetpass.html", {'form': form, })
 
 

@@ -26,7 +26,7 @@
                                                         <div class="alert alert-danger fade in" id="input-alert">
                                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                                         <strong>Warning!</strong>
-				                                        {% for error in form.image.errors %}
+				                                        {% for error in form.old_password.errors %}
 				                                                {{ error }}
 				                                        {% endfor %}
                                                             </div>
@@ -45,13 +45,20 @@
 				                                        {% endfor %}
                                                             </div>
                                              {% endif %}
+                                                {% if mess %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {{ mess }}
+                                                            </div>
+                                             {% endif %}
 
                                             </div>
                                             <br>
                                             <label for="exampleInputPassword1">Retype your new Password</label>
                                             <div>
                                                 {{ form.password_2|attr:"required:required"|add_class:"form-control login_field"|attr:"placeholder:Please retype new password" }}
-                                            {% if form.password_2.errors %}
+                                                {% if form.password_2.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
                                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                                         <strong>Warning!</strong>
