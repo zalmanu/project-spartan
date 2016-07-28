@@ -14,9 +14,10 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Project Spartan.  If not, see <http://www.gnu.org/licenses/>.
-
+from django.core.validators import MinLengthValidator
 from django.shortcuts import get_object_or_404
 from django import forms
+
 from .models import Announcement
 from categories.models import Category
 
@@ -52,6 +53,20 @@ class CreatePostForm(forms.ModelForm):
         widgets = {'description': forms.Textarea(attrs={'required': 'required',
                                                         })
                    }
+
+    def clean_title(self):
+        title = self.cleaned_data['title']
+        if len(title) < 10:
+            raise forms.ValidationError(
+                u'Ensure your title has at '
+                'least 5 characters')
+
+    def clean_description(self):
+        description = self.cleaned_data['description']
+        if len(description) < 100:
+            raise forms.ValidationError(
+                u'Ensure your title has at '
+                'least 20 characters')
 
     def clean_money(self):
         money = self.cleaned_data['money']
