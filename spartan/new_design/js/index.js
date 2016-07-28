@@ -57,7 +57,7 @@ $('#display-message').click(function(){
   $("#password-input").hide();
 });
 
-
+$('#create-post-tooltip').tooltip('autostart : false').show();
 
 
 
