@@ -3,87 +3,190 @@
 {% block content %}
 {% load widget_tweaks %}
 
-<body class="flat-blue login-page" id="container">
+<body class="flat-blue login-page" id="container" style="margin-top: 200px !important;">
     <div class="container">
         <div class="login-box">
             <div>
                 <div class="login-form row">
                     <div class="col-sm-12 text-center login-header">
-                        <h1 class="login-title"><a href="/">Spartan Tasks</a></h1>
+                        <h1 class="login-title"><a href="index.html">Spartan Tasks</a></h1>
                     </div>
                     <div class="col-sm-12">
                             <center>
                             <div id="wrapper">
-                              <br>
 
-
-                              <form method="POST" enctype="multipart/form-data">
+                              <form method="post" enctype="multipart/form-data">
                                   {% csrf_token %}
+
 
                               <div id="account_details">
                                 <p class='form_head'>Register</p>
-				{% for field in form %}
-                                  {% if field.label == "Retypepassword" %}
-                                     <p>Retype password</p>
-                                   {% else %}
 
-                                <p>{{ field.label }}</p>
+                                  <p>Username</p>
+
+
+                                        {{ form.username|add_class:"form-control login_field"|attr:"placeholder:Username" }}
+                                                 {% if form.username.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                          <strong>Warning!</strong>
+                                                  {% for error in form.username.errors %}
+                                                     {{ error }}
+                                                  {% endfor %}
+                                                            </div>
+                                                  {% endif %}
+
+                                <p>Email Address</p>
+
+
+                                        {{ form.email|add_class:"form-control login_field"|attr:"placeholder:Email address" }}
+                                                  {% if form.email.errors %}
+                                            <div class="alert alert-danger fade in" id="input-alert">
+                                              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                              <strong>Warning!</strong>
+                                              {% for error in form.email.errors %}
+                                                 {{ error }}
+                                              {% endfor %}
+                                                </div>
+                                                {% endif %}
+
+                                <p>Password</p>
+
+
+                                        {{ form.password|add_class:"form-control login_field"|attr:"placeholder:Password" }}
+
+
+
+				                    {% if form.password.errors %}
+                                            <div class="alert alert-danger fade in" id="input-alert">
+                                              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                              <strong>Warning!</strong>
+                                              {% for error in form.password.errors %}
+                                                 {{ error }}
+                                              {% endfor %}
+                                            </div>
                                   {% endif %}
-				{{ field|add_class:"form-control login_field" }}
-				{% if form.errors %}
-				{% if field.errors %}
-                                <div class="alert alert-danger fade in" id="input-alert">
-                                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                  <strong>Warning!</strong>
-				  {% for error in field.errors %}
-				  {{ error }}
-				  {% endfor %}
+
+
+                                <p>Retype Password</p>
+
+
+                                       {{ form.retypepassword|add_class:"form-control login_field"|attr:"placeholder:Retype password" }}
+
+                                             {% if form.retypepassword.errors %}
+                                                    <div class="alert alert-danger fade in" id="input-alert">
+                                                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                      <strong>Warning!</strong>
+                                                      {% for error in form.retypepassword.errors %}
+                                                         {{ error }}
+                                                      {% endfor %}
+                                                    </div>
+                                                {% endif %}
+                                <p>Phone</p>
+
+
+                                        {{ acc_form.phone|add_class:"form-control login_field"|attr:"placeholder:Phone"|attr:"required:required" }}
+                                                {% if acc_form.phone.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                          <strong>Warning!</strong>
+                                                              {% for error in acc_form.phone.errors %}
+                                                                 {{ error }}
+                                                              {% endfor %}
+                                                            </div>
+                                                {% endif %}
+                                <p>City</p>
+
+                                <div class="btn-group" style="float: left; width: 100%; text-align: left;text-align:left !important;">
+
+                                           {{ acc_form.city|add_class:"form-control login_field"|attr:"style:float: left; width: 100%; text-align: left;text-align:left !important;" }}
                                 </div>
-				{% endif %}
-				{% endif %}
-				{% endfor %}
+                                <p>Country</p>
+                                <div class="btn-group" style="float: left; width: 100%; text-align: left;text-align:left !important;">
 
+                                    {{ acc_form.country|add_class:"form-control login_field"|attr:"style:float: left; width: 100%; text-align: left;text-align:left !important;" }}
 
-                 {% for field in acc_form %}
-
-
-                                  <p>{{ field.label }}</p>
-
-
-
-
-                    {% if field.label == "Phone" %}
-                          {{ field|add_class:"form-control "|attr:"required:required"|attr:"placeholder:Enter your phone "}}
-
-                                  {% else %}
-				{{ field|add_class:"form-control login_field" }}
-                                  {% endif %}
-
-				{% if form.errors or acc_form.errors %}
-				{% if field.errors %}
-                                <div class="alert alert-danger fade in" id="input-alert">
-                                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                  <strong>Warning!</strong>
-				  {% for error in field.errors %}
-				  {{ error }}
-				  {% endfor %}
                                 </div>
-				{% endif %}
-				{% endif %}
-				{% endfor %}
-                                <br>
-
-                                        <button class="btn btn-success next-login-infos" type="submit"><span>Register</span></button>
+                                <p>Profile Picture</p>
 
 
+                                  <!--<input type="file" class="form-control login-faield" style="border:1px solid #efefef !important; padding: 5px 10px !important;">-->
+                                  {{ acc_form.profile_image|add_class:"form-control login_field"|attr:"required:required"|attr:"style:border:1px solid #efefef !important; padding: 5px 10px !important;" }}
+
+                                  {% if acc_form.profile_image.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                          <strong>Warning!</strong>
+                                                              {% for error in acc_form.profile_image.errors %}
+                                                                 {{ error }}
+                                                              {% endfor %}
+                                                            </div>
+                                                {% endif %}
+                                  <div>
+                                        {% if acc_form.captcha.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                          <strong>Warning!</strong>
+                                                              {% for error in acc_form.captcha.errors %}
+                                                                 {{ error }}
+                                                              {% endfor %}
+                                                            </div>
+                                                {% endif %}
+                                   {{ acc_form.captcha|add_class:"form-control login_field"|attr:"required:required"|attr:"style:float: left; width: 100%; text-align: left;text-align:left !important;"}}
+
+                                    </div>
+
+
+                                <button class="btn btn-success next-login-infos" type="submit"><span>Register</span></button>
                               </div>
-
                               </form>
                             </div>
                             </center>
-                    </div>
+
+                        <div class="login-footer">
+                            <span class="text-left" style="float:right;font-size:15px; color:#363c46;">Already have an account? <a href="login.html" class="color-blue"  style="text-decoration: none;font-size:15px;color: #363c46;"><b>Go and LogIn!</b></a></span>
+                        </div>
+                        
                 </div>
             </div>
         </div>
     </div>
+    <!-- Javascript Libs -->
+    <script>
+    function show_next(id,nextid,bar)
+    {
+      var ele=document.getElementById(id).getElementsByTagName("input");
+      var error=0;
+      for(var i=0;i<ele.length;i++)
+      {
+        if(ele[i].type=="text" && ele[i].value=="")
+      {
+        error++;
+      }
+      }
+        
+      if(error==0)
+      {
+        document.getElementById("account_details").style.display="none";
+        document.getElementById("user_details").style.display="none";
+        document.getElementById("qualification").style.display="none";
+        $("#"+nextid).fadeIn();
+        document.getElementById(bar).style.backgroundColor="#19B5FE";
+      }
+      else
+      {
+        alert("Fill All The details");
+      }
+    }
+
+    function show_prev(previd,bar)
+    {
+      document.getElementById("account_details").style.display="none";
+      document.getElementById("user_details").style.display="none";
+      document.getElementById("qualification").style.display="none";
+      $("#"+previd).fadeIn();
+      document.getElementById(bar).style.backgroundColor="#D8D8D8";
+    }
+    </script>
+
 {% endblock %}
