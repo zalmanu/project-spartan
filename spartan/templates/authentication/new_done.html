@@ -1,43 +1,48 @@
-{% extends 'base2.html' %}
+{% extends "base2.html" %}
 {% load staticfiles %}
 {% block content %}
-<body onload="zoom()">
-	<script type="text/javascript">
-        function zoom() {
-            document.body.style.zoom = "80%"
-        }
-	</script>
+{% load widget_tweaks %}
 
-    <section class="wrap" id="first-section">
-        <div class="row title-row">
-        <div class="row line-row">
-				<div class="hr">&nbsp;</div>
-        </div>
-        <div class="slide story" id="slide-6" data-slide="6">
-		<div class="container">
-            <div class="row title-row">
-			<div class="row subtitle-row">
-			</div><!-- /row -->
-			
-            <div class="container">
-              <div class="compact">
-              <div class="card"></div>
-              <div class="card" id="login-box">
-		<h1 style="margin-bottom:10%; margin-top:20%; margin-left:7%;"> Your password has been reset</h1>
-                <div class="button-container">
-                        <button onclick="window.location='/login';" ><span>Go to log in</span></button>
+<body class="flat-blue login-page" id="container">
+    <div class="container">
+        <div class="login-box">
+            <div>
+                <div class="login-form row">
+                    <div class="col-sm-12 text-center login-header">
+                        <h1 class="login-title"><a href="/">Spartan Tasks</a></h1>
                     </div>
-              </div>
+                    <div class="col-sm-12">
+                            <center>
+                            <div id="wrapper">
+                              <br>
 
-            <div class="card alt">
-                <h1 class="title">Register
-                  <div class="close"></div>
-                </h1>
-              </div>
+                              <form method="POST">
+                                {% csrf_token %}
+                              <div id="account_details">
+                                  <img src="{% static "img/logo/logoB.png" class = 'img-responsive' %}" style="max-width: 35%;">
+                                  <h5 class='form_head'>Your password has been reset !</h5>
+                                   <br>
+
+                                    <button class="btn btn-success" ><a href="/login">Go to login </a></button>
+
+
+                                </div>
+
+                                <!-- Message for SEND -->
+
+
+
+
+
+
+                              </form>
+                            </div>
+                            </center>
+                    </div>
+                </div>
             </div>
-            </div>
-		</div><!-- /container -->
-	</div>
-    </section>
-    </body>
+        </div>
+    </div>
+
 {% endblock %}
+
