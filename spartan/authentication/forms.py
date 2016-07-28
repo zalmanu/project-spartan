@@ -14,6 +14,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Project Spartan.  If not, see <http://www.gnu.org/licenses/>.
+import re
 
 from captcha.fields import ReCaptchaField
 from django.contrib.auth.models import User
@@ -99,6 +100,10 @@ class UserRegisterForm(forms.ModelForm):
         user_name = self.cleaned_data['username']
         if User.objects.filter(username=user_name).count():
             raise forms.ValidationError("This username already exists")
+        elif(
+                re.match(r"^[\w.@+-]+$", user_name) or user_name.isdigit()
+        ):
+            raise forms.ValidationError("Username contains invalid characters")
         return user_name
 
     def clean_retypepassword(self):
