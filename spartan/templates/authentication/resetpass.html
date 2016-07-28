@@ -20,46 +20,33 @@
                                              {% csrf_token %}
                                             <label for="exampleInputPassword1">Enter your new Password</label>
                                             <div>
-
-                                                {{ form.old_password|attr:"required:required"|add_class:"form-control login_field"|attr:"placeholder:Please enter old password" }}
-                                                     {% if form.old_password.errors %}
+                                                  {% if errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
                                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                                         <strong>Warning!</strong>
-				                                        {% for error in form.image.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
+                                                            {% for message in errors %}
+
+                                                                    {{ message }}
+
+                                                            {% endfor %}
                                                             </div>
-                                             {% endif %}
+                                                {% endif %}
+
+                                                {{ form.old_password|attr:"required:required"|add_class:"form-control login_field"|attr:"placeholder:Please enter old password" }}
+
                                             </div>
                                             <br>
                                             <label for="exampleInputPassword1">Retype your new Password</label>
                                             <div>
                                                 {{ form.password_1|attr:"required:required"|add_class:"form-control login_field"|attr:"placeholder:Please enter new password" }}
-                                                     {% if form.password_1.errors %}
-                                                        <div class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for error in form.password_1.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
-                                                            </div>
-                                             {% endif %}
+
 
                                             </div>
                                             <br>
                                             <label for="exampleInputPassword1">Retype your new Password</label>
                                             <div>
                                                 {{ form.password_2|attr:"required:required"|add_class:"form-control login_field"|attr:"placeholder:Please retype new password" }}
-                                            {% if form.password_2.errors %}
-                                                        <div class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for error in form.password_2.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
-                                                            </div>
-                                             {% endif %}
+
                                             </div>
 
                                         </div>
