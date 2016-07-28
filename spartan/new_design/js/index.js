@@ -38,15 +38,24 @@ $(document).ready(function(){
 });
 
 
+var fineas = "fienas";
+
+console.log(fineas);
+
+$('#special').hide();
 
 
+$('#fineas').click(function(){
+  $('#special').show();
+})
 
+$('#password-message').hide();
+$('#password-input').show();
 
-
-
-
-
-
+$('#display-message').click(function(){
+  $('#password-message').show();
+  $("#password-input").hide();
+});
 
 
 

@@ -21,7 +21,7 @@
     <link rel="stylesheet" type="text/css" href="../../css/themes/flat-blue.css">
 </head>
 
-<body class="flat-blue login-page" id="container">
+<body class="flat-blue login-page" id="container" style="margin-top: 200px !important;">
     <div class="container">
         <div class="login-box">
             <div>
@@ -32,62 +32,72 @@
                     <div class="col-sm-12">
                             <center>
                             <div id="wrapper">
-                              <br>
-                              <span class='baricon'>1</span>
-                              <span id="bar1" class='progress_bar'></span>
-                              <span class='baricon'>2</span>
-                              <span id="bar2" class='progress_bar'></span>
-                              <span class='baricon'>3</span>
 
                               <form method="post" action="">
                               <div id="account_details">
-                                <p class='form_head'>Account Details</p>
+                                <p class='form_head'>Register</p>
+                                 <p>Username</p>
+                                <input type="text" placeholder='Username' class="form-control login-field">
                                 <p>Email Address</p>
                                 <input type="text" placeholder='Email Address' class="form-control login-field">
-                                <div class="alert alert-danger fade in" id="input-alert">
-                                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                  <strong>Warning!</strong>Scrie frumos ca te bat ba!
-                                </div>
                                 <p>Password</p>
                                 <input type="text" placeholder='Password' class="form-control login-field">
                                 <div class="alert alert-danger fade in" id="input-alert">
                                   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                   <strong>Warning!</strong>Scrie frumos ca te bat ba!
                                 </div>
+                                <p>Retype Password</p>
+                                <input type="text" placeholder='Password' class="form-control login-field">
+                                <div class="alert alert-danger fade in" id="input-alert">
+                                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                  <strong>Warning!</strong>Scrie frumos ca te bat ba!
+                                </div>
+                                <p>Phone</p>
+                                <input type="text" placeholder='Password' class="form-control login-field">
+                                <p>City</p>
+                                <div class="btn-group" style="float: left; width: 100%; text-align: left;text-align:left !important;">
+                                    <button type="button"  class="form-control login-field" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:#F9F9F9;">
+                                      <span style="color:#99999c;">Select your City</span> <span class="caret"></span>
+                                    </button>
+                                      <ul class="dropdown-menu" style="width:100%; overflow: scroll; height: 150px;">
+                                        <li class="dropdown-center"><a href="#">Action</a></li>
+                                        <li class="dropdown-center"><a href="#">Another action</a></li>
+                                        <li class="dropdown-center"><a href="#">Something else here</a></li>
+                                        <li class="dropdown-center"><a href="#">Separated link</a></li>
+                                        <li class="dropdown-center"><a href="#">Action</a></li>
+                                        <li class="dropdown-center"><a href="#">Another action</a></li>
+                                        <li class="dropdown-center"><a href="#">Something else here</a></li>
+                                        <li class="dropdown-center"><a href="#">Separated link</a></li>
+                                      </ul>
+                                </div>
+                                <p>Country</p>
+                                <div class="btn-group" style="float: left; width: 100%; text-align: left;text-align:left !important;">
+                                    <button type="button"  class="form-control login-field" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:#F9F9F9;">
+                                      <span style="color:#99999c;">Select your City</span> <span class="caret"></span>
+                                    </button>
+                                      <ul class="dropdown-menu" style="width:100%; overflow: scroll; height: 150px;">
+                                        <li class="dropdown-center"><a href="#">Action</a></li>
+                                        <li class="dropdown-center"><a href="#">Another action</a></li>
+                                        <li class="dropdown-center"><a href="#">Something else here</a></li>
+                                        <li class="dropdown-center"><a href="#">Separated link</a></li>
+                                        <li class="dropdown-center"><a href="#">Action</a></li>
+                                        <li class="dropdown-center"><a href="#">Another action</a></li>
+                                        <li class="dropdown-center"><a href="#">Something else here</a></li>
+                                        <li class="dropdown-center"><a href="#">Separated link</a></li>
+                                      </ul>
+                                </div>
+                                <p>Profile Picture</p>
+                                <input type="file" class="form-control login-faield" style="border:1px solid #efefef !important; padding: 5px 10px !important;">
                                 <br>
-                                <input type="button" value="Next" onclick="show_next('account_details','user_details','bar1');" class="btn btn-success next-login-infos">
-                              </div>
-
-                              <div id="user_details">
-                                <p class='form_head'>User Details</p>
-                                <p>First Name</p>
-                                <input type="text" placeholder='First Name'class="form-control login-field">
-                                <p>Last Name</p>
-                                <input type="text" placeholder='Last Name' class="form-control login-field">
-                                <p>Gender</p>
-                                <input type="text" placeholder='Gender' class="form-control login-field">
-                                <br>
-                                <input type="button" value="Previous" onclick="show_prev('account_details','bar1');" class="btn btn-success next-login-infos">
-                                <input type="button" value="Next" onclick="show_next('user_details','qualification','bar2');" class="btn btn-success next-login-infos">
-                              </div>
-                                    
-                              <div id="qualification">
-                                <p class='form_head'>Qualification</p>
-                                <p>Qualification</p>
-                                <input type="text" placeholder='Qualification' class="form-control login-field">
-                                <p>Hobbies</p>
-                                <input type="text" placeholder='Hobbies' class="form-control login-field">
-                                <br>
-                                <input type="button" value="Previous" onclick="show_prev('user_details','bar2');"  class="btn btn-success next-login-infos">
-                                <input type="Submit" value="Submit" class="btn btn-success next-login-infos">
+                                <input type="button" value="Submit"class="btn btn-success next-login-infos">
                               </div>
                               </form>
                             </div>
                             </center>
                         <div class="login-footer">
-                            <span class="text-right"><a href="#" class="color-blue">Forgot password?</a></span>
+                            <span class="text-left" style="float:right;font-size:15px; color:#363c46;">Already have an account? <a href="login.html" class="color-blue"  style="text-decoration: none;font-size:15px;color: #363c46;"><b>Go and LogIn!</b></a></span>
                         </div>
-                    </div>
+                        
                 </div>
             </div>
         </div>
