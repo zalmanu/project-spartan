@@ -43,8 +43,6 @@ class ReviewViewTestCase(TestCase):
                                               address="La mine acas",
                                               cnp="dawd2",
                                               series="dawdaw",
-                                              cui="dwda",
-                                              bank="1234123412341234",
                                               user=self.user,
                                               spartanStatus=True)
         self.spartan.save()
