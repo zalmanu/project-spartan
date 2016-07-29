@@ -36,7 +36,8 @@ def category(request, kind):
     categories = Category.objects.all()
     page_category = get_object_or_404(Category, name=kind)
     anns = Announcement.objects.all().filter(category=page_category,
-                                             status=False)
+                                             status=False).order_by(
+                                                 '-id')
     page = request.GET.get('page')
     paginator = Paginator(anns, 8)
     return render(request, 'category/category.html', {
