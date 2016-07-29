@@ -13,7 +13,7 @@
                                         {% if request.user.spartan.spartanStatus  == True %}
                                                     <h3>Welcome SPARTAN!</h3>
                                                     {% else %}
-                                                    <h3>Welcome <b>{{ user.username }}</b> ! </h3>
+                                                    <h3>Welcome {{ user.username }} ! </h3>
 
                                                    {% endif %}
                                     </div>
@@ -24,7 +24,7 @@
                                         <div class="col-sm-6">
                                             <div class="card primary">
                                                 <div class="card-jumbotron no-padding">
-                                                   <img src='{{ user.account.profile_image.url }}' height="533" class="img-responsive" width="800" style="height:300px !important ;width:100% !important;"/>
+                                                   <img src='{{ user.account.profile_image.url }}'  class="img-responsive"  style="height:300px !important ;width:100% !important;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -35,7 +35,7 @@
                                                 <div class="card-body">
                                                     <div class="row">
                                               <div class="bio-row">
-                                                  <p><span>Username:</b> </span> {{ user.username }} </p>
+                                                  <p><span>Username: </span> {{ user.username }} </p>
                                               </div>
                                               <div class="bio-row">
                                                   <p><span>City: </span>{{ user.account.city }}</p>
@@ -90,9 +90,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
                                     <hr>
                                     <center>
                                         <div class="row edit-profile">
@@ -234,9 +231,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div>    
+                    </div>
                     <!-- End of Row -->
                 </div>
+            </div>
 
             <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js">
             </script>
