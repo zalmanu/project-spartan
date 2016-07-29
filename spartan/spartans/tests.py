@@ -48,8 +48,6 @@ class SpartanFormsTestCase(TestCase):
                                          address="La mine acas",
                                          cnp="dawd2",
                                          series="dawdaw",
-                                         cui="dwda",
-                                         bank="1234123412341234",
                                          user=self.spartan,
                                          spartanStatus=True)
         spartan.save()
@@ -58,7 +56,7 @@ class SpartanFormsTestCase(TestCase):
         form_data = {'last_name': 'Gheorge',
                      'first_name': 'CelFrumos', 'birthday': '2013',
                      'address': 'Lestrada', 'cnp': '&&&',
-                     'series': 'Dwda', 'cui': 'dawda', 'bank': '32'}
+                     'series': 'Dwda'}
         form = CreateSpartanForm(data=form_data)
         self.assertFalse(form.is_valid())
 
@@ -66,9 +64,8 @@ class SpartanFormsTestCase(TestCase):
         form_data = {'last_name': 'Gheorge',
                      'first_name': 'CelFrumos', 'birthday': '2013-02-13',
                      'address': 'Lestrada', 'cnp': '12313',
-                     'series': 'Dwda', 'cui': 'dawda',
-                     'category': self.category.name,
-                     'bank': '1234123412341234'}
+                     'series': 'Dwda',
+                     'category': self.category.name}
         form = CreateSpartanForm(data=form_data)
         self.assertFalse(form.is_valid())
 
@@ -76,8 +73,7 @@ class SpartanFormsTestCase(TestCase):
         form_data = {'last_name': 'Gheorge',
                      'first_name': 'CelFrumos', 'birthday': '02/13/2016',
                      'address': 'Lestrada', 'cnp': '1231d3',
-                     'series': 'Dwda', 'cui': 'dawda',
-                     'category': self.category.name,
-                     'bank': '1234123412341234'}
+                     'series': 'Dwda',
+                     'category': self.category.name}
         form = CreateSpartanForm(data=form_data)
         self.assertFalse(form.is_valid())
