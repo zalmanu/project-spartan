@@ -76,15 +76,15 @@
                                           </div>
                                             </form>
 					    {% endif %}
-					    <button class="pull-right btn" id="show-bidding-field">Show other Bids</button>
+					    <button class="btn" id="show-bidding-field">Show other Bids</button>
                                             {% if request.user == post.author%}
-                                            <button  class="pull-right btn" ><a href="/edit/{{ post.slug }}" >Edit task </a></button>
+                                            <button  class=" btn btn-success" style="margin-right:5px"><a href="/edit/{{ post.slug }}" >Edit task </a></button>
                                                     {% endif %}
                                                     {% if request.user == post.author %}
-                                           <div class="button-container">
+                                           <div class="pull-left">
                                                <form method="POST">
                                                    {% csrf_token %}
-                                                <button type="submit" name = "deletePost" value='deletePost'  class="pull-right btn"><span>| Delete |</span></button>
+                                                <button type="submit" name="deletePost" value='deletePost' style="margin-right:5px" class="btn btn-danger"><span>Delete </span></button>
                                                 </form>
                                            </div>
                                           {% endif %}

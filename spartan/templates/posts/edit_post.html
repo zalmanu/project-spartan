@@ -11,130 +11,66 @@
                             <div class="card">
                                 <div class="card-header">
                                     <div class="card-title">
-                                        <div class="title">Edit task</div>
+                                        <div class="title">Create Task</div>
                                     </div>
                                 </div>
                                 <div class="card-body">
                                     <form method="POST" enctype="multipart/form-data">
-                                         {% csrf_token %}
-                                         {% if confirm %}
-				                           <div  class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong >
-                                                            {% for message in confirm %}
-				                                                {{ message }}
-				                                        {% endfor %} !
-                                                        </strong>
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Post Title</label>
+                                            {{ form.title|add_class:"form-control "|attr:"placeholder:Enter a title"|attr:"required:required"}}
 
-                                                            </div>
-                                         {% endif %}
-
-                                        {% for field in form %}
-
-                                         {% if field.label == 'Title' %}
-
-                                            {{ field.label }}
-                                         {{ field|add_class:"form-control "|attr:"placeholder:Enter a title"|attr:"required:required"}}
-                                           {% if field.errors %}
+                                            {% if form.title.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
                                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                                         <strong>Warning!</strong>
-				                                        {% for error in field.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
+                                                        {% for error in form.title.errors %}
+                                                                {{ error }}
+                                                        {% endfor %}
                                                             </div>
-                                                            {% endif %}
+                                             {% endif %}
+                                        </div>
 
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Task Description</label>
+                                            <div>
 
+                                                 {{ form.description|add_class:"form-control "|attr:"placeholder:Enter a description"|attr:"required:required"}}
 
-                                        {% elif field.label == 'Task description' %}
-
-                                        {{ field.label }}
-
-                                         {{ field|add_class:"form-control "|attr:"placeholder:Enter a description"|attr:"required:required"}}
-                                           {% if field.errors %}
+                                                {% if form.description.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
                                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                                         <strong>Warning!</strong>
-				                                        {% for error in field.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
+                                                        {% for error in form.description.errors %}
+                                                                {{ error }}
+                                                        {% endfor %}
                                                             </div>
-                                                            {% endif %}
-
-                                        {% endif %}
-
-
-                                        {% if field.label == 'Address' %}
-                                        {{ field.label }}
-
-                                         {{ field|add_class:"form-control "|attr:"placeholder:Enter a address"|attr:"required:required"}}
-                                           {% if field.errors %}
-                                                        <div class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for error in field.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
-                                                            </div>
-                                                            {% endif %}
-
-
-
-                                        {% endif %}
-
-                                        {% if field.label == 'Country' or field.label == 'City'  %}
-                                        {{ field.label }}
-
-                                         {{ field|add_class:"form-control "|attr:"required:required"}}
-                                           {% if field.errors %}
-                                                        <div class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for error in field.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
-                                                            </div>
-                                                            {% endif %}
-
-
-
-                                        {% endif %}
-
-
-
-                                        {% if field.label == 'Date FORMAT YYYY-MM-DD'  %}
-
-
-
+                                             {% endif %}
+                                            </div>
+                                        </div>
 
                                         <div class="form-group">    
                                             <label for="exampleInputEmail">Date</label>
                                             <div class="input-group">
-                                                {{ field|add_class:"form-control "|attr:"required:required"|add_class:"form-control datepicker"|attr:"placeholder:Enter a date"}}
+
+                                                {{ form.data|add_class:"form-control "|attr:"required:required"|add_class:"form-control datepicker"|attr:"placeholder:Pick up a date"}}
+
+                                                {% if form.data.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+                                                        {% for error in form.data.errors %}
+                                                                {{ error }}
+                                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
                                                 <span class="input-group-addon" id="basic-addon1">
                                                     <i class="glyphicon glyphicon-calendar" data-time-icon="icon-time" data-date-icon="icon-calendar">
                                                     </i>
                                                 </span>
                                             </div>
                                         </div>
-
-                                        {% if field.errors %}
-                                                        <div class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for error in field.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
-                                                            </div>
-                                                            {% endif %}
-                                        {% endif %}
-
-
-
-
-                                        {% if field.label == 'Time FORMAT HH:MM:SS'  %}
-
 
 
                                 <div class="form-group">
@@ -146,91 +82,158 @@
                                                         <div class="alert alert-danger fade in" id="input-alert">
                                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                                         <strong>Warning!</strong>
-				                                        {% for error in form.timep.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
+                                                        {% for error in form.timep.errors %}
+                                                                {{ error }}
+                                                        {% endfor %}
                                                             </div>
                                              {% endif %}
 
                                 </div>
 
+                                        <div class="form-grpup">
+                                            <label for="exampleInputEmail">Address</label>
+                                            <div id="location-TYPE" class="form-group">
 
-                                        {% if field.errors %}
-                                                        <div class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for error in field.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
-                                                            </div>
-                                                            {% endif %}
-                                        {% endif %}
+                                                 {{ form.address|add_class:"form-control "|attr:"required:required"|attr:"placeholder:Please enter the following: Street Name, Number"|attr:"id:us6-address"}}
 
+                                            </div>
+                                            <div class="location-picker-by-map" id="us6" style="width: 500px; height: 400px;"></div>
+                                            <script>
+                                                $('#us6').locationpicker({
+                                                    location: {latitude: 45.760696, longitude: 21.226788},
+                                                    radius: 300,
+                                                    inputBinding: {
+                                                        locationNameInput: $('#us6-address')
+                                                    },
+                                                    enableAutocomplete: true
+                                                });
+                                                $('#us6-dialog').on('shown.bs.modal', function () {
+                                                    $('#us6').locationpicker('autosize');
+                                                });
 
-                                        {% if field.label == 'Category'  %}
-                                        {{ field.label }}
+                                            </script>
 
-                                         {{ field|add_class:"form-control "|attr:"required:required"}}
-                                           {% if field.errors %}
-                                                        <div class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for error in field.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
-                                                            </div>
-                                                            {% endif %}
-
-
-
-                                        {% endif %}
-
-                                        {% if field.label == 'Highest price you are willing to pay (EUR)'  %}
-                                        {{ field.label }}
-
-                                         {{ field|add_class:"form-control "|attr:"required:required"|attr:"placeholder:Enter a price"}}
-                                           {% if field.errors %}
-                                                        <div class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for error in field.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
-                                                            </div>
-                                                            {% endif %}
-
-
-
-                                        {% endif %}
-
-
-
-                                      {% if field.label == 'Image' %}
-
-
-
-
+                                        </div>
                                         <div class="form-group">
                                             <br>
-                                            <label for="exampleInputFile">Choose some reprezentative pictures<span style="color:red;">*</span></label><br>
-                                            {{ field|add_class:"form-control "}}
+                                            <label for="exampleInputPassword1">City</label>
+                                            <div>
 
+                                                 {{ form.city|add_class:"form-control "|attr:"required:required"}}
 
-                                        {% elif field.label == 'Image2' or  field.label == 'Image3' or  field.label == 'Image4' %}
+                                                {% if form.city.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+                                                        {% for error in form.city.errors %}
+                                                                {{ error }}
+                                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
+                                            </div>
+                                        </div>
 
-                                         {{ field|add_class:"form-control "}}
+                                         <div class="form-group">
+                                            <label for="exampleInputPassword1">Country</label>
+                                            <div>
 
+                                                 {{ form.country|add_class:"form-control "|attr:"required:required"}}
 
+                                                {% if form.country.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+                                                        {% for error in form.country.errors %}
+                                                                {{ error }}
+                                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
+                                            </div>
+                                        </div>
 
-                                        {% endif %}
+                                         <div class="form-group">
+                                            <label for="exampleInputPassword1">Highest price you are willing to pay (EUR)</label>
+                                            <div>
 
+                                                 {{ form.money|add_class:"form-control "|attr:"required:required"|attr:"placeholder:Enter Highest price you are willing to pay (EUR)"}}
 
+                                                {% if form.money.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+                                                        {% for error in form.money.errors %}
+                                                                {{ error }}
+                                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
+                                            </div>
+                                        </div>
 
-                                        {% endfor %}
+                                        <div >
+                                            <label for="exampleInputPassword1">Category</label>
+                                            <div>
 
+                                                 {{ form.category|add_class:"form-control "|attr:"required:required"}}
 
+                                                {% if form.category.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+                                                        {% for error in form.description.errors %}
+                                                                {{ error }}
+                                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
+                                            </div>
+                                        </div>
 
-                                        <button type="submit" class="btn btn-default">Update</button>
+                                            <div class="form-group">
+                                            <br>
+                                            <label for="exampleInputFile">Choose some representative pictures<span style="color:red;">*</span></label><br>
+
+                                                 {{ form.image|add_class:"form-control "|attr:"required:required"}}
+                                                {% if form.image.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+                                                        {% for error in form.image.errors %}
+                                                                {{ error }}
+                                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}<br>
+                                                 {{ form.image2|add_class:"form-control "|attr:"required:required"}}
+                                                {% if form.image2.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+                                                        {% for error in form.image2.errors %}
+                                                                {{ error }}
+                                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}<br>
+                                                 {{ form.image3|add_class:"form-control "|attr:"required:required"}}
+                                                {% if form.image3.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+                                                        {% for error in form.image3.errors %}
+                                                                {{ error }}
+                                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}<br>
+                                                 {{ form.image4|add_class:"form-control "|attr:"required:required"}}
+                                                {% if form.image4.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+                                                        {% for error in form.image4.errors %}
+                                                                {{ error }}
+                                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
+
+                                            </div>
+                                        <button type="submit" class="btn btn-success">Submit</button>
                                     </form>
                                 </div>
                             </div>
