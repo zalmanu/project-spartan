@@ -154,38 +154,6 @@
                                         </div>
 
 
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">CUI</label>
-                                            {{ form.cui|add_class:"form-control "|attr:"placeholder:Enter your CUI"|attr:"required:required"|attr:"id:cuifield"|attr:"value:RO"}}
-
-                                             {% if form.cui.errors %}
-                                                        <div class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for error in form.cui.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
-                                                            </div>
-                                            {% endif %}
-
-
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Bank Account</label>
-                                            {{ form.bank|add_class:"form-control "|attr:"placeholder:Enter your Bank Account"|attr:"required:required"}}
-
-                                            {% if form.bank.errors %}
-                                                        <div class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for error in form.bank.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
-                                                            </div>
-                                            {% endif %}
-
-
-                                        </div>
 
                                         <div class="form-group">    
                                             <label for="exampleInputEmail">Select the category you will work in</label>
