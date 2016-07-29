@@ -24,10 +24,10 @@ $('.faq-froup').on('click', function(){
 
 
 
-var post_description = $('.description').text().length;
+var post_description = $('.description-text').text().length;
 
 $(document).ready(function(){
-    $(".description").each(function() {
+    $(".description-text").each(function() {
          if($(this).text().length > 40) {
            $(this).text($(this).text().substr(0, 40)+"...");
          }
