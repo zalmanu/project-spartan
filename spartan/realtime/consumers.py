@@ -36,11 +36,9 @@ def ws_add(message):
     headers = dict(message.content.get('headers'))
     headers = headers['cookie']
     headers = headers.split(';')
-    print headers
     for item in headers:
-        if item.startswith(' sessionid'):
+        if item.startswith(' sessionid') or item.startswith('sessionid'):
             session_id = item.split('=')[1]
-            print session_id
             break
     session = Session.objects.get(session_key=session_id)
     session_data = session.get_decoded()
