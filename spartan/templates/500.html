@@ -11,16 +11,16 @@
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
     
     <!-- CSS Libs -->
-    <link rel="stylesheet" type="text/css" href="../../lib/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../../lib/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../../lib/css/bootstrap-switch.min.css">
-    
+    <link rel="stylesheet" type="text/css" href="{% static "lib/css/bootstrap.min.css" %}">
+    <!--<link rel="stylesheet" type="text/css" href="../../lib/css/bootstrap.css">-->
+    <link rel="stylesheet" type="text/css" href="{% static "lib/css/bootstrap-switch.min.css" %}">
+
     <!-- CSS App -->
-    <link rel="stylesheet" type="text/css" href="../../css/style.css">
+    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
 </head>
 
-<center><img src="../../img/error/500.jpg" id="error_pic"><br><br><br>
-        <button class="btn btn-success" id="back-button">Go back to our website</button>
+<center><img src="{% static "img/error/500.jpg" %}" id="error_pic"><br><br><br>
+        <a href="/"> <button class="btn btn-success" id="back-button">Go back to our website</button></a>
     </center>
 
 </html>
