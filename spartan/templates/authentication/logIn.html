@@ -21,7 +21,7 @@
                                   <p class='form_head'><b>Log In</b> <small>into your account</small></p>
 				  {% for field in form %}
                                   <p>{{ field.label }}</p>
-				  {{ field|add_class:" col-lg-12 col-md-12 col-sm-12 col-xs-12 form-control login_field"|attr:"required:required"}}
+				  {{ field|add_class:"form-control login_field"|attr:"required:required"}}
 				  {% endfor %}
 				  {% if errors %}
 				  {% for error in errors %}
