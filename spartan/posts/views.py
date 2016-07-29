@@ -38,7 +38,8 @@ from .tasks import notify_spartans, email_user, notify_bid
 @login_required
 def create_post(request):
     current_user = request.user
-    form = CreatePostForm(request.POST or None, request.FILES or None)
+    form = CreatePostForm(request.POST or None, request.FILES or None,
+                          user=current_user)
     if request.method == 'POST':
         if form.is_valid():
             post = form.instance
@@ -129,7 +130,7 @@ def edit_post(request, slug):
     if post.author != request.user:
         return HttpResponseForbidden()
     form = EditPostForm(request.POST or None, request.FILES or None,
-                        instance=post)
+                        instance=post, user=request.user)
     if request.method == 'POST':
         if form.is_valid():
             form.save()

@@ -27,6 +27,10 @@ class EditPostForm(forms.ModelForm):
     city = forms.ChoiceField(choices=[(x, x) for x in ['Timisoara']])
     country = forms.ChoiceField(choices=[(x, x) for x in ['Romania']])
 
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super(EditPostForm, self).__init__(*args, **kwargs)
+
     class Meta:
         model = Announcement
         fields = ['title', 'description', 'address', 'country',
@@ -38,7 +42,12 @@ class EditPostForm(forms.ModelForm):
 
     def clean_title(self):
         title = self.cleaned_data['title']
-        if len(title) < 5:
+        if Announcement.objects.filter(
+                author=self.user, title=title).exclude(
+                    id=self.instance.id).count():
+            raise forms.ValidationError("You can't post two task with the"
+                                        " same title")
+        elif len(title) < 5:
             raise forms.ValidationError(
                 u'Ensure your title has at '
                 'least 5 characters')
@@ -46,7 +55,12 @@ class EditPostForm(forms.ModelForm):
 
     def clean_description(self):
         description = self.cleaned_data['description']
-        if len(description) < 20:
+        if Announcement.objects.filter(
+                author=self.user, description=description).exclude(
+                    id=self.instance.id).count():
+            raise forms.ValidationError("You can't post two task with the"
+                                        " same description")
+        elif len(description) < 20:
             raise forms.ValidationError(
                 u'Ensure your description has at '
                 'least 20 characters')
@@ -88,9 +102,17 @@ class CreatePostForm(forms.ModelForm):
                                                         })
                    }
 
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super(CreatePostForm, self).__init__(*args, **kwargs)
+
     def clean_title(self):
         title = self.cleaned_data['title']
-        if len(title) < 5:
+        if Announcement.objects.filter(
+                author=self.user, title=title).count():
+            raise forms.ValidationError("You can't post two task with the"
+                                        " same title")
+        elif len(title) < 5:
             raise forms.ValidationError(
                 u'Ensure your title has at '
                 'least 5 characters')
@@ -98,7 +120,11 @@ class CreatePostForm(forms.ModelForm):
 
     def clean_description(self):
         description = self.cleaned_data['description']
-        if len(description) < 20:
+        if Announcement.objects.filter(
+                author=self.user, description=description).count():
+            raise forms.ValidationError("You can't post two task with the"
+                                        " same description")
+        elif len(description) < 20:
             raise forms.ValidationError(
                 u'Ensure your description has at '
                 'least 20 characters')
