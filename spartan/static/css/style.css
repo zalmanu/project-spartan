@@ -1595,17 +1595,15 @@ input[type='text'] {
 #myImg:hover {opacity: 0.7;}
 
 /* The Modal (background) */
-.modal {
+.modal_picture {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1 !important; /* Sit on top */
     padding-top: 100px; /* Location of the box */
     left: 0;
     top: 0;
     width: 100% !important; /* Full width */
     height: 100% !important; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0) !important; /* Fallback color */
     background-color: rgba(0,0,0,0.9) !important; /* Black w/ opacity */
 }
 
@@ -1615,6 +1613,8 @@ input[type='text'] {
     display: block;
     width: 80%;
     max-width: 700px;
+    margin-top:20%;
+    left:40%;
 }
 
 /* Caption of Modal Image */
@@ -1624,7 +1624,7 @@ input[type='text'] {
     width: 80%;
     max-width: 700px;
     text-align: center;
-    color: #ccc;
+    color: #fff;
     padding: 10px 0;
     height: 150px;
 }
