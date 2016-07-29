@@ -150,23 +150,23 @@
                                     <div class="row">
                                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                                             <a >
-                                                <img id="img1" src= '{{ post.image2.url }}' class = 'img-responsive'/>
+                                                <img src= '{{ post.image2.url }}' class = 'img-responsive'/>
                                             </a>
                                         </div>
                                         <a>   </a>
                                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                                             <a >
-                                                <img id="img2" src= '{{ post.image3.url }}' class = 'img-responsive'/>
+                                                <img src= '{{ post.image3.url }}' class = 'img-responsive'/>
                                             </a>
                                         </div>
                                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                                             <a>
-                                                <img id="img3" src= '{{ post.image4.url }}' class = 'img-responsive'/>
+                                                <img src= '{{ post.image4.url }}' class = 'img-responsive'/>
                                             </a>
                                         </div>
                                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                                             <a>      
-                                                <img id="img4" src='{{ post.image4.url }}' alt="Trolltunga, Norway" width="300" height="200">
+                                                <img id="myImg" src='{{ post.image4.url }}' alt="Trolltunga, Norway" width="300" height="200">
                                             </a>
                                         </div>
 
@@ -212,26 +212,13 @@
             </script>
             <script>
                 var modal = document.getElementById('myModal');
-                
-                var img1 = document.getElementById('img1');
-                var img2 = document.getElementById('img2');
-                var img3 = document.getElementById('img3');
-                var img4 = document.getElementById('img4');
+                var img = document.getElementById('myImg');
                 var modalImg = document.getElementById("img01");
                 var captionText = document.getElementById("caption");
                 img.onclick = function(){
                     modal.style.display = "block";
-                    img1.src = this.src;
-                    img1.alt = this.alt;
-
-                    img2.src = this.src;
-                    img2.alt = this.alt;
-
-                    img3.src = this.src;
-                    img3.alt = this.alt;
-
-                    img4.src = this.src;
-                    img4.alt = this.alt;
+                    modalImg.src = this.src;
+                    modalImg.alt = this.alt;
                     captionText.innerHTML = this.alt;
                 }
                 var span = document.getElementsByClassName("close")[0];
