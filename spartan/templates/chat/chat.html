@@ -36,7 +36,7 @@
                                                     </div>
                                                     <div class="message">{{ message.message }}</div>
                                                 </div>
-                                            </li>
+                                           </li>
                                         </a>
 					{% endfor %}
                                   </ul>
@@ -45,7 +45,7 @@
 					    <form method="POST" onsubmit="return sendmessage();">
 					      {% csrf_token %}
 					      {{ form.message|attr:"id:chat-input"}}
-					      <button type="button" class="btn btn-success">Send</button>
+					      <button type="submit" class="btn btn-success">Send</button>
 					      </form>
                                             </div>
                                         </a>
