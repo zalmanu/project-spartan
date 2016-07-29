@@ -52,11 +52,11 @@
                                                                 </div>
                                                             {% elif confirms %}
 				                                                <div class="confirm">
-				                                                        {% for message in confirms %}
+				                                             {% for message in confirms %}
                                                                     <ul>
                                                                         <li>{{ message }}</li>
                                                                     </ul>
-				                                                         {% endfor %}
+				                                    {% endfor %}
                                                                 </div>
 				                                             {% endif %}
                                                     <!--<input type="number" id="bidding-place">-->
@@ -70,14 +70,12 @@
 
 
                                           <div class="input-group" id="bidding-input-group">
-					                             {{ form.price }}
-                                              <button id="bid-button">Bid!</button>
-
+					                             {{ form.price|attr:"id:bidding-place"}}
+                                              <button type="submit" class="btn btn-success" id="bid-button">Send your offer</button>
 
                                           </div>
-
-
-                                                </form>
+                                            </form>
+					    <button class="pull-right btn" id="show-bidding-field">Show other Bids</button>
                                                     {% endif %}
 
                                                     {% if request.user == post.author%}
@@ -91,9 +89,6 @@
                                                 </form>
                                            </div>
                                           {% endif %}
-
-                                                    <button class="pull-right btn" id="show-bidding-field">Show other Bids</button>
-
                                                     <div class="other-bids">
                                                         <br>
                                                         <div class="row">
