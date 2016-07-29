@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '146.185.166.59', 'www.spartantasks.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '146.185.166.59', 'www.spartantasks.com', 'http://spartantasks.com/', 'spartantasks.com/']
 
 
 INSTALLED_APPS = (
