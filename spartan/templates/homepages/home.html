@@ -23,7 +23,7 @@
 		      </a>
 			{% endfor %}
                     </div>
-                        <h1>Recent Posts</h1>
+                        <h1>Recent Tasks</h1>
 			<div class="row  no-margin-bottom">
 			  {% for post in ann %}
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
@@ -33,7 +33,7 @@
                                     <h3 ><p class="description_tile post-title">{{ post.title }}</p><a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
                                     <p class="description">{{ post.description }}</p>
                                     <p>
-                                        <a href="{{ post.get_absolute_url }}" class="btn btn-success" role="button">View Post</a>
+                                        <a href="{{ post.get_absolute_url }}" class="btn btn-success" role="button">View Task</a>
 <!--
 -->
                                     <br>

@@ -122,7 +122,7 @@
 
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">CNP</label>
-                                             {{ form.cnp|add_class:"form-control "|attr:"placeholder:Enter your CNP"|attr:"required:required"}}
+                                             {{ form.cnp|add_class:"form-control "|attr:"placeholder:Eg. 2981020372154"|attr:"required:required"}}
 
                                             {% if form.cnp.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
@@ -138,47 +138,13 @@
 
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">ID Card Series</label>
-                                             {{ form.series|add_class:"form-control "|attr:"placeholder:Enter your ID Card Series"|attr:"required:required"}}
+                                             {{ form.series|add_class:"form-control "|attr:"placeholder:Eg. TZ123456"|attr:"required:required"}}
 
                                             {% if form.series.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
                                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                                         <strong>Warning!</strong>
 				                                        {% for error in form.series.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
-                                                            </div>
-                                            {% endif %}
-
-
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">CUI</label>
-                                            {{ form.cui|add_class:"form-control "|attr:"placeholder:Enter your CUI"|attr:"required:required"|attr:"id:cuifield"|attr:"value:RO"}}
-
-                                             {% if form.cui.errors %}
-                                                        <div class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for error in form.cui.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
-                                                            </div>
-                                            {% endif %}
-
-
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Bank Account</label>
-                                            {{ form.bank|add_class:"form-control "|attr:"placeholder:Enter your Bank Account"|attr:"required:required"}}
-
-                                            {% if form.bank.errors %}
-                                                        <div class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for error in form.bank.errors %}
 				                                                {{ error }}
 				                                        {% endfor %}
                                                             </div>

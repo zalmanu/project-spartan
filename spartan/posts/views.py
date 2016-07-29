@@ -81,6 +81,7 @@ def create_post(request):
 def post(request, slug):
     post = get_object_or_404(Announcement, slug=slug)
     form = CreateOfferForm(data=request.POST or None, post=post)
+    other_posts = Announcement.objects.exclude(id=post.id).order_by('-id')[:4]
     if post.status and request.user != post.author and \
        request.user != post.spartan.user:
         raise Http404()
@@ -120,6 +121,7 @@ def post(request, slug):
     return render(request, 'posts/post.html', {
         'post': post,
         'form': form,
+        'other':other_posts,
         'confirms': confirms
     }, context_instance=RequestContext(request))
 

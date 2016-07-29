@@ -14,7 +14,6 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Project Spartan.  If not, see <http://www.gnu.org/licenses/>.
-
 from __future__ import unicode_literals
 
 import uuid
@@ -33,9 +32,6 @@ class Spartan(models.Model):
     address = models.CharField(null=True, max_length=500)
     cnp = models.CharField('CNP', null=True, max_length=20)
     series = models.CharField('ID card series', max_length=30, null=True)
-    cui = models.CharField('CUI', max_length=30, null=True)
-    bank = models.CharField('Bank account', max_length=60,
-                            null=True)
     category = models.ForeignKey(Category, null=True)
     user = models.OneToOneField(User, primary_key=True, default='')
     spartanStatus = models.BooleanField(default=False)
