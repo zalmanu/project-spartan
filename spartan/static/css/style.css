@@ -1561,6 +1561,36 @@ input[type='text'] {
   width: 350px !important;
 }
 
+.icon_index{
+  height: 130px;
+}
+
+#error_pic{
+  height: 400px;
+  margin-top: 6%;
+}
+
+#back-button{
+  margin-left: -7.5%;
+  background-color: #353d47;
+    color: #FFF;
+    border-color: #353d47;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 1px;
+    border-width: 1px;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+ .dropdown-center{
+  text-align: center;
+ }
+
+ .form-downText{
+  -webkit-text-stroke-width: 0.4px !important;
+   -webkit-text-stroke-color: white !important;
+ }
+
 #19B5FE
 
 
