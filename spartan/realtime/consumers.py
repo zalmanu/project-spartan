@@ -33,22 +33,13 @@ from notifications.models import Notification
 @channel_session
 def ws_add(message):
     label = message['path'].strip('/').split('/')
-    headers = message.content.get('headers')
-    found = False
-    for tup in headers:
-        if found:
+    headers = dict(message.content.get('headers'))
+    headers = headers['cookie']
+    headers = headers.split(';')
+    for item in headers:
+        if item.startswith(' sessionid') or item.startswith('sessionid'):
+            session_id = item.split('=')[1]
             break
-        for item in tup:
-            if item.startswith('csrftoken'):
-                session_id = item.split(' ')[1]
-                session_id = session_id.split('=')[1]
-                found = True
-                break
-            elif item.startswith('sessionid'):
-                session_id = item.split(';')[0]
-                session_id = session_id.split('=')[1]
-                found = True
-                break
     session = Session.objects.get(session_key=session_id)
     session_data = session.get_decoded()
     uid = session_data.get('_auth_user_id')
@@ -126,7 +117,7 @@ def ws_message(message):
 
 @channel_session
 def ws_disconnect(message):
-    username = message.channel_session['user']
+    username = message.channel_session['user_name']
     user = User.objects.get(username=username)
     if message.channel_session['room']:
         label = message.channel_session['room']

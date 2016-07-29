@@ -47,32 +47,6 @@ class PasswordResetForm(forms.Form):
                                  widget=forms.PasswordInput(
                                      attrs={'required': 'required'}))
 
-    def __init__(self, *args, **kwargs):
-        self.user = kwargs.pop('user', None)
-        super(PasswordResetForm, self).__init__(*args, **kwargs)
-
-    def clean_old_password(self):
-        password_old = self.cleaned_data['old_password']
-        if not self.user.check_password(password_old):
-            raise forms.ValidationError("Incorrect old password")
-
-    def clean_password_1(self):
-        password_1 = self.cleaned_data['password_1']
-        if password_1.isdigit():
-            raise forms.ValidationError("Password is entirely numeric")
-        if len(password_1) < 8:
-            raise forms.ValidationError("Password is too short")
-
-    def clean_password_2(self):
-        password_2 = self.cleaned_data['password_2']
-        if password_2.isdigit():
-            raise forms.ValidationError("Password is entirely numeric")
-        if len(password_2) < 8:
-            raise forms.ValidationError("Password is too short")
-
-
-
-
 class ForGotPassword(forms.Form):
     password_1 = forms.CharField(max_length=160, min_length=8,
                                  label="New password",
