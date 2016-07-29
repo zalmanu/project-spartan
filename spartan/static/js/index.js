@@ -26,6 +26,7 @@ $('.faq-froup').on('click', function(){
 
 var post_description = $('.description').text().length;
 
+console.log(post_description);
 
 $(document).ready(function(){
 
@@ -36,29 +37,27 @@ $(document).ready(function(){
      });
 });
 
-var title_description = $('.description_title').text().length;
 
-$(document).ready(function(){
+var fineas = "fienas";
 
-     $(".description_tile").each(function() {
-         if($(this).text().length > 20) {
-           $(this).text($(this).text().substr(0, 20)+"...");
-         }
-     });
+console.log(fineas);
+
+$('#special').hide();
+
+
+$('#fineas').click(function(){
+  $('#special').show();
+})
+
+$('#password-message').hide();
+$('#password-input').show();
+
+$('#display-message').click(function(){
+  $('#password-message').show();
+  $("#password-input").hide();
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
+$('#create-post-tooltip').tooltip('autostart : false').show();
 
 
 
