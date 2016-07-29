@@ -25,7 +25,7 @@
                                   <p>Username</p>
 
 
-                                        {{ form.username|add_class:"form-control login_field"|attr:"placeholder:Username" }}
+                                        {{ form.username|add_class:"col-lg-12 col-md-12 col-sm-12 col-xs-12 form-control login_field"|attr:"placeholder:Username" }}
                                                  {% if form.username.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
                                                           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -39,7 +39,7 @@
                                 <p>Email Address</p>
 
 
-                                        {{ form.email|add_class:"form-control login_field"|attr:"placeholder:Email address" }}
+                                        {{ form.email|add_class:"col-lg-12 col-md-12 col-sm-12 col-xs-12 form-control login_field"|attr:"placeholder:Email address" }}
                                                   {% if form.email.errors %}
                                             <div class="alert alert-danger fade in" id="input-alert">
                                               <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -53,7 +53,7 @@
                                 <p>Password</p>
 
 
-                                        {{ form.password|add_class:"form-control login_field"|attr:"placeholder:Password" }}
+                                        {{ form.password|add_class:"col-lg-12 col-md-12 col-sm-12 col-xs-12 form-control login_field"|attr:"placeholder:Password" }}
 
 
 
@@ -71,7 +71,7 @@
                                 <p>Retype Password</p>
 
 
-                                       {{ form.retypepassword|add_class:"form-control login_field"|attr:"placeholder:Retype password" }}
+                                       {{ form.retypepassword|add_class:"col-lg-12 col-md-12 col-sm-12 col-xs-12 form-control login_field"|attr:"placeholder:Retype password" }}
 
                                              {% if form.retypepassword.errors %}
                                                     <div class="alert alert-danger fade in" id="input-alert">
@@ -85,7 +85,7 @@
                                 <p>Phone</p>
 
 
-                                        {{ acc_form.phone|add_class:"form-control login_field"|attr:"placeholder:Phone"|attr:"required:required" }}
+                                        {{ acc_form.phone|add_class:"col-lg-12 col-md-12 col-sm-12 col-xs-12 form-control login_field"|attr:"placeholder:Eg. +4037245123"|attr:"required:required" }}
                                                 {% if acc_form.phone.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
                                                           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -99,12 +99,12 @@
 
                                 <div class="btn-group" style="float: left; width: 100%; text-align: left;text-align:left !important;">
 
-                                           {{ acc_form.city|add_class:"form-control login_field"|attr:"style:float: left; width: 100%; text-align: left;text-align:left !important;" }}
+                                           {{ acc_form.city|add_class:"col-lg-12 col-md-12 col-sm-12 col-xs-12 form-control login_field"|attr:"style:float: left; width: 100%; text-align: left;text-align:left !important;" }}
                                 </div>
                                 <p>Country</p>
                                 <div class="btn-group" style="float: left; width: 100%; text-align: left;text-align:left !important;">
 
-                                    {{ acc_form.country|add_class:"form-control login_field"|attr:"style:float: left; width: 100%; text-align: left;text-align:left !important;" }}
+                                    {{ acc_form.country|add_class:"col-lg-12 col-md-12 col-sm-12 col-xs-12 form-control login_field"|attr:"style:float: left; width: 100%; text-align: left;text-align:left !important;" }}
 
                                 </div>
                                 <p>Profile Picture</p>
@@ -144,7 +144,11 @@
                             </center>
 
                         <div class="login-footer">
-                            <span class="text-left" style="float:right;font-size:15px; color:#363c46;">Already have an account? <a href="/login" class="color-blue"  style="text-decoration: none;font-size:15px;color: #363c46;"><b>Go and LogIn!</b></a></span>
+                           <span class="text-left form-downText" style="float:right;font-size:15px; color:#363c46;">Already have an account? <a href="/login" class="color-blue"  style="text-decoration: none;font-size:15px;color: #363c46;"><b class="form-downText">Go and LogIn!</b></a></span>
+                          </div>
+
+                  </div>
+
                         </div>
                         
                 </div>

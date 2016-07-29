@@ -21,7 +21,7 @@
                                   <p class='form_head'><b>Log In</b> <small>into your account</small></p>
 				  {% for field in form %}
                                   <p>{{ field.label }}</p>
-				  {{ field|add_class:"form-control login_field"|attr:"required:required"}}
+				  {{ field|add_class:" col-lg-12 col-md-12 col-sm-12 col-xs-12 form-control login_field"|attr:"required:required"}}
 				  {% endfor %}
 				  {% if errors %}
 				  {% for error in errors %}
@@ -38,8 +38,9 @@
                             </div>
                             </center>
                          <div class="login-footer">
-                            <span class="text-right"><a href="/forgot" class="color-blue"  style="text-decoration: none;"><b style="font-size:15px; color:#363c46;">Forgot password?</b></a></span>
-                            <span class="text-left" style="float:left;font-size:15px; color:#363c46;">Don't have an account? <a href="/register" class="color-blue"  style="text-decoration: none;font-size:15px;color: #363c46;"><b>Go and Register!</b></a></span>
+                             <span class="text-right"><a href="/forgot" class="color-blue"  style="text-decoration: none;"><b style="font-size:15px; color:#363c46;" class="form-downText">Forgot password?</b></a></span>
+                            <span class="text-left form-downText" style="float:left;font-size:15px; color:#363c46;">Don't have an account? <a href="/register" class="color-blue"  style="text-decoration: none;font-size:15px;color: #363c46;"><b  class="form-downText">Go and Register!</b></a></span>
+
                         </div>
                     </div>
                 </div>
