@@ -75,7 +75,7 @@
 
                                           </div>
                                             </form>
-					    <button class="pull-right btn" id="show-bidding-field">Show other Bids</button>
+					     <button class="pull-right btn" id="show-bidding-field">Show other Bids</button>
                                                     {% endif %}
 
                                                     {% if request.user == post.author%}
@@ -96,6 +96,7 @@
                                                                 <div class="card">
                                                                     <div class="card-header"></div>
                                                                     <div class="card-body no-padding">
+								      {% if post.offers.all %}
                                                                         <div class="sub-title title-bidders">Other Bidders</div>
                                                                         <table class="table table-bordered">
                                                                             <thead>
@@ -120,6 +121,9 @@
 
                                                                             </tbody>
                                                                         </table>
+									{% else %}
+									<div class="sub-title title-bidders">No bid, yet.</div>
+									{% endif %}
                                                                     </div>
                                                                 </div>
                                                             </div>
