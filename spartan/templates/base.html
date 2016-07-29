@@ -79,7 +79,7 @@
                             <i class="fa fa-times icon"></i>
                         </button>
 			<li class="dropdown">
-                            <a href="/submit/" class="dropdown-toggle" role="button" data-toggle="tooltip" data-placement="bottom" title="Create Post" aria-expanded="false" id="create-post-tooltip"><i class="fa fa-pencil-square-o"></i></a>
+                            <a href="/submit/" class="dropdown-toggle" role="button" data-toggle="tooltip" data-placement="bottom" title="Create Task" aria-expanded="false" id="create-post-tooltip"><i class="fa fa-pencil-square-o"></i></a>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="chatcount"><i class="fa fa-comments-o"></i></a>
@@ -229,7 +229,7 @@
                             </li>
                             <li class="panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#dropdown-table">
-                                    <span class="icon fa fa-table"></span><span class="title">My Announcements</span>
+                                    <span class="icon fa fa-table"></span><span class="title">My Tasks</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                                 <div id="dropdown-table" class="panel-collapse collapse">
@@ -240,10 +240,9 @@
                                             <li><a href="{{ post.get_absolute_url }}"> {{ post.title }}</a>
                                             </li>
 					    {% endfor %}
-					<li><a href="/submit">Add an announcement</a>
-					    {% else %}
-					<li><a href="/submit">Add an announcement</a>
-					  {% endif %}
+					    {% endif %}
+					<li><a href="/submit">Add a Task</a>
+
                                             </li>
                                         </ul>
                                     </div>
@@ -284,7 +283,7 @@
 			    {% endif %}
 			    <li>
                                 <a href="/posts">
-                                    <span class="icon glyphicon glyphicon-check"></span><span class="title">Posts/bids manager</span>
+                                    <span class="icon glyphicon glyphicon-check"></span><span class="title">Tasks/bids manager</span>
                                 </a>
                             </li>
 			    <li>

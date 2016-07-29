@@ -33,7 +33,7 @@ function ask_for_posts(obj, path, type){
 		"<h3 id=\"thumbnail-label\">" + array[i].title + "<a class=\"anchorjs-link\" href=\"#thumbnail-label\"><span class=\"anchorjs-icon\"></span></a></h3>" + 
 		" <p>" + array[i].description + "</p>" + 
 		" <p> " +
-                "<a href=\"" + array[i].slug + "\" class=\"btn btn-success\" role=\"button\">View Post</a>" + 
+                "<a href=\"" + array[i].slug + "\" class=\"btn btn-success\" role=\"button\">View Task</a>" + 
 		"<br>" + 
 		"</p>" + 
 		"</div>" + 

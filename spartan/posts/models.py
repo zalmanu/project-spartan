@@ -50,7 +50,7 @@ class Announcement(models.Model):
                                width_field="width_field")
     height_field = models.IntegerField(default=0)
     width_field = models.IntegerField(default=0)
-    description = models.CharField('Announcement description',
+    description = models.CharField('Task description',
                                    null=True, max_length=500)
     slug = models.SlugField(default=uuid.uuid1, unique=True)
     author = models.ForeignKey(to=User, related_name='posts',

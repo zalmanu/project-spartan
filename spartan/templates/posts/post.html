@@ -78,7 +78,7 @@
 					    {% endif %}
 					    <button class="pull-right btn" id="show-bidding-field">Show other Bids</button>
                                             {% if request.user == post.author%}
-                                            <button  class="pull-right btn" ><a href="/edit/{{ post.slug }}" >Edit post </a></button>
+                                            <button  class="pull-right btn" ><a href="/edit/{{ post.slug }}" >Edit task </a></button>
                                                     {% endif %}
                                                     {% if request.user == post.author %}
                                            <div class="button-container">
@@ -171,7 +171,7 @@
                         </div>
                     </div>
                     {% if other %}
-                    <h2>Other Posts</h2>
+                    <h2>Other Tasks</h2>
                     <div class="row no-margin-bottom">
                          {% for post in other %}
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
@@ -181,7 +181,7 @@
                                     <h3 id="thumbnail-label"><p class="description_tile post-title">{{ post.title }}</p><a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
                                     <p class="description" >{{ post.text }}  </p>
                                     <p>
-                                        <a href="{{ post.get_absolute_url }}" class="btn btn-success" role="button">View Post</a>
+                                        <a href="{{ post.get_absolute_url }}" class="btn btn-success" role="button">View Task</a>
                                 </div>
                             </div>
                         </div>
