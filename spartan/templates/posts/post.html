@@ -150,23 +150,23 @@
                                     <div class="row">
                                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                                             <a >
-                                                <img src= '{{ post.image2.url }}' class = 'img-responsive'/>
+                                                <img id="myImg1" src= '{{ post.image.url }}' alt="{{ post.image.name }}" class = 'img-responsive'/>
                                             </a>
                                         </div>
                                         <a>   </a>
                                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                                             <a >
-                                                <img src= '{{ post.image3.url }}' class = 'img-responsive'/>
+                                                <img id="myImg2" src= '{{ post.image2.url }}' alt="{{ post.image2.name }}" class = 'img-responsive'/>
                                             </a>
                                         </div>
                                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                                             <a>
-                                                <img src= '{{ post.image4.url }}' class = 'img-responsive'/>
+                                                <img id="myImg3" src= '{{ post.image3.url }}' alt="{{ post.image3.name }}" class = 'img-responsive'/>
                                             </a>
                                         </div>
                                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                                             <a>      
-                                                <img id="myImg" src='{{ post.image4.url }}' alt="Trolltunga, Norway" width="300" height="200">
+                                                <img id="myImg4" src='{{ post.image4.url }}' alt="{{ post.image4.name }}" width="300" height="200">
                                             </a>
                                         </div>
 
@@ -212,15 +212,14 @@
             </script>
             <script>
                 var modal = document.getElementById('myModal');
-                var img = document.getElementById('myImg');
                 var modalImg = document.getElementById("img01");
                 var captionText = document.getElementById("caption");
-                img.onclick = function(){
-                    modal.style.display = "block";
-                    modalImg.src = this.src;
-                    modalImg.alt = this.alt;
-                    captionText.innerHTML = this.alt;
-                }
+                $("#myImg1, #myImg2, #myImg3, #myImg4").click(function(){
+                         modal.style.display = "block";
+                         modalImg.src = this.src;
+                         modalImg.alt = this.alt;
+                         captionText.innerHTML = this.alt;
+                });
                 var span = document.getElementsByClassName("close")[0];
                 span.onclick = function() {
                     modal.style.display = "none";
