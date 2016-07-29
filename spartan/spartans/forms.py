@@ -14,6 +14,8 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Project Spartan.  If not, see <http://www.gnu.org/licenses/>.
+from stdnum import cnp
+from stdnum.exceptions import *
 from datetime import date
 
 from django import forms
@@ -34,14 +36,6 @@ class CreateSpartanForm(forms.ModelForm):
         category = get_object_or_404(Category, name=cat_name)
         return category
 
-    def clean_cnp(self):
-        cnp = self.cleaned_data['cnp']
-        if len(cnp) != 13:
-            raise forms.ValidationError("CNP is not 13 characters long")
-        elif not cnp.isdigit():
-            raise forms.ValidationError("Invalid CNP")
-        return cnp
-
     def clean_birthday(self):
         birthday = self .cleaned_data['birthday']
         if birthday > date.today():
@@ -52,6 +46,14 @@ class CreateSpartanForm(forms.ModelForm):
                 raise forms.ValidationError("You have to be at least 18 old"
                                             "to be a spartan")
         return birthday
+
+    def clean_cnp(self):
+        form_cnp = self.cleaned_data['cnp']
+        try:
+            cnp.validate(form_cnp)
+            return form_cnp
+        except (InvalidFormat, InvalidLength, InvalidChecksum):
+            raise forms.ValidationError("Invalid CNP")
 
     def clean_series(self):
         series = self.cleaned_data['series']
