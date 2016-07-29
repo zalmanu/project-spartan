@@ -75,11 +75,10 @@
 
                                           </div>
                                             </form>
-					     <button class="pull-right btn" id="show-bidding-field">Show other Bids</button>
-                                                    {% endif %}
-
-                                                    {% if request.user == post.author%}
-                                                    <button  class="pull-right btn" ><a href="/edit/{{ post.slug }}" >Edit post </a></button>
+					    {% endif %}
+					    <button class="pull-right btn" id="show-bidding-field">Show other Bids</button>
+                                            {% if request.user == post.author%}
+                                            <button  class="pull-right btn" ><a href="/edit/{{ post.slug }}" >Edit post </a></button>
                                                     {% endif %}
                                                     {% if request.user == post.author %}
                                            <div class="button-container">
