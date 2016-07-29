@@ -1595,7 +1595,7 @@ input[type='text'] {
 #myImg:hover {opacity: 0.7;}
 
 /* The Modal (background) */
-.modal_picture {
+.modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     padding-top: 100px; /* Location of the box */
