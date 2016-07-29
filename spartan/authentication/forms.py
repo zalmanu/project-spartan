@@ -87,7 +87,7 @@ class UserRegisterForm(forms.ModelForm):
         if User.objects.filter(username=user_name).count():
             raise forms.ValidationError("This username already exists")
         elif(
-                re.match(r"^[\w.@+-]+$", user_name) or user_name.isdigit()
+                not (user_name.isalnum() or user_name.isalpha())
         ):
             raise forms.ValidationError("Username contains invalid characters")
         return user_name
