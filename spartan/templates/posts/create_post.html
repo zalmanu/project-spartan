@@ -114,7 +114,8 @@
                                             </script>
 
                                         </div>
-                                        <div>
+                                        <div class="form-group">
+                                            <br>
                                             <label for="exampleInputPassword1">City</label>
                                             <div>
 
@@ -132,7 +133,7 @@
                                             </div>
                                         </div>
 
-                                         <div>
+                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Country</label>
                                             <div>
 
@@ -199,7 +200,7 @@
 				                                                {{ error }}
 				                                        {% endfor %}
                                                             </div>
-                                             {% endif %}
+                                             {% endif %}<br>
                                                  {{ form.image2|add_class:"form-control "|attr:"required:required"}}
                                                 {% if form.image2.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
@@ -209,7 +210,7 @@
 				                                                {{ error }}
 				                                        {% endfor %}
                                                             </div>
-                                             {% endif %}
+                                             {% endif %}<br>
                                                  {{ form.image3|add_class:"form-control "|attr:"required:required"}}
                                                 {% if form.image3.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
@@ -219,7 +220,7 @@
 				                                                {{ error }}
 				                                        {% endfor %}
                                                             </div>
-                                             {% endif %}
+                                             {% endif %}<br>
                                                  {{ form.image4|add_class:"form-control "|attr:"required:required"}}
                                                 {% if form.image4.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
@@ -270,7 +271,7 @@
                                                 <!--</script>-->
                                         <!--</div>-->
 
-                                        <button type="submit" class="btn btn-default">Submit</button>
+                                        <button type="submit" class="btn btn-success">Submit</button>
                                     </form>
                                 </div>
                             </div>
