@@ -26,21 +26,24 @@ $('.faq-froup').on('click', function(){
 
 var post_description = $('.description').text().length;
 
-console.log(post_description);
-
 $(document).ready(function(){
-
-     $(".description").each(function() {
-         if($(this).text().length > 270) {
-           $(this).text($(this).text().substr(0, 270)+"...");
+    $(".description").each(function() {
+         if($(this).text().length > 40) {
+           $(this).text($(this).text().substr(0, 40)+"...");
          }
      });
 });
 
+var_post_title = $('.post-title').text().length;
 
-var fineas = "fienas";
+$(document).ready(function(){
+    $(".post-title").each(function() {
+         if($(this).text().length > 20) {
+           $(this).text($(this).text().substr(0, 20)+"...");
+         }
+     });
+});
 
-console.log(fineas);
 
 $('#special').hide();
 
