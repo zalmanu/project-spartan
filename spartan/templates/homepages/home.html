@@ -27,8 +27,12 @@
 			<div class="row  no-margin-bottom">
 			  {% for post in ann %}
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                            <div class="thumbnail no-margin-bottom">
-                                <img src= '{{ post.image.url }}' class = 'img-responsive'/>
+                          <div class="thumbnail no-margin-bottom">
+			    {% if post.image %}
+                            <img src= '{{ post.image.url }}' class = 'img-responsive'/>
+			    {% else %}
+			    <img src= '{% static "img/thumbnails/picjumbo.com_IMG_3241.jpg" %}' class = 'img-responsive'/>
+			    {% endif %}
                                 <div class="caption">
                                     <h3 ><p class="description_tile post-title">{{ post.title }}</p><a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
                                     <p class="description-text">{{ post.description }}</p>

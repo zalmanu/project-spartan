@@ -83,11 +83,16 @@ def filter(request):
         results = {'posts': []}
         array = results.get('posts')
         for post in posts:
+            if(post.image):
+                post_image = post.image.url
+            else:
+                post_image = "/static/img/thumbnails/picjumbo.com_IMG_3241.jpg"
+            print post_image
             post_details = {
                 'title': escape(post.title),
                 'description': escape(post.description),
                 'slug': post.get_absolute_url(),
-                'image': post.image.url
+                'image': escape(post_image)
             }
             array.append(post_details)
         return HttpResponse(json.dumps(results))

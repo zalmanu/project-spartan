@@ -35,8 +35,7 @@ class Announcement(models.Model):
     image = models.ImageField(upload_to=upload_location,
                               null=True, blank=True,
                               height_field="height_field",
-                              width_field="width_field",
-                              default='default_first_image.jpg')
+                              width_field="width_field")
     image2 = models.ImageField(upload_to=upload_location,
                                null=True, blank=True,
                                height_field="height_field",

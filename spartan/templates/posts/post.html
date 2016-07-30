@@ -18,8 +18,12 @@
                                     <div class="row no-margin">
                                         <div class="col-sm-6">
                                             <div class="card primary">
-                                                <div class="card-jumbotron no-padding">
-                                                    <img src= '{{ post.image.url }}' class="img-responsive"  style="height:300px !important ;width:100% !important;"/>
+                                              <div class="card-jumbotron no-padding">
+						{% if post.image %}
+                                                <img src= '{{ post.image.url }}' class="img-responsive"  style="height:300px !important ;width:100% !important;"/>
+						{% else %}
+						<img src= '{% static "img/thumbnails/picjumbo.com_IMG_3241.jpg" %}' class = 'img-responsive' style="height:300px !important ;width:100% !important;"/>
+						{% endif %}
                                                 </div>
                                                 <div class="card-body">
                                                     <h4><b>Other details</b></h4>
@@ -131,7 +135,7 @@
                                 </div>
                             </div>
                         </div>
-
+{% if post.image or post.image2 or post.imag3 or post.image4 %}
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="card">
@@ -184,13 +188,18 @@
                             </div>
                         </div>
                     </div>
+		    {% endif %}
                     {% if other %}
                     <h2>Other Tasks</h2>
                     <div class="row no-margin-bottom">
                          {% for post in other %}
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                            <div class="thumbnail no-margin-bottom">
-                                <img src= '{{ post.image.url }}' class = 'img-responsive'/>
+                          <div class="thumbnail no-margin-bottom">
+			    {% if post.image %}
+                            <img src= '{{ post.image.url }}' class = 'img-responsive'/>
+			    {% else %}
+			    <img src= '{% static "img/thumbnails/picjumbo.com_IMG_3241.jpg" %}' class = 'img-responsive'/>
+			    {% endif %}
                                 <div class="caption">
                                     <h3 id="thumbnail-label"><p class="description_tile post-title">{{ post.title }}</p><a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
                                     <p class="description-text" >{{ post.text }}  </p>

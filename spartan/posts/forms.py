@@ -158,7 +158,7 @@ class CreatePostForm(forms.ModelForm):
         image3 = self.cleaned_data['image3']
         image4 = self.cleaned_data['image4']
         image_names = []
-        if(str(image) != 'default_first_image.jpg'):
+        if(image):
             image_names.append(image.name)
         if(image2):
             image_names.append(image2.name)
