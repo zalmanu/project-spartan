@@ -175,8 +175,12 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="user_name_not" value="{{ user.username }}">{{ user.username }}<span class="caret"></span></a>
                             <ul class="dropdown-menu animated fadeInDown">
 			      <br>
-                                <li class="profile-img">
-                                    <img style="max-width: 99%;" src="{{ user.account.profile_image.url }}">
+                              <li class="profile-img">
+				{% if user.account.profile_image %}
+                                <img style="max-width: 99%;" src="{{ user.account.profile_image.url }}">
+				{% else %}
+				<img style="max-width: 99%;" src="{% static "img/profile.png" %}">
+				{% endif %}
                                 </li>
                                 <li>
                                   <div class="profile-info">

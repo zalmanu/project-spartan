@@ -23,8 +23,12 @@
                                     <div class="row no-margin">
                                         <div class="col-sm-6">
                                             <div class="card primary">
-                                                <div class="card-jumbotron no-padding">
-                                                   <img src='{{ user.account.profile_image.url }}'  class="img-responsive"  style="height:300px !important ;width:100% !important;"/>
+                                              <div class="card-jumbotron no-padding">
+						{% if user.account.profile_imgage %}
+                                                <img src='{{ user.account.profile_image.url }}'  class="img-responsive"  style="height:300px !important ;width:100% !important;"/>
+						{% else %}
+						<img src="{% static "img/profile.png" %}"  class="img-responsive"  style="height:300px !important ;width:100% !important;">
+						{% endif %}
                                                 </div>
                                             </div>
                                         </div>

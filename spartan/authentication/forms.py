@@ -14,8 +14,6 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Project Spartan.  If not, see <http://www.gnu.org/licenses/>.
-import re
-
 from captcha.fields import ReCaptchaField
 from django.contrib.auth.models import User
 from django import forms
