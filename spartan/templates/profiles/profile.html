@@ -10,7 +10,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <div class="card-title">
-                                        {% if request.user.spartan.spartanStatus  == True %}
+                                        {% if request.user.spartan.spartanStatus %}
                                                     <h3>Welcome SPARTAN!</h3>
                                                     {% else %}
                                                     <h3>Welcome {{ user.username }} ! </h3>
@@ -51,8 +51,14 @@
                                               <div class="bio-row">
                                                   <p><span><b style="color:#19B5FE; font-size:15px">Phone number:</b> </span>{{ user.account.phone }}</p>
                                               </div>
-                                                        {% if user.spartan.spartanStatus  == True %}
-                                                            <h4 style="display: inline-block;"><b>Reviews:</b> {{ request.user.spartan.rating}}</h4><button type="button" style="display: inline-block;" class="pull-right btn btn-success" id="show-reviews">Show Reviews</button>
+                                              {% if user.spartan.spartanStatus %}
+					      <div class="bio-row">
+                                                  <p><span><b style="color:#19B5FE; font-size:15px">Category:</b> </span>{{ user.spartan.category }}</p>
+                                              </div>
+                                              <h4 style="display: inline-block;"><b>Reviews:</b> {{ user.spartan.rating }}</h4>
+					      {% if user.spartan.raiting %}
+					      <button type="button" style="display: inline-block;" class="pull-right btn btn-success" id="show-reviews">Show Reviews</button>
+					      {% endif %}
                                                         {% endif %}
 
                                           </div>
