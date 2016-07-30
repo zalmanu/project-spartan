@@ -40,6 +40,7 @@
                                                 <div class="card-jumbotron">
                                                     <h4><b>{{ post.title }}</b></h4>
                                                     <h5>{{ post.description }}</h5>
+                                                    <h5><b>Max bid: {{post.money}} EUR</b></h5>
                                                 </div>
                                                 <div class="card-body">
                                                      {% if request.user.spartan.spartanStatus and request.user != post.author and request.user.spartan.category.name == post.category.name and post.spartan != request.user.spartan %}
