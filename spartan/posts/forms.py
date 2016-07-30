@@ -88,6 +88,25 @@ class EditPostForm(forms.ModelForm):
                                      name=self.cleaned_data['category'])
         return category
 
+    def clean_image4(self):
+        image = self.cleaned_data['image']
+        image2 = self.cleaned_data['image2']
+        image3 = self.cleaned_data['image3']
+        image4 = self.cleaned_data['image4']
+        image_names = []
+        if(image and not isinstance(image, (int, float))):
+            image_names.append(image.name)
+        if(image2 and not isinstance(image2, (int, float))):
+            image_names.append(image2.name)
+        if(image3 and not isinstance(image3, (int, float))):
+            image_names.append(image3.name)
+        if(image4 and not isinstance(image4, (int, float))):
+            image_names.append(image4.name)
+        if(len(image_names)-1 == len(set(image_names))):
+            raise forms.ValidationError("You can't upload 2 images"
+                                        "that are the same")
+        return image4
+
 
 class CreatePostForm(forms.ModelForm):
     city = forms.ChoiceField(choices=[(x, x) for x in ['Timisoara']])

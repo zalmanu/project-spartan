@@ -33,23 +33,13 @@ def upload_location(instance, filename):
 class Announcement(models.Model):
     title = models.CharField(null=True, max_length=256)
     image = models.ImageField(upload_to=upload_location,
-                              null=True, blank=True,
-                              height_field="height_field",
-                              width_field="width_field")
+                              null=True, blank=True)
     image2 = models.ImageField(upload_to=upload_location,
-                               null=True, blank=True,
-                               height_field="height_field",
-                               width_field="width_field")
+                               null=True, blank=True)
     image3 = models.ImageField(upload_to=upload_location,
-                               null=True, blank=True,
-                               height_field="height_field",
-                               width_field="width_field")
+                               null=True, blank=True)
     image4 = models.ImageField(upload_to=upload_location,
-                               null=True, blank=True,
-                               height_field="height_field",
-                               width_field="width_field")
-    height_field = models.IntegerField(default=0)
-    width_field = models.IntegerField(default=0)
+                               null=True, blank=True)
     description = models.CharField('Task description',
                                    null=True, max_length=500)
     slug = models.SlugField(default=uuid.uuid1, unique=True)
