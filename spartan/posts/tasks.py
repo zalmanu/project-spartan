@@ -25,6 +25,7 @@ from django.template.loader import get_template
 from django.core.mail import EmailMessage
 
 from celery import task
+from channels import Group
 
 from spartans.models import Spartan
 from notifications.models import Notification
@@ -56,9 +57,8 @@ def notify_bid(username, url, title, id_hash):
 def email_user(email_message, user, email, subject):
     from_email = settings.EMAIL_HOST_USER
     ctx = {
-
         'user': user,
-        'email_message':email_message
+        'email_message': email_message
     }
     to = [email]
     template = get_template('mail/mail.html').render(Context(ctx))
