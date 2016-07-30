@@ -31,23 +31,25 @@
 
                                         <div class="col-sm-6">
                                             <div class="card">
-
+                                              <div class="card-jumbotron">
+                                                    <h4><b>Personal Informations</b></h4>
+                                                </div>
                                                 <div class="card-body">
                                                     <div class="row">
                                               <div class="bio-row">
-                                                  <p><span>Username: </span> {{ user.username }} </p>
+                                                  <p><span><b style="color:#19B5FE; font-size:15px">Username:</b> </span> {{ user.username }} </p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>City: </span>{{ user.account.city }}</p>
+                                                  <p><span><b style="color:#19B5FE; font-size:15px">City: </b></span>{{ user.account.city }}</p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>Country: </span> {{ user.account.country }}</p>
+                                                  <p><span><b style="color:#19B5FE; font-size:15px">Country: </b></span> {{ user.account.country }}</p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>E-mail: </span> {{ user.email }} </p>
+                                                  <p><span><b style="color:#19B5FE; font-size:15px">E-mail: </b></span> {{ user.email }} </p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>Phone number: </span>{{ user.account.phone }}</p>
+                                                  <p><span><b style="color:#19B5FE; font-size:15px">Phone number:</b> </span>{{ user.account.phone }}</p>
                                               </div>
                                                         {% if user.spartan.spartanStatus  == True %}
                                                             <h4 style="display: inline-block;"><b>Reviews:</b> {{ request.user.spartan.rating}}</h4><button type="button" style="display: inline-block;" class="pull-right btn btn-success" id="show-reviews">Show Reviews</button>
