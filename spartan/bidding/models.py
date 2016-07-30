@@ -18,13 +18,16 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 from spartans.models import Spartan
 from posts.models import Announcement
 
 
 class Offer(models.Model):
-    price = models.IntegerField(null=True)
+    price = models.IntegerField(null=True, validators=[
+        MaxValueValidator(9223372036854775807),
+        MinValueValidator(1)])
     spartan = models.ForeignKey(Spartan, related_name='bids')
     post = models.ForeignKey(Announcement, related_name='offers')
     status = models.BooleanField(default=False)

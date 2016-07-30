@@ -32,8 +32,6 @@ class CreateOfferForm(forms.ModelForm):
 
     def clean_price(self):
         price = self.cleaned_data['price']
-        if price <= 0 or price > 9223372036854775807:
-            raise forms.ValidationError("Enter a valid price")
         if price > self.post.money:
             raise forms.ValidationError("Price is too high"
                                         " for the employer")
