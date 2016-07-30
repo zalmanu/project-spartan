@@ -153,11 +153,19 @@ class CreatePostForm(forms.ModelForm):
         return category
 
     def clean_image4(self):
-        image = self.cleaned_data['image'].name
-        image2 = self.cleaned_data['image2'].name
-        image3 = self.cleaned_data['image3'].name
+        image = self.cleaned_data['image']
+        image2 = self.cleaned_data['image2']
+        image3 = self.cleaned_data['image3']
         image4 = self.cleaned_data['image4']
-        image_names = [image, image2, image3, image4.name]
+        image_names = []
+        if(str(image) != 'default_first_image.jpg'):
+            image_names.append(image.name)
+        if(image2):
+            image_names.append(image2.name)
+        if(image3):
+            image_names.append(image3.name)
+        if(image4):
+            image_names.append(image4.name)
         if(len(image_names)-1 == len(set(image_names))):
             raise forms.ValidationError("You can't upload 2 images"
                                         "that are the same")
