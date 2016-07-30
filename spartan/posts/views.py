@@ -86,6 +86,7 @@ def post(request, slug):
        request.user != post.spartan.user:
         raise Http404()
     confirms = []
+    bids = post.offers.all().order_by('-price')
     if request.method == 'POST':
         if request.POST.get("deletePost") and post.author == request.user:
             post.delete()
@@ -121,8 +122,9 @@ def post(request, slug):
     return render(request, 'posts/post.html', {
         'post': post,
         'form': form,
-        'other':other_posts,
-        'confirms': confirms
+        'other': other_posts,
+        'confirms': confirms,
+        'post_bids': bids
     }, context_instance=RequestContext(request))
 
 

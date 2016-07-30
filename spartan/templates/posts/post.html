@@ -76,7 +76,7 @@
                                           </div>
                                             </form>
 					    {% endif %}
-					    <button class="btn" id="show-bidding-field">Show other Bids</button>
+					    <button class="btn" id="show-bidding-field">Show Bids</button>
                                             {% if request.user == post.author%}
                                             <button  class=" btn btn-success" style="margin-right:5px"><a href="/edit/{{ post.slug }}" >Edit task </a></button>
                                                     {% endif %}
@@ -95,29 +95,24 @@
                                                                 <div class="card">
                                                                     <div class="card-header"></div>
                                                                     <div class="card-body no-padding">
-								      {% if post.offers.all %}
-                                                                        <div class="sub-title title-bidders">Other Bidders</div>
+								      {% if post_bids %}
+                                                                        <div class="sub-title title-bidders">Top Bidders</div>
                                                                         <table class="table table-bordered">
                                                                             <thead>
                                                                                 <tr>
-                                                                                    <th>No.</th>
                                                                                     <th> Username</th>
                                                                                     <th>Price</th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
 
-                                                                            {% for oferta in post.offers.all %}
+                                                                            {% for oferta in post_bids %}
 
                                                                                 <tr>
-
-                                                                                    <th scope="row">{{ oferta.id }}</th>
-
                                                                                     <td> <a href="/user/{{ oferta.spartan.slug }}" >{{ oferta.spartan.user.username }} </a></td>
                                                                                     <td><a href="/user/{{ oferta.spartan.slug }}" >{{ oferta.price }} </a></td>
                                                                                 </tr>
-                                                                            {% endfor %}
-
+										{% endfor %}
                                                                             </tbody>
                                                                         </table>
 									{% else %}
