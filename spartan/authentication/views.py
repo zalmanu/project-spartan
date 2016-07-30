@@ -40,7 +40,6 @@ def register_page(request):
             form.save()
             acc_form.instance.user = form.instance
             acc_form.save()
-            print acc_form.instance.city
             user = authenticate(username=form.instance.username,
                                 password=form.cleaned_data['password'])
             login(request, user)
