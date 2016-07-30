@@ -42,6 +42,9 @@
                                                     <h5>{{ post.description }}</h5>
                                                     {% if request.user.spartan.category.name == post.category.name or request.user == post.author %}
                                                     <h5><b>Max bid: {{post.money}} EUR</b></h5>
+                                                    {% if post_bids %}
+                                                    <h5><b>Average bid : {{ average }} EUR</b></h5>
+                                                    {% endif %}
                                                     {% endif %}
                                                 </div>
                                                 <div class="card-body">
