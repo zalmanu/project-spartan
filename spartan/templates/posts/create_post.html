@@ -233,44 +233,7 @@
                                              {% endif %}
 
                                             </div>
-
-                                        <!--<div class="form-group">-->
-                                            <!--<br>-->
-                                            <!--<label for="exampleInputFile">Choose some reprezentative pictures<span style="color:red;">*</span></label>-->
-                                            <!--<table>-->
-                                                <!--<tr>-->
-                                                    <!--<td>-->
-                                                        <!--<img id="uploadPreview1" src="{% static "img/no_image.jpg" %}"style="height: 100px; width: 100px;"/><br />-->
-                                                        <!--{{ form.image|attr:"required:required"|attr:"id:uploadImage1"|attr:"name:p1"|attr:"onchange:PreviewImage(1);"}}-->
-                                                    <!--</td>-->
-                                                    <!--<td>-->
-                                                        <!--<img id="uploadPreview2" src="{% static "img/no_image.jpg" %}"style="height: 100px; width: 100px;"/><br />-->
-                                                        <!--{{ form.image2|attr:"id:uploadImage2"|attr:"name:p2"|attr:"onchange:PreviewImage(2);"|attr:"required:required"}}-->
-<!---->
-                                                    <!--</td>-->
-                                                    <!--<td>-->
-                                                        <!--<img id="uploadPreview3" src="{% static "img/no_image.jpg" %}"style="height: 100px; width: 100px;"/><br />-->
-                                                        <!--{{ form.image3|attr:"required:required"|attr:"id:uploadImage3"|attr:"name:p3"|attr:"onchange:PreviewImage(3);"}}-->
-                                                    <!--</td>-->
-                                                    <!--<td>-->
-                                                        <!--<img id="uploadPreview4" src="{% static "img/no_image.jpg" %}"style="height: 100px; width: 100px;"/><br />-->
-                                                        <!--{{ form.image4|attr:"required:required"|attr:"id:uploadImage4"|attr:"name:p4"|attr:"onchange:PreviewImage(4);"}}-->
-                                                    <!--</td>   -->
-                                                <!--</tr>-->
-                                                <!--</table>-->
-                                                        <!---->
-                                                <!--<script type="text/javascript">-->
-                                                    <!--function PreviewImage(no) {-->
-                                                        <!--var oFReader = new FileReader();-->
-                                                        <!--oFReader.readAsDataURL(document.getElementById("uploadImage"+no).files[0]);-->
-<!---->
-                                                        <!--oFReader.onload = function (oFREvent) {-->
-                                                            <!--document.getElementById("uploadPreview"+no).src = oFREvent.target.result;-->
-                                                        <!--};-->
-                                                    <!--}-->
-                                                <!--</script>-->
-                                        <!--</div>-->
-
+                                        
                                         <button type="submit" class="btn btn-success">Submit</button>
                                     </form>
                                 </div>
