@@ -142,34 +142,41 @@
                             <div class="card">
                                 <div class="card-header">
                                     <div class="card-title">
-                                        <div class="title">Pictures</div>
+                                      <div class="title">Pictures</div>
                                         <div class="description">Here are some media files about the service</div>
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <div class="row">
+                                  <div class="row">
+				    {% if post.image %}
                                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                                             <a >
                                                 <img id="myImg1" src= '{{ post.image.url }}' alt="{{ post.image.name }}" class = 'img-responsive'/>
                                             </a>
                                         </div>
+				    {% endif %}
+				    {% if post.image2 %}
                                         <a>   </a>
                                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                                             <a >
                                                 <img id="myImg2" src= '{{ post.image2.url }}' alt="{{ post.image2.name }}" class = 'img-responsive'/>
                                             </a>
                                         </div>
+				     {% endif %}
+				    {% if post.image3 %}
                                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                                             <a>
                                                 <img id="myImg3" src= '{{ post.image3.url }}' alt="{{ post.image3.name }}" class = 'img-responsive'/>
                                             </a>
                                         </div>
+					{% endif %}
+				    {% if post.image4 %}
                                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                                             <a>      
                                                 <img id="myImg4" src='{{ post.image4.url }}' alt="{{ post.image4.name }}" width="300" height="200">
                                             </a>
                                         </div>
-
+				    {% endif %}
                                         <!-- The Modal -->
                                         <div id="myModal" class="modal" style="background-color: rgba(0,0,0,0.9)!important;">
                                           <span class="close" style="color:#fff;" onclick="document.getElementById('myModal').style.display='none'">&times;</span>

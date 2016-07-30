@@ -191,7 +191,7 @@
                                             <br>
                                             <label for="exampleInputFile">Choose some representative pictures<span style="color:red;">*</span></label>
 
-                                                 {{ form.image|add_class:"form-control "|attr:"required:required"}}
+                                                 {{ form.image|add_class:"form-control " }}
                                                 {% if form.image.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
                                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -201,7 +201,7 @@
 				                                        {% endfor %}
                                                             </div>
                                              {% endif %}<br>
-                                                 {{ form.image2|add_class:"form-control "|attr:"required:required"}}
+                                                 {{ form.image2|add_class:"form-control " }}
                                                 {% if form.image2.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
                                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -211,7 +211,7 @@
 				                                        {% endfor %}
                                                             </div>
                                              {% endif %}<br>
-                                                 {{ form.image3|add_class:"form-control "|attr:"required:required"}}
+                                                 {{ form.image3|add_class:"form-control " }}
                                                 {% if form.image3.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
                                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -221,7 +221,7 @@
 				                                        {% endfor %}
                                                             </div>
                                              {% endif %}<br>
-                                                 {{ form.image4|add_class:"form-control "|attr:"required:required"}}
+                                                 {{ form.image4|add_class:"form-control " }}
                                                 {% if form.image4.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
                                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
