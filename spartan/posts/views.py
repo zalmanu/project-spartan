@@ -86,7 +86,7 @@ def post(request, slug):
        request.user != post.spartan.user:
         raise Http404()
     confirms = []
-    bids = post.offers.all().order_by('-price')
+    bids = post.offers.all().order_by('price')[:5]
     if request.method == 'POST':
         if request.POST.get("deletePost") and post.author == request.user:
             post.delete()
