@@ -47,6 +47,7 @@ class PasswordResetForm(forms.Form):
                                  widget=forms.PasswordInput(
                                      attrs={'required': 'required'}))
 
+
 class ForGotPassword(forms.Form):
     password_1 = forms.CharField(max_length=160, min_length=8,
                                  label="New password",

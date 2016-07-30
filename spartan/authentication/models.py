@@ -37,7 +37,8 @@ class Account(models.Model):
     profile_image = models.ImageField(upload_to=upload_location,
                                       null=True, blank=True,
                                       height_field="height_field",
-                                      width_field="width_field")
+                                      width_field="width_field",
+                                      default='profile.png')
     height_field = models.IntegerField(default=0)
     width_field = models.IntegerField(default=0)
 
