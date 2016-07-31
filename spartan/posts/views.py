@@ -87,6 +87,12 @@ def post(request, slug):
         raise Http404()
     confirms = []
     bids = post.offers.all().order_by('price')[:5]
+    average = 0
+    i = 0
+    for bid in bids:
+        i += 1
+        average += bid.price
+    average = average / i
     if request.method == 'POST':
         if request.POST.get("deletePost") and post.author == request.user:
             post.delete()
@@ -124,6 +130,7 @@ def post(request, slug):
         'form': form,
         'other': other_posts,
         'confirms': confirms,
+        'average' : average,
         'post_bids': bids
     }, context_instance=RequestContext(request))
 
