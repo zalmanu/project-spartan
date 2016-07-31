@@ -133,9 +133,13 @@
                                                 <div class="card-body">
                                                     {% for field in form %}
 
-                                                     <p style="float:left" >{{ field.label }}</p>
+                                                    <label style="float:left;" for="exampleInputPassword1">{{ field.label }}</label>
+
 
                                                     {{ field|add_class:"form-control "|attr:"placeholder,form-control" }}
+                                                    <br>
+
+
                                                     {% if field.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
                                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -153,10 +157,11 @@
                                                      <div >
 
                                                          <div align="left" >
+
                                             <label  for="exampleInputPassword1">City</label> </div>
                                             <div  align="left" >
 
-                                                 {{ form_acc.city|add_class:"form-control "|attr:"required:required"}}
+                                                 {{ form_acc.city|add_class:"form-control login_field"|attr:"style:float: left; width: 100%; text-align: left;text-align:left !important;"}}
 
                                                 {% if form_acc.city.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
@@ -169,12 +174,13 @@
                                              {% endif %}
                                             </div>
                                         </div>
+                                                    <br>
 
                                          <div align="left">
                                             <label for="exampleInputPassword1">Country</label>
                                             <div>
 
-                                                 {{ form_acc.country|add_class:"form-control "|attr:"required:required"}}
+                                                 {{ form_acc.country|add_class:"form-control login_field"|attr:"style:float: left; width: 100%; text-align: left;text-align:left !important;"}}
 
                                                 {% if form_acc.country.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
@@ -187,6 +193,7 @@
                                              {% endif %}
                                             </div>
                                         </div>
+                                                    <br>
 
                                          <div align="left">
                                             <label for="exampleInputPassword1">Phone</label>
@@ -205,6 +212,7 @@
                                              {% endif %}
                                             </div>
                                         </div>
+                                                    <br>
 
                                                      <div align="left">
                                             <label for="exampleInputPassword1">Profile image</label>
