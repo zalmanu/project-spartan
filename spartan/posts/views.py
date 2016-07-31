@@ -87,7 +87,7 @@ def post(request, slug):
     other_posts = Announcement.objects.exclude(id=post.id).order_by('-id')[:4]
     average = 0
     confirms = []
-    bids = post.offers.all().order_by('price')[:5]
+    bids = post.offers.all().order_by('price')
     if request.method == 'POST':
         if request.POST.get("deletePost") and post.author == request.user:
             post.delete()
