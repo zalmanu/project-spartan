@@ -1,2 +1,2 @@
-settings/local.py filter=git-crypt diff=git-crypt
-settings/production.py filter=git-crypt diff=git-crypt
+spartan/settings/local.py filter=git-crypt diff=git-crypts
+spartan/settings/production.py filter=git-crypt diff=git-crypt
