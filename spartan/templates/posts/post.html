@@ -45,6 +45,9 @@
                                                     <h5><b style="font-size:20px;color:#19b5fe;"> Max bid: <i style="font-size:17px;font-style:normal;color:#353d47;"> {{ post.money }} EUR</i></b></h5>
                                                     {% if post_bids %}
                                                     <h5><b style="font-size:20px;color:#19b5fe;" >Average bid : <i style="font-size:17px;font-style:normal;color:#353d47;">{{ average }} EUR</i></b></h5>
+                                                    {% if last_bid %}
+                                                    <h5><b style="font-size:20px;color:#19b5fe;" >Your last bid : <i style="font-size:17px;font-style:normal;color:red;">{{ last_bid.price }} EUR</i></b></h5>
+                                                    {% endif %}
                                                     {% endif %}
                                                     {% endif %}
                                                     <hr style="border:1px solid #fff;">
