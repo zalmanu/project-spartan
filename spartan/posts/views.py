@@ -123,10 +123,12 @@ def post(request, slug):
                              bid.post.title, id_hash)
             confirms.append('Offer was sent')
     if post.offers.all():
-        if(request.user.has_related_object()):
+        if(request.user.account.has_related_object()):
             last_bid = Offer.objects.filter(
                 post=post,
-                spartan=request.user.spartan).order_by(-id)[:1]
+                spartan=request.user.spartan).all().order_by("-id")
+            if last_bid:
+                last_bid = last_bid[0]
         for bid in post.offers.all():
             average += bid.price
         average /= post.offers.count()
