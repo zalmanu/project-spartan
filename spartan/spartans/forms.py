@@ -42,9 +42,9 @@ class CreateSpartanForm(forms.ModelForm):
             raise forms.ValidationError("Enter a valid birthday")
         else:
             delta = date.today() - birthday
-            if delta.days < 6570:
-                raise forms.ValidationError("You have to be at least 18 old"
-                                            "to be a spartan")
+            if delta.days < 5110:
+                raise forms.ValidationError("You have to be at least 14 old"
+                                            " to be a spartan")
         return birthday
 
     def clean_cnp(self):
