@@ -9,7 +9,7 @@ function sendmessage() {
          text: field.value,
          room_slug: url_path[len - 2],
 	 user_name: username
-     }
+     };
      socket.send(JSON.stringify(message));
      field.value = '';
      return false;
