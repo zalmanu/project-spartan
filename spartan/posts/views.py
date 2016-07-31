@@ -80,19 +80,14 @@ def create_post(request):
 @login_required
 def post(request, slug):
     post = get_object_or_404(Announcement, slug=slug)
-    form = CreateOfferForm(data=request.POST or None, post=post)
-    other_posts = Announcement.objects.exclude(id=post.id).order_by('-id')[:4]
     if post.status and request.user != post.author and \
        request.user != post.spartan.user:
         raise Http404()
+    form = CreateOfferForm(data=request.POST or None, post=post)
+    other_posts = Announcement.objects.exclude(id=post.id).order_by('-id')[:4]
+    average = 0
     confirms = []
     bids = post.offers.all().order_by('price')[:5]
-    average = 0
-    i = 0
-    for bid in bids:
-        i += 1
-        average += bid.price
-    average = average / i
     if request.method == 'POST':
         if request.POST.get("deletePost") and post.author == request.user:
             post.delete()
@@ -125,12 +120,18 @@ def post(request, slug):
             notify_bid.delay(receiver, post.get_absolute_url(),
                              bid.post.title, id_hash)
             confirms.append('Offer was sent')
+    if post.offers.all():
+        for bid in post.offers.all():
+            average += bid.price
+            print average
+        average /= post.offers.count()
+        print post.offers.count()
     return render(request, 'posts/post.html', {
         'post': post,
         'form': form,
         'other': other_posts,
         'confirms': confirms,
-        'average' : average,
+        'average': average,
         'post_bids': bids
     }, context_instance=RequestContext(request))
 
