@@ -32,6 +32,7 @@ from haystack.forms import SearchForm
 from .models import Announcement
 from .forms import EditPostForm, CreatePostForm
 from bidding.forms import CreateOfferForm
+from bidding.models import Offer
 from .tasks import notify_spartans, email_user, notify_bid
 
 
@@ -88,6 +89,7 @@ def post(request, slug):
     average = 0
     confirms = []
     bids = post.offers.all().order_by('price')
+    last_bid = None
     if request.method == 'POST':
         if request.POST.get("deletePost") and post.author == request.user:
             post.delete()
@@ -121,14 +123,12 @@ def post(request, slug):
                              bid.post.title, id_hash)
             confirms.append('Offer was sent')
     if post.offers.all():
-        if(request.user.account.has_related_object()):
-            is_spartan = True
-            max_bid = 0
+        if(request.user.has_related_object()):
+            last_bid = Offer.objects.filter(
+                post=post,
+                spartan=request.user.spartan).order_by(-id)[:1]
         for bid in post.offers.all():
             average += bid.price
-            if(is_spartan and bid.spartan == request.user.spartan):
-                if(bid.price > max_bid):
-                    max_bid = bid.price
         average /= post.offers.count()
     return render(request, 'posts/post.html', {
         'post': post,
@@ -137,7 +137,7 @@ def post(request, slug):
         'confirms': confirms,
         'average': average,
         'post_bids': bids,
-        'max_bid': max_bid
+        'last_bid': last_bid
     }, context_instance=RequestContext(request))
 
 
