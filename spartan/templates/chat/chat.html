@@ -26,13 +26,13 @@
                                         <a>
                                           <li>
 					    {% if message.submitter == user %}
-					    {% if message.submitter.account.profile_image.url %}
+					    {% if message.submitter.account.profile_image %}
                                             <img src="{{ message.submitter.account.profile_image.url }}" class="profile-img pull-right">
 					    {% else %}
 					    <img src="{% static "img/profile.png" %}" class="profile-img pull-right">
 					    {% endif %}
 					    {% else %}
-					    {% if message.submitter.account.profile_image.url %}
+					    {% if message.submitter.account.profile_image %}
                                             <img src="{{ message.submitter.account.profile_image.url }}" class="profile-img pull-left">
 					    {% else %}
 					    <img src="{% static "img/profile.png" %}" class="profile-img pull-left">
