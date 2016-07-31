@@ -28,8 +28,8 @@ var post_description = $('.description-text').text().length;
 
 $(document).ready(function(){
     $(".description-text").each(function() {
-         if($(this).text().length > 40) {
-           $(this).text($(this).text().substr(0, 40)+"...");
+         if($(this).text().length > 35) {
+           $(this).text($(this).text().substr(0, 35)+"...");
          }
      });
 });
@@ -38,8 +38,8 @@ var_post_title = $('.post-title').text().length;
 
 $(document).ready(function(){
     $(".post-title").each(function() {
-         if($(this).text().length > 20) {
-           $(this).text($(this).text().substr(0, 20)+"...");
+         if($(this).text().length > 17) {
+           $(this).text($(this).text().substr(0, 17)+"...");
          }
      });
 });

@@ -26,12 +26,18 @@ function ask_for_posts(obj, path, type){
 	var array = decoded.posts;
 	$("#posts_div").empty();
 	for(var i = 0; i < array.length; i++){
+	    var post_title = array[i].title;
+	    var post_description = array[i].description;
+	    if(array[i].title.length > 17)
+		post_title = array[i].title.substring(0,17) + "...";
+	    if(array[i].description.length > 35)
+		post_description = array[i].description.substring(0,35) + "...";
 	    html = "<div class=\"col-lg-3 col-md-4 col-sm-6 col-xs-12\">" +
 		"<div class=\"thumbnail no-margin-bottom\">" +
 		"<img src=\'" + array[i].image + "\' class = \'img-responsive\'/>" +
 		"<div class=\"caption\">" + 
-		"<h3 id=\"thumbnail-label\">" + array[i].title + "<a class=\"anchorjs-link\" href=\"#thumbnail-label\"><span class=\"anchorjs-icon\"></span></a></h3>" + 
-		" <p>" + array[i].description + "</p>" + 
+		"<h3 id=\"thumbnail-label\">" + post_title + "<a class=\"anchorjs-link\" href=\"#thumbnail-label\"><span class=\"anchorjs-icon\"></span></a></h3>" + 
+		" <p>" + post_description + "</p>" + 
 		" <p> " +
                 "<a href=\"" + array[i].slug + "\" class=\"btn btn-success\" role=\"button\">View Task</a>" + 
 		"<br>" + 
