@@ -87,7 +87,7 @@ def post(request, slug):
     other_posts = Announcement.objects.exclude(id=post.id).order_by('-id')[:4]
     average = 0
     confirms = []
-    bids = post.offers.all().order_by('price')[:5]
+    bids = post.offers.all().order_by('price')
     if request.method == 'POST':
         if request.POST.get("deletePost") and post.author == request.user:
             post.delete()
@@ -121,18 +121,23 @@ def post(request, slug):
                              bid.post.title, id_hash)
             confirms.append('Offer was sent')
     if post.offers.all():
+        if(request.user.account.has_related_object()):
+            is_spartan = True
+            max_bid = 0
         for bid in post.offers.all():
             average += bid.price
-            print average
+            if(is_spartan and bid.spartan == request.user.spartan):
+                if(bid.price > max_bid):
+                    max_bid = bid.price
         average /= post.offers.count()
-        print post.offers.count()
     return render(request, 'posts/post.html', {
         'post': post,
         'form': form,
         'other': other_posts,
         'confirms': confirms,
         'average': average,
-        'post_bids': bids
+        'post_bids': bids,
+        'max_bid': max_bid
     }, context_instance=RequestContext(request))
 
 

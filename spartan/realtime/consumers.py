@@ -86,12 +86,16 @@ def ws_message(message):
      You received a message
     </li>
     """
+    if(user.account.profile_image):
+        image_url = user.account.profile_image.url
+    else:
+        image_url = "/static/img/profile.png"
     chat_dic = {
         'message': data['text'],
         'submitter': user.username,
         'html': html_txt,
         'type': 'chat_mess',
-        'img': user.account.profile_image.url
+        'img': image_url
     }
     bar_dic = {
         'type': 'chat',
