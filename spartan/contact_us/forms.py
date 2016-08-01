@@ -39,6 +39,7 @@ class CreateContact(forms.ModelForm):
         first_name = self.cleaned_data['first_name']
         if not first_name.isalpha():
             raise forms.ValidationError("Enter a valid first name")
+        return first_name
 
     def clean_email(self):
         email = self.cleaned_data['email']
