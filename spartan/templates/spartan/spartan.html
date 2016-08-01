@@ -110,6 +110,15 @@
                                                  {{ form.address|add_class:"form-control "|attr:"required:required"|attr:"placeholder:Please enter the following: Street Name, Number"|attr:"id:us6-address"}}
 
                                             </div>
+					    {% if form.address.errors %}
+                                                        <div class="alert alert-danger fade in" id="input-alert">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form.address.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                            {% endif %}
                                             <div class="location-picker-by-map" id="us6" style="width: 500px; height: 400px;"></div>
                                             <script>
                                                 $('#us6').locationpicker({
