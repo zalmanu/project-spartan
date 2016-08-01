@@ -28,6 +28,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 
 from models import Category
+from authentication.models import City
 from posts.models import Announcement
 
 
@@ -63,23 +64,27 @@ def filter(request):
             price = request.POST.get("maxprice")
             price = int(price)
             posts = Announcement.objects.filter(category=posts_category,
-                                                money__lte=price)
+                                                money__lte=price,
+                                                status=False)
         elif request.POST.get("minprice"):
             price = request.POST.get("minprice")
             price = int(price)
             posts = Announcement.objects.filter(category=posts_category,
-                                                money__gte=price)
+                                                money__gte=price,
+                                                status=False)
         elif request.POST.get("date"):
             data = request.POST.get("date")
             data = datetime.strptime(data,
                                      "%m/%d/%Y")
             posts = Announcement.objects.filter(category=posts_category,
                                                 data__range=[timezone.now(),
-                                                             data])
+                                                             data],
+                                                status=False)
         elif request.POST.get("city"):
             city = request.POST.get("city")
+            city = City.objects.get(name=city)
             posts = Announcement.objects.filter(category=posts_category,
-                                                city=city)
+                                                city=city, status=False)
         results = {'posts': []}
         array = results.get('posts')
         for post in posts:

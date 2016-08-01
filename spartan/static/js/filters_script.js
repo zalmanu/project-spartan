@@ -74,7 +74,7 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-    $("#filter_city").click(function(event){
+    $(".filter_city").click(function(event){
 	if(this.innerHTML)
 	   ask_for_posts(this.innerHTML, path[2], "city");
         });
