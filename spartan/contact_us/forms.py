@@ -23,8 +23,6 @@ from .models import ContactUs
 
 class CreateContact(forms.ModelForm):
 
-    captcha = ReCaptchaField()
-
     class Meta:
         model = ContactUs
         fields = '__all__'
@@ -58,3 +56,4 @@ class CreateContact(forms.ModelForm):
             raise forms.ValidationError(
                 "Your contact message has to be at least "
                 "50 characters long")
+        return message
