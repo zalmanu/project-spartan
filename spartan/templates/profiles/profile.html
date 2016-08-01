@@ -60,7 +60,7 @@
                                                   <p><span><b style="color:#19B5FE; font-size:15px">Category:</b> </span>{{ user.spartan.category }}</p>
                                               </div>
                                               <h4 style="display: inline-block;"><b>Reviews:</b> {{ user.spartan.rating }}</h4>
-					      {% if user.spartan.raiting %}
+					      {% if user.spartan.reviews%}
 					      <button type="button" style="display: inline-block;" class="pull-right btn btn-success" id="show-reviews">Show Reviews</button>
 					      {% endif %}
                                                         {% endif %}
@@ -80,7 +80,7 @@
                                                                     <a>
                                                                         <li>
 
-                                                                             <img src='{{ review.submitter.account.profile_image.url }}' class = 'img-responsive' style="max-width: 35%;"/>
+                                                                             <img src='{{ review.submitter.account.profile_image.url }}' class="profile-img pull-left"/>
                                                                             <div class="message-block">
                                                                                 <div><span class="username">{{ review.submitter.account.user}}</span> <span class="message-datetime">{{ review.data }}</span>
                                                                                 </div>
