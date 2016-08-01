@@ -23,6 +23,8 @@ from .models import ContactUs
 
 class CreateContact(forms.ModelForm):
 
+    captcha = ReCaptchaField()
+
     class Meta:
         model = ContactUs
         fields = '__all__'
