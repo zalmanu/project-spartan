@@ -31,6 +31,18 @@ class CreateSpartanForm(forms.ModelForm):
         fields = ['first_name', 'last_name', 'birthday', 'address',
                   'cnp', 'series', 'category']
 
+    def clean_first_name(self):
+        first_name = self.cleaned_data['first_name']
+        if not first_name.isalpha():
+            raise forms.ValidationError("Enter a valid first name")
+        return first_name
+
+    def clean_last_name(self):
+        last_name = self.cleaned_data['last_name']
+        if not last_name.isalpha():
+            raise forms.ValidationError("Enter a valid last name")
+        return last_name
+
     def clean_category(self):
         cat_name = self.cleaned_data['category']
         category = get_object_or_404(Category, name=cat_name)
@@ -54,6 +66,12 @@ class CreateSpartanForm(forms.ModelForm):
             return form_cnp
         except (InvalidFormat, InvalidLength, InvalidChecksum):
             raise forms.ValidationError("Invalid CNP")
+
+    def clean_address(self):
+        address = self.cleaned_data['address']
+        if address.isdigit():
+            raise forms.ValidationError("Enter a valid address")
+        return address
 
     def clean_series(self):
         series = self.cleaned_data['series']
