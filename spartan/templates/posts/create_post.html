@@ -56,21 +56,21 @@
 
                                                 {{ form.data|add_class:"form-control "|attr:"required:required"|add_class:"form-control datepicker"|attr:"placeholder:Pick up a date"}}
 
-                                                {% if form.data.errors %}
-                                                        <div class="alert alert-danger fade in" id="input-alert">
-                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for error in form.data.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
-                                                            </div>
-                                             {% endif %}
                                                 <span class="input-group-addon" id="basic-addon1">
                                                     <i class="glyphicon glyphicon-calendar" data-time-icon="icon-time" data-date-icon="icon-calendar">
                                                     </i>
                                                 </span>
                                             </div>
                                         </div>
+                                        {% if form.data.errors %}
+                                                <div class="alert alert-danger fade in" id="input-alert">
+                                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                    <strong>Warning!</strong>
+                                                    {% for error in form.data.errors %}
+                                                            {{ error }}
+                                                    {% endfor %}
+                                                </div>
+                                        {% endif %}
 
 
                                 <div class="form-group">
@@ -78,17 +78,16 @@
 
                                     {{ form.timePost|attr:"required:required"|attr:"placeholder:Enter a time"|add_class:"time_element form-control"}}
 
-                                     {% if form.timePost.errors %}
+                                </div>
+                                {% if form.timePost.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
                                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                                         <strong>Warning!</strong>
-				                                        {% for error in form.timep.errors %}
-				                                                {{ error }}
-				                                        {% endfor %}
+                                                        {% for error in form.timep.errors %}
+                                                                {{ error }}
+                                                        {% endfor %}
                                                             </div>
                                              {% endif %}
-
-                                </div>
 
                                         <div class="form-grpup">
                                             <label for="exampleInputEmail">Address</label>
