@@ -25,3 +25,12 @@ class CreateReviewForm(forms.ModelForm):
     class Meta:
         model = Review
         fields = ['message']
+
+    def clean_message(self):
+        message = self.cleaned_data['message']
+        if(
+                message.isdigit() or message == '' or
+                not message.isalnum or not message.isalpha
+        ):
+            raise forms.ValidationError("Enter a valid review message")
+        return message
