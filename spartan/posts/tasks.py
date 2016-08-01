@@ -25,7 +25,6 @@ from django.template.loader import get_template
 from django.core.mail import EmailMessage
 
 from celery import task
-from channels import Group
 
 from spartans.models import Spartan
 from notifications.models import Notification

@@ -31,7 +31,9 @@ def seen(request):
     if request.method == "POST":
         if request.POST.get('notif'):
             notif_id = request.POST.get("notif")
-            notification = Notification.objects.get(id_hash=notif_id)
+            print notif_id
+            notification = Notification.objects.get(id_hash=notif_id,
+                                                    receiver=request.user)
             if notification.seen or notification.receiver != request.user:
                 return HttpResponseForbidden()
             notification.seen = True
