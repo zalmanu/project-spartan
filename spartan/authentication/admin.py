@@ -16,7 +16,7 @@
 # along with Project Spartan.  If not, see <http://www.gnu.org/licenses/>.
 
 from django.contrib import admin
-from authentication.models import Account
+from authentication.models import Account, City, Country
 
 
 class AccountAdmin(admin.ModelAdmin):
@@ -24,4 +24,13 @@ class AccountAdmin(admin.ModelAdmin):
     ordering = ['user']
 
 
+class CityAdmin(admin.ModelAdmin):
+    list_display = ['name']
+
+
+class CountryAdmin(admin.ModelAdmin):
+    list_display = ['name']
+
 admin.site.register(Account, AccountAdmin)
+admin.site.register(Country, CountryAdmin)
+admin.site.register(City, CityAdmin)

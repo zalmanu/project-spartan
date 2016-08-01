@@ -30,6 +30,7 @@ def contact_us(request):
             form.save()
             confirm.append(
                 'Your message has been successfully sent!\nThank you!')
+            form = CreateContact(None)
     return render(request, 'contact_us/contact_us.html',
                   {'form': form,
                    'confirm': confirm},

@@ -49,9 +49,6 @@ class User_Edit(forms.ModelForm):
 
 class Account_Edit(forms.ModelForm):
 
-    city = forms.ChoiceField(choices=[(x, x) for x in ['Timisoara']])
-    country = forms.ChoiceField(choices=[(x, x) for x in ['Romania']])
-
     class Meta:
         model = Account
         fields = ['city', 'country', 'phone', 'profile_image']

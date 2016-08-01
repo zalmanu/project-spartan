@@ -32,6 +32,7 @@ from haystack.forms import SearchForm
 from .models import Announcement
 from .forms import EditPostForm, CreatePostForm
 from bidding.forms import CreateOfferForm
+from bidding.models import Offer
 from .tasks import notify_spartans, email_user, notify_bid
 
 
@@ -53,7 +54,7 @@ def create_post(request):
                              "Spartan Tasks Post")
             id_hash = ''.join(random.choice(
                 string.ascii_uppercase + string.digits) for _ in range(6))
-            notify_spartans.delay(category.name, post.city,
+            notify_spartans.delay(category.name, str(post.city.name),
                                   post.title,
                                   url, id_hash)
             html = """
@@ -71,7 +72,7 @@ def create_post(request):
                 'posts': 'post'
             }
             Group("spartans-" + category.name +
-                  "-" + post.city).send({'text': json.dumps(dic)})
+                  "-" + str(post.city.name)).send({'text': json.dumps(dic)})
             return redirect(post.get_absolute_url())
     return render(request, 'posts/create_post.html', {
         'form': form}, context_instance=RequestContext(request))
@@ -88,6 +89,7 @@ def post(request, slug):
     average = 0
     confirms = []
     bids = post.offers.all().order_by('price')
+    last_bid = None
     if request.method == 'POST':
         if request.POST.get("deletePost") and post.author == request.user:
             post.delete()
@@ -122,13 +124,13 @@ def post(request, slug):
             confirms.append('Offer was sent')
     if post.offers.all():
         if(request.user.account.has_related_object()):
-            is_spartan = True
-            max_bid = 0
+            last_bid = Offer.objects.filter(
+                post=post,
+                spartan=request.user.spartan).all().order_by("-id")
+            if last_bid:
+                last_bid = last_bid[0]
         for bid in post.offers.all():
             average += bid.price
-            if(is_spartan and bid.spartan == request.user.spartan):
-                if(bid.price > max_bid):
-                    max_bid = bid.price
         average /= post.offers.count()
     return render(request, 'posts/post.html', {
         'post': post,
@@ -137,7 +139,7 @@ def post(request, slug):
         'confirms': confirms,
         'average': average,
         'post_bids': bids,
-        'max_bid': max_bid
+        'last_bid': last_bid
     }, context_instance=RequestContext(request))
 
 

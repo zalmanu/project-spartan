@@ -37,7 +37,7 @@ def notify_spartans(category_name, city, title, url, id_hash):
     category = Category.objects.get(name=category_name)
     for spartan in Spartan.objects.filter(spartanStatus=True,
                                           category=category):
-        if spartan.user.account.city == city:
+        if spartan.user.account.city.name == city:
             notification = Notification.objects.create(
                 receiver=spartan.user, not_type="post", url=url,
                 id_hash=id_hash, context=title)

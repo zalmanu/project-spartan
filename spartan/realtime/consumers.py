@@ -48,7 +48,7 @@ def ws_add(message):
     Group("channel-" + user.username).add(message.reply_channel)
     if user.account.has_related_object() and user.spartan.spartanStatus:
         Group("spartans-" + user.spartan.category.name + "-" +
-              user.account.city).add(message.reply_channel)
+              user.account.city.name).add(message.reply_channel)
     Group("messages-" + user.username).add(message.reply_channel)
     if(label[0] == "room"):
         room = Room.objects.get(slug=label[1])

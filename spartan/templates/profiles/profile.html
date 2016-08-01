@@ -60,7 +60,7 @@
                                                   <p><span><b style="color:#19B5FE; font-size:15px">Category:</b> </span>{{ user.spartan.category }}</p>
                                               </div>
                                               <h4 style="display: inline-block;"><b>Reviews:</b> {{ user.spartan.rating }}</h4>
-					      {% if user.spartan.raiting %}
+					      {% if user.spartan.reviews%}
 					      <button type="button" style="display: inline-block;" class="pull-right btn btn-success" id="show-reviews">Show Reviews</button>
 					      {% endif %}
                                                         {% endif %}
@@ -80,7 +80,7 @@
                                                                     <a>
                                                                         <li>
 
-                                                                             <img src='{{ review.submitter.account.profile_image.url }}' class = 'img-responsive' style="max-width: 35%;"/>
+                                                                             <img src='{{ review.submitter.account.profile_image.url }}' class="profile-img pull-left"/>
                                                                             <div class="message-block">
                                                                                 <div><span class="username">{{ review.submitter.account.user}}</span> <span class="message-datetime">{{ review.data }}</span>
                                                                                 </div>
@@ -133,9 +133,13 @@
                                                 <div class="card-body">
                                                     {% for field in form %}
 
-                                                     <p style="float:left" >{{ field.label }}</p>
+                                                    <label style="float:left;" for="exampleInputPassword1">{{ field.label }}</label>
+
 
                                                     {{ field|add_class:"form-control "|attr:"placeholder,form-control" }}
+                                                    <br>
+
+
                                                     {% if field.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
                                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -153,10 +157,11 @@
                                                      <div >
 
                                                          <div align="left" >
+
                                             <label  for="exampleInputPassword1">City</label> </div>
                                             <div  align="left" >
 
-                                                 {{ form_acc.city|add_class:"form-control "|attr:"required:required"}}
+                                                 {{ form_acc.city|add_class:"form-control login_field"|attr:"style:float: left; width: 100%; text-align: left;text-align:left !important;"}}
 
                                                 {% if form_acc.city.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
@@ -169,12 +174,13 @@
                                              {% endif %}
                                             </div>
                                         </div>
+                                                    <br>
 
                                          <div align="left">
                                             <label for="exampleInputPassword1">Country</label>
                                             <div>
 
-                                                 {{ form_acc.country|add_class:"form-control "|attr:"required:required"}}
+                                                 {{ form_acc.country|add_class:"form-control login_field"|attr:"style:float: left; width: 100%; text-align: left;text-align:left !important;"}}
 
                                                 {% if form_acc.country.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
@@ -187,6 +193,7 @@
                                              {% endif %}
                                             </div>
                                         </div>
+                                                    <br>
 
                                          <div align="left">
                                             <label for="exampleInputPassword1">Phone</label>
@@ -205,6 +212,7 @@
                                              {% endif %}
                                             </div>
                                         </div>
+                                                    <br>
 
                                                      <div align="left">
                                             <label for="exampleInputPassword1">Profile image</label>

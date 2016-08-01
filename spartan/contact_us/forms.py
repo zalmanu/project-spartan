@@ -14,24 +14,47 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Project Spartan.  If not, see <http://www.gnu.org/licenses/>.
-
+from django.core.validators import validate_email
 from django import forms
+
 from captcha.fields import ReCaptchaField
 from .models import ContactUs
 
 
 class CreateContact(forms.ModelForm):
 
-    captcha = ReCaptchaField()
-
     class Meta:
         model = ContactUs
         fields = '__all__'
         widgets = {
-            'name': forms.TextInput({'required': 'required',
-                                     'placeholder': 'Name'}),
             'email': forms.EmailInput({'required': 'required',
                                        'placeholder': 'Email'}),
             'message': forms.Textarea(attrs={'required': 'required',
                                              'placeholder': 'Message'})
         }
+
+    def clean_first_name(self):
+        first_name = self.cleaned_data['first_name']
+        if not first_name.isalpha():
+            raise forms.ValidationError("Enter a valid first name")
+        return first_name
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if validate_email(email):
+            raise forms.ValidationError("Email is not valid")
+        return email
+
+    def clean_last_name(self):
+        last_name = self.cleaned_data['last_name']
+        if not last_name.isalpha():
+            raise forms.ValidationError("Enter a valid last name")
+        return last_name
+
+    def clean_message(self):
+        message = self.cleaned_data['message']
+        if len(message) < 50:
+            raise forms.ValidationError(
+                "Your contact message has to be at least "
+                "50 characters long")
+        return message
