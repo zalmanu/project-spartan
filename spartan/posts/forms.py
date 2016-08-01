@@ -34,9 +34,9 @@ class EditPostForm(forms.ModelForm):
                                                         })
                    }
 
-        def __init__(self, *args, **kwargs):
-            self.user = kwargs.pop('user', None)
-            super(EditPostForm, self).__init__(*args, **kwargs)
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super(EditPostForm, self).__init__(*args, **kwargs)
 
     def clean_title(self):
         title = self.cleaned_data['title']
