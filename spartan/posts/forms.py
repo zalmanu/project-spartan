@@ -88,6 +88,11 @@ class EditPostForm(forms.ModelForm):
                                      name=self.cleaned_data['category'])
         return category
 
+    def clean_address(self):
+        address = self.cleaned_data['address']
+        if address.isdigit():
+            raise forms.ValidationError("Enter a valid address")
+
     def clean_image4(self):
         image = self.cleaned_data['image']
         image2 = self.cleaned_data['image2']
@@ -170,6 +175,11 @@ class CreatePostForm(forms.ModelForm):
         category = get_object_or_404(Category,
                                      name=self.cleaned_data['category'])
         return category
+
+    def clean_address(self):
+        address = self.cleaned_data['address']
+        if address.isdigit():
+            raise forms.ValidationError("Enter a valid address")
 
     def clean_image4(self):
         image = self.cleaned_data['image']
