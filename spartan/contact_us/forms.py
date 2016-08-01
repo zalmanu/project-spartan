@@ -41,7 +41,7 @@ class CreateContact(forms.ModelForm):
             raise forms.ValidationError("Enter a valid first name")
 
     def clean_email(self):
-        email = self.clean_data['email']
+        email = self.cleaned_data['email']
         if validate_email(email):
             raise forms.ValidationError("Email is not valid")
         return email
