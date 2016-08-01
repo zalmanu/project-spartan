@@ -17,7 +17,7 @@
 from captcha.fields import ReCaptchaField
 from django.contrib.auth.models import User
 from django import forms
-from .models import Account
+from .models import Account, Country, City
 
 
 class LoginForm(forms.Form):
@@ -104,9 +104,6 @@ class UserRegisterForm(forms.ModelForm):
 
 
 class AccountRegisterForm(forms.ModelForm):
-    city = forms.ChoiceField(choices=[(x, x) for x in ['Timisoara']])
-    country = forms.ChoiceField(choices=[(x, x) for x in ['Romania']])
-    captcha = ReCaptchaField()
 
     class Meta:
         model = Account

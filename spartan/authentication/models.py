@@ -29,10 +29,25 @@ def upload_location(instance, filename):
     return "%s/%s" % (instance.user, filename)
 
 
+class Country(models.Model):
+    name = models.CharField(max_length=36, null=True)
+
+    def __unicode__(self):
+        return self.name
+
+
+class City(models.Model):
+    name = models.CharField(max_length=100)
+    country = models.ForeignKey(Country, related_name='cities')
+
+    def __unicode__(self):
+        return self.name
+
+
 class Account(models.Model):
     user = models.OneToOneField(User, primary_key=True)
-    city = models.CharField(max_length=100)
-    country = models.CharField(max_length=36, null=True)
+    city = models.ForeignKey(City, related_name='accounts', default='')
+    country = models.ForeignKey(Country, related_name='accounts', default='')
     phone = PhoneNumberField(null=True)
     profile_image = models.ImageField(upload_to=upload_location,
                                       null=True, blank=True)

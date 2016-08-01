@@ -24,6 +24,7 @@ from django.contrib.auth.models import User
 
 from spartans.models import Spartan
 from categories.models import Category
+from authentication.models import Country, City
 
 
 def upload_location(instance, filename):
@@ -46,8 +47,8 @@ class Announcement(models.Model):
     author = models.ForeignKey(to=User, related_name='posts',
                                null=True, blank=True)
     address = models.CharField(null=True, max_length=500)
-    country = models.TextField(null=True, max_length=50)
-    city = models.TextField(null=True, max_length=100)
+    city = models.ForeignKey(City, related_name='posts', default='')
+    country = models.ForeignKey(Country, related_name='posts', default='')
     data = models.DateField('Date FORMAT YYYY-MM-DD',
                             null=True)
     creation_date = models.DateTimeField(editable=False, auto_now_add=True,
