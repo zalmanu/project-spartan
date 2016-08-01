@@ -14,10 +14,13 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Project Spartan.  If not, see <http://www.gnu.org/licenses/>.
-from captcha.fields import ReCaptchaField
+from django.core.validators import validate_email
 from django.contrib.auth.models import User
 from django import forms
-from .models import Account, Country, City
+
+from captcha.fields import ReCaptchaField
+
+from .models import Account
 
 
 class LoginForm(forms.Form):
@@ -77,7 +80,9 @@ class UserRegisterForm(forms.ModelForm):
 
     def clean_email(self):
         email = self.cleaned_data['email']
-        if User.objects.filter(email=email):
+        if validate_email(email):
+            raise forms.ValidationError("Email is not valid")
+        elif User.objects.filter(email=email):
             raise forms.ValidationError("This email already exists")
         return email
 
@@ -104,6 +109,7 @@ class UserRegisterForm(forms.ModelForm):
 
 
 class AccountRegisterForm(forms.ModelForm):
+    captcha = ReCaptchaField()
 
     class Meta:
         model = Account
