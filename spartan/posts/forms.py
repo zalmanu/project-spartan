@@ -90,6 +90,7 @@ class EditPostForm(forms.ModelForm):
         address = self.cleaned_data['address']
         if address.isdigit():
             raise forms.ValidationError("Enter a valid address")
+        return address
 
     def clean_image4(self):
         image = self.cleaned_data['image']
