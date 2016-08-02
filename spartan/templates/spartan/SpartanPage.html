@@ -20,8 +20,11 @@
                                         <div class="col-sm-6">
                                             <div class="card primary">
                                                 <div class="card-jumbotron no-padding">
-
-                                                     <img src='{{ spartan.user.account.profile_image.url }}' class="img-responsive"  style="height:300px !important ;width:100% !important;"/>
+						  {% if spartan.user.account.profile_image %}
+                                                  <img src='{{ spartan.user.account.profile_image.url }}' class="img-responsive"  style="height:300px !important ;width:100% !important;"/>
+						  {% else %}
+						  <img src='{% static "img/profile.png" %}' class="img-responsive"  style="height:300px !important ;width:100% !important;"/>
+						  {% endif %}
                                                 </div>
                                             </div>
                                         </div>
@@ -59,8 +62,11 @@
                                                                     {% for review in reviews.all %}
                                                                     <a>
                                                                         <li>
-
-                                                                            <img src='{{ review.submitter.account.profile_image.url }}' class="profile-img pull-left"/>
+									  {% if review.submitter.account.profile_image %}
+                                                                          <img src='{{ review.submitter.account.profile_image.url }}' class="profile-img pull-left"/>
+									  {% else %}
+                                                                          <img src='{% static "img/profile.png" %}' class="profile-img pull-left"/>
+									  {% endif %}
                                                                             <div class="message-block">
                                                                                 <div><span class="username">{{ review.submitter.account.user}}</span> <span class="message-datetime">{{ review.data }}</span>
                                                                                 </div>
