@@ -33,7 +33,6 @@ frontend developer
 * Less
 * Sass
 
-### Header-ul si meniul dashboard au la temelie un template de Bootstrap.
 
 ## Pachete folosite de la  Django
 * django
@@ -53,8 +52,9 @@ frontend developer
 * celery
 * kombu
 * redis
+* stdnum
 
-
+### Header-ul si meniul dashboard au la temelie un template de Bootstrap.
 ## Editoare folosite
 * Emacs
 * Vim
