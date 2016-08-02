@@ -45,9 +45,12 @@ class EditPostForm(forms.ModelForm):
                     id=self.instance.id).count():
             raise forms.ValidationError("You can't post two task with the"
                                         " same title")
+        elif title.isdigit():
+            raise forms.ValidationError("You can't have only "
+                                        "numbers in your title")
         elif len(title) < 5:
             raise forms.ValidationError(
-                u'Ensure your title has at '
+                'Ensure your title has at '
                 'least 5 characters')
         return title
 
@@ -58,6 +61,9 @@ class EditPostForm(forms.ModelForm):
                     id=self.instance.id).count():
             raise forms.ValidationError("You can't post two task with the"
                                         " same description")
+        elif description.isdigit():
+            raise forms.ValidationError("You can't have "
+                                        "only numbers in your description")
         elif len(description) < 20:
             raise forms.ValidationError(
                 u'Ensure your description has at '
@@ -133,6 +139,9 @@ class CreatePostForm(forms.ModelForm):
                 author=self.user, title=title).count():
             raise forms.ValidationError("You can't post two task with the"
                                         " same title")
+        elif title.isdigit():
+            raise forms.ValidationError("You can't have only "
+                                        "numbers in your title")
         elif len(title) < 5:
             raise forms.ValidationError(
                 u'Ensure your title has at '
@@ -145,6 +154,9 @@ class CreatePostForm(forms.ModelForm):
                 author=self.user, description=description).count():
             raise forms.ValidationError("You can't post two task with the"
                                         " same description")
+        elif description.isdigit():
+            raise forms.ValidationError("You can't have "
+                                        "only numbers in your description")
         elif len(description) < 20:
             raise forms.ValidationError(
                 u'Ensure your description has at '
