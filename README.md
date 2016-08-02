@@ -54,7 +54,7 @@ frontend developer
 * redis
 * stdnum
 
-### Header-ul si meniul dashboard au la temelie un template de Bootstrap.
+
 ## Editoare folosite
 * Emacs
 * Vim
@@ -78,3 +78,4 @@ $ docker-compose up
 * JavaScript http://www.w3schools.com/js/
 * Stack Overflow http://stackoverflow.com/
 
+### Header-ul si meniul dashboard au la temelie un template de Bootstrap.
