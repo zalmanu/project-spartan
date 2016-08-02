@@ -91,7 +91,9 @@
                                                     <i class="glyphicon glyphicon-calendar" data-time-icon="icon-time" data-date-icon="icon-calendar">
                                                     </i>
                                                 </span>
-                                                {% if form.birthday.errors %}
+                                            </div>
+                                        </div>
+					{% if form.birthday.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
                                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                                         <strong>Warning!</strong>
@@ -100,8 +102,6 @@
 				                                        {% endfor %}
                                                             </div>
                                             {% endif %}
-                                            </div>
-                                        </div>
 
                                        <div class="form-grpup">
                                             <label for="exampleInputEmail">Address</label>
