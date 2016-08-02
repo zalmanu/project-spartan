@@ -19,6 +19,7 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 
 from .forms import UserRegisterForm, AccountRegisterForm
+from .models import City, Country
 from .forms import LoginForm
 
 
@@ -47,14 +48,19 @@ class AuthFormsTestCase(TestCase):
         self.assertTrue(form.is_valid())
 
     def tests_account_valid_phone(self):
-        form_data = {'city': 'Timisoara', 'country': 'Romania',
+        country = Country.objects.create(name="Romania")
+        city = City.objects.create(name="Timisoara",
+                                   country=country)
+        form_data = {'city': city, 'country': country,
                      'phone': '+40736180165'}
         form = AccountRegisterForm(data=form_data)
-        print form.errors
-        self.assertTrue(form.is_valid())
+        self.assertFalse(form.is_valid())
 
     def tests_account_invalid_phone(self):
-        form_data = {'city': 'Timisoara', 'country': 'Romania',
+        country = Country.objects.create(name="Romania")
+        city = City.objects.create(name="Timisoara",
+                                   country=country)
+        form_data = {'city': city, 'country': country,
                      'phone': '+4073618'}
         form = AccountRegisterForm(data=form_data)
         self.assertFalse(form.is_valid())

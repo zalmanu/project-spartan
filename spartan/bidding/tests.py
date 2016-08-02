@@ -20,7 +20,7 @@ from django.contrib.auth.models import User
 
 from .models import Offer
 from .views import posts
-from authentication.models import Account
+from authentication.models import Account, City, Country
 from spartans.models import Spartan
 from posts.models import Announcement
 
@@ -28,31 +28,37 @@ from posts.models import Announcement
 class AuthFormsTestCase(TestCase):
     def setUp(self):
         self.factory = RequestFactory()
+        country = Country.objects.create(name="Romania")
+        city = City.objects.create(name="Timisoara",
+                                   country=country)
         self.user = User.objects.create_user(username="tester",
                                              email="smt@smt.com",
                                              password="top_secret")
         self.spartan = User.objects.create_user(username="testerspartan",
                                                 email="smt@gmail.com",
                                                 password="top_secret2")
-        account = Account.objects.create(city="Timisoara", country="Romania",
+        account = Account.objects.create(city=city, country=country,
                                          user=self.user)
         account.save()
-        accountspar = Account.objects.create(city="Timisoara",
-                                             country="Romania",
+        accountspar = Account.objects.create(city=city,
+                                             country=country,
                                              user=self.spartan)
         accountspar.save()
         spartan = Spartan.objects.create(last_name="Males",
                                          first_name="Sebastian",
-                                         birthday="2014-03-12",
+                                         birthday="1999-03-17",
                                          address="La mine acas",
-                                         cnp="dawd2",
-                                         series="dawdaw",
+                                         cnp="2891024132511",
+                                         series="TM201201",
                                          user=self.spartan,
                                          spartanStatus=True)
         spartan.save()
-        self.post = Announcement.objects.create(title="Zugrav",
-                                                description="Asa de un zugrav",
+        self.post = Announcement.objects.create(title="Zugradawdjawdawdawdawd",
+                                                description="Asa de un zugrava"
+                                                "dwadawdawdawdawdwadawddawdaw",
                                                 author=self.user,
+                                                city=city,
+                                                country=country,
                                                 price=200)
         self.post.save()
         self.offer = Offer.objects.create(price=20,

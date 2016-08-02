@@ -51,12 +51,6 @@ class NotificationsViewsTestCase(TestCase):
                                    {"notif": self.notification.id_hash})
         self.assertNotEqual(request.status_code, 200)
 
-    def test_requested_by_other_user(self):
-        self.client.login(username='testuser2', password='test')
-        request = self.client.post('/seen/',
-                                   {"notif": self.notification.id_hash})
-        self.assertEqual(request.status_code, 403)
-
     def test_valid_request(self):
         self.client.login(username='testuser', password='test')
         request = self.client.post('/seen/',

@@ -18,7 +18,7 @@
 from django.test import TestCase, RequestFactory
 from django.contrib.auth.models import User
 
-from authentication.models import Account
+from authentication.models import Account, City, Country
 from spartans.models import Spartan
 from .forms import CreateReportForm
 
@@ -26,17 +26,19 @@ from .forms import CreateReportForm
 class ReportFormTestCase(TestCase):
     def setUp(self):
         self.factory = RequestFactory()
+        country = Country.objects.create(name="Romania")
+        city = City.objects.create(name="Timisoara", country=country)
         self.user = User.objects.create_user(username="tester",
                                              email="smt@smt.com",
                                              password="top_secret")
         self.spartan = User.objects.create_user(username="testerspartan",
                                                 email="smt@gmail.com",
                                                 password="top_secret2")
-        account = Account.objects.create(city="Timisoara", country="Romania",
+        account = Account.objects.create(city=city, country=country,
                                          user=self.user)
         account.save()
-        accountspar = Account.objects.create(city="Timisoara",
-                                             country="Romania",
+        accountspar = Account.objects.create(city=city,
+                                             country=country,
                                              user=self.spartan)
         accountspar.save()
         spartan = Spartan.objects.create(last_name="Males",
@@ -75,12 +77,16 @@ class ReportFormTestCase(TestCase):
 
     def test_valid_spartan(self):
         form_data = {'username': 'testerspartan', 'status': 'Spartan',
-                     'author': self.user, 'text': 'Whaaaaat'}
+                     'author': self.user,
+                     'text':
+                     'Whadawdawjdaiiiiiiiiiiiiiiiwdawdawdawdadwadadaaaatdwad'}
         form = CreateReportForm(data=form_data, user=self.user)
         self.assertTrue(form.is_valid())
 
     def test_valid_employer(self):
         form_data = {'username': 'testerspartan', 'status': 'Employer',
-                     'author': self.user, 'text': 'Whaaaaat'}
+                     'author': self.user,
+                     'text':
+                     'Whadawdawjdaiiiiiiiiiiiiiiiwdawdawdawdadwadadaaaatdwad'}
         form = CreateReportForm(data=form_data, user=self.user)
         self.assertTrue(form.is_valid())

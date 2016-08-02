@@ -19,7 +19,7 @@ import random
 from django.test import TestCase, Client
 from django.contrib.auth.models import User
 
-from authentication.models import Account
+from authentication.models import Account, City, Country
 from spartans.models import Spartan
 from categories.models import Category
 from review.models import UrlUnique
@@ -27,11 +27,13 @@ from review.models import UrlUnique
 
 class ReviewViewTestCase(TestCase):
     def setUp(self):
+        country = Country.objects.create(name="Romania")
+        city = City.objects.create(name="Timisoara", country=country)
         self.client = Client()
         self.user = User.objects.create_user('testuser', 'males@sebastia.com',
                                              'test')
         self.user.save()
-        account = Account.objects.create(city="Timisoara", country="Romania",
+        account = Account.objects.create(city=city, country=country,
                                          user=self.user)
         account.save()
         self.category = Category.objects.create(name="TestCategory",

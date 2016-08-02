@@ -21,22 +21,24 @@ from django.contrib.auth.models import User
 from spartans.models import Spartan
 from categories.models import Category
 from .forms import CreateSpartanForm
-from authentication.models import Account
+from authentication.models import Account, City, Country
 
 
 class SpartanFormsTestCase(TestCase):
     def setUp(self):
+        country = Country.objects.create(name="Romania")
+        city = City.objects.create(name="Timisoara", country=country)
         self.user = User.objects.create_user(username="tester",
                                              email="smt@smt.com",
                                              password="top_secret")
         self.spartan = User.objects.create_user(username="testerspartan",
                                                 email="smt@gmail.com",
                                                 password="top_secret2")
-        account = Account.objects.create(city="Timisoara", country="Romania",
+        account = Account.objects.create(city=city, country=country,
                                          user=self.user)
         account.save()
-        accountspar = Account.objects.create(city="Timisoara",
-                                             country="Romania",
+        accountspar = Account.objects.create(city=city,
+                                             country=country,
                                              user=self.spartan)
         accountspar.save()
         self.category = Category.objects.create(name="TestCategory",

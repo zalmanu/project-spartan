@@ -109,7 +109,7 @@ class UserRegisterForm(forms.ModelForm):
 
 
 class AccountRegisterForm(forms.ModelForm):
-    captcha = ReCaptchaField()
+    recaptcha = ReCaptchaField()
 
     class Meta:
         model = Account
