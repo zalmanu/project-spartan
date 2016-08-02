@@ -33,7 +33,7 @@ frontend developer
 * Less
 * Sass
 
-
+### Header-ul si meniul dashboard au la temelie un template de Bootstrap.
 
 ## Pachete folosite de la  Django
 * django
