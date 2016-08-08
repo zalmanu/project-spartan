@@ -1,19 +1,26 @@
 # Spartan Tasks
 > https://spartantasks.com
 
+* NoiInfo 2016 - Premiul I - http://tminfo.ro/index.php?Pages=Concursuri&foodar=62
+* Concurs National de Soft "G. Moisil"  Lugoj 2016 - Premiul III - http://tminfo.ro/index.php?Pages=Concursuri&foodar=20
+* InfoEducatie Online 2016 - Premiul I - https://infoeducatie.ro/participanti
+* Coolest Projects 2016 - Premiul I - http://coolestprojects.org
+
+###  Concursul National InfoEducatie 2016 - Premiul I - https://infoeducatie.ro/rezultate
+
 #Componenta Echipei
 
 Emanuel Covaci
-cls XI-a, Liceul Teoretic "G.Moisil" Timisoara
-backend developer
+cls XI-a, Liceul Teoretic "G.Moisil" Timisoara : 
+back-end developer
 
 Males Sebastian
-cls IX-a, Liceul Teoretic "G.Moisil" Timisoara
-backend developer
+cls IX-a, Liceul Teoretic "G.Moisil" Timisoara : 
+back-end developer
 
 Silaghi Fineas
-cls IX-a, Colegiul National "Ana Aslan" Timisoara
-frontend developer
+cls IX-a, Colegiul National "Ana Aslan" Timisoara :
+front-end developer
 
 ## Licenta 
 * SpartanTasks e protejat de GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007
