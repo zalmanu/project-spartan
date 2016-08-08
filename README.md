@@ -5,8 +5,7 @@
 * Concurs National de Soft "G. Moisil"  Lugoj 2016 - Premiul III - http://tminfo.ro/index.php?Pages=Concursuri&foodar=20
 * InfoEducatie Online 2016 - Premiul I - https://infoeducatie.ro/participanti
 * Coolest Projects 2016 - Premiul I - http://coolestprojects.org
-
-###  Concursul National InfoEducatie 2016 - Premiul I - https://infoeducatie.ro/rezultate
+* Concursul National InfoEducatie 2016 - Premiul I - https://infoeducatie.ro/rezultate
 
 #Componenta Echipei
 
