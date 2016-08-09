@@ -39,6 +39,7 @@ def category(request, kind):
     anns = Announcement.objects.all().filter(category=page_category,
                                              status=False).order_by(
                                                  '-id')
+    posts_number = anns.count()
     page = request.GET.get('page')
     paginator = Paginator(anns, 8)
     return render(request, 'category/category.html', {
@@ -46,7 +47,8 @@ def category(request, kind):
         'kind': page_category,
         'anns': paginator.page(page),
         'num_pages': paginator.num_pages,
-        'page_number': page
+        'page_number': page,
+        'posts_number': posts_number
     },
                   context_instance=RequestContext(request))
 
