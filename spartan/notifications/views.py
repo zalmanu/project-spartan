@@ -61,4 +61,5 @@ def notification_delete(request):
 
 
 def notification_page(request):
-    return render_to_response('notifications/notifications-page.html',context_instance=RequestContext(request))
+    return render_to_response('notifications/notifications-page.html',
+                              context_instance=RequestContext(request))
