@@ -85,7 +85,8 @@ def post(request, slug):
        request.user != post.spartan.user:
         raise Http404()
     form = CreateOfferForm(data=request.POST or None, post=post)
-    other_posts = Announcement.objects.exclude(id=post.id).order_by('-id')[:4]
+    other_posts = Announcement.objects.exclude(id=post.id,
+                                               status=True).order_by('-id')[:4]
     average = 0
     confirms = []
     bids = post.offers.all().order_by('price')
