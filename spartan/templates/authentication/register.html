@@ -126,7 +126,7 @@
 
                                    {{ acc_form.recaptcha|add_class:"form-control login_field"|attr:"required:required"|attr:"style:float: left; width: 100%; text-align: left;text-align:left !important;"}}
                                       <br>
-                                                {% if acc_form.captcha.errors %}
+                                                {% if acc_form.recaptcha.errors %}
                                                         <div class="alert alert-danger fade in" id="input-alert">
                                                           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                                           <strong>Warning!</strong>
