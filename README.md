@@ -25,7 +25,7 @@ front-end developer
 * SpartanTasks e protejat de GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007
 
 ## Documentatie
-* Documentatia proiectului poate fi accesata aici http://bit.ly/2a4jNIe
+* Documentatia proiectului poate fi accesata aici http://bit.ly/2rIBWH8
 
 ## Tehnologi folosite
 * Html
