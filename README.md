@@ -1,33 +1,27 @@
 # Spartan Tasks
-> https://spartantasks.com
 
-* NoiInfo 2016 - Premiul I - http://tminfo.ro/index.php?Pages=Concursuri&foodar=62
-* Concurs National de Soft "G. Moisil"  Lugoj 2016 - Premiul III - http://tminfo.ro/index.php?Pages=Concursuri&foodar=20
-* InfoEducatie Online 2016 - Premiul I - https://infoeducatie.ro/participanti
-* Coolest Projects 2016 - Premiul I - http://coolestprojects.org
-* Concursul National InfoEducatie 2016 - Premiul I - https://infoeducatie.ro/rezultate
+## Prizes
+* NoiInfo 2016 - 1st Place - http://tminfo.ro/index.php?Pages=Concursuri&foodar=62
+* Concurs National de Soft "G. Moisil"  Lugoj 2016 - 3rd Place - http://tminfo.ro/index.php?Pages=Concursuri&foodar=20
+* InfoEducatie Online 2016 - 1st Place - https://infoeducatie.ro/participanti
+* Coolest Projects 2016 - 1st Place - http://coolestprojects.org
+* Concursul National InfoEducatie 2016 - 1st Place - https://infoeducatie.ro/rezultate
 
-#Componenta Echipei
+## The Team
 
-Emanuel Covaci
-cls XI-a, Liceul Teoretic "G.Moisil" Timisoara : 
-back-end developer
+* Emanuel Covaci - back-end developer
 
-Males Sebastian
-cls IX-a, Liceul Teoretic "G.Moisil" Timisoara : 
-back-end developer
+* Sebastian Males - back-end developer
 
-Silaghi Fineas
-cls IX-a, Colegiul National "Ana Aslan" Timisoara :
-front-end developer
+* Silaghi Fineas - front-end developer
 
-## Licenta 
-* SpartanTasks e protejat de GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007
+## License 
+* SpartanTasks is protected by GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007
 
-## Documentatie
-* Documentatia proiectului poate fi accesata aici http://bit.ly/2rIBWH8
+## Documentation
+* The documentation of the project (in Romanian) can be accessed here: http://bit.ly/2rIBWH8
 
-## Tehnologi folosite
+## Technology stack
 * Html
 * Css
 * JavaScript
@@ -40,7 +34,7 @@ front-end developer
 * Sass
 
 
-## Pachete folosite de la  Django
+## Django packages
 * django
 * django-widget-tweaks
 * django-recaptcha
@@ -60,28 +54,10 @@ front-end developer
 * redis
 * stdnum
 
-
-## Editoare folosite
-* Emacs
-* Vim
-* PyCharm
-* Atom
-* Sublime
-
-## Pentru a rula proiectul se executa urmatoarea comanda in terminal 
+## Running the project with docker
 ```sh
 $ docker-compose build
 ```
 ```sh
 $ docker-compose up
 ```
-## Resurse folosite: 
-* Python http://learnpythonthehardway.org/book/
-* Django https://docs.djangoproject.com/en/1.9/
-* Django Channels  https://channels.readthedocs.io/en/latest/
-* Celery http://www.celeryproject.org/
-* Docker https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-getting-started
-* JavaScript http://www.w3schools.com/js/
-* Stack Overflow http://stackoverflow.com/
-
-### Header-ul si meniul dashboard au la temelie un template de Bootstrap.
