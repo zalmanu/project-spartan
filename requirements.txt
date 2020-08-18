@@ -1,7 +1,7 @@
 ngo==1.9
 django-widget-tweaks==1.4.1
 django-recaptcha==1.0.5
-gunicorn==19.4.5
+gunicorn==19.5.0
 django-phonenumber-field==1.1.0
 psycopg2==2.6.1
 Whoosh==2.7.4
