@@ -16,10 +16,10 @@
 * Silaghi Fineas - front-end developer
 
 ## License 
-* SpartanTasks is protected by GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007
+* SpartanTasks is protected by GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007.
 
 ## Documentation
-* The documentation of the project (in Romanian) can be accessed here: http://bit.ly/2rIBWH8
+* The documentation of the project (in Romanian) can be accessed here: http://bit.ly/2rIBWH8.
 
 ## Technology stack
 * Html
