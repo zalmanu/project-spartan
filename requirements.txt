@@ -6,7 +6,7 @@ django-phonenumber-field==1.1.0
 psycopg2==2.6.1
 Whoosh==2.7.4
 git+git://github.com/django-haystack/django-haystack.git 
-Pillow==3.3.0
+Pillow==9.3.0
 django-cleanup==0.4.2
 channels==0.15.1
 amqp==1.4.9
